@@ -41,6 +41,7 @@ jobs:
         with: {python-version: '3.11', cache: pip, cache-dependency-path: tools/runner/requirements.txt}
       - name: Dépendances
         run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
           pip install -r tools/runner/requirements.txt
       - uses: actions/cache@v4
