@@ -1,0 +1,70 @@
+# Animation des visages (JoyVASA + LivePortrait) sur les ordinateurs GitHub, une réplique par machine, en parallèle.
+# Déclenchement : envoyer un dossier jobs/<nom>/ contenant job.json + images + voix.
+# Résultat : branche « rendus », dossier rendus/<nom>/<réplique>/*.png
+name: visages
+on:
+  push:
+    branches: [main]
+    paths: ['jobs/**/job.json']
+  workflow_dispatch:
+    inputs:
+      job: {description: 'nom du dossier dans jobs/', required: true}
+permissions:
+  contents: write
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      job: ${{ steps.p.outputs.job }}
+      matrix: ${{ steps.p.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 2}
+      - id: p
+        run: |
+          JOB="${{ github.event.inputs.job }}"
+          if [ -z "$JOB" ]; then JOB=$(git diff --name-only HEAD~1 HEAD | grep 'job.json$' | head -1 | cut -d/ -f2); fi
+          echo "job=$JOB" >> $GITHUB_OUTPUT
+          echo "matrix=$(python3 -c "import json;print(json.dumps([l['id'] for l in json.load(open('jobs/$JOB/job.json'))['lines']]))")" >> $GITHUB_OUTPUT
+  visage:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        line: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11', cache: pip, cache-dependency-path: tools/runner/requirements.txt}
+      - name: Dépendances
+        run: |
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install -r tools/runner/requirements.txt
+      - uses: actions/cache@v4
+        with: {path: ~/jv-weights, key: jv-weights-v1}
+      - name: JoyVASA
+        run: bash tools/runner/setup_joyvasa.sh
+      - name: Calcul de la réplique
+        run: python tools/runner/render_line.py "${{ needs.plan.outputs.job }}" "${{ matrix.line }}"
+      - uses: actions/upload-artifact@v4
+        with: {name: 'frames-${{ matrix.line }}', path: 'out/', retention-days: 3}
+  collecte:
+    needs: [plan, visage]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: {path: art}
+      - run: |
+          JOB="${{ needs.plan.outputs.job }}"
+          git config user.name "sounsouni-bot"; git config user.email "bot@sounsouni.pro"
+          mkdir -p /tmp/res/$JOB; for d in art/frames-*; do cp -r $d/* /tmp/res/$JOB/ 2>/dev/null || true; done
+          git fetch origin rendus && git checkout -B rendus origin/rendus || git checkout --orphan rendus
+          git rm -rq --cached . 2>/dev/null || true; git clean -fdq -e art || true
+          mkdir -p rendus; rm -rf rendus/$JOB; cp -r /tmp/res/$JOB rendus/$JOB
+          (cd rendus/$JOB && for x in *; do echo "$x $(ls $x 2>/dev/null | wc -l)"; done) > rendus/$JOB/LISTE.txt
+          git add rendus/$JOB && git commit -m "rendu visages : $JOB" && git push origin rendus

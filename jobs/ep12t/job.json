@@ -1,0 +1,10 @@
+{"fps": 6,
+ "lines": [
+  {"id": "L0", "image": "mod_taq.png",    "audio": "L0.wav"},
+  {"id": "L1", "image": "bak_gene.png",   "audio": "L1.wav"},
+  {"id": "L2", "image": "mod_taq.png",    "audio": "L2.wav"},
+  {"id": "L3", "image": "bak_idee.png",   "audio": "L3.wav"},
+  {"id": "L4", "image": "awa_froide.png", "audio": "L4.wav"},
+  {"id": "L5", "image": "bak_pan.png",    "audio": "L5.wav"},
+  {"id": "L6", "image": "mod_rire.png",   "audio": "L6.wav"}
+ ]}
