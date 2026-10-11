@@ -3,7 +3,7 @@
 ## Étape 1 — Sauvegarde ✅
 Scripts, réglages, images de référence, voix de référence et planches d'origine rangés dans ce dépôt.
 
-## Étape 2 — Guide du scénariste
+## Étape 2 — Guide du scénariste ✅ (v1, à valider par Issa)
 `docs/GUIDE_SCENARISTE.md` : format du script avec expressions, réactions et décors accrochés aux mots,
 liste complète des expressions et actions reconnues.
 
