@@ -18,3 +18,5 @@ soundfile
 scikit-image
 tqdm
 pillow
+matplotlib
+openvino
