@@ -429,7 +429,8 @@
    "posture": "debout",
    "tags": [
     "brochettes",
-    "porte"
+    "porte",
+    "brochette"
    ],
    "mouth": true,
    "size": [
@@ -438,8 +439,12 @@
    ],
    "head_x": 0.452,
    "yaw": -14.0,
-   "props": [],
-   "props_auto": {}
+   "props": [
+    "brochette"
+   ],
+   "props_auto": {
+    "brochette": 0.34
+   }
   },
   "bak_assis_idee": {
    "char": "BAKARY",
@@ -753,7 +758,8 @@
     "triste",
     "peur",
     "gene",
-    "choc"
+    "choc",
+    "larmes"
    ],
    "mouth": true,
    "size": [
@@ -762,8 +768,12 @@
    ],
    "head_x": 0.56,
    "yaw": -24.4,
-   "props": [],
-   "props_auto": {}
+   "props": [
+    "larmes"
+   ],
+   "props_auto": {
+    "larmes": 0.38
+   }
   },
   "awa_main_bouche": {
    "char": "AWA",
@@ -871,7 +881,7 @@
     "brochette"
    ],
    "props_auto": {
-    "brochette": 0.26,
+    "brochette": 0.38,
     "boite": 0.3
    }
   },
@@ -898,7 +908,7 @@
     "brochette"
    ],
    "props_auto": {
-    "brochette": 0.35,
+    "brochette": 0.36,
     "billet": 0.32
    }
   },
@@ -982,7 +992,7 @@
     "brochette"
    ],
    "props_auto": {
-    "brochette": 0.31,
+    "brochette": 0.55,
     "beignets": 0.26
    }
   },
@@ -1581,7 +1591,7 @@
     "brochette"
    ],
    "props_auto": {
-    "brochette": 0.3
+    "brochette": 0.52
    }
   },
   "dia_grill": {
@@ -1689,7 +1699,7 @@
     "brochette"
    ],
    "props_auto": {
-    "brochette": 0.21
+    "brochette": 0.33
    }
   },
   "dia_tel": {
@@ -2017,7 +2027,8 @@
    "posture": "debout",
    "tags": [
     "mange",
-    "brochettes"
+    "brochettes",
+    "brochette"
    ],
    "mouth": true,
    "size": [
@@ -2026,8 +2037,12 @@
    ],
    "head_x": 0.265,
    "yaw": -14.7,
-   "props": [],
-   "props_auto": {}
+   "props": [
+    "brochette"
+   ],
+   "props_auto": {
+    "brochette": 0.45
+   }
   },
   "mim_machine_tel": {
    "char": "MIMI",
