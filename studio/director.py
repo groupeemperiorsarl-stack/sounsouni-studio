@@ -168,13 +168,14 @@ def orient(a, d):
     if a.get('walk'):   # après la marche, la pose d'arrêt regarde aussi le bon côté
         sk = a.get('stop_key')
         if sk:
-            sk = sk.split('@')[0]; f = face_dir(sk); fl = f == -d
-            a['stop_flip'] = fl; a['stop_key'] = yaw_variant(sk, d if f == 0 else 0, -d if fl else d)
+            sk = sk.split('@')[0]; f = face_dir(sk); fl = f == -d; sd = -d if fl else d
+            a['stop_flip'] = fl; a['stop_key'] = yaw_variant(sk, sd, sd)
         return a
     base = a['key'].split('@')[0]
     if POSES[base]['char'] == 'OBJET' or '+' in POSES[base]['char'] or POSES[base]['posture'] == 'dos': return a
     a['look_dir'] = d; f = face_dir(base); flip = f == -d
-    a['key'] = yaw_variant(base, d if f == 0 else 0, -d if flip else d)
+    sd = -d if flip else d   # direction dans l'image d'origine (avant retournement)
+    a['key'] = yaw_variant(base, sd, sd)   # tête tournée vers l'autre + yeux vers l'autre
     if 'face_x' in a:
         b = close_actor(a['who'], a['key'], x=a['face_x'], tight=a.get('tight', False), scale=a.get('scale', 1.0), flip=flip)
         a['x'] = b['x']

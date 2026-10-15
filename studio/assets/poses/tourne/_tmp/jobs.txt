@@ -1,10 +1,5 @@
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises@0+.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises.png|x|x|0|0|0|0|0|0|0|0|0|-16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises@0+_o.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises.png|x|0.2|0|0|0|-0.2|0|0|0|0|0|-16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc@--.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc.png|x|x|0|-18|0|0|0|0|0|0|0|16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc@--_o.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc.png|x|0.2|0|-18|0|-0.2|0|0|0|0|0|16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive@0+.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive.png|x|x|0|0|0|0|0|0|0|0|0|-16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive@0+_o.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive.png|x|0.2|0|0|0|-0.2|0|0|0|0|0|-16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine@0-.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine.png|x|x|0|0|0|0|0|0|0|0|0|16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine@0-_o.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine.png|x|0.2|0|0|0|-0.2|0|0|0|0|0|16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto@0-.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto.png|x|x|0|0|0|0|0|0|0|0|0|16|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto@0-_o.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto.png|x|0.2|0|0|0|0|0|0|0|0|0|16|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises@++.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises.png|x|x|0|18|0|0|0|0|0|0|0|-26|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc@--.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc.png|x|x|0|-18|0|0|0|0|0|0|0|26|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive@++.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive.png|x|x|0|18|0|0|0|0|0|0|0|-26|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine@--.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine.png|x|x|0|-18|0|0|0|0|0|0|0|26|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto@--.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto.png|x|x|0|-18|0|0|0|0|0|0|0|26|0

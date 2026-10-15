@@ -22,7 +22,9 @@ def main():
     render.prepare_turns(shots, log)
     render.contact(shots, os.path.join(out, 'apercu_plans.png')); log('aperçu des plans : apercu_plans.png')
     if a.plans_seulement: return
-    h = hashlib.md5(json.dumps(shots, sort_keys=True, default=str).encode()).hexdigest()[:10]
+    A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
+    stamp = [os.path.getmtime(os.path.join(A, 'catalog.json'))] + sorted(os.path.getmtime(os.path.join(dp, f)) for dp, _, fs in os.walk(os.path.join(A, 'poses')) for f in fs if f.endswith('.webp'))[-3:]
+    h = hashlib.md5((json.dumps(shots, sort_keys=True, default=str) + str(stamp)).encode()).hexdigest()[:10]   # images changées = on refait le rendu
     if open(os.path.join(work, 'plans.hash')).read() != h if os.path.exists(os.path.join(work, 'plans.hash')) else True:
         for f in os.listdir(work):
             if f.startswith('seg_'): os.remove(os.path.join(work, f))

@@ -229,6 +229,15 @@ def contact(shots, path, cols=8):
     c.save(path); return path
 
 # ---------------- têtes tournées (LivePortrait) ----------------
+def key_color(im):
+    """Couleur de fond la plus éloignée des couleurs du personnage (pour le détourage)."""
+    a = np.array(im.convert('RGBA')).astype(np.float32); px = a[a[..., 3] > 128][:, :3]
+    if len(px) > 20000: px = px[np.random.default_rng(0).choice(len(px), 20000, replace=False)]
+    best, bd = (0, 255, 0), -1
+    for c in [(0, 255, 0), (255, 0, 255), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 0, 0)]:
+        d = np.sqrt(((px - np.array(c, np.float32)) ** 2).sum(1)); score = (d < 110).mean()
+        if bd < 0 or score < bd: best, bd = c, score
+    return best
 def prepare_turns(shots, log=print):
     """Crée les variantes « tête tournée » dont la mise en scène a besoin (une seule fois, gardées dans assets/poses/tourne)."""
     need = set()
@@ -242,26 +251,62 @@ def prepare_turns(shots, log=print):
     lp = os.environ.get('STUDIO_LIVEPORTRAIT', '/home/claude/lp/lpgen.py')
     if not todo: return
     if not os.path.exists(lp): log('têtes tournées : outil LivePortrait absent, poses d\'origine utilisées'); return
-    tmp = f'{out}/_tmp'; os.makedirs(tmp, exist_ok=True); jobs = []; boxes = {}
+    tmp = f'{out}/_tmp'; os.makedirs(tmp, exist_ok=True); jobs = []; boxes = {}; bgs = {}
     for k in todo:
         from director import parse_variant
         base, turn, eyes = parse_variant(k); p = POSES[base]
         im = Image.open(f'{A}/poses/{base}.webp').convert('RGBA'); w, h = im.size
         frac = {'pied': 0.42, 'buste': 0.75, 'visage': 1.0}.get(p['frame'], 0.5); box = (0, 0, w, int(h * frac)); boxes[k] = box
-        b = Image.new('RGBA', box[2:], (200, 200, 200, 255)); b.alpha_composite(im.crop(box)); b.convert('RGB').save(f'{tmp}/{base}.png')
-        y = 18 * turn; ex = -16 * eyes   # signes vérifiés à l'œil sur LivePortrait
+        bgc = key_color(im.crop(box)); bgs[k] = bgc; b = Image.new('RGBA', box[2:], bgc + (255,)); b.alpha_composite(im.crop(box)); b.convert('RGB').save(f'{tmp}/{base}.png')   # fond uni absent du personnage : détourage facile
+        y = 18 * turn; ex = -26 * eyes   # signes vérifiés à l'œil sur LivePortrait
         jobs.append(f'{tmp}/{k}.png|{tmp}/{base}.png|x|x|0|{y}|0|0|0|0|0|0|0|{ex}|0')
+    jobs2 = []
+    for k in todo:
+        base = k.split('@')[0]; p = POSES[base]
         sm = 0 if set(p['tags']) & {'sourire', 'rire', 'content', 'grand_sourire'} else -0.2
-        if p['mouth']: jobs.append(f'{tmp}/{k}_o.png|{tmp}/{base}.png|x|0.2|0|{y}|0|{sm}|0|0|0|0|0|{ex}|0')
-    open(f'{tmp}/jobs.txt', 'w').write('\n'.join(jobs) + '\n')
+        # bouche ouverte fabriquée à partir de l'image tournée elle-même : les yeux ne bougent pas
+        if p['mouth']: jobs2.append(f'{tmp}/{k}_o.png|{tmp}/{k}.png|x|0.38|0|0|0|{sm}|0|0|0|0|0|0|0')
+    open(f'{tmp}/jobs.txt', 'w').write('\n'.join(jobs) + '\n'); open(f'{tmp}/jobs2.txt', 'w').write('\n'.join(jobs2) + '\n')
     log(f'têtes tournées : {len(todo)} poses à préparer')
     subprocess.run(['python3', lp, f'{tmp}/jobs.txt'], cwd=os.path.dirname(lp), capture_output=True)
+    subprocess.run(['python3', lp, f'{tmp}/jobs2.txt'], cwd=os.path.dirname(lp), capture_output=True)
+    for k in todo:   # on ne garde de l'image « bouche ouverte » que la bouche : le reste du visage est identique
+        c, o = f'{tmp}/{k}.png', f'{tmp}/{k}_o.png'
+        if os.path.exists(c) and os.path.exists(o): mouth_only(c, o)
     n = 0
     for k, box in boxes.items():
-        base = Image.open(f'{A}/poses/{k.split("@")[0]}.webp').convert('RGBA')
+        base = Image.open(f'{A}/poses/{k.split("@")[0]}.webp').convert('RGBA'); alpha = None; band = None
         for suf in ('', '_o'):
             f = f'{tmp}/{k}{suf}.png'
             if not os.path.exists(f): continue
-            g = Image.open(f).convert('RGBA').resize(box[2:]); g.putalpha(base.crop(box).getchannel('A'))
+            g = Image.open(f).convert('RGBA').resize(box[2:])
+            if alpha is None:   # la tête a bougé : nouveau détourage par le fond uni (sinon on voit le fond autour des cheveux)
+                import cv2
+                ba = np.array(base.crop(box).getchannel('A')).astype(np.float32)
+                ar = np.array(g.convert('RGB')).astype(np.float32); dist = np.sqrt(((ar - np.array(bgs[k], np.float32)) ** 2).sum(2))
+                na = np.clip((dist - 60) / 50, 0, 1) * 255; na = cv2.GaussianBlur(na, (0, 0), 1.0)
+                hgt = ba.shape[0]; w8 = np.clip((np.arange(hgt) - hgt * 0.8) / (hgt * 0.15), 0, 1)[:, None]
+                ba = na * (1 - w8) + ba * w8
+                hard = (ba > 128).astype(np.uint8); core = cv2.erode(hard, np.ones((5, 5), np.uint8))
+                ba = cv2.GaussianBlur(core.astype(np.float32) * 255, (0, 0), 1.2) * (1 - w8) + ba * w8   # bord resserré
+                tint = (dist < 150).astype(np.uint8) * (w8[:, 0] < 0.5)[:, None].astype(np.uint8)   # pixels encore teintés par le fond (entre les mèches)
+                ba = ba * (1 - tint)
+                band = (((cv2.dilate(hard, np.ones((9, 9), np.uint8)) - cv2.erode(hard, np.ones((9, 9), np.uint8))) > 0) | (cv2.dilate(tint, np.ones((5, 5), np.uint8)) > 0)).astype(np.uint8)
+                alpha = Image.fromarray(ba.clip(0, 255).astype(np.uint8))
+            if band is not None:   # couleurs du bord reprises de l'intérieur : plus de liseré de la couleur du fond
+                rgb = cv2.inpaint(np.array(g.convert('RGB')), band, 4, cv2.INPAINT_TELEA); g = Image.fromarray(rgb).convert('RGBA')
+            g.putalpha(alpha)
             im = base.copy(); im.paste(g, box[:2]); im.save(f'{out}/{k}{suf}.webp', 'WEBP', quality=88); n += suf == ''
     log(f'têtes tournées : {n} prêtes')
+
+def mouth_only(closed_path, open_path):
+    """Remplace l'image « bouche ouverte » par l'image fermée + seulement la zone de la bouche
+    (là où l'image change le plus quand la bouche s'ouvre)."""
+    import cv2
+    ci = Image.open(closed_path).convert('RGB'); c = np.array(ci).astype(np.float32); o = np.array(Image.open(open_path).convert('RGB').resize(ci.size)).astype(np.float32)
+    D = cv2.GaussianBlur(np.abs(c - o).mean(2), (0, 0), 4)
+    py, px = np.unravel_index(np.argmax(D), D.shape); peak = D[py, px]
+    if peak < 15: return
+    m = (D > peak * 0.25).astype(np.uint8); n, lab = cv2.connectedComponents(m); m = (lab == lab[py, px]).astype(np.uint8) * 255
+    m = cv2.dilate(m, np.ones((11, 11), np.uint8)); m = cv2.GaussianBlur(m, (0, 0), 5)[..., None] / 255.0
+    out = (c * (1 - m) + o * m).clip(0, 255).astype(np.uint8); Image.fromarray(out).save(open_path)
