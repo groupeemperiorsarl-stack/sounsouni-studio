@@ -15,7 +15,9 @@
    ],
    "mouth_auto": true,
    "head_x": 0.509,
-   "yaw": -1.7
+   "yaw": -1.7,
+   "props_auto": {},
+   "props": []
   },
   "bak_explique": {
    "char": "BAKARY",
@@ -33,7 +35,9 @@
     1600
    ],
    "head_x": 0.573,
-   "yaw": -7.6
+   "yaw": -7.6,
+   "props_auto": {},
+   "props": []
   },
   "bak_tel_sourire": {
    "char": "BAKARY",
@@ -54,7 +58,10 @@
    "yaw": -30.2,
    "props": [
     "telephone"
-   ]
+   ],
+   "props_auto": {
+    "telephone": 0.7
+   }
   },
   "bak_assis_tel": {
    "char": "BAKARY",
@@ -62,7 +69,9 @@
    "posture": "assis",
    "tags": [
     "telephone",
-    "sourire"
+    "sourire",
+    "the",
+    "verre"
    ],
    "mouth": true,
    "size": [
@@ -72,8 +81,15 @@
    "head_x": 0.441,
    "yaw": 24.6,
    "props": [
-    "telephone"
-   ]
+    "telephone",
+    "the",
+    "verre"
+   ],
+   "props_auto": {
+    "telephone": 0.82,
+    "the": 0.66,
+    "verre": 0.45
+   }
   },
   "bak_assis_tel_inquiet": {
    "char": "BAKARY",
@@ -93,7 +109,10 @@
    "yaw": -24.4,
    "props": [
     "telephone"
-   ]
+   ],
+   "props_auto": {
+    "telephone": 0.8
+   }
   },
   "bak_dos": {
    "char": "BAKARY",
@@ -107,7 +126,9 @@
     710,
     1600
    ],
-   "head_x": 0.357
+   "head_x": 0.357,
+   "props_auto": {},
+   "props": []
   },
   "bak_assis_triste": {
    "char": "BAKARY",
@@ -126,7 +147,9 @@
     1497
    ],
    "head_x": 0.587,
-   "yaw": -22.8
+   "yaw": -22.8,
+   "props_auto": {},
+   "props": []
   },
   "bak_bouteilles": {
    "char": "BAKARY",
@@ -146,7 +169,10 @@
    "yaw": -11.2,
    "props": [
     "bouteilles"
-   ]
+   ],
+   "props_auto": {
+    "bouteilles": 0.58
+   }
   },
   "bak_billet": {
    "char": "BAKARY",
@@ -155,7 +181,8 @@
    "tags": [
     "argent",
     "paye",
-    "billet"
+    "billet",
+    "telephone"
    ],
    "mouth": true,
    "size": [
@@ -165,8 +192,11 @@
    "head_x": 0.404,
    "yaw": -14.7,
    "props": [
-    "billet"
-   ]
+    "telephone"
+   ],
+   "props_auto": {
+    "telephone": 0.71
+   }
   },
   "bak_lit": {
    "char": "BAKARY",
@@ -188,7 +218,10 @@
    "yaw": -32.9,
    "props": [
     "livre"
-   ]
+   ],
+   "props_auto": {
+    "livre": 0.56
+   }
   },
   "bak_mains_levees": {
    "char": "BAKARY",
@@ -206,7 +239,9 @@
     1551
    ],
    "head_x": 0.495,
-   "yaw": -23.4
+   "yaw": -23.4,
+   "props_auto": {},
+   "props": []
   },
   "bak_joue": {
    "char": "BAKARY",
@@ -224,7 +259,9 @@
    ],
    "mouth_auto": true,
    "head_x": 0.452,
-   "yaw": -13.3
+   "yaw": -13.3,
+   "props_auto": {},
+   "props": []
   },
   "bak_plateau": {
    "char": "BAKARY",
@@ -234,7 +271,8 @@
     "sert",
     "plateau",
     "the",
-    "cafe"
+    "cafe",
+    "verre"
    ],
    "mouth": true,
    "size": [
@@ -244,8 +282,11 @@
    "head_x": 0.471,
    "yaw": -15.3,
    "props": [
-    "plateau"
-   ]
+    "verre"
+   ],
+   "props_auto": {
+    "verre": 0.39
+   }
   },
   "bak_tel_montre": {
    "char": "BAKARY",
@@ -264,7 +305,10 @@
    "yaw": -4.3,
    "props": [
     "telephone"
-   ]
+   ],
+   "props_auto": {
+    "telephone": 0.77
+   }
   },
   "bak_verse": {
    "char": "BAKARY",
@@ -283,9 +327,11 @@
    "head_x": 0.416,
    "yaw": -11.6,
    "props": [
-    "the",
-    "verse"
-   ]
+    "the"
+   ],
+   "props_auto": {
+    "the": 0.5
+   }
   },
   "bak_verse2": {
    "char": "BAKARY",
@@ -294,7 +340,9 @@
    "tags": [
     "verse",
     "the",
-    "sourire"
+    "sourire",
+    "canne",
+    "verre"
    ],
    "mouth": true,
    "size": [
@@ -304,9 +352,15 @@
    "head_x": 0.435,
    "yaw": -12.7,
    "props": [
+    "canne",
     "the",
-    "verse"
-   ]
+    "verre"
+   ],
+   "props_auto": {
+    "the": 0.7,
+    "canne": 0.31,
+    "verre": 0.36
+   }
   },
   "bak_pointe": {
    "char": "BAKARY",
@@ -322,7 +376,9 @@
     1485
    ],
    "head_x": 0.328,
-   "yaw": -16.0
+   "yaw": -16.0,
+   "props_auto": {},
+   "props": []
   },
   "bak_main_tendue": {
    "char": "BAKARY",
@@ -342,9 +398,8 @@
    ],
    "head_x": 0.412,
    "yaw": -17.1,
-   "props": [
-    "billet"
-   ]
+   "props": [],
+   "props_auto": {}
   },
   "bak_marche": {
    "char": "BAKARY",
@@ -353,7 +408,8 @@
    "tags": [
     "marche",
     "court",
-    "bondit"
+    "bondit",
+    "billet"
    ],
    "mouth": true,
    "size": [
@@ -361,7 +417,13 @@
     1600
    ],
    "head_x": 0.562,
-   "yaw": -24.8
+   "yaw": -24.8,
+   "props_auto": {
+    "billet": 0.72
+   },
+   "props": [
+    "billet"
+   ]
   },
   "bak_brochettes": {
    "char": "BAKARY",
@@ -369,7 +431,9 @@
    "posture": "debout",
    "tags": [
     "brochettes",
-    "porte"
+    "porte",
+    "brochette",
+    "billet"
    ],
    "mouth": true,
    "size": [
@@ -379,8 +443,13 @@
    "head_x": 0.452,
    "yaw": -14.0,
    "props": [
-    "brochettes"
-   ]
+    "billet",
+    "brochette"
+   ],
+   "props_auto": {
+    "brochette": 0.26,
+    "billet": 0.27
+   }
   },
   "bak_assis_idee": {
    "char": "BAKARY",
@@ -665,7 +734,10 @@
    "yaw": -24.4,
    "props": [
     "larmes"
-   ]
+   ],
+   "props_auto": {
+    "larmes": 0.33
+   }
   },
   "awa_main_bouche": {
    "char": "AWA",
@@ -844,7 +916,9 @@
    "tags": [
     "degout",
     "mepris",
-    "brochette"
+    "brochette",
+    "beignets",
+    "parapluie"
    ],
    "mouth": true,
    "size": [
@@ -854,8 +928,15 @@
    "head_x": 0.407,
    "yaw": -23.6,
    "props": [
-    "brochette"
-   ]
+    "beignets",
+    "brochette",
+    "parapluie"
+   ],
+   "props_auto": {
+    "beignets": 0.35,
+    "brochette": 0.31,
+    "parapluie": 0.25
+   }
   },
   "awa_mange_rire": {
    "char": "AWA",
@@ -865,7 +946,8 @@
     "mange",
     "rire",
     "content",
-    "brochette"
+    "brochette",
+    "parapluie"
    ],
    "mouth": true,
    "size": [
@@ -875,8 +957,11 @@
    "head_x": 0.331,
    "yaw": -24.7,
    "props": [
-    "brochette"
-   ]
+    "parapluie"
+   ],
+   "props_auto": {
+    "parapluie": 0.4
+   }
   },
   "awa_choc": {
    "char": "AWA",
@@ -909,7 +994,8 @@
     "neutre",
     "mepris",
     "colere",
-    "fiere"
+    "fiere",
+    "parapluie"
    ],
    "mouth": true,
    "size": [
@@ -917,7 +1003,13 @@
     1575
    ],
    "head_x": 0.289,
-   "yaw": -18.2
+   "yaw": -18.2,
+   "props_auto": {
+    "parapluie": 0.32
+   },
+   "props": [
+    "parapluie"
+   ]
   },
   "awa_porte": {
    "char": "AWA",
@@ -1153,7 +1245,8 @@
     "ecoute",
     "boit",
     "verre",
-    "the"
+    "the",
+    "parapluie"
    ],
    "mouth": true,
    "size": [
@@ -1163,9 +1256,13 @@
    "head_x": 0.498,
    "yaw": -21.2,
    "props": [
-    "verre",
-    "the"
-   ]
+    "parapluie",
+    "verre"
+   ],
+   "props_auto": {
+    "verre": 0.46,
+    "parapluie": 0.26
+   }
   },
   "mod_banc2": {
    "char": "MODIBO",
@@ -1327,7 +1424,9 @@
     1600
    ],
    "head_x": 0.502,
-   "yaw": 1.2
+   "yaw": 1.2,
+   "props_auto": {},
+   "props": []
   },
   "dia_gene": {
    "char": "DIASABI",
@@ -1723,7 +1822,8 @@
    "posture": "assis",
    "tags": [
     "coud",
-    "machine"
+    "machine",
+    "parapluie"
    ],
    "mouth": true,
    "size": [
@@ -1731,7 +1831,14 @@
     1539
    ],
    "head_x": 0.81,
-   "yaw": 22.7
+   "yaw": 22.7,
+   "props_auto": {
+    "machine": 0.63,
+    "parapluie": 0.31
+   },
+   "props": [
+    "parapluie"
+   ]
   },
   "mim_debout": {
    "char": "MIMI",
@@ -1845,7 +1952,10 @@
    "yaw": -13.8,
    "props": [
     "rouleau"
-   ]
+   ],
+   "props_auto": {
+    "rouleau": 0.45
+   }
   },
   "kadi": {
    "char": "KADI",

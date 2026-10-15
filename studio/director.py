@@ -11,6 +11,8 @@ from script import norm
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 CAT = json.load(open(A + '/catalog.json'))
 POSES = CAT['poses']; HEIGHT = CAT['height']
+def reload():
+    POSES.clear(); POSES.update(json.load(open(A + '/catalog.json'))['poses'])
 GROUND, BACK = 1900, 1560
 EMOS = {'neutre', 'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'rire_retenu', 'colere', 'furieux', 'choc', 'surpris', 'peur', 'panique', 'triste',
         'gene', 'mepris', 'mefiant', 'yeux_plisses', 'amoureux', 'fier', 'moue', 'degout', 'innocent', 'taquin', 'pensif', 'serieux', 'inquiet', 'tendre',

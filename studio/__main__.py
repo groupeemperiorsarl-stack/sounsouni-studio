@@ -15,6 +15,10 @@ def main():
     def log(m): s = time.strftime('%H:%M:%S ') + m; print(s, flush=True); logf.write(s + '\n'); logf.flush()
     log(f'== {a.script}')
     meta, ev = script.parse(open(a.script, encoding='utf-8').read())
+    try:   # nouvelles poses pas encore analysées : l'application reconnaît elle-même les objets dessus
+        import autotag; new = [k for k, p in director.POSES.items() if p['char'] != 'OBJET' and 'props_auto' not in p and '@' not in k]
+        if new: log(f'analyse des objets sur {len(new)} nouvelles poses'); autotag.run(new); director.reload()
+    except Exception as err: log(f'analyse des objets impossible : {err}')
     log(f"script : {sum(1 for e in ev if e['type'] == 'line')} répliques, {sum(1 for e in ev if e['type'] == 'scene')} scènes")
     lines = voices.run(ev, director.CAT, work, log)
     shots, tot = director.build(meta, ev, log)
