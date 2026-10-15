@@ -782,7 +782,8 @@
    "tags": [
     "choc",
     "triste",
-    "pleure"
+    "pleure",
+    "larmes"
    ],
    "mouth": true,
    "size": [
@@ -792,8 +793,12 @@
    "mouth_auto": true,
    "head_x": 0.622,
    "yaw": -19.4,
-   "props": [],
-   "props_auto": {}
+   "props": [
+    "larmes"
+   ],
+   "props_auto": {
+    "larmes": 0.38
+   }
   },
   "awa_pointe_colere": {
    "char": "AWA",
@@ -1034,12 +1039,8 @@
    "mouth_auto": true,
    "head_x": 0.491,
    "yaw": -1.8,
-   "props_auto": {
-    "robe": 0.26
-   },
-   "props": [
-    "robe"
-   ]
+   "props_auto": {},
+   "props": []
   },
   "awa_bras_croises": {
    "char": "AWA",

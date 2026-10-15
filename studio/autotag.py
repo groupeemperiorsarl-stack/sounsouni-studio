@@ -17,7 +17,7 @@ QUERIES = {
     'a car': 'voiture', 'a hoverboard': 'hoverboard', 'a walking cane': 'canne', 'a sewing machine': 'machine',
     'tears on the cheek': 'larmes', 'a teardrop on a face': 'larmes', 'a kebab on a stick': 'brochette', 'food on a stick': 'brochette',
 }
-THR = {'larmes': 0.33, 'telephone': 0.22, 'parapluie': 0.5, 'brochette': 0.22}
+THR = {'robe': 0.45, 'hoverboard': 0.4, 'larmes': 0.3, 'telephone': 0.22, 'parapluie': 0.5, 'brochette': 0.22}
 DEF_THR = 0.25
 def load():
     from transformers import Owlv2Processor, Owlv2ForObjectDetection

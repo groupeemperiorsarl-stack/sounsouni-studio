@@ -1,5 +1,1 @@
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises@++.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_bras_croises.png|x|x|0|18|0|0|0|0|0|0|0|-26|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc@--.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc.png|x|x|0|-18|0|0|0|0|0|0|0|26|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive@++.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_pensive.png|x|x|0|18|0|0|0|0|0|0|0|-26|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine@--.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_machine.png|x|x|0|-18|0|0|0|0|0|0|0|26|0
-/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto@--.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/mim_sourire_auto.png|x|x|0|-18|0|0|0|0|0|0|0|26|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_doigt_bouche@++.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_doigt_bouche.png|x|x|0|18|0|0|0|0|0|0|0|-26|0
