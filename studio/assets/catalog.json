@@ -510,7 +510,9 @@
    "frame": "pied",
    "posture": "debout",
    "tags": [
-    "neutre"
+    "colere",
+    "furieux",
+    "determine"
    ],
    "mouth": true,
    "size": [
@@ -1930,6 +1932,106 @@
     380
    ],
    "head_x": 0.614
+  },
+  "dia_sourire_auto": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "content",
+    "grand_sourire",
+    "rougit",
+    "fier",
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    374,
+    1600
+   ],
+   "head_x": 0.502,
+   "auto": true
+  },
+  "kar_sourire_auto": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "content",
+    "grand_sourire",
+    "rougit",
+    "fier",
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    584,
+    1600
+   ],
+   "head_x": 0.527,
+   "auto": true
+  },
+  "mou_sourire_auto": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "content",
+    "grand_sourire",
+    "rougit",
+    "fier",
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    704,
+    1600
+   ],
+   "head_x": 0.602,
+   "auto": true
+  },
+  "sey_sourire_auto": {
+   "char": "SEYDOU",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "content",
+    "grand_sourire",
+    "rougit",
+    "fier",
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    747,
+    1598
+   ],
+   "head_x": 0.306,
+   "auto": true
+  },
+  "awa_sourire_auto": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "content",
+    "grand_sourire",
+    "rougit",
+    "fier",
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    827,
+    1575
+   ],
+   "head_x": 0.289,
+   "auto": true
   }
  },
  "decors": {

@@ -37,6 +37,8 @@ def tagwords(t):
     for w in t:
         out.add(w); out.update(SYN.get(w, '').split())
     return out
+POS = {'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'content', 'fier', 'fiere', 'amoureux', 'reveur', 'taquin', 'joie', 'heureux'}
+NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'degout', 'choc', 'mepris'}
 def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True):
     best, bs = None, -1e9
     w = tagwords(want)
@@ -56,6 +58,9 @@ def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         elif p['posture'] in ('dos', 'tombe', 'court', 'marche') and p['posture'] not in w and not (tags & w & {'tombe', 'glisse', 'court', 'dos', 'marche'}): s -= 5
         OBJ = {'telephone', 'brochettes', 'boite', 'cartes', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse'}
         s -= 2.5 * len((tags & OBJ) - w)
+        # pas de visage à contre-sens : un sourire demandé ne doit jamais donner une pose triste, et l'inverse
+        if w & POS and tags & NEG and not (w & NEG): s -= 6
+        if w & NEG and tags & POS and not (w & POS): s -= 4
         if need_mouth and p['mouth']: s += 1.5
         if 'neutre' in tags and not w: s += 1
         if s > bs: best, bs = k, s
@@ -97,7 +102,11 @@ def wide_layout(stage, chars, moods, speaker=None):
         sit = POSES[k]['posture'] in ('assis', 'banc')
         h = int((840 if sit else 1060) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else 880
         w = POSES[k]['size'][0] * h / POSES[k]['size'][1]
-        acts.append({'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': 'AWA' if walk else None})
+        act = {'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': 'AWA' if walk else None}
+        if walk:   # elle entre en marchant puis s'arrête à sa place, avec une pose qui parle
+            act['stop_key'] = pick(c, list(moods.get(c, [])), 'pied', 'debout', need_mouth=True) or pick(c, [], 'pied', None)
+            stage.posture[c] = 'debout'
+        acts.append(act)
     tot = sum(a['w'] for a in acts) + 30 * max(0, len(acts) - 1); avail = 1040
     if tot > avail:
         f = max(0.7, avail / tot)
@@ -108,7 +117,10 @@ def wide_layout(stage, chars, moods, speaker=None):
     if tot2 > 1080: gap -= (tot2 - 1060) / max(1, len(acts) - 1); tot2 = 1060; x = 10
     for a in acts:
         a['x'] = int(x + a['w'] / 2); x += a['w'] + gap
-        if a.get('walk'): a['vx'] = -110; a['x'] += 160
+        if a.get('walk'):
+            # les images de marche regardent vers la droite : venir de la gauche = image normale, venir de la droite = image retournée
+            from_right = a['x'] > 540
+            a['vx'] = -260 if from_right else 260; a['flip'] = from_right; a['walk_t'] = 1.8
     for i, c in enumerate(back):
         k = pick(c, moods.get(c, []), 'pied', stage.posture.get(c)); acts.insert(0, {'key': k, 'who': c, 'x': int(160 + i * 260), 'by': BACK, 'h': int(600 * HEIGHT.get(c, 1)), 'back': True})
     return acts
@@ -130,7 +142,8 @@ def build(meta, events, log=print):
         s.setdefault('decor', scene['decor']); s.setdefault('moment', scene['moment']); s.setdefault('sfx', []); s.setdefault('fx', [])
         s['sfx'] = pending_sfx[:] + s['sfx']; pending_sfx.clear(); s['music'] = music; s['ambiance'] = scene['ambiance']
         shots.append(s); last_shot = s
-    add({'kind': 'title', 'dur': 2.0, 'title': meta.get('title', '')})
+    first = next((x for x in events if x['type'] == 'scene'), None)
+    add({'kind': 'title', 'dur': 2.0, 'title': meta.get('title', ''), 'decor': first['decor'] if first else scene['decor'], 'moment': first.get('moment', 'jour') if first else 'jour'})
     i = 0
     while i < len(events):
         e = events[i]; t = e['type']

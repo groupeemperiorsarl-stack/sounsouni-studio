@@ -64,11 +64,17 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
     opened = a.get('speaker') and speaking_t is not None and POSES[key]['mouth'] and mouth_open(line, speaking_t)
     breath = 1 + 0.006 * math.sin(lt * 2 * math.pi / 3.4 + a['x'] * 0.01)
     dx, dy, sc, rot = body_motion(tags, lt) if a.get('speaker') else (0, 0, 1, 0)
+    walk_dx = 0
     if a.get('walk'):
-        cyc = WALK.get(a['walk'])
-        if cyc: key = cyc[int(lt * 3.4) % 4]
+        wt = a.get('walk_t', 1e9); cyc = WALK.get(a['walk'])
+        if lt < wt:
+            if cyc: key = cyc[int(lt * 3.4) % 4]
+            opened = False; walk_dx = -a.get('vx', 0) * (wt - lt) if wt < 1e8 else a.get('vx', 0) * lt
+        else:
+            key = a.get('stop_key') or key; flip = False
+            opened = a.get('speaker') and speaking_t is not None and POSES[key]['mouth'] and mouth_open(line, speaking_t)
     im = pose_img(key, int(h * sc * breath / 4) * 4, bool(opened), flip)
-    cx = a['x'] + dx + a.get('vx', 0) * lt; by = a['by'] + dy
+    cx = a['x'] + dx + walk_dx; by = a['by'] + dy
     if rot: im = im.rotate(rot, expand=True, resample=Image.BICUBIC, center=(im.width / 2, im.height))
     paste(fr, im, cx, by - im.height / 2, 1.0, 1.0, sh=not a.get('back'))
     return cx, by - h  # sommet de la tête

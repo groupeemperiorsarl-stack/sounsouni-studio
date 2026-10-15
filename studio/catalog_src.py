@@ -37,7 +37,7 @@ P = [
  ('awa_marche_sac', 'AWA', 'pied', 'marche', 'marche', 'ep2/hd/W1'),
  ('awa_dos_sac', 'AWA', 'pied', 'dos', 'dos', 'ep2/hd/W6'),
  ('awa_tel', 'AWA', 'pied', 'debout', 'telephone', 'ep2/hd/W7'),
- ('awa_debout', 'AWA', 'pied', 'debout', 'neutre', 'ep5/hd/AE'),
+ ('awa_debout', 'AWA', 'pied', 'debout', 'colere furieux determine', 'ep5/hd/AE'),
  ('awa_assise_chaise', 'AWA', 'pied', 'assis', 'coud travaille', 'ep7/hd/AC'),
  ('awa_tel2', 'AWA', 'pied', 'debout', 'telephone commande', 'ep7/hd/AF'),
  ('awa_inquiete', 'AWA', 'buste', 'debout', 'inquiet triste peur gene choc', 'ep7/hd/AH1'),

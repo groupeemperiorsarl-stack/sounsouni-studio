@@ -19,9 +19,22 @@ def style(line):
     if 'rit' in v or e in ('rire', 'joie'): ex = 0.6
     return ex, 0.5
 
+def plus_muet(t):
+    """« plus » négatif (ne… plus, non plus, plus jamais/rien) se dit « plu » : on l'écrit ainsi pour la voix."""
+    out = []
+    for clause in re.split(r'([.!?;,…:])', t):
+        neg = re.search(r"\b(ne|n['’])", clause, re.I)
+        def rep(m):
+            nxt = clause[m.end():].lstrip().lower()
+            if re.match(r"(jamais|rien|personne|du tout|aucun)", nxt) or neg or re.search(r'non\s+$', clause[:m.start()].lower()):
+                return m.group(0)[:-1]   # « plus » → « plu »
+            return m.group(0)
+        out.append(re.sub(r'\b[Pp]lus\b', rep, clause))
+    return ''.join(out)
+
 def say_text(t):
-    # écriture adaptée à la prononciation (guillemets et tirets retirés)
-    return re.sub(r'[«»"“”]', '', t).replace(' – ', ', ').strip()
+    # écriture adaptée à la prononciation (guillemets et tirets retirés, « plus » négatif sans S)
+    return plus_muet(re.sub(r'[«»"“”]', '', t).replace(' – ', ', ').strip())
 
 def gen(jobs, work):
     if not jobs: return
