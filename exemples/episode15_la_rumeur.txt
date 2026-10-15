@@ -1,0 +1,194 @@
+TITRE: Les Plans de Bakary – Épisode 15 : La rumeur
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Kadi sur le banc, Diasabi debout]
+[BRUITAGE: coq]
+[BRUITAGE: whoosh]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Kadi sur le banc, Diasabi debout, Moussa debout]
+
+MOUSSA (grand_sourire · regarde: Bakary · voix: crie)
+Kôrô ! {fier} Tu es sur tous les statuts du quartier !
+[RÉACTION BAKARY: surpris]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Statut · Photo : Bakary tient Awa par le bras · « La couturière de luxe épouse le vendeur de thé. La dot est déjà payée ! » · 2 430 vues]
+[BRUITAGE: tonnerre]
+
+PLAN: 2 s · très gros Bakary · {panique}{sueur}
+
+BAKARY (panique · regarde: Moussa · voix: chuchote)
+La dot ? {choc} Quelle dot ?
+
+MODIBO (taquin · regarde: Bakary · voix: normal)
+Bakarin… {sourire} tu t'es marié cette nuit et tu ne m'as pas invité ?
+
+BAKARY (panique · regarde: Modibo · voix: vite)
+Van ! {mains_tete} Ce n'est pas vrai ! Je n'ai rien payé du tout !
+
+PLAN: large [Bakary debout, Modibo sur le banc, Kadi sur le banc, Diasabi debout, Moussa debout]
+
+DIASABI (fier · regarde: Moussa · voix: normal)
+Si, c'est vrai ! {proverbe} À Bobo, quand un homme refuse le cadeau d'une femme… c'est qu'il demande sa main !
+[RÉACTION BAKARY sur "main": choc, recule]
+[RÉACTION MODIBO sur "main": choc]
+[SILENCE 2 s: grillon]
+
+MOUSSA (content · regarde: Bakary · voix: normal)
+Hier les gâteaux, aujourd'hui la dot ! {grand_sourire} Kôrôbalé wou, vous êtes trop forts !
+
+KADI (moqueur · regarde: Bakary · voix: lentement)
+{sourire} Bakary, mon fils… je l'avais dit. Soit fou… soit amoureux.
+[RÉACTION BAKARY: gene]
+[BRUITAGE: notification]
+[BRUITAGE: notification]
+
+PLAN: gros [Bakary debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Boutique Chez Bakary · 15 nouveaux messages · « Félicitations aux mariés ! » · « Bakary, je veux le thé du mariage ! »]
+[ÉCRAN 4 s: Nouvelle commande ✔ · Thé spécial mariage × 15]
+
+BAKARY (choc · regarde: téléphone · voix: lentement)
+Quinze commandes… {pensif} pour un mariage qui n'existe pas.
+
+MODIBO (rire · regarde: Bakary · voix: rit en parlant)
+{rire} Bakarin… même ta rumeur te fait vendre !
+
+PLAN: large [Bakary debout, Modibo sur le banc, Sali debout, Diasabi debout]
+[BRUITAGE: pas]
+
+SALI (taquin · regarde: Modibo · voix: normal)
+Félicitations, Bakary ! {sourire} Et toi, Modibo… ton ami se marie avant toi ?
+[RÉACTION MODIBO: surpris]
+
+MODIBO (taquin · regarde: Sali · voix: normal)
+{sourire} Sali… si tu dis oui, je me marie demain.
+[RÉACTION DIASABI: content]
+
+SALI (taquin · regarde: Modibo · voix: normal)
+{sourire} Commence d'abord par payer ton thé, Modibo.
+[RÉACTION BAKARY: rire]
+[RÉACTION MODIBO: surpris]
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+PLAN: large [Awa assis, Mimi assis]
+PLAN: 2 s · gros Awa · {coud}
+[BRUITAGE: notification]
+
+PLAN: gros [Awa assis, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Commande annulée ✖ · Robe de soirée – 35 000 F · Motif : « Je ne confie pas ma tenue à une couturière qui épouse un vendeur de thé. »]
+
+AWA (choc · regarde: téléphone · voix: lentement)
+Épouser… {surpris} un vendeur de thé ?
+
+PLAN: deux [Mimi debout, Awa assis]
+
+MIMI (inquiet · regarde: Awa · voix: chuchote)
+Tantie Awa… {timide} vous n'avez pas vu les statuts ?
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Statut · Photo : Bakary tient Awa par le bras · « La dot est déjà payée ! »]
+
+PLAN: très gros Awa
+
+AWA (furieux · regarde: téléphone · voix: crie)
+{furieux}{fumee_tete} QUOI ?!
+[RÉACTION MIMI: rire_retenu]
+
+AWA (furieux · regarde: Mimi · voix: crie)
+Moi, la couturière de Tantie Kadi… mariée à un vendeur de thé ? {pointe} Mimi, garde l'atelier. Je reviens !
+[RÉACTION MIMI: inquiet]
+[BRUITAGE: porte qui claque]
+
+DÉCOR: KIOSQUE · midi · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Kadi sur le banc, Diasabi debout, Fatim debout]
+[BRUITAGE: talons]
+
+FATIM (triste · regarde: Bakary · voix: en pleurant)
+Bakary… {triste} donc c'est pour ça qu'Awa ne voulait pas te surveiller…
+[RÉACTION BAKARY: panique]
+
+BAKARY (gene · regarde: Fatim · voix: vite)
+Fatim, non… {sueur} ce n'est pas ce que tu crois…
+
+PLAN: large [Bakary debout, Modibo sur le banc, Kadi sur le banc, Diasabi debout, Fatim debout, Awa marche]
+[BRUITAGE: talons]
+[MUSIQUE: action]
+
+AWA (furieux · regarde: Bakary · voix: crie)
+Qui a dit que j'allais me marier ? {pointe} Moi, Awa, épouser le charbon ?!
+[RÉACTION DIASABI: gene]
+[RÉACTION MODIBO: taquin]
+
+KADI (moqueur · regarde: Awa · voix: lentement)
+Awa, ma fille… {sourire} tu cries trop fort. Celui qui ne veut pas du feu ne s'assoit pas près de la fumée.
+[RÉACTION AWA: gene]
+
+AWA (colere · regarde: Bakary · voix: crie)
+Toi ! {pointe} Dis-leur que c'est faux. Tout de suite !
+
+PLAN: deux [Bakary, Awa]
+[MUSIQUE: triste]
+
+BAKARY (serieux · regarde: Awa · voix: normal)
+C'est faux. Il n'y a pas de mariage. Pas de dot. {secoue_tete} Awa ne m'a rien promis.
+[RÉACTION FATIM: sourire]
+
+BAKARY (triste · regarde: bas · voix: chuchote)
+Et Awa ne m'épouserait jamais. {soupir} Elle mérite mieux qu'un vendeur de thé.
+[SILENCE 3 s]
+
+PLAN: 3 s · très gros Awa · {rougit}
+
+PENSÉE AWA (pensif · regarde: Bakary)
+Pourquoi il dit ça… {gene} comme ça ?
+
+PLAN: 2 s · large [Awa de dos, marche]
+
+FATIM (sourire · regarde: Bakary · voix: normal)
+{sourire} Bon… alors tu es encore libre. Rappelle-moi, hein !
+[RÉACTION MODIBO: taquin]
+[BRUITAGE: talons]
+
+DIASABI (confus · regarde: Modibo · voix: normal)
+Donc… il n'y a pas de mariage ? {triste} Mais j'ai déjà promis à tout le monde de griller les brochettes de la fête !
+[RÉACTION MODIBO: rire]
+
+PLAN: gros [Modibo sur le banc, téléphone]
+[MUSIQUE: suspense]
+
+MODIBO (concentre · regarde: téléphone · voix: lentement)
+Attendez… {serieux} cette photo a été prise depuis le coin de la rue. Là où la voiture noire était garée hier.
+[RÉACTION BAKARY sur "voiture": surpris]
+
+BAKARY (inquiet · regarde: Modibo · voix: normal)
+La voiture noire… {peur} Van, qui peut nous en vouloir à ce point ?
+
+PLAN: large [Awa debout, Bakary debout, Modibo sur le banc]
+
+AWA (choc · regarde: loin · voix: chuchote)
+{choc} Crimo…
+[BRUITAGE sur "Crimo": tonnerre]
+
+DÉCOR: BUREAU · après-midi · ambiance: rue calme
+PLAN: gros [Karim assis, téléphone]
+
+KARIM (grand_sourire · regarde: téléphone · voix: lentement)
+Tu m'as giflé devant tout le monde, Awa. {fier} Maintenant, c'est tout le monde qui rit de toi.
+[BRUITAGE: clic]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Nouveau statut · « Félicitations aux futurs mariés… Le cadeau de mariage arrive bientôt. »]
+
+KARIM (sourire · regarde: caméra · voix: chuchote)
+Et ce cadeau-là… {sourire} elle ne pourra pas le renvoyer.
+[BRUITAGE: tonnerre]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, les rumeurs passent… mais les bonnes affaires restent. Chaque petit commerce a sa boutique, disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]

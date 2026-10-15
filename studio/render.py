@@ -90,7 +90,7 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
         al = im.getchannel('A')
         if a.get('silhouette'):
             top = np.array(im.convert('RGB').crop((0, 0, im.width, max(1, im.height // 8))))[np.array(al.crop((0, 0, im.width, max(1, im.height // 8)))) > 128]
-            col = tuple(int(v * 0.45) for v in (top.mean(0) if len(top) else (40, 30, 25)))
+            col = tuple(int(v * 0.22) + 8 for v in (top.mean(0) if len(top) else (40, 30, 25)))
             rgb = Image.new('RGB', im.size, col)
         else: rgb = im.convert('RGB').filter(ImageFilter.GaussianBlur(9)).point(lambda v: int(v * 0.72))
         im = rgb.convert('RGBA'); im.putalpha(al.filter(ImageFilter.GaussianBlur(10 if a.get('silhouette') else 6)))
@@ -116,6 +116,26 @@ def fx_draw(fr, fx, lt, head):
         elif tg == 'clin_oeil': sticker(fr, ';)', hx + 240, hy + 120, k, 0, 80, (200, 40, 120))
         elif tg.startswith('autocollant'):
             m = re.search(r'"([^"]+)"', tg); sticker(fr, m.group(1) if m else '!', 540, 1480, k, 0, 100, (150, 40, 40))
+def norm_txt(t):
+    import unicodedata
+    return ''.join(c for c in unicodedata.normalize('NFD', t.lower()) if unicodedata.category(c) != 'Mn').strip()
+def photo_for(desc):
+    """Image pour « Photo : … » : l'image de groupe des personnages cités, sinon le premier personnage cité, sinon un décor cité."""
+    from script import CHAR_ALIASES
+    n = norm_txt(desc); chars = []
+    for a, c in sorted(CHAR_ALIASES.items(), key=lambda x: -len(x[0])):
+        if re.search(r'\b' + re.escape(a) + r'\b', n) and c not in chars: chars.append(c)
+    if len(chars) >= 2:
+        for k, p in POSES.items():
+            if '+' in p['char'] and set(p['char'].split('+')) == set(chars[:2]): return Image.open(f'{A}/poses/{k}.webp').convert('RGBA')
+    if chars:
+        from director import pick
+        k = pick(chars[0], [], 'pied', None)
+        if k: return Image.open(f'{A}/poses/{k}.webp').convert('RGBA')
+    for d in ('atelier', 'kiosque', 'marche', 'rue', 'bureau', 'villa', 'showroom', 'cabine'):
+        if d in n or (d == 'atelier' and ('couture' in n or 'vitrine' in n)):
+            im = Image.open(f'{A}/decors/{d.upper()}.jpg').convert('RGBA'); return im.crop((0, im.height // 4, im.width, im.height * 3 // 4))
+    return None
 def frame_of(shots, T):
     for s in shots:
         if s['t0'] <= T < s['t0'] + s['dur']: return s, T - s['t0']
@@ -132,8 +152,18 @@ def draw(s, lt):
         step = s.get('step', 1); return gfx.end_screen(lt, step, s.get('slogan', ''))
     if k == 'screen':
         txt = s['text']
-        if any(c in txt for c in '–✔✖★[') or 'sounsouni' in txt.lower():
-            fr = background(s, lt, blur=8); lines = [x.strip() for x in re.split(r' – | - ', txt)]
+        lines = [x.strip() for x in re.split(r' – | - | · ', txt) if x.strip()]
+        if re.match(r'^(nouveau |nouvelle )?(statut|publication|post)', norm_txt(txt)):
+            fr = background(s, lt, blur=8); photo = None; rest = []
+            for l in lines:
+                m = re.match(r'^photo\s*:\s*(.*)$', l, re.I)
+                if m: photo = photo_for(m.group(1)); continue
+                if re.match(r'^(nouveau |nouvelle )?(statut|publication|post)$', norm_txt(l)): continue
+                rest.append(l)
+            paste(fr, gfx.phone_with(gfx.status_screen(rest, photo)), 540, lerp(1300, 1100, eo(prog(lt, 0, 0.35))), 1.0, 1.15)
+            return fr
+        if any(c in txt for c in '–✔✖★[·') or 'sounsouni' in txt.lower() or len(txt) > 40:
+            fr = background(s, lt, blur=8)
             title = 'Sounsouni'
             if lines and lines[0].lower().startswith('sounsouni'): title = lines[0]; lines = lines[1:]
             paste(fr, gfx.phone_with(gfx.app_screen(lines, title[:22])), 540, lerp(1300, 1100, eo(prog(lt, 0, 0.35))), 1.0, 1.15)

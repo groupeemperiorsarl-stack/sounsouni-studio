@@ -80,6 +80,7 @@ def posture_of(pose_text):
     t = norm(pose_text or '')
     if 'banc' in t: return 'banc'
     if 'assis' in t or 'machine' in t or 'chaise' in t or 'coud' in t: return 'assis'
+    if 'marche' in t and 'dos' in t: return 'dos_marche'
     if 'marche' in t: return 'marche'
     if 'court' in t: return 'court'
     if 'dos' in t: return 'dos'
@@ -96,7 +97,7 @@ class Stage:
     def add(self, who):
         if who and who not in self.order and who in HEIGHT: self.order.append(who)
     def post(self, who):
-        p = self.posture.get(who) or 'debout'; return 'debout' if p in ('grill', 'marche') else p
+        p = self.posture.get(who) or 'debout'; return 'debout' if p in ('grill', 'marche', 'dos_marche') else p
     def pan(self, who):
         if who not in self.order or len(self.order) < 2: return 0.0
         return round((self.order.index(who) / (len(self.order) - 1)) * 2 - 1, 2)
@@ -106,18 +107,20 @@ class Stage:
 def wide_layout(stage, chars, moods, speaker=None):
     """Plan d'ensemble : tout le monde sur le même sol, côte à côte sans se chevaucher, arrière-plan plus petit."""
     chars = [c for c in chars if c in HEIGHT]; acts = []
-    front = chars[:4]; back = chars[4:]
+    prio = sorted(chars, key=lambda c: (c != speaker, stage.posture.get(c) != 'marche', chars.index(c)))
+    keep = set(prio[:5]); front = [c for c in chars if c in keep]; back = [c for c in chars if c not in keep]
     for c in front:
         post = stage.posture.get(c, 'debout'); pst = 'debout' if post == 'grill' else post
         want = list(moods.get(c, [])) + (['grill'] if post == 'grill' else []) + stage.props.get(c, [])
-        walk = post == 'marche' and c == 'AWA'
-        k = 'awa_pas1' if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker)) or pick(c, want, None, None))
+        walk = post in ('marche', 'dos_marche') and c == 'AWA'
+        k = ('awa_dos_pas1' if post == 'dos_marche' else 'awa_pas1') if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker)) or pick(c, want, None, None))
         sit = POSES[k]['posture'] in ('assis', 'banc')
-        base = {1: 1450, 2: 1320, 3: 1150}.get(len(front), 1060)   # moins il y a de monde, plus on est près
+        base = {1: 1450, 2: 1320, 3: 1150, 4: 1060}.get(len(front), 980)   # moins il y a de monde, plus on est près
         h = int(base * (0.8 if sit else 1.0) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else int(base * 0.83)
         w = POSES[k]['size'][0] * h / POSES[k]['size'][1]
-        act = {'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': 'AWA' if walk else None}
-        if walk:   # elle entre en marchant puis s'arrête à sa place, avec une pose qui parle
+        act = {'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': ('AWA_dos' if post == 'dos_marche' else 'AWA') if walk else None}
+        if walk and post == 'dos_marche': act['leave'] = True   # elle s'en va : de dos, elle sort du cadre
+        elif walk:   # elle entre en marchant puis s'arrête à sa place, avec une pose qui parle
             act['stop_key'] = pick(c, list(moods.get(c, [])), 'pied', 'debout', need_mouth=True) or pick(c, [], 'pied', None)
             stage.posture[c] = 'debout'
         acts.append(act)
@@ -131,7 +134,9 @@ def wide_layout(stage, chars, moods, speaker=None):
     if tot2 > 1080: gap -= (tot2 - 1060) / max(1, len(acts) - 1); tot2 = 1060; x = 10
     for a in acts:
         a['x'] = int(x + a['w'] / 2); x += a['w'] + gap
-        if a.get('walk'):
+        if a.get('leave'):
+            a['vx'] = 230 if a['x'] > 540 else -230; a['flip'] = a['vx'] < 0; a['walk_t'] = 1e9
+        elif a.get('walk'):
             # les images de marche regardent vers la droite : venir de la gauche = image normale, venir de la droite = image retournée
             from_right = a['x'] > 540
             a['vx'] = -260 if from_right else 260; a['flip'] = from_right; a['walk_t'] = 1.8
@@ -239,7 +244,11 @@ def build(meta, events, log=print):
             stage.set(e['who']); plan = e
             if e.get('dur') or e['kind'] in ('objet', 'ecran'):
                 fx = [(0.1, re.sub(r'[{}]', '', x)) for x in re.findall(r'\{[^}]+\}', ' '.join(e.get('extra', [])))]
-                if e['kind'] in ('objet', 'ecran'): add({'kind': 'insert', 'dur': e.get('dur') or 2.4, 'object': e.get('object', ''), 'fx': fx}); plan = None
+                if e['kind'] in ('objet', 'ecran'):
+                    nxt = next((x for x in events[i + 1:] if x['type'] not in ('sfx', 'music')), None)
+                    if not (re.search(r't[ée]l[ée]phone|ecran|portable', norm(e.get('object', ''))) and nxt and nxt['type'] == 'screen'):
+                        add({'kind': 'insert', 'dur': e.get('dur') or 2.4, 'object': e.get('object', ''), 'fx': fx})
+                    plan = None
                 elif len(e['who']) > 1 and group_pick([w['who'] for w in e['who']], [x[1] for x in fx]):
                     g = group_pick([w['who'] for w in e['who']], [x[1] for x in fx]); add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor('+'.join(w['who'] for w in e['who']), g)], 'fx': fx, 'mode': 'close'})
                     plan = {'kind': 'group', 'key': g, 'who': e['who']}; i += 1; continue

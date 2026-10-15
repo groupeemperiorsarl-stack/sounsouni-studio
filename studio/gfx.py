@@ -1,3 +1,4 @@
+import re
 """Outils de dessin : polices, textes, bulles, autocollants, ombres, effets, écrans de téléphone, écran de fin."""
 import os, math, random
 from functools import lru_cache
@@ -226,3 +227,21 @@ def draw_object(name):
         for i in range(7): d.line([(290, 400 + i * 65), (760, 370 + i * 65)], fill=(120, 140, 200), width=5)
         return im
     return None
+
+def status_screen(lines, photo=None, title='Statuts'):
+    """Publication de réseau social : compte, photo (image du catalogue), légende, nombre de vues."""
+    S = Image.new('RGBA', (SW, SH), (245, 245, 245, 255)); d = ImageDraw.Draw(S)
+    d.rectangle([0, 0, SW, 170], fill=(18, 140, 126)); d.text((40, 100), title, font=font(FB, 42), fill='white')
+    d.ellipse([30, 195, 110, 275], fill=(150, 150, 150)); d.text((128, 205), 'Compte inconnu', font=font(FB, 34), fill=ENCRE); d.text((128, 245), "à l'instant", font=font(FM, 26), fill=(120, 120, 120))
+    y = 300
+    if photo is not None:
+        ph = photo.copy(); ph.thumbnail((SW - 40, 560))
+        bg = Image.new('RGBA', (SW - 40, ph.height + 20), (225, 215, 200, 255)); bg.alpha_composite(ph, ((SW - 40 - ph.width) // 2, 10))
+        S.alpha_composite(bg, (20, y)); y += bg.height + 20
+    views = [l for l in lines if re.search(r'\bvues?\b', l)]
+    for l in [l for l in lines if l not in views]:
+        f = font(FB if l.startswith('«') else FM, 34)
+        for ln in wrap(l, f, SW - 60): d.text((30, y), ln, font=f, fill=ENCRE); y += 46
+        y += 10
+    for v in views: d.text((30, SH - 90), '👁 ' + v if False else v, font=font(FM, 30), fill=(110, 110, 110))
+    return S
