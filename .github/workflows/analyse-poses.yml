@@ -1,0 +1,35 @@
+name: Analyse des objets sur les poses (15 ordinateurs en parallèle)
+on:
+  workflow_dispatch:
+    inputs:
+      tout:
+        description: "Tout refaire (oui/non)"
+        default: "non"
+jobs:
+  part:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        i: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu && pip install transformers pillow numpy scipy
+      - run: cd studio && python autotag.py --part ${{ matrix.i }}/15 ../part_${{ matrix.i }}.json ${{ github.event.inputs.tout == 'oui' && '--tout' || '' }}
+      - uses: actions/upload-artifact@v4
+        with: { name: "part_${{ matrix.i }}", path: "part_${{ matrix.i }}.json" }
+  fusion:
+    needs: part
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - uses: actions/download-artifact@v4
+        with: { path: parts }
+      - run: pip install pillow numpy && cd studio && python autotag.py --fusion ../parts
+      - run: |
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add studio/assets/catalog.json && git commit -m "Objets reconnus automatiquement sur les poses" && git push || echo "rien à changer"
