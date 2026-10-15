@@ -31,7 +31,8 @@ def detect(proc, model, im):
     texts = [list(QUERIES)]
     inp = proc(text=texts, images=W, return_tensors='pt')
     with torch.no_grad(): out = model(**inp)
-    s = max(W.size); res = proc.post_process_object_detection(out, threshold=0.12, target_sizes=torch.tensor([[s, s]]))[0]
+    s = max(W.size); pp = getattr(proc, 'post_process_grounded_object_detection', None) or proc.post_process_object_detection
+    res = pp(out, threshold=0.12, target_sizes=torch.tensor([[s, s]]))[0]
     found = {}
     for sc, lab, box in zip(res['scores'].tolist(), res['labels'].tolist(), res['boxes'].tolist()):
         tag = QUERIES[texts[0][lab]]
