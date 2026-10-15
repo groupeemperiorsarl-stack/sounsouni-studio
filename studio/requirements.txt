@@ -1,0 +1,7 @@
+# application (Python 3.11+)
+numpy
+pillow
+soundfile
+librosa
+faster-whisper
+# + ffmpeg installé sur la machine

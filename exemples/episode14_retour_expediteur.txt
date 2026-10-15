@@ -1,0 +1,299 @@
+TITRE: Les Plans de Bakary – Épisode 14 : Retour à l'expéditeur
+
+DÉCOR: KIOSQUE · jour · ambiance: rue calme
+PLAN: large [Bakary assis, Diasabi debout, Fatim debout, Modibo sur le banc]
+
+DIASABI (moqueur · regarde: Fatim)
+{point_exclamation} Ah ! C'est elle, la Fatim du haut-parleur !
+[RÉACTION MODIBO: choc]
+
+FATIM (surpris · regarde: Diasabi)
+Le haut-parleur ? {point_interrogation} Quel haut-parleur ?
+
+DIASABI (taquin · regarde: Fatim)
+L'autre jour, tu as appelé Bakary. Il a mis le haut-parleur. Tout le quartier a entendu « mon petit Bakary ».
+[RÉACTION BAKARY sur "Bakary": panique, sueur]
+
+BAKARY (panique · regarde: Fatim · voix: vite)
+{sueur} C'était un accident, Fatim ! Le bouton… mon doigt… la batterie…
+
+FATIM (rire · regarde: Bakary · voix: rit en parlant)
+{rire} Tant mieux ! Comme ça, tout le monde sait.
+[RÉACTION BAKARY: choc, point_interrogation]
+
+FATIM (tendre · regarde: Bakary)
+Tiens. Une carte de recharge de mille francs. {clin_oeil} Comme ça, tu n'as plus d'excuse pour ne pas me rappeler.
+
+BAKARY (gene · regarde: bas · voix: chuchote)
+Fatim… il ne fallait pas…
+
+PLAN: 2 s · très gros Awa · {mefiant}{eclair}
+
+FATIM (joie · regarde: Awa)
+Awa ! I ni tchié !
+
+AWA (froide · regarde: Fatim)
+{sourire} I ni tchié, Fatim.
+
+FATIM (sourire · regarde: Awa)
+La famille va bien ? Ton atelier marche ?
+
+AWA (froide · regarde: Fatim)
+Tout va bien. Grâce à Dieu.
+
+FATIM (taquin · regarde: Awa)
+Toi qui es juste en face… surveille-moi ce garçon, hein ! Il ne répond jamais au téléphone.
+[RÉACTION AWA sur "surveille": colere]
+
+AWA (mepris · regarde: Fatim · voix: lentement)
+Moi… {yeux_plisses} je n'ai pas le temps de surveiller les vendeurs de thé.
+
+FATIM (moqueur · regarde: Awa)
+Hé, Awa, toujours aussi sérieuse ! Bon, je file. J'ai laissé ma table de crédit toute seule.
+
+FATIM (joie · regarde: Bakary)
+Rappelle-moi, hein !
+[BRUITAGE: talons]
+[BRUITAGE: porte qui claque]
+
+PLAN: 1.5 s · large [Bakary assis, Diasabi debout, Modibo sur le banc] · {autocollant:"BAM !"}
+
+DIASABI (surpris · regarde: Modibo)
+Elle est fâchée contre qui, la couturière ?
+
+MODIBO (sage · regarde: Diasabi)
+Contre le vent, Diasabi. {hoche_tete} Contre le vent.
+
+DÉCOR: ATELIER · jour · ambiance: rue calme
+PLAN: large [Awa debout, Mimi assis]
+[BRUITAGE: machine à coudre]
+
+AWA (colere · regarde: loin · voix: crie)
+{furieux} « Surveille-moi ce garçon ! » Pour qui elle me prend ? {fumee_tete} Une gardienne ?
+
+MIMI (inquiet · regarde: Awa)
+Tantie Awa… je peux dire quelque chose ?
+
+AWA (froide · regarde: Mimi)
+Dis.
+
+MIMI (sourire · regarde: Awa)
+Bakary a pris la faute pour vous devant Tantie Kadi. Vous allez lui dire merci ?
+
+AWA (surpris · regarde: Mimi)
+{surpris} Merci ?
+
+AWA (fier · regarde: Mimi)
+{bombe_torse} Moi, Awa, je ne dois rien à personne. Surtout pas à un vendeur de thé.
+
+MIMI (timide · regarde: Awa · voix: chuchote)
+Mais vous lui devez quand même…
+
+AWA (serieux · regarde: Mimi)
+Justement. Une dette, ça se paie. {idee} Et après, on est quittes.
+
+[ÉCRAN 3 s: Sounsouni – Recherche : pâtisseries – Pâtisserie Le Palais Doré – Grand plateau royal – 24 pâtisseries assorties – 15 000 F – [Ajouter au panier]]
+
+MIMI (choc · regarde: Awa · voix: crie)
+{choc} Quinze mille francs pour des gâteaux ?!
+
+AWA (fier · regarde: Mimi)
+Une Awa ne fait pas les choses à moitié. Pour qu'il ne dise pas que je suis radine.
+
+[ÉCRAN 3 s: Sounsouni – Panier : 15 000 F – ✔ Envoyer en cadeau – Kiosque de Bakary – « Pour la robe. Maintenant, on est quittes. – Awa » – [Commander]]
+[ÉCRAN 2.5 s: Sounsouni – ✔ Commande confirmée – Livreur : Seydou – Arrivée : 25 min]
+
+AWA (fier · regarde: loin)
+Voilà. Comme ça, il n'aura plus rien à raconter.
+
+MIMI (timide · regarde: Awa · voix: chuchote)
+Vous êtes sûre que c'est ça, « dire merci », Tantie Awa ?
+
+DÉCOR: KIOSQUE · jour · ambiance: rue calme
+PLAN: 1.8 s · gros Diasabi · {sursaut}{etoiles}{autocollant:"BONG !"}
+
+DIASABI (gene · regarde: Bakary)
+À Bobo, les toits sont plus hauts.
+[BRUITAGE: klaxon]
+
+SEYDOU (joie · regarde: Bakary · voix: crie)
+Livraison Sounsouni pour le kiosque de Bakary ! Envoi cadeau !
+
+BAKARY (surpris · regarde: Seydou)
+{surpris} Pour moi ? Mais je n'ai rien commandé.
+
+SEYDOU (sourire · regarde: Bakary)
+C'est un cadeau, Bakary. Il y a un message.
+
+PLAN: 2 s · gros Bakary · {emu}{etoiles}
+[BRUITAGE: scintillement]
+
+BAKARY (emu · regarde: bas · voix: chuchote)
+{emu} Vingt-quatre gâteaux… pour moi…
+
+MODIBO (surpris · regarde: Bakary)
+Le Palais Doré ? C'est la pâtisserie la plus chère de Bamako, ça.
+
+DIASABI (joie · regarde: Bakary)
+{content} Ooh ! Des gâteaux !
+
+BAKARY (pensif · regarde: bas · voix: lentement)
+« Pour la robe. Maintenant, on est quittes. – Awa. »
+
+BAKARY (amoureux · regarde: Modibo)
+{coeurs} Van… Awa m'a offert un cadeau. À moi.
+
+PLAN: 1.6 s · gros Diasabi · {mange}{autocollant:"Miam !"}
+
+MODIBO (serieux · regarde: Bakary)
+Bakarin… lis bien. « On est quittes. »
+
+BAKARY (sourire · regarde: Modibo)
+Oui, et alors ?
+
+MODIBO (serieux · regarde: Bakary · voix: lentement)
+Si tu acceptes, elle ne te doit plus rien. La robe, la faute que tu as prise… tout est effacé. Elle te paie, et c'est fini.
+
+MODIBO (serieux · regarde: Bakary)
+Demain, tu redeviens le vendeur de thé d'en face.
+[RÉACTION BAKARY: triste]
+
+BAKARY (serieux · regarde: Seydou)
+Seydou. Ramène-lui ses gâteaux.
+
+SEYDOU (surpris · regarde: Bakary)
+Tu refuses le cadeau ?
+
+BAKARY (fier · regarde: Seydou)
+{bombe_torse} Je refuse.
+
+[ÉCRAN 2.5 s: Sounsouni Livreur – Le destinataire refuse la livraison ? – [Oui]]
+
+SEYDOU (neutre · regarde: Bakary)
+Il faut un motif. Je mets quoi ?
+
+BAKARY (sincere · regarde: Seydou · voix: lentement)
+Écris : « Ce que j'ai fait ne se rembourse pas. »
+
+[ÉCRAN 3 s: Sounsouni Livreur – Motif du refus : « Ce que j'ai fait ne se rembourse pas. » – [Valider le retour à l'expéditeur]]
+
+MODIBO (fier · regarde: Bakary · voix: chuchote)
+{hoche_tete} Bakarin… ça, c'est propre.
+
+PLAN: objet boîte vide · {point_interrogation}
+[SILENCE 2 s: grillon]
+
+MODIBO (choc · regarde: Diasabi · voix: crie)
+{choc} Diasabi ! Tu as mangé les gâteaux d'Awa !
+
+BAKARY (panique · regarde: Diasabi · voix: vite)
+{sueur} Je devais les renvoyer pour ne pas être quitte avec elle… et maintenant, il n'en reste qu'un seul !
+
+DIASABI (innocent · regarde: Bakary)
+Mmmh… mais… je voulais aider, moi !
+
+MODIBO (colere · regarde: Diasabi · voix: crie)
+Aider à quoi ?!
+
+DIASABI (fier · regarde: Modibo)
+Les gâteaux allaient gâter au soleil. À Bobo, on dit : un gâteau qui attend, c'est un gâteau perdu.
+
+SEYDOU (surpris · regarde: Diasabi)
+Vingt-trois gâteaux, Diasabi ?
+
+DIASABI (innocent · regarde: Seydou)
+J'ai laissé le dernier. {sourire} Par politesse.
+[RÉACTION BAKARY: panique]
+[BRUITAGE: moto]
+
+DÉCOR: ATELIER · jour · ambiance: rue calme
+[BRUITAGE: vibreur]
+[ÉCRAN 3 s: Sounsouni – ✖ Livraison refusée par le destinataire – Motif : « Ce que j'ai fait ne se rembourse pas. » – Votre colis revient à l'expéditeur]
+
+AWA (choc · regarde: téléphone · voix: lentement)
+{choc} Refusée… ?
+
+MIMI (inquiet · regarde: Awa · voix: chuchote)
+Il a refusé, Tantie Awa ?
+
+SEYDOU (neutre · regarde: Awa)
+Retour à l'expéditeur, madame Awa.
+
+AWA (choc · regarde: bas · voix: lentement)
+Il me renvoie mon cadeau… avec un seul gâteau…
+
+AWA (furieux · regarde: Seydou · voix: crie)
+{fumee_tete} Et il a mangé les autres ?!
+
+SEYDOU (panique · regarde: Awa · voix: vite)
+{sueur} Ce n'est pas lui, c'est le grand maigre qui…
+[BRUITAGE: porte qui claque]
+
+DÉCOR: KIOSQUE · jour · ambiance: rue calme
+PLAN: large [Bakary assis, Moussa debout, Diasabi debout, Modibo sur le banc]
+
+MOUSSA (joie · regarde: Bakary)
+Aw ni tchié, Kôrôbalé wou ! Kôrô, un thé bien chaud pour ton petit !
+
+BAKARY (sourire · regarde: Moussa)
+Assieds-toi, Moussa.
+[BRUITAGE: talons]
+
+PLAN: large [Bakary assis, Diasabi debout, Awa marche]
+
+AWA (furieux · regarde: Bakary · voix: crie)
+Bakary ! Tu te prends pour qui pour me renvoyer mon cadeau ?!
+
+DIASABI (peur · regarde: Bakary · voix: chuchote)
+{sueur} Oh oh… les gâteaux.
+
+AWA (furieux · regarde: Bakary · voix: crie)
+Moi, Awa, je t'envoie vingt-quatre gâteaux, et toi, tu…
+
+PLAN: 2 s · gros Awa · {tombe}{autocollant:"Ralenti…"}
+[BRUITAGE: whoosh]
+PLAN: 2.6 s · deux [Bakary, Awa] · {rattrape}{coeurs}
+[BRUITAGE: battements de coeur]
+
+BAKARY (tendre · regarde: Awa · voix: chuchote)
+Ça va… ?
+
+AWA (gene · regarde: bas · voix: chuchote)
+{rougit} Laisse-moi…
+[BRUITAGE: talons]
+
+MOUSSA (choc · regarde: Bakary · voix: lentement)
+Kôrô… même moi, je n'ai jamais fait ça.
+
+DIASABI (gene · regarde: Modibo)
+Elle était venue crier, non ? Pourquoi elle n'a pas fini sa phrase ?
+
+BAKARY (amoureux · regarde: loin · voix: chuchote)
+{coeurs} Van… elle a dit « laisse-moi »…
+
+MODIBO (taquin · regarde: Bakary)
+Bakarin… je t'avais dit, hein !
+
+MODIBO (pensif · regarde: Bakary)
+Non, en fait… {secoue_tete} cette fois, je ne t'avais rien dit.
+
+DÉCOR: RUE · jour · ambiance: rue calme
+PLAN: 2.5 s · objet voiture
+[BRUITAGE: moteur]
+
+KARIM (froid · regarde: Bakary · voix: lentement)
+Alors c'est ça…
+
+KARIM (moqueur · regarde: Bakary · voix: lentement)
+Un vendeur de thé.
+[BRUITAGE: clic]
+[BRUITAGE: tonnerre]
+
+[ÉCRAN 2.5 s: À suivre…]
+
+FIN:
+VOIX_OFF (chaleureuse)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+VOIX_OFF (lentement)
+Et si vous préférez, vous pouvez aussi naviguer directement sur le site et faire vos achats. Disponible sur Android… et bientôt sur iPhone.
+[ÉCRAN FIN 3 s: logo · sounsouni.pro]

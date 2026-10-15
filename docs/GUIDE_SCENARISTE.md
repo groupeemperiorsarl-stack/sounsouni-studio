@@ -1,6 +1,6 @@
 # Guide du scénariste — « Les Plans de Bakary »
 
-_Version 1 · 11 octobre 2026_
+_Version 2 · 15 octobre 2026_
 
 Ce guide explique **comment écrire un script que l'application Sounsouni Studio peut animer toute seule** :
 voix, visages, gestes, réactions, décors, bruitages. Tout ce qui est écrit selon ces règles est exécuté
@@ -44,13 +44,17 @@ FIN: voix off + écran de fin
 | `MARCHÉ` | Grand marché du quartier |
 | `ATELIER` | Atelier « Awa Couture » (intérieur) |
 | `CABINE` | Cabine de crédit de Fatim (rue, lampadaire) |
+| `RUE` | Rue animée du quartier (motos, boutiques) |
+| `BUREAU` | Bureau moderne (Karim) |
+| `VILLA` | Villa / cour d'une grande maison |
+| `SHOWROOM` | Magasin moderne (vitrines) |
 
 Moments : `matin` · `midi` · `après-midi` · `soir` · `nuit` (la lumière s'adapte).
 Ambiances : `marché`, `rue calme`, `grillons`, `vent`, `pluie`, `circulation`, `musique lointaine`.
 Un nouveau lieu = nouvelle image de décor à fournir (le dire en tête de script : `NOUVEAU DÉCOR: …`).
 
 ### 2.2 Personnages (noms à écrire exactement ainsi)
-`BAKARY` · `AWA` · `MODIBO` · `DIASABI` · `SALI` · `FATIM` · `MIMI` · `SEYDOU` · `VENDEUSE` (de tomates) · `VOIX_OFF`
+`BAKARY` · `AWA` · `MODIBO` · `DIASABI` · `SALI` · `FATIM` · `MIMI` · `SEYDOU` (livreur) · `KADI` (Tantie Kadi) · `MOUSSA` · `KARIM` · `VENDEUSE` (de tomates) · `VOIX_OFF`
 Nouveau personnage = l'annoncer en tête : `NOUVEAU PERSONNAGE: NOM — description physique et tenue`.
 
 ### 2.3 Types de plans
@@ -60,7 +64,7 @@ Nouveau personnage = l'annoncer en tête : `NOUVEAU PERSONNAGE: NOM — descript
 | `PLAN: deux [A, B]` | Deux personnages face à face |
 | `PLAN: gros A` | Visage et buste de A (par défaut pour celui qui parle) |
 | `PLAN: très gros A` | Visage seul (réaction forte, choc) |
-| `PLAN: objet <objet>` | Gros plan sur un objet (téléphone, brochettes, billet…) |
+| `PLAN: objet <objet>` | Gros plan sur un objet. Objets connus : téléphone, grill, robe trouée, robe réparée, voiture de Karim, boîte (pleine / vide), gâteau(x) / un seul gâteau, billets, carte de recharge, colis / cadeau, lettre / message. Autre objet → son nom s'affiche en gros. |
 | `PLAN: écran <texte>` | Écran de téléphone / application Sounsouni (texte affiché) |
 | `PLAN: 3 s · …` | Plan sans parole d'une durée donnée |
 
@@ -240,3 +244,20 @@ MODIBO (rire · regarde: Bakary · voix: rit en parlant)
 - [ ] Les objets importants ont un `PLAN: objet`
 - [ ] Nouvelles postures / nouveaux décors / nouveaux personnages annoncés en tête du script
 - [ ] Fin d'épisode avec voix off Sounsouni et écran de fin
+
+---
+
+## 10. Lancer l'application
+
+```
+python -m studio mon_episode.txt                      # vidéo complète
+python -m studio mon_episode.txt --plans-seulement    # seulement l'aperçu des plans (rapide)
+```
+
+Résultat dans `sortie_mon_episode/` :
+- `apercu_plans.png` — toutes les images-clés, plan par plan : **à regarder avant le rendu complet** ;
+- `mon_episode.mp4` (haute qualité) et `mon_episode_leger.mp4` (moins de 28 Mo, pour WhatsApp) ;
+- `journal.txt` — ce que l'application a fait, et les avertissements (réplique mal prononcée, pose manquante…).
+
+Si on corrige le script et qu'on relance, les voix déjà bonnes sont réutilisées (beaucoup plus rapide).
+Temps sur un ordinateur sans carte graphique : environ 2 minutes par réplique pour les voix, puis 15 à 20 minutes pour l'image.

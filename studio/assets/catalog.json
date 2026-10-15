@@ -1,0 +1,1998 @@
+{
+ "poses": {
+  "bak_debout": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "serieux"
+   ],
+   "mouth": true,
+   "size": [
+    589,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.509
+  },
+  "bak_explique": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "explique",
+    "propose",
+    "sourire",
+    "taquin"
+   ],
+   "mouth": true,
+   "size": [
+    756,
+    1600
+   ],
+   "head_x": 0.573
+  },
+  "bak_tel_sourire": {
+   "char": "BAKARY",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "telephone",
+    "sourire",
+    "amoureux",
+    "content"
+   ],
+   "mouth": true,
+   "size": [
+    669,
+    877
+   ],
+   "head_x": 0.539
+  },
+  "bak_assis_tel": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "telephone",
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    1205,
+    1600
+   ],
+   "head_x": 0.441
+  },
+  "bak_assis_tel_inquiet": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "telephone",
+    "inquiet",
+    "triste"
+   ],
+   "mouth": true,
+   "size": [
+    914,
+    1600
+   ],
+   "head_x": 0.505
+  },
+  "bak_dos": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    710,
+    1600
+   ],
+   "head_x": 0.357
+  },
+  "bak_assis_triste": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "triste",
+    "pensif",
+    "soupir",
+    "s_affale",
+    "decourage"
+   ],
+   "mouth": true,
+   "size": [
+    1003,
+    1497
+   ],
+   "head_x": 0.587
+  },
+  "bak_bouteilles": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "porte",
+    "livraison"
+   ],
+   "mouth": true,
+   "size": [
+    636,
+    1600
+   ],
+   "head_x": 0.439
+  },
+  "bak_billet": {
+   "char": "BAKARY",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "argent",
+    "paye",
+    "billet"
+   ],
+   "mouth": true,
+   "size": [
+    1264,
+    1425
+   ],
+   "head_x": 0.404
+  },
+  "bak_lit": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "lit",
+    "ecrit",
+    "pensif",
+    "papier"
+   ],
+   "mouth": true,
+   "size": [
+    1065,
+    1600
+   ],
+   "head_x": 0.508
+  },
+  "bak_mains_levees": {
+   "char": "BAKARY",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "choc",
+    "recule",
+    "non"
+   ],
+   "mouth": true,
+   "size": [
+    1171,
+    1551
+   ],
+   "head_x": 0.495
+  },
+  "bak_joue": {
+   "char": "BAKARY",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "gene",
+    "surpris"
+   ],
+   "mouth": true,
+   "size": [
+    1233,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.452
+  },
+  "bak_plateau": {
+   "char": "BAKARY",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "sert",
+    "plateau",
+    "the",
+    "cafe"
+   ],
+   "mouth": true,
+   "size": [
+    981,
+    1600
+   ],
+   "head_x": 0.471
+  },
+  "bak_tel_montre": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "telephone",
+    "montre"
+   ],
+   "mouth": true,
+   "size": [
+    594,
+    1600
+   ],
+   "head_x": 0.484
+  },
+  "bak_verse": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "verse",
+    "the",
+    "concentre"
+   ],
+   "mouth": true,
+   "size": [
+    852,
+    1600
+   ],
+   "head_x": 0.416
+  },
+  "bak_verse2": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "verse",
+    "the",
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    985,
+    1600
+   ],
+   "head_x": 0.435
+  },
+  "bak_pointe": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pointe",
+    "montre"
+   ],
+   "mouth": true,
+   "size": [
+    798,
+    1485
+   ],
+   "head_x": 0.328
+  },
+  "bak_main_tendue": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "explique",
+    "propose",
+    "offre",
+    "tend_la_main"
+   ],
+   "mouth": true,
+   "size": [
+    967,
+    1547
+   ],
+   "head_x": 0.412
+  },
+  "bak_marche": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "marche",
+    "court",
+    "bondit"
+   ],
+   "mouth": true,
+   "size": [
+    940,
+    1600
+   ],
+   "head_x": 0.562
+  },
+  "bak_brochettes": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "brochettes",
+    "porte"
+   ],
+   "mouth": true,
+   "size": [
+    814,
+    1600
+   ],
+   "head_x": 0.452
+  },
+  "bak_assis_idee": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "idee",
+    "explique",
+    "taquin",
+    "fier",
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    679,
+    1175
+   ],
+   "head_x": 0.546
+  },
+  "bak_supplie": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "gene",
+    "supplie",
+    "pardon",
+    "timide",
+    "triste",
+    "chuchote"
+   ],
+   "mouth": true,
+   "size": [
+    607,
+    1508
+   ],
+   "head_x": 0.471
+  },
+  "bak_rire": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "rire",
+    "content"
+   ],
+   "mouth": true,
+   "size": [
+    687,
+    1520
+   ],
+   "mouth_auto": true,
+   "head_x": 0.18
+  },
+  "bak_panique": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "panique",
+    "peur",
+    "choc",
+    "sueur",
+    "mains_tete"
+   ],
+   "mouth": true,
+   "size": [
+    767,
+    1524
+   ],
+   "head_x": 0.493
+  },
+  "bak_assis": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "neutre",
+    "sourire",
+    "amoureux",
+    "reveur",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    774,
+    1443
+   ],
+   "head_x": 0.354
+  },
+  "bak_verse_assis": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "verse",
+    "the"
+   ],
+   "mouth": true,
+   "size": [
+    999,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.443
+  },
+  "bak_mains_bouche": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "peur",
+    "gene",
+    "timide"
+   ],
+   "mouth": true,
+   "size": [
+    1040,
+    1548
+   ],
+   "mouth_auto": true,
+   "head_x": 0.522
+  },
+  "bak_boite": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "boite",
+    "cadeau",
+    "emu",
+    "emerveille"
+   ],
+   "mouth": true,
+   "size": [
+    461,
+    1165
+   ],
+   "mouth_auto": true,
+   "head_x": 0.501
+  },
+  "awa_marche_sac": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "marche"
+   ],
+   "mouth": true,
+   "size": [
+    598,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.276
+  },
+  "awa_dos_sac": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    389,
+    1600
+   ],
+   "head_x": 0.454
+  },
+  "awa_tel": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    353,
+    1600
+   ],
+   "head_x": 0.521
+  },
+  "awa_debout": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    471,
+    1600
+   ],
+   "head_x": 0.504
+  },
+  "awa_assise_chaise": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "coud",
+    "travaille"
+   ],
+   "mouth": true,
+   "size": [
+    951,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.651
+  },
+  "awa_tel2": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "telephone",
+    "commande"
+   ],
+   "mouth": true,
+   "size": [
+    539,
+    1600
+   ],
+   "head_x": 0.358
+  },
+  "awa_inquiete": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "inquiet",
+    "triste",
+    "peur",
+    "gene",
+    "choc"
+   ],
+   "mouth": true,
+   "size": [
+    1019,
+    1600
+   ],
+   "head_x": 0.56
+  },
+  "awa_main_bouche": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "triste",
+    "pleure"
+   ],
+   "mouth": true,
+   "size": [
+    784,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.622
+  },
+  "awa_pointe_colere": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere",
+    "furieux",
+    "pointe",
+    "crie"
+   ],
+   "mouth": true,
+   "size": [
+    861,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.432
+  },
+  "awa_marche2": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "marche"
+   ],
+   "mouth": true,
+   "size": [
+    461,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.744
+  },
+  "awa_assise_triste": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "triste",
+    "nuit"
+   ],
+   "mouth": true,
+   "size": [
+    947,
+    1594
+   ],
+   "mouth_auto": true,
+   "head_x": 0.536
+  },
+  "awa_assise_brochette": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "mange",
+    "brochettes"
+   ],
+   "mouth": true,
+   "size": [
+    948,
+    1588
+   ],
+   "mouth_auto": true,
+   "head_x": 0.608
+  },
+  "awa_brochettes": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "brochettes",
+    "porte"
+   ],
+   "mouth": true,
+   "size": [
+    765,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.433
+  },
+  "awa_colere_main": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere",
+    "furieux",
+    "non"
+   ],
+   "mouth": true,
+   "size": [
+    902,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.551
+  },
+  "awa_pensive": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pensif",
+    "moue",
+    "reveur"
+   ],
+   "mouth": true,
+   "size": [
+    429,
+    1600
+   ],
+   "mouth_auto": true,
+   "head_x": 0.316
+  },
+  "awa_doigt_bouche": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "gene",
+    "surpris"
+   ],
+   "mouth": true,
+   "size": [
+    538,
+    1600
+   ],
+   "head_x": 0.53
+  },
+  "awa_degout": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "degout",
+    "mepris"
+   ],
+   "mouth": true,
+   "size": [
+    1096,
+    1523
+   ],
+   "head_x": 0.407
+  },
+  "awa_mange_rire": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "mange",
+    "rire",
+    "content"
+   ],
+   "mouth": true,
+   "size": [
+    944,
+    1600
+   ],
+   "head_x": 0.331
+  },
+  "awa_choc": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "surpris",
+    "peur",
+    "panique"
+   ],
+   "mouth": true,
+   "size": [
+    1124,
+    1597
+   ],
+   "mouth_auto": true,
+   "head_x": 0.491
+  },
+  "awa_bras_croises": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "mefiant",
+    "froide",
+    "serieux",
+    "fier",
+    "neutre",
+    "mepris",
+    "colere",
+    "fiere"
+   ],
+   "mouth": true,
+   "size": [
+    827,
+    1575
+   ],
+   "head_x": 0.289
+  },
+  "awa_porte": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "porte",
+    "atelier"
+   ],
+   "mouth": true,
+   "size": [
+    804,
+    1600
+   ],
+   "head_x": 0.499
+  },
+  "awa_pointe": {
+   "char": "AWA",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "colere",
+    "crie",
+    "pointe",
+    "furieux"
+   ],
+   "mouth": true,
+   "size": [
+    1038,
+    1565
+   ],
+   "head_x": 0.564
+  },
+  "awa_dos": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    526,
+    1585
+   ],
+   "head_x": 0.442
+  },
+  "awa_marche": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "marche"
+   ],
+   "mouth": true,
+   "size": [
+    607,
+    1590
+   ],
+   "mouth_auto": true,
+   "head_x": 0.369
+  },
+  "awa_pas1": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "cycle_marche"
+   ],
+   "mouth": false,
+   "size": [
+    337,
+    1086
+   ],
+   "head_x": 0.444
+  },
+  "awa_pas2": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "cycle_marche"
+   ],
+   "mouth": false,
+   "size": [
+    296,
+    1085
+   ],
+   "head_x": 0.383
+  },
+  "awa_pas3": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "cycle_marche"
+   ],
+   "mouth": false,
+   "size": [
+    236,
+    1099
+   ],
+   "head_x": 0.419
+  },
+  "awa_dos_pas1": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "cycle_marche_dos"
+   ],
+   "mouth": false,
+   "size": [
+    346,
+    1082
+   ],
+   "head_x": 0.431
+  },
+  "awa_dos_pas2": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "cycle_marche_dos"
+   ],
+   "mouth": false,
+   "size": [
+    329,
+    1082
+   ],
+   "head_x": 0.392
+  },
+  "awa_dos_pas3": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "cycle_marche_dos"
+   ],
+   "mouth": false,
+   "size": [
+    282,
+    1093
+   ],
+   "head_x": 0.409
+  },
+  "awa_tombe": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "tombe",
+   "tags": [
+    "tombe",
+    "glisse",
+    "bascule"
+   ],
+   "mouth": true,
+   "size": [
+    599,
+    1135
+   ],
+   "mouth_auto": true,
+   "head_x": 0.533
+  },
+  "awa_parapluie": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "parapluie",
+    "cache"
+   ],
+   "mouth": false,
+   "size": [
+    1062,
+    1600
+   ],
+   "head_x": 0.473
+  },
+  "mod_tel": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    836,
+    1600
+   ],
+   "head_x": 0.45
+  },
+  "mod_joie": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "content",
+    "victoire"
+   ],
+   "mouth": true,
+   "size": [
+    980,
+    1600
+   ],
+   "head_x": 0.501
+  },
+  "mod_banc": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "banc",
+   "tags": [
+    "neutre",
+    "ecoute",
+    "boit"
+   ],
+   "mouth": true,
+   "size": [
+    1428,
+    1475
+   ],
+   "head_x": 0.498
+  },
+  "mod_banc2": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "banc",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": false,
+   "size": [
+    1428,
+    1475
+   ],
+   "head_x": 0.498
+  },
+  "mod_doigt": {
+   "char": "MODIBO",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "taquin",
+    "idee",
+    "explique",
+    "sourire",
+    "serieux",
+    "neutre",
+    "sage"
+   ],
+   "mouth": true,
+   "size": [
+    855,
+    810
+   ],
+   "head_x": 0.557
+  },
+  "mod_bras_leves": {
+   "char": "MODIBO",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "content",
+    "victoire"
+   ],
+   "mouth": true,
+   "size": [
+    1526,
+    786
+   ],
+   "head_x": 0.536
+  },
+  "mod_rire": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "rire",
+    "moqueur",
+    "taquin"
+   ],
+   "mouth": false,
+   "size": [
+    834,
+    1228
+   ],
+   "head_x": 0.586
+  },
+  "mod_court": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "court",
+   "tags": [
+    "court",
+    "vite"
+   ],
+   "mouth": false,
+   "size": [
+    978,
+    908
+   ],
+   "head_x": 0.52
+  },
+  "mod_choc": {
+   "char": "MODIBO",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "surpris",
+    "panique",
+    "peur"
+   ],
+   "mouth": false,
+   "size": [
+    857,
+    885
+   ],
+   "head_x": 0.499
+  },
+  "mod_repare": {
+   "char": "MODIBO",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "repare",
+    "telephone",
+    "concentre"
+   ],
+   "mouth": true,
+   "size": [
+    846,
+    809
+   ],
+   "head_x": 0.593
+  },
+  "dia_visage_triste": {
+   "char": "DIASABI",
+   "frame": "visage",
+   "posture": "debout",
+   "tags": [
+    "triste",
+    "gene"
+   ],
+   "mouth": false,
+   "size": [
+    1059,
+    1600
+   ],
+   "head_x": 0.485
+  },
+  "dia_debout": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    374,
+    1600
+   ],
+   "head_x": 0.502
+  },
+  "dia_gene": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "gene",
+    "confus"
+   ],
+   "mouth": true,
+   "size": [
+    479,
+    1600
+   ],
+   "head_x": 0.535
+  },
+  "dia_main_coeur": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "fier",
+    "sincere",
+    "amoureux"
+   ],
+   "mouth": true,
+   "size": [
+    357,
+    1600
+   ],
+   "head_x": 0.498
+  },
+  "dia_brochette": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "brochettes",
+    "mange"
+   ],
+   "mouth": false,
+   "size": [
+    461,
+    1600
+   ],
+   "head_x": 0.272
+  },
+  "dia_grill": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "grill",
+    "cuisine"
+   ],
+   "mouth": true,
+   "size": [
+    659,
+    1600
+   ],
+   "head_x": 0.505
+  },
+  "dia_tombe": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "tombe",
+   "tags": [
+    "tombe"
+   ],
+   "mouth": true,
+   "size": [
+    1576,
+    1267
+   ],
+   "head_x": 0.124
+  },
+  "dia_joie": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "victoire"
+   ],
+   "mouth": true,
+   "size": [
+    1066,
+    1600
+   ],
+   "head_x": 0.5
+  },
+  "dia_bras": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "explique",
+    "bras_ouverts"
+   ],
+   "mouth": false,
+   "size": [
+    1452,
+    1600
+   ],
+   "head_x": 0.5
+  },
+  "dia_brochettes": {
+   "char": "DIASABI",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "brochettes",
+    "propose"
+   ],
+   "mouth": true,
+   "size": [
+    979,
+    1591
+   ],
+   "head_x": 0.384
+  },
+  "dia_tel": {
+   "char": "DIASABI",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "telephone",
+    "surpris"
+   ],
+   "mouth": false,
+   "size": [
+    764,
+    1600
+   ],
+   "head_x": 0.498
+  },
+  "dia_court": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "court",
+   "tags": [
+    "court",
+    "vite"
+   ],
+   "mouth": false,
+   "size": [
+    1282,
+    1600
+   ],
+   "head_x": 0.725
+  },
+  "dia_neutre": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    400,
+    1600
+   ],
+   "head_x": 0.497
+  },
+  "dia_tel_tend": {
+   "char": "DIASABI",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "telephone",
+    "tend"
+   ],
+   "mouth": true,
+   "size": [
+    1381,
+    1568
+   ],
+   "head_x": 0.73
+  },
+  "dia_doigt": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "explique",
+    "proverbe",
+    "taquin",
+    "fier"
+   ],
+   "mouth": true,
+   "size": [
+    479,
+    1600
+   ],
+   "head_x": 0.424
+  },
+  "dia_doigt2": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "explique"
+   ],
+   "mouth": true,
+   "size": [
+    484,
+    1600
+   ],
+   "head_x": 0.421
+  },
+  "dia_fatigue": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "fatigue",
+    "triste",
+    "gene",
+    "sueur"
+   ],
+   "mouth": true,
+   "size": [
+    523,
+    1600
+   ],
+   "head_x": 0.786
+  },
+  "dia_salue": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "salue",
+    "chuchote",
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    474,
+    1600
+   ],
+   "head_x": 0.377
+  },
+  "dia_mange": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "mange",
+    "gateau",
+    "content"
+   ],
+   "mouth": false,
+   "size": [
+    430,
+    1193
+   ],
+   "head_x": 0.412
+  },
+  "fat_mains": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "sourire",
+    "tendre"
+   ],
+   "mouth": true,
+   "size": [
+    503,
+    1588
+   ],
+   "head_x": 0.455
+  },
+  "fat_salue": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "salue",
+    "rire",
+    "joie",
+    "moqueur"
+   ],
+   "mouth": true,
+   "size": [
+    768,
+    1577
+   ],
+   "head_x": 0.421
+  },
+  "fat_cartes": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "cartes",
+    "vend",
+    "offre"
+   ],
+   "mouth": true,
+   "size": [
+    845,
+    1600
+   ],
+   "head_x": 0.443
+  },
+  "fat_explique": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "explique",
+    "propose"
+   ],
+   "mouth": true,
+   "size": [
+    787,
+    1600
+   ],
+   "head_x": 0.406
+  },
+  "fat_pensive": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pensif",
+    "triste",
+    "moue"
+   ],
+   "mouth": true,
+   "size": [
+    472,
+    1600
+   ],
+   "head_x": 0.504
+  },
+  "mim_machine": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "coud",
+    "machine"
+   ],
+   "mouth": true,
+   "size": [
+    1236,
+    1539
+   ],
+   "head_x": 0.81
+  },
+  "mim_debout": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "inquiet",
+    "neutre",
+    "timide"
+   ],
+   "mouth": true,
+   "size": [
+    505,
+    1581
+   ],
+   "head_x": 0.384
+  },
+  "mim_mange": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "mange",
+    "brochettes"
+   ],
+   "mouth": true,
+   "size": [
+    746,
+    1590
+   ],
+   "head_x": 0.265
+  },
+  "mim_machine_tel": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "telephone",
+    "pensif",
+    "inquiet"
+   ],
+   "mouth": false,
+   "size": [
+    1237,
+    1555
+   ],
+   "head_x": 0.816
+  },
+  "mim_machine_rit": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "telephone",
+    "sourire",
+    "content"
+   ],
+   "mouth": false,
+   "size": [
+    1236,
+    1551
+   ],
+   "head_x": 0.806
+  },
+  "mim_inquiete": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "inquiet",
+    "essouffle",
+    "explique"
+   ],
+   "mouth": true,
+   "size": [
+    520,
+    1517
+   ],
+   "head_x": 0.332
+  },
+  "sey_livre": {
+   "char": "SEYDOU",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "livraison",
+    "neutre"
+   ],
+   "mouth": true,
+   "size": [
+    747,
+    1598
+   ],
+   "head_x": 0.306
+  },
+  "kadi": {
+   "char": "KADI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "sourire",
+    "canne"
+   ],
+   "mouth": true,
+   "size": [
+    996,
+    1599
+   ],
+   "head_x": 0.492
+  },
+  "kadi_severe": {
+   "char": "KADI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere",
+    "severe",
+    "robe"
+   ],
+   "mouth": true,
+   "size": [
+    1249,
+    1600
+   ],
+   "head_x": 0.364
+  },
+  "kadi_banc_the": {
+   "char": "KADI",
+   "frame": "pied",
+   "posture": "banc",
+   "tags": [
+    "boit",
+    "the",
+    "moqueur",
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    1486,
+    1600
+   ],
+   "head_x": 0.403
+  },
+  "kadi_banc": {
+   "char": "KADI",
+   "frame": "pied",
+   "posture": "banc",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": false,
+   "size": [
+    1436,
+    1600
+   ],
+   "head_x": 0.601
+  },
+  "mou_hover": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "telephone",
+    "hoverboard"
+   ],
+   "mouth": true,
+   "size": [
+    704,
+    1600
+   ],
+   "head_x": 0.602
+  },
+  "mou_salue": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "salue",
+    "hoverboard"
+   ],
+   "mouth": true,
+   "size": [
+    616,
+    1600
+   ],
+   "head_x": 0.489
+  },
+  "kar_carte": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "carte",
+    "offre"
+   ],
+   "mouth": true,
+   "size": [
+    584,
+    1600
+   ],
+   "head_x": 0.527
+  },
+  "kar_tel": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    551,
+    1600
+   ],
+   "head_x": 0.504
+  },
+  "kar_mains": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "explique",
+    "surpris"
+   ],
+   "mouth": true,
+   "size": [
+    728,
+    1600
+   ],
+   "head_x": 0.484
+  },
+  "kar_marche": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "marche"
+   ],
+   "mouth": false,
+   "size": [
+    738,
+    1600
+   ],
+   "head_x": 0.461
+  },
+  "kar_voiture": {
+   "char": "KARIM",
+   "frame": "objet",
+   "posture": "assis",
+   "tags": [
+    "voiture"
+   ],
+   "mouth": true,
+   "size": [
+    2521,
+    1600
+   ],
+   "head_x": 0.72
+  },
+  "sal_marche": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "marche",
+   "tags": [
+    "marche",
+    "plateau"
+   ],
+   "mouth": false,
+   "size": [
+    571,
+    1600
+   ],
+   "head_x": 0.448
+  },
+  "sal_hanches": {
+   "char": "SALI",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "fiere",
+    "taquin"
+   ],
+   "mouth": true,
+   "size": [
+    869,
+    1181
+   ],
+   "head_x": 0.424
+  },
+  "sal_tel": {
+   "char": "SALI",
+   "frame": "buste",
+   "posture": "debout",
+   "tags": [
+    "telephone",
+    "serieux"
+   ],
+   "mouth": true,
+   "size": [
+    791,
+    1130
+   ],
+   "head_x": 0.596
+  },
+  "sal_beignet": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "offre",
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    639,
+    1600
+   ],
+   "head_x": 0.624
+  },
+  "sal_dos": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    496,
+    1600
+   ],
+   "head_x": 0.494
+  },
+  "ven_tomates": {
+   "char": "VENDEUSE",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere",
+    "crie"
+   ],
+   "mouth": true,
+   "size": [
+    864,
+    1600
+   ],
+   "head_x": 0.428
+  },
+  "grp_catch": {
+   "char": "BAKARY+AWA",
+   "frame": "groupe",
+   "posture": "debout",
+   "tags": [
+    "rattrape"
+   ],
+   "mouth": false,
+   "size": [
+    771,
+    1039
+   ],
+   "head_x": 0.392
+  },
+  "grp_main_bouche": {
+   "char": "MODIBO+DIASABI",
+   "frame": "groupe",
+   "posture": "debout",
+   "tags": [
+    "main_bouche"
+   ],
+   "mouth": false,
+   "size": [
+    498,
+    1154
+   ],
+   "head_x": 0.489
+  },
+  "obj_robe_trouee": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "",
+   "tags": [
+    "robe",
+    "trouee"
+   ],
+   "mouth": false,
+   "size": [
+    575,
+    1226
+   ],
+   "head_x": 0.411
+  },
+  "obj_robe_fleur": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "",
+   "tags": [
+    "robe",
+    "reparee",
+    "fleur"
+   ],
+   "mouth": false,
+   "size": [
+    575,
+    1226
+   ],
+   "head_x": 0.411
+  },
+  "obj_grill": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "",
+   "tags": [
+    "grill"
+   ],
+   "mouth": false,
+   "size": [
+    944,
+    380
+   ],
+   "head_x": 0.614
+  }
+ },
+ "decors": {
+  "KIOSQUE": [
+   1536,
+   1540
+  ],
+  "ATELIER": [
+   3392,
+   5056
+  ],
+  "MARCHE": [
+   2800,
+   3072
+  ],
+  "RUE": [
+   1216,
+   2744
+  ],
+  "CABINE": [
+   3392,
+   5056
+  ],
+  "BUREAU": [
+   3392,
+   5056
+  ],
+  "VILLA": [
+   3392,
+   5056
+  ],
+  "SHOWROOM": [
+   2800,
+   3072
+  ]
+ },
+ "height": {
+  "DIASABI": 1.14,
+  "BAKARY": 1.0,
+  "MODIBO": 0.98,
+  "KARIM": 1.0,
+  "SEYDOU": 0.99,
+  "AWA": 0.95,
+  "FATIM": 0.9,
+  "SALI": 0.92,
+  "KADI": 0.88,
+  "MOUSSA": 0.9,
+  "MIMI": 0.86,
+  "VENDEUSE": 0.9
+ },
+ "voices": {
+  "BAKARY": "ref_bakary.wav",
+  "AWA": "ref_awa2.wav",
+  "MODIBO": "ref_modibo.wav",
+  "DIASABI": "ref_diasabi.wav",
+  "MIMI": "ref_mimi.wav",
+  "SEYDOU": "ref_seydou.wav",
+  "FATIM": "ref_fatim.wav",
+  "KADI": "ref_kadi.wav",
+  "MOUSSA": "ref_moussa.wav",
+  "KARIM": "ref_karim.wav",
+  "SALI": "ref_sali.wav",
+  "VENDEUSE": "ref_kadi.wav",
+  "VOIX_OFF": "ref_voixoff.wav"
+ }
+}

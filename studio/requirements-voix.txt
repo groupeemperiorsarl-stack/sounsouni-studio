@@ -1,0 +1,4 @@
+# environnement séparé pour la synthèse vocale (variable STUDIO_TTS_PY)
+torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+chatterbox-tts==0.1.7
+soundfile
