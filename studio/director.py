@@ -154,30 +154,34 @@ def face_dir(key):
     y = POSES.get(key, {}).get('yaw')
     if y is None or abs(y) < 9: return 0
     return -1 if y > 0 else 1
-def yaw_variant(key, turn, eyes=0):
-    """Variante LivePortrait : tête tournée (turn) et/ou yeux dirigés (eyes) vers la droite (+1) ou la gauche (-1) de l'image d'origine."""
+def yaw_variant(key, turn, eyes=0, up=0):
+    """Variante LivePortrait : tête tournée (turn), yeux dirigés (eyes) vers la droite (+1) / gauche (-1) de l'image d'origine,
+    et regard vers le haut (up=+1) ou le bas (up=-1) quand l'autre est plus grand / plus bas (debout face à assis)."""
     sg = lambda v: '+' if v > 0 else ('-' if v < 0 else '0')
-    v = f'{key}@{sg(turn)}{sg(eyes)}'
-    if v not in POSES: POSES[v] = dict(POSES[key], yaw=(-18.0 * turn) if turn else POSES[key].get('yaw', 0), variant_of=key, turn=turn, eyes=eyes)
+    v = f'{key}@{sg(turn)}{sg(eyes)}{sg(up)}'
+    if v not in POSES: POSES[v] = dict(POSES[key], yaw=(-24.0 * turn) if turn else POSES[key].get('yaw', 0), variant_of=key, turn=turn, eyes=eyes, up=up)
     return v
 def parse_variant(v):
     base, t = v.split('@'); m = {'+': 1, '-': -1, '0': 0}
-    return base, m[t[0]], m[t[1]] if len(t) > 1 else 0
-def orient(a, d):
-    """Tourne l'acteur pour qu'il regarde dans la direction d : image retournée si besoin, tête tournée si elle est de face,
-    et toujours les yeux dirigés vers l'autre (pas vers le spectateur)."""
+    return base, m[t[0]], (m[t[1]] if len(t) > 1 else 0), (m[t[2]] if len(t) > 2 else 0)
+def face_y(a):
+    fr = {'pied': 0.08, 'buste': 0.2}.get(POSES[a['key'].split('@')[0]]['frame'], 0.15)
+    return a['by'] - a['h'] + a['h'] * fr
+def orient(a, d, up=0):
+    """Tourne l'acteur vers l'autre : image retournée si besoin, tête tournée, yeux dirigés vers l'autre
+    (à gauche/droite ET en haut/bas selon la hauteur du visage de l'autre)."""
     if not d or a.get('back'): return a
     if a.get('walk'):   # après la marche, la pose d'arrêt regarde aussi le bon côté
         sk = a.get('stop_key')
         if sk:
             sk = sk.split('@')[0]; f = face_dir(sk); fl = f == -d; sd = -d if fl else d
-            a['stop_flip'] = fl; a['stop_key'] = yaw_variant(sk, sd, sd)
+            a['stop_flip'] = fl; a['stop_key'] = yaw_variant(sk, sd, sd, up)
         return a
     base = a['key'].split('@')[0]
     if POSES[base]['char'] == 'OBJET' or '+' in POSES[base]['char'] or POSES[base]['posture'] == 'dos': return a
     a['look_dir'] = d; f = face_dir(base); flip = f == -d
     sd = -d if flip else d   # direction dans l'image d'origine (avant retournement)
-    a['key'] = yaw_variant(base, sd, sd)   # tête tournée vers l'autre + yeux vers l'autre
+    a['key'] = yaw_variant(base, sd, sd, up)
     if 'face_x' in a:
         b = close_actor(a['who'], a['key'], x=a['face_x'], tight=a.get('tight', False), scale=a.get('scale', 1.0), flip=flip)
         a['x'] = b['x']
@@ -185,14 +189,22 @@ def orient(a, d):
     return a
 def orient_shot(sh):
     acts = [a for a in sh.get('actors', []) if not a.get('back') and '+' not in a['who']]
+    if sh.get('ots'):   # par-dessus l'épaule : la hauteur du regard vient des postures (assis / debout), pas de l'image
+        for a in acts: orient(a, a.get('look_dir') or (1 if a['x'] < 540 else -1), 0 if a.get('fg') else a.get('look_up', 0))
+        return
     if len(acts) >= 2:   # plan à plusieurs : on se regarde (celui qui écoute regarde celui qui parle)
         spk = next((a for a in acts if a.get('speaker')), None)
         for a in acts:
             others = [b for b in acts if b is not a]
             tgt = spk if spk is not None and spk is not a else min(others, key=lambda b: abs(b['x'] - a['x']))
-            orient(a, 1 if tgt['x'] > a['x'] else -1)
+            dy = face_y(tgt) - face_y(a); up = 1 if dy < -0.06 * 1920 else (-1 if dy > 0.06 * 1920 else 0)
+            orient(a, 1 if tgt['x'] > a['x'] else -1, up)
     elif len(acts) == 1 and acts[0].get('look_dir'):
-        orient(acts[0], acts[0]['look_dir'])
+        orient(acts[0], acts[0]['look_dir'], acts[0].get('look_up', 0))
+def updown(stage, who, tgt):
+    if not tgt: return 0
+    sit = lambda c: stage.post(c) in ('assis', 'banc')
+    return 1 if sit(who) and not sit(tgt) else (-1 if sit(tgt) and not sit(who) else 0)
 def over_shoulder(who, side, stage):
     """Celui qui écoute, vu de dos ou de trois-quarts, au premier plan sur le bord de l'image (caméra derrière lui)."""
     back = [k for k, p in POSES.items() if p['char'] == who and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags']) and not p.get('props')]
@@ -284,11 +296,11 @@ def build(meta, events, log=print):
                     ots = (mode == 'gros' and tgt and side and not e.get('thought') and stage.posture.get(tgt) != 'marche')
                     if ots: ots_count += 1; ots = ots_count % 3 != 0   # champ / contre-champ, avec de temps en temps un plan seul
                     if ots:
-                        a = close_actor(who, k, x=540 - 170 * side); a['speaker'] = True; a['look_dir'] = side
+                        a = close_actor(who, k, x=540 - 170 * side); a['speaker'] = True; a['look_dir'] = side; a['look_up'] = updown(stage, who, tgt)
                         sh['actors'] = [a, over_shoulder(tgt, side, stage)]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who); sh['ots'] = tgt
                     else:
                         x = 540 - 110 * side if side else 540
-                        a = close_actor(who, k, x=x, tight=(mode == 'tresgros')); a['speaker'] = True; a['look_dir'] = side
+                        a = close_actor(who, k, x=x, tight=(mode == 'tresgros')); a['speaker'] = True; a['look_dir'] = side; a['look_up'] = updown(stage, who, tgt)
                         sh['actors'] = [a]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who)
                     # changements de pose sur les balises d'émotion
                     sw = []

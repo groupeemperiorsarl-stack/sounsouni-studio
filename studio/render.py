@@ -254,12 +254,12 @@ def prepare_turns(shots, log=print):
     tmp = f'{out}/_tmp'; os.makedirs(tmp, exist_ok=True); jobs = []; boxes = {}; bgs = {}
     for k in todo:
         from director import parse_variant
-        base, turn, eyes = parse_variant(k); p = POSES[base]
+        base, turn, eyes, up = parse_variant(k); p = POSES[base]
         im = Image.open(f'{A}/poses/{base}.webp').convert('RGBA'); w, h = im.size
         frac = {'pied': 0.42, 'buste': 0.75, 'visage': 1.0}.get(p['frame'], 0.5); box = (0, 0, w, int(h * frac)); boxes[k] = box
         bgc = key_color(im.crop(box)); bgs[k] = bgc; b = Image.new('RGBA', box[2:], bgc + (255,)); b.alpha_composite(im.crop(box)); b.convert('RGB').save(f'{tmp}/{base}.png')   # fond uni absent du personnage : détourage facile
-        y = 18 * turn; ex = -26 * eyes   # signes vérifiés à l'œil sur LivePortrait
-        jobs.append(f'{tmp}/{k}.png|{tmp}/{base}.png|x|x|0|{y}|0|0|0|0|0|0|0|{ex}|0')
+        y = 24 * turn; ex = -26 * eyes; pt = -9 * up; ey = 15 * up   # signes vérifiés à l'œil sur LivePortrait
+        jobs.append(f'{tmp}/{k}.png|{tmp}/{base}.png|x|x|{pt}|{y}|0|0|0|0|0|0|0|{ex}|{ey}')
     jobs2 = []
     for k in todo:
         base = k.split('@')[0]; p = POSES[base]
@@ -295,6 +295,10 @@ def prepare_turns(shots, log=print):
                 alpha = Image.fromarray(ba.clip(0, 255).astype(np.uint8))
             if band is not None:   # couleurs du bord reprises de l'intérieur : plus de liseré de la couleur du fond
                 rgb = cv2.inpaint(np.array(g.convert('RGB')), band, 4, cv2.INPAINT_TELEA); g = Image.fromarray(rgb).convert('RGBA')
+            # bas du cadre (corps, objets) : on garde les pixels d'origine, seule la tête vient de LivePortrait
+            orig = np.array(base.crop(box).convert('RGB')).astype(np.float32); lpx = np.array(g.convert('RGB')).astype(np.float32)
+            hh = orig.shape[0]; wb = np.clip((np.arange(hh) - hh * 0.62) / (hh * 0.2), 0, 1)[:, None, None]
+            g = Image.fromarray((lpx * (1 - wb) + orig * wb).clip(0, 255).astype(np.uint8)).convert('RGBA')
             g.putalpha(alpha)
             im = base.copy(); im.paste(g, box[:2]); im.save(f'{out}/{k}{suf}.webp', 'WEBP', quality=88); n += suf == ''
     log(f'têtes tournées : {n} prêtes')
