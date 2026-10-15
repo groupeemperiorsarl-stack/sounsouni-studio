@@ -167,7 +167,7 @@ def parse_variant(v):
 def face_y(a):
     fr = {'pied': 0.08, 'buste': 0.2}.get(POSES[a['key'].split('@')[0]]['frame'], 0.15)
     return a['by'] - a['h'] + a['h'] * fr
-def orient(a, d, up=0):
+def orient(a, d, up=0, variant=True):
     """Tourne l'acteur vers l'autre : image retournée si besoin, tête tournée, yeux dirigés vers l'autre
     (à gauche/droite ET en haut/bas selon la hauteur du visage de l'autre)."""
     if not d or a.get('back'): return a
@@ -181,7 +181,7 @@ def orient(a, d, up=0):
     if POSES[base]['char'] == 'OBJET' or '+' in POSES[base]['char'] or POSES[base]['posture'] == 'dos': return a
     a['look_dir'] = d; f = face_dir(base); flip = f == -d
     sd = d if flip else -d   # sens validé à l'œil par Issa (image B du test de regard)
-    a['key'] = yaw_variant(base, sd, sd, up)
+    a['key'] = yaw_variant(base, sd, sd, up) if variant else base
     if 'face_x' in a:
         b = close_actor(a['who'], a['key'], x=a['face_x'], tight=a.get('tight', False), scale=a.get('scale', 1.0), flip=flip)
         a['x'] = b['x']
@@ -190,7 +190,8 @@ def orient(a, d, up=0):
 def orient_shot(sh):
     acts = [a for a in sh.get('actors', []) if not a.get('back') and '+' not in a['who']]
     if sh.get('ots'):   # par-dessus l'épaule : la hauteur du regard vient des postures (assis / debout), pas de l'image
-        for a in acts: orient(a, a.get('look_dir') or (1 if a['x'] < 540 else -1), 0 if a.get('fg') else a.get('look_up', 0))
+        # validé par Issa (questions 1 et 2 : réponse E) : en champ / contre-champ, image d'origine, seulement retournée vers l'autre
+        for a in acts: orient(a, a.get('look_dir') or (1 if a['x'] < 540 else -1), 0, variant=False)
         return
     if len(acts) >= 2:   # plan à plusieurs : on se regarde (celui qui écoute regarde celui qui parle)
         spk = next((a for a in acts if a.get('speaker')), None)
