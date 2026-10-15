@@ -4,3 +4,4 @@ venv/
 pretrained_weights/
 sortie/
 *.mp4
+studio/assets/poses/tourne/_tmp/
