@@ -1,0 +1,73 @@
+v/d01.wav|/home/claude/tts/ref_diasabi.wav|0.7|0.5|Ah ! C'est elle, la Fatim du haut-parleur !
+v/f01.wav|/home/claude/ep10/vo/L28.wav|0.5|0.5|Le haut-parleur ? Quel haut-parleur ?
+v/d02.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|L'autre jour, tu as appelé Bakary. Il a mis le haut-parleur. Tout le quartier a entendu « mon petit Bakary ».
+v/b01.wav|/home/claude/tts/ref_bakary.wav|0.8|0.4|C'était un accident, Fatim ! Le bouton… mon doigt… la batterie…
+v/f02.wav|/home/claude/ep10/vo/L28.wav|0.6|0.5|Tant mieux ! Comme ça, tout le monde sait.
+v/f03.wav|/home/claude/ep10/vo/L28.wav|0.5|0.5|Tiens. Une carte de recharge de mille francs. Comme ça, tu n'as plus d'excuse pour ne pas me rappeler.
+v/b02.wav|/home/claude/tts/ref_bakary.wav|0.3|0.5|Fatim… il ne fallait pas…
+v/f04.wav|/home/claude/ep10/vo/L28.wav|0.6|0.5|Awa ! I ni tché !
+v/a01.wav|/home/claude/tts/ref_awa2.wav|0.4|0.5|I ni tché, Fatim.
+v/f05.wav|/home/claude/ep10/vo/L28.wav|0.5|0.5|La famille va bien ? Ton atelier marche ?
+v/a02.wav|/home/claude/tts/ref_awa2.wav|0.4|0.5|Tout va bien. Grâce à Dieu.
+v/f06.wav|/home/claude/ep10/vo/L28.wav|0.5|0.5|Toi qui es juste en face… surveille-moi ce garçon, hein ! Il ne répond jamais au téléphone.
+v/a03.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Moi… je n'ai pas le temps de surveiller les vendeurs de thé.
+v/f07.wav|/home/claude/ep10/vo/L28.wav|0.6|0.5|Hé, Awa, toujours aussi sérieuse ! Bon, je file. J'ai laissé ma table de crédit toute seule.
+v/f08.wav|/home/claude/ep10/vo/L28.wav|0.6|0.5|Rappelle-moi, hein !
+v/d03.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Elle est fâchée contre qui, la couturière ?
+v/m01.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Contre le vent, Diasabi. Contre le vent.
+v/a04.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Surveille-moi ce garçon ! Pour qui elle me prend ? Une gardienne ?
+v/i01.wav|/home/claude/ep10/vo/L02.wav|0.4|0.5|Tantie Awa… je peux dire quelque chose ?
+v/a05.wav|/home/claude/tts/ref_awa2.wav|0.4|0.5|Dis.
+v/i02.wav|/home/claude/ep10/vo/L02.wav|0.5|0.5|Bakary a pris la faute pour vous devant Tantie Kadi. Vous allez lui dire merci ?
+v/a06.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Merci ?
+v/a07.wav|/home/claude/tts/ref_awa2.wav|0.6|0.5|Moi, Awa, je ne dois rien à personne. Surtout pas à un vendeur de thé.
+v/i03.wav|/home/claude/ep10/vo/L02.wav|0.3|0.5|Mais vous lui devez quand même…
+v/a08.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Justement. Une dette, ça se paie. Et après, on est quittes.
+v/i04.wav|/home/claude/ep10/vo/L02.wav|0.9|0.4|Quinze mille francs pour des gâteaux ?!
+v/a09.wav|/home/claude/tts/ref_awa2.wav|0.6|0.5|Une Awa ne fait pas les choses à moitié. Pour qu'il ne dise pas que je suis radine.
+v/a10.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Voilà. Comme ça, il n'aura plus rien à raconter.
+v/i05.wav|/home/claude/ep10/vo/L02.wav|0.3|0.5|Vous êtes sûre que c'est ça, dire merci, Tantie Awa ?
+v/d04.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|À Bobo, les toits sont plus hauts.
+v/s01.wav|/home/claude/ep7/vo/L05.wav|0.7|0.5|Livraison Sounsouni pour le kiosque de Bakary ! Envoi cadeau !
+v/b03.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Pour moi ? Mais je n'ai rien commandé.
+v/s02.wav|/home/claude/ep7/vo/L05.wav|0.5|0.5|C'est un cadeau, Bakary. Il y a un message.
+v/b04.wav|/home/claude/tts/ref_bakary.wav|0.3|0.5|Vingt-quatre gâteaux… pour moi…
+v/m02.wav|/home/claude/tts/ref_modibo.wav|0.5|0.5|Le Palais Doré ? C'est la pâtisserie la plus chère de Bamako, ça.
+v/d05.wav|/home/claude/tts/ref_diasabi.wav|0.8|0.4|Ooh ! Des gâteaux !
+v/b05.wav|/home/claude/tts/ref_bakary.wav|0.3|0.5|Pour la robe. Maintenant, on est quittes. Awa.
+v/b06.wav|/home/claude/tts/ref_bakary.wav|0.6|0.5|Van… Awa m'a offert un cadeau. À moi.
+v/m03.wav|/home/claude/tts/ref_modibo.wav|0.5|0.5|Bakarin… lis bien. On est quittes.
+v/b07.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Oui, et alors ?
+v/m04.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Si tu acceptes, elle ne te doit plus rien. La robe, la faute que tu as prise… tout est effacé. Elle te paie, et c'est fini.
+v/m05.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Demain, tu redeviens le vendeur de thé d'en face.
+v/b08.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|Seydou. Ramène-lui ses gâteaux.
+v/s03.wav|/home/claude/ep7/vo/L05.wav|0.5|0.5|Tu refuses le cadeau ?
+v/b09.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Je refuse.
+v/s04.wav|/home/claude/ep7/vo/L05.wav|0.5|0.5|Il faut un motif. Je mets quoi ?
+v/b10.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|Écris : ce que j'ai fait ne se rembourse pas.
+v/m06.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Bakarin… ça, c'est propre.
+v/d06.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Mmmh… mais… je voulais aider, moi !
+v/m07.wav|/home/claude/tts/ref_modibo.wav|0.9|0.4|Aider à quoi ?!
+v/d07.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Les gâteaux allaient gâter au soleil. À Bobo, on dit : un gâteau qui attend, c'est un gâteau perdu.
+v/s05.wav|/home/claude/ep7/vo/L05.wav|0.6|0.5|Vingt-trois gâteaux, Diasabi ?
+v/d08.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|J'ai laissé le dernier. Par politesse.
+v/a11.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Refusée… ?
+v/i06.wav|/home/claude/ep10/vo/L02.wav|0.3|0.5|Il a refusé, Tantie Awa ?
+v/s06.wav|/home/claude/ep7/vo/L05.wav|0.5|0.5|Retour à l'expéditeur, madame Awa.
+v/a12.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Il me renvoie mon cadeau… avec un seul gâteau…
+v/a13.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Et il a mangé les autres ?!
+v/s07.wav|/home/claude/ep7/vo/L05.wav|0.7|0.5|Ce n'est pas lui, c'est le grand maigre qui…
+v/o01.wav|/home/claude/ep8/vo/L36.wav|0.6|0.5|Aw ni tché, Kôrôbalé wou ! Kôrô, un thé bien chaud pour ton petit !
+v/b11.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Assieds-toi, Moussa.
+v/a14.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Bakary ! Tu te prends pour qui pour me renvoyer mon cadeau ?!
+v/d09.wav|/home/claude/tts/ref_diasabi.wav|0.4|0.5|Oh oh… les gâteaux.
+v/a15.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Moi, Awa, je t'envoie vingt-quatre gâteaux, et toi, tu…
+v/b12.wav|/home/claude/tts/ref_bakary.wav|0.3|0.5|Ça va… ?
+v/a16.wav|/home/claude/tts/ref_awa2.wav|0.3|0.5|Laisse-moi…
+v/o02.wav|/home/claude/ep8/vo/L36.wav|0.4|0.5|Kôrô… même moi, je n'ai jamais fait ça.
+v/d10.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Elle était venue crier, non ? Pourquoi elle n'a pas fini sa phrase ?
+v/b13.wav|/home/claude/tts/ref_bakary.wav|0.3|0.5|Van… elle a dit « laisse-moi »…
+v/m08.wav|/home/claude/tts/ref_modibo.wav|0.5|0.5|Bakarin… je t'avais dit, hein !
+v/m09.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Non, en fait… cette fois, je ne t'avais rien dit.
+v/k01.wav|/home/claude/ep6/vo/L02.wav|0.3|0.5|Alors c'est ça…
+v/k02.wav|/home/claude/ep6/vo/L02.wav|0.5|0.5|Un vendeur de thé.

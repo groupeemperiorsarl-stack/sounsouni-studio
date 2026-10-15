@@ -1,0 +1,50 @@
+v/a01.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Mimi, passe-moi le fil doré. Tantie Kadi vient à midi chercher ses quinze tenues.
+v/i01.wav|/home/claude/tts/ref_mimi.wav|0.5|0.5|Quatorze sont déjà pliées, Tantie. Il ne reste que la robe de la mariée.
+v/a02.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Le bazin doré… Je finis l'ourlet, je repasse, et c'est terminé.
+v/i02.wav|/home/claude/tts/ref_mimi.wav|0.5|0.5|Tantie Kadi a encore écrit sur Sounsouni : ma fille, tout est prêt ?
+v/a03.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Réponds-lui : à midi, tout sera parfait.
+v/a04.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Non, non, non… pas aujourd'hui !
+v/i03.wav|/home/claude/tts/ref_mimi.wav|0.5|0.5|Le courant ne reviendra pas avant ce soir, Tantie. Toute la rue est coupée.
+v/a05.wav|/home/claude/tts/ref_awa2.wav|0.7|0.5|La machine est arrêtée, le fer est froid… et la mariée attend sa robe !
+v/i04.wav|/home/claude/tts/ref_mimi.wav|0.5|0.5|Il y a le vieux fer à charbon de ta maman, dans le carton.
+v/a06.wav|/home/claude/tts/ref_awa2.wav|0.6|0.5|Et le charbon, on le trouve où ? Il est déjà dix heures et demie, Mimi !
+v/i05.wav|/home/claude/tts/ref_mimi.wav|0.5|0.5|Je sais où il y a du charbon… et du courant.
+v/a07.wav|/home/claude/tts/ref_awa2.wav|0.6|0.5|Si tu penses à ce kiosque, oublie tout de suite.
+v/d01.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|Coupure ou pas coupure, mes brochettes grillent ! À Bobo, on dit : le charbon ne connaît pas les coupures.
+v/m01.wav|/home/claude/tts/ref_modibo.wav|0.6|0.5|Et le soleil non plus ! Approchez : recharge de téléphone, cent francs ! Ma batterie solaire ne dort jamais.
+v/b01.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Et mon thé ne s'arrête pour personne. Le premier verre est pour les clients patients.
+v/m02.wav|/home/claude/tts/ref_modibo.wav|0.5|0.5|Bakarin, toute la rue est dans le noir, et ton kiosque est le seul endroit vivant.
+v/i06.wav|/home/claude/tts/ref_mimi.wav|0.6|0.5|Bakary ! Modibo ! Aidez-nous… s'il vous plaît !
+v/b02.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Mimi ? Doucement, respire. Qu'est-ce qui se passe ?
+v/i07.wav|/home/claude/tts/ref_mimi.wav|0.7|0.5|Tantie Kadi vient à midi chercher la robe de la mariée. Plus de courant, plus de machine, plus de fer !
+v/i08.wav|/home/claude/tts/ref_mimi.wav|0.6|0.5|Il nous faut des braises pour le vieux fer… et du courant pour une machine.
+v/m03.wav|/home/claude/tts/ref_modibo.wav|0.5|0.5|Ma batterie peut faire tourner une machine pendant une heure. Pas plus.
+v/b03.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Une heure, c'est tout ce qu'il faut. Et mes braises sont à vous.
+v/d02.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|Et moi, je porte la machine ! J'ai des bras de forgeron.
+v/a08.wav|/home/claude/tts/ref_awa2.wav|0.6|0.5|Mimi ! Qu'est-ce que tu fais ici ?
+v/i09.wav|/home/claude/tts/ref_mimi.wav|0.5|0.5|Tantie, ils peuvent nous aider. La batterie, les braises… tout est là.
+v/a09.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Je préfère mourir que coudre devant ce kiosque.
+v/b04.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|Awa… je ne te demande rien. Juste de finir la robe.
+v/a10.wav|/home/claude/tts/ref_awa2.wav|0.6|0.5|Toi, ne me parle pas.
+v/i10.wav|/home/claude/tts/ref_mimi.wav|0.5|0.5|Tantie… regarde l'heure. Onze heures cinq.
+v/a11.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Apportez la machine. Vite.
+v/d03.wav|/home/claude/tts/ref_diasabi.wav|0.7|0.5|Tout de suite, Tantie Awa ! Laissez passer le forgeron !
+v/d04.wav|/home/claude/tts/ref_diasabi.wav|0.8|0.4|Aïe ! Ce toit est trop bas… ou bien c'est moi qui suis trop grand !
+v/m04.wav|/home/claude/tts/ref_modibo.wav|0.6|0.5|Mon frère, à Bobo, vous n'avez pas de toits ?
+v/a12.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Branchez. Mimi, tiens le tissu bien droit.
+v/a13.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Le fer. Plus chaud.
+v/b05.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Voilà… les braises sont rouges.
+v/a14.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Encore.
+v/b06.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Il est brûlant maintenant. Attention à tes doigts.
+v/a15.wav|/home/claude/tts/ref_awa2.wav|0.4|0.5|Pourquoi mon cœur bat comme ça ? Non. Pense à Fatim, Awa. Pense à Fatim.
+v/m05.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Tu as vu ? Elle a retiré sa main comme si le fer, c'était lui.
+v/d05.wav|/home/claude/tts/ref_diasabi.wav|0.4|0.5|Chut ! Laisse les braises chauffer toutes seules.
+v/d06.wav|/home/claude/tts/ref_diasabi.wav|0.8|0.4|Bakary ! Ton téléphone ! Oh… c'est ta Fatim !
+v/b07.wav|/home/claude/tts/ref_bakary.wav|0.8|0.4|Diasabi ! Tais-toi !
+v/a16.wav|/home/claude/tts/ref_awa2.wav|0.4|0.5|Sa Fatim… Même ici. Même aujourd'hui.
+v/m06.wav|/home/claude/tts/ref_modibo.wav|0.5|0.5|Hé… vous ne sentez pas quelque chose qui brûle ?
+v/i11.wav|/home/claude/tts/ref_mimi.wav|0.9|0.4|Tantie ! Le bazin brûle !
+v/b08.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|Awa… je…
+v/i12.wav|/home/claude/tts/ref_mimi.wav|0.6|0.5|Tantie… c'est Tantie Kadi. Elle arrive dans dix minutes.
+v/d07.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Ces pas-là… c'est elle. Même le sol a peur.
+v/vo1.wav|/home/claude/ep11/cuts/vo_1.wav|0.5|0.5|Coupure de courant ou pas, votre boutique Sounsouni reste ouverte : vos commandes, vos clients et vos messages, toujours sur votre téléphone.

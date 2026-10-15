@@ -1,0 +1,74 @@
+v/i01.wav|/home/claude/ep10/vo/L02.wav|0.4|0.5|Tantie Awa… la robe de la mariée…
+v/a01.wav|/home/claude/tts/ref_awa2.wav|0.6|0.5|Non… non, non, non…
+v/d01.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|À Bobo, on dit : quand le tissu sent le brûlé, c'est que le fer était bien chaud.
+v/m01.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Diasabi… ce n'est pas le moment.
+v/i02.wav|/home/claude/ep10/vo/L02.wav|0.8|0.4|C'est Tantie Kadi ! Elle arrive !
+v/a02.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Cache la robe ! Cache-la !
+v/k01.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Aw ni tché, mes enfants !
+v/g1.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|Bonjour, Tantie Kadi…
+v/g2.wav|/home/claude/tts/ref_modibo.wav|0.4|0.5|Bonjour, Tantie Kadi…
+v/g3.wav|/home/claude/tts/ref_diasabi.wav|0.4|0.5|Bonjour, Tantie Kadi…
+v/k02.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Awa, ma fille. Je viens chercher la robe de ma petite-fille. Elle est prête ?
+v/k03.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Mimi, qu'est-ce que tu caches dans tes bras ?
+v/i03.wav|/home/claude/ep10/vo/L02.wav|0.3|0.5|Rien, Tantie…
+v/k04.wav|/home/claude/ep11/cuts/v_tom.wav|0.5|0.5|Qui a fait ça ?
+v/a03.wav|/home/claude/tts/ref_awa2.wav|0.3|0.5|Tantie… c'est…
+v/b01.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|C'est moi, Tantie.
+v/b02.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|J'ai rempli le fer avec trop de braises. Je voulais aider Awa. La faute est à moi.
+v/d02.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|Mais non, Bakary ! C'est quand ta Fatim a appelé que…
+v/d03.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|Mmmh ! Mmmmh !
+v/m02.wav|/home/claude/tts/ref_modibo.wav|0.6|0.5|Il dit que c'est la fatigue. Il a trop grillé de brochettes aujourd'hui.
+v/k05.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Toi, Bakary… Je te croyais sérieux, mon fils.
+v/b03.wav|/home/claude/tts/ref_bakary.wav|0.3|0.5|Pardon, Tantie.
+v/k06.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Le mariage, c'est demain matin. Quinze tenues, et la plus importante est trouée.
+v/a04.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Tantie. Donnez-moi une heure.
+v/k07.wav|/home/claude/ep11/cuts/v_tom.wav|0.5|0.5|Une heure ?
+v/a05.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Une heure. Et la robe sera plus belle qu'avant. Je vous le jure.
+v/k08.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Une heure, Awa. Pas une minute de plus. Je t'attends ici…
+v/k09.wav|/home/claude/ep11/cuts/v_tom.wav|0.6|0.5|… en buvant le thé de ce maladroit.
+v/b04.wav|/home/claude/tts/ref_bakary.wav|0.7|0.5|Tout de suite, Tantie !
+v/a06.wav|/home/claude/tts/ref_awa2.wav|0.7|0.5|Mimi, le reste du bazin doré. Vite !
+v/a07.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|On ne peut pas cacher le trou. Alors on va le transformer.
+v/i04.wav|/home/claude/ep10/vo/L02.wav|0.5|0.5|Comment ça, Tantie Awa ?
+v/a08.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Une grande fleur dorée. Brodée là, à la taille. Comme un bijou.
+v/i05.wav|/home/claude/ep10/vo/L02.wav|0.5|0.5|Mais… on n'a plus de fil doré. Le dernier rouleau est fini.
+v/a09.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Le marché est trop loin ! Je n'ai pas le temps !
+v/a10.wav|/home/claude/tts/ref_awa2.wav|0.4|0.5|Vingt minutes… Allez, allez…
+v/a11.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Mimi, on découpe les pétales en attendant.
+v/b05.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|Thé spécial gingembre, Tantie. Pour vous calmer.
+v/k10.wav|/home/claude/ep11/cuts/v_tom.wav|0.6|0.5|Calmer qui ? Moi, je suis calme. C'est ma robe qui est brûlée.
+v/d04.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Attention, Tantie… À Bobo, on dit que le thé au gingembre de Bakary fait dire la vérité.
+v/k11.wav|/home/claude/ep11/cuts/v_tom.wav|0.5|0.5|Ah bon ?
+v/d05.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|Moi-même, une fois, j'ai bu trois verres et j'ai avoué que j'avais peur des poules.
+v/m03.wav|/home/claude/tts/ref_modibo.wav|0.6|0.5|Ça, tout le quartier le savait déjà.
+v/k12.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Alors voilà une vérité, Bakary.
+v/k13.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Un homme qui prend la faute d'une femme… soit il est fou… soit il est amoureux.
+v/b06.wav|/home/claude/tts/ref_bakary.wav|0.8|0.4|Kof ! Kof ! Tantie, c'est le gingembre… il est trop fort…
+v/d06.wav|/home/claude/tts/ref_diasabi.wav|0.6|0.5|Amoureux ? Bakary ? Mais de qui ?
+v/d07.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Modibo, tu sais quelque chose ?
+v/m04.wav|/home/claude/tts/ref_modibo.wav|0.5|0.5|Moi ? Je répare les téléphones, pas les cœurs.
+v/i06.wav|/home/claude/ep10/vo/L02.wav|0.8|0.4|Tantie Awa ! La batterie !
+v/a12.wav|/home/claude/tts/ref_awa2.wav|0.9|0.4|Modibo ! Ta batterie est en train de mourir !
+v/m05.wav|/home/claude/tts/ref_modibo.wav|0.8|0.4|J'arrive ! J'ai une autre batterie à l'atelier !
+v/s01.wav|/home/claude/ep7/vo/L05.wav|0.8|0.4|Livraison Sounsouni pour Awa Couture ! Fil doré !
+v/a13.wav|/home/claude/tts/ref_awa2.wav|0.7|0.5|Merci, Seydou ! Tu m'as sauvé la vie !
+v/s02.wav|/home/claude/ep7/vo/L05.wav|0.5|0.5|Dix-huit minutes, madame Awa. Deux minutes d'avance.
+v/m06.wav|/home/claude/tts/ref_modibo.wav|0.7|0.5|Cent pour cent ! Vas-y, Awa !
+v/a14.wav|/home/claude/tts/ref_awa2.wav|0.5|0.5|Mimi, l'aiguille. On brode.
+v/k14.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|L'heure est passée.
+v/k15.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Ma fille… elle est plus belle qu'avant.
+v/i07.wav|/home/claude/ep10/vo/L02.wav|0.9|0.4|Oui !
+v/d08.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|À Bobo, on dit : un trou bien brodé vaut mieux qu'une robe sans histoire.
+v/m07.wav|/home/claude/tts/ref_modibo.wav|0.6|0.5|Tu l'as inventé tout de suite, celle-là.
+v/d09.wav|/home/claude/tts/ref_diasabi.wav|0.5|0.5|Oui.
+v/k16.wav|/home/claude/ep11/cuts/v_tom.wav|0.4|0.5|Voilà. Cinq étoiles. Tout le monde va le voir.
+v/k17.wav|/home/claude/ep11/cuts/v_tom.wav|0.6|0.5|Et toi, Bakary… moins de braises, la prochaine fois. Et plus de courage… pour autre chose.
+v/b07.wav|/home/claude/tts/ref_bakary.wav|0.3|0.5|Awa… je…
+v/a15.wav|/home/claude/tts/ref_awa2.wav|0.4|0.5|Je ne t'ai rien demandé.
+v/a16.wav|/home/claude/tts/ref_awa2.wav|0.3|0.5|La prochaine fois, mets moins de braises.
+v/b08.wav|/home/claude/tts/ref_bakary.wav|0.4|0.5|Elle m'a parlé des braises…
+v/m08.wav|/home/claude/tts/ref_modibo.wav|0.6|0.5|Bakarin… elle t'a donné une leçon de repassage, pas une déclaration.
+v/b09.wav|/home/claude/tts/ref_bakary.wav|0.5|0.5|C'est un début, Van. C'est un début.
+v/f01.wav|/home/claude/ep10/vo/L28.wav|0.8|0.4|Bakary !
+v/f02.wav|/home/claude/ep10/vo/L28.wav|0.6|0.5|Tu ne réponds plus à mes appels, toi ? Je suis venue voir si tu étais encore vivant !
+v/d10.wav|/home/claude/tts/ref_diasabi.wav|0.7|0.5|Ah ! C'est elle, la Fatim du haut-parleur !

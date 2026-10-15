@@ -1,0 +1,308 @@
+[
+[
+"MIMI",
+"normal",
+"Tantie Awa, goûtez un peu.",
+"Tantie Awa, goûtez un peu."
+],
+[
+"AWA",
+"normal",
+"Hmm… Elles sont très bonnes. Tu as acheté ça où ?",
+"Hmm… Elles sont très bonnes. Tu as acheté ça où ?"
+],
+[
+"MIMI",
+"normal",
+"Chez Bakary, Tantie. Ils font de bonnes brochettes, maintenant.",
+"Chez Bakary, Tantie. Ils font de bonnes brochettes, maintenant."
+],
+[
+"AWA",
+"normal",
+"Beurk !",
+"Beurk !"
+],
+[
+"AWA",
+"normal",
+"Pourtant… ce n'était pas mal.",
+"Pourtant… ce n'était pas mal."
+],
+[
+"AWA",
+"normal",
+"Non. Ces idiots de V.D.B. ne peuvent rien faire de bon.",
+"Non. Ces idiots de V.D.B. ne peuvent rien faire de bon."
+],
+[
+"AWA",
+"normal",
+"Fatim. Tiens deux mille francs. Je commande des brochettes à ton nom. Tu les reçois, et tu me les donnes.",
+"Fatim. Tiens deux mille francs. Je commande des brochettes à ton nom. Tu les reçois, et tu me les donnes."
+],
+[
+"FATIM",
+"normal",
+"Pas de problème, Awa. Mais pourquoi à mon nom ?",
+"Pas de problème, Awa. Mais pourquoi à mon nom ?"
+],
+[
+"AWA",
+"normal",
+"Ne pose pas de questions.",
+"Ne pose pas de questions."
+],
+[
+"BAKARY",
+"normal",
+"Hmm hmm hmm…",
+"Hmm hmm hmm…"
+],
+[
+"BAKARY",
+"normal",
+"Bonsoir, ma sœur ! Livraison Sounsouni, Chez Bakary. Six brochettes pour Fatim.",
+"Bonsoir, ma sœur ! Livraison Sounsouni, Chez Bakary. Six brochettes pour Fatim."
+],
+[
+"FATIM",
+"normal",
+"C'est moi, Fatim. Tenez.",
+"C'est moi, Fatim. Tenez."
+],
+[
+"BAKARY",
+"normal",
+"Aïe… Je n'ai pas la monnaie sur moi. J'ai une autre livraison à trois cents mètres. Je reviens tout de suite avec tes cinq cents.",
+"Aïe… Je n'ai pas la monnaie sur moi. J'ai une autre livraison à trois cents mètres. Je reviens tout de suite avec tes cinq cents."
+],
+[
+"FATIM",
+"normal",
+"Prenez votre temps…",
+"Prenez votre temps…"
+],
+[
+"FATIM",
+"normal",
+"Voilà tes brochettes, Awa. Et ta monnaie.",
+"Voilà tes brochettes, Awa. Et ta monnaie."
+],
+[
+"FATIM_P",
+"normal",
+"Je rembourse Awa… et j'attendrai les cinq cents du beau livreur.",
+"Je rembourse Awa… et j'attendrai les cinq cents du beau livreur."
+],
+[
+"AWA",
+"normal",
+"Hmm… Il est parti. Personne ne saura.",
+"Hmm… Il est parti. Personne ne saura."
+],
+[
+"BAKARY",
+"normal",
+"Fatim, voilà ta…",
+"Fatim, voilà ta…"
+],
+[
+"BAKARY",
+"normal",
+"Ma déesse ! Comment tu vas ? Qu'est-ce que tu fais là ?",
+"Ma déesse ! Comment tu vas ? Qu'est-ce que tu fais là ?"
+],
+[
+"BAKARY",
+"normal",
+"Alors… tu m'invites ?",
+"Alors… tu m'invites ?"
+],
+[
+"AWA",
+"normal",
+"T'inviter ? Mais tu te crois où, toi ?",
+"T'inviter ? Mais tu te crois où, toi ?"
+],
+[
+"BAKARY",
+"normal",
+"Non, non, non, non ! Ne t'énerve pas, surtout. Ce n'était pas pour t'énerver.",
+"Non, non, non, non ! Ne t'énerve pas, surtout. Ce n'était pas pour t'énerver."
+],
+[
+"BAKARY",
+"normal",
+"Ah, mais… ce sont mes brochettes, ça ! Mes nouvelles brochettes ! Elles sont comment ?",
+"Ah, mais… ce sont mes brochettes, ça ! Mes nouvelles brochettes ! Elles sont comment ?"
+],
+[
+"BAKARY",
+"normal",
+"Si je savais que tu étais chez Fatim, je t'en aurais fait beaucoup, en cadeau.",
+"Si je savais que tu étais chez Fatim, je t'en aurais fait beaucoup, en cadeau."
+],
+[
+"AWA",
+"normal",
+"Tes brochettes ? Je ne savais même pas qu'elles venaient de chez toi.",
+"Tes brochettes ? Je ne savais même pas qu'elles venaient de chez toi."
+],
+[
+"AWA",
+"normal",
+"Et elles ne sont pas bonnes du tout. Trop dures. Trop salées.",
+"Et elles ne sont pas bonnes du tout. Trop dures. Trop salées."
+],
+[
+"FATIM",
+"normal",
+"Bakary ! Tu es revenu pour la monnaie ? Donne-moi.",
+"Bakary ! Tu es revenu pour la monnaie ? Donne-moi."
+],
+[
+"FATIM",
+"normal",
+"Merci.",
+"Merci."
+],
+[
+"FATIM",
+"normal",
+"Awa, ta commande, elle est bonne, non ? Moi, je n'ai même pas goûté. Donne-m'en une, que je goûte.",
+"Awa, ta commande, elle est bonne, non ? Moi, je n'ai même pas goûté. Donne-m'en une, que je goûte."
+],
+[
+"AWA",
+"normal",
+"Tchiiip !",
+"Tchiiip !"
+],
+[
+"FATIM",
+"normal",
+"Mais qu'est-ce qu'elle a ? Qu'est-ce qui s'est passé ? Tu la connais ?",
+"Mais qu'est-ce qu'elle a ? Qu'est-ce qui s'est passé ? Tu la connais ?"
+],
+[
+"BAKARY",
+"normal",
+"Non, non… Ne t'en fais pas pour elle.",
+"Non, non… Ne t'en fais pas pour elle."
+],
+[
+"BAKARY",
+"normal",
+"Bon, il est l'heure que je me casse. Il fait déjà tard.",
+"Bon, il est l'heure que je me casse. Il fait déjà tard."
+],
+[
+"FATIM",
+"normal",
+"Bakary… Tu as mon numéro, maintenant…",
+"Bakary… Tu as mon numéro, maintenant…"
+],
+[
+"BAKARY",
+"normal",
+"Ah oui ! Pour tes prochaines commandes !",
+"Ah oui ! Pour tes prochaines commandes !"
+],
+[
+"FATIM",
+"normal",
+"Pour mes commandes… Hmm.",
+"Pour mes commandes… Hmm."
+],
+[
+"VOIX_OFF",
+"normal",
+"Beignets, brochettes, crédit téléphonique : sur Sounsouni, chaque petit commerce a sa boutique, et ses clients commandent à toute heure. Téléchargez l'application sur sounsouni.pro, sur Android… et bientôt sur iPhone.",
+"Beignets, brochettes, crédit téléphonique : sur Sounsouni, chaque petit commerce a sa boutique, et ses clients commandent à toute heure. Téléchargez l'application sur sounsouni.pro, sur Android… et bientôt sur iPhone."
+],
+[
+"MIMI_P",
+"normal",
+"Il est déjà treize heures… J'ai un petit creux. Qu'est-ce que je vais manger ?",
+"Il est déjà treize heures… J'ai un petit creux. Qu'est-ce que je vais manger ?"
+],
+[
+"MIMI_P",
+"normal",
+"Attends… je regarde sur Sounsouni.",
+"Attends… je regarde sur Sounsouni."
+],
+[
+"MIMI_P",
+"normal",
+"Oh ! Des brochettes, chez Bakary ! Et les prix sont bons. Je commande !",
+"Oh ! Des brochettes, chez Bakary ! Et les prix sont bons. Je commande !"
+],
+[
+"SEYDOU",
+"normal",
+"Livraison Sounsouni ! Trois brochettes pour Mimi.",
+"Livraison Sounsouni ! Trois brochettes pour Mimi."
+],
+[
+"MIMI",
+"normal",
+"Merci !",
+"Merci !"
+],
+[
+"FATIM",
+"normal",
+"Tout est OK, Awa. Voilà tes brochettes, et ta monnaie.",
+"Tout est OK, Awa. Voilà tes brochettes, et ta monnaie."
+],
+[
+"FATIM_P",
+"normal",
+"Il n'avait pas la monnaie… il va revenir avec mes cinq cents.",
+"Il n'avait pas la monnaie… il va revenir avec mes cinq cents."
+],
+[
+"FATIM",
+"normal",
+"Je gère !",
+"Je gère !"
+],
+[
+"AWA_P",
+"normal",
+"Hmm… J'ai encore envie de goûter les brochettes de cet après-midi…",
+"Hmm… J'ai encore envie de goûter les brochettes de cet après-midi…"
+],
+[
+"AWA_P",
+"normal",
+"Non. Je vais acheter autre chose.",
+"Non. Je vais acheter autre chose."
+],
+[
+"AWA_P",
+"normal",
+"Mais… pourquoi pas essayer ?",
+"Mais… pourquoi pas essayer ?"
+],
+[
+"AWA_P",
+"normal",
+"Non, non. Autre chose.",
+"Non, non. Autre chose."
+],
+[
+"AWA_P",
+"normal",
+"Attends… j'ai une idée ! Je vais demander à Fatim de commander pour moi. Comme ça, même si Bakary vient livrer, il ne me verra pas.",
+"Attends… j'ai une idée ! Je vais demander à Fatim de commander pour moi. Comme ça, même si Bakary vient livrer, il ne me verra pas."
+],
+[
+"AWA",
+"normal",
+"Fatim ! J'étais loin, je n'ai pas entendu ce que vous avez dit. Tout est OK ?",
+"Fatim ! J'étais loin, je n'ai pas entendu ce que vous avez dit. Tout est OK ?"
+]
+]
