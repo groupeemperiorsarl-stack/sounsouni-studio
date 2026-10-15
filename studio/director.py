@@ -17,7 +17,7 @@ EMOS = {'neutre', 'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'rire_ret
         'moqueur', 'froide', 'hesitante', 'chaleureuse', 'joie', 'content', 'severe', 'emu'}
 SYN = {'grand_sourire': 'sourire content', 'sourire_malin': 'taquin sourire', 'rire_retenu': 'rire', 'furieux': 'colere furieux', 'yeux_plisses': 'mefiant mepris',
        'peur': 'peur panique', 'panique': 'panique peur', 'surpris': 'surpris choc', 'froide': 'mepris colere froide', 'moqueur': 'moqueur taquin rire',
-       'hesitante': 'pensif moue', 'innocent': 'sourire', 'emu': 'emu amoureux', 'tendre': 'tendre sourire', 'inquiet': 'inquiet triste',
+       'hesitante': 'pensif moue', 'innocent': 'sourire', 'emu': 'emu amoureux', 'tendre': 'tendre sourire', 'inquiet': 'inquiet triste', 'pleure': 'pleure triste larmes', 'triste': 'triste',
        'chaleureuse': 'sourire', 'severe': 'severe colere', 'serieux': 'serieux neutre', 'joie': 'joie content rire'}
 BODY = {'recule', 'avance', 'sursaut', 'tremble', 'hoche_tete', 'secoue_tete', 'penche_tete', 'se_penche', 's_affale', 'bombe_torse', 'soupir', 'tourne_vers', 'detourne_regard', 'regarde_bas', 'leve_yeux_ciel', 'cligne', 'clin_oeil', 'ferme_yeux'}
 FX = {'coeurs', 'etoiles', 'eclair', 'fumee_tete', 'goutte', 'sueur', 'point_exclamation', 'point_interrogation', 'rougit', 'idee', 'ampoule'}
@@ -39,7 +39,9 @@ def tagwords(t):
     return out
 POS = {'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'content', 'fier', 'fiere', 'amoureux', 'reveur', 'taquin', 'joie', 'heureux'}
 NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'degout', 'choc', 'mepris'}
-def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True):
+OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
+       'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
+def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=()):
     best, bs = None, -1e9
     w = tagwords(want)
     for k, p in POSES.items():
@@ -56,8 +58,9 @@ def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
             elif posture in ('assis', 'banc') and p['posture'] in ('assis', 'banc'): s += 2
             elif p['posture'] in ('assis', 'banc', 'dos', 'tombe', 'court', 'marche') and posture != p['posture']: s -= 4
         elif p['posture'] in ('dos', 'tombe', 'court', 'marche') and p['posture'] not in w and not (tags & w & {'tombe', 'glisse', 'court', 'dos', 'marche'}): s -= 5
-        OBJ = {'telephone', 'brochettes', 'boite', 'cartes', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse'}
-        s -= 2.5 * len((tags & OBJ) - w)
+        props = set(p.get('props', [])) | (tags & OBJ)
+        unasked = props - w - set(extra_ok)
+        s -= 7 * len(unasked)   # un objet (brochette, téléphone…) ou des larmes jamais montrés sans raison
         # pas de visage à contre-sens : un sourire demandé ne doit jamais donner une pose triste, et l'inverse
         if w & POS and tags & NEG and not (w & NEG): s -= 6
         if w & NEG and tags & POS and not (w & POS): s -= 4
@@ -87,9 +90,11 @@ class Stage:
             if w['who'] not in self.order: self.order.append(w['who'])
             if w.get('pose'):
                 self.posture[w['who']] = posture_of(w['pose'])
-                pw = norm(w['pose']); self.props[w['who']] = [x for x in ('machine', 'grill', 'telephone', 'brochettes') if x in pw]
+                pw = norm(w['pose']); self.props[w['who']] = [x for x in sorted(OBJ | {'machine'}) if x in pw]
     def add(self, who):
         if who and who not in self.order and who in HEIGHT: self.order.append(who)
+    def post(self, who):
+        p = self.posture.get(who) or 'debout'; return 'debout' if p in ('grill', 'marche') else p
     def pan(self, who):
         if who not in self.order or len(self.order) < 2: return 0.0
         return round((self.order.index(who) / (len(self.order) - 1)) * 2 - 1, 2)
@@ -147,24 +152,29 @@ def face_dir(key):
     y = POSES.get(key, {}).get('yaw')
     if y is None or abs(y) < 9: return 0
     return -1 if y > 0 else 1
-def yaw_variant(key, d):
-    """Pose de face dont on tourne la tête vers d (créée par LivePortrait avant le rendu)."""
-    v = f'{key}@{"+" if d > 0 else "-"}'
-    if v not in POSES: POSES[v] = dict(POSES[key], yaw=-18.0 * d, variant_of=key, turn=d)
+def yaw_variant(key, turn, eyes=0):
+    """Variante LivePortrait : tête tournée (turn) et/ou yeux dirigés (eyes) vers la droite (+1) ou la gauche (-1) de l'image d'origine."""
+    sg = lambda v: '+' if v > 0 else ('-' if v < 0 else '0')
+    v = f'{key}@{sg(turn)}{sg(eyes)}'
+    if v not in POSES: POSES[v] = dict(POSES[key], yaw=(-18.0 * turn) if turn else POSES[key].get('yaw', 0), variant_of=key, turn=turn, eyes=eyes)
     return v
+def parse_variant(v):
+    base, t = v.split('@'); m = {'+': 1, '-': -1, '0': 0}
+    return base, m[t[0]], m[t[1]] if len(t) > 1 else 0
 def orient(a, d):
-    """Tourne l'acteur pour qu'il regarde dans la direction d (retourne l'image ou tourne la tête)."""
+    """Tourne l'acteur pour qu'il regarde dans la direction d : image retournée si besoin, tête tournée si elle est de face,
+    et toujours les yeux dirigés vers l'autre (pas vers le spectateur)."""
     if not d or a.get('back'): return a
     if a.get('walk'):   # après la marche, la pose d'arrêt regarde aussi le bon côté
         sk = a.get('stop_key')
         if sk:
-            f = face_dir(sk); a['stop_flip'] = f == -d
-            if f == 0: a['stop_key'] = yaw_variant(sk, d)
+            sk = sk.split('@')[0]; f = face_dir(sk); fl = f == -d
+            a['stop_flip'] = fl; a['stop_key'] = yaw_variant(sk, d if f == 0 else 0, -d if fl else d)
         return a
-    a['look_dir'] = d; f = face_dir(a['key'])
-    if f == d: flip = False
-    elif f == -d: flip = True
-    else: a['key'] = yaw_variant(a['key'], d); flip = False
+    base = a['key'].split('@')[0]
+    if POSES[base]['char'] == 'OBJET' or '+' in POSES[base]['char'] or POSES[base]['posture'] == 'dos': return a
+    a['look_dir'] = d; f = face_dir(base); flip = f == -d
+    a['key'] = yaw_variant(base, d if f == 0 else 0, -d if flip else d)
     if 'face_x' in a:
         b = close_actor(a['who'], a['key'], x=a['face_x'], tight=a.get('tight', False), scale=a.get('scale', 1.0), flip=flip)
         a['x'] = b['x']
@@ -180,9 +190,17 @@ def orient_shot(sh):
             orient(a, 1 if tgt['x'] > a['x'] else -1)
     elif len(acts) == 1 and acts[0].get('look_dir'):
         orient(acts[0], acts[0]['look_dir'])
+def over_shoulder(who, side, stage):
+    """Celui qui écoute, vu de dos ou de trois-quarts, au premier plan sur le bord de l'image (caméra derrière lui)."""
+    back = [k for k, p in POSES.items() if p['char'] == who and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags']) and not p.get('props')]
+    if back: k = back[0]; d = 0
+    else: k = pick(who, stage.props.get(who, []), 'buste', stage.post(who), need_mouth=False); d = -side
+    a = close_actor(who, k, x=540 + (600 if back else 680) * side, scale=1.4); a['by'] = a['by'] + 420; a['fg'] = True; a['speaker'] = False
+    if not back: a['silhouette'] = True   # pas de vue de dos : on montre une silhouette sombre (dos), jamais le visage
+    return a
 def build(meta, events, log=print):
     shots = []; stage = Stage(); scene = {'decor': 'KIOSQUE', 'moment': 'jour', 'ambiance': ''}; plan = None
-    moods = {}; music = 'joyeuse'; ending = False; pending_sfx = []; first_in_scene = True; last_shot = None
+    moods = {}; music = 'joyeuse'; ending = False; pending_sfx = []; first_in_scene = True; last_shot = None; last_speaker = None; ots_count = 0
     def add(s):
         nonlocal last_shot
         s.setdefault('decor', scene['decor']); s.setdefault('moment', scene['moment']); s.setdefault('sfx', []); s.setdefault('fx', [])
@@ -194,7 +212,7 @@ def build(meta, events, log=print):
     while i < len(events):
         e = events[i]; t = e['type']
         if t == 'scene':
-            scene = dict(e); stage = Stage(); plan = None; first_in_scene = True; moods = {}
+            scene = dict(e); stage = Stage(); plan = None; first_in_scene = True; moods = {}; last_speaker = None
             # personnages de la scène : ceux qui parlent avant le prochain décor
             j = i + 1
             while j < len(events) and events[j]['type'] != 'scene':
@@ -213,7 +231,7 @@ def build(meta, events, log=print):
                     add({'kind': 'wide', 'dur': e['dur'], 'actors': wide_layout(stage, [w['who'] for w in e['who']] or stage.order, moods), 'fx': fx}); plan = None
                 else:
                     c = e['who'][0]['who']; want = [x[1] for x in fx]
-                    k = pick(c, want, 'buste' if e['kind'] == 'tresgros' else None, None)
+                    k = pick(c, want + stage.props.get(c, []), 'buste' if e['kind'] == 'tresgros' else None, stage.post(c))
                     add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor(c, k, tight=e['kind'] == 'tresgros')], 'fx': fx})
                     plan = None
             elif e['kind'] == 'large':
@@ -257,8 +275,18 @@ def build(meta, events, log=print):
                     k = pick(who, emo + stage.props.get(who, []), 'buste', post)
                     side = stage.side(who, e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper()))
                     x = 540 - 110 * side if side else 540
-                    a = close_actor(who, k, x=x, tight=(mode == 'tresgros')); a['speaker'] = True; a['look_dir'] = side
-                    sh['actors'] = [a]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who)
+                    tgt = e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper())
+                    if not (tgt in stage.order and tgt != who): tgt = last_speaker if last_speaker in stage.order and last_speaker != who else None
+                    if tgt and not side: side = stage.side(who, tgt)
+                    ots = (mode == 'gros' and tgt and side and not e.get('thought') and stage.posture.get(tgt) != 'marche')
+                    if ots: ots_count += 1; ots = ots_count % 3 != 0   # champ / contre-champ, avec de temps en temps un plan seul
+                    if ots:
+                        a = close_actor(who, k, x=540 - 170 * side); a['speaker'] = True; a['look_dir'] = side
+                        sh['actors'] = [a, over_shoulder(tgt, side, stage)]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who); sh['ots'] = tgt
+                    else:
+                        x = 540 - 110 * side if side else 540
+                        a = close_actor(who, k, x=x, tight=(mode == 'tresgros')); a['speaker'] = True; a['look_dir'] = side
+                        sh['actors'] = [a]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who)
                     # changements de pose sur les balises d'émotion
                     sw = []
                     for tt, tg in e.get('tag_times', []):
@@ -274,18 +302,18 @@ def build(meta, events, log=print):
                     tw = word_time(e, r.get('word')); sh.setdefault('sfx', []).append((lead + (tw if tw is not None else e.get('dur', 1)), sfx_file(r['name'])))
                 else:
                     tw = word_time(e, r.get('word'))
-                    if tw is not None and sh['kind'] == 'line' and r['who'] != who: cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who'])})
+                    if tw is not None and sh['kind'] == 'line' and r['who'] != who: cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], [])})
                     elif r['who'] != who: sh.setdefault('after', []).append(r)
             sh['cuts'] = cut
-            add(sh)
+            add(sh); last_speaker = who
             for r in sh.get('after', []):
-                k = pick(r['who'], r['actions'], 'buste', None, need_mouth=False)
+                k = pick(r['who'], r['actions'] + stage.props.get(r['who'], []), 'buste', stage.post(r['who']), need_mouth=False)
                 if k:
                     a = close_actor(r['who'], k, x=540 - 110 * stage.side(r['who'], who)); a['look_dir'] = stage.side(r['who'], who)
                     add({'kind': 'close', 'dur': 1.4, 'actors': [a], 'fx': [(0.15, x) for x in r['actions']], 'pan': stage.pan(r['who'])})
             i = j; continue
         elif t == 'reaction':
-            k = pick(e['who'], e['actions'], 'buste', None, need_mouth=False)
+            k = pick(e['who'], e['actions'] + stage.props.get(e['who'], []), 'buste', stage.post(e['who']), need_mouth=False)
             if k: add({'kind': 'close', 'dur': 1.4, 'actors': [close_actor(e['who'], k)], 'fx': [(0.15, a) for a in e['actions']]})
         elif t == 'sfx':
             pending_sfx.append((0.1, sfx_file(e['name'])))

@@ -71,7 +71,7 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
     key = a['key']; h = a['h']; flip = a.get('flip', False)
     for kk in (key, a.get('stop_key')):
         if kk and '@' in kk and kk not in POSES:
-            import director; director.yaw_variant(kk.split('@')[0], 1 if kk.endswith('+') else -1)
+            import director; director.yaw_variant(*director.parse_variant(kk))
     opened = a.get('speaker') and speaking_t is not None and POSES[key]['mouth'] and mouth_open(line, speaking_t)
     breath = 1 + 0.006 * math.sin(lt * 2 * math.pi / 3.4 + a['x'] * 0.01)
     dx, dy, sc, rot = body_motion(tags, lt) if a.get('speaker') else (0, 0, 1, 0)
@@ -84,7 +84,16 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
         else:
             key = a.get('stop_key') or key; flip = a.get('stop_flip', False)
             opened = a.get('speaker') and speaking_t is not None and POSES[key]['mouth'] and mouth_open(line, speaking_t)
+    if a.get('fg'): opened = False
     im = pose_img(key, int(h * sc * breath / 4) * 4, bool(opened), flip)
+    if a.get('fg'):   # épaule de celui qui écoute, au premier plan (caméra derrière lui) : floue et un peu sombre
+        al = im.getchannel('A')
+        if a.get('silhouette'):
+            top = np.array(im.convert('RGB').crop((0, 0, im.width, max(1, im.height // 8))))[np.array(al.crop((0, 0, im.width, max(1, im.height // 8)))) > 128]
+            col = tuple(int(v * 0.45) for v in (top.mean(0) if len(top) else (40, 30, 25)))
+            rgb = Image.new('RGB', im.size, col)
+        else: rgb = im.convert('RGB').filter(ImageFilter.GaussianBlur(9)).point(lambda v: int(v * 0.72))
+        im = rgb.convert('RGBA'); im.putalpha(al.filter(ImageFilter.GaussianBlur(10 if a.get('silhouette') else 6)))
     cx = a['x'] + dx + walk_dx; by = a['by'] + dy
     if rot: im = im.rotate(rot, expand=True, resample=Image.BICUBIC, center=(im.width / 2, im.height))
     paste(fr, im, cx, by - im.height / 2, 1.0, 1.0, sh=not a.get('back'))
@@ -155,7 +164,7 @@ def draw(s, lt):
     for c in s.get('cuts', []):
         if c['t'] <= lt < c['t'] + 1.3:
             from director import pick, close_actor
-            kk = pick(c['who'], c['actions'], 'buste', None, need_mouth=False)
+            kk = pick(c['who'], c['actions'] + c.get('props', []), 'buste', c.get('posture'), need_mouth=False)
             if kk:
                 from director import orient
                 fr = background(s, lt, blur=5, zoom=0.4, pan=c.get('pan', 0)); a = orient(close_actor(c['who'], kk, x=540 - 110 * c.get('look_dir', 0)), c.get('look_dir', 0)); head = draw_actor(fr, a, lt)
@@ -235,13 +244,15 @@ def prepare_turns(shots, log=print):
     if not os.path.exists(lp): log('têtes tournées : outil LivePortrait absent, poses d\'origine utilisées'); return
     tmp = f'{out}/_tmp'; os.makedirs(tmp, exist_ok=True); jobs = []; boxes = {}
     for k in todo:
-        base, d = k.split('@')[0], (1 if k.endswith('+') else -1); p = POSES[base]
+        from director import parse_variant
+        base, turn, eyes = parse_variant(k); p = POSES[base]
         im = Image.open(f'{A}/poses/{base}.webp').convert('RGBA'); w, h = im.size
         frac = {'pied': 0.42, 'buste': 0.75, 'visage': 1.0}.get(p['frame'], 0.5); box = (0, 0, w, int(h * frac)); boxes[k] = box
         b = Image.new('RGBA', box[2:], (200, 200, 200, 255)); b.alpha_composite(im.crop(box)); b.convert('RGB').save(f'{tmp}/{base}.png')
-        y = -18 * d
-        jobs.append(f'{tmp}/{k}.png|{tmp}/{base}.png|x|x|0|{y}|0|0|0|0|0|0|0|0|0')
-        if p['mouth']: jobs.append(f'{tmp}/{k}_o.png|{tmp}/{base}.png|x|0.2|0|{y}|0|-0.2|0|0|0|0|0|0|0')
+        y = 18 * turn; ex = -16 * eyes   # signes vérifiés à l'œil sur LivePortrait
+        jobs.append(f'{tmp}/{k}.png|{tmp}/{base}.png|x|x|0|{y}|0|0|0|0|0|0|0|{ex}|0')
+        sm = 0 if set(p['tags']) & {'sourire', 'rire', 'content', 'grand_sourire'} else -0.2
+        if p['mouth']: jobs.append(f'{tmp}/{k}_o.png|{tmp}/{base}.png|x|0.2|0|{y}|0|{sm}|0|0|0|0|0|{ex}|0')
     open(f'{tmp}/jobs.txt', 'w').write('\n'.join(jobs) + '\n')
     log(f'têtes tournées : {len(todo)} poses à préparer')
     subprocess.run(['python3', lp, f'{tmp}/jobs.txt'], cwd=os.path.dirname(lp), capture_output=True)
