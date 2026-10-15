@@ -20,16 +20,24 @@ def decor(name, moment, blur):
     im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS); im = gfx.tint(im, moment)
     if blur: im = im.filter(ImageFilter.GaussianBlur(blur))
     return im
-def background(s, lt, blur=0, zoom=0.0):
+def background(s, lt, blur=0, zoom=0.0, pan=0.0):
+    """pan (-1 à 1) : en gros plan, la caméra regarde la partie du décor où se trouve le personnage."""
     im = decor(s['decor'], s['moment'], blur); x = int((im.width - W) / 2 + 16 * math.sin(lt * 0.25)); y = int((im.height - H) * 0.6)
     fr = im.crop((x, y, x + W, y + H))
     if zoom:
-        fr = fr.resize((int(W * (1 + zoom)), int(H * (1 + zoom))), Image.BILINEAR); fr = fr.crop((int(W * zoom / 2), int(H * zoom / 2), int(W * zoom / 2) + W, int(H * zoom / 2) + H))
+        zw, zh = int(W * (1 + zoom)), int(H * (1 + zoom)); fr = fr.resize((zw, zh), Image.BILINEAR)
+        ox = int((zw - W) / 2 * (1 + max(-1, min(1, pan)))); oy = int((zh - H) * 0.45)
+        fr = fr.crop((ox, oy, ox + W, oy + H))
     return fr
 @lru_cache(96)
 def pose_img(key, h, opened=False, flip=False):
-    p = f'{A}/poses/{key}{"_o" if opened else ""}.webp'
-    if not os.path.exists(p): p = f'{A}/poses/{key}.webp'
+    if '@' in key:   # tête tournée (variante LivePortrait), sinon pose d'origine
+        p = f'{A}/poses/tourne/{key}{"_o" if opened else ""}.webp'
+        if not os.path.exists(p): p = f'{A}/poses/tourne/{key}.webp'
+        if not os.path.exists(p): key = key.split('@')[0]
+    if '@' not in key:
+        p = f'{A}/poses/{key}{"_o" if opened else ""}.webp'
+        if not os.path.exists(p): p = f'{A}/poses/{key}.webp'
     im = Image.open(p).convert('RGBA'); im = im.resize((max(1, int(im.width * h / im.height)), h), Image.LANCZOS)
     return im.transpose(Image.FLIP_LEFT_RIGHT) if flip else im
 @lru_cache(64)
@@ -61,6 +69,9 @@ def body_motion(tags, lt):
     return dx, dy, sc, rot
 def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
     key = a['key']; h = a['h']; flip = a.get('flip', False)
+    for kk in (key, a.get('stop_key')):
+        if kk and '@' in kk and kk not in POSES:
+            import director; director.yaw_variant(kk.split('@')[0], 1 if kk.endswith('+') else -1)
     opened = a.get('speaker') and speaking_t is not None and POSES[key]['mouth'] and mouth_open(line, speaking_t)
     breath = 1 + 0.006 * math.sin(lt * 2 * math.pi / 3.4 + a['x'] * 0.01)
     dx, dy, sc, rot = body_motion(tags, lt) if a.get('speaker') else (0, 0, 1, 0)
@@ -71,7 +82,7 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
             if cyc: key = cyc[int(lt * 3.4) % 4]
             opened = False; walk_dx = -a.get('vx', 0) * (wt - lt) if wt < 1e8 else a.get('vx', 0) * lt
         else:
-            key = a.get('stop_key') or key; flip = False
+            key = a.get('stop_key') or key; flip = a.get('stop_flip', False)
             opened = a.get('speaker') and speaking_t is not None and POSES[key]['mouth'] and mouth_open(line, speaking_t)
     im = pose_img(key, int(h * sc * breath / 4) * 4, bool(opened), flip)
     cx = a['x'] + dx + walk_dx; by = a['by'] + dy
@@ -146,18 +157,21 @@ def draw(s, lt):
             from director import pick, close_actor
             kk = pick(c['who'], c['actions'], 'buste', None, need_mouth=False)
             if kk:
-                fr = background(s, lt, blur=3, zoom=0.06); a = close_actor(c['who'], kk); head = draw_actor(fr, a, lt)
+                from director import orient
+                fr = background(s, lt, blur=5, zoom=0.4, pan=c.get('pan', 0)); a = orient(close_actor(c['who'], kk, x=540 - 110 * c.get('look_dir', 0)), c.get('look_dir', 0)); head = draw_actor(fr, a, lt)
                 fx_draw(fr, [(c['t'] + 0.05, x) for x in c['actions']], lt, head)
                 if line: gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.3, line.get('thought'))
                 return gfx.shake(fr, lt, c['t'], 0.4, 10) if 'choc' in c['actions'] or 'sursaut' in c['actions'] else fr
-    if mode in ('close', 'two'): fr = background(s, lt, blur=3, zoom=0.06 + 0.03 * prog(lt, 0, d))
+    if mode in ('close', 'two') or (k == 'close' and len(acts) == 1): fr = background(s, lt, blur=5, zoom=0.4 + 0.03 * prog(lt, 0, d), pan=s.get('pan', 0))
     else: fr = background(s, lt, zoom=0.1)
     head = (540, 400)
     for a in acts:
         a2 = a
         if a.get('speaker') and s.get('switch'):
             for tt, k2 in s['switch']:
-                if lt >= tt: a2 = dict(a, key=k2); a2.update({kk: vv for kk, vv in close_like(a, k2).items()})
+                if lt >= tt:
+                    from director import orient
+                    a2 = dict(a, key=k2, flip=False); a2.update({kk: vv for kk, vv in close_like(a, k2).items()}); a2 = orient(a2, a.get('look_dir', 0))
         hh = draw_actor(fr, a2, lt, line, s.get('tagfx', []), st)
         if a.get('speaker') or len(acts) == 1: head = hh
     fx_draw(fr, s.get('fx', []) + [(t, g) for t, g in s.get('tagfx', [])], lt, head)
@@ -204,3 +218,39 @@ def contact(shots, path, cols=8):
     for i, s, fr in ims:
         x, y = (i % cols) * 216, (i // cols) * 410; c.paste(fr, (x, y)); d.text((x + 4, y + 390), f"{i} {s['kind']} {s.get('who', '')} {s['dur']:.1f}s", fill='black')
     c.save(path); return path
+
+# ---------------- têtes tournées (LivePortrait) ----------------
+def prepare_turns(shots, log=print):
+    """Crée les variantes « tête tournée » dont la mise en scène a besoin (une seule fois, gardées dans assets/poses/tourne)."""
+    need = set()
+    for s in shots:
+        for a in s.get('actors', []):
+            for k in (a.get('key'), a.get('stop_key')):
+                if k and '@' in k: need.add(k)
+        for sw in s.get('switch', []): pass
+    out = f'{A}/poses/tourne'; os.makedirs(out, exist_ok=True)
+    todo = [k for k in sorted(need) if not os.path.exists(f'{out}/{k}.webp')]
+    lp = os.environ.get('STUDIO_LIVEPORTRAIT', '/home/claude/lp/lpgen.py')
+    if not todo: return
+    if not os.path.exists(lp): log('têtes tournées : outil LivePortrait absent, poses d\'origine utilisées'); return
+    tmp = f'{out}/_tmp'; os.makedirs(tmp, exist_ok=True); jobs = []; boxes = {}
+    for k in todo:
+        base, d = k.split('@')[0], (1 if k.endswith('+') else -1); p = POSES[base]
+        im = Image.open(f'{A}/poses/{base}.webp').convert('RGBA'); w, h = im.size
+        frac = {'pied': 0.42, 'buste': 0.75, 'visage': 1.0}.get(p['frame'], 0.5); box = (0, 0, w, int(h * frac)); boxes[k] = box
+        b = Image.new('RGBA', box[2:], (200, 200, 200, 255)); b.alpha_composite(im.crop(box)); b.convert('RGB').save(f'{tmp}/{base}.png')
+        y = -18 * d
+        jobs.append(f'{tmp}/{k}.png|{tmp}/{base}.png|x|x|0|{y}|0|0|0|0|0|0|0|0|0')
+        if p['mouth']: jobs.append(f'{tmp}/{k}_o.png|{tmp}/{base}.png|x|0.2|0|{y}|0|-0.2|0|0|0|0|0|0|0')
+    open(f'{tmp}/jobs.txt', 'w').write('\n'.join(jobs) + '\n')
+    log(f'têtes tournées : {len(todo)} poses à préparer')
+    subprocess.run(['python3', lp, f'{tmp}/jobs.txt'], cwd=os.path.dirname(lp), capture_output=True)
+    n = 0
+    for k, box in boxes.items():
+        base = Image.open(f'{A}/poses/{k.split("@")[0]}.webp').convert('RGBA')
+        for suf in ('', '_o'):
+            f = f'{tmp}/{k}{suf}.png'
+            if not os.path.exists(f): continue
+            g = Image.open(f).convert('RGBA').resize(box[2:]); g.putalpha(base.crop(box).getchannel('A'))
+            im = base.copy(); im.paste(g, box[:2]); im.save(f'{out}/{k}{suf}.webp', 'WEBP', quality=88); n += suf == ''
+    log(f'têtes tournées : {n} prêtes')

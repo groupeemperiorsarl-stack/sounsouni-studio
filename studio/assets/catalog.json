@@ -14,7 +14,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.509
+   "head_x": 0.509,
+   "yaw": -1.7
   },
   "bak_explique": {
    "char": "BAKARY",
@@ -31,7 +32,8 @@
     756,
     1600
    ],
-   "head_x": 0.573
+   "head_x": 0.573,
+   "yaw": -7.6
   },
   "bak_tel_sourire": {
    "char": "BAKARY",
@@ -48,7 +50,8 @@
     669,
     877
    ],
-   "head_x": 0.539
+   "head_x": 0.539,
+   "yaw": -30.2
   },
   "bak_assis_tel": {
    "char": "BAKARY",
@@ -63,7 +66,8 @@
     1205,
     1600
    ],
-   "head_x": 0.441
+   "head_x": 0.441,
+   "yaw": 24.6
   },
   "bak_assis_tel_inquiet": {
    "char": "BAKARY",
@@ -79,7 +83,8 @@
     914,
     1600
    ],
-   "head_x": 0.505
+   "head_x": 0.505,
+   "yaw": -24.4
   },
   "bak_dos": {
    "char": "BAKARY",
@@ -111,7 +116,8 @@
     1003,
     1497
    ],
-   "head_x": 0.587
+   "head_x": 0.587,
+   "yaw": -22.8
   },
   "bak_bouteilles": {
    "char": "BAKARY",
@@ -126,7 +132,8 @@
     636,
     1600
    ],
-   "head_x": 0.439
+   "head_x": 0.439,
+   "yaw": -11.2
   },
   "bak_billet": {
    "char": "BAKARY",
@@ -142,7 +149,8 @@
     1264,
     1425
    ],
-   "head_x": 0.404
+   "head_x": 0.404,
+   "yaw": -14.7
   },
   "bak_lit": {
    "char": "BAKARY",
@@ -159,7 +167,8 @@
     1065,
     1600
    ],
-   "head_x": 0.508
+   "head_x": 0.508,
+   "yaw": -32.9
   },
   "bak_mains_levees": {
    "char": "BAKARY",
@@ -176,7 +185,8 @@
     1171,
     1551
    ],
-   "head_x": 0.495
+   "head_x": 0.495,
+   "yaw": -23.4
   },
   "bak_joue": {
    "char": "BAKARY",
@@ -193,7 +203,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.452
+   "head_x": 0.452,
+   "yaw": -13.3
   },
   "bak_plateau": {
    "char": "BAKARY",
@@ -210,7 +221,8 @@
     981,
     1600
    ],
-   "head_x": 0.471
+   "head_x": 0.471,
+   "yaw": -15.3
   },
   "bak_tel_montre": {
    "char": "BAKARY",
@@ -225,7 +237,8 @@
     594,
     1600
    ],
-   "head_x": 0.484
+   "head_x": 0.484,
+   "yaw": -4.3
   },
   "bak_verse": {
    "char": "BAKARY",
@@ -241,7 +254,8 @@
     852,
     1600
    ],
-   "head_x": 0.416
+   "head_x": 0.416,
+   "yaw": -11.6
   },
   "bak_verse2": {
    "char": "BAKARY",
@@ -257,7 +271,8 @@
     985,
     1600
    ],
-   "head_x": 0.435
+   "head_x": 0.435,
+   "yaw": -12.7
   },
   "bak_pointe": {
    "char": "BAKARY",
@@ -272,7 +287,8 @@
     798,
     1485
    ],
-   "head_x": 0.328
+   "head_x": 0.328,
+   "yaw": -16.0
   },
   "bak_main_tendue": {
    "char": "BAKARY",
@@ -289,7 +305,8 @@
     967,
     1547
    ],
-   "head_x": 0.412
+   "head_x": 0.412,
+   "yaw": -17.1
   },
   "bak_marche": {
    "char": "BAKARY",
@@ -305,7 +322,8 @@
     940,
     1600
    ],
-   "head_x": 0.562
+   "head_x": 0.562,
+   "yaw": -24.8
   },
   "bak_brochettes": {
    "char": "BAKARY",
@@ -320,7 +338,8 @@
     814,
     1600
    ],
-   "head_x": 0.452
+   "head_x": 0.452,
+   "yaw": -14.0
   },
   "bak_assis_idee": {
    "char": "BAKARY",
@@ -338,7 +357,8 @@
     679,
     1175
    ],
-   "head_x": 0.546
+   "head_x": 0.546,
+   "yaw": -18.5
   },
   "bak_supplie": {
    "char": "BAKARY",
@@ -357,7 +377,8 @@
     607,
     1508
    ],
-   "head_x": 0.471
+   "head_x": 0.471,
+   "yaw": -23.2
   },
   "bak_rire": {
    "char": "BAKARY",
@@ -373,7 +394,8 @@
     1520
    ],
    "mouth_auto": true,
-   "head_x": 0.18
+   "head_x": 0.18,
+   "yaw": -22.4
   },
   "bak_panique": {
    "char": "BAKARY",
@@ -391,7 +413,8 @@
     767,
     1524
    ],
-   "head_x": 0.493
+   "head_x": 0.493,
+   "yaw": -1.7
   },
   "bak_assis": {
    "char": "BAKARY",
@@ -409,7 +432,8 @@
     774,
     1443
    ],
-   "head_x": 0.354
+   "head_x": 0.354,
+   "yaw": -25.2
   },
   "bak_verse_assis": {
    "char": "BAKARY",
@@ -425,7 +449,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.443
+   "head_x": 0.443,
+   "yaw": -12.7
   },
   "bak_mains_bouche": {
    "char": "BAKARY",
@@ -442,7 +467,8 @@
     1548
    ],
    "mouth_auto": true,
-   "head_x": 0.522
+   "head_x": 0.522,
+   "yaw": -2.9
   },
   "bak_boite": {
    "char": "BAKARY",
@@ -460,7 +486,8 @@
     1165
    ],
    "mouth_auto": true,
-   "head_x": 0.501
+   "head_x": 0.501,
+   "yaw": -0.2
   },
   "awa_marche_sac": {
    "char": "AWA",
@@ -475,7 +502,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.276
+   "head_x": 0.276,
+   "yaw": -55.0
   },
   "awa_dos_sac": {
    "char": "AWA",
@@ -503,7 +531,8 @@
     353,
     1600
    ],
-   "head_x": 0.521
+   "head_x": 0.521,
+   "yaw": -26.7
   },
   "awa_debout": {
    "char": "AWA",
@@ -519,7 +548,8 @@
     471,
     1600
    ],
-   "head_x": 0.504
+   "head_x": 0.504,
+   "yaw": 0.1
   },
   "awa_assise_chaise": {
    "char": "AWA",
@@ -535,7 +565,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.651
+   "head_x": 0.651,
+   "yaw": 24.3
   },
   "awa_tel2": {
    "char": "AWA",
@@ -550,7 +581,8 @@
     539,
     1600
    ],
-   "head_x": 0.358
+   "head_x": 0.358,
+   "yaw": -17.0
   },
   "awa_inquiete": {
    "char": "AWA",
@@ -568,7 +600,8 @@
     1019,
     1600
    ],
-   "head_x": 0.56
+   "head_x": 0.56,
+   "yaw": -24.4
   },
   "awa_main_bouche": {
    "char": "AWA",
@@ -585,7 +618,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.622
+   "head_x": 0.622,
+   "yaw": -19.4
   },
   "awa_pointe_colere": {
    "char": "AWA",
@@ -603,7 +637,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.432
+   "head_x": 0.432,
+   "yaw": -20.0
   },
   "awa_marche2": {
    "char": "AWA",
@@ -618,7 +653,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.744
+   "head_x": 0.744,
+   "yaw": -33.9
   },
   "awa_assise_triste": {
    "char": "AWA",
@@ -634,7 +670,8 @@
     1594
    ],
    "mouth_auto": true,
-   "head_x": 0.536
+   "head_x": 0.536,
+   "yaw": -14.3
   },
   "awa_assise_brochette": {
    "char": "AWA",
@@ -650,7 +687,8 @@
     1588
    ],
    "mouth_auto": true,
-   "head_x": 0.608
+   "head_x": 0.608,
+   "yaw": 3.5
   },
   "awa_brochettes": {
    "char": "AWA",
@@ -666,7 +704,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.433
+   "head_x": 0.433,
+   "yaw": -18.0
   },
   "awa_colere_main": {
    "char": "AWA",
@@ -683,7 +722,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.551
+   "head_x": 0.551,
+   "yaw": 2.4
   },
   "awa_pensive": {
    "char": "AWA",
@@ -700,7 +740,8 @@
     1600
    ],
    "mouth_auto": true,
-   "head_x": 0.316
+   "head_x": 0.316,
+   "yaw": -18.9
   },
   "awa_doigt_bouche": {
    "char": "AWA",
@@ -715,7 +756,8 @@
     538,
     1600
    ],
-   "head_x": 0.53
+   "head_x": 0.53,
+   "yaw": -22.7
   },
   "awa_degout": {
    "char": "AWA",
@@ -730,7 +772,8 @@
     1096,
     1523
    ],
-   "head_x": 0.407
+   "head_x": 0.407,
+   "yaw": -23.6
   },
   "awa_mange_rire": {
    "char": "AWA",
@@ -746,7 +789,8 @@
     944,
     1600
    ],
-   "head_x": 0.331
+   "head_x": 0.331,
+   "yaw": -24.7
   },
   "awa_choc": {
    "char": "AWA",
@@ -764,7 +808,8 @@
     1597
    ],
    "mouth_auto": true,
-   "head_x": 0.491
+   "head_x": 0.491,
+   "yaw": -1.8
   },
   "awa_bras_croises": {
    "char": "AWA",
@@ -785,7 +830,8 @@
     827,
     1575
    ],
-   "head_x": 0.289
+   "head_x": 0.289,
+   "yaw": -18.2
   },
   "awa_porte": {
    "char": "AWA",
@@ -800,7 +846,8 @@
     804,
     1600
    ],
-   "head_x": 0.499
+   "head_x": 0.499,
+   "yaw": -17.8
   },
   "awa_pointe": {
    "char": "AWA",
@@ -817,7 +864,8 @@
     1038,
     1565
    ],
-   "head_x": 0.564
+   "head_x": 0.564,
+   "yaw": 2.1
   },
   "awa_dos": {
    "char": "AWA",
@@ -846,7 +894,8 @@
     1590
    ],
    "mouth_auto": true,
-   "head_x": 0.369
+   "head_x": 0.369,
+   "yaw": -61.9
   },
   "awa_pas1": {
    "char": "AWA",
@@ -860,7 +909,8 @@
     337,
     1086
    ],
-   "head_x": 0.444
+   "head_x": 0.444,
+   "yaw": -24.6
   },
   "awa_pas2": {
    "char": "AWA",
@@ -874,7 +924,8 @@
     296,
     1085
    ],
-   "head_x": 0.383
+   "head_x": 0.383,
+   "yaw": -24.8
   },
   "awa_pas3": {
    "char": "AWA",
@@ -888,7 +939,8 @@
     236,
     1099
    ],
-   "head_x": 0.419
+   "head_x": 0.419,
+   "yaw": -25.5
   },
   "awa_dos_pas1": {
    "char": "AWA",
@@ -947,7 +999,8 @@
     1135
    ],
    "mouth_auto": true,
-   "head_x": 0.533
+   "head_x": 0.533,
+   "yaw": -23.5
   },
   "awa_parapluie": {
    "char": "AWA",
@@ -976,7 +1029,8 @@
     836,
     1600
    ],
-   "head_x": 0.45
+   "head_x": 0.45,
+   "yaw": -6.8
   },
   "mod_joie": {
    "char": "MODIBO",
@@ -992,7 +1046,8 @@
     980,
     1600
    ],
-   "head_x": 0.501
+   "head_x": 0.501,
+   "yaw": -1.9
   },
   "mod_banc": {
    "char": "MODIBO",
@@ -1008,7 +1063,8 @@
     1428,
     1475
    ],
-   "head_x": 0.498
+   "head_x": 0.498,
+   "yaw": -21.2
   },
   "mod_banc2": {
    "char": "MODIBO",
@@ -1023,7 +1079,8 @@
     1428,
     1475
    ],
-   "head_x": 0.498
+   "head_x": 0.498,
+   "yaw": -21.2
   },
   "mod_doigt": {
    "char": "MODIBO",
@@ -1043,7 +1100,8 @@
     855,
     810
    ],
-   "head_x": 0.557
+   "head_x": 0.557,
+   "yaw": 8.6
   },
   "mod_bras_leves": {
    "char": "MODIBO",
@@ -1059,7 +1117,8 @@
     1526,
     786
    ],
-   "head_x": 0.536
+   "head_x": 0.536,
+   "yaw": -1.2
   },
   "mod_rire": {
    "char": "MODIBO",
@@ -1075,7 +1134,8 @@
     834,
     1228
    ],
-   "head_x": 0.586
+   "head_x": 0.586,
+   "yaw": -1.7
   },
   "mod_court": {
    "char": "MODIBO",
@@ -1090,7 +1150,8 @@
     978,
     908
    ],
-   "head_x": 0.52
+   "head_x": 0.52,
+   "yaw": -39.8
   },
   "mod_choc": {
    "char": "MODIBO",
@@ -1107,7 +1168,8 @@
     857,
     885
    ],
-   "head_x": 0.499
+   "head_x": 0.499,
+   "yaw": 0.6
   },
   "mod_repare": {
    "char": "MODIBO",
@@ -1123,7 +1185,8 @@
     846,
     809
    ],
-   "head_x": 0.593
+   "head_x": 0.593,
+   "yaw": -21.8
   },
   "dia_visage_triste": {
    "char": "DIASABI",
@@ -1138,7 +1201,8 @@
     1059,
     1600
    ],
-   "head_x": 0.485
+   "head_x": 0.485,
+   "yaw": -1.7
   },
   "dia_debout": {
    "char": "DIASABI",
@@ -1152,7 +1216,8 @@
     374,
     1600
    ],
-   "head_x": 0.502
+   "head_x": 0.502,
+   "yaw": 1.2
   },
   "dia_gene": {
    "char": "DIASABI",
@@ -1167,7 +1232,8 @@
     479,
     1600
    ],
-   "head_x": 0.535
+   "head_x": 0.535,
+   "yaw": -10.8
   },
   "dia_main_coeur": {
    "char": "DIASABI",
@@ -1183,7 +1249,8 @@
     357,
     1600
    ],
-   "head_x": 0.498
+   "head_x": 0.498,
+   "yaw": 1.1
   },
   "dia_brochette": {
    "char": "DIASABI",
@@ -1199,7 +1266,8 @@
     461,
     1600
    ],
-   "head_x": 0.272
+   "head_x": 0.272,
+   "yaw": 0.8
   },
   "dia_grill": {
    "char": "DIASABI",
@@ -1214,7 +1282,8 @@
     659,
     1600
    ],
-   "head_x": 0.505
+   "head_x": 0.505,
+   "yaw": 0.7
   },
   "dia_tombe": {
    "char": "DIASABI",
@@ -1243,7 +1312,8 @@
     1066,
     1600
    ],
-   "head_x": 0.5
+   "head_x": 0.5,
+   "yaw": 1.5
   },
   "dia_bras": {
    "char": "DIASABI",
@@ -1258,7 +1328,8 @@
     1452,
     1600
    ],
-   "head_x": 0.5
+   "head_x": 0.5,
+   "yaw": 1.5
   },
   "dia_brochettes": {
    "char": "DIASABI",
@@ -1273,7 +1344,8 @@
     979,
     1591
    ],
-   "head_x": 0.384
+   "head_x": 0.384,
+   "yaw": -6.0
   },
   "dia_tel": {
    "char": "DIASABI",
@@ -1288,7 +1360,8 @@
     764,
     1600
    ],
-   "head_x": 0.498
+   "head_x": 0.498,
+   "yaw": 1.6
   },
   "dia_court": {
    "char": "DIASABI",
@@ -1303,7 +1376,8 @@
     1282,
     1600
    ],
-   "head_x": 0.725
+   "head_x": 0.725,
+   "yaw": -26.8
   },
   "dia_neutre": {
    "char": "DIASABI",
@@ -1318,7 +1392,8 @@
     400,
     1600
    ],
-   "head_x": 0.497
+   "head_x": 0.497,
+   "yaw": 0.1
   },
   "dia_tel_tend": {
    "char": "DIASABI",
@@ -1333,7 +1408,8 @@
     1381,
     1568
    ],
-   "head_x": 0.73
+   "head_x": 0.73,
+   "yaw": 15.0
   },
   "dia_doigt": {
    "char": "DIASABI",
@@ -1350,7 +1426,8 @@
     479,
     1600
    ],
-   "head_x": 0.424
+   "head_x": 0.424,
+   "yaw": 1.4
   },
   "dia_doigt2": {
    "char": "DIASABI",
@@ -1364,7 +1441,8 @@
     484,
     1600
    ],
-   "head_x": 0.421
+   "head_x": 0.421,
+   "yaw": 2.3
   },
   "dia_fatigue": {
    "char": "DIASABI",
@@ -1381,7 +1459,8 @@
     523,
     1600
    ],
-   "head_x": 0.786
+   "head_x": 0.786,
+   "yaw": -19.5
   },
   "dia_salue": {
    "char": "DIASABI",
@@ -1397,7 +1476,8 @@
     474,
     1600
    ],
-   "head_x": 0.377
+   "head_x": 0.377,
+   "yaw": -22.8
   },
   "dia_mange": {
    "char": "DIASABI",
@@ -1413,7 +1493,8 @@
     430,
     1193
    ],
-   "head_x": 0.412
+   "head_x": 0.412,
+   "yaw": 4.7
   },
   "fat_mains": {
    "char": "FATIM",
@@ -1429,7 +1510,8 @@
     503,
     1588
    ],
-   "head_x": 0.455
+   "head_x": 0.455,
+   "yaw": -8.8
   },
   "fat_salue": {
    "char": "FATIM",
@@ -1446,7 +1528,8 @@
     768,
     1577
    ],
-   "head_x": 0.421
+   "head_x": 0.421,
+   "yaw": -19.1
   },
   "fat_cartes": {
    "char": "FATIM",
@@ -1462,7 +1545,8 @@
     845,
     1600
    ],
-   "head_x": 0.443
+   "head_x": 0.443,
+   "yaw": -11.1
   },
   "fat_explique": {
    "char": "FATIM",
@@ -1477,7 +1561,8 @@
     787,
     1600
    ],
-   "head_x": 0.406
+   "head_x": 0.406,
+   "yaw": -9.1
   },
   "fat_pensive": {
    "char": "FATIM",
@@ -1493,7 +1578,8 @@
     472,
     1600
    ],
-   "head_x": 0.504
+   "head_x": 0.504,
+   "yaw": -10.5
   },
   "mim_machine": {
    "char": "MIMI",
@@ -1508,7 +1594,8 @@
     1236,
     1539
    ],
-   "head_x": 0.81
+   "head_x": 0.81,
+   "yaw": 22.7
   },
   "mim_debout": {
    "char": "MIMI",
@@ -1524,7 +1611,8 @@
     505,
     1581
    ],
-   "head_x": 0.384
+   "head_x": 0.384,
+   "yaw": -13.8
   },
   "mim_mange": {
    "char": "MIMI",
@@ -1539,7 +1627,8 @@
     746,
     1590
    ],
-   "head_x": 0.265
+   "head_x": 0.265,
+   "yaw": -14.7
   },
   "mim_machine_tel": {
    "char": "MIMI",
@@ -1555,7 +1644,8 @@
     1237,
     1555
    ],
-   "head_x": 0.816
+   "head_x": 0.816,
+   "yaw": 29.0
   },
   "mim_machine_rit": {
    "char": "MIMI",
@@ -1571,7 +1661,8 @@
     1236,
     1551
    ],
-   "head_x": 0.806
+   "head_x": 0.806,
+   "yaw": 25.9
   },
   "mim_inquiete": {
    "char": "MIMI",
@@ -1587,7 +1678,8 @@
     520,
     1517
    ],
-   "head_x": 0.332
+   "head_x": 0.332,
+   "yaw": -26.0
   },
   "sey_livre": {
    "char": "SEYDOU",
@@ -1602,7 +1694,8 @@
     747,
     1598
    ],
-   "head_x": 0.306
+   "head_x": 0.306,
+   "yaw": -13.8
   },
   "kadi": {
    "char": "KADI",
@@ -1618,7 +1711,8 @@
     996,
     1599
    ],
-   "head_x": 0.492
+   "head_x": 0.492,
+   "yaw": -11.1
   },
   "kadi_severe": {
    "char": "KADI",
@@ -1634,7 +1728,8 @@
     1249,
     1600
    ],
-   "head_x": 0.364
+   "head_x": 0.364,
+   "yaw": 3.2
   },
   "kadi_banc_the": {
    "char": "KADI",
@@ -1651,7 +1746,8 @@
     1486,
     1600
    ],
-   "head_x": 0.403
+   "head_x": 0.403,
+   "yaw": -19.2
   },
   "kadi_banc": {
    "char": "KADI",
@@ -1666,7 +1762,8 @@
     1436,
     1600
    ],
-   "head_x": 0.601
+   "head_x": 0.601,
+   "yaw": 15.4
   },
   "mou_hover": {
    "char": "MOUSSA",
@@ -1681,7 +1778,8 @@
     704,
     1600
    ],
-   "head_x": 0.602
+   "head_x": 0.602,
+   "yaw": 24.7
   },
   "mou_salue": {
    "char": "MOUSSA",
@@ -1696,7 +1794,8 @@
     616,
     1600
    ],
-   "head_x": 0.489
+   "head_x": 0.489,
+   "yaw": -3.4
   },
   "kar_carte": {
    "char": "KARIM",
@@ -1711,7 +1810,8 @@
     584,
     1600
    ],
-   "head_x": 0.527
+   "head_x": 0.527,
+   "yaw": -1.1
   },
   "kar_tel": {
    "char": "KARIM",
@@ -1725,7 +1825,8 @@
     551,
     1600
    ],
-   "head_x": 0.504
+   "head_x": 0.504,
+   "yaw": -0.4
   },
   "kar_mains": {
    "char": "KARIM",
@@ -1740,7 +1841,8 @@
     728,
     1600
    ],
-   "head_x": 0.484
+   "head_x": 0.484,
+   "yaw": 1.7
   },
   "kar_marche": {
    "char": "KARIM",
@@ -1754,7 +1856,8 @@
     738,
     1600
    ],
-   "head_x": 0.461
+   "head_x": 0.461,
+   "yaw": -0.9
   },
   "kar_voiture": {
    "char": "KARIM",
@@ -1768,7 +1871,8 @@
     2521,
     1600
    ],
-   "head_x": 0.72
+   "head_x": 0.72,
+   "yaw": 9.6
   },
   "sal_marche": {
    "char": "SALI",
@@ -1783,7 +1887,8 @@
     571,
     1600
    ],
-   "head_x": 0.448
+   "head_x": 0.448,
+   "yaw": -23.6
   },
   "sal_hanches": {
    "char": "SALI",
@@ -1799,7 +1904,8 @@
     869,
     1181
    ],
-   "head_x": 0.424
+   "head_x": 0.424,
+   "yaw": -12.7
   },
   "sal_tel": {
    "char": "SALI",
@@ -1814,7 +1920,8 @@
     791,
     1130
    ],
-   "head_x": 0.596
+   "head_x": 0.596,
+   "yaw": 7.0
   },
   "sal_beignet": {
    "char": "SALI",
@@ -1829,7 +1936,8 @@
     639,
     1600
    ],
-   "head_x": 0.624
+   "head_x": 0.624,
+   "yaw": 16.9
   },
   "sal_dos": {
    "char": "SALI",
@@ -1858,7 +1966,8 @@
     864,
     1600
    ],
-   "head_x": 0.428
+   "head_x": 0.428,
+   "yaw": -3.0
   },
   "grp_catch": {
    "char": "BAKARY+AWA",
@@ -1951,7 +2060,8 @@
     1600
    ],
    "head_x": 0.502,
-   "auto": true
+   "auto": true,
+   "yaw": 0.5
   },
   "kar_sourire_auto": {
    "char": "KARIM",
@@ -1971,7 +2081,8 @@
     1600
    ],
    "head_x": 0.527,
-   "auto": true
+   "auto": true,
+   "yaw": -1.0
   },
   "mou_sourire_auto": {
    "char": "MOUSSA",
@@ -1991,7 +2102,8 @@
     1600
    ],
    "head_x": 0.602,
-   "auto": true
+   "auto": true,
+   "yaw": 24.0
   },
   "sey_sourire_auto": {
    "char": "SEYDOU",
@@ -2011,7 +2123,8 @@
     1598
    ],
    "head_x": 0.306,
-   "auto": true
+   "auto": true,
+   "yaw": -13.8
   },
   "awa_sourire_auto": {
    "char": "AWA",
@@ -2031,6 +2144,30 @@
     1575
    ],
    "head_x": 0.289,
+   "auto": true,
+   "yaw": -17.4
+  },
+  "mim_sourire_auto": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "sourire",
+    "content",
+    "grand_sourire",
+    "taquin",
+    "sourire_malin",
+    "rire_retenu",
+    "rire",
+    "machine"
+   ],
+   "mouth": true,
+   "size": [
+    1236,
+    1539
+   ],
+   "head_x": 0.81,
+   "yaw": 22.7,
    "auto": true
   }
  },

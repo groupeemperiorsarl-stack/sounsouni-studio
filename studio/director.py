@@ -63,6 +63,7 @@ def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         if w & NEG and tags & POS and not (w & POS): s -= 4
         if need_mouth and p['mouth']: s += 1.5
         if 'neutre' in tags and not w: s += 1
+        if not w and tags & NEG: s -= 3   # sans émotion demandée : jamais un visage fâché ou triste
         if s > bs: best, bs = k, s
     return best
 def group_pick(chars, want):
@@ -73,20 +74,25 @@ def group_pick(chars, want):
 def posture_of(pose_text):
     t = norm(pose_text or '')
     if 'banc' in t: return 'banc'
-    if 'assis' in t: return 'assis'
+    if 'assis' in t or 'machine' in t or 'chaise' in t or 'coud' in t: return 'assis'
     if 'marche' in t: return 'marche'
     if 'court' in t: return 'court'
     if 'dos' in t: return 'dos'
     if 'grill' in t: return 'grill'
     return 'debout'
 class Stage:
-    def __init__(self): self.order = []; self.posture = {}
+    def __init__(self): self.order = []; self.posture = {}; self.props = {}
     def set(self, who_list):
         for w in who_list:
             if w['who'] not in self.order: self.order.append(w['who'])
-            if w.get('pose'): self.posture[w['who']] = posture_of(w['pose'])
+            if w.get('pose'):
+                self.posture[w['who']] = posture_of(w['pose'])
+                pw = norm(w['pose']); self.props[w['who']] = [x for x in ('machine', 'grill', 'telephone', 'brochettes') if x in pw]
     def add(self, who):
         if who and who not in self.order and who in HEIGHT: self.order.append(who)
+    def pan(self, who):
+        if who not in self.order or len(self.order) < 2: return 0.0
+        return round((self.order.index(who) / (len(self.order) - 1)) * 2 - 1, 2)
     def side(self, who, target):
         if who in self.order and target in self.order: return 1 if self.order.index(target) > self.order.index(who) else -1
         return 0
@@ -96,11 +102,12 @@ def wide_layout(stage, chars, moods, speaker=None):
     front = chars[:4]; back = chars[4:]
     for c in front:
         post = stage.posture.get(c, 'debout'); pst = 'debout' if post == 'grill' else post
-        want = list(moods.get(c, [])) + (['grill'] if post == 'grill' else [])
+        want = list(moods.get(c, [])) + (['grill'] if post == 'grill' else []) + stage.props.get(c, [])
         walk = post == 'marche' and c == 'AWA'
         k = 'awa_pas1' if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker)) or pick(c, want, None, None))
         sit = POSES[k]['posture'] in ('assis', 'banc')
-        h = int((840 if sit else 1060) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else 880
+        base = {1: 1450, 2: 1320, 3: 1150}.get(len(front), 1060)   # moins il y a de monde, plus on est près
+        h = int(base * (0.8 if sit else 1.0) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else int(base * 0.83)
         w = POSES[k]['size'][0] * h / POSES[k]['size'][1]
         act = {'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': 'AWA' if walk else None}
         if walk:   # elle entre en marchant puis s'arrête à sa place, avec une pose qui parle
@@ -124,16 +131,55 @@ def wide_layout(stage, chars, moods, speaker=None):
     for i, c in enumerate(back):
         k = pick(c, moods.get(c, []), 'pied', stage.posture.get(c)); acts.insert(0, {'key': k, 'who': c, 'x': int(160 + i * 260), 'by': BACK, 'h': int(600 * HEIGHT.get(c, 1)), 'back': True})
     return acts
-def close_actor(char, key, x=540, tight=False, scale=1.0):
+def close_actor(char, key, x=540, tight=False, scale=1.0, flip=False):
     p = POSES[key]; fr = p['frame']
     if fr == 'pied': h = 3000 if tight else 2650; by = 330 + h
     elif fr == 'buste': h = 1950 if tight else 1700; by = 300 + h
     elif fr == 'groupe': h = 2300; by = 380 + h
     else: h = 1500; by = 250 + h
     if scale != 1.0: h = int(h * scale); by = int(330 + h) if fr == 'pied' else int(250 + h)
-    w = p['size'][0] * h / p['size'][1]; cx = x + (0.5 - p.get('head_x', 0.5)) * w   # le visage est placé à x
+    hx = p.get('head_x', 0.5); hx = 1 - hx if flip else hx
+    w = p['size'][0] * h / p['size'][1]; cx = x + (0.5 - hx) * w   # le visage est placé à x
     if fr == 'groupe': cx = x
-    return {'key': key, 'who': char, 'x': int(cx), 'by': by, 'h': h, 'face_x': x, 'tight': tight, 'scale': scale}
+    return {'key': key, 'who': char, 'x': int(cx), 'by': by, 'h': h, 'face_x': x, 'tight': tight, 'scale': scale, 'flip': flip}
+def face_dir(key):
+    """+1 : le visage regarde vers la droite de l'image, -1 : vers la gauche, 0 : de face (mesuré par LivePortrait)."""
+    y = POSES.get(key, {}).get('yaw')
+    if y is None or abs(y) < 9: return 0
+    return -1 if y > 0 else 1
+def yaw_variant(key, d):
+    """Pose de face dont on tourne la tête vers d (créée par LivePortrait avant le rendu)."""
+    v = f'{key}@{"+" if d > 0 else "-"}'
+    if v not in POSES: POSES[v] = dict(POSES[key], yaw=-18.0 * d, variant_of=key, turn=d)
+    return v
+def orient(a, d):
+    """Tourne l'acteur pour qu'il regarde dans la direction d (retourne l'image ou tourne la tête)."""
+    if not d or a.get('back'): return a
+    if a.get('walk'):   # après la marche, la pose d'arrêt regarde aussi le bon côté
+        sk = a.get('stop_key')
+        if sk:
+            f = face_dir(sk); a['stop_flip'] = f == -d
+            if f == 0: a['stop_key'] = yaw_variant(sk, d)
+        return a
+    a['look_dir'] = d; f = face_dir(a['key'])
+    if f == d: flip = False
+    elif f == -d: flip = True
+    else: a['key'] = yaw_variant(a['key'], d); flip = False
+    if 'face_x' in a:
+        b = close_actor(a['who'], a['key'], x=a['face_x'], tight=a.get('tight', False), scale=a.get('scale', 1.0), flip=flip)
+        a['x'] = b['x']
+    a['flip'] = flip
+    return a
+def orient_shot(sh):
+    acts = [a for a in sh.get('actors', []) if not a.get('back') and '+' not in a['who']]
+    if len(acts) >= 2:   # plan à plusieurs : on se regarde (celui qui écoute regarde celui qui parle)
+        spk = next((a for a in acts if a.get('speaker')), None)
+        for a in acts:
+            others = [b for b in acts if b is not a]
+            tgt = spk if spk is not None and spk is not a else min(others, key=lambda b: abs(b['x'] - a['x']))
+            orient(a, 1 if tgt['x'] > a['x'] else -1)
+    elif len(acts) == 1 and acts[0].get('look_dir'):
+        orient(acts[0], acts[0]['look_dir'])
 def build(meta, events, log=print):
     shots = []; stage = Stage(); scene = {'decor': 'KIOSQUE', 'moment': 'jour', 'ambiance': ''}; plan = None
     moods = {}; music = 'joyeuse'; ending = False; pending_sfx = []; first_in_scene = True; last_shot = None
@@ -207,17 +253,17 @@ def build(meta, events, log=print):
                         a = close_actor(c, k, x=x, scale=0.62); a['by'] = 420 + a['h'] if POSES[k]['frame'] != 'pied' else 600 + a['h']; a['speaker'] = c == who; acts.append(a)
                     sh['actors'] = acts; sh['mode'] = 'two'
                 else:
-                    post = stage.posture.get(who); post = None if post in ('grill', 'debout', None) else post
-                    k = pick(who, emo, 'buste', post)
+                    post = stage.posture.get(who) or 'debout'; post = 'debout' if post in ('grill', 'marche') else post
+                    k = pick(who, emo + stage.props.get(who, []), 'buste', post)
                     side = stage.side(who, e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper()))
                     x = 540 - 110 * side if side else 540
-                    a = close_actor(who, k, x=x, tight=(mode == 'tresgros')); a['speaker'] = True
-                    sh['actors'] = [a]; sh['mode'] = 'close'
+                    a = close_actor(who, k, x=x, tight=(mode == 'tresgros')); a['speaker'] = True; a['look_dir'] = side
+                    sh['actors'] = [a]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who)
                     # changements de pose sur les balises d'émotion
                     sw = []
                     for tt, tg in e.get('tag_times', []):
                         if tg in EMOS or tg in SYN:
-                            k2 = pick(who, [tg], 'buste', post)
+                            k2 = pick(who, [tg] + stage.props.get(who, []), 'buste', post)
                             if k2 and k2 != k and (tagwords([tg]) & set(POSES[k2]['tags'])): sw.append((lead + tt, k2))
                     sh['switch'] = sw
             sh['tagfx'] = [(lead + tt, tg) for tt, tg in e.get('tag_times', []) if tg not in EMOS or tg in ('rire',)]
@@ -228,13 +274,15 @@ def build(meta, events, log=print):
                     tw = word_time(e, r.get('word')); sh.setdefault('sfx', []).append((lead + (tw if tw is not None else e.get('dur', 1)), sfx_file(r['name'])))
                 else:
                     tw = word_time(e, r.get('word'))
-                    if tw is not None and sh['kind'] == 'line' and r['who'] != who: cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions']})
+                    if tw is not None and sh['kind'] == 'line' and r['who'] != who: cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who'])})
                     elif r['who'] != who: sh.setdefault('after', []).append(r)
             sh['cuts'] = cut
             add(sh)
             for r in sh.get('after', []):
                 k = pick(r['who'], r['actions'], 'buste', None, need_mouth=False)
-                if k: add({'kind': 'close', 'dur': 1.4, 'actors': [close_actor(r['who'], k)], 'fx': [(0.15, a) for a in r['actions']]})
+                if k:
+                    a = close_actor(r['who'], k, x=540 - 110 * stage.side(r['who'], who)); a['look_dir'] = stage.side(r['who'], who)
+                    add({'kind': 'close', 'dur': 1.4, 'actors': [a], 'fx': [(0.15, x) for x in r['actions']], 'pan': stage.pan(r['who'])})
             i = j; continue
         elif t == 'reaction':
             k = pick(e['who'], e['actions'], 'buste', None, need_mouth=False)
@@ -255,6 +303,7 @@ def build(meta, events, log=print):
             ending = True
         i += 1
     if not any(s['kind'] == 'endcard' for s in shots): add({'kind': 'endcard', 'dur': 3.0, 'step': 2})
+    for sh in shots: orient_shot(sh)
     t0 = 0
     for s in shots: s['t0'] = t0; t0 += s['dur']
     log(f'{len(shots)} plans, durée {t0:.1f} s')

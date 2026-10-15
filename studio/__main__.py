@@ -19,6 +19,7 @@ def main():
     lines = voices.run(ev, director.CAT, work, log)
     shots, tot = director.build(meta, ev, log)
     json.dump(shots, open(os.path.join(work, 'plans.json'), 'w'), ensure_ascii=False, indent=0, default=str)
+    render.prepare_turns(shots, log)
     render.contact(shots, os.path.join(out, 'apercu_plans.png')); log('aperçu des plans : apercu_plans.png')
     if a.plans_seulement: return
     h = hashlib.md5(json.dumps(shots, sort_keys=True, default=str).encode()).hexdigest()[:10]

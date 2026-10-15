@@ -1,0 +1,4 @@
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc@-.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc.png|x|x|0|18|0|0|0|0|0|0|0|0|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc@-_o.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_choc.png|x|0.2|0|18|0|-0.2|0|0|0|0|0|0|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_debout@-.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_debout.png|x|x|0|18|0|0|0|0|0|0|0|0|0
+/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_debout@-_o.png|/home/claude/sounsouni-studio/studio/assets/poses/tourne/_tmp/awa_debout.png|x|0.2|0|18|0|-0.2|0|0|0|0|0|0|0

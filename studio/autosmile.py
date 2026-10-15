@@ -6,7 +6,7 @@ A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); W = '/tm
 LP = os.environ.get('STUDIO_LIVEPORTRAIT', '/home/claude/lp/lpgen.py')
 cat = json.load(open(A + '/catalog.json')); P = cat['poses']
 HAPPY = {'sourire', 'content', 'rire', 'grand_sourire'}
-SOURCE = {'AWA': 'awa_bras_croises'}   # visage de face, expression calme
+SOURCE = {'AWA': 'awa_bras_croises', 'MIMI': 'mim_machine'}   # visage de face, expression calme
 def source_for(ch):
     if ch in SOURCE: return SOURCE[ch]
     c = [k for k, p in P.items() if p['char'] == ch and p['posture'] not in ('dos', 'tombe', 'marche') and 'cycle' not in ' '.join(p['tags'])]
