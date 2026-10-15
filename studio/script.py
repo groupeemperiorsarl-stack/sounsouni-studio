@@ -69,8 +69,11 @@ def parse_plan(s):
         k = norm(m.group(1)); p['kind'] = {'tres gros': 'tresgros', 'ecran': 'ecran'}.get(k, k); rest = m.group(2).strip()
         if rest.startswith('['):
             items = [x.strip() for x in rest.strip('[]').split(',') if x.strip()]
+            known = set(CHAR_ALIASES.values())
             for it in items:
                 w = it.split()[0]; pose = ' '.join(it.split()[1:])
+                if who(w) not in known and p['who']:   # « [Awa de dos, marche] », « [Bakary, téléphone] » : précision pour le personnage d'avant
+                    p['who'][-1]['pose'] = (p['who'][-1]['pose'] + ' ' + norm(it)).strip(); continue
                 p['who'].append({'who': who(w), 'pose': norm(pose)})
         elif rest:
             if p['kind'] in ('objet', 'ecran'): p['object'] = rest
