@@ -21,8 +21,20 @@ Bonjour mes abonnés ! {fier} Aujourd'hui, en direct… le vendeur de thé le pl
 PLAN: objet téléphone
 [ÉCRAN 4 s: 🔴 EN DIRECT · Karim Konaté · 1 248 spectateurs]
 
+BAKARY (surpris · regarde: Karim · voix: normal)
+Monsieur… {choc} vous êtes le patron de la livraison de l'autre jour ! Qu'est-ce que vous faites ? Pourquoi vous nous filmez ?
+
+KARIM (grand_sourire · regarde: Bakary · voix: normal)
+Calmos, les gars ! {sourire} C'est juste pour vous présenter à mes abonnés.
+
+BAKARY (choc · regarde: Karim · voix: crie)
+Tes abonnés ?!
+
+DIASABI (sourire · regarde: Karim · voix: normal)
+Je vois… {fier} tu veux nous transformer en stars !
+
 KARIM (offre · regarde: Bakary · voix: normal)
-Pour toi et ta couturière. {grand_sourire} Un cadeau de mariage !
+Tiens, Bakary. {grand_sourire} Je t'offre un cadeau de luxe !
 
 PLAN: objet colis / cadeau
 [BRUITAGE: whoosh]
@@ -30,11 +42,11 @@ PLAN: objet colis / cadeau
 PLAN: objet robe en bazin bas de gamme
 
 BAKARY (choc · regarde: Karim · voix: lentement)
-Une robe… ?
+Ce bazin… ?
 
-KARIM (fier · regarde: téléphone · voix: normal)
-Bazin bas de gamme… {sourire} pour une couturière bas de gamme !
-[RÉACTION BAKARY sur "bas de gamme": triste]
+KARIM (fier · regarde: Bakary · voix: normal)
+Oui ! Du bazin bas de gamme… {sourire} pour un vendeur de thé bas de gamme… et sa couturière bas de gamme !
+[RÉACTION BAKARY sur "couturière": triste]
 
 PLAN: objet téléphone
 [ÉCRAN 4 s: 🔴 Direct · « Hahaha » · « La honte 😂 » · « Elle va pleurer ! »]
@@ -53,7 +65,7 @@ DIASABI (confus · regarde: Modibo · voix: chuchote)
 C'est qui, ce monsieur ? {sourire} Il veut des brochettes ?
 [SILENCE 2 s: grillon]
 
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone, Fatim debout]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Fatim debout]
 [BRUITAGE: talons]
 
 FATIM (sourire · regarde: Bakary · voix: normal)
@@ -103,7 +115,7 @@ Mimi ! Sors-moi mon bazin doré. {fier} Celui des grandes cérémonies.
 PLAN: 3 s · gros Awa · {fier}
 
 DÉCOR: KIOSQUE · matin · ambiance: rue calme
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone, Fatim debout, Awa debout]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Fatim debout, Awa debout]
 [BRUITAGE: talons]
 
 PLAN: 4 s · gros Awa · {fier}
@@ -115,7 +127,7 @@ PLAN: 4 s · gros Awa · {fier}
 DIASABI (surpris · regarde: Awa · voix: chuchote)
 Waouh… {rougit} c'est la couturière, ça ?
 
-PLAN: large [Awa assise, Fatim debout, Bakary debout, Karim debout, téléphone]
+PLAN: large [Awa assise, Fatim debout, Bakary debout]
 
 FATIM (moqueur · regarde: Awa · voix: normal)
 Awa ? Depuis quand tu bois le thé ici, toi ?
