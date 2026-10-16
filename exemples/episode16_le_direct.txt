@@ -9,10 +9,13 @@ PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
 
 PLAN: objet voiture de Karim
 [MUSIQUE: suspense]
+[BRUITAGE: porte qui claque]
 
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
 
-KARIM (grand_sourire · regarde: téléphone · voix: crie)
+PLAN: gros [Karim debout, téléphone]
+
+KARIM (grand_sourire · regarde: Bakary · voix: crie)
 Bonjour mes abonnés ! {fier} Aujourd'hui, en direct… le vendeur de thé le plus célèbre de Bamako !
 
 PLAN: objet téléphone
@@ -100,7 +103,7 @@ Mimi ! Sors-moi mon bazin doré. {fier} Celui des grandes cérémonies.
 PLAN: 3 s · gros Awa · {fier}
 
 DÉCOR: KIOSQUE · matin · ambiance: rue calme
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone, Fatim debout, Awa marche]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone, Fatim debout, Awa debout]
 [BRUITAGE: talons]
 
 PLAN: 4 s · gros Awa · {fier}

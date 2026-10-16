@@ -2768,7 +2768,7 @@
     "ecoute",
     "assis"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     792,
     1600
@@ -2777,7 +2777,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_assise_chaise",
-   "tenue": "bazin_dore"
+   "tenue": "bazin_dore",
+   "mouth_auto": true
   },
   "awa_bazin_dore_assis_mepris": {
    "char": "AWA",
@@ -2787,7 +2788,7 @@
     "mepris",
     "assis"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     795,
     1600
@@ -2796,7 +2797,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_assise_chaise",
-   "tenue": "bazin_dore"
+   "tenue": "bazin_dore",
+   "mouth_auto": true
   },
   "awa_bazin_dore": {
    "char": "AWA",
@@ -2806,7 +2808,7 @@
     "neutre",
     "ecoute"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     520,
     1600
@@ -2815,7 +2817,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_doigt_bouche",
-   "tenue": "bazin_dore"
+   "tenue": "bazin_dore",
+   "mouth_auto": true
   },
   "awa_bazin_dore_assis_froide": {
    "char": "AWA",
@@ -2825,7 +2828,7 @@
     "froide",
     "assis"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     792,
     1600
@@ -2834,7 +2837,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_assise_chaise",
-   "tenue": "bazin_dore"
+   "tenue": "bazin_dore",
+   "mouth_auto": true
   },
   "obj_robe_bazin_bas": {
    "char": "OBJET",
@@ -2878,7 +2882,7 @@
    "tags": [
     "sourire"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     524,
     1600
@@ -2886,7 +2890,8 @@
    "head_x": 0.47,
    "props": [],
    "genere": "gemini",
-   "depart": "kar_mains"
+   "depart": "kar_mains",
+   "mouth_auto": true
   },
   "mod_dos": {
    "char": "MODIBO",
@@ -2913,7 +2918,7 @@
     "rire",
     "assis"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     1012,
     1600
@@ -2921,7 +2926,8 @@
    "head_x": 0.551,
    "props": [],
    "genere": "gemini",
-   "depart": "mod_banc"
+   "depart": "mod_banc",
+   "mouth_auto": true
   },
   "fat_dos": {
    "char": "FATIM",
@@ -2947,7 +2953,7 @@
    "tags": [
     "sourire"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     395,
     1600
@@ -2955,7 +2961,8 @@
    "head_x": 0.504,
    "props": [],
    "genere": "gemini",
-   "depart": "dia_neutre"
+   "depart": "dia_neutre",
+   "mouth_auto": true
   },
   "awa_assis_determine": {
    "char": "AWA",
@@ -2965,7 +2972,7 @@
     "determine",
     "assis"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     732,
     1600
@@ -2973,7 +2980,8 @@
    "head_x": 0.554,
    "props": [],
    "genere": "gemini",
-   "depart": "awa_assise_chaise"
+   "depart": "awa_assise_chaise",
+   "mouth_auto": true
   },
   "bak_emerveille": {
    "char": "BAKARY",
@@ -2982,7 +2990,7 @@
    "tags": [
     "emerveille"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     588,
     1600
@@ -2990,7 +2998,8 @@
    "head_x": 0.504,
    "props": [],
    "genere": "gemini",
-   "depart": "bak_debout"
+   "depart": "bak_debout",
+   "mouth_auto": true
   },
   "awa_bazin_dore_assis_fier": {
    "char": "AWA",
@@ -3000,7 +3009,7 @@
     "fier",
     "assis"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     792,
     1600
@@ -3009,7 +3018,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_assise_chaise",
-   "tenue": "bazin_dore"
+   "tenue": "bazin_dore",
+   "mouth_auto": true
   },
   "awa_bazin_dore_fier": {
    "char": "AWA",
@@ -3018,7 +3028,7 @@
    "tags": [
     "fier"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     521,
     1600
@@ -3027,7 +3037,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_doigt_bouche",
-   "tenue": "bazin_dore"
+   "tenue": "bazin_dore",
+   "mouth_auto": true
   },
   "mim_telephone": {
    "char": "MIMI",
@@ -3036,7 +3047,7 @@
    "tags": [
     "telephone"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     451,
     1600
@@ -3044,7 +3055,8 @@
    "head_x": 0.416,
    "props": [],
    "genere": "gemini",
-   "depart": "mim_debout"
+   "depart": "mim_debout",
+   "mouth_auto": true
   }
  },
  "decors": {

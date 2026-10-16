@@ -149,7 +149,8 @@ jobs:
         run: |
           N=${ISSUE:-manuel}; TAG="episode-$N-${{ github.run_number }}"
           if ls sortie/*_leger.mp4 >/dev/null 2>&1; then
-            gh release create "$TAG" sortie/*.mp4 --title "Épisode – demande $N" --notes "Vidéo fabriquée par Sounsouni Studio. Le fichier _leger (moins de 28 Mo) est pour WhatsApp."
+            (cd sortie && zip -qr travail.zip travail/plans.json travail/voix) || true   # fichiers de travail gardés : la prochaine correction ne refera que les secondes concernées
+            gh release create "$TAG" sortie/*.mp4 $(ls sortie/travail.zip 2>/dev/null) --title "Épisode – demande $N" --notes "Vidéo fabriquée par Sounsouni Studio. Le fichier _leger (moins de 28 Mo) est pour WhatsApp."
             MSG="🎬 La vidéo est prête : https://github.com/${{ github.repository }}/releases/tag/$TAG"$'\n'"(le fichier **_leger** est pour WhatsApp)"
           else
             MSG="❌ La vidéo n'a pas pu être finie. Voir : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"

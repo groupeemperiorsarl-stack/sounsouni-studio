@@ -12,7 +12,7 @@ for k, p in cat['poses'].items():
     jobs.append(f'{W}/{k}_o.png|{W}/{k}.png|x|0.2|0|0|0|-0.25|0|0|0|0|0|0|0')
 open(W + '/jobs.txt', 'w').write('\n'.join(jobs) + '\n'); json.dump(regions, open(W + '/regions.json', 'w'))
 print(len(jobs), 'poses à traiter', flush=True)
-subprocess.run([sys.executable, '/home/claude/lp/lpgen.py', W + '/jobs.txt'])
+subprocess.run([sys.executable, os.environ.get('STUDIO_LIVEPORTRAIT', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lp', 'lpgen.py')), W + '/jobs.txt'])
 n = 0
 for k, box in regions.items():
     o = f'{W}/{k}_o.png'

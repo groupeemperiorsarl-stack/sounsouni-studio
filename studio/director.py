@@ -168,7 +168,7 @@ def deux_rangees(acts, stage, speaker=None, partner=None):
     grands et face à face ; derrière, les autres, plus petits, placés dans les espaces libres pour que tous les visages se voient."""
     assis = lambda a: POSES[a['key']]['posture'] in ('assis', 'banc')
     rang = lambda c: stage.order.index(c) if c in stage.order else 99
-    std = [a['who'] for a in acts if not assis(a)]; late = stage.seq[-1] if stage.seq else None
+    std = [a['who'] for a in acts]; late = stage.seq[-1] if stage.seq else None   # assis aussi : celle à qui l'on parle vient devant, tabouret au sol
     pair = []
     for c in (speaker, partner, late) + tuple(sorted(std, key=rang)):
         if c and c in std and c not in pair: pair.append(c)
