@@ -20,13 +20,14 @@ def decor(name, moment, blur):
     im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS); im = gfx.tint(im, moment)
     if blur: im = im.filter(ImageFilter.GaussianBlur(blur))
     return im
-def background(s, lt, blur=0, zoom=0.0, pan=0.0):
+DECOR_LARGE = {'KIOSQUE': (0.32, 0.12)}   # plan large : zoom et hauteur du cadrage (la théière au premier plan du kiosque sort de l'image, personne n'a les pieds dessus)
+def background(s, lt, blur=0, zoom=0.0, pan=0.0, haut=0.45):
     """pan (-1 à 1) : en gros plan, la caméra regarde la partie du décor où se trouve le personnage."""
     im = decor(s['decor'], s['moment'], blur); x = int((im.width - W) / 2 + 16 * math.sin(lt * 0.25)); y = int((im.height - H) * 0.6)
     fr = im.crop((x, y, x + W, y + H))
     if zoom:
         zw, zh = int(W * (1 + zoom)), int(H * (1 + zoom)); fr = fr.resize((zw, zh), Image.BILINEAR)
-        ox = int((zw - W) / 2 * (1 + max(-1, min(1, pan)))); oy = int((zh - H) * 0.45)
+        ox = int((zw - W) / 2 * (1 + max(-1, min(1, pan)))); oy = int((zh - H) * haut)
         fr = fr.crop((ox, oy, ox + W, oy + H))
     return fr
 @lru_cache(96)
@@ -211,7 +212,7 @@ def draw(s, lt):
                 if line: gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.3, line.get('thought'))
                 return gfx.shake(fr, lt, c['t'], 0.4, 10) if 'choc' in c['actions'] or 'sursaut' in c['actions'] else fr
     if mode in ('close', 'two') or (k == 'close' and len(acts) == 1): fr = background(s, lt, blur=5, zoom=0.4 + 0.03 * prog(lt, 0, d), pan=s.get('pan', 0))
-    else: fr = background(s, lt, zoom=0.1)
+    else: z, hy = DECOR_LARGE.get(decor_file(s['decor']), (0.1, 0.45)); fr = background(s, lt, zoom=z, haut=hy)
     head = (540, 400)
     for a in acts:
         a2 = a
