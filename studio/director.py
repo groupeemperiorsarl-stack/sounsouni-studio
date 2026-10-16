@@ -372,7 +372,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
             emo = [e.get('emotion', 'neutre')] + [tg for _, tg in e['tags'] if tg in EMOS]
             moods[who] = emo[:1]
             sh = {'kind': 'line', 'who': who, 'line': e, 'lead': lead, 'dur': dur}
-            if laugh_line: sh['sfx'] = [(lead + e.get('dur', 2) + 0.05, 'rire:' + who, 0.9)]
+            if laugh_line: sh['sfx'] = [(lead + e.get('dur', 2) + 0.05, 'rire:' + who + (':petit' if e.get('emotion') in ('rire_retenu', 'moqueur') else ''), 0.9)]
             if who == 'VOIX_OFF' or ending:
                 sh['kind'] = 'endline'
             elif 'telephone' in e.get('voice', '') and who not in stage.order:
@@ -442,7 +442,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
                     tw = word_time(e, r.get('word'))
                     if tw is not None and sh['kind'] == 'line' and r['who'] != who:
                         cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], [])})
-                        if laughs(r['actions']): sh.setdefault('sfx', []).append((lead + tw + 0.05, 'rire:' + r['who'], 0.45))   # on l'entend rire (sous la voix)
+                        if laughs(r['actions']): sh.setdefault('sfx', []).append((lead + tw + 0.05, 'rire:' + r['who'] + ':petit', 0.5))   # on l'entend rire doucement (sous la voix)
                     elif r['who'] != who: sh.setdefault('after', []).append(r)
             sh['cuts'] = cut
             add(sh); last_speaker = who

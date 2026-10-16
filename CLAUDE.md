@@ -24,6 +24,8 @@
   - **réponse d'Issa** : `--choix "1B 3C"` → gardée dans `script.choix.json` (à côté du script, par numéro de plan) ; la mise en scène la suit ensuite (`director.CHOIX`). Si le même choix revient d'un épisode à l'autre, en faire une règle dans `director.py`.
   - **secondes concernées** : le rendu est fait par morceaux de 12 s ; seuls les morceaux dont les plans ont changé sont refaits, puis tout est recollé (`render.seg_hash`). Rien à faire à la main.
   - **Sur GitHub** : l'aperçu arrive avec ses planches. Issa répond en commentaire « 1B 3C » (nouvel aperçu avec ses choix, choix gardés dans `demandes/episode_N.choix.json`) ou « planches 1:20-1:45 ».
+- **Images manquantes (Gemini, gratuit, fait par Issa)** : `python -m studio.gemini script16.txt script17.txt -o sortie_gemini` → `fiche_gemini.html` (pour chaque image : référence à joindre + demande à coller dans Gemini). Images renvoyées : `python -m studio.gemini -o sortie_gemini --importer "1=a.png 2=b.jpg"` (détourage + catalogue). Kaggle T4 abandonné (images noires) ; Molab non retenu.
+- **Rires** (`studio/rires.py`, Chatterbox Turbo MIT, vrais rires `[laugh]`/`[chuckle]` avec la voix du personnage) : type par personnage (homme, homme d'âge mûr, femme, demoiselle, enfant/ado ; clé `age` du catalogue) et 2 sortes (éclat, petit rire retenu). Page d'écoute A/B/C/D : `python -m studio.rires -o sortie_rires` ; choix : `--choix "1B 2A"` → `assets/rires/<PERSO>_<sorte>.wav`, réutilisés à chaque épisode.
 - **Installer en local** (session neuve) :
   - `pip install -r studio/requirements.txt` ;
   - voix : `python -m venv ~/tts && ~/tts/bin/pip install -r studio/requirements-voix.txt`, puis `export STUDIO_TTS_PY=~/tts/bin/python` ;

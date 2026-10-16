@@ -19,7 +19,8 @@ def build(shots, tot, work, log=print):
         for sx in s.get('sfx', []):
             t, f = sx[0], sx[1]; g = sx[2] if len(sx) > 2 else None
             if f.startswith('rire:'):   # rire du personnage, fabriqué avec sa propre voix
-                p = f'{work}/voix/rire_{f[5:]}.wav'
+                c, _, so = f[5:].partition(':'); p = f'{work}/voix/rire_{c}' + (f'_{so}' if so else '') + '.wav'
+                if not os.path.exists(p): p = f'{work}/voix/rire_{c}.wav'
                 if os.path.exists(p): y = rd(p); put(y / (np.abs(y).max() + 1e-6) * 0.7, s['t0'] + t, g or 0.9)
                 continue
             p = f'{A}/sfx/{f}.wav'

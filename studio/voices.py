@@ -77,26 +77,18 @@ def fake(lines, work):
         e['tag_times'] = [[tw[min(i, len(tw) - 1)] * d / max(1, n), tag] for i, tag in e['tags']]
     return lines
 LAUGH = {'rire', 'rire_retenu', 'rit', 'rigole', 'eclate_de_rire', 'moqueur'}
-def make_laughs(events, cast, work, log=print, only_jobs=False):
-    """Un éclat de rire par personnage qui rit dans le script, avec SA voix (fabriqué une fois, gardé)."""
-    who = set()
+def laughers(events):
+    """Qui rit dans le script, et quelle sorte de rire (éclat / petit rire retenu)."""
+    out = set()
     for e in events:
-        if e['type'] == 'reaction' and set(e.get('actions', [])) & LAUGH: who.add(e['who'])
-        if e['type'] == 'line' and (e.get('emotion') in ('rire', 'rire_retenu') or 'rit' in e.get('voice', '') or any(tg in ('rire', 'rire_retenu') for _, tg in e.get('tags', []))): who.add(e['who'])
-    jobs = []
-    for c in sorted(who):
-        out = f'{work}/voix/rire_{c}.wav'; raw = f'{work}/voix/rire_raw_{c}.wav'
-        if os.path.exists(out): continue
-        ref = A + '/voix/' + cast['voices'].get(c, 'ref_bakary.wav')
-        if not os.path.exists(raw): jobs.append({'out': raw, 'ref': ref, 'text': 'Ha ha ha ha !', 'exag': 0.65, 'cfg': 0.5})
-    if only_jobs: return jobs
-    if jobs: log(f'rires : {len(jobs)} à fabriquer'); gen(jobs, work)
-    for c in sorted(who):
-        raw, out = f'{work}/voix/rire_raw_{c}.wav', f'{work}/voix/rire_{c}.wav'
-        if os.path.exists(raw) and not os.path.exists(out):
-            y, sr = sf.read(raw); y = y if y.ndim == 1 else y.mean(1); y = y[:int(min(len(y), sr * 1.6))]
-            fade = np.linspace(1, 0, int(sr * 0.25)); y[-len(fade):] *= fade
-            sf.write(out, y / (np.abs(y).max() + 1e-6) * 0.9, sr, subtype='PCM_16')
+        if e['type'] == 'reaction' and set(e.get('actions', [])) & LAUGH: out |= {(e['who'], 'eclat'), (e['who'], 'petit')}
+        if e['type'] == 'line' and (e.get('emotion') in ('rire', 'rire_retenu', 'moqueur') or 'rit' in e.get('voice', '') or any(tg in ('rire', 'rire_retenu') for _, tg in e.get('tags', []))):
+            out.add((e['who'], 'petit' if e.get('emotion') in ('rire_retenu', 'moqueur') else 'eclat'))
+    return out
+def make_laughs(events, cast, work, log=print, only_jobs=False):
+    """Rires des personnages (studio/rires.py) : ceux choisis par Issa, sinon de vrais rires fabriqués avec Chatterbox Turbo."""
+    if only_jobs: return []   # fabriqués à l'étape « plans » (souvent déjà choisis et gardés dans assets/rires)
+    import rires; rires.pour_episode(laughers(events), work, log)
 def run(events, cast, work, log=print):
     os.makedirs(work + '/voix', exist_ok=True)
     if not os.environ.get('STUDIO_FAUSSES_VOIX'): make_laughs(events, cast, work, log)
