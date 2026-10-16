@@ -39,11 +39,11 @@ jobs:
           if [ -f sortie/apercu_plans.png ]; then
             gh release create "$TAG" sortie/apercu_plans.png --prerelease --title "Aperçu des plans – demande $N" --notes "Aperçu des plans"
             URL="https://github.com/${{ github.repository }}/releases/download/$TAG/apercu_plans.png"
-            MSG="✅ Aperçu des plans prêt : $URL%0A%0ASi c'est bon, écrivez **vidéo** en commentaire pour lancer la vidéo complète. Pour corriger : modifiez le script (bouton ✏️ en haut), puis écrivez **aperçu**."
+            MSG="✅ Aperçu des plans prêt :"$'\n'"![aperçu]($URL)"$'\n'"$URL"$'\n\n'"Si c'est bon, écrivez **vidéo** en commentaire pour lancer la vidéo complète. Pour corriger : modifiez le script (bouton ✏️ en haut), puis écrivez **aperçu**."
           else
-            MSG="❌ L'aperçu n'a pas pu être fait. Fin du journal :%0A\`\`\`%0A$(tail -15 journal.txt)%0A\`\`\`"
+            MSG="❌ L'aperçu n'a pas pu être fait. Fin du journal :"$'\n```\n'"$(tail -15 journal.txt)"$'\n```'
           fi
-          [ -n "$ISSUE" ] && gh issue comment "$ISSUE" --body "$(printf '%b' "${MSG//%0A/\n}")" || echo "$MSG"
+          if [ -n "$ISSUE" ]; then gh issue comment "$ISSUE" --body "$MSG"; else echo "$MSG"; fi
   voix:
     if: github.event.inputs.apercu != 'true'
     runs-on: ubuntu-latest
@@ -122,11 +122,11 @@ jobs:
           N=${ISSUE:-manuel}; TAG="episode-$N-${{ github.run_number }}"
           if ls sortie/*_leger.mp4 >/dev/null 2>&1; then
             gh release create "$TAG" sortie/*.mp4 --title "Épisode – demande $N" --notes "Vidéo fabriquée par Sounsouni Studio. Le fichier _leger (moins de 28 Mo) est pour WhatsApp."
-            MSG="🎬 La vidéo est prête : https://github.com/${{ github.repository }}/releases/tag/$TAG\n(le fichier **_leger** est pour WhatsApp)"
+            MSG="🎬 La vidéo est prête : https://github.com/${{ github.repository }}/releases/tag/$TAG"$'\n'"(le fichier **_leger** est pour WhatsApp)"
           else
             MSG="❌ La vidéo n'a pas pu être finie. Voir : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           fi
-          [ -n "$ISSUE" ] && gh issue comment "$ISSUE" --body "$(printf '%b' "$MSG")" || echo "$MSG"
+          if [ -n "$ISSUE" ]; then gh issue comment "$ISSUE" --body "$MSG"; else echo "$MSG"; fi
       - name: Garder les têtes tournées pour la prochaine fois
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
