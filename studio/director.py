@@ -116,11 +116,13 @@ def depth_staging(acts, speaker=None, arrivals=()):
     sit = [a for a in acts if POSES[a['key']]['posture'] in ('assis', 'banc')]; std = [a for a in acts if a not in sit]
     if not sit or not std: return acts
     for a in sit:
-        a['h'] = int(1050 * 0.78 * HEIGHT.get(a['who'], 1)); a['w'] = POSES[a['key']]['size'][0] * a['h'] / POSES[a['key']]['size'][1]; a['by'] = GROUND - 150
-    tot = sum(a['w'] for a in sit); f = min(1.0, 620 / max(1, tot))
-    x = 540 - sum(a['w'] * f for a in sit) / 2
+        a['h'] = int(1050 * 0.86 * HEIGHT.get(a['who'], 1)); a['w'] = POSES[a['key']]['size'][0] * a['h'] / POSES[a['key']]['size'][1]; a['by'] = GROUND - 150
+    tot = sum(a['w'] for a in sit); f = max(0.82, min(1.0, 900 / max(1, tot)))   # les bancs peuvent se toucher, mais les gens gardent leur taille
+    step = 0.72   # chevauchement des bancs
+    span = sum(a['w'] * f for a in sit) * step + (sit[-1]['w'] * f) * (1 - step) if sit else 0
+    x = 540 - span / 2
     for a in sit:
-        a['h'] = int(a['h'] * f); a['w'] *= f; a['x'] = int(x + a['w'] / 2); x += a['w']
+        a['h'] = int(a['h'] * f); a['w'] *= f; a['x'] = int(x + a['w'] / 2); x += a['w'] * step
     # à gauche le premier (le héros de la scène) ; à droite, en face de lui, celui qui arrive / parle ; les autres derrière les assis
     rest = sorted(std[1:], key=lambda a: (not a.get('enter'), a['who'] not in arrivals, a['who'] != speaker))
     left, right, behind = [std[0]], rest[:1], rest[1:]
@@ -130,8 +132,8 @@ def depth_staging(acts, speaker=None, arrivals=()):
             a['by'] = GROUND + 40; x = 540 + side * 360
             a['x'] = int(min(max(x, a['w'] * 0.42 + 5), 1075 - a['w'] * 0.42))   # jamais coupé par le bord
     for i, a in enumerate(behind):   # debout derrière le banc, plus loin
-        a['h'] = int(820 * HEIGHT.get(a['who'], 1)); a['w'] = POSES[a['key']]['size'][0] * a['h'] / POSES[a['key']]['size'][1]
-        a['by'] = GROUND - 250; a['x'] = int(540 + (i - (len(behind) - 1) / 2) * 260 + (60 if i % 2 else -60))
+        a['h'] = int(780 * HEIGHT.get(a['who'], 1)); a['w'] = POSES[a['key']]['size'][0] * a['h'] / POSES[a['key']]['size'][1]
+        a['by'] = GROUND - 190; a['x'] = int(540 + (i - (len(behind) - 1) / 2) * 260 + (60 if i % 2 else -60))
     sit = behind + sit
     return sit + [a for a in std if a not in behind]
 def wide_layout(stage, chars, moods, speaker=None):
