@@ -2991,6 +2991,60 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout"
+  },
+  "awa_bazin_dore_assis_fier": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "fier",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    792,
+    1600
+   ],
+   "head_x": 0.59,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assise_chaise",
+   "tenue": "bazin_dore"
+  },
+  "awa_bazin_dore_fier": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "fier"
+   ],
+   "mouth": false,
+   "size": [
+    521,
+    1600
+   ],
+   "head_x": 0.508,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_doigt_bouche",
+   "tenue": "bazin_dore"
+  },
+  "mim_telephone": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "telephone"
+   ],
+   "mouth": false,
+   "size": [
+    451,
+    1600
+   ],
+   "head_x": 0.416,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mim_debout"
   }
  },
  "decors": {
