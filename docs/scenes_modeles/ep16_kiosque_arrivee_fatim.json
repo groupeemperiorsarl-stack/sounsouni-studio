@@ -1,0 +1,73 @@
+{
+ "modele": {
+  "BAKARY": {
+   "x": 0.235,
+   "pieds": 0.934,
+   "tete": 0.371,
+   "hauteur": 0.564
+  },
+  "MODIBO": {
+   "x": 0.499,
+   "pieds": 0.599,
+   "tete": 0.337,
+   "hauteur": 0.262
+  },
+  "DIASABI": {
+   "x": 0.097,
+   "pieds": 0.628,
+   "tete": 0.232,
+   "hauteur": 0.395
+  },
+  "FATIM": {
+   "x": 0.713,
+   "pieds": 0.958,
+   "tete": 0.48,
+   "hauteur": 0.478
+  },
+  "KARIM": {
+   "x": 0.89,
+   "pieds": 0.697,
+   "tete": 0.261,
+   "hauteur": 0.435
+  }
+ },
+ "confiance_couleurs": {
+  "BAKARY": 0.79,
+  "MODIBO": 0.64,
+  "DIASABI": 0.39,
+  "FATIM": 0.59,
+  "KARIM": 0.43
+ },
+ "application": {
+  "DIASABI": {
+   "x": 0.444,
+   "pieds": 0.891,
+   "tete": 0.428,
+   "hauteur": 0.463
+  },
+  "MODIBO": {
+   "x": 0.5,
+   "pieds": 0.911,
+   "tete": 0.451,
+   "hauteur": 0.46
+  },
+  "BAKARY": {
+   "x": 0.167,
+   "pieds": 1.01,
+   "tete": 0.448,
+   "hauteur": 0.562
+  },
+  "FATIM": {
+   "x": 0.809,
+   "pieds": 1.01,
+   "tete": 0.504,
+   "hauteur": 0.506
+  },
+  "KARIM": {
+   "x": 0.759,
+   "pieds": 1.161,
+   "tete": 0.38,
+   "hauteur": 0.781
+  }
+ }
+}
