@@ -7,7 +7,7 @@ script = (m.group(1) if m else body).strip()
 mode = 'video' if re.search(r'Vidéo complète', body) else 'apercu'
 reponse = de = fin = ''
 if ev.get('comment'):   # commentaire « vidéo », « aperçu », « planches 1:20-1:45 » ou réponse aux planches « 1B 3C »
-    c = (ev['comment'].get('body') or '').lower().strip(' .!\n')
+    c = ((ev['comment'].get('body') or '').strip().splitlines() or [''])[0].lower().strip(' .!')   # 1re ligne seulement (une signature peut suivre)
     m = re.fullmatch(r'planches?(?:\s+(?:de\s+)?(\d+:\d\d)\s*(?:-|à|a)\s*(\d+:\d\d))?', c)
     if re.fullmatch(r'vid[ée]o', c): mode = 'video'
     elif re.fullmatch(r'(aper[çc]u|refaire)', c): mode = 'apercu'
