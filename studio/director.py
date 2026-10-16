@@ -44,7 +44,8 @@ NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'd
 OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
-def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False):
+GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'tend_la_main', 'non', 'panique', 'bondit', 'doigt', 'salue', 'offre', 'propose', 'montre'}
+def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
     """must : objets demandés par le PLAN (ex. [Karim, téléphone]) = fortement voulus ; side : préférer une pose de trois-quarts
     (pour se tourner vers l'autre dans les plans à plusieurs)."""
     best, bs = None, -1e9
@@ -68,6 +69,10 @@ def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         s -= 7 * len(unasked - LIGHT) + 1.5 * len(unasked & LIGHT)   # un objet (brochette, téléphone…) ou des larmes jamais montrés sans raison
         s += 6 * len(set(must) & (tags | props))
         if side and face_dir(k) != 0: s += 2.5
+        if calm:   # personne ne parle encore : attitude tranquille, ni geste ni grande émotion
+            if (tags & GESTE) - w: s -= 6
+            s -= 2.5 * len((tags & (POS | NEG | {'gene', 'rire', 'surpris', 'fatigue', 'sale'})) - w)
+            if tags & {'neutre', 'ecoute', 'serieux'}: s += 3
         # pas de visage à contre-sens : un sourire demandé ne doit jamais donner une pose triste, et l'inverse
         if w & POS and tags & NEG and not (w & NEG): s -= 6
         if w & NEG and tags & POS and not (w & POS): s -= 4
@@ -126,6 +131,8 @@ def depth_staging(acts, speaker=None, arrivals=()):
     # à gauche le premier (le héros de la scène) ; à droite, en face de lui, celui qui arrive / parle ; les autres derrière les assis
     rest = sorted(std[1:], key=lambda a: (not a.get('enter'), a['who'] not in arrivals, a['who'] != speaker))
     left, right, behind = [std[0]], rest[:1], rest[1:]
+    if arrivals and right and right[0]['who'] not in arrivals:   # quelqu'un va arriver : sa place en face reste libre, chacun garde la sienne
+        behind = rest; right = []
     for side, grp in ((-1, left), (1, right)):
         for a in grp:
             a['h'] = int(1080 * HEIGHT.get(a['who'], 1)); a['w'] = POSES[a['key']]['size'][0] * a['h'] / POSES[a['key']]['size'][1]
@@ -150,7 +157,7 @@ def wide_layout(stage, chars, moods, speaker=None):
         post = stage.posture.get(c, 'debout'); pst = 'debout' if post == 'grill' else post
         want = list(moods.get(c, [])) + (['grill'] if post == 'grill' else []) + stage.props.get(c, [])
         walk = post in ('marche', 'dos_marche') and c == 'AWA'
-        k = ('awa_dos_pas1' if post == 'dos_marche' else 'awa_pas1') if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker), must=stage.props.get(c, []), side=len(chars) > 1) or pick(c, want, None, None))
+        k = ('awa_dos_pas1' if post == 'dos_marche' else 'awa_pas1') if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker), must=stage.props.get(c, []), side=len(chars) > 1, calm=speaker is None or (c == speaker and not moods.get(c))) or pick(c, want, None, None))
         sit = POSES[k]['posture'] in ('assis', 'banc')
         base = {1: 1450, 2: 1320, 3: 1150, 4: 1060, 5: 980}.get(len(front), 920)   # moins il y a de monde, plus on est près
         h = int(base * (0.8 if sit else 1.0) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else int(base * 0.83)

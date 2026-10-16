@@ -23,4 +23,4 @@ jobs:
         run: |
           gh workflow run episode.yml -f script="${{ steps.s.outputs.path }}" -f issue="${{ github.event.issue.number }}" -f apercu="${{ steps.s.outputs.mode == 'apercu' }}"
           if [ "${{ steps.s.outputs.mode }}" = "apercu" ]; then M="l'aperçu des plans (environ 10 minutes)"; else M="la vidéo complète (environ 30 minutes)"; fi
-          gh issue comment ${{ github.event.issue.number }} --body "⏳ C'est parti : l'application fabrique $M. Vous serez prévenu ici."
+          gh api "repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments" -f body="⏳ C'est parti : l'application fabrique $M. Vous serez prévenu ici." > /dev/null

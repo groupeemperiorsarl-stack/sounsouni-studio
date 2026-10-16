@@ -43,7 +43,7 @@ jobs:
           else
             MSG="❌ L'aperçu n'a pas pu être fait. Fin du journal :"$'\n```\n'"$(tail -15 journal.txt)"$'\n```'
           fi
-          if [ -n "$ISSUE" ]; then gh issue comment "$ISSUE" --body "$MSG"; else echo "$MSG"; fi
+          if [ -n "$ISSUE" ]; then gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$MSG" > /dev/null; else echo "$MSG"; fi
   voix:
     if: github.event.inputs.apercu != 'true'
     runs-on: ubuntu-latest
@@ -101,7 +101,7 @@ jobs:
   final:
     needs: rendu
     runs-on: ubuntu-latest
-    permissions: { contents: write }
+    permissions: { contents: write, issues: write }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -126,7 +126,7 @@ jobs:
           else
             MSG="❌ La vidéo n'a pas pu être finie. Voir : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           fi
-          if [ -n "$ISSUE" ]; then gh issue comment "$ISSUE" --body "$MSG"; else echo "$MSG"; fi
+          if [ -n "$ISSUE" ]; then gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$MSG" > /dev/null; else echo "$MSG"; fi
       - name: Garder les têtes tournées pour la prochaine fois
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
@@ -137,4 +137,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          gh issue comment "$ISSUE" -R "${{ github.repository }}" --body "❌ La fabrication s'est arrêtée. Détails : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="❌ La fabrication s'est arrêtée. Détails : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
