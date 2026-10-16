@@ -232,7 +232,7 @@ def over_shoulder(who, side, stage):
     back = [k for k, p in POSES.items() if p['char'] == who and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags']) and not p.get('props')]
     if back: k = back[0]; d = 0
     else: k = pick(who, stage.props.get(who, []), 'buste', stage.post(who), need_mouth=False); d = -side
-    a = close_actor(who, k, x=540 + (600 if back else 680) * side, scale=1.4); a['by'] = a['by'] + 420; a['fg'] = True; a['speaker'] = False
+    a = close_actor(who, k, x=540 + (600 if back else 540) * side, scale=1.4); a['by'] = a['by'] + 420; a['fg'] = True; a['speaker'] = False
     if not back: a['silhouette'] = True   # pas de vue de dos : on montre une silhouette sombre (dos), jamais le visage
     return a
 def build(meta, events, log=print):
@@ -325,7 +325,7 @@ def build(meta, events, log=print):
                     if not (tgt in stage.order and tgt != who): tgt = last_speaker if last_speaker in stage.order and last_speaker != who else None
                     if tgt and not side: side = stage.side(who, tgt)
                     ots = (mode in ('gros', 'deux') and tgt and side and not e.get('thought') and stage.posture.get(tgt) != 'marche')
-                    if ots and mode == 'gros': ots_count += 1; ots = ots_count % 3 != 0   # champ / contre-champ, avec de temps en temps un plan seul
+                    # échange entre deux personnes : toujours la caméra derrière l'épaule de celui qui écoute (demande d'Issa)   # champ / contre-champ, avec de temps en temps un plan seul
                     if ots:
                         a = close_actor(who, k, x=540 - 170 * side); a['speaker'] = True; a['look_dir'] = side; a['look_up'] = updown(stage, who, tgt)
                         sh['actors'] = [a, over_shoulder(tgt, side, stage)]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who); sh['ots'] = tgt

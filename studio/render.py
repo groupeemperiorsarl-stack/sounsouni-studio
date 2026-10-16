@@ -89,9 +89,16 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
     if a.get('fg'):   # épaule de celui qui écoute, au premier plan (caméra derrière lui) : floue et un peu sombre
         al = im.getchannel('A')
         if a.get('silhouette'):
-            top = np.array(im.convert('RGB').crop((0, 0, im.width, max(1, im.height // 8))))[np.array(al.crop((0, 0, im.width, max(1, im.height // 8)))) > 128]
-            col = tuple(int(v * 0.22) + 8 for v in (top.mean(0) if len(top) else (40, 30, 25)))
-            rgb = Image.new('RGB', im.size, col)
+            # vu de dos sans image de dos : la forme du personnage, avec ses couleurs (cheveux / casquette en haut, habits en bas)
+            arr = np.array(im.convert('RGB')).astype(np.float32); A_ = np.array(al) > 128; hh = arr.shape[0]
+            out = np.zeros_like(arr); band = max(1, hh // 24)
+            def mean_rows(y0, y1, fallback):
+                px = arr[y0:y1][A_[y0:y1]]; return px.mean(0) if len(px) > 20 else fallback
+            hair = mean_rows(0, max(2, int(hh * 0.05)), np.array([40, 30, 25], np.float32))
+            for y in range(0, hh, band):
+                c = hair if y < hh * 0.16 else mean_rows(y, y + band, hair)
+                out[y:y + band] = c * (0.55 if y < hh * 0.16 else 0.6)
+            rgb = Image.fromarray(out.clip(0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(14))
         else: rgb = im.convert('RGB').filter(ImageFilter.GaussianBlur(9)).point(lambda v: int(v * 0.72))
         im = rgb.convert('RGBA'); im.putalpha(al.filter(ImageFilter.GaussianBlur(10 if a.get('silhouette') else 6)))
     cx = a['x'] + dx + walk_dx; by = a['by'] + dy
