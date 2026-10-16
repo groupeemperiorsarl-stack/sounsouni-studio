@@ -2758,6 +2758,239 @@
     "machine": 0.64
    },
    "props": []
+  },
+  "awa_bazin_dore_assis": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "neutre",
+    "ecoute",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    792,
+    1600
+   ],
+   "head_x": 0.59,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assise_chaise",
+   "tenue": "bazin_dore"
+  },
+  "awa_bazin_dore_assis_mepris": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "mepris",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    795,
+    1600
+   ],
+   "head_x": 0.591,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assise_chaise",
+   "tenue": "bazin_dore"
+  },
+  "awa_bazin_dore": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": false,
+   "size": [
+    520,
+    1600
+   ],
+   "head_x": 0.506,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_doigt_bouche",
+   "tenue": "bazin_dore"
+  },
+  "awa_bazin_dore_assis_froide": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "froide",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    792,
+    1600
+   ],
+   "head_x": 0.544,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assise_chaise",
+   "tenue": "bazin_dore"
+  },
+  "obj_robe_bazin_bas": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "robe",
+    "bazin",
+    "bas",
+    "gamme"
+   ],
+   "mouth": false,
+   "size": [
+    875,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "kar_dos": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    593,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "gemini",
+   "depart": "kar_mains"
+  },
+  "kar_sourire": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    524,
+    1600
+   ],
+   "head_x": 0.47,
+   "props": [],
+   "genere": "gemini",
+   "depart": "kar_mains"
+  },
+  "mod_dos": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    644,
+    1600
+   ],
+   "head_x": 0.497,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_joie"
+  },
+  "mod_assis_rire": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "rire",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    1012,
+    1600
+   ],
+   "head_x": 0.551,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_banc"
+  },
+  "fat_dos": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    570,
+    1600
+   ],
+   "head_x": 0.503,
+   "props": [],
+   "genere": "gemini",
+   "depart": "fat_mains"
+  },
+  "dia_sourire": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    395,
+    1600
+   ],
+   "head_x": 0.504,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre"
+  },
+  "awa_assis_determine": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "determine",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    732,
+    1600
+   ],
+   "head_x": 0.554,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assise_chaise"
+  },
+  "bak_emerveille": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "emerveille"
+   ],
+   "mouth": false,
+   "size": [
+    588,
+    1600
+   ],
+   "head_x": 0.504,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout"
   }
  },
  "decors": {
