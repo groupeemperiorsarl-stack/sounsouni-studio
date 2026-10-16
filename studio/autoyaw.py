@@ -3,7 +3,7 @@ yaw > 0 / < 0 : sens mesuré par LivePortrait (voir 'face_dir' : +1 = regarde ve
 import json, os, subprocess, sys
 from PIL import Image
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); W = '/tmp/claude-0/autoyaw'; os.makedirs(W, exist_ok=True)
-LPY = os.environ.get('STUDIO_LIVEPORTRAIT_YAW', '/home/claude/lp/lpyaw.py')
+LPY = os.environ.get('STUDIO_LIVEPORTRAIT_YAW', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lp', 'lpyaw.py'))
 cat = json.load(open(A + '/catalog.json')); P = cat['poses']; jobs = []
 for k, p in P.items():
     if p['char'] == 'OBJET' or '+' in p['char'] or p['posture'] == 'dos' or 'yaw' in p: continue

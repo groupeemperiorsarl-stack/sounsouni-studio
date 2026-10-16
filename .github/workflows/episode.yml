@@ -1,0 +1,86 @@
+name: Fabriquer un épisode (15 ordinateurs en parallèle)
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Chemin du script dans le dépôt (ex. exemples/episode15_la_rumeur.txt)"
+        required: true
+env:
+  SCRIPT: ${{ github.event.inputs.script }}
+  STUDIO_TTS_PY: /home/runner/tts/bin/python
+jobs:
+  voix:
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { i: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14] } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Outils
+        run: |
+          sudo apt-get install -y -qq ffmpeg > /dev/null
+          python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile
+          pip install -q numpy pillow soundfile librosa
+      - run: python -m studio "$SCRIPT" -o sortie --etape voix --part ${{ matrix.i }}/15
+      - uses: actions/upload-artifact@v4
+        with: { name: "voix_${{ matrix.i }}", path: "sortie/travail/voix/*.wav", if-no-files-found: ignore }
+  plans:
+    needs: voix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - uses: actions/download-artifact@v4
+        with: { pattern: "voix_*", path: sortie/travail/voix, merge-multiple: true }
+      - name: Outils
+        run: |
+          sudo apt-get install -y -qq ffmpeg > /dev/null
+          python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
+          bash studio/lp/install.sh
+      - run: python -m studio "$SCRIPT" -o sortie --etape plans
+      - uses: actions/upload-artifact@v4
+        with: { name: travail, path: "sortie/travail" }
+      - uses: actions/upload-artifact@v4
+        with: { name: apercu, path: "sortie/apercu_plans.png" }
+      - uses: actions/upload-artifact@v4
+        with: { name: tourne, path: "studio/assets/poses/tourne/*.webp", if-no-files-found: ignore }
+  rendu:
+    needs: plans
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { i: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14] } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - uses: actions/download-artifact@v4
+        with: { name: travail, path: sortie/travail }
+      - uses: actions/download-artifact@v4
+        with: { name: tourne, path: studio/assets/poses/tourne }
+      - run: sudo apt-get install -y -qq ffmpeg > /dev/null && pip install -q numpy pillow soundfile librosa opencv-python-headless
+      - run: python -m studio "$SCRIPT" -o sortie --etape rendu --part ${{ matrix.i }}/15 --workers 2
+      - uses: actions/upload-artifact@v4
+        with: { name: "rendu_${{ matrix.i }}", path: "sortie/travail/seg_*", if-no-files-found: ignore }
+  final:
+    needs: rendu
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - uses: actions/download-artifact@v4
+        with: { name: travail, path: sortie/travail }
+      - uses: actions/download-artifact@v4
+        with: { pattern: "rendu_*", path: sortie/travail, merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: tourne, path: studio/assets/poses/tourne }
+      - run: sudo apt-get install -y -qq ffmpeg > /dev/null && pip install -q numpy pillow soundfile librosa opencv-python-headless
+      - run: python -m studio "$SCRIPT" -o sortie --etape final
+      - uses: actions/upload-artifact@v4
+        with: { name: video, path: "sortie/*.mp4" }
+      - name: Garder les têtes tournées pour la prochaine fois
+        run: |
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add studio/assets/poses/tourne/*.webp && git commit -m "Têtes tournées préparées par l'application" && git push || echo "rien à garder"

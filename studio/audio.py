@@ -16,9 +16,14 @@ def build(shots, tot, work, log=print):
     for s in shots:
         ln = s.get('line')
         if ln and ln.get('wav'): y = rd(ln['wav']); put(y / (np.abs(y).max() + 1e-6) * 0.75, s['t0'] + s.get('lead', 0))
-        for t, f in s.get('sfx', []):
+        for sx in s.get('sfx', []):
+            t, f = sx[0], sx[1]; g = sx[2] if len(sx) > 2 else None
+            if f.startswith('rire:'):   # rire du personnage, fabriqué avec sa propre voix
+                p = f'{work}/voix/rire_{f[5:]}.wav'
+                if os.path.exists(p): y = rd(p); put(y / (np.abs(y).max() + 1e-6) * 0.7, s['t0'] + t, g or 0.9)
+                continue
             p = f'{A}/sfx/{f}.wav'
-            if os.path.exists(p): put(rd(p), s['t0'] + t, GAIN.get(f, 0.6))
+            if os.path.exists(p): put(rd(p), s['t0'] + t, g or GAIN.get(f, 0.6))
     # ambiances par scène
     for s in shots:
         amb = s.get('ambiance', '')

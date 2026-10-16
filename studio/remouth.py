@@ -4,7 +4,7 @@ import json, os, subprocess, sys, shutil
 from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); W = '/tmp/claude-0/remouth'; os.makedirs(W, exist_ok=True)
-LP = os.environ.get('STUDIO_LIVEPORTRAIT', '/home/claude/lp/lpgen.py')
+LP = os.environ.get('STUDIO_LIVEPORTRAIT', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lp', 'lpgen.py'))
 cat = json.load(open(A + '/catalog.json')); P = cat['poses']; jobs = []; boxes = {}
 only = sys.argv[1:]
 for k, p in P.items():

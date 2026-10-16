@@ -3,7 +3,7 @@ en modifiant l'expression d'une pose existante avec LivePortrait. Utilisation : 
 import json, os, subprocess, sys
 from PIL import Image
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); W = '/tmp/claude-0/autosmile'; os.makedirs(W, exist_ok=True)
-LP = os.environ.get('STUDIO_LIVEPORTRAIT', '/home/claude/lp/lpgen.py')
+LP = os.environ.get('STUDIO_LIVEPORTRAIT', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lp', 'lpgen.py'))
 cat = json.load(open(A + '/catalog.json')); P = cat['poses']
 HAPPY = {'sourire', 'content', 'rire', 'grand_sourire'}
 SOURCE = {'AWA': 'awa_bras_croises', 'MIMI': 'mim_machine'}   # visage de face, expression calme

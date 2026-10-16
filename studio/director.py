@@ -92,7 +92,7 @@ def posture_of(pose_text):
     if 'grill' in t: return 'grill'
     return 'debout'
 class Stage:
-    def __init__(self): self.order = []; self.posture = {}; self.props = {}; self.arrivals = set()
+    def __init__(self): self.order = []; self.posture = {}; self.props = {}; self.arrivals = set(); self.entering = set()
     def set(self, who_list):
         for w in who_list:
             if w['who'] not in self.order: self.order.append(w['who'])
@@ -129,6 +129,7 @@ def wide_layout(stage, chars, moods, speaker=None):
         h = int(base * (0.8 if sit else 1.0) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else int(base * 0.83)
         w = POSES[k]['size'][0] * h / POSES[k]['size'][1]
         act = {'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': ('AWA_dos' if post == 'dos_marche' else 'AWA') if walk else None}
+        if c in stage.entering and not walk and not sit: act['enter'] = True; stage.entering.discard(c)   # il arrive : on le voit entrer
         if walk and post == 'dos_marche': act['leave'] = True   # elle s'en va : de dos, elle sort du cadre
         elif walk:   # elle entre en marchant puis s'arrête à sa place, avec une pose qui parle
             act['stop_key'] = pick(c, list(moods.get(c, [])), 'pied', 'debout', need_mouth=True) or pick(c, [], 'pied', None)
@@ -235,6 +236,8 @@ def over_shoulder(who, side, stage):
     a = close_actor(who, k, x=540 + (600 if back else 540) * side, scale=1.4); a['by'] = a['by'] + 420; a['fg'] = True; a['speaker'] = False
     if not back: a['silhouette'] = True   # pas de vue de dos : on montre une silhouette sombre (dos), jamais le visage
     return a
+LAUGH = {'rire', 'rire_retenu', 'rit', 'rigole', 'eclate_de_rire', 'moqueur'}
+def laughs(actions): return bool(set(actions) & LAUGH)
 def build(meta, events, log=print):
     shots = []; stage = Stage(); scene = {'decor': 'KIOSQUE', 'moment': 'jour', 'ambiance': ''}; plan = None
     moods = {}; music = 'joyeuse'; ending = False; pending_sfx = []; first_in_scene = True; last_shot = None; last_speaker = None; ots_count = 0
@@ -251,6 +254,12 @@ def build(meta, events, log=print):
         if t == 'scene':
             scene = dict(e); stage = Stage(); plan = None; first_in_scene = True; moods = {}; last_speaker = None
             # personnages de la scène : ceux qui parlent avant le prochain décor
+            # arrivée annoncée par des pas / talons avant la première réplique : le premier qui parle entre dans le plan
+            k2 = i + 1; steps = False
+            while k2 < len(events) and events[k2]['type'] not in ('line', 'scene'):
+                if events[k2]['type'] == 'sfx' and re.search(r'talons|pas|marche', norm(events[k2]['name'])): steps = True
+                k2 += 1
+            if steps and k2 < len(events) and events[k2]['type'] == 'line': stage.entering.add(events[k2]['who'])
             j = i + 1; first_plan = True
             while j < len(events) and events[j]['type'] != 'scene':
                 if events[j]['type'] == 'plan':
@@ -291,9 +300,12 @@ def build(meta, events, log=print):
                 j += 1
             lead = 0.18 if not shots or shots[-1].get('who') == who else 0.35
             dur = lead + e.get('dur', 2) + 0.3
+            laugh_line = e.get('emotion') in ('rire', 'rire_retenu') or 'rit' in e.get('voice', '') or any(tg in ('rire', 'rire_retenu') for _, tg in e.get('tags', []))
+            if laugh_line: dur += 1.1
             emo = [e.get('emotion', 'neutre')] + [tg for _, tg in e['tags'] if tg in EMOS]
             moods[who] = emo[:1]
             sh = {'kind': 'line', 'who': who, 'line': e, 'lead': lead, 'dur': dur}
+            if laugh_line: sh['sfx'] = [(lead + e.get('dur', 2) + 0.05, 'rire:' + who, 0.9)]
             if who == 'VOIX_OFF' or ending:
                 sh['kind'] = 'endline'
             elif 'telephone' in e.get('voice', '') and who not in stage.order:
@@ -348,7 +360,9 @@ def build(meta, events, log=print):
                     tw = word_time(e, r.get('word')); sh.setdefault('sfx', []).append((lead + (tw if tw is not None else e.get('dur', 1)), sfx_file(r['name'])))
                 else:
                     tw = word_time(e, r.get('word'))
-                    if tw is not None and sh['kind'] == 'line' and r['who'] != who: cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], [])})
+                    if tw is not None and sh['kind'] == 'line' and r['who'] != who:
+                        cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], [])})
+                        if laughs(r['actions']): sh.setdefault('sfx', []).append((lead + tw + 0.05, 'rire:' + r['who'], 0.45))   # on l'entend rire (sous la voix)
                     elif r['who'] != who: sh.setdefault('after', []).append(r)
             sh['cuts'] = cut
             add(sh); last_speaker = who
@@ -356,11 +370,13 @@ def build(meta, events, log=print):
                 k = pick(r['who'], r['actions'] + stage.props.get(r['who'], []), 'buste', stage.post(r['who']), need_mouth=False)
                 if k:
                     a = close_actor(r['who'], k, x=540 - 110 * stage.side(r['who'], who)); a['look_dir'] = stage.side(r['who'], who)
-                    add({'kind': 'close', 'dur': 1.4, 'actors': [a], 'fx': [(0.15, x) for x in r['actions']], 'pan': stage.pan(r['who'])})
+                    add({'kind': 'close', 'dur': 1.4, 'actors': [a], 'fx': [(0.15, x) for x in r['actions']], 'pan': stage.pan(r['who']),
+                         'sfx': [(0.1, 'rire:' + r['who'], 0.9)] if laughs(r['actions']) else []})
             i = j; continue
         elif t == 'reaction':
             k = pick(e['who'], e['actions'] + stage.props.get(e['who'], []), 'buste', stage.post(e['who']), need_mouth=False)
-            if k: add({'kind': 'close', 'dur': 1.4, 'actors': [close_actor(e['who'], k)], 'fx': [(0.15, a) for a in e['actions']]})
+            if k: add({'kind': 'close', 'dur': 1.4, 'actors': [close_actor(e['who'], k)], 'fx': [(0.15, a) for a in e['actions']],
+                       'sfx': [(0.1, 'rire:' + e['who'], 0.9)] if laughs(e['actions']) else []})
         elif t == 'sfx':
             pending_sfx.append((0.1, sfx_file(e['name'])))
         elif t == 'screen':

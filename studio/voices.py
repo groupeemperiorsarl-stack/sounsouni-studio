@@ -32,9 +32,32 @@ def plus_muet(t):
         out.append(re.sub(r'\b[Pp]lus\b', rep, clause))
     return ''.join(out)
 
+def speech_end(y, sr, t_last):
+    """Fin réelle de la parole : depuis le dernier mot reconnu, on avance tant que la voix continue
+    (jusqu'à un silence de 0,35 s), au plus 1,6 s plus loin."""
+    hop = int(sr * 0.02); n = len(y) // hop
+    if n < 3: return t_last
+    rms = np.sqrt(np.array([np.mean(y[i * hop:(i + 1) * hop] ** 2) for i in range(n)]))
+    thr = max(rms.max() * 0.07, 1e-4); i = int(t_last / 0.02); end = i; quiet = 0
+    while i < n and i * 0.02 < t_last + 1.6:
+        if rms[i] > thr: end = i; quiet = 0
+        else:
+            quiet += 1
+            if quiet * 0.02 >= 0.35: break
+        i += 1
+    return max(t_last, (end + 1) * 0.02)
+LEX = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lexique.txt')
+def lexique(t):
+    """Prononciations corrigées (fichier lexique.txt : « écrit = prononcé », une par ligne)."""
+    if not os.path.exists(LEX): return t
+    for line in open(LEX, encoding='utf-8'):
+        if '=' not in line or line.strip().startswith('#'): continue
+        a, b = [x.strip() for x in line.split('=', 1)]
+        if a: t = re.sub(re.escape(a), b, t, flags=re.I)
+    return t
 def say_text(t):
     # écriture adaptée à la prononciation (guillemets et tirets retirés, « plus » négatif sans S)
-    return plus_muet(re.sub(r'[«»"“”]', '', t).replace(' – ', ', ').strip())
+    return lexique(plus_muet(re.sub(r'[«»"“”]', '', t).replace(' – ', ', ').strip()))
 
 def gen(jobs, work):
     if not jobs: return
@@ -53,8 +76,30 @@ def fake(lines, work):
         tw.append(c); e['tok_word'] = tw
         e['tag_times'] = [[tw[min(i, len(tw) - 1)] * d / max(1, n), tag] for i, tag in e['tags']]
     return lines
+LAUGH = {'rire', 'rire_retenu', 'rit', 'rigole', 'eclate_de_rire', 'moqueur'}
+def make_laughs(events, cast, work, log=print, only_jobs=False):
+    """Un éclat de rire par personnage qui rit dans le script, avec SA voix (fabriqué une fois, gardé)."""
+    who = set()
+    for e in events:
+        if e['type'] == 'reaction' and set(e.get('actions', [])) & LAUGH: who.add(e['who'])
+        if e['type'] == 'line' and (e.get('emotion') in ('rire', 'rire_retenu') or 'rit' in e.get('voice', '') or any(tg in ('rire', 'rire_retenu') for _, tg in e.get('tags', []))): who.add(e['who'])
+    jobs = []
+    for c in sorted(who):
+        out = f'{work}/voix/rire_{c}.wav'; raw = f'{work}/voix/rire_raw_{c}.wav'
+        if os.path.exists(out): continue
+        ref = A + '/voix/' + cast['voices'].get(c, 'ref_bakary.wav')
+        if not os.path.exists(raw): jobs.append({'out': raw, 'ref': ref, 'text': 'Ha ha ha ha !', 'exag': 0.65, 'cfg': 0.5})
+    if only_jobs: return jobs
+    if jobs: log(f'rires : {len(jobs)} à fabriquer'); gen(jobs, work)
+    for c in sorted(who):
+        raw, out = f'{work}/voix/rire_raw_{c}.wav', f'{work}/voix/rire_{c}.wav'
+        if os.path.exists(raw) and not os.path.exists(out):
+            y, sr = sf.read(raw); y = y if y.ndim == 1 else y.mean(1); y = y[:int(min(len(y), sr * 1.6))]
+            fade = np.linspace(1, 0, int(sr * 0.25)); y[-len(fade):] *= fade
+            sf.write(out, y / (np.abs(y).max() + 1e-6) * 0.9, sr, subtype='PCM_16')
 def run(events, cast, work, log=print):
     os.makedirs(work + '/voix', exist_ok=True)
+    if not os.environ.get('STUDIO_FAUSSES_VOIX'): make_laughs(events, cast, work, log)
     lines = [e for e in events if e['type'] == 'line']
     for e in lines: e['_say'] = say_text(e['text'])
     if os.environ.get('STUDIO_FAUSSES_VOIX'): log('voix : mode essai (fausses voix)'); return fake(lines, work)
@@ -91,7 +136,8 @@ def run(events, cast, work, log=print):
             if score >= 0.6 or attempt == 2:
                 # fin : juste après le dernier mot reconnu du texte (supprime les sons parasites ajoutés)
                 last = max([v[1] for v in mapping.values()] or [len(y) / sr]); first = min([v[0] for v in mapping.values()] or [0])
-                y = y[int(max(0, first - 0.12) * sr):int(min(len(y) / sr, last + 0.18) * sr)]
+                last = speech_end(y, sr, last)   # ne jamais couper le dernier mot : on suit la voix jusqu'au vrai silence
+                y = y[int(max(0, first - 0.12) * sr):int(min(len(y) / sr, last + 0.22) * sr)]
                 e['_ok'] = True; e['_map'] = {k: ((v[0] - max(0, first - 0.12)) / TEMPO, (v[1] - max(0, first - 0.12)) / TEMPO) for k, v in mapping.items()}
                 tmp = f"{work}/voix/tmp.wav"; sf.write(tmp, y / (np.abs(y).max() + 1e-6) * 0.9, sr, subtype='PCM_16')
                 af = f'atempo={TEMPO}'
@@ -122,3 +168,17 @@ def run(events, cast, work, log=print):
     bad = [(e['id'], e['_score']) for e in lines if e.get('_score', 1) < 0.6]
     if bad: log('voix à vérifier : ' + ', '.join(f'{i} ({s})' for i, s in bad))
     return lines
+
+def first_jobs(events, cast, work):
+    """Toutes les voix à fabriquer (premier essai) : sert à répartir le travail sur plusieurs ordinateurs."""
+    os.makedirs(work + '/voix', exist_ok=True)
+    jobs = list(make_laughs(events, cast, work, only_jobs=True) or [])
+    for e in [e for e in events if e['type'] == 'line']:
+        ref = A + '/voix/' + cast['voices'].get(e['who'], 'ref_bakary.wav')
+        ex, cfg = style(e); txt = say_text(e['text'])
+        h = hashlib.md5(f"{txt}|{ref}|{ex}|{cfg}|0".encode()).hexdigest()[:12]
+        out = f"{work}/voix/raw_{h}.wav"
+        if not os.path.exists(out): jobs.append({'out': out, 'ref': ref, 'text': txt, 'exag': ex, 'cfg': cfg})
+    return jobs
+def gen_part(events, cast, work, i, n, log=print):
+    jobs = first_jobs(events, cast, work)[i::n]; log(f'voix : part {i + 1}/{n}, {len(jobs)} à fabriquer'); gen(jobs, work)

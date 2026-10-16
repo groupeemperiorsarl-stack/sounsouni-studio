@@ -8,6 +8,8 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument('script'); ap.add_argument('-o', '--out', default=None)
     ap.add_argument('--plans-seulement', action='store_true', help="s'arrête après la mise en scène (aperçu des plans)")
     ap.add_argument('--workers', type=int, default=2)
+    ap.add_argument('--etape', choices=['voix', 'plans', 'rendu', 'final'], default=None, help='une seule étape (pour répartir sur plusieurs ordinateurs)')
+    ap.add_argument('--part', default=None, help='i/n : cette machine fait la part i sur n')
     a = ap.parse_args()
     name = os.path.splitext(os.path.basename(a.script))[0]; out = a.out or os.path.join(os.getcwd(), 'sortie_' + name)
     work = os.path.join(out, 'travail'); os.makedirs(work, exist_ok=True)
@@ -20,12 +22,25 @@ def main():
         if new: log(f'analyse des objets sur {len(new)} nouvelles poses'); autotag.run(new); director.reload()
     except Exception as err: log(f'analyse des objets impossible : {err}')
     log(f"script : {sum(1 for e in ev if e['type'] == 'line')} répliques, {sum(1 for e in ev if e['type'] == 'scene')} scènes")
+    part = tuple(int(x) for x in a.part.split('/')) if a.part else None
+    if a.etape == 'voix':
+        voices.gen_part(ev, director.CAT, work, part[0], part[1], log) if part else voices.gen(voices.first_jobs(ev, director.CAT, work), work); return
+    if a.etape in ('rendu', 'final'):
+        shots = json.load(open(os.path.join(work, 'plans.json'))); tot = shots[-1]['t0'] + shots[-1]['dur']
+        for sh in shots:
+            for ac in sh.get('actors', []):
+                for kk in (ac.get('key'), ac.get('stop_key')):
+                    if kk and '@' in kk and kk not in director.POSES: director.yaw_variant(*director.parse_variant(kk))
+        if a.etape == 'rendu': render.video(shots, tot, work, a.workers, log, part=part); return
+        silent = render.video(shots, tot, work, a.workers, log); v, m = audio.build(shots, tot, work, log)
+        final = os.path.join(out, name + '.mp4'); audio.mix(silent, v, m, final); ok = audio.light(final, os.path.join(out, name + '_leger.mp4'), tot)
+        log(f"fini : {final} ({tot:.0f} s) — version légère {'vérifiée' if ok else 'À VÉRIFIER'}"); return
     lines = voices.run(ev, director.CAT, work, log)
     shots, tot = director.build(meta, ev, log)
     json.dump(shots, open(os.path.join(work, 'plans.json'), 'w'), ensure_ascii=False, indent=0, default=str)
     render.prepare_turns(shots, log)
     render.contact(shots, os.path.join(out, 'apercu_plans.png')); log('aperçu des plans : apercu_plans.png')
-    if a.plans_seulement: return
+    if a.plans_seulement or a.etape == 'plans': return
     A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
     stamp = [os.path.getmtime(os.path.join(A, 'catalog.json'))] + sorted(os.path.getmtime(os.path.join(dp, f)) for dp, _, fs in os.walk(os.path.join(A, 'poses')) for f in fs if f.endswith('.webp'))[-3:]
     h = hashlib.md5((json.dumps(shots, sort_keys=True, default=str) + str(stamp)).encode()).hexdigest()[:10]   # images changées = on refait le rendu

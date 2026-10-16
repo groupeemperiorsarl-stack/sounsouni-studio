@@ -1,0 +1,4 @@
+# Prononciations corrigées pour les voix : « écrit = prononcé » (une par ligne).
+# L'application remplace le mot écrit par la forme prononcée avant de fabriquer la voix (le texte affiché ne change pas).
+Kôrôbalé wou = Kôrôbaléou
+Kôrôbale wou = Kôrôbaléou

@@ -101,6 +101,9 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
             rgb = Image.fromarray(out.clip(0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(14))
         else: rgb = im.convert('RGB').filter(ImageFilter.GaussianBlur(9)).point(lambda v: int(v * 0.72))
         im = rgb.convert('RGBA'); im.putalpha(al.filter(ImageFilter.GaussianBlur(10 if a.get('silhouette') else 6)))
+    if a.get('enter'):   # entrée dans le plan : arrive du bord le plus proche, avec le pas qui balance
+        pe = prog(lt, 0, 1.5); sd = 1 if a['x'] > 540 else -1
+        walk_dx += sd * 650 * (1 - eo(pe)); dy -= abs(math.sin(lt * 9)) * 16 * (1 - pe)
     cx = a['x'] + dx + walk_dx; by = a['by'] + dy
     if rot: im = im.rotate(rot, expand=True, resample=Image.BICUBIC, center=(im.width / 2, im.height))
     paste(fr, im, cx, by - im.height / 2, 1.0, 1.0, sh=not a.get('back'))
@@ -243,14 +246,18 @@ def render_segment(args):
         ff.stdin.write(fr.tobytes())
         if n % 300 == 299: pose_img.cache_clear(); decor.cache_clear()
     ff.stdin.close(); ff.wait(); return out
-def video(shots, tot, work, workers=2, log=print, seg=360):
+def video(shots, tot, work, workers=2, log=print, seg=360, part=None):
     n = int(tot * FPS); jobs = []
     for a in range(0, n, seg): jobs.append((shots, a, min(n, a + seg), f'{work}/seg_{a:06d}.mp4'))
     todo = [j for j in jobs if not os.path.exists(j[3] + '.ok')]
+    if part: todo = [j for k, j in enumerate(jobs) if k % part[1] == part[0] and not os.path.exists(j[3] + '.ok')]
     log(f'rendu : {n} images, {len(todo)} morceaux à calculer')
     from multiprocessing import Pool
     with Pool(workers) as p:
         for out in p.imap_unordered(render_segment, todo): open(out + '.ok', 'w').close(); log('  morceau fini ' + os.path.basename(out))
+    if part: return None
+    missing = [j[3] for j in jobs if not os.path.exists(j[3] + '.ok')]
+    if missing: raise RuntimeError(f'morceaux manquants : {len(missing)}')
     with open(f'{work}/list.txt', 'w') as f:
         for j in jobs: f.write(f"file '{os.path.basename(j[3])}'\n")
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{work}/list.txt', '-c', 'copy', f'{work}/silent.mp4'], check=True)
@@ -285,7 +292,7 @@ def prepare_turns(shots, log=print):
         for sw in s.get('switch', []): pass
     out = f'{A}/poses/tourne'; os.makedirs(out, exist_ok=True)
     todo = [k for k in sorted(need) if not os.path.exists(f'{out}/{k}.webp')]
-    lp = os.environ.get('STUDIO_LIVEPORTRAIT', '/home/claude/lp/lpgen.py')
+    lp = os.environ.get('STUDIO_LIVEPORTRAIT', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lp', 'lpgen.py'))
     if not todo: return
     if not os.path.exists(lp): log('têtes tournées : outil LivePortrait absent, poses d\'origine utilisées'); return
     tmp = f'{out}/_tmp'; os.makedirs(tmp, exist_ok=True); jobs = []; boxes = {}; bgs = {}
