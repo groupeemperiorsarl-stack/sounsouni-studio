@@ -43,7 +43,10 @@ POS = {'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'content', 'fier', '
 NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'degout', 'choc', 'mepris'}
 OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
-def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=()):
+LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
+def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False):
+    """must : objets demandés par le PLAN (ex. [Karim, téléphone]) = fortement voulus ; side : préférer une pose de trois-quarts
+    (pour se tourner vers l'autre dans les plans à plusieurs)."""
     best, bs = None, -1e9
     w = tagwords(want)
     for k, p in POSES.items():
@@ -61,8 +64,10 @@ def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
             elif p['posture'] in ('assis', 'banc', 'dos', 'tombe', 'court', 'marche') and posture != p['posture']: s -= 4
         elif p['posture'] in ('dos', 'tombe', 'court', 'marche') and p['posture'] not in w and not (tags & w & {'tombe', 'glisse', 'court', 'dos', 'marche'}): s -= 5
         props = set(p.get('props', [])) | (tags & OBJ)
-        unasked = props - w - set(extra_ok)
-        s -= 7 * len(unasked)   # un objet (brochette, téléphone…) ou des larmes jamais montrés sans raison
+        unasked = props - w - set(extra_ok) - set(must)
+        s -= 7 * len(unasked - LIGHT) + 1.5 * len(unasked & LIGHT)   # un objet (brochette, téléphone…) ou des larmes jamais montrés sans raison
+        s += 6 * len(set(must) & (tags | props))
+        if side and face_dir(k) != 0: s += 2.5
         # pas de visage à contre-sens : un sourire demandé ne doit jamais donner une pose triste, et l'inverse
         if w & POS and tags & NEG and not (w & NEG): s -= 6
         if w & NEG and tags & POS and not (w & POS): s -= 4
@@ -108,14 +113,14 @@ def wide_layout(stage, chars, moods, speaker=None):
     """Plan d'ensemble : tout le monde sur le même sol, côte à côte sans se chevaucher, arrière-plan plus petit."""
     chars = [c for c in chars if c in HEIGHT]; acts = []
     prio = sorted(chars, key=lambda c: (c != speaker, stage.posture.get(c) != 'marche', chars.index(c)))
-    keep = set(prio[:5]); front = [c for c in chars if c in keep]; back = [c for c in chars if c not in keep]
+    keep = set(prio[:6]); front = [c for c in chars if c in keep]; back = [c for c in chars if c not in keep]
     for c in front:
         post = stage.posture.get(c, 'debout'); pst = 'debout' if post == 'grill' else post
         want = list(moods.get(c, [])) + (['grill'] if post == 'grill' else []) + stage.props.get(c, [])
         walk = post in ('marche', 'dos_marche') and c == 'AWA'
-        k = ('awa_dos_pas1' if post == 'dos_marche' else 'awa_pas1') if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker)) or pick(c, want, None, None))
+        k = ('awa_dos_pas1' if post == 'dos_marche' else 'awa_pas1') if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker), must=stage.props.get(c, []), side=len(chars) > 1) or pick(c, want, None, None))
         sit = POSES[k]['posture'] in ('assis', 'banc')
-        base = {1: 1450, 2: 1320, 3: 1150, 4: 1060}.get(len(front), 980)   # moins il y a de monde, plus on est près
+        base = {1: 1450, 2: 1320, 3: 1150, 4: 1060, 5: 980}.get(len(front), 920)   # moins il y a de monde, plus on est près
         h = int(base * (0.8 if sit else 1.0) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else int(base * 0.83)
         w = POSES[k]['size'][0] * h / POSES[k]['size'][1]
         act = {'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': ('AWA_dos' if post == 'dos_marche' else 'AWA') if walk else None}
@@ -126,7 +131,7 @@ def wide_layout(stage, chars, moods, speaker=None):
         acts.append(act)
     tot = sum(a['w'] for a in acts) + 30 * max(0, len(acts) - 1); avail = 1040
     if tot > avail:
-        f = max(0.7, avail / tot)
+        f = max(0.58, avail / tot)
         for a in acts: a['h'] = int(a['h'] * f); a['w'] *= f
         tot = sum(a['w'] for a in acts) + 30 * max(0, len(acts) - 1)
     gap = 30 if len(acts) < 2 else 30 + max(0, (avail - tot)) / (len(acts) - 1) * 0.6
@@ -292,12 +297,12 @@ def build(meta, events, log=print):
                 elif mode == 'deux' and plan and len(plan['who']) >= 2:
                     pair = [w['who'] for w in plan['who']][:2]; acts = []
                     for c, x in zip(pair, (330, 760)):
-                        k = pick(c, moods.get(c, []), None, stage.posture.get(c) if stage.posture.get(c) != 'grill' else None, need_mouth=c == who)
+                        k = pick(c, moods.get(c, []), None, stage.post(c), need_mouth=c == who, must=stage.props.get(c, []), side=True)
                         a = close_actor(c, k, x=x, scale=0.62); a['by'] = 420 + a['h'] if POSES[k]['frame'] != 'pied' else 600 + a['h']; a['speaker'] = c == who; acts.append(a)
                     sh['actors'] = acts; sh['mode'] = 'two'
                 else:
                     post = stage.posture.get(who) or 'debout'; post = 'debout' if post in ('grill', 'marche') else post
-                    k = pick(who, emo + stage.props.get(who, []), 'buste', post)
+                    k = pick(who, emo, 'buste', post, must=stage.props.get(who, []))
                     side = stage.side(who, e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper()))
                     x = 540 - 110 * side if side else 540
                     tgt = e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper())
