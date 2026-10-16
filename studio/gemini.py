@@ -180,7 +180,7 @@ def fiche(items, out, log=print):
         th = Image.open(f); th.thumbnail((420, 640)); b = io.BytesIO(); th.save(b, 'JPEG', quality=82)
         ou = ', '.join(x['ou'][:4]) + (f' … ({len(x["ou"])} fois)' if len(x['ou']) > 4 else '')
         cartes.append(f'''<section><h2><span class="n">{x["n"]}</span>{html.escape(titre(x))}</h2><p class="ou">Demandé : {html.escape(ou)}</p>
-<div class="ligne"><a class="ref" href="data:image/jpeg;base64,{base64.b64encode(open(f, "rb").read()).decode()}" download="{x["n"]}_{html.escape(x["fichier_ref"])}"><img src="data:image/jpeg;base64,{base64.b64encode(b.getvalue()).decode()}" alt="image à joindre"><span>① Image à joindre<br>(appui long → enregistrer)</span></a>
+<div class="ligne"><a class="ref" href="data:image/jpeg;base64,{base64.b64encode(open(f, "rb").read()).decode()}" download="{x["n"]}_{html.escape(x["fichier_ref"])}"><img src="data:image/jpeg;base64,{base64.b64encode(b.getvalue()).decode()}" alt="image à joindre"><span>① Image à joindre<br>(envoyée à part : « image_pour_n…»)</span></a>
 <div class="dem">{note}<p class="txt" id="d{x["n"]}">{html.escape(x["demande"])}</p><button data-c="d{x["n"]}">② Copier la demande</button></div></div></section>''')
     page = f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fiche Gemini</title><style>
 :root{{--fond:#f6f3ee;--carte:#fff;--texte:#222;--doux:#666;--accent:#e8731a;--bord:#ddd}}
@@ -195,13 +195,18 @@ h2{{font-size:16px;margin:0 0 2px;display:flex;gap:8px;align-items:center}}.n{{f
 .dem{{flex:1;min-width:0}}.note{{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--accent)}}.txt{{margin:0 0 8px;font-size:13px;background:var(--fond);border-radius:8px;padding:8px;word-wrap:break-word}}
 button{{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 10px;font-weight:700;font-size:14px;width:100%}}
 </style></head><body><h1>Fiche Gemini — {len(items)} image(s)</h1>
-<p class="aide">Pour chaque numéro : <b>①</b> enregistrez l'image (appui long), <b>②</b> copiez la demande, puis dans Gemini joignez l'image et collez la demande.
+<p class="aide">Pour chaque numéro : <b>①</b> prenez l'image envoyée à part dont le nom contient ce numéro, <b>②</b> copiez la demande, puis dans Gemini joignez l'image et collez la demande.
 Ensuite, renvoyez les images en disant leur numéro (exemple : « 1, 2, 4 » dans l'ordre des images envoyées).</p>
 {''.join(cartes)}
 <script>document.querySelectorAll('button[data-c]').forEach(b=>b.onclick=()=>{{const t=document.getElementById(b.dataset.c).textContent;
 const ok=()=>{{const o=b.textContent;b.textContent='Copié ✓';setTimeout(()=>b.textContent=o,1500)}};try{{navigator.clipboard.writeText(t).then(ok,()=>prompt('Copiez :',t))}}catch(e){{prompt('Copiez :',t)}}}});</script>
 </body></html>'''
     open(os.path.join(out, 'fiche_gemini.html'), 'w', encoding='utf-8').write(page)
+    # les images à joindre, en fichiers séparés (l'aperçu des pages dans l'application Claude ne permet pas de les enregistrer)
+    import collections; g = collections.OrderedDict(); d = os.path.join(out, 'a_joindre'); shutil.rmtree(d, ignore_errors=True); os.makedirs(d)
+    for x in items:
+        if not x.get('suite_de'): g.setdefault(x['fichier_ref'], []).append(x['n'])
+    for f, ns in g.items(): shutil.copy(os.path.join(out, 'references', f), os.path.join(d, 'image_pour_n' + '-'.join(map(str, ns)) + '.jpg'))
     json.dump(items, open(os.path.join(out, 'fiche_gemini.json'), 'w'), ensure_ascii=False, indent=1)
     log(f'fiche Gemini : {len(items)} image(s) à générer → fiche_gemini.html'); return items
 
