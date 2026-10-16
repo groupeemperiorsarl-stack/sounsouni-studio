@@ -10,7 +10,7 @@ PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
 PLAN: objet voiture de Karim
 [MUSIQUE: suspense]
 
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim marche]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone]
 
 KARIM (grand_sourire · regarde: téléphone · voix: crie)
 Bonjour mes abonnés ! {fier} Aujourd'hui, en direct… le vendeur de thé le plus célèbre de Bamako !
@@ -50,7 +50,7 @@ DIASABI (confus · regarde: Modibo · voix: chuchote)
 C'est qui, ce monsieur ? {sourire} Il veut des brochettes ?
 [SILENCE 2 s: grillon]
 
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, Fatim debout]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone, Fatim debout]
 [BRUITAGE: talons]
 
 FATIM (sourire · regarde: Bakary · voix: normal)
@@ -68,7 +68,7 @@ Un monsieur qui change de fiancée {sourire} chaque semaine.
 [RÉACTION KARIM: rougit]
 
 DÉCOR: ATELIER · matin · ambiance: rue calme
-PLAN: deux [Mimi debout, téléphone, Awa assise]
+PLAN: gros [Mimi debout, téléphone, Awa assise]
 
 MIMI (inquiet · regarde: Awa · voix: chuchote)
 Tantie Awa… Karim fait un direct devant le kiosque. {timide} Il parle de vous.
@@ -100,7 +100,7 @@ Mimi ! Sors-moi mon bazin doré. {fier} Celui des grandes cérémonies.
 PLAN: 3 s · gros Awa · {fier}
 
 DÉCOR: KIOSQUE · matin · ambiance: rue calme
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, Fatim debout, Awa marche]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, téléphone, Fatim debout, Awa marche]
 [BRUITAGE: talons]
 
 PLAN: 4 s · gros Awa · {fier}
@@ -112,7 +112,7 @@ PLAN: 4 s · gros Awa · {fier}
 DIASABI (surpris · regarde: Awa · voix: chuchote)
 Waouh… {rougit} c'est la couturière, ça ?
 
-PLAN: large [Awa assise, Fatim debout, Bakary debout, Karim debout]
+PLAN: large [Awa assise, Fatim debout, Bakary debout, Karim debout, téléphone]
 
 FATIM (moqueur · regarde: Awa · voix: normal)
 Awa ? Depuis quand tu bois le thé ici, toi ?
@@ -155,7 +155,7 @@ PLAN: objet téléphone
 BAKARY (taquin · regarde: Karim · voix: normal)
 {sourire} Monsieur… votre thé. Il est déjà payé.
 
-PLAN: deux [Awa assise, Karim debout]
+PLAN: gros [Awa assise, Karim debout, téléphone]
 
 AWA (fiere · regarde: Karim · voix: lentement)
 Filme bien, Karim. {fier} Une femme qui a du goût s'habille en bazin doré… et boit son thé tranquille.
@@ -188,7 +188,7 @@ MODIBO (victoire · regarde: Karim · voix: crie)
 [BRUITAGE: clic]
 [ÉCRAN 2 s: Direct terminé]
 
-PLAN: deux [Karim debout, Awa assise]
+PLAN: gros [Karim debout, téléphone, Awa assise]
 [MUSIQUE: suspense]
 
 KARIM (sourire · regarde: Awa · voix: lentement)
