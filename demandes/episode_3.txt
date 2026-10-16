@@ -1,0 +1,218 @@
+TITRE: Les Plans de Bakary – Épisode 16 : Le direct
+NOUVELLE TENUE: AWA — bazin doré : grand boubou de cérémonie en bazin riche doré et brillant, brodé au col et aux manches, foulard de tête doré assorti, bijoux en or
+NOUVEL OBJET: robe en bazin bas de gamme — robe de femme en bazin bleu délavé, tissu terne et froissé, coutures grossières, posée sur un cintre
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+[BRUITAGE: coq]
+[BRUITAGE: klaxon]
+
+PLAN: objet voiture de Karim
+[MUSIQUE: suspense]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim marche]
+
+KARIM (grand_sourire · regarde: téléphone · voix: crie)
+Bonjour mes abonnés ! {fier} Aujourd'hui, en direct… le vendeur de thé le plus célèbre de Bamako !
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: 🔴 EN DIRECT · Karim Konaté · 1 248 spectateurs]
+
+KARIM (offre · regarde: Bakary · voix: normal)
+Pour toi et ta couturière. {grand_sourire} Un cadeau de mariage !
+
+PLAN: objet colis / cadeau
+[BRUITAGE: whoosh]
+
+PLAN: objet robe en bazin bas de gamme
+
+BAKARY (choc · regarde: Karim · voix: lentement)
+Une robe… ?
+
+KARIM (fier · regarde: téléphone · voix: normal)
+Bazin bas de gamme… {sourire} pour une couturière bas de gamme !
+[RÉACTION BAKARY sur "bas de gamme": triste]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: 🔴 Direct · « Hahaha » · « La honte 😂 » · « Elle va pleurer ! »]
+
+BAKARY (serieux · regarde: Karim · voix: normal)
+Monsieur, Awa ne vous a rien fait. {secoue_tete} Laissez-la tranquille.
+
+KARIM (grand_sourire · regarde: téléphone · voix: rit en parlant)
+Oh ! Le vendeur de thé défend sa fiancée !
+
+MODIBO (serieux · regarde: Karim · voix: normal)
+Crimo… tu viens jusqu'ici pour filmer un kiosque ? {moqueur} Tu n'as pas de travail ?
+[RÉACTION KARIM: surpris]
+
+DIASABI (confus · regarde: Modibo · voix: chuchote)
+C'est qui, ce monsieur ? {sourire} Il veut des brochettes ?
+[SILENCE 2 s: grillon]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, Fatim debout]
+[BRUITAGE: talons]
+
+FATIM (sourire · regarde: Bakary · voix: normal)
+Bakary ! {salue} Comme tu es encore libre… je viens boire mon thé ici.
+[RÉACTION BAKARY: gene]
+
+KARIM (grand_sourire · regarde: téléphone · voix: crie)
+Oh oh ! Une deuxième fiancée ! {fier} Le vendeur de thé est très demandé !
+
+FATIM (moue · regarde: Bakary · voix: normal)
+C'est qui, lui ?
+
+MODIBO (taquin · regarde: Fatim · voix: normal)
+Un monsieur qui change de fiancée {sourire} chaque semaine.
+[RÉACTION KARIM: rougit]
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+PLAN: deux [Mimi debout, téléphone, Awa assise]
+
+MIMI (inquiet · regarde: Awa · voix: chuchote)
+Tantie Awa… Karim fait un direct devant le kiosque. {timide} Il parle de vous.
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: 🔴 Direct · « Bazin bas de gamme pour une couturière bas de gamme ! » · 2 105 spectateurs]
+
+PLAN: très gros Awa
+
+AWA (furieux · regarde: téléphone · voix: lentement)
+Bas de gamme… {colere} MOI ?
+[BRUITAGE sur "MOI": tonnerre]
+
+AWA (determine · regarde: loin · voix: normal)
+Il veut un spectacle ? {fier} Il va avoir un spectacle.
+
+MIMI (sourire_malin · regarde: Awa · voix: normal)
+Tantie… {sourire_malin} vous vous faites belle pour Bakary ?
+
+AWA (fiere · regarde: Mimi · voix: crie)
+Pour Bakary ?! {mepris} C'est pour Karim. Aujourd'hui, il va apprendre qui est Awa.
+[RÉACTION MIMI: rire_retenu]
+
+AWA (determine · regarde: Mimi · voix: vite)
+Mimi ! Sors-moi mon bazin doré. {fier} Celui des grandes cérémonies.
+[MUSIQUE: action]
+
+[TENUE AWA: bazin doré]
+PLAN: 3 s · gros Awa · {fier}
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Karim debout, Fatim debout, Awa marche]
+[BRUITAGE: talons]
+
+PLAN: 4 s · gros Awa · {fier}
+[SILENCE 3 s]
+[RÉACTION BAKARY: emerveille]
+[RÉACTION KARIM: surpris]
+[RÉACTION FATIM: moue]
+
+DIASABI (surpris · regarde: Awa · voix: chuchote)
+Waouh… {rougit} c'est la couturière, ça ?
+
+PLAN: large [Awa assise, Fatim debout, Bakary debout, Karim debout]
+
+FATIM (moqueur · regarde: Awa · voix: normal)
+Awa ? Depuis quand tu bois le thé ici, toi ?
+
+AWA (froide · regarde: loin · voix: normal)
+Depuis aujourd'hui.
+
+BAKARY (timide · regarde: Awa · voix: chuchote)
+Awa… {sourire} je te sers quoi ?
+[BRUITAGE: clic]
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Nouvelle commande · Awa Couture : 1 thé · Note : « Bien sucré, comme ma journée. »]
+
+BAKARY (surpris · regarde: téléphone · voix: normal)
+Elle… elle commande sur l'application ?
+
+DIASABI (confus · regarde: Modibo · voix: normal)
+Elle est assise juste là ! {explique} Pourquoi elle commande sur le téléphone ?
+
+MODIBO (sage · regarde: Diasabi · voix: lentement)
+Parce que si elle parle la première… {sourire} elle perd.
+
+PLAN: 2 s · gros Bakary · {sert}
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Awa Couture : 1 thé · Note : « Pour ma voisine Fatim. »]
+
+FATIM (moue · regarde: Awa · voix: normal)
+Pour… moi ? {sourire} Merci…
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Awa Couture : 1 thé · Note : « Pour le monsieur à la V8. Il a l'air fatigué. »]
+[RÉACTION KARIM: rougit]
+[RÉACTION MODIBO: rire]
+
+BAKARY (taquin · regarde: Karim · voix: normal)
+{sourire} Monsieur… votre thé. Il est déjà payé.
+
+PLAN: deux [Awa assise, Karim debout]
+
+AWA (fiere · regarde: Karim · voix: lentement)
+Filme bien, Karim. {fier} Une femme qui a du goût s'habille en bazin doré… et boit son thé tranquille.
+
+AWA (mepris · regarde: Karim · voix: normal)
+Ta robe, garde-la pour ta prochaine fiancée. {sourire} De toute façon… elle ne durera pas une semaine.
+[RÉACTION KARIM sur "semaine": rougit]
+[RÉACTION MODIBO: rire]
+[RÉACTION DIASABI: joie]
+
+FATIM (pensif · regarde: Bakary · voix: chuchote)
+Bakary… elle est toujours comme ça, ta voisine ?
+
+BAKARY (amoureux · regarde: Awa · voix: chuchote)
+{reveur} Toujours.
+[RÉACTION FATIM: moue]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: 🔴 Direct · « Elle l'a détruit 😂 » · « Quelle classe ! » · « Le vendeur de thé vaut plus que la V8 » · « Où on commande ce thé ?? »]
+[BRUITAGE: notification]
+[BRUITAGE: notification]
+[ÉCRAN 4 s: Boutique Chez Bakary · 12 nouvelles commandes · « Le thé du direct ! »]
+[MUSIQUE: joyeuse]
+
+BAKARY (emerveille · regarde: Modibo · voix: vite)
+Van ! Douze commandes ! {content} Grâce à son direct !
+
+MODIBO (victoire · regarde: Karim · voix: crie)
+{rire} Merci pour la publicité, Crimo !
+[BRUITAGE: clic]
+[ÉCRAN 2 s: Direct terminé]
+
+PLAN: deux [Karim debout, Awa assise]
+[MUSIQUE: suspense]
+
+KARIM (sourire · regarde: Awa · voix: lentement)
+D'accord, Awa. {sourire} Tu es maligne… Mais ce n'est pas encore fini. {fier} Je reviendrai.
+[RÉACTION AWA: froide]
+
+BAKARY (inquiet · regarde: Awa · voix: chuchote)
+Awa… fais attention à cet homme.
+
+AWA (froide · regarde: loin · voix: normal)
+Occupe-toi de ton thé, Bakary.
+
+DÉCOR: RUE · midi · ambiance: circulation
+PLAN: objet voiture de Karim
+PLAN: gros [Karim assis, téléphone]
+
+KARIM (content · regarde: téléphone · voix: normal)
+Allô, Dina ? {grand_sourire} J'ai un tournage pour toi lundi. Un quartier… très spécial.
+[BRUITAGE: tonnerre]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, même assis juste en face, on peut commander en un clic. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
