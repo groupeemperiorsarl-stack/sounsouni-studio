@@ -16,11 +16,16 @@ def reload():
 GROUND, BACK = 1900, 1560
 EMOS = {'neutre', 'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'rire_retenu', 'colere', 'furieux', 'choc', 'surpris', 'peur', 'panique', 'triste',
         'gene', 'mepris', 'mefiant', 'yeux_plisses', 'amoureux', 'fier', 'moue', 'degout', 'innocent', 'taquin', 'pensif', 'serieux', 'inquiet', 'tendre',
-        'moqueur', 'froide', 'hesitante', 'chaleureuse', 'joie', 'content', 'severe', 'emu'}
+        'moqueur', 'froide', 'hesitante', 'chaleureuse', 'joie', 'content', 'severe', 'emu', 'confus', 'determine', 'fiere', 'sage', 'victoire',
+        'emerveille', 'timide', 'reveur'}
 SYN = {'grand_sourire': 'sourire content', 'sourire_malin': 'taquin sourire', 'rire_retenu': 'rire', 'furieux': 'colere furieux', 'yeux_plisses': 'mefiant mepris',
        'peur': 'peur panique', 'panique': 'panique peur', 'surpris': 'surpris choc', 'froide': 'mepris colere froide', 'moqueur': 'moqueur taquin rire',
        'hesitante': 'pensif moue', 'innocent': 'sourire', 'emu': 'emu amoureux', 'tendre': 'tendre sourire', 'inquiet': 'inquiet triste', 'pleure': 'pleure triste larmes', 'triste': 'triste',
-       'chaleureuse': 'sourire', 'severe': 'severe colere', 'serieux': 'serieux neutre', 'joie': 'joie content rire'}
+       'chaleureuse': 'sourire', 'severe': 'severe colere', 'serieux': 'serieux neutre', 'joie': 'joie content rire',
+       # mots utilisés par le scénariste, ramenés aux émotions connues
+       'confus': 'gene confus', 'determine': 'serieux fier', 'determinee': 'serieux fier', 'fiere': 'fier', 'sage': 'serieux neutre', 'victoire': 'joie victoire',
+       'emerveille': 'surpris amoureux', 'emerveillee': 'surpris amoureux', 'timide': 'gene timide', 'reveur': 'amoureux reveur', 'reveuse': 'amoureux reveur',
+       'sert': 'verse the', 'contente': 'content', 'surprise': 'surpris', 'inquiete': 'inquiet', 'furieuse': 'furieux', 'amoureuse': 'amoureux'}
 BODY = {'recule', 'avance', 'sursaut', 'tremble', 'hoche_tete', 'secoue_tete', 'penche_tete', 'se_penche', 's_affale', 'bombe_torse', 'soupir', 'tourne_vers', 'detourne_regard', 'regarde_bas', 'leve_yeux_ciel', 'cligne', 'clin_oeil', 'ferme_yeux'}
 FX = {'coeurs', 'etoiles', 'eclair', 'fumee_tete', 'goutte', 'sueur', 'point_exclamation', 'point_interrogation', 'rougit', 'idee', 'ampoule'}
 SFX = {'sonnerie': 'call', 'telephone': 'call', 'bip': 'bip', 'clic': 'click', 'notification': 'ding', 'pieces': 'coin', 'porte': 'door', 'porte qui claque': 'door',
@@ -45,12 +50,14 @@ OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plat
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
 GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
+TENUE = {}   # tenue portée en ce moment par chaque personnage ([TENUE AWA: bazin doré]) ; vide = tenue de tous les jours
 LASTPICK = {}   # dernier choix de pose : gardé sur l'acteur pour que les planches proposent les autres poses possibles
 def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
-    r = rank(char, want, frame, posture, need_mouth, avoid_cycle, extra_ok, must, side, calm); best = r[0][0] if r else None
-    LASTPICK.clear(); LASTPICK.update(key=best, args={'char': char, 'want': list(want), 'frame': frame, 'posture': posture, 'need_mouth': need_mouth, 'avoid_cycle': avoid_cycle, 'extra_ok': list(extra_ok), 'must': list(must), 'side': side, 'calm': calm})
+    t = TENUE.get(char, '')
+    r = rank(char, want, frame, posture, need_mouth, avoid_cycle, extra_ok, must, side, calm, t); best = r[0][0] if r else None
+    LASTPICK.clear(); LASTPICK.update(key=best, args={'char': char, 'want': list(want), 'frame': frame, 'posture': posture, 'need_mouth': need_mouth, 'avoid_cycle': avoid_cycle, 'extra_ok': list(extra_ok), 'must': list(must), 'side': side, 'calm': calm, 'tenue': t})
     return best
-def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
+def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False, tenue=''):
     """must : objets demandés par le PLAN (ex. [Karim, téléphone]) = fortement voulus ; side : préférer une pose de trois-quarts
     (pour se tourner vers l'autre dans les plans à plusieurs). Rend toutes les poses classées : [(clé, note), …], la meilleure d'abord."""
     out = []
@@ -60,6 +67,10 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         tags = set(p['tags'])
         if avoid_cycle and ('cycle_marche' in tags or 'cycle_marche_dos' in tags): continue
         s = 3 * len(w & tags)
+        pt = p.get('tenue', '')
+        if tenue: s += 14 if pt == tenue else -14   # la tenue du moment d'abord (s'il n'y a aucune image dans cette tenue, la tenue habituelle)
+        elif pt: s -= 40   # une tenue spéciale n'apparaît jamais sans [TENUE …] dans le script
+        s += 8 * len({x for x in w if x.startswith('pose:')} & tags)   # {POSE: …} demandée par le script
         if frame:
             if p['frame'] == frame: s += 2
             elif frame == 'buste' and p['frame'] == 'pied': s += 1
@@ -164,7 +175,7 @@ def wide_layout(stage, chars, moods, speaker=None):
     for c in front:
         post = stage.posture.get(c, 'debout'); pst = 'debout' if post == 'grill' else post
         want = list(moods.get(c, [])) + (['grill'] if post == 'grill' else []) + stage.props.get(c, [])
-        walk = post in ('marche', 'dos_marche') and c == 'AWA'
+        walk = post in ('marche', 'dos_marche') and c == 'AWA' and not TENUE.get(c)   # pas d'images de marche dans une tenue spéciale : elle entre simplement
         k = ('awa_dos_pas1' if post == 'dos_marche' else 'awa_pas1') if walk else (pick(c, want, 'pied', pst, need_mouth=(c == speaker), must=stage.props.get(c, []), side=len(chars) > 1, calm=speaker is None or (c == speaker and not moods.get(c))) or pick(c, want, None, None))
         sit = POSES[k]['posture'] in ('assis', 'banc')
         base = {1: 1450, 2: 1320, 3: 1150, 4: 1060, 5: 980}.get(len(front), 920)   # moins il y a de monde, plus on est près
@@ -303,7 +314,7 @@ def apply_pose_choices(shots):
 def build(meta, events, log=print, choix=None, variantes=False):
     """choix : décisions prises sur les planches (par numéro de plan) ; variantes : garder les autres cadrages possibles (pour les planches)."""
     global VARIANTES
-    CHOIX.clear(); CHOIX.update(choix or {}); VARIANTES = variantes
+    CHOIX.clear(); CHOIX.update(choix or {}); VARIANTES = variantes; TENUE.clear()
     shots = []; stage = Stage(); scene = {'decor': 'KIOSQUE', 'moment': 'jour', 'ambiance': ''}; plan = None
     present = []; moods = {}; music = 'joyeuse'; ending = False; pending_sfx = []; first_in_scene = True; last_shot = None; last_speaker = None; ots_count = 0
     def add(s):
@@ -338,7 +349,9 @@ def build(meta, events, log=print, choix=None, variantes=False):
             stage.set(e['who']); plan = e
             if e['who']: present = [w['who'] for w in e['who']]
             if e.get('dur') or e['kind'] in ('objet', 'ecran'):
+                from script import pose_id
                 fx = [(0.1, re.sub(r'[{}]', '', x)) for x in re.findall(r'\{[^}]+\}', ' '.join(e.get('extra', [])))]
+                fx = [(a, pose_id(b.split(':', 1)[1]) if b.upper().startswith('POSE:') else b) for a, b in fx]
                 if e['kind'] in ('objet', 'ecran'):
                     nxt = next((x for x in events[i + 1:] if x['type'] not in ('sfx', 'music')), None)
                     if not (re.search(r't[ée]l[ée]phone|ecran|portable', norm(e.get('object', ''))) and nxt and nxt['type'] == 'screen'):
@@ -369,7 +382,9 @@ def build(meta, events, log=print, choix=None, variantes=False):
             dur = lead + e.get('dur', 2) + 0.3
             laugh_line = e.get('emotion') in ('rire', 'rire_retenu') or 'rit' in e.get('voice', '') or any(tg in ('rire', 'rire_retenu') for _, tg in e.get('tags', []))
             if laugh_line: dur += 1.1
-            emo = [e.get('emotion', 'neutre')] + [tg for _, tg in e['tags'] if tg in EMOS]
+            from script import pose_id
+            poses_dem = [pose_id(tg.split(':', 1)[1]) for _, tg in e['tags'] if tg.upper().startswith('POSE:')]
+            emo = [e.get('emotion', 'neutre')] + [tg for _, tg in e['tags'] if tg in EMOS] + poses_dem
             moods[who] = emo[:1]
             sh = {'kind': 'line', 'who': who, 'line': e, 'lead': lead, 'dur': dur}
             if laugh_line: sh['sfx'] = [(lead + e.get('dur', 2) + 0.05, 'rire:' + who + (':petit' if e.get('emotion') in ('rire_retenu', 'moqueur') else ''), 0.9)]
@@ -441,7 +456,8 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 else:
                     tw = word_time(e, r.get('word'))
                     if tw is not None and sh['kind'] == 'line' and r['who'] != who:
-                        cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], [])})
+                        cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], []), 'tenue': TENUE.get(r['who'], '')})
+                        cut[-1]['key'] = pick(r['who'], r['actions'] + stage.props.get(r['who'], []), 'buste', stage.post(r['who']), need_mouth=False)   # choisie ici (tenue du moment)
                         if laughs(r['actions']): sh.setdefault('sfx', []).append((lead + tw + 0.05, 'rire:' + r['who'] + ':petit', 0.5))   # on l'entend rire doucement (sous la voix)
                     elif r['who'] != who: sh.setdefault('after', []).append(r)
             sh['cuts'] = cut
@@ -469,6 +485,9 @@ def build(meta, events, log=print, choix=None, variantes=False):
             s = {'kind': 'close' if base.get('mode') == 'close' or base['kind'] == 'close' else 'wide', 'dur': e['dur'], 'actors': [dict(a, speaker=False) for a in base.get('actors', [])]}
             if e.get('sfx'): s['sfx'] = [(0.2, sfx_file(e['sfx']))]
             add(s)
+        elif t == 'tenue':
+            if e['tenue']: TENUE[e['who']] = e['tenue']
+            else: TENUE.pop(e['who'], None)
         elif t == 'end':
             ending = True
         i += 1

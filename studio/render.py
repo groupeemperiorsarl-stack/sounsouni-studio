@@ -204,7 +204,7 @@ def draw(s, lt):
     for c in s.get('cuts', []):
         if c['t'] <= lt < c['t'] + 1.3:
             from director import pick, close_actor
-            kk = pick(c['who'], c['actions'] + c.get('props', []), 'buste', c.get('posture'), need_mouth=False)
+            kk = c.get('key') or pick(c['who'], c['actions'] + c.get('props', []), 'buste', c.get('posture'), need_mouth=False)
             if kk:
                 from director import orient
                 fr = background(s, lt, blur=5, zoom=0.4, pan=c.get('pan', 0)); a = orient(close_actor(c['who'], kk, x=540 - 110 * c.get('look_dir', 0)), c.get('look_dir', 0)); head = draw_actor(fr, a, lt)

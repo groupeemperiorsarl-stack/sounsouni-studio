@@ -56,6 +56,10 @@ Un nouveau lieu = nouvelle image de décor à fournir (le dire en tête de scrip
 ### 2.2 Personnages (noms à écrire exactement ainsi)
 `BAKARY` · `AWA` · `MODIBO` · `DIASABI` · `SALI` · `FATIM` · `MIMI` · `SEYDOU` (livreur) · `KADI` (Tantie Kadi) · `MOUSSA` · `KARIM` · `VENDEUSE` (de tomates) · `VOIX_OFF`
 Nouveau personnage = l'annoncer en tête : `NOUVEAU PERSONNAGE: NOM — description physique et tenue`.
+Nouvelle tenue (ex. Awa en grand bazin) = l'annoncer en tête : `NOUVELLE TENUE: AWA — bazin doré : description des habits`,
+puis dans le script, au moment où elle la met : `[TENUE AWA: bazin doré]` ; pour revenir aux habits de tous les jours : `[TENUE AWA: normale]`.
+Nouvel objet à montrer en gros plan = l'annoncer en tête : `NOUVEL OBJET: nom de l'objet — description` (et le montrer avec `PLAN: objet nom de l'objet`).
+Dans un PLAN, séparer les personnages par des **virgules** (jamais de point-virgule) : `[Mimi debout, téléphone, Awa assise]`.
 
 ### 2.3 Types de plans
 | Écriture | Ce que l'on voit |
@@ -143,6 +147,9 @@ ou jusqu'à `{neutre}`. On peut en combiner deux : `{choc}{recule}`.
 | `{degout}` | Nez froncé |
 | `{innocent}` | Grand sourire naïf |
 
+Autres émotions comprises : `{confus}` · `{timide}` · `{determine}` · `{emerveille}` · `{reveur}` · `{sage}` · `{victoire}` · `{froide}` · `{taquin}` · `{moqueur}` · `{pensif}` · `{inquiet}` · `{serieux}`.
+Une émotion hors de ces listes est ramenée à la plus proche ; mieux vaut rester dans la liste.
+
 ### 5.2 Tête et regard
 `{hoche_tete}` (oui) · `{secoue_tete}` (non) · `{penche_tete}` · `{tourne_vers:Nom}` · `{detourne_regard}` ·
 `{leve_yeux_ciel}` · `{regarde_bas}` · `{clin_oeil}` · `{cligne}` · `{ferme_yeux}`
@@ -153,7 +160,7 @@ ou jusqu'à `{neutre}`. On peut en combiner deux : `{choc}{recule}`.
 
 > Gestes des bras et des mains (pointer du doigt, mains sur la tête, croiser les bras) :
 > ils demandent **une image de cette posture**. Les écrire ainsi : `{POSE: mains sur la tête}`.
-> La liste des postures à générer sera envoyée à Issa avec les prompts d'images.
+> L'application prépare elle-même la liste des images manquantes (fiche Gemini) d'après le script : pas besoin d'écrire la description des images ailleurs.
 
 ### 5.4 Effets graphiques
 `{coeurs}` · `{etoiles}` · `{eclair}` · `{fumee_tete}` (colère) · `{goutte}` (gêne) · `{point_exclamation}` ·

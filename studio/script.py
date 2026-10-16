@@ -80,6 +80,13 @@ def parse_plan(s):
             else: p['who'].append({'who': who(rest.split()[0]), 'pose': norm(' '.join(rest.split()[1:]))})
     return p
 
+def tenue_id(t):
+    """« bazin doré » → « bazin_dore » ; « normale » / « habituelle » → '' (tenue de tous les jours)."""
+    t = re.sub(r'[^a-z0-9]+', '_', norm(t)).strip('_')
+    return '' if t in ('normale', 'normal', 'habituelle', 'habituel', 'quotidienne', 'de_tous_les_jours') else t
+def pose_id(t):
+    """{POSE: mains sur la tête} → « pose:mains_sur_la_tete »"""
+    return 'pose:' + re.sub(r'[^a-z0-9]+', '_', norm(t)).strip('_')
 def parse_bracket(b):
     b = b.strip()
     m = re.match(r'^(RÉACTION|REACTION)\s+([^:]+?)(?:\s+sur\s+"([^"]+)")?\s*:\s*(.*)$', b, re.I)
@@ -88,6 +95,8 @@ def parse_bracket(b):
     if m: return {'type': 'sfx', 'word': m.group(1), 'name': norm(m.group(2))}
     m = re.match(r'^(ÉCRAN|ECRAN)\s*(FIN)?\s*(\d+(?:[.,]\d+)?)?\s*s?\s*:\s*(.*)$', b, re.I)
     if m: return {'type': 'screen', 'final': bool(m.group(2)), 'dur': float(m.group(3).replace(',', '.')) if m.group(3) else None, 'text': m.group(4).strip()}
+    m = re.match(r'^TENUE\s+([^:]+?)\s*:\s*(.*)$', b, re.I)   # [TENUE AWA: bazin doré] … [TENUE AWA: normale]
+    if m: return {'type': 'tenue', 'who': who(m.group(1)), 'tenue': tenue_id(m.group(2))}
     m = re.match(r'^MUSIQUE\s*:\s*(.*)$', b, re.I)
     if m: return {'type': 'music', 'name': norm(m.group(1))}
     m = re.match(r'^SILENCE\s*(\d+(?:[.,]\d+)?)?\s*s?\s*(?::\s*(.*))?$', b, re.I)
@@ -95,7 +104,7 @@ def parse_bracket(b):
     return {'type': 'note', 'text': b}
 
 def parse(text):
-    ev = []; meta = {'title': '', 'new_chars': [], 'new_decors': []}
+    ev = []; meta = {'title': '', 'new_chars': [], 'new_decors': [], 'new_outfits': [], 'new_objects': []}
     lines = [l.rstrip() for l in text.splitlines()]
     cur = None   # réplique en cours
     def flush():
@@ -115,6 +124,8 @@ def parse(text):
             flush(); meta['title'] = s.split(':', 1)[1].strip(); continue
         if up.startswith('NOUVEAU PERSONNAGE:'): flush(); meta['new_chars'].append(s.split(':', 1)[1].strip()); continue
         if up.startswith('NOUVEAU DÉCOR:') or up.startswith('NOUVEAU DECOR:'): flush(); meta['new_decors'].append(s.split(':', 1)[1].strip()); continue
+        if up.startswith('NOUVELLE TENUE:'): flush(); meta['new_outfits'].append(s.split(':', 1)[1].strip()); continue
+        if up.startswith('NOUVEL OBJET:'): flush(); meta['new_objects'].append(s.split(':', 1)[1].strip()); continue
         if up.startswith('DÉCOR:') or up.startswith('DECOR:'):
             flush(); parts = [x.strip() for x in s.split(':', 1)[1].split('·')]
             sc = {'type': 'scene', 'decor': norm(parts[0]).upper(), 'moment': norm(parts[1]) if len(parts) > 1 else 'jour', 'ambiance': ''}
