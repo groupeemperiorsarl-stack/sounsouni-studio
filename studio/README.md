@@ -25,6 +25,15 @@ python -m studio exemples/episode14_retour_expediteur.txt -o sortie_ep14
 python -m studio mon_script.txt --plans-seulement     # aperçu rapide des plans
 STUDIO_FAUSSES_VOIX=1 python -m studio mon_script.txt # essai sans voix réelles
 ```
+
+### Planches à valider (images fixes A / B / C / D)
+```
+STUDIO_FAUSSES_VOIX=1 python -m studio mon_script.txt -o sortie --planches                    # plans où l'application hésite
+STUDIO_FAUSSES_VOIX=1 python -m studio mon_script.txt -o sortie --planches --de 1:20 --a 1:45  # tout un passage (poses + cadrages)
+STUDIO_FAUSSES_VOIX=1 python -m studio mon_script.txt -o sortie --choix "1B 3C" --plans-seulement   # appliquer la réponse
+```
+Résultat : `sortie/planches/planches.html` (page à cocher sur téléphone, la réponse « 1B 3C » s'écrit toute seule) et `planche_N.png`.
+La réponse est gardée dans `mon_script.choix.json` ; ensuite la vidéo ne refait que les morceaux de 12 s qui ont changé.
 Machine minimale : 2 processeurs, 8 Go de mémoire, pas de carte graphique nécessaire.
 
 ## Outils de préparation (une seule fois)

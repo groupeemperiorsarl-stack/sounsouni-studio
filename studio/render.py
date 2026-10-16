@@ -246,27 +246,46 @@ def render_segment(args):
         ff.stdin.write(fr.tobytes())
         if n % 300 == 299: pose_img.cache_clear(); decor.cache_clear()
     ff.stdin.close(); ff.wait(); return out
+def seg_hash(shots, a, b):
+    """Empreinte d'un morceau (a → b images) : les plans qui le touchent (+ taille des voix). Inchangée = morceau gardé."""
+    import hashlib
+    t0, t1 = a / FPS, b / FPS; part = [s for s in shots if s['t0'] < t1 and s['t0'] + s['dur'] > t0]
+    wav = [os.path.getsize(s['line']['wav']) if s.get('line', {}).get('wav') and os.path.exists(s['line']['wav']) else 0 for s in part]
+    return hashlib.md5(json.dumps([part, wav, a, b], sort_keys=True, default=str).encode()).hexdigest()[:12]
+def seg_ok(j):
+    f = j[3] + '.ok'
+    return os.path.exists(f) and open(f).read().strip() == j[4]
 def video(shots, tot, work, workers=2, log=print, seg=360, part=None):
+    """Rendu par morceaux de 12 s. Seuls les morceaux dont les plans ont changé sont refaits, puis tout est recollé (ffmpeg)."""
     n = int(tot * FPS); jobs = []
-    for a in range(0, n, seg): jobs.append((shots, a, min(n, a + seg), f'{work}/seg_{a:06d}.mp4'))
-    todo = [j for j in jobs if not os.path.exists(j[3] + '.ok')]
-    if part: todo = [j for k, j in enumerate(jobs) if k % part[1] == part[0] and not os.path.exists(j[3] + '.ok')]
-    log(f'rendu : {n} images, {len(todo)} morceaux à calculer')
+    for a in range(0, n, seg): jobs.append((shots, a, min(n, a + seg), f'{work}/seg_{a:06d}.mp4', seg_hash(shots, a, min(n, a + seg))))
+    todo = [j for j in jobs if not seg_ok(j)]
+    if part: todo = [j for k, j in enumerate(jobs) if k % part[1] == part[0] and not seg_ok(j)]
+    zones = ', '.join(f'{int(j[1] / FPS // 60)}:{int(j[1] / FPS % 60):02d}–{int(j[2] / FPS // 60)}:{int(j[2] / FPS % 60):02d}' for j in todo[:8]) + (' …' if len(todo) > 8 else '')
+    log(f'rendu : {n} images, {len(todo)} morceau(x) sur {len(jobs)} à calculer' + (f' ({zones})' if todo and len(todo) < len(jobs) else ''))
     from multiprocessing import Pool
     with Pool(workers) as p:
-        for out in p.imap_unordered(render_segment, todo): open(out + '.ok', 'w').close(); log('  morceau fini ' + os.path.basename(out))
+        for out in p.imap_unordered(render_segment, [j[:4] for j in todo]):
+            open(out + '.ok', 'w').write(next(j[4] for j in todo if j[3] == out)); log('  morceau fini ' + os.path.basename(out))
     if part: return None
-    missing = [j[3] for j in jobs if not os.path.exists(j[3] + '.ok')]
+    missing = [j[3] for j in jobs if not seg_ok(j)]
     if missing: raise RuntimeError(f'morceaux manquants : {len(missing)}')
     with open(f'{work}/list.txt', 'w') as f:
         for j in jobs: f.write(f"file '{os.path.basename(j[3])}'\n")
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{work}/list.txt', '-c', 'copy', f'{work}/silent.mp4'], check=True)
     return f'{work}/silent.mp4'
+def moment(s, avant_changement=False):
+    """Instant montré en image fixe : vers 60 % du plan, jamais pendant une réaction coupée (on verrait quelqu'un d'autre) ;
+    avant_changement : avant le premier changement de pose sur un mot (pour juger la pose de départ)."""
+    d = s['dur']; want = min(d - 0.05, max(0.6, d * 0.6)); cuts = [c['t'] for c in s.get('cuts', [])]
+    end = min([t for t, _ in s.get('switch', [])] + [d]) - 0.05 if avant_changement else d - 0.05
+    ok = [i / 10 for i in range(3, int(d * 10)) if i / 10 <= end and not any(c - 0.05 <= i / 10 < c + 1.35 for c in cuts)]
+    return min(ok, key=lambda t: abs(t - want)) if ok else want
 def contact(shots, path, cols=8):
-    """Planche d'aperçu : une image par plan (milieu du plan), pour vérifier la mise en scène avant le rendu complet."""
+    """Planche d'aperçu : une image par plan, pour vérifier la mise en scène avant le rendu complet."""
     ims = []
     for i, s in enumerate(shots):
-        lt = min(s['dur'] - 0.05, max(0.6, s['dur'] * 0.6)); fr = draw(s, lt).convert('RGB').resize((216, 384)); ims.append((i, s, fr))
+        lt = moment(s); fr = draw(s, lt).convert('RGB').resize((216, 384)); ims.append((i, s, fr))
     rows = (len(ims) + cols - 1) // cols; c = Image.new('RGB', (cols * 216, rows * 410), 'white'); d = ImageDraw.Draw(c)
     for i, s, fr in ims:
         x, y = (i % cols) * 216, (i // cols) * 410; c.paste(fr, (x, y)); d.text((x + 4, y + 390), f"{i} {s['kind']} {s.get('who', '')} {s['dur']:.1f}s", fill='black')

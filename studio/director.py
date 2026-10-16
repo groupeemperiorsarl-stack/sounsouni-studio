@@ -6,7 +6,7 @@ Règles apprises sur les épisodes 12-14 :
  - le lieu du plan est toujours le décor de la scène en cours ;
  - réactions sur un mot = plan de coupe pendant que la voix continue ;
  - marche : cycle de pas quand il existe, déplacement en ligne droite."""
-import json, os, re
+import json, os, re, copy
 from script import norm
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 CAT = json.load(open(A + '/catalog.json'))
@@ -45,13 +45,18 @@ OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plat
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
 GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
+LASTPICK = {}   # dernier choix de pose : gardé sur l'acteur pour que les planches proposent les autres poses possibles
 def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
+    r = rank(char, want, frame, posture, need_mouth, avoid_cycle, extra_ok, must, side, calm); best = r[0][0] if r else None
+    LASTPICK.clear(); LASTPICK.update(key=best, args={'char': char, 'want': list(want), 'frame': frame, 'posture': posture, 'need_mouth': need_mouth, 'avoid_cycle': avoid_cycle, 'extra_ok': list(extra_ok), 'must': list(must), 'side': side, 'calm': calm})
+    return best
+def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
     """must : objets demandés par le PLAN (ex. [Karim, téléphone]) = fortement voulus ; side : préférer une pose de trois-quarts
-    (pour se tourner vers l'autre dans les plans à plusieurs)."""
-    best, bs = None, -1e9
+    (pour se tourner vers l'autre dans les plans à plusieurs). Rend toutes les poses classées : [(clé, note), …], la meilleure d'abord."""
+    out = []
     w = tagwords(want)
     for k, p in POSES.items():
-        if p['char'] != char: continue
+        if p['char'] != char or '@' in k: continue   # les têtes tournées sont des variantes, pas des poses à choisir
         tags = set(p['tags'])
         if avoid_cycle and ('cycle_marche' in tags or 'cycle_marche_dos' in tags): continue
         s = 3 * len(w & tags)
@@ -80,8 +85,10 @@ def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         if need_mouth and p['mouth']: s += 1.5
         if 'neutre' in tags and not w: s += 1
         if not w and tags & NEG: s -= 3   # sans émotion demandée : jamais un visage fâché ou triste
-        if s > bs: best, bs = k, s
-    return best
+        out.append((k, s))
+    return sorted(out, key=lambda x: -x[1])   # à égalité, la première du catalogue (comme avant)
+def pick_args(k):
+    return dict(LASTPICK['args']) if LASTPICK.get('key') == k and k else None
 def group_pick(chars, want):
     w = tagwords(want); cs = set(chars)
     for k, p in POSES.items():
@@ -164,6 +171,7 @@ def wide_layout(stage, chars, moods, speaker=None):
         h = int(base * (0.8 if sit else 1.0) * HEIGHT.get(c, 1)) if POSES[k]['frame'] == 'pied' else int(base * 0.83)
         w = POSES[k]['size'][0] * h / POSES[k]['size'][1]
         act = {'key': k, 'who': c, 'h': h, 'w': w, 'by': GROUND + (0 if sit else 15), 'walk': ('AWA_dos' if post == 'dos_marche' else 'AWA') if walk else None}
+        if not walk and pick_args(k): act['pick'] = pick_args(k)
         if c in stage.entering and not walk and not sit: act['enter'] = True; stage.entering.discard(c)   # il arrive : on le voit entrer
         if walk and post == 'dos_marche': act['leave'] = True   # elle s'en va : de dos, elle sort du cadre
         elif walk:   # elle entre en marchant puis s'arrête à sa place, avec une pose qui parle
@@ -206,7 +214,9 @@ def close_actor(char, key, x=540, tight=False, scale=1.0, flip=False):
     hx = p.get('head_x', 0.5); hx = 1 - hx if flip else hx
     w = p['size'][0] * h / p['size'][1]; cx = x + (0.5 - hx) * w   # le visage est placé à x
     if fr == 'groupe': cx = x
-    return {'key': key, 'who': char, 'x': int(cx), 'by': by, 'h': h, 'face_x': x, 'tight': tight, 'scale': scale, 'flip': flip}
+    d = {'key': key, 'who': char, 'x': int(cx), 'by': by, 'h': h, 'face_x': x, 'tight': tight, 'scale': scale, 'flip': flip}
+    if pick_args(key): d['pick'] = pick_args(key)
+    return d
 def face_dir(key):
     """+1 : le visage regarde vers la droite de l'image, -1 : vers la gauche, 0 : de face (mesuré par LivePortrait)."""
     y = POSES.get(key, {}).get('yaw')
@@ -274,9 +284,28 @@ def over_shoulder(who, side, stage):
     return a
 LAUGH = {'rire', 'rire_retenu', 'rit', 'rigole', 'eclate_de_rire', 'moqueur'}
 def laughs(actions): return bool(set(actions) & LAUGH)
-def build(meta, events, log=print):
+CHOIX = {}; VARIANTES = False
+def set_pose(a, k):
+    """Remplace la pose d'un acteur en gardant sa place (visage au même endroit, pieds au même sol)."""
+    a['key'] = k; a['flip'] = False
+    if 'face_x' in a:
+        b = close_actor(a['who'], k, x=a['face_x'], tight=a.get('tight', False), scale=a.get('scale', 1.0))
+        a['by'] = a['by'] - a['h'] + b['h'] if a.get('scale', 1.0) != 1.0 else b['by']; a['h'] = b['h']; a['x'] = b['x']
+    else: a['w'] = POSES[k]['size'][0] * a['h'] / POSES[k]['size'][1]
+    return a
+def apply_pose_choices(shots):
+    """Poses choisies par Issa sur les planches : {"12": {"pose": {"who": "BAKARY", "key": "bak_explique"}}}."""
+    for idx, ch in CHOIX.items():
+        p = ch.get('pose')
+        if not p or not str(idx).isdigit() or int(idx) >= len(shots) or p.get('key') not in POSES: continue
+        for a in shots[int(idx)].get('actors', []):
+            if a['who'] == p['who'] and not (a.get('fg') or a.get('back') or a.get('silhouette') or a.get('walk')): set_pose(a, p['key']); break
+def build(meta, events, log=print, choix=None, variantes=False):
+    """choix : décisions prises sur les planches (par numéro de plan) ; variantes : garder les autres cadrages possibles (pour les planches)."""
+    global VARIANTES
+    CHOIX.clear(); CHOIX.update(choix or {}); VARIANTES = variantes
     shots = []; stage = Stage(); scene = {'decor': 'KIOSQUE', 'moment': 'jour', 'ambiance': ''}; plan = None
-    moods = {}; music = 'joyeuse'; ending = False; pending_sfx = []; first_in_scene = True; last_shot = None; last_speaker = None; ots_count = 0
+    present = []; moods = {}; music = 'joyeuse'; ending = False; pending_sfx = []; first_in_scene = True; last_shot = None; last_speaker = None; ots_count = 0
     def add(s):
         nonlocal last_shot
         s.setdefault('decor', scene['decor']); s.setdefault('moment', scene['moment']); s.setdefault('sfx', []); s.setdefault('fx', [])
@@ -289,6 +318,7 @@ def build(meta, events, log=print):
         e = events[i]; t = e['type']
         if t == 'scene':
             scene = dict(e); stage = Stage(); plan = None; first_in_scene = True; moods = {}; last_speaker = None
+            present = []
             # personnages de la scène : ceux qui parlent avant le prochain décor
             # arrivée annoncée par des pas / talons avant la première réplique : le premier qui parle entre dans le plan
             k2 = i + 1; steps = False
@@ -306,6 +336,7 @@ def build(meta, events, log=print):
                 j += 1
         elif t == 'plan':
             stage.set(e['who']); plan = e
+            if e['who']: present = [w['who'] for w in e['who']]
             if e.get('dur') or e['kind'] in ('objet', 'ecran'):
                 fx = [(0.1, re.sub(r'[{}]', '', x)) for x in re.findall(r'\{[^}]+\}', ' '.join(e.get('extra', [])))]
                 if e['kind'] in ('objet', 'ecran'):
@@ -365,6 +396,7 @@ def build(meta, events, log=print):
                 else:
                     post = stage.posture.get(who) or 'debout'; post = 'debout' if post in ('grill', 'marche') else post
                     k = pick(who, emo, 'buste', post, must=stage.props.get(who, []))
+                    kargs = pick_args(k)
                     side = stage.side(who, e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper()))
                     x = 540 - 110 * side if side else 540
                     tgt = e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper())
@@ -374,20 +406,32 @@ def build(meta, events, log=print):
                     if tgt and not side: side = stage.side(who, tgt)
                     ots = (mode in ('gros', 'deux') and tgt and side and not e.get('thought') and stage.posture.get(tgt) != 'marche')
                     # échange entre deux personnes : toujours la caméra derrière l'épaule de celui qui écoute (demande d'Issa)   # champ / contre-champ, avec de temps en temps un plan seul
-                    if ots:
+                    # cadrages possibles pour cette réplique ; celui choisi par Issa sur une planche (fichier .choix.json) passe avant la règle
+                    def seul(k=k, side=side, tgt=tgt, kargs=kargs):
+                        a = close_actor(who, k, x=540 - 110 * side if side else 540, tight=(mode == 'tresgros')); a['speaker'] = True; a['look_dir'] = side; a['look_up'] = updown(stage, who, tgt)
+                        if kargs: a['pick'] = kargs
+                        return {'actors': [a], 'mode': 'close', 'ots': None}
+                    def epaule(k=k, side=side, tgt=tgt, kargs=kargs):
                         a = close_actor(who, k, x=540 - 170 * side); a['speaker'] = True; a['look_dir'] = side; a['look_up'] = updown(stage, who, tgt)
-                        sh['actors'] = [a, over_shoulder(tgt, side, stage)]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who); sh['ots'] = tgt
-                    else:
-                        x = 540 - 110 * side if side else 540
-                        a = close_actor(who, k, x=x, tight=(mode == 'tresgros')); a['speaker'] = True; a['look_dir'] = side; a['look_up'] = updown(stage, who, tgt)
-                        sh['actors'] = [a]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who)
+                        if kargs: a['pick'] = kargs
+                        return {'actors': [a, over_shoulder(tgt, side, stage)], 'mode': 'close', 'ots': tgt}
+                    def large():
+                        st2 = copy.deepcopy(stage); acts = wide_layout(st2, [c for c in present if c in st2.order] or st2.order, moods, speaker=who)   # seulement ceux déjà arrivés
+                        for b in acts: b['speaker'] = b['who'] == who
+                        return {'actors': acts, 'mode': 'wide', 'ots': None}
+                    alts = {'seul': seul, 'large': large}
+                    if tgt and side and not e.get('thought') and tgt in HEIGHT: alts['epaule'] = epaule
+                    cur = 'epaule' if ots else 'seul'
+                    if CHOIX.get(str(len(shots)), {}).get('cadrage') in alts: cur = CHOIX[str(len(shots))]['cadrage']
+                    sh.update(alts[cur]()); sh['pan'] = stage.pan(who); sh['cadrage'] = cur
+                    if VARIANTES: sh['cadrages'] = {n: f() for n, f in alts.items() if n != cur}
                     # changements de pose sur les balises d'émotion
                     sw = []
                     for tt, tg in e.get('tag_times', []):
                         if tg in EMOS or tg in SYN:
                             k2 = pick(who, [tg] + stage.props.get(who, []), 'buste', post)
                             if k2 and k2 != k and (tagwords([tg]) & set(POSES[k2]['tags'])): sw.append((lead + tt, k2))
-                    sh['switch'] = sw
+                    sh['switch'] = [] if sh.get('mode') == 'wide' else sw
             sh['tagfx'] = [(lead + tt, tg) for tt, tg in e.get('tag_times', []) if tg not in EMOS or tg in ('rire',)]
             # réactions et bruitages accrochés aux mots
             cut = []
@@ -429,6 +473,7 @@ def build(meta, events, log=print):
             ending = True
         i += 1
     if not any(s['kind'] == 'endcard' for s in shots): add({'kind': 'endcard', 'dur': 3.0, 'step': 2})
+    apply_pose_choices(shots)
     for sh in shots: orient_shot(sh)
     t0 = 0
     for s in shots: s['t0'] = t0; t0 += s['dur']

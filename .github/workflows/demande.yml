@@ -7,7 +7,7 @@ jobs:
   lire:
     if: contains(github.event.issue.labels.*.name, 'episode') && (github.event_name == 'issues' || github.event.comment.user.login == github.event.issue.user.login)
     runs-on: ubuntu-latest
-    outputs: { mode: "${{ steps.s.outputs.mode }}", path: "${{ steps.s.outputs.path }}" }
+    outputs: { mode: "${{ steps.s.outputs.mode }}", path: "${{ steps.s.outputs.path }}", reponse: "${{ steps.s.outputs.reponse }}", de: "${{ steps.s.outputs.de }}", fin: "${{ steps.s.outputs.fin }}" }
     steps:
       - uses: actions/checkout@v4
       - id: s
@@ -21,6 +21,8 @@ jobs:
         if: steps.s.outputs.mode != 'rien'
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          gh workflow run episode.yml -f script="${{ steps.s.outputs.path }}" -f issue="${{ github.event.issue.number }}" -f apercu="${{ steps.s.outputs.mode == 'apercu' }}"
-          if [ "${{ steps.s.outputs.mode }}" = "apercu" ]; then M="l'aperçu des plans (environ 10 minutes)"; else M="la vidéo complète (environ 30 minutes)"; fi
+          gh workflow run episode.yml -f script="${{ steps.s.outputs.path }}" -f issue="${{ github.event.issue.number }}" -f apercu="${{ steps.s.outputs.mode == 'apercu' }}" \
+            -f choix="${{ steps.s.outputs.reponse }}" -f de="${{ steps.s.outputs.de }}" -f fin="${{ steps.s.outputs.fin }}"
+          if [ -n "${{ steps.s.outputs.reponse }}" ]; then M="le nouvel aperçu avec vos choix (${{ steps.s.outputs.reponse }}, environ 10 minutes)"
+          elif [ "${{ steps.s.outputs.mode }}" = "apercu" ]; then M="l'aperçu des plans et les planches à valider (environ 10 minutes)"; else M="la vidéo complète (environ 30 minutes)"; fi
           gh api "repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments" -f body="⏳ C'est parti : l'application fabrique $M. Vous serez prévenu ici." > /dev/null

@@ -7,7 +7,7 @@
 - But d'Issa : que **l'application** fasse tout elle-même. Toute correction doit être une **règle dans le code**, jamais une retouche à la main sur une vidéo ou une image.
 
 ## Façon de travailler demandée par Issa (important)
-1. **Valider sur des images fixes avant toute vidéo** : planches d'images numérotées, ou choix A / B / C / D à cocher. Ne fabriquer la vidéo qu'après son accord.
+1. **Valider sur des images fixes avant toute vidéo** : c'est **l'application** qui fabrique les planches A / B / C / D (`--planches`, voir « Fabriquer »). Claude n'a pas besoin de regarder ces images lui-même : il envoie `planches/planches.html` (page à cocher) à Issa, qui répond « 1B 3C ». Ne fabriquer la vidéo qu'après son accord.
 2. **Ne refaire que les secondes concernées** d'un épisode déjà fait (rendre le morceau, puis le recoller avec ffmpeg), jamais tout l'épisode.
 3. **Économiser** : ses crédits Claude et les minutes GitHub (2 000 minutes gratuites par mois ; un épisode complet sur 15 machines ≈ 170 minutes). Les essais se font en local, GitHub sert aux vrais épisodes.
 4. Chercher soi-même des outils libres (GitHub) plutôt que de lui demander des images ou de passer par des services payants. Il ne télécharge rien lui-même.
@@ -20,6 +20,10 @@
   - aperçu sans voix : `STUDIO_FAUSSES_VOIX=1 python -m studio script.txt -o sortie --plans-seulement` → `sortie/apercu_plans.png` ;
   - vidéo complète : `python -m studio script.txt -o sortie` ;
   - une seule étape : `--etape voix|plans|rendu|final --part i/n`.
+  - **planches à valider** : `STUDIO_FAUSSES_VOIX=1 python -m studio script.txt -o sortie --planches` → `sortie/planches/planches.html` (page à cocher, téléphone) + `planche_N.png`. Sans précision : seulement les plans où l'application hésite entre deux poses (12 questions au plus, une même hésitation sur plusieurs plans = une question). Sur un passage : `--de 1:20 --a 1:45` ou `--plans 12,14-16` → questions de pose **et** de cadrage (épaule / gros plan seul / plan large).
+  - **réponse d'Issa** : `--choix "1B 3C"` → gardée dans `script.choix.json` (à côté du script, par numéro de plan) ; la mise en scène la suit ensuite (`director.CHOIX`). Si le même choix revient d'un épisode à l'autre, en faire une règle dans `director.py`.
+  - **secondes concernées** : le rendu est fait par morceaux de 12 s ; seuls les morceaux dont les plans ont changé sont refaits, puis tout est recollé (`render.seg_hash`). Rien à faire à la main.
+  - **Sur GitHub** : l'aperçu arrive avec ses planches. Issa répond en commentaire « 1B 3C » (nouvel aperçu avec ses choix, choix gardés dans `demandes/episode_N.choix.json`) ou « planches 1:20-1:45 ».
 - **Installer en local** (session neuve) :
   - `pip install -r studio/requirements.txt` ;
   - voix : `python -m venv ~/tts && ~/tts/bin/pip install -r studio/requirements-voix.txt`, puis `export STUDIO_TTS_PY=~/tts/bin/python` ;
@@ -28,6 +32,7 @@
 
 ## Fichiers clés
 - `studio/script.py` lecture du script · `voices.py` voix + vérification Whisper + fins de phrase jamais coupées + rires + `lexique.txt` (prononciations « écrit = prononcé », ex. « Kôrôbalé wou = Kôrôbaléou ») et « plus » négatif sans S.
+- `studio/planches.py` planches A / B / C / D (questions, images, page à cocher, lecture de la réponse).
 - `studio/director.py` mise en scène : choix des poses, plans larges, champ / contre-champ, regards. `render.py` images (têtes tournées LivePortrait, détourage), `audio.py` son.
 - `studio/assets/catalog.json` poses (étiquettes, objets reconnus par `autotag.py` / OWLv2, orientation `yaw`). Outils de préparation : `autotag.py`, `autoyaw.py`, `autosmile.py`, `remouth.py`, `build_assets.py`.
 
@@ -41,5 +46,6 @@
 - **Postures** respectées (assis reste assis), décor cohérent dans une scène, décors sans figurants, bouches ouvertes sans que les yeux bougent.
 
 ## Où on en est (16/10/2026)
+- Planches A / B / C automatiques ajoutées (local et GitHub) + rendu partiel automatique par morceaux.
 - Épisode 15 « La rumeur » fini (v5) ; script : `exemples/episode15_la_rumeur.txt` (+ début réécrit : `exemples/episode15_debut_corrige.txt`).
 - Plus tard : passer de 15 à 5 machines (quand l'application sera bien réglée) ; vues de dos des personnages qui n'en ont pas ; nettoyer le décor BUREAU (figurants) ; pose de Karim assis.

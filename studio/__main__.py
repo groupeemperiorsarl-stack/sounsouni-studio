@@ -1,15 +1,23 @@
 """Sounsouni Studio — du script détaillé à l'épisode fini.
 Utilisation :  python -m studio episode.txt  [-o dossier_sortie]  [--plans-seulement]
+Planches à valider :  --planches  [--plans 12,14-16 | --de 1:20 --a 1:45]  [--sujet pose,cadrage]
+Réponse d'Issa :      --choix "1B 3C"   (gardée dans episode.choix.json, puis la mise en scène la suit)
 """
 import sys, os, json, argparse, hashlib, time, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import script, voices, director, render, audio
+import script, voices, director, render, audio, planches
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('script'); ap.add_argument('-o', '--out', default=None)
     ap.add_argument('--plans-seulement', action='store_true', help="s'arrête après la mise en scène (aperçu des plans)")
     ap.add_argument('--workers', type=int, default=2)
     ap.add_argument('--etape', choices=['voix', 'plans', 'rendu', 'final'], default=None, help='une seule étape (pour répartir sur plusieurs ordinateurs)')
     ap.add_argument('--part', default=None, help='i/n : cette machine fait la part i sur n')
+    ap.add_argument('--planches', action='store_true', help='fabrique les planches A / B / C / D à valider (images fixes), puis s\'arrête')
+    ap.add_argument('--plans', default=None, help='plans concernés, ex. 12,14-16 (sinon : les plans où l\'application hésite)')
+    ap.add_argument('--de', default=None, help='début des secondes concernées, ex. 1:20'); ap.add_argument('--a', default=None, help='fin, ex. 1:45')
+    ap.add_argument('--sujet', default='pose,cadrage', help='pose, cadrage ou les deux')
+    ap.add_argument('--choix', default=None, help='réponse d\'Issa aux planches, ex. "1B 3C"')
+    ap.add_argument('--fichier-choix', default=None, help='par défaut : à côté du script, même nom + .choix.json')
     a = ap.parse_args()
     name = os.path.splitext(os.path.basename(a.script))[0]; out = a.out or os.path.join(os.getcwd(), 'sortie_' + name)
     work = os.path.join(out, 'travail'); os.makedirs(work, exist_ok=True)
@@ -35,15 +43,25 @@ def main():
         silent = render.video(shots, tot, work, a.workers, log); v, m = audio.build(shots, tot, work, log)
         final = os.path.join(out, name + '.mp4'); audio.mix(silent, v, m, final); ok = audio.light(final, os.path.join(out, name + '_leger.mp4'), tot)
         log(f"fini : {final} ({tot:.0f} s) — version légère {'vérifiée' if ok else 'À VÉRIFIER'}"); return
+    cpath = a.fichier_choix or os.path.splitext(a.script)[0] + '.choix.json'
+    if a.choix:
+        pj = os.path.join(out, 'planches', 'planches.json')
+        if os.path.exists(pj): planches.appliquer(a.choix, pj, cpath, log)
+        else: log('choix : planches.json introuvable (lancer d\'abord --planches)')
+    choix = json.load(open(cpath, encoding='utf-8')) if os.path.exists(cpath) else {}
+    if choix: log(f'choix d\'Issa appliqués : {len(choix)} plan(s) ({os.path.basename(cpath)})')
     lines = voices.run(ev, director.CAT, work, log)
-    shots, tot = director.build(meta, ev, log)
+    shots, tot = director.build(meta, ev, log, choix=choix, variantes=a.planches)
     json.dump(shots, open(os.path.join(work, 'plans.json'), 'w'), ensure_ascii=False, indent=0, default=str)
     render.prepare_turns(shots, log)
     render.contact(shots, os.path.join(out, 'apercu_plans.png')); log('aperçu des plans : apercu_plans.png')
+    if a.planches:
+        sel = planches.choisir_plans(shots, planches.lire_plans(a.plans), planches.lire_temps(a.de), planches.lire_temps(a.a))
+        planches.make(shots, out, sel, tuple(a.sujet.split(',')), choix, log, a.script); return
     if a.plans_seulement or a.etape == 'plans': return
     A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
     stamp = [os.path.getmtime(os.path.join(A, 'catalog.json'))] + sorted(os.path.getmtime(os.path.join(dp, f)) for dp, _, fs in os.walk(os.path.join(A, 'poses')) for f in fs if f.endswith('.webp'))[-3:]
-    h = hashlib.md5((json.dumps(shots, sort_keys=True, default=str) + str(stamp)).encode()).hexdigest()[:10]   # images changées = on refait le rendu
+    h = hashlib.md5(str(stamp).encode()).hexdigest()[:10]   # images de poses changées = on refait tout ; un plan changé = seulement ses morceaux (render.video)
     if open(os.path.join(work, 'plans.hash')).read() != h if os.path.exists(os.path.join(work, 'plans.hash')) else True:
         for f in os.listdir(work):
             if f.startswith('seg_'): os.remove(os.path.join(work, f))
