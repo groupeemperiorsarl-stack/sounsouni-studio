@@ -1,0 +1,26 @@
+name: Demande d'épisode (depuis le formulaire)
+on:
+  issues: { types: [opened] }
+  issue_comment: { types: [created] }
+permissions: { contents: write, issues: write, actions: write }
+jobs:
+  lire:
+    if: contains(github.event.issue.labels.*.name, 'episode') && (github.event_name == 'issues' || github.event.comment.user.login == github.event.issue.user.login)
+    runs-on: ubuntu-latest
+    outputs: { mode: "${{ steps.s.outputs.mode }}", path: "${{ steps.s.outputs.path }}" }
+    steps:
+      - uses: actions/checkout@v4
+      - id: s
+        run: python .github/scripts/issue_script.py
+      - name: Garder le script dans le dépôt
+        if: steps.s.outputs.mode != 'rien'
+        run: |
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add demandes && (git commit -m "Script de la demande #${{ github.event.issue.number }}" && git push || true)
+      - name: Lancer
+        if: steps.s.outputs.mode != 'rien'
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh workflow run episode.yml -f script="${{ steps.s.outputs.path }}" -f issue="${{ github.event.issue.number }}" -f apercu="${{ steps.s.outputs.mode == 'apercu' }}"
+          if [ "${{ steps.s.outputs.mode }}" = "apercu" ]; then M="l'aperçu des plans (environ 10 minutes)"; else M="la vidéo complète (environ 30 minutes)"; fi
+          gh issue comment ${{ github.event.issue.number }} --body "⏳ C'est parti : l'application fabrique $M. Vous serez prévenu ici."

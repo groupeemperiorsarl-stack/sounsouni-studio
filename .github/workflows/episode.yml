@@ -5,11 +5,47 @@ on:
       script:
         description: "Chemin du script dans le dépôt (ex. exemples/episode15_la_rumeur.txt)"
         required: true
+      issue:
+        description: "Numéro de la demande (rempli automatiquement par le formulaire)"
+        default: ""
+      apercu:
+        description: "true = seulement l'aperçu des plans"
+        default: "false"
+permissions: { contents: write, issues: write }
 env:
   SCRIPT: ${{ github.event.inputs.script }}
+  ISSUE: ${{ github.event.inputs.issue }}
+  GH_TOKEN: ${{ github.token }}
   STUDIO_TTS_PY: /home/runner/tts/bin/python
 jobs:
+  apercu:
+    if: github.event.inputs.apercu == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Outils
+        run: |
+          sudo apt-get install -y -qq ffmpeg > /dev/null
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
+          bash studio/lp/install.sh
+      - id: run
+        run: STUDIO_FAUSSES_VOIX=1 python -m studio "$SCRIPT" -o sortie --plans-seulement 2>&1 | tee journal.txt
+      - name: Publier l'aperçu
+        if: always()
+        run: |
+          N=${ISSUE:-manuel}; TAG="apercu-$N-${{ github.run_number }}"
+          if [ -f sortie/apercu_plans.png ]; then
+            gh release create "$TAG" sortie/apercu_plans.png --prerelease --title "Aperçu des plans – demande $N" --notes "Aperçu des plans"
+            URL="https://github.com/${{ github.repository }}/releases/download/$TAG/apercu_plans.png"
+            MSG="✅ Aperçu des plans prêt : $URL%0A%0ASi c'est bon, écrivez **vidéo** en commentaire pour lancer la vidéo complète. Pour corriger : modifiez le script (bouton ✏️ en haut), puis écrivez **aperçu**."
+          else
+            MSG="❌ L'aperçu n'a pas pu être fait. Fin du journal :%0A\`\`\`%0A$(tail -15 journal.txt)%0A\`\`\`"
+          fi
+          [ -n "$ISSUE" ] && gh issue comment "$ISSUE" --body "$(printf '%b' "${MSG//%0A/\n}")" || echo "$MSG"
   voix:
+    if: github.event.inputs.apercu != 'true'
     runs-on: ubuntu-latest
     strategy: { fail-fast: false, matrix: { i: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14] } }
     steps:
@@ -80,7 +116,24 @@ jobs:
       - run: python -m studio "$SCRIPT" -o sortie --etape final
       - uses: actions/upload-artifact@v4
         with: { name: video, path: "sortie/*.mp4" }
+      - name: Envoyer la vidéo
+        if: always()
+        run: |
+          N=${ISSUE:-manuel}; TAG="episode-$N-${{ github.run_number }}"
+          if ls sortie/*_leger.mp4 >/dev/null 2>&1; then
+            gh release create "$TAG" sortie/*.mp4 --title "Épisode – demande $N" --notes "Vidéo fabriquée par Sounsouni Studio. Le fichier _leger (moins de 28 Mo) est pour WhatsApp."
+            MSG="🎬 La vidéo est prête : https://github.com/${{ github.repository }}/releases/tag/$TAG\n(le fichier **_leger** est pour WhatsApp)"
+          else
+            MSG="❌ La vidéo n'a pas pu être finie. Voir : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          fi
+          [ -n "$ISSUE" ] && gh issue comment "$ISSUE" --body "$(printf '%b' "$MSG")" || echo "$MSG"
       - name: Garder les têtes tournées pour la prochaine fois
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
           git add studio/assets/poses/tourne/*.webp && git commit -m "Têtes tournées préparées par l'application" && git push || echo "rien à garder"
+  echec:
+    needs: [voix, plans, rendu, final]
+    if: failure() && github.event.inputs.issue != ''
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh issue comment "$ISSUE" -R "${{ github.repository }}" --body "❌ La fabrication s'est arrêtée. Détails : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"

@@ -1,0 +1,27 @@
+name: 🎬 Nouvel épisode
+description: Coller un script et recevoir la vidéo (ou d'abord l'aperçu des plans)
+title: "Épisode : "
+labels: ["episode"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Collez le script complet (format du guide du scénariste). L'application fait tout toute seule.
+        Vous recevrez une notification sur cette page quand c'est prêt.
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Que faire ?
+      options:
+        - Aperçu des plans d'abord (rapide, environ 10 minutes)
+        - Vidéo complète directement (environ 30 minutes)
+    validations:
+      required: true
+  - type: textarea
+    id: script
+    attributes:
+      label: Script de l'épisode
+      description: Tout le script, du TITRE jusqu'à la FIN.
+      render: text
+    validations:
+      required: true
