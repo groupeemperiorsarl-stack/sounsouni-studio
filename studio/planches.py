@@ -105,7 +105,8 @@ def make(shots, out, sel=None, sujets=('pose', 'cadrage'), deja=None, log=print,
         for o in q['options']:
             v = var[(q['n'], o['lettre'])]; imgs[(q['n'], o['lettre'])] = zoom(render.draw(v, render.moment(v, q['sujet'] == 'pose')).convert('RGB'), v, q, o)
     json.dump({'script': script, 'questions': [{k: v for k, v in q.items() if k != 'gap'} for q in qs]}, open(os.path.join(d, 'planches.json'), 'w'), ensure_ascii=False, indent=1)
-    pngs = pages(qs, shots, imgs, d); page_html(qs, shots, imgs, os.path.join(d, 'planches.html'), script)
+    tit = {q['n']: titre(q, shots) for q in qs}
+    pngs = pages(qs, tit, imgs, d); page_html(qs, tit, imgs, os.path.join(d, 'planches.html'), os.path.splitext(os.path.basename(script))[0] or 'épisode')
     log(f'planches : {len(qs)} questions → planches/planches.html et {len(pngs)} image(s) planche_N.png')
     return qs
 
@@ -115,33 +116,33 @@ def titre(q, shots):
     rep = ''
     if s.get('line'): t = s['line']['text']; rep = '« ' + (t if len(t) <= 60 else t[:58] + '…') + ' »'
     return f"Question {q['n']} · plan{'s' if len(q['plans']) > 1 else ''} {pl} · {temps(s['t0'])}", f"{SUJET_TXT[q['sujet']]}  {who}", rep
-def pages(qs, shots, imgs, d, par_page=3):
+def pages(qs, tit, imgs, d, par_page=3, prefixe='planche_'):
     """Images de secours (pour WhatsApp ou GitHub) : 3 questions par image, largeur d'un téléphone."""
     tw, th, gap, head, foot = 258, 459, 8, 120, 64; row = head + th + foot
     fb, fr = gfx.font(gfx.FB, 30), gfx.font(gfx.FB, 22); out = []
     for p in range(0, len(qs), par_page):
         grp = qs[p:p + par_page]; c = Image.new('RGB', (1080, row * len(grp) + 10), 'white'); dr = ImageDraw.Draw(c)
         for r, q in enumerate(grp):
-            y = r * row + 10; l1, l2, l3 = titre(q, shots)
+            y = r * row + 10; l1, l2, l3 = tit[q['n']]
             dr.text((12, y), l1, font=fb, fill=gfx.FONCE); dr.text((12, y + 40), l2, font=fb, fill=gfx.ORANGE); dr.text((12, y + 80), l3, font=fr, fill=(90, 90, 90))
             for k, o in enumerate(q['options']):
                 x = gap + k * (tw + gap); c.paste(imgs[(q['n'], o['lettre'])].resize((tw, th), Image.LANCZOS), (x, y + head))
                 dr.ellipse((x + 8, y + head + 8, x + 76, y + head + 76), fill=gfx.ORANGE, outline='white', width=4)
                 dr.text((x + 42, y + head + 42), o['lettre'], font=gfx.font(gfx.FB, 44), fill='white', anchor='mm')
                 for i, ln in enumerate(gfx.wrap(o['texte'], fr, tw - 4)[:2]): dr.text((x + 2, y + head + th + 6 + i * 26), ln, font=fr, fill=(40, 40, 40))
-        f = os.path.join(d, f'planche_{p // par_page + 1}.png'); c.save(f); out.append(f)
+        f = os.path.join(d, f'{prefixe}{p // par_page + 1}.png'); c.save(f); out.append(f)
     return out
 def b64(im):
     b = io.BytesIO(); im.resize((360, 640), Image.LANCZOS).save(b, 'JPEG', quality=80); return base64.b64encode(b.getvalue()).decode()
-def page_html(qs, shots, imgs, path, script=''):
+def page_html(qs, tit, imgs, path, nom='épisode', aide=None):
     """Page à cocher (téléphone) : on touche une image par question, la réponse « 1B 3C » s'écrit toute seule en bas."""
     cartes = []
     for q in qs:
-        l1, l2, l3 = (html.escape(x) for x in titre(q, shots))
+        l1, l2, l3 = (html.escape(x) for x in tit[q['n']])
         opts = ''.join(f'<button class="opt" data-q="{q["n"]}" data-l="{o["lettre"]}"><img src="data:image/jpeg;base64,{b64(imgs[(q["n"], o["lettre"])])}" alt="Option {o["lettre"]}">'
                        f'<span class="l">{o["lettre"]}</span><span class="t">{html.escape(o["texte"])}</span></button>' for o in q['options'])
         cartes.append(f'<section><h2>{l1}</h2><p class="q">{l2}</p><p class="r">{l3}</p><div class="grid">{opts}</div></section>')
-    nom = html.escape(os.path.splitext(os.path.basename(script))[0] or 'épisode')
+    nom = html.escape(nom); aide = html.escape(aide or "Une question sans réponse = on garde l'image A.")
     page = f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Planches à valider</title>
 <style>
 :root{{--fond:#f6f3ee;--carte:#fff;--texte:#222;--doux:#666;--accent:#e8731a;--bord:#ddd}}
@@ -162,7 +163,7 @@ h2{{font-size:15px;margin:0}}.q{{margin:2px 0;color:var(--accent);font-weight:70
 .barre button{{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 14px;font-weight:700;font-size:15px;flex:none}}
 </style></head><body>
 <h1>Planches à valider — {nom}</h1>
-<p class="aide">Touchez une image par question. Ensuite, appuyez sur « Copier » et envoyez la réponse à Claude (ou en commentaire sur GitHub). Une question sans réponse = on garde l'image A.</p>
+<p class="aide">Touchez une image par question. Ensuite, appuyez sur « Copier » et envoyez la réponse à Claude (ou en commentaire sur GitHub). {aide}</p>
 {''.join(cartes)}
 <div class="barre"><code id="rep">Aucun choix</code><button id="copie">Copier</button></div>
 <script>
