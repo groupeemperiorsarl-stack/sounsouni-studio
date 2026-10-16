@@ -66,7 +66,7 @@ def lancer(tch, travail, log=print, attente=5400):
     """Envoie le travail à Kaggle, attend la fin (sans rien consommer ici), récupère les images."""
     if not os.environ.get('KAGGLE_API_TOKEN'): raise SystemExit('jeton Kaggle absent : variable KAGGLE_API_TOKEN')
     d = os.path.join(travail, 'kaggle'); shutil.rmtree(d, ignore_errors=True); os.makedirs(d)
-    job = {'taches': [{k: t[k] for k in ('nom', 'refs', 'prompt', 'seeds')} for t in tch], 'quants': ['Q4_0', 'Q3_K_M'], 'lightning': True}
+    job = {'taches': [{k: t[k] for k in ('nom', 'refs', 'prompt', 'seeds')} for t in tch], 'quants': ['Q3_K_M'], 'lightning': True}
     code = open(os.path.join(HERE, 'kaggle', 'poses_worker.py')).read().replace('__JOB__', base64.b64encode(json.dumps(job).encode()).decode())
     open(os.path.join(d, 'poses.py'), 'w').write(code)
     json.dump({'id': f'{COMPTE}/{NOYAU}', 'title': NOYAU, 'code_file': 'poses.py', 'language': 'python', 'kernel_type': 'script', 'is_private': True,

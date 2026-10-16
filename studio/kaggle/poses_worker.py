@@ -2,6 +2,7 @@
 # Modèle : Qwen-Image-Edit-2509 (licence Apache 2.0, usage commercial permis), version allégée GGUF + accélérateur Lightning 8 étapes.
 # Deux cartes T4 : le lecteur d'image et de texte (compressé 4 bits) sur la 2e, le dessinateur sur la 1re.
 import os, sys, io, json, time, base64, subprocess, traceback
+os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 T0 = time.time(); LOG = {'etapes': [], 'images': [], 'erreurs': []}
 OUT = '/kaggle/working'
 def log(m):
@@ -22,7 +23,7 @@ try:
         quantization_config=BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type='nf4', bnb_4bit_compute_dtype=F16))
     log('lecteur texte/image chargé')
     tr = None
-    for q in JOB.get('quants', ['Q4_0', 'Q3_K_M']):
+    for q in JOB.get('quants', ['Q3_K_M']):
         try:
             tr = QwenImageTransformer2DModel.from_single_file(f'https://huggingface.co/QuantStack/Qwen-Image-Edit-2509-GGUF/blob/main/Qwen-Image-Edit-2509-{q}.gguf',
                 quantization_config=GGUFQuantizationConfig(compute_dtype=F16), torch_dtype=F16, config=REPO, subfolder='transformer')
@@ -35,7 +36,19 @@ try:
             pipe.load_lora_weights('lightx2v/Qwen-Image-Lightning', weight_name='Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors')
             steps, cfg = 8, 1.0; LOG['lightning'] = True
         except Exception as e: LOG['erreurs'].append(f'lightning: {e}'); LOG['lightning'] = False
-    pipe.transformer.to('cuda:0'); pipe.vae.to('cuda:0')
+    pipe.vae.to('cuda:0')
+    if JOB.get('repartir'):   # dessinateur réparti sur les deux cartes (si un jour on prend une version plus grosse)
+      try:
+        from accelerate import dispatch_model
+        n = len(pipe.transformer.transformer_blocks); part = JOB.get('part_carte0', 0.5)
+        dm = {name: 0 for name, _ in pipe.transformer.named_children() if name != 'transformer_blocks'}
+        dm.update({f'transformer_blocks.{i}': (0 if i < n * part else 1) for i in range(n)})
+        dispatch_model(pipe.transformer, device_map=dm, main_device=0); LOG['repartition'] = part
+      except Exception as e:
+        LOG['erreurs'].append('répartition : ' + traceback.format_exc()[-600:]); pipe.transformer.to('cuda:0')
+    else: pipe.transformer.to('cuda:0')
+    torch.cuda.empty_cache()
+    type(pipe)._execution_device = property(lambda self: torch.device('cuda:0'))   # le dessin se fait sur la 1re carte (le lecteur reste sur la 2e)
     log(f'dessinateur chargé ({LOG.get("quant")}, {steps} étapes)')
     NEG = JOB.get('negatif', ' ')
     for t in JOB['taches']:
