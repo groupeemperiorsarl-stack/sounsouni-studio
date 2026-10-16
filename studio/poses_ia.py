@@ -117,6 +117,7 @@ def detourer(im):
     if n > 1:
         sz = ndimage.sum(np.ones_like(m), lab, range(1, n + 1)); m = np.where(ndimage.binary_dilation(lab == np.argmax(sz) + 1, iterations=3), m, 0)
     o = im.convert('RGBA'); o.putalpha(Image.fromarray(m.astype(np.uint8))); o = o.crop(o.getbbox())
+    import trous; o = trous.boucher(o)[0]   # vêtement clair pris pour du fond : rebouché
     return o.resize((max(1, int(o.width * 1600 / o.height)), 1600), Image.LANCZOS)
 def tete_x(im):
     a = np.asarray(im)[:, :, 3]; top = a[: int(a.shape[0] * 0.12)] > 128; xs = np.nonzero(top.any(0))[0]

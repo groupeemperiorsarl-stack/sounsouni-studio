@@ -183,9 +183,8 @@ def draw(s, lt):
         return fr
     if k == 'insert':
         fr = background(s, lt, blur=4, zoom=0.1); obj = gfx.norm if False else s.get('object', '').lower()
-        hit = None
-        for key, p in POSES.items():
-            if p['frame'] == 'objet' and any(w in obj for w in p['tags']): hit = key; break
+        cands = [(sum(w in obj for w in p['tags']), key) for key, p in POSES.items() if p['frame'] == 'objet']   # l'objet dont le plus de mots correspondent
+        cands = [c for c in cands if c[0] > 0]; hit = max(cands)[1] if cands else None
         if hit: paste(fr, pose_img(hit, 1450), 540, 1100, 1.0, 1.0 + 0.04 * eo(prog(lt, 0, d)))
         elif 'telephone' in obj or 'téléphone' in obj: paste(fr, gfx.phone_with(gfx.app_screen([s.get('object', '')])), 540, 1100, 1.0, 1.1)
         else:
