@@ -92,7 +92,7 @@ def posture_of(pose_text):
     if 'grill' in t: return 'grill'
     return 'debout'
 class Stage:
-    def __init__(self): self.order = []; self.posture = {}; self.props = {}
+    def __init__(self): self.order = []; self.posture = {}; self.props = {}; self.arrivals = set()
     def set(self, who_list):
         for w in who_list:
             if w['who'] not in self.order: self.order.append(w['who'])
@@ -114,6 +114,11 @@ def wide_layout(stage, chars, moods, speaker=None):
     chars = [c for c in chars if c in HEIGHT]; acts = []
     prio = sorted(chars, key=lambda c: (c != speaker, stage.posture.get(c) != 'marche', chars.index(c)))
     keep = set(prio[:6]); front = [c for c in chars if c in keep]; back = [c for c in chars if c not in keep]
+    # celui qui arrive et s'adresse au groupe : au premier plan, DE DOS, face au groupe (validé par Issa)
+    has_back = lambda c: any(p['char'] == c and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags']) for p in POSES.values())
+    fgc = [c for c in front if c in stage.arrivals and stage.posture.get(c) not in ('marche', 'dos_marche') and has_back(c)]
+    fgc = sorted(fgc, key=lambda c: c != speaker)[:1] if len(front) >= 3 else []
+    front = [c for c in front if c not in fgc]
     for c in front:
         post = stage.posture.get(c, 'debout'); pst = 'debout' if post == 'grill' else post
         want = list(moods.get(c, [])) + (['grill'] if post == 'grill' else []) + stage.props.get(c, [])
@@ -147,6 +152,12 @@ def wide_layout(stage, chars, moods, speaker=None):
             a['vx'] = -260 if from_right else 260; a['flip'] = from_right; a['walk_t'] = 1.8
     for i, c in enumerate(back):
         k = pick(c, moods.get(c, []), 'pied', stage.posture.get(c)); acts.insert(0, {'key': k, 'who': c, 'x': int(160 + i * 260), 'by': BACK, 'h': int(600 * HEIGHT.get(c, 1)), 'back': True})
+    for c in fgc:
+        backs = sorted([k for k, p in POSES.items() if p['char'] == c and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags'])], key=lambda k: len(POSES[k].get('props', [])))
+        k = backs[0] if backs else pick(c, [], 'pied', 'debout', need_mouth=False)
+        h = int(1500 * HEIGHT.get(c, 1)); a = {'key': k, 'who': c, 'h': h, 'by': GROUND + 330, 'x': 820, 'fgwide': True, 'speaker': False}
+        if not backs: a['silhouette'] = True; a['fg'] = True   # pas d'image de dos : silhouette sombre
+        acts.append(a)
     return acts
 def close_actor(char, key, x=540, tight=False, scale=1.0, flip=False):
     p = POSES[key]; fr = p['frame']
@@ -240,9 +251,12 @@ def build(meta, events, log=print):
         if t == 'scene':
             scene = dict(e); stage = Stage(); plan = None; first_in_scene = True; moods = {}; last_speaker = None
             # personnages de la scène : ceux qui parlent avant le prochain décor
-            j = i + 1
+            j = i + 1; first_plan = True
             while j < len(events) and events[j]['type'] != 'scene':
-                if events[j]['type'] == 'plan': stage.set(events[j]['who'])
+                if events[j]['type'] == 'plan':
+                    if not first_plan: stage.arrivals |= {w['who'] for w in events[j]['who'] if w['who'] not in stage.order}
+                    if events[j]['who']: first_plan = False
+                    stage.set(events[j]['who'])
                 if events[j]['type'] == 'line' and not events[j].get('thought') and 'telephone' not in events[j].get('voice', ''): stage.add(events[j]['who'])
                 j += 1
         elif t == 'plan':
@@ -294,7 +308,7 @@ def build(meta, events, log=print):
                     acts = wide_layout(stage, [w['who'] for w in plan['who']] or stage.order, moods, speaker=who)
                     for a in acts: a['speaker'] = a['who'] == who
                     sh['actors'] = acts; sh['mode'] = 'wide'; plan = None
-                elif mode == 'deux' and plan and len(plan['who']) >= 2:
+                elif mode == 'deux' and plan and len(plan['who']) >= 2 and who not in [w['who'] for w in plan['who']][:2]:
                     pair = [w['who'] for w in plan['who']][:2]; acts = []
                     for c, x in zip(pair, (330, 760)):
                         k = pick(c, moods.get(c, []), None, stage.post(c), need_mouth=c == who, must=stage.props.get(c, []), side=True)
@@ -306,10 +320,12 @@ def build(meta, events, log=print):
                     side = stage.side(who, e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper()))
                     x = 540 - 110 * side if side else 540
                     tgt = e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper())
+                    if mode == 'deux' and plan:   # « deux » : l'autre de dos au premier plan, celui qui parle de face
+                        pair = [w['who'] for w in plan['who']]; tgt = next((c for c in pair if c != who), tgt)
                     if not (tgt in stage.order and tgt != who): tgt = last_speaker if last_speaker in stage.order and last_speaker != who else None
                     if tgt and not side: side = stage.side(who, tgt)
-                    ots = (mode == 'gros' and tgt and side and not e.get('thought') and stage.posture.get(tgt) != 'marche')
-                    if ots: ots_count += 1; ots = ots_count % 3 != 0   # champ / contre-champ, avec de temps en temps un plan seul
+                    ots = (mode in ('gros', 'deux') and tgt and side and not e.get('thought') and stage.posture.get(tgt) != 'marche')
+                    if ots and mode == 'gros': ots_count += 1; ots = ots_count % 3 != 0   # champ / contre-champ, avec de temps en temps un plan seul
                     if ots:
                         a = close_actor(who, k, x=540 - 170 * side); a['speaker'] = True; a['look_dir'] = side; a['look_up'] = updown(stage, who, tgt)
                         sh['actors'] = [a, over_shoulder(tgt, side, stage)]; sh['mode'] = 'close'; sh['pan'] = stage.pan(who); sh['ots'] = tgt
