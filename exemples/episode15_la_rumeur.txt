@@ -144,6 +144,13 @@ PLAN: 3 s · très gros Awa · {rougit}
 PENSÉE AWA (pensif · regarde: Bakary)
 Pourquoi il dit ça… {gene} comme ça ?
 
+PLAN: gros Awa
+AWA (serieux · regarde: Kadi · voix: normal)
+Bon. {soupir} Maintenant que tout est réglé, je retourne à mon atelier. {sourire} Bonne dégustation, Tantie Kadi.
+
+KADI (sourire · regarde: Awa · voix: lentement)
+{sourire} Super, ma fille. Maintenant, je pense que tout malentendu est dissipé.
+
 PLAN: 2 s · large [Awa de dos, marche]
 
 FATIM (sourire · regarde: Bakary · voix: normal)

@@ -44,7 +44,7 @@ NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'd
 OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
-GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'tend_la_main', 'non', 'panique', 'bondit', 'doigt', 'salue', 'offre', 'propose', 'montre'}
+GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
 def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
     """must : objets demandés par le PLAN (ex. [Karim, téléphone]) = fortement voulus ; side : préférer une pose de trois-quarts
     (pour se tourner vers l'autre dans les plans à plusieurs)."""
@@ -69,6 +69,7 @@ def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         s -= 7 * len(unasked - LIGHT) + 1.5 * len(unasked & LIGHT)   # un objet (brochette, téléphone…) ou des larmes jamais montrés sans raison
         s += 6 * len(set(must) & (tags | props))
         if side and face_dir(k) != 0: s += 2.5
+        if calm and side and face_dir(k) != 0 and not ((tags & (GESTE | POS | NEG | {'gene', 'rire', 'surpris', 'fatigue', 'sale'})) - w): s += 5   # validé par Issa (pose D) : de trois-quarts, même dessin que la suite de la scène
         if calm:   # personne ne parle encore : attitude tranquille, ni geste ni grande émotion
             if (tags & GESTE) - w: s -= 6
             s -= 2.5 * len((tags & (POS | NEG | {'gene', 'rire', 'surpris', 'fatigue', 'sale'})) - w)
