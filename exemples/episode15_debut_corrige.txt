@@ -1,0 +1,32 @@
+TITRE: Les Plans de Bakary – Épisode 15 : La rumeur
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Kadi sur le banc, Diasabi debout]
+[BRUITAGE: coq]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Kadi sur le banc, Diasabi debout, Moussa debout]
+[BRUITAGE: pas]
+
+MOUSSA (surpris · regarde: Bakary · voix: crie)
+Kôrô Bakary ! {choc} Mais qu'est-ce qui se passe ? Tu allais te marier et tu ne nous as rien dit ?
+
+MOUSSA (grand_sourire · regarde: Bakary · voix: normal)
+Ta photo de mariage avec la couturière est sur tous les statuts ! {fier} Elle est partagée dans tout Bamako, Kôrô !
+
+BAKARY (surpris · regarde: Moussa · voix: normal)
+{choc} Mais… qu'est-ce que tu racontes ?
+
+MODIBO (taquin · regarde: Bakary · voix: normal)
+{sourire} Oui, Bakarin. Je l'ai vue aussi.
+
+DIASABI (content · regarde: Bakary · voix: normal)
+C'est vrai ! {grand_sourire} Elle est partout !
+
+KADI (sourire · regarde: Bakary · voix: lentement)
+Oui, c'est vrai, mon fils. Même moi, je l'ai vue.
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Statut · Photo : Bakary tient Awa par le bras · « La couturière de luxe épouse le vendeur de thé. La dot est déjà payée ! » · 2 430 vues]
+[BRUITAGE: tonnerre]
+
+PLAN: 2 s · très gros Bakary · {panique}{sueur}
