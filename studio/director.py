@@ -116,7 +116,7 @@ def posture_of(pose_text):
     if 'grill' in t: return 'grill'
     return 'debout'
 class Stage:
-    def __init__(self): self.order = []; self.posture = {}; self.props = {}; self.arrivals = set(); self.entering = set()
+    def __init__(self): self.order = []; self.posture = {}; self.props = {}; self.arrivals = set(); self.entering = set(); self.seq = []   # seq : arrivées déjà faites, dans l'ordre
     def set(self, who_list):
         for w in who_list:
             if w['who'] not in self.order: self.order.append(w['who'])
@@ -162,15 +162,42 @@ def depth_staging(acts, speaker=None, arrivals=()):
         a['by'] = GROUND - 190; a['x'] = int(540 + (i - (len(behind) - 1) / 2) * 260 + (60 if i % 2 else -60))
     sit = behind + sit
     return sit + [a for a in std if a not in behind]
-def wide_layout(stage, chars, moods, speaker=None):
+RANGS = {'devant': {'x': (0.25, 0.73), 'pieds': 0.945, 'h': 1080}, 'derriere': {'x': (0.5, 0.1, 0.9, 0.3, 0.7), 'pieds': 0.745, 'h': 900}}
+def deux_rangees(acts, stage, speaker=None, partner=None):
+    """Plan d'ensemble à 4 personnes et plus, d'après la scène modèle (Gemini, épisode 16) : devant, les deux qui se parlent,
+    grands et face à face ; derrière, les autres, plus petits, placés dans les espaces libres pour que tous les visages se voient."""
+    assis = lambda a: POSES[a['key']]['posture'] in ('assis', 'banc')
+    rang = lambda c: stage.order.index(c) if c in stage.order else 99
+    std = [a['who'] for a in acts if not assis(a)]; late = stage.seq[-1] if stage.seq else None
+    pair = []
+    for c in (speaker, partner, late) + tuple(sorted(std, key=rang)):
+        if c and c in std and c not in pair: pair.append(c)
+        if len(pair) == 2: break
+    pair.sort(key=rang)   # le héros de la scène (premier nommé) à gauche
+    D, R = RANGS['devant'], RANGS['derriere']; out_front, out_back = [], []
+    def poser(a, x, h, pieds):
+        p = POSES[a['key']]; h = int(h * (0.86 if assis(a) else 1.0) * (1.0 if p['frame'] == 'pied' else 0.8))
+        a['h'] = h; a['w'] = p['size'][0] * h / p['size'][1]; a['by'] = int(pieds * 1920)
+        a['x'] = int(min(max(x * 1080, a['w'] * 0.42 + 5), 1075 - a['w'] * 0.42))   # jamais coupé par le bord
+    for a in acts:
+        if a['who'] in pair: poser(a, D['x'][pair.index(a['who'])], D['h'] * HEIGHT.get(a['who'], 1), D['pieds']); out_front.append(a)
+    reste = sorted([a for a in acts if a['who'] not in pair], key=lambda a: (not assis(a), rang(a['who'])))
+    slots = list(R['x'][:len(reste)])
+    if reste and assis(reste[0]): poser(reste[0], slots.pop(0), R['h'] * HEIGHT.get(reste[0]['who'], 1), R['pieds']); out_back.append(reste.pop(0))
+    for a, x in zip(sorted(reste, key=lambda a: rang(a['who'])), sorted(slots)):   # de gauche à droite dans l'ordre de la scène
+        poser(a, x, R['h'] * HEIGHT.get(a['who'], 1), R['pieds']); out_back.append(a)
+    return out_back + out_front
+def wide_layout(stage, chars, moods, speaker=None, partner=None):
     """Plan d'ensemble : tout le monde sur le même sol, côte à côte sans se chevaucher, arrière-plan plus petit."""
     chars = [c for c in chars if c in HEIGHT]; acts = []
     prio = sorted(chars, key=lambda c: (c != speaker, stage.posture.get(c) != 'marche', chars.index(c)))
     keep = set(prio[:6]); front = [c for c in chars if c in keep]; back = [c for c in chars if c not in keep]
     # celui qui arrive et s'adresse au groupe : au premier plan, DE DOS, face au groupe (validé par Issa)
     has_back = lambda c: any(p['char'] == c and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags']) for p in POSES.values())
+    rangs = len(front) >= 4 and not any(stage.posture.get(c) in ('marche', 'dos_marche') for c in front)   # groupe : deux rangées (scène modèle validée par Issa)
     fgc = [c for c in front if c in stage.arrivals and stage.posture.get(c) not in ('marche', 'dos_marche') and has_back(c)]
-    fgc = sorted(fgc, key=lambda c: c != speaker)[:1] if len(front) >= 3 else []
+    late = stage.seq[-1] if stage.seq else None   # celui qui arrive, c'est le dernier arrivé (pas un ancien arrivant de la scène)
+    fgc = [c for c in fgc if c == speaker or (speaker is None and c == late)][:1] if len(front) >= 3 and not rangs else []
     front = [c for c in front if c not in fgc]
     for c in front:
         post = stage.posture.get(c, 'debout'); pst = 'debout' if post == 'grill' else post
@@ -205,7 +232,7 @@ def wide_layout(stage, chars, moods, speaker=None):
             # les images de marche regardent vers la droite : venir de la gauche = image normale, venir de la droite = image retournée
             from_right = a['x'] > 540
             a['vx'] = -260 if from_right else 260; a['flip'] = from_right; a['walk_t'] = 1.8
-    acts = depth_staging(acts, speaker, stage.arrivals)
+    acts = deux_rangees(acts, stage, speaker, partner) if rangs else depth_staging(acts, speaker, stage.arrivals)
     for i, c in enumerate(back):
         k = pick(c, moods.get(c, []), 'pied', stage.posture.get(c)); acts.insert(0, {'key': k, 'who': c, 'x': int(160 + i * 260), 'by': BACK, 'h': int(600 * HEIGHT.get(c, 1)), 'back': True})
     for c in fgc:
@@ -296,6 +323,10 @@ def over_shoulder(who, side, stage):
 LAUGH = {'rire', 'rire_retenu', 'rit', 'rigole', 'eclate_de_rire', 'moqueur'}
 def laughs(actions): return bool(set(actions) & LAUGH)
 CHOIX = {}; VARIANTES = False
+def cible(e, defaut=None):
+    """À qui parle la réplique (« regarde: Bakary »), sinon le dernier qui a parlé."""
+    t = e.get('look') and re.sub(r'[^A-Z_]', '', e['look'].upper())
+    return t if t in HEIGHT else defaut
 def set_pose(a, k):
     """Remplace la pose d'un acteur en gardant sa place (visage au même endroit, pieds au même sol)."""
     a['key'] = k; a['flip'] = False
@@ -347,6 +378,8 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 j += 1
         elif t == 'plan':
             stage.set(e['who']); plan = e
+            for w in e['who']:
+                if w['who'] in stage.arrivals and w['who'] not in stage.seq: stage.seq.append(w['who'])
             if e['who']: present = [w['who'] for w in e['who']]
             if e.get('dur') or e['kind'] in ('objet', 'ecran'):
                 from script import pose_id
@@ -399,7 +432,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
                     a = close_actor('+'.join(w['who'] for w in plan['who']), plan['key']); a['h'] = int(a['h'] * 1.15); a['by'] = 330 + a['h']
                     sh['actors'] = [a]; sh['mode'] = 'close'; sh['group'] = True
                 elif mode == 'large':
-                    acts = wide_layout(stage, [w['who'] for w in plan['who']] or stage.order, moods, speaker=who)
+                    acts = wide_layout(stage, [w['who'] for w in plan['who']] or stage.order, moods, speaker=who, partner=cible(e, last_speaker))
                     for a in acts: a['speaker'] = a['who'] == who
                     sh['actors'] = acts; sh['mode'] = 'wide'; plan = None
                 elif mode == 'deux' and plan and len(plan['who']) >= 2 and who not in [w['who'] for w in plan['who']][:2]:
@@ -431,7 +464,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
                         if kargs: a['pick'] = kargs
                         return {'actors': [a, over_shoulder(tgt, side, stage)], 'mode': 'close', 'ots': tgt}
                     def large():
-                        st2 = copy.deepcopy(stage); acts = wide_layout(st2, [c for c in present if c in st2.order] or st2.order, moods, speaker=who)   # seulement ceux déjà arrivés
+                        st2 = copy.deepcopy(stage); acts = wide_layout(st2, [c for c in present if c in st2.order] or st2.order, moods, speaker=who, partner=cible(e, last_speaker))   # seulement ceux déjà arrivés
                         for b in acts: b['speaker'] = b['who'] == who
                         return {'actors': acts, 'mode': 'wide', 'ots': None}
                     alts = {'seul': seul, 'large': large}
