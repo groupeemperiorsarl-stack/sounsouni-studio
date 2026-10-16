@@ -1,0 +1,15 @@
+name: Tableau de bord
+on:
+  schedule: [{ cron: "15 6 * * *" }]
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Fabriquer un épisode (15 ordinateurs en parallèle)", "Analyse des objets sur les poses (15 ordinateurs en parallèle)"]
+    types: [completed]
+permissions: { issues: write, actions: read }
+jobs:
+  maj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python .github/scripts/tableau.py
+        env: { GH_TOKEN: "${{ github.token }}" }
