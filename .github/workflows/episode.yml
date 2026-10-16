@@ -136,4 +136,5 @@ jobs:
     if: failure() && github.event.inputs.issue != ''
     runs-on: ubuntu-latest
     steps:
-      - run: gh issue comment "$ISSUE" -R "${{ github.repository }}" --body "❌ La fabrication s'est arrêtée. Détails : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      - run: |
+          gh issue comment "$ISSUE" -R "${{ github.repository }}" --body "❌ La fabrication s'est arrêtée. Détails : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
