@@ -2293,7 +2293,8 @@
    ],
    "props_auto": {
     "carte": 0.59
-   }
+   },
+   "mouth_auto": true
   },
   "kar_tel": {
    "char": "KARIM",
@@ -2314,7 +2315,8 @@
    ],
    "props_auto": {
     "telephone": 0.71
-   }
+   },
+   "mouth_auto": true
   },
   "kar_mains": {
    "char": "KARIM",
@@ -2332,7 +2334,8 @@
    "head_x": 0.484,
    "yaw": 1.7,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "kar_marche": {
    "char": "KARIM",
@@ -2648,7 +2651,8 @@
    ],
    "props_auto": {
     "carte": 0.6
-   }
+   },
+   "mouth_auto": true
   },
   "mou_sourire_auto": {
    "char": "MOUSSA",

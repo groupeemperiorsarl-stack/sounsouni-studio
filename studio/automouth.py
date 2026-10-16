@@ -3,13 +3,16 @@ import json, os, subprocess, sys
 from PIL import Image
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); W = '/tmp/claude-0/automouth'; os.makedirs(W, exist_ok=True)
 cat = json.load(open(A + '/catalog.json')); jobs = []; regions = {}
+OUV = os.environ.get('STUDIO_BOUCHE', '0.2')   # ouverture de la bouche (barbe épaisse : plus grand)
+SEUL = set(filter(None, os.environ.get('STUDIO_POSES', '').split(',')))   # refaire seulement ces poses
 for k, p in cat['poses'].items():
-    if p['mouth'] or p['char'] in ('OBJET',) or '+' in p['char'] or p['posture'] in ('dos',) or 'cycle_marche' in ' '.join(p['tags']): continue
+    if SEUL and k not in SEUL: continue
+    if (p['mouth'] and not SEUL) or p['char'] in ('OBJET',) or '+' in p['char'] or p['posture'] in ('dos',) or 'cycle_marche' in ' '.join(p['tags']): continue
     im = Image.open(f'{A}/poses/{k}.webp').convert('RGBA'); w, h = im.size
     frac = {'pied': 0.42, 'buste': 0.75, 'visage': 1.0}.get(p['frame'], 0.5)
     box = (0, 0, w, int(h * frac)); regions[k] = box
     b = Image.new('RGBA', (box[2], box[3]), (200, 200, 200, 255)); b.alpha_composite(im.crop(box)); b.convert('RGB').save(f'{W}/{k}.png')
-    jobs.append(f'{W}/{k}_o.png|{W}/{k}.png|x|0.2|0|0|0|-0.25|0|0|0|0|0|0|0')
+    jobs.append(f'{W}/{k}_o.png|{W}/{k}.png|x|{OUV}|0|0|0|-0.25|0|0|0|0|0|0|0')
 open(W + '/jobs.txt', 'w').write('\n'.join(jobs) + '\n'); json.dump(regions, open(W + '/regions.json', 'w'))
 print(len(jobs), 'poses à traiter', flush=True)
 subprocess.run([sys.executable, os.environ.get('STUDIO_LIVEPORTRAIT', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lp', 'lpgen.py')), W + '/jobs.txt'])
