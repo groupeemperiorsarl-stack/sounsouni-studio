@@ -1,0 +1,30 @@
+TITRE: Les Plans de Bakary – Test : Le colis
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+
+PLAN: large [Mimi à la machine, Awa marche]
+[BRUITAGE: talons]
+
+AWA (fier · regarde: Mimi)
+{sourire} Mimi ! Bonjour. {bombe_torse} Aujourd'hui, je ne veux plus entendre parler de Bakary.
+
+MIMI (taquin · regarde: Awa)
+{sourire_malin} Ah bon ? Pourtant, il y a un colis pour vous, Tantie Awa.
+[RÉACTION AWA: surpris]
+
+PLAN: 2 s · objet colis cadeau
+
+AWA (mefiant · regarde: Mimi)
+{yeux_plisses} Un colis ? {penche_tete} De qui ?
+
+MIMI (rire_retenu · regarde: Awa)
+{rire_retenu} Il y a un petit mot : « Pardon, Awa. Je ne recommencerai plus. »
+[RÉACTION AWA sur "Pardon": choc]
+[BRUITAGE sur "Pardon": tonnerre]
+
+AWA (gene · regarde: bas)
+{moue} Hmm… {soupir} Il ne changera jamais, celui-là.
+
+PLAN: très gros Awa
+AWA (sourire · regarde: loin)
+{rougit} Mais bon… {sourire} je vais quand même l'ouvrir.
