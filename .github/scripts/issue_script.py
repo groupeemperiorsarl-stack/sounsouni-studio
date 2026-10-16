@@ -6,9 +6,9 @@ m = re.search(r"### Script de l'épisode\s*\n+```(?:text)?\n(.*?)\n```", body, r
 script = (m.group(1) if m else body).strip()
 mode = 'video' if re.search(r'Vidéo complète', body) else 'apercu'
 if ev.get('comment'):   # commentaire « vidéo » ou « refaire » sur la demande
-    c = (ev['comment'].get('body') or '').lower()
-    if re.search(r'\bvid[ée]o\b', c): mode = 'video'
-    elif re.search(r'\b(aper[çc]u|refaire)\b', c): mode = 'apercu'
+    c = (ev['comment'].get('body') or '').lower().strip(' .!\n')   # seulement un commentaire d'un seul mot
+    if re.fullmatch(r'vid[ée]o', c): mode = 'video'
+    elif re.fullmatch(r'(aper[çc]u|refaire)', c): mode = 'apercu'
     else: mode = 'rien'
 os.makedirs('demandes', exist_ok=True)
 path = f"demandes/episode_{issue['number']}.txt"
