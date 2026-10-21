@@ -190,7 +190,7 @@ function parties(brut){const L=brut.replace(/\r/g,'').split('\n'),out=[];let cur
   if(cur.join('').trim())out.push(cur.join('\n'));
   const fin=[];for(const p of out){if(p.length<=3500){fin.push(p);continue}let b='';for(const bl of p.split(/\n\s*\n/)){if((b+bl).length>3500&&b){fin.push(b);b=''}b+=bl+'\n\n'}if(b.trim())fin.push(b)}return fin}
 function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];
-  for(let i=0;i<L.length;i++){let l=L[i];const m=l.match(TETE);
+  for(let i=0;i<L.length;i++){let l=L[i].replace(/^\s*\[\s+/,'[').replace(/\s+\]\s*$/,']');const m=l.match(TETE);
     if(m&&(PERSOS.includes(m[2].trim().replace(/ /g,'_'))||/^[A-Z_]{3,}$/.test(m[2].trim()))){const parts=m[3].split('·').map(s=>s.trim());
       const vo=m[2].trim()==='VOIX_OFF';const p0=parts.findIndex(s=>!s.includes(':'));if(vo){}else if(p0<0)parts.unshift('neutre');else{const e=emo(parts[p0]);if(!e)al.push(m[2]+' : émotion « '+parts[p0]+' » remplacée par neutre');parts[p0]=e||'neutre'}
       if(!vo&&!m[1]&&!parts.some(s=>/^regarde/i.test(s)))al.push(m[2]+' : pas de « regarde: »');
@@ -236,7 +236,7 @@ $('#a-voix').onclick=()=>{const L=$('#a-out').value.split('\n'),V={};for(let i=0
   $('#a-voixout').querySelectorAll('[data-cp]').forEach(b=>b.onclick=()=>{const t=document.getElementById(b.dataset.cp).textContent;try{navigator.clipboard.writeText(t).then(()=>b.textContent='Copié ✓')}catch(e){}})};
 function extrait(t,max=40){const L=t.split('\n'),out=[];let d=0,deb=false;for(const l of L){if(/^(DÉCOR|DECOR)/.test(l))deb=true;if(/^FIN\s*:/.test(l))break;
     if(deb&&TETE.test(l)&&duree(out.join('\n'))-5>=max)break;out.push(l)}return out.join('\n').trim()+'\n'}
-async function lancer(mode,script,titre){try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+titre,body:corps(mode,script),labels:['episode']})});
+async function lancer(mode,script,titre){if(!/^TITRE:/m.test(script))script='TITRE: Les Plans de Bakary – '+titre+'\n\n'+script;try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+titre,body:corps(mode,script),labels:['episode']})});
   $('#a-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' lancée. Suivez-la dans « Épisodes ».</p>'}catch(e){$('#a-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}
 $('#a-l40').onclick=()=>lancer('v',extrait($('#a-out').value),($('#a-titre').value||'assistant')+' (extrait 40 s)');
 $('#a-lap').onclick=()=>lancer('a',$('#a-out').value,$('#a-titre').value||'assistant');

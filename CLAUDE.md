@@ -32,6 +32,14 @@
   - LivePortrait (têtes tournées, bouches) : `bash studio/lp/install.sh`.
   - Machine : 2 processeurs, 8 Go → lancer la voix (Chatterbox) **seule**, sinon la mémoire sature.
 
+## Assistant de secours (quand Claude n'est pas disponible)
+- Dans la page **Studio mobile** (`outils/studio_mobile.html`), onglet **🤖 Assistant** : Issa colle le script validé → « Mettre au format » → l'IA gratuite (Groq `openai/gpt-oss-120b`, puis Cerebras, puis OpenRouter si Groq est saturé) le met au format, scène par scène.
+- Ses consignes = **`docs/ASSISTANT.md`** (lu dans le dépôt à chaque fois). Toute nouvelle règle de format validée par Issa doit y être ajoutée aussi.
+- La page corrige ensuite toute seule (émotions sans accent, indications inconnues retirées, réplique vide → RÉACTION, DÉCOR en double, postures), affiche les alertes, la durée estimée et les scripts de voix par personnage.
+- Issa relit, coche « J'ai relu et je valide », puis lance : **Extrait de 40 s** (vidéo courte pour tester), **Aperçu des plans** ou **Épisode complet** (crée la demande GitHub comme le formulaire).
+- Bouton **🖼 Fiche Gemini** de chaque épisode = commentaire « fiche » → `.github/workflows/fiche.yml` → fiche + images à joindre affichées dans la page.
+- Clés Groq / Cerebras / OpenRouter : **seulement sur le téléphone d'Issa** (onglet Assistant, `localStorage`), jamais dans le dépôt ni la conversation. L'assistant ne touche jamais au code : les corrections du studio restent pour Claude.
+
 ## Fichiers clés
 - `studio/script.py` lecture du script · `voices.py` voix + vérification Whisper + fins de phrase jamais coupées + rires + `lexique.txt` (prononciations « écrit = prononcé », ex. « Kôrôbalé wou = Kôrôbaléou ») et « plus » négatif sans S.
 - `studio/planches.py` planches A / B / C / D (questions, images, page à cocher, lecture de la réponse).
@@ -48,7 +56,8 @@
 - **Objets** (brochette, téléphone, larmes…) : jamais montrés si le script ne le demande pas. Objet écrit dans le PLAN (`[Karim, téléphone]`) : toujours montré.
 - **Postures** respectées (assis reste assis), décor cohérent dans une scène, décors sans figurants, bouches ouvertes sans que les yeux bougent.
 
-## Où on en est (16/10/2026)
+## Où on en est (21/10/2026)
+- Assistant de secours ajouté (Groq gratuit) et testé sur un extrait de 40 s (demande n° 5).
 - Planches A / B / C automatiques ajoutées (local et GitHub) + rendu partiel automatique par morceaux.
 - Épisode 15 « La rumeur » fini (v5) ; script : `exemples/episode15_la_rumeur.txt` (+ début réécrit : `exemples/episode15_debut_corrige.txt`).
 - Plus tard : passer de 15 à 5 machines (quand l'application sera bien réglée) ; vues de dos des personnages qui n'en ont pas ; nettoyer le décor BUREAU (figurants) ; pose de Karim assis.
