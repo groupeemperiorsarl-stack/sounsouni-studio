@@ -93,6 +93,8 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         # pas de visage à contre-sens : un sourire demandé ne doit jamais donner une pose triste, et l'inverse
         if w & POS and tags & NEG and not (w & NEG): s -= 6
         if w & NEG and tags & POS and not (w & POS): s -= 4
+        # validé par Issa (test assistant, ép. test) : un éclat de rire ne remplace jamais une émotion sérieuse (méfiant, sérieux, pensif, gêné…)
+        if 'rire' in tags and w and not (w & {'rire', 'rire_retenu', 'moqueur', 'taquin', 'joie', 'grand_sourire', 'content', 'victoire'}): s -= 9
         if need_mouth and p['mouth']: s += 1.5
         if 'neutre' in tags and not w: s += 1
         if not w and tags & NEG: s -= 3   # sans émotion demandée : jamais un visage fâché ou triste

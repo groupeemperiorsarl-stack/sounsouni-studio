@@ -174,7 +174,19 @@ const SYN={surprise:'surpris',mefiante:'mefiant',essouffle:'inquiet',essoufflee:
 const TAGS=new Set([...EMO,...'hoche_tete secoue_tete penche_tete detourne_regard leve_yeux_ciel regarde_bas clin_oeil ferme_yeux cligne recule avance sursaut soupir tremble bombe_torse se_penche s_affale sueur rougit coeurs etoiles eclair fumee_tete goutte point_exclamation point_interrogation idee ampoule non pointe mains_tete bras_ouverts salue explique coud sert'.split(' ')]);
 const PERSOS=['BAKARY','AWA','MODIBO','DIASABI','SALI','FATIM','MIMI','SEYDOU','KADI','MOUSSA','KARIM','VENDEUSE','VOIX_OFF'];
 const TETE=/^(PENSÉE\s+|PENSEE\s+)?([A-ZÀ-Ÿ_][A-ZÀ-Ÿ_ \-]*?)\s*\((.*)\)\s*$/;
-const emo=e=>{let x=sans(e).replace(/\s+/g,'_');x=SYN[x]||x;return EMO.has(x)?x:null};
+const ADV=/\b(tres|un peu|trop|super|vraiment|si|tout|assez|plutot|legerement|encore)\b/g;
+const emo=e=>{const b=sans(String(e).split(',')[0]).replace(ADV,' ').trim();for(const c of [b.replace(/\s+/g,'_'),...b.split(/\s+/)]){const x=SYN[c]||c;if(EMO.has(x))return x}return null};
+// nombres écrits comme ils se prononcent (la voix lit mal « 2500 F » ou « 18h30 ») ; les écrans du téléphone gardent les chiffres
+const U0='zéro un deux trois quatre cinq six sept huit neuf dix onze douze treize quatorze quinze seize dix-sept dix-huit dix-neuf'.split(' '),DZ={2:'vingt',3:'trente',4:'quarante',5:'cinquante',6:'soixante'};
+function c99(n){if(n<20)return U0[n];let d=Math.floor(n/10),u=n%10;if(d===7||d===9){d--;u+=10}const w=d===8?'quatre-vingt':DZ[d];if(u===0)return d===8?'quatre-vingts':w;if((u===1||u===11)&&d<8)return w+' et '+U0[u];return w+'-'+U0[u]}
+function c999(n){if(n<100)return c99(n);const c=Math.floor(n/100),r=n%100,w=c===1?'cent':U0[c]+' cent';return r?w+' '+c99(r):(c>1?w+'s':w)}
+function enLettres(n){if(!n)return 'zéro';if(n>=1e6){const m=Math.floor(n/1e6),r=n%1e6;return (m===1?'un million':enLettres(m)+' millions')+(r?' '+enLettres(r):'')}
+  const k=Math.floor(n/1000),r=n%1000;let w=k?(k===1?'mille':c999(k).replace(/s$/,'')+' mille'):'';if(r)w+=(w?' ':'')+c999(r);return w}
+const lettres=t=>t.replace(/\b(\d{1,2})\s?h\s?(\d{2})?\b/gi,(a,h,mi)=>enLettres(+h)+(+h>1?' heures':' heure')+(mi&&+mi?' '+enLettres(+mi):''))
+  .replace(/(\d[\d \u00a0.]*\d|\d)\s*(F|FCFA|CFA|francs?)\b/g,(a,n)=>enLettres(+n.replace(/[ \u00a0.]/g,''))+' francs')
+  .replace(/(\d+),(\d+)/g,(a,x,y)=>enLettres(+x)+' virgule '+enLettres(+y)).replace(/\d+/g,x=>enLettres(+x));
+const OBJOK=/t[ée]l[ée]phone|verre|\bth[ée]\b|machine|courroie|grill|robe|brochette/i;
+const nomP=w=>sans(w).toUpperCase().replace(/[^A-Z_]/g,'');
 let REGLES='';
 async function regles(){if(REGLES)return REGLES;const r=await fetch(API+'/repos/'+R+'/contents/docs/ASSISTANT.md',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw new Error('règles introuvables ('+r.status+')');return REGLES=await r.text()}
 const dodo=ms=>new Promise(r=>setTimeout(r,ms));
@@ -190,16 +202,23 @@ function parties(brut){const L=brut.replace(/\r/g,'').split('\n'),out=[];let cur
   for(const l of L){if(/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(l)&&cur.join('').trim()&&cur.some(x=>/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(x))){out.push(cur.join('\n'));cur=[]}cur.push(l)}
   if(cur.join('').trim())out.push(cur.join('\n'));
   const fin=[];for(const p of out){if(p.length<=3500){fin.push(p);continue}let b='';for(const bl of p.split(/\n\s*\n/)){if((b+bl).length>3500&&b){fin.push(b);b=''}b+=bl+'\n\n'}if(b.trim())fin.push(b)}return fin}
-function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];
+function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];const pres=new Set();
   for(let i=0;i<L.length;i++){let l=L[i].replace(/^\s*\[\s+/,'[').replace(/\s+\]\s*$/,']');const m=l.match(TETE);
     if(m&&(PERSOS.includes(m[2].trim().replace(/ /g,'_'))||/^[A-Z_]{3,}$/.test(m[2].trim()))){const parts=m[3].split('·').map(s=>s.trim());
+      const qui=m[2].trim();
+      if(qui!=='VOIX_OFF'&&pres.size&&!pres.has(qui)){   // pas dans le décor : il parle au téléphone, et on ne montre jamais sa pensée
+        if(m[1]){al.push('Pensée de '+qui+' supprimée : '+qui+' n\'est pas dans ce décor');i++;continue}
+        if(!parts.some(s=>/au t[ée]l[ée]phone/i.test(s))){for(let j=parts.length-1;j>=0;j--)if(/^voix\s*:/i.test(parts[j]))parts.splice(j,1);parts.push('voix: au téléphone');al.push(qui+' n\'est pas dans le décor : mis « au téléphone »')}}
       const vo=m[2].trim()==='VOIX_OFF';const p0=parts.findIndex(s=>!s.includes(':'));if(vo){}else if(p0<0)parts.unshift('neutre');else{const e=emo(parts[p0]);if(!e)al.push(m[2]+' : émotion « '+parts[p0]+' » remplacée par neutre');parts[p0]=e||'neutre'}
       if(!vo&&!m[1]&&!parts.some(s=>/^regarde/i.test(s)))al.push(m[2]+' : pas de « regarde: »');
       l=(m[1]||'')+m[2].trim()+' ('+parts.join(' · ')+')';
       const txt=(L[i+1]||'').replace(/\{[^}]*\}/g,'').trim();
       if(!txt&&!m[1]&&m[2].trim()!=='VOIX_OFF'){out.push('[RÉACTION '+m[2].trim()+': '+(parts[p0<0?0:p0]||'neutre')+']');i++;continue}}
-    else if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l))l=l.replace(/\{([^}]*)\}/g,(a,x)=>{if(/^pose\s*:/i.test(x))return a;const y=sans(x).replace(/\s+/g,'_');const z=SYN[y]||y;return TAGS.has(z)?'{'+z+'}':''}).replace(/\s{2,}/g,' ');
+    else if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l))l=l.replace(/\{([^}]*)\}/g,(a,x)=>{if(/^pose\s*:/i.test(x))return a;const y=sans(x).replace(/\s+/g,'_');const z=SYN[y]||y;return TAGS.has(z)?'{'+z+'}':''}).replace(/\s{2,}/g,' ');if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l)&&!TETE.test(l))l=lettres(l).replace(/^((?:\s*\{[^}]*\}\s*)*)([a-zà-ÿ])/,(x,p,c)=>p+c.toUpperCase());
     if(/^\s*PLAN\s*:/i.test(l))l=l.replace(/\ben courant\b/gi,'court').replace(/\ben marchant\b/gi,'marche').replace(/;/g,',');
+    if(/^\s*PLAN\s*:/i.test(l)){l=l.replace(/\[([^\]]*)\]/,(x,c)=>'['+c.split(',').map(s=>s.trim()).filter(s=>{const w=nomP(s.split(/\s+/)[0]);if(PERSOS.includes(w)||OBJOK.test(s))return true;al.push('Objet « '+s+' » retiré du plan (pas d\'image pour lui)');return false}).map(s=>{const w=s.split(/\s+/);const n=nomP(w[0]);return PERSOS.includes(n)?n.charAt(0)+n.slice(1).toLowerCase()+(w.length>1?' '+w.slice(1).join(' '):''):s}).join(', ')+']');
+      if(/^\s*PLAN\s*:\s*large/i.test(l))pres.clear();l.replace(/^\s*PLAN\s*:/i,'').split(/[\s,\[\]]+/).forEach(w=>{const n=nomP(w);if(PERSOS.includes(n))pres.add(n)})}
+    if(/^\s*(DÉCOR|DECOR)\s*:/i.test(l))pres.clear();
     if(/^\s*(DÉCOR|DECOR)\s*:/i.test(l)){const prev=[...out].reverse().find(x=>/^\s*(DÉCOR|DECOR)\s*:/i.test(x)),seul=out.slice(out.lastIndexOf(prev)+1).every(x=>!x.trim()||/^\s*(\[BRUITAGE|PLAN)/.test(x));if(prev&&sans(prev)===sans(l)&&seul)continue}
     out.push(l)}
   let s=out.join('\n').replace(/\n{3,}/g,'\n\n');const fins=[...s.matchAll(/^FIN\s*:/gm)];

@@ -61,6 +61,10 @@ La partie FIN n'est écrite que dans la dernière partie du script.
 13. Les indications {…} se placent DEVANT le mot où l'action commence (début ou milieu de phrase), jamais seules en fin de phrase.
 14. L'émotion de l'en-tête est UN seul mot de la liste, sans accent (mefiant, pas « méfiant »). Pas d'émotion inventée.
 15. Téléphone qui sonne / commande / notification : `[BRUITAGE: notification]` (ou sonnerie), puis `PLAN: objet téléphone`, puis `[ÉCRAN 4 s: …]` avec le texte de l'application, puis la PENSÉE du personnage (règle 9), puis seulement sa réplique à voix haute.
+16. Nombres TOUJOURS en lettres dans les répliques et les pensées (« trois thés », « deux mille cinq cents francs », « dix-huit heures trente ») ; seuls les écrans `[ÉCRAN …]` gardent les chiffres.
+17. « Le téléphone sonne, c'est X (depuis ailleurs) » : X parle avec `voix: au téléphone`, il n'est dans AUCUN PLAN de la scène, et il n'a JAMAIS de PENSÉE (on ne voit pas sa tête). N'invente jamais de pensée ni de réplique pour lui.
+18. Objets dans les PLAN : seulement téléphone, verre (de thé), machine, grill, robe, brochette. Un autre objet du script (sac, livre…) n'est pas écrit dans le PLAN.
+19. L'émotion « très content », « un peu gêné »… devient un seul mot de la liste (content, gene). Garde l'émotion écrite par le scénariste, ne la remplace pas par neutre.
 
 ## Exemple
 Texte reçu :
