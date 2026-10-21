@@ -113,7 +113,7 @@ $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-ms
 function etat(cs){const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1],last=cs[cs.length-1];
   if(last&&last.user.type!=='Bot'&&(!b||new Date(last.created_at)>new Date(b.created_at)))return{t:'Demande envoyée…',k:'warn',b};
   if(!b)return{t:'En attente',k:'warn',b};const x=b.body;
-  if(x.includes('❌'))return{t:'Erreur',k:'bad',b};if(x.includes('🎬'))return{t:'Vidéo prête',k:'ok',b};if(x.includes('✅'))return{t:'Aperçu prêt',k:'ok',b};return{t:'En fabrication…',k:'warn',b}}
+  if(x.includes('❌'))return{t:'Erreur',k:'bad',b};if(x.includes('🎬'))return{t:'Vidéo prête',k:'ok',b};if(x.includes('🖼️'))return{t:'Fiche Gemini prête',k:'ok',b};if(x.includes('✅'))return{t:'Aperçu prêt',k:'ok',b};return{t:'En fabrication…',k:'warn',b}}
 async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Ajoutez d\'abord votre clé GitHub (onglet 🔑 Clé).</p></div>';return}
   $('#liste').innerHTML='<p class="muted">Chargement…</p>';
   try{const is=await api('/repos/'+R+'/issues?labels=episode&state=all&per_page=12');if(!is.length){$('#liste').innerHTML='<p class="muted">Aucun épisode.</p>';return}
@@ -122,7 +122,7 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
 async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
   <div class="zone"></div>
-  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button></div>
+  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button><button data-a="fiche" class="sec">🖼 Fiche Gemini</button></div>
   <details><summary>Planches et corrections</summary>
     <label>Réponse aux planches (ex. 1B 3C)</label><div class="row"><input class="rep" placeholder="1B 3C"><button data-x="rep">Envoyer</button></div>
     <label>Planches sur un passage</label><div class="row"><input class="de" placeholder="1:20"><input class="a" placeholder="1:45"><button data-x="pl">Demander</button></div>
@@ -148,10 +148,13 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
   if(a('video.mp4'))h+='<button data-f="video.mp4">▶ Regarder la vidéo</button>';
   if(a('apercu_plans.png'))h+='<button class="sec" data-f="apercu_plans.png">🖼 Voir l\'aperçu</button>';
   if(a('planches.html'))h+='<button data-f="planches.html">☑ Planches à cocher</button>';
+  if(a('fiche_gemini.html'))h+='<button class="sec" data-f="fiche_gemini.html">🖼 Fiche Gemini</button>';
   z.innerHTML=h+'</div><div class="vue"></div>';const v=z.querySelector('.vue');
   z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
     if(f.endsWith('.mp4'))v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div>';
     else if(f.endsWith('.png'))v.innerHTML='<img class="prev" alt="aperçu des plans" src="'+u+'">';
+    else if(f==='fiche_gemini.html'){const im=ls.filter(x=>/^image_.*\.(jpe?g|png)$/i.test(x)).sort();v.innerHTML='<p class="muted">Pour chaque demande : joignez l\'image à joindre dans Gemini, collez le texte, puis renvoyez à Claude les images obtenues.</p><iframe></iframe><div class="imgs"></div>';v.querySelector('iframe').srcdoc=await bl.text();
+      for(const x of im){const u2=URL.createObjectURL(await brut(n+'/'+x));v.querySelector('.imgs').insertAdjacentHTML('beforeend','<p class="muted">'+esc(x)+'</p><img class="prev" src="'+u2+'"><div class="row"><a class="btn sec" download="'+esc(x)+'" href="'+u2+'">⬇ Enregistrer cette image</a></div>')}}
     else{v.innerHTML='<p class="muted">Cochez, appuyez sur « Copier », puis collez la réponse dans « Réponse aux planches ».</p><iframe></iframe>';v.querySelector('iframe').srcdoc=await bl.text()}}
     catch(e){v.innerHTML='<p class="msg">Fichier introuvable pour l\'instant. Réessayez dans un moment.</p>'}})}
 $('#minutes').onclick=async()=>{const t=$('#tableau');if(t.innerHTML){t.innerHTML='';return}t.innerHTML='<div class="card"><p class="muted">Chargement…</p></div>';
@@ -189,12 +192,13 @@ function parties(brut){const L=brut.replace(/\r/g,'').split('\n'),out=[];let cur
 function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];
   for(let i=0;i<L.length;i++){let l=L[i];const m=l.match(TETE);
     if(m&&(PERSOS.includes(m[2].trim().replace(/ /g,'_'))||/^[A-Z_]{3,}$/.test(m[2].trim()))){const parts=m[3].split('·').map(s=>s.trim());
-      const p0=parts.findIndex(s=>!s.includes(':'));if(p0<0)parts.unshift('neutre');else{const e=emo(parts[p0]);if(!e)al.push(m[2]+' : émotion « '+parts[p0]+' » remplacée par neutre');parts[p0]=e||'neutre'}
-      if(!m[1]&&!parts.some(s=>/^regarde/i.test(s)))al.push(m[2]+' : pas de « regarde: »');
+      const vo=m[2].trim()==='VOIX_OFF';const p0=parts.findIndex(s=>!s.includes(':'));if(vo){}else if(p0<0)parts.unshift('neutre');else{const e=emo(parts[p0]);if(!e)al.push(m[2]+' : émotion « '+parts[p0]+' » remplacée par neutre');parts[p0]=e||'neutre'}
+      if(!vo&&!m[1]&&!parts.some(s=>/^regarde/i.test(s)))al.push(m[2]+' : pas de « regarde: »');
       l=(m[1]||'')+m[2].trim()+' ('+parts.join(' · ')+')';
       const txt=(L[i+1]||'').replace(/\{[^}]*\}/g,'').trim();
       if(!txt&&!m[1]&&m[2].trim()!=='VOIX_OFF'){out.push('[RÉACTION '+m[2].trim()+': '+(parts[p0<0?0:p0]||'neutre')+']');i++;continue}}
     else if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l))l=l.replace(/\{([^}]*)\}/g,(a,x)=>{if(/^pose\s*:/i.test(x))return a;const y=sans(x).replace(/\s+/g,'_');const z=SYN[y]||y;return TAGS.has(z)?'{'+z+'}':''}).replace(/\s{2,}/g,' ');
+    if(/^\s*PLAN\s*:/i.test(l))l=l.replace(/\ben courant\b/gi,'court').replace(/\ben marchant\b/gi,'marche').replace(/;/g,',');
     if(/^\s*(DÉCOR|DECOR)\s*:/i.test(l)){const prev=[...out].reverse().find(x=>/^\s*(DÉCOR|DECOR)\s*:/i.test(x)),seul=out.slice(out.lastIndexOf(prev)+1).every(x=>!x.trim()||/^\s*(\[BRUITAGE|PLAN)/.test(x));if(prev&&sans(prev)===sans(l)&&seul)continue}
     out.push(l)}
   let s=out.join('\n').replace(/\n{3,}/g,'\n\n');const fins=[...s.matchAll(/^FIN\s*:/gm)];

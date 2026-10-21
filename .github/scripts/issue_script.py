@@ -10,6 +10,7 @@ if ev.get('comment'):   # commentaire « vidéo », « aperçu », « planches 1
     c = ((ev['comment'].get('body') or '').strip().splitlines() or [''])[0].lower().strip(' .!')   # 1re ligne seulement (une signature peut suivre)
     m = re.fullmatch(r'planches?(?:\s+(?:de\s+)?(\d+:\d\d)\s*(?:-|à|a)\s*(\d+:\d\d))?', c)
     if re.fullmatch(r'vid[ée]o', c): mode = 'video'
+    elif re.fullmatch(r'fiches?( gemini)?', c): mode = 'fiche'
     elif re.fullmatch(r'(aper[çc]u|refaire)', c): mode = 'apercu'
     elif m: mode = 'apercu'; de, fin = m.group(1) or '', m.group(2) or ''
     elif re.fullmatch(r'(\d+\s*[:=]?\s*[a-d][\s,;]*)+', c): mode = 'apercu'; reponse = ' '.join(re.findall(r'\d+\s*[:=]?\s*[a-d]', c)).upper()

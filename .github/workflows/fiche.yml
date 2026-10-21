@@ -1,0 +1,28 @@
+name: Fiche Gemini (images manquantes)
+on:
+  workflow_dispatch:
+    inputs:
+      script: { description: "Chemin du script (ex. demandes/episode_5.txt)", required: true }
+      issue: { description: "Numéro de la demande", default: "" }
+permissions: { contents: write, issues: write }
+env: { GH_TOKEN: "${{ github.token }}", ISSUE: "${{ github.event.inputs.issue }}" }
+jobs:
+  fiche:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -q numpy pillow soundfile librosa scipy opencv-python-headless
+      - name: Fabriquer la fiche
+        run: STUDIO_FAUSSES_VOIX=1 python -m studio.gemini "${{ github.event.inputs.script }}" -o sortie_gemini 2>&1 | tee journal.txt
+      - name: Ranger pour la page Studio mobile et prévenir
+        if: always()
+        run: |
+          N=${ISSUE:-manuel}; F=(sortie_gemini/fiche_gemini.html sortie_gemini/a_joindre/*)
+          if [ -f sortie_gemini/fiche_gemini.html ]; then
+            bash .github/scripts/fichiers.sh "$N" "${F[@]}"
+            K=$(grep -o 'fiche Gemini : .*' journal.txt | tail -1)
+            M="🖼️ Fiche Gemini prête ($K). Ouvrez-la dans la page Studio mobile (bouton « Fiche Gemini » de l'épisode)."
+          else M="❌ La fiche Gemini n'a pas pu être faite : $(tail -3 journal.txt | tr '\n' ' ')"; fi
+          [ -n "$ISSUE" ] && gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$M" > /dev/null || echo "$M"
