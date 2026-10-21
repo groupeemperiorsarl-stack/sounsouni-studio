@@ -320,15 +320,25 @@ async function modelesGem(){let L=[];try{L=JSON.parse(localStorage.getItem('ss_g
   const ms=all.filter(x=>(x.supportedGenerationMethods||[]).includes('generateContent')&&/flash/.test(x.name)&&!/lite|image|tts|live|audio|embed|exp/.test(x.name)).map(x=>x.name);
   const v=n=>{const m=n.match(/(\d+(?:\.\d+)?)/);return (m?parseFloat(m[1]):0)-(/preview/.test(n)?0.05:0)-(/latest/.test(n)?0.02:0)};
   L=[...new Set([...ms,'models/gemini-3.8-flash','models/gemini-flash-latest','models/gemini-3-flash-preview'])].sort((a,b)=>v(b)-v(a));try{localStorage.setItem('ss_gem_ms',JSON.stringify(L))}catch(e){}return L}
-async function gem(sys,parts,prog){if(!K.gem)throw new Error('Ajoutez d\'abord la clé Gemini (onglet 🤖 Assistant, en bas).');const L=await modelesGem();let err='';
-  for(let tour=0;tour<3;tour++){for(const m of L){   // un modèle saturé ou retiré : on passe tout de suite au suivant
-      const r=await fetch('https://generativelanguage.googleapis.com/v1beta/'+m+':generateContent',{method:'POST',headers:{'x-goog-api-key':K.gem,'Content-Type':'application/json'},
-        body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}],generationConfig:{temperature:0.2,responseMimeType:'application/json'}})});
+async function gemFichier(blob,mime,nom,prog){   // vidéo envoyée UNE seule fois à Google (gardée 2 jours), puis seulement son adresse : beaucoup plus rapide sur le réseau mobile
+  let c={};try{c=JSON.parse(localStorage.getItem('ss_gem_f')||'{}')}catch(e){}const k=nom+':'+blob.size;if(c[k]&&c[k].t>Date.now()-40*3600e3)return{file_data:{mime_type:mime,file_uri:c[k].uri}};
+  prog&&prog('Envoi de la vidéo à l\'assistant ('+Math.round(blob.size/1e6)+' Mo), une seule fois…');
+  const r=await fetch('https://generativelanguage.googleapis.com/upload/v1beta/files?uploadType=media',{method:'POST',headers:{'x-goog-api-key':K.gem,'Content-Type':mime},body:blob});if(!r.ok)throw new Error('envoi de la vidéo refusé ('+r.status+')');
+  let f=(await r.json()).file;for(let n=0;f.state==='PROCESSING'&&n<40;n++){prog&&prog('Google prépare la vidéo…');await dodo(3000);f=await (await fetch('https://generativelanguage.googleapis.com/v1beta/'+f.name,{headers:{'x-goog-api-key':K.gem}})).json()}
+  if(f.state!=='ACTIVE')throw new Error('la vidéo n\'a pas pu être préparée');c[k]={uri:f.uri,t:Date.now()};try{localStorage.setItem('ss_gem_f',JSON.stringify(c))}catch(e){}return{file_data:{mime_type:mime,file_uri:f.uri}}}
+async function gem(sys,parts,prog){if(!K.gem)throw new Error('Ajoutez d\'abord la clé Gemini (onglet 🤖 Assistant, en bas).');let L=await modelesGem(),err='',ok='';
+  try{ok=localStorage.getItem('ss_gem_ok')||''}catch(e){}if(ok&&L.includes(ok))L=[ok,...L.filter(x=>x!==ok)];   // d'abord le modèle qui a marché la dernière fois
+  for(let tour=0;tour<6;tour++){for(const m of L){prog&&prog('L\'assistant réfléchit ('+m.replace('models/','')+')…');   // un modèle saturé ou retiré : on passe tout de suite au suivant
+      const ac=new AbortController(),to=setTimeout(()=>ac.abort(),150000);let r;
+      try{r=await fetch('https://generativelanguage.googleapis.com/v1beta/'+m+':generateContent',{method:'POST',signal:ac.signal,headers:{'x-goog-api-key':K.gem,'Content-Type':'application/json'},
+        body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}],generationConfig:{temperature:0.2,responseMimeType:'application/json'}})})}catch(e){err=m+' : pas de réponse';clearTimeout(to);continue}
+      clearTimeout(to);
       if(!r.ok){err=m.replace('models/','')+' : '+r.status;if([400,403].includes(r.status)&&!/model/i.test(await r.clone().text()))throw new Error('Gemini : '+r.status+' '+(await r.text()).slice(0,200));continue}
       const d=await r.json(),t=(d.candidates?.[0]?.content?.parts||[]).map(p=>p.text||'').join('');if(!t){err=m+' : réponse vide';continue}
+      try{localStorage.setItem('ss_gem_ok',m)}catch(e){}
       try{return JSON.parse(t.replace(/^\s*```(json)?|```\s*$/g,''))}catch(e){return{reponse:t,actions:[]}}}
-    prog&&prog('Gemini est très demandé en ce moment, nouvel essai dans 20 s…');await dodo(20000)}
-  throw new Error('Gemini est saturé pour le moment ('+err+'), réessayez dans quelques minutes.')}
+    for(let s=30;s>0;s-=5){prog&&prog('Tous les modèles gratuits de Google sont très demandés en ce moment. Nouvel essai dans '+s+' s… (essai '+(tour+1)+' sur 6)');await dodo(5000)}}
+  throw new Error('Gemini est saturé depuis plusieurs minutes ('+err+'). Réessayez un peu plus tard : vos messages sont gardés.')}
 let CONSIGNES='',POSESL='';
 async function contexte(i,scr){if(!CONSIGNES)CONSIGNES=(await ghLire('docs/ASSISTANT_ACTIONS.md'))+'\n\n## GUIDE DU FORMAT DU SCRIPT\n'+(await regles());
   if(!POSESL){const c=JSON.parse(await ghLire('studio/assets/catalog.json'));POSESL=Object.entries(c.poses).filter(([k])=>!k.includes('@')).map(([k,p])=>k+' : '+p.char+' · '+p.posture+' · '+(p.tags||[]).join(' ')).join('\n')}
@@ -372,8 +382,8 @@ function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.n
   d.querySelector('.envoi').onclick=async()=>{const t=q.value.trim();if(!t)return;const prog=x=>acts.innerHTML='<p class="msg">'+esc(x)+'</p>';const bt=d.querySelector('.envoi');bt.disabled=true;
     try{prog('L\'assistant prépare le contexte…');const ctx=await contexte(i,scr),parts=[{text:ctx+'\n\n## CONVERSATION\n'+H.slice(-10).map(x=>(x.r==='u'?'Issa : ':'Assistant : ')+x.t).join('\n')+'\nIssa : '+t}];
       if(d.querySelector('.j-ap').checked){try{const b=await brut(i.number+'/apercu_plans.png');parts.push({text:'Image jointe : aperçu des plans (chaque vignette porte son numéro de plan et sa durée).'},{inline_data:{mime_type:'image/png',data:await blob64(b)}})}catch(e){}}
-      if(d.querySelector('.j-vi').checked){try{const b=await brut(i.number+'/video.mp4');if(b.size<19e6)parts.push({text:'Vidéo jointe : la vidéo actuelle de l\'épisode (images et son).'},{inline_data:{mime_type:'video/mp4',data:await blob64(b)}});else prog('Vidéo trop lourde pour l\'assistant, il regarde l\'aperçu à la place.')}catch(e){}}
-      prog('L\'assistant regarde et réfléchit…');let r=await gem(CONSIGNES,parts,prog);
+      if(d.querySelector('.j-vi').checked){try{prog('Chargement de la vidéo…');const b=await brut(i.number+'/video.mp4');parts.push({text:'Vidéo jointe : la vidéo actuelle de l\'épisode (images et son).'},await gemFichier(b,'video/mp4','ep'+i.number,prog))}catch(e){prog('Vidéo non envoyée ('+e.message+'), l\'assistant regarde l\'aperçu.')}}
+      let r=await gem(CONSIGNES,parts,prog);
       const lc=(r.actions||[]).find(a=>a.type==='lire_code');if(lc){prog('L\'assistant lit le code…');for(const f of (lc.fichiers||[]).slice(0,3))if(/^studio\/[\w.-]+\.(py|json|txt)$/.test(f))parts.push({text:'\n## FICHIER '+f+'\n'+(await ghLire(f)||'(introuvable)')});parts.push({text:'Voici le code demandé. Propose maintenant les actions.'});r=await gem(CONSIGNES,parts,prog)}
       H.push({r:'u',t},{r:'a',t:r.reponse||''});try{localStorage.setItem(key,JSON.stringify(H.slice(-30)))}catch(e){}montrer();q.value='';
       const A=(r.actions||[]).filter(a=>a.type!=='lire_code');if(!A.length){acts.innerHTML='';return}
