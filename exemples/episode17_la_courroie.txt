@@ -26,7 +26,8 @@ PLAN: 3 s · large [Awa assise, Mimi assise] · {coud}
 [BRUITAGE: fracas]
 [MUSIQUE: suspense]
 
-PLAN: gros [Awa assise, machine]
+PLAN: objet machine à coudre courroie cassée
+PLAN: 3 s · gros [Awa assise, machine] · {panique}
 
 AWA (choc · regarde: bas · voix: lentement)
 Non… non, non, non…
@@ -93,16 +94,16 @@ Moussa ? Tu viens au kiosque, vite. {chuchote} Tu vas chez Awa. Mais ce n'est pa
 MOUSSA (content · voix: au téléphone)
 Compris, Kôrô. J'arrive !
 
-[BRUITAGE: whoosh]
-PLAN: large [Bakary debout, Modibo sur le banc, Moussa debout]
+[BRUITAGE: moto]
+PLAN: large [Bakary debout, Moussa debout, verre]
 
 BAKARY (offre · regarde: Moussa · voix: chuchote)
 Prends ce thé. {sourire} Tu dis que c'est pour saluer.
 
-PLAN: objet verre de thé
+PLAN: 2 s · large [Moussa debout, verre] · {sourire}
 
 DÉCOR: ATELIER · après-midi · ambiance: rue calme
-PLAN: large [Awa debout, Mimi assise, Moussa debout]
+PLAN: large [Awa debout, Mimi assise, Moussa debout, verre]
 [BRUITAGE: whoosh]
 
 MOUSSA (salue · regarde: Awa · voix: normal)
@@ -130,7 +131,7 @@ PLAN: 2 s · très gros Awa · {inquiet}
 AWA (gene · regarde: bas · voix: chuchote)
 … Bon. Regarde-la. {detourne_regard} Juste regarder.
 
-PLAN: gros [Awa assise, machine]
+PLAN: 4 s · gros [Moussa debout, machine] · {pensif}
 [BRUITAGE: clic]
 [BRUITAGE: clic]
 [BRUITAGE: pop]
@@ -138,6 +139,8 @@ PLAN: gros [Awa assise, machine]
 MOUSSA (fier · regarde: Awa · voix: normal)
 Voilà, grande sœur. {fier} Elle tourne comme neuve.
 [BRUITAGE: grésillement]
+
+PLAN: 3 s · large [Mimi assise, machine] · {coud}
 
 MIMI (grand_sourire · regarde: Moussa · voix: normal)
 Moussa, tu es un magicien !

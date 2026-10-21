@@ -3370,6 +3370,93 @@
    "props": [],
    "genere": "gemini",
    "mouth_auto": true
+  },
+  "mou_the": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "offre",
+    "verre",
+    "content"
+   ],
+   "mouth": true,
+   "size": [
+    719,
+    1600
+   ],
+   "props": [
+    "verre"
+   ],
+   "genere": "gemini",
+   "head_x": 0.384,
+   "mouth_auto": true
+  },
+  "mou_repare": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "repare",
+    "machine",
+    "concentre",
+    "pensif",
+    "fier"
+   ],
+   "mouth": false,
+   "size": [
+    1243,
+    1600
+   ],
+   "props": [
+    "machine"
+   ],
+   "genere": "gemini",
+   "head_x": 0.703
+  },
+  "obj_machine_courroie": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "machine",
+    "coudre",
+    "courroie",
+    "panne",
+    "cassee"
+   ],
+   "mouth": false,
+   "size": [
+    916,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "awa_machine_panique": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "panique",
+    "peur",
+    "choc",
+    "machine",
+    "coud",
+    "inquiet"
+   ],
+   "mouth": true,
+   "size": [
+    855,
+    1600
+   ],
+   "props": [
+    "machine"
+   ],
+   "genere": "gemini",
+   "head_x": 0.637,
+   "mouth_auto": true
   }
  },
  "decors": {

@@ -427,7 +427,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 sh['tete'] = pick(who, ['pensif'] + emo[:1], 'buste', stage.post(who), need_mouth=False) or pick(who, [], None, None)
             elif who == 'VOIX_OFF' or ending:
                 sh['kind'] = 'endline'
-            elif 'telephone' in e.get('voice', '') and who not in stage.order:
+            elif 'telephone' in e.get('voice', ''):   # au téléphone = il est ailleurs : on voit l'écran d'appel, jamais lui dans le décor
                 sh['kind'] = 'phonecall'
             else:
                 mode = plan['kind'] if plan else 'gros'
