@@ -49,6 +49,30 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
   </div>
 </section>
 
+<section id="v-ia" hidden>
+  <div class="card"><h2>🤖 Assistant de secours</h2>
+    <p class="muted">Quand Claude n'est pas disponible : l'assistant (IA gratuite) met le script au format du studio, vous relisez, puis vous lancez. Le montage reste fait par l'application. Il ne touche jamais au code.</p>
+    <label for="a-brut">Script validé (tel que le scénariste l'a écrit)</label><textarea id="a-brut" placeholder="Collez ici le script validé…"></textarea>
+    <div class="row"><label class="btn sec" for="a-fichier" style="margin:0">📄 Charger un .txt</label><input id="a-fichier" type="file" accept=".txt,text/plain" hidden><button id="a-go">1 · Mettre au format</button></div>
+    <div id="a-prog"></div>
+  </div>
+  <div class="card" id="a-res" hidden><h2>2 · Relire ce que l'assistant a préparé</h2>
+    <p class="muted" id="a-duree"></p><div id="a-alertes"></div>
+    <label for="a-out">Script au format (vous pouvez corriger ici)</label><textarea id="a-out"></textarea>
+    <div class="row"><button class="sec" id="a-verif">↻ Revérifier</button><button class="sec" id="a-voix">🎙 Scripts de voix par personnage</button></div><div id="a-voixout"></div>
+    <label class="row" style="align-items:center;gap:8px;font-weight:700"><input type="checkbox" id="a-ok" style="width:auto"> J'ai relu et je valide</label>
+    <label for="a-titre">Titre</label><input id="a-titre">
+    <div class="row"><button id="a-l40" disabled>▶ Extrait de 40 s</button><button id="a-lap" class="sec" disabled>👁 Aperçu des plans</button><button id="a-lv" disabled>🎬 Épisode complet</button></div>
+    <p class="muted">Après le lancement, suivez l'épisode dans « Épisodes ». Le bouton « 🖼 Fiche Gemini » y prépare vos demandes d'images (4 poses par demande).</p><div id="a-msg"></div>
+  </div>
+  <div class="card"><h2>Clés de l'assistant</h2>
+    <p class="muted">Clé gratuite Groq (obligatoire) : <b>console.groq.com/keys</b> → « Create API Key ». Secours facultatifs quand Groq est saturé : Cerebras (cloud.cerebras.ai) et OpenRouter (openrouter.ai/keys). Les clés restent seulement sur ce téléphone.</p>
+    <label for="k-groq">Clé Groq</label><input id="k-groq" type="password" placeholder="gsk_…" autocomplete="off">
+    <label for="k-cer">Clé Cerebras (facultatif)</label><input id="k-cer" type="password" placeholder="csk-…" autocomplete="off">
+    <label for="k-or">Clé OpenRouter (facultatif)</label><input id="k-or" type="password" placeholder="sk-or-…" autocomplete="off">
+    <div class="row"><button id="k-save">Enregistrer les clés</button></div><div id="k-msg"></div>
+  </div>
+</section>
 <section id="v-cfg" hidden>
   <div class="card"><h2>Clé GitHub</h2>
     <p class="muted">La page a besoin d'une clé personnelle (« token ») pour parler à votre dépôt. Elle reste seulement dans ce navigateur, jamais dans le dépôt.</p>
@@ -64,7 +88,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
   </div>
 </section>
 
-<nav class="tabs"><button data-v="eps" class="on">📋 Épisodes</button><button data-v="new">➕ Nouveau</button><button data-v="cfg">🔑 Clé</button></nav>
+<nav class="tabs"><button data-v="eps" class="on">📋 Épisodes</button><button data-v="new">➕ Nouveau</button><button data-v="ia">🤖 Assistant</button><button data-v="cfg">🔑 Clé</button></nav>
 
 <script>
 const R='groupeemperiorsarl-stack/sounsouni-studio', API='https://api.github.com';
@@ -135,5 +159,83 @@ $('#minutes').onclick=async()=>{const t=$('#tableau');if(t.innerHTML){t.innerHTM
     const enc=runs.workflow_runs.filter(r=>r.status!=='completed').map(r=>'<p>⏳ '+esc(r.name)+' — '+(r.status==='queued'?'en attente d\'une machine':'en cours')+' depuis '+Math.round((Date.now()-new Date(r.run_started_at||r.created_at))/60000)+' min</p>').join('');
     t.innerHTML='<div class="card md"><h3>Fabrications en cours</h3>'+(enc||'<p class="muted">Aucune.</p>')+md(i2.body)+'</div>'}catch(e){t.innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}};
 $('#maj').onclick=charger;vue(TOK?'eps':'cfg');
+// ---------------- Assistant de secours (IA gratuite : Groq, puis Cerebras / OpenRouter) ----------------
+const K={groq:'',cer:'',or:''};try{K.groq=localStorage.getItem('ss_groq')||'';K.cer=localStorage.getItem('ss_cer')||'';K.or=localStorage.getItem('ss_or')||''}catch(e){}
+$('#k-groq').value=K.groq;$('#k-cer').value=K.cer;$('#k-or').value=K.or;
+$('#k-save').onclick=()=>{K.groq=$('#k-groq').value.trim();K.cer=$('#k-cer').value.trim();K.or=$('#k-or').value.trim();
+  try{localStorage.setItem('ss_groq',K.groq);localStorage.setItem('ss_cer',K.cer);localStorage.setItem('ss_or',K.or)}catch(e){}$('#k-msg').innerHTML='<p class="msg">✅ Clés enregistrées sur ce téléphone.</p>'};
+const sans=t=>String(t).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+const EMO=new Set('neutre sourire grand_sourire sourire_malin rire rire_retenu colere furieux choc surpris peur panique triste gene mepris mefiant amoureux fier moue degout innocent confus timide determine emerveille reveur sage victoire froide taquin moqueur pensif inquiet serieux content tendre chaleureuse hesitante joie severe emu fiere'.split(' '));
+const SYN={surprise:'surpris',mefiante:'mefiant',essouffle:'inquiet',essoufflee:'inquiet',rire_doux:'rire_retenu',rigole:'rire',heureux:'content',heureuse:'content',contente:'content',inquiete:'inquiet',furieuse:'furieux',amoureuse:'amoureux',determinee:'determine',emerveillee:'emerveille',reveuse:'reveur',fache:'colere',fachee:'colere',enerve:'colere',enervee:'colere',etonne:'surpris',etonnee:'surpris',gene_:'gene',genee:'gene',honteux:'gene',honteuse:'gene',calme:'neutre',serieuse:'serieux',moqueuse:'moqueur',taquine:'taquin',pensive:'pensif',triste_:'triste',paniquee:'panique',panique_:'panique',choquee:'choc',choque:'choc'};
+const TAGS=new Set([...EMO,...'hoche_tete secoue_tete penche_tete detourne_regard leve_yeux_ciel regarde_bas clin_oeil ferme_yeux cligne recule avance sursaut soupir tremble bombe_torse se_penche s_affale sueur rougit coeurs etoiles eclair fumee_tete goutte point_exclamation point_interrogation idee ampoule non pointe mains_tete bras_ouverts salue explique coud sert'.split(' ')]);
+const PERSOS=['BAKARY','AWA','MODIBO','DIASABI','SALI','FATIM','MIMI','SEYDOU','KADI','MOUSSA','KARIM','VENDEUSE','VOIX_OFF'];
+const TETE=/^(PENSÉE\s+|PENSEE\s+)?([A-ZÀ-Ÿ_][A-ZÀ-Ÿ_ \-]*?)\s*\((.*)\)\s*$/;
+const emo=e=>{let x=sans(e).replace(/\s+/g,'_');x=SYN[x]||x;return EMO.has(x)?x:null};
+let REGLES='';
+async function regles(){if(REGLES)return REGLES;const r=await fetch(API+'/repos/'+R+'/contents/docs/ASSISTANT.md',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw new Error('règles introuvables ('+r.status+')');return REGLES=await r.text()}
+const dodo=ms=>new Promise(r=>setTimeout(r,ms));
+async function ia(messages,prog){const P=[['Groq','https://api.groq.com/openai/v1/chat/completions',K.groq,'openai/gpt-oss-120b',{reasoning_effort:'low'}],
+  ['Cerebras','https://api.cerebras.ai/v1/chat/completions',K.cer,'gpt-oss-120b',{reasoning_effort:'low'}],['OpenRouter','https://openrouter.ai/api/v1/chat/completions',K.or,'openai/gpt-oss-120b:free',{}]].filter(p=>p[2]);
+  if(!P.length)throw new Error('Ajoutez d\'abord la clé Groq (en bas de cette page).');let err='';
+  for(const [n,u,k,m,x] of P)for(let essai=0;essai<2;essai++){try{const r=await fetch(u,{method:'POST',headers:{Authorization:'Bearer '+k,'Content-Type':'application/json'},body:JSON.stringify({model:m,temperature:0.2,messages,...x})});
+      if(r.status===429&&essai===0){const w=Math.min(65,+(r.headers.get('retry-after')||20));prog(n+' est occupé : attente de '+w+' s…');await dodo(w*1000);continue}
+      if(!r.ok){err=n+' : '+r.status+' '+(await r.text()).slice(0,160);break}
+      const d=await r.json();const t=d.choices?.[0]?.message?.content;if(t)return{t,n};err=n+' : réponse vide';break}catch(e){err=n+' : '+e.message;break}}
+  throw new Error(err||'aucune IA disponible')}
+function parties(brut){const L=brut.replace(/\r/g,'').split('\n'),out=[];let cur=[];
+  for(const l of L){if(/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(l)&&cur.join('').trim()&&cur.some(x=>/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(x))){out.push(cur.join('\n'));cur=[]}cur.push(l)}
+  if(cur.join('').trim())out.push(cur.join('\n'));
+  const fin=[];for(const p of out){if(p.length<=3500){fin.push(p);continue}let b='';for(const bl of p.split(/\n\s*\n/)){if((b+bl).length>3500&&b){fin.push(b);b=''}b+=bl+'\n\n'}if(b.trim())fin.push(b)}return fin}
+function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];
+  for(let i=0;i<L.length;i++){let l=L[i];const m=l.match(TETE);
+    if(m&&(PERSOS.includes(m[2].trim().replace(/ /g,'_'))||/^[A-Z_]{3,}$/.test(m[2].trim()))){const parts=m[3].split('·').map(s=>s.trim());
+      const p0=parts.findIndex(s=>!s.includes(':'));if(p0<0)parts.unshift('neutre');else{const e=emo(parts[p0]);if(!e)al.push(m[2]+' : émotion « '+parts[p0]+' » remplacée par neutre');parts[p0]=e||'neutre'}
+      if(!m[1]&&!parts.some(s=>/^regarde/i.test(s)))al.push(m[2]+' : pas de « regarde: »');
+      l=(m[1]||'')+m[2].trim()+' ('+parts.join(' · ')+')';
+      const txt=(L[i+1]||'').replace(/\{[^}]*\}/g,'').trim();
+      if(!txt&&!m[1]&&m[2].trim()!=='VOIX_OFF'){out.push('[RÉACTION '+m[2].trim()+': '+(parts[p0<0?0:p0]||'neutre')+']');i++;continue}}
+    else if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l))l=l.replace(/\{([^}]*)\}/g,(a,x)=>{if(/^pose\s*:/i.test(x))return a;const y=sans(x).replace(/\s+/g,'_');const z=SYN[y]||y;return TAGS.has(z)?'{'+z+'}':''}).replace(/\s{2,}/g,' ');
+    if(/^\s*(DÉCOR|DECOR)\s*:/i.test(l)){const prev=[...out].reverse().find(x=>/^\s*(DÉCOR|DECOR)\s*:/i.test(x)),seul=out.slice(out.lastIndexOf(prev)+1).every(x=>!x.trim()||/^\s*(\[BRUITAGE|PLAN)/.test(x));if(prev&&sans(prev)===sans(l)&&seul)continue}
+    out.push(l)}
+  let s=out.join('\n').replace(/\n{3,}/g,'\n\n');const fins=[...s.matchAll(/^FIN\s*:/gm)];
+  if(fins.length>1){const last=fins[fins.length-1].index;s=s.slice(0,last).replace(/^FIN\s*:[\s\S]*?(?=^DÉCOR|$(?![\s\S]))/gm,'')+s.slice(last)}
+  return{s:s.trim()+'\n',al}}
+function duree(t){let d=0;const L=t.split('\n');let tete=false;
+  for(const l of L){if(TETE.test(l)){tete=true;d+=0.6;continue}
+    let m=l.match(/^\[(ÉCRAN|ECRAN)[^\d\]]*(\d+(?:[.,]\d+)?)?\s*s?\s*:/i);if(m){d+=m[2]?parseFloat(m[2].replace(',','.')):3;tete=false;continue}
+    m=l.match(/^\[SILENCE\s*(\d+)/i);if(m){d+=+m[1];continue}m=l.match(/^PLAN:\s*(\d+(?:[.,]\d+)?)\s*s/i);if(m){d+=parseFloat(m[1].replace(',','.'));continue}
+    if(tete&&l.trim()&&!/^\s*[\[A-Z]{2,}:/.test(l)){d+=l.replace(/\{[^}]*\}/g,'').split(/\s+/).filter(Boolean).length/2.2;tete=false}}return d+5}
+const mmss=s=>Math.floor(s/60)+' min '+String(Math.round(s%60)).padStart(2,'0')+' s';
+function verifier(){const t=$('#a-out').value,al=[...(window.ALIA||[])],L=t.split('\n');
+  L.forEach((l,i)=>{if(/^PLAN:.*;/.test(l))al.push('Ligne '+(i+1)+' : point-virgule dans un PLAN');
+    if(/^\[(ÉCRAN|ECRAN) /i.test(l)&&!/FIN|suivre/i.test(l)){const suite=L.slice(i+1,i+8).filter(x=>x.trim()&&!/^\[(ÉCRAN|ECRAN|BRUITAGE|MUSIQUE)|^PLAN/i.test(x));if(!suite[0]||!/^PENS/i.test(suite[0]))al.push('Ligne '+(i+1)+' : écran du téléphone sans PENSÉE qui l\'explique')}
+    const m=l.match(TETE);if(m&&!PERSOS.includes(m[2].trim())&&!new RegExp('NOUVEAU PERSONNAGE:\\s*'+m[2].trim(),'i').test(t))al.push('Ligne '+(i+1)+' : personnage inconnu « '+m[2].trim()+' »');
+    if(m&&/au t[ée]l[ée]phone/i.test(m[3])){let j=i;while(j>0&&!/^(DÉCOR|DECOR)/.test(L[j]))j--;if(L.slice(j,i).some(x=>/^PLAN:/.test(x)&&new RegExp('\\b'+m[2].trim()+'\\b','i').test(x)))al.push('Ligne '+(i+1)+' : '+m[2].trim()+' est au téléphone mais il est dans le PLAN de la scène')}});
+  if(!/^FIN\s*:/m.test(t))al.push('Pas de FIN (voix off Sounsouni et écran de fin)');
+  const d=duree(t);$('#a-duree').innerHTML='Durée estimée : <b>'+mmss(d)+'</b>'+(d<180?' — un peu court (moins de 3 min)':d>245?' — un peu long (plus de 4 min)':' ✅');
+  $('#a-alertes').innerHTML=al.length?'<div class="msg">⚠️ À vérifier :\n• '+al.map(esc).join('\n• ')+'</div>':'<p class="msg">✅ Aucun problème de format trouvé.</p>';
+  const tt=t.match(/TITRE:\s*(.*)/);if(tt&&!$('#a-titre').value)$('#a-titre').value=tt[1].split(/[–-]/).slice(1).join('–').trim()||tt[1]}
+$('#a-fichier').onchange=e=>{const f=e.target.files[0];if(f)f.text().then(t=>$('#a-brut').value=t)};
+$('#a-go').onclick=async()=>{const brut=$('#a-brut').value;if(!brut.trim())return;const pr=t=>$('#a-prog').innerHTML='<p class="msg">'+esc(t)+'</p>';$('#a-go').disabled=true;
+  try{const sys=await regles(),ps=parties(brut),res=[];let qui='';
+    for(let i=0;i<ps.length;i++){pr('Partie '+(i+1)+' sur '+ps.length+'…');
+      const consigne='Partie '+(i+1)+' sur '+ps.length+' du script validé. '+(i===0?'':'N\'écris ni TITRE ni lignes NOUVEAU… (déjà faits). ')+(i===ps.length-1?'C\'est la dernière partie : termine par la FIN.':'Ce n\'est pas la dernière partie : n\'écris PAS la FIN.')+' Mets-la au format exact.\n\n'+ps[i];
+      const r=await ia([{role:'system',content:sys},{role:'user',content:consigne}],pr);res.push(r.t);qui=r.n}
+    const c=nettoyer(res.join('\n\n'));window.ALIA=c.al;$('#a-out').value=c.s;$('#a-res').hidden=false;$('#a-ok').checked=false;bascule();verifier();pr('✅ Fait par '+qui+'. Relisez le script ci-dessous.')}
+  catch(e){pr('❌ '+e.message)}$('#a-go').disabled=false};
+$('#a-verif').onclick=()=>{window.ALIA=[];verifier()};
+$('#a-out').oninput=()=>{$('#a-ok').checked=false;bascule()};
+function bascule(){['#a-l40','#a-lap','#a-lv'].forEach(b=>$(b).disabled=!$('#a-ok').checked)}$('#a-ok').onchange=bascule;
+$('#a-voix').onclick=()=>{const L=$('#a-out').value.split('\n'),V={};for(let i=0;i<L.length;i++){const m=L[i].match(TETE);if(!m)continue;const n=m[2].trim(),txt=(L[i+1]||'').replace(/\{[^}]*\}/g,'').replace(/\s{2,}/g,' ').trim();if(!txt)continue;
+    const ton=m[3].split('·').map(s=>s.trim()).filter(s=>!/^regarde/i.test(s)).map(s=>s.replace(/^voix\s*:\s*/i,'')).join(', ');(V[n]=V[n]||[]).push((m[1]?'(pensée) ':'')+'['+ton+'] '+txt)}
+  $('#a-voixout').innerHTML=Object.entries(V).map(([n,l],k)=>'<details><summary>'+esc(n)+' — '+l.length+' réplique(s)</summary><p class="msg" id="vx'+k+'">'+esc(l.map((x,j)=>(j+1)+'. '+x).join('\n'))+'</p><button class="sec" data-cp="vx'+k+'">Copier</button></details>').join('');
+  $('#a-voixout').querySelectorAll('[data-cp]').forEach(b=>b.onclick=()=>{const t=document.getElementById(b.dataset.cp).textContent;try{navigator.clipboard.writeText(t).then(()=>b.textContent='Copié ✓')}catch(e){}})};
+function extrait(t,max=40){const L=t.split('\n'),out=[];let d=0,deb=false;for(const l of L){if(/^(DÉCOR|DECOR)/.test(l))deb=true;if(/^FIN\s*:/.test(l))break;
+    if(deb&&TETE.test(l)&&duree(out.join('\n'))-5>=max)break;out.push(l)}return out.join('\n').trim()+'\n'}
+async function lancer(mode,script,titre){try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+titre,body:corps(mode,script),labels:['episode']})});
+  $('#a-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' lancée. Suivez-la dans « Épisodes ».</p>'}catch(e){$('#a-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}
+$('#a-l40').onclick=()=>lancer('v',extrait($('#a-out').value),($('#a-titre').value||'assistant')+' (extrait 40 s)');
+$('#a-lap').onclick=()=>lancer('a',$('#a-out').value,$('#a-titre').value||'assistant');
+$('#a-lv').onclick=()=>lancer('v',$('#a-out').value,$('#a-titre').value||'assistant');
 </script>
 </body></html>
