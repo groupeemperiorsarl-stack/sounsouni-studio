@@ -138,7 +138,13 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
   d.querySelector('[data-x=pl]').onclick=()=>{const a=d.querySelector('.de').value.trim(),b=d.querySelector('.a').value.trim();if(a&&b)dire('planches '+a+'-'+b)};
   d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur Aperçu ou Vidéo.')}catch(x){out('❌ '+esc(x.message))}};
   d.querySelector('.histo').innerHTML=cs.map(c=>'<p class="muted">'+new Date(c.created_at).toLocaleString('fr-FR')+' · '+(c.user.type==='Bot'?'application':'vous')+'</p>'+md(c.body)).join('')||'<p class="muted">Rien pour l\'instant.</p>';
-  fichiers(i.number,d.querySelector('.zone'));if(e.k==='warn')setTimeout(()=>carte(i,d),45000)}
+  fichiers(i.number,d.querySelector('.zone'));if(e.k==='warn'){bloque(i,cs,d);setTimeout(()=>carte(i,d),45000)}}
+// GitHub peut refuser de lancer les machines (minutes du mois épuisées, paiement) : la demande resterait « en fabrication » sans message
+async function bloque(i,cs,d){try{const us=cs.filter(c=>c.user.type!=='Bot'),t0=new Date(us.length?us[us.length-1].created_at:i.created_at)-5000;
+  const rs=(await api('/repos/'+R+'/actions/runs?per_page=15')).workflow_runs.filter(r=>new Date(r.created_at)>=t0&&new Date(r.created_at)-t0<40*60000);
+  for(const r of rs){if(r.status!=='completed'||r.conclusion!=='failure')continue;const js=(await api('/repos/'+R+'/actions/runs/'+r.id+'/jobs')).jobs;
+    if(js.length&&js.every(j=>!j.steps||!j.steps.length)){d.querySelector('.pill').className='pill bad';d.querySelector('.pill').textContent='Bloqué par GitHub';
+      d.querySelector('.zone').insertAdjacentHTML('afterbegin','<p class="msg">❌ GitHub n\'a pas lancé les machines : les minutes gratuites du mois sont épuisées (ou un paiement a échoué). Rien n\'a été fabriqué. Les minutes reviennent au début du mois prochain.</p>');return}}}catch(e){}}
 function md(t){t=String(t||'').replace(/\n---\n_Generated[\s\S]*$/,'').replace(/!\[[^\]]*\]\([^)]*\)/g,'').replace(/https?:\/\/\S+/g,'');const L=t.split('\n');let h='',tb=[];
   const inl=x=>esc(x).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/_([^_]+)_/g,'<i>$1</i>');
   const flush=()=>{if(tb.length){h+='<table>'+tb.filter(r=>!/^\|?\s*-+/.test(r)).map(r=>'<tr>'+r.replace(/^\||\|$/g,'').split('|').map(c=>'<td>'+inl(c.trim())+'</td>').join('')+'</tr>').join('')+'</table>';tb=[]}};
