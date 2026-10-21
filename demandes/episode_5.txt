@@ -1,0 +1,31 @@
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo assis sur le banc]
+
+[BRUITAGE: sonnerie]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Nouvelle commande ✔ · vingt thés]
+
+PENSÉE BAKARY (surpris · regarde: téléphone)
+Une commande de vingt thés… {surpris}
+
+BAKARY (surpris · regarde: Modibo · voix: normal)
+{surpris} Vingt thés ! Pour le bureau de Karim ?
+
+MODIBO (mefiant · regarde: Bakary · voix: normal)
+{mefiant} Bakarin, méfie-toi. Cet homme ne commande jamais rien sans raison.
+
+BAKARY (fier · regarde: Modibo · voix: normal)
+{fier} Un client est un client, Van. Je livre avant midi.
+
+[BRUITAGE: pas]
+
+PLAN: large [Bakary debout, Modibo assis sur le banc, Diasabi court]
+
+DIASABI (inquiet · regarde: Bakary · voix: normal)
+{inquiet} Bakary ! Karim a dit à tout le quartier que ton thé rend malade !
+
+BAKARY (choc · regarde: Diasabi · voix: normal)
+{choc} Quoi ?!
+
+[RÉACTION MODIBO: rire_retenu]
