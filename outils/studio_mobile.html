@@ -2,7 +2,7 @@
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Sounsouni Studio</title>
 <style>
-/* Studio mobile v1 — une colonne, cartes par épisode, barre d'onglets en bas */
+/* Studio mobile v2 — une colonne, cartes par épisode, barre d'onglets en bas */
 :root{--bg:#f6f2ec;--card:#fffdf9;--fg:#2a2118;--muted:#76685a;--line:#e4d9cc;--accent:#d9661c;--on:#fff;--ok:#2e8b57;--warn:#c98a00;--bad:#c0392b;
 --display:"Baloo 2",system-ui,sans-serif;--body:"Nunito Sans",system-ui,sans-serif;color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#1a1511;--card:#251e18;--fg:#f1e8dd;--muted:#b3a291;--line:#3b3128;--accent:#f0843c;--on:#1a1511;--ok:#5fc48c;--warn:#e8b83a;--bad:#ef6b5b;color-scheme:dark}}
@@ -27,14 +27,15 @@ iframe{width:100%;height:75vh;border:1px solid var(--line);border-radius:10px;ma
 .tabs button{flex:1;background:none;color:var(--muted);border-radius:10px;padding:9px 4px;font-size:13px}.tabs button.on{color:var(--accent);background:var(--bg)}
 .msg{padding:10px;border-radius:10px;background:var(--bg);font-size:13px;margin-top:8px;overflow-wrap:anywhere;white-space:pre-wrap}
 details summary{cursor:pointer;font-weight:700;margin-top:8px}
+.md{overflow-x:auto;font-size:13px}.md table{border-collapse:collapse;width:100%;margin:6px 0}.md td,.md th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;font-variant-numeric:tabular-nums}.md h3,.md h4{font:700 15px var(--display);margin:10px 0 4px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
 <h1>Sounsouni Studio</h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
 
 <section id="v-eps">
-  <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><a class="btn sec" target="_blank" href="https://github.com/groupeemperiorsarl-stack/sounsouni-studio/issues/2">Minutes GitHub</a></div>
-  <div id="liste"><p class="muted">Chargement…</p></div>
+  <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ Minutes</button></div>
+  <div id="tableau"></div><div id="liste"><p class="muted">Chargement…</p></div>
 </section>
 
 <section id="v-new" hidden>
@@ -95,7 +96,6 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
     $('#liste').innerHTML='';for(const i of is){const d=document.createElement('div');d.className='card';d.id='ep'+i.number;$('#liste').appendChild(d);carte(i,d)}}
   catch(e){$('#liste').innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}}
 async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
-  const tag=e.b&&(e.b.body.match(/releases\/(?:tag|download)\/([^\/\s)]+)/)||[])[1];
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
   <div class="zone"></div>
   <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button></div>
@@ -104,7 +104,7 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
     <label>Planches sur un passage</label><div class="row"><input class="de" placeholder="1:20"><input class="a" placeholder="1:45"><button data-x="pl">Demander</button></div>
     <label>Modifier le script</label><textarea class="scr"></textarea><div class="row"><button data-x="save" class="sec">Enregistrer le script</button></div>
   </details>
-  <div class="row"><a class="btn sec" target="_blank" href="${i.html_url}">Voir sur GitHub</a></div><div class="out"></div>`;
+  <details><summary>Détails de la fabrication</summary><div class="md histo"></div></details><div class="out"></div>`;
   const m=(i.body||'').match(/```(?:text)?\n([\s\S]*?)\n```/);d.querySelector('.scr').value=m?m[1]:(i.body||'');
   const out=t=>d.querySelector('.out').innerHTML='<p class="msg">'+t+'</p>';
   const dire=async t=>{try{await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:t})});out('✅ « '+esc(t)+' » envoyé. Actualisez dans quelques minutes.')}catch(x){out('❌ '+esc(x.message))}};
@@ -112,20 +112,28 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
   d.querySelector('[data-x=rep]').onclick=()=>{const v=d.querySelector('.rep').value.trim();if(v)dire(v.toUpperCase())};
   d.querySelector('[data-x=pl]').onclick=()=>{const a=d.querySelector('.de').value.trim(),b=d.querySelector('.a').value.trim();if(a&&b)dire('planches '+a+'-'+b)};
   d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur Aperçu ou Vidéo.')}catch(x){out('❌ '+esc(x.message))}};
-  if(tag)fichiers(tag,d.querySelector('.zone'));if(e.k==='warn')setTimeout(()=>carte(i,d),45000)}
-async function blob(a){const r=await fetch(API+'/repos/'+R+'/releases/assets/'+a.id,{headers:{Authorization:'Bearer '+TOK,Accept:'application/octet-stream'}});if(!r.ok)throw 0;return r.blob()}
-async function fichiers(tag,z){let rel;try{rel=await api('/repos/'+R+'/releases/tags/'+encodeURIComponent(tag))}catch(e){return}
-  const as=rel.assets,f=n=>as.find(a=>a.name===n),leg=as.find(a=>/_leger\.mp4$/.test(a.name)),ap=f('apercu_plans.png'),pl=f('planches.html');
-  const lien=a=>`<a class="btn sec" target="_blank" href="${a.browser_download_url}">⬇ ${esc(a.name)}</a>`;
-  let h='<div class="row">';
-  if(leg)h+=`<button data-f="vid">▶ Regarder la vidéo</button>`+lien(leg);
-  if(ap)h+=`<button class="sec" data-f="ap">🖼 Voir l'aperçu</button>`;
-  if(pl)h+=`<button data-f="pl">☑ Planches à cocher</button>`;
+  d.querySelector('.histo').innerHTML=cs.map(c=>'<p class="muted">'+new Date(c.created_at).toLocaleString('fr-FR')+' · '+(c.user.type==='Bot'?'application':'vous')+'</p>'+md(c.body)).join('')||'<p class="muted">Rien pour l\'instant.</p>';
+  fichiers(i.number,d.querySelector('.zone'));if(e.k==='warn')setTimeout(()=>carte(i,d),45000)}
+function md(t){t=String(t||'').replace(/\n---\n_Generated[\s\S]*$/,'').replace(/!\[[^\]]*\]\([^)]*\)/g,'').replace(/https?:\/\/\S+/g,'');const L=t.split('\n');let h='',tb=[];
+  const inl=x=>esc(x).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/_([^_]+)_/g,'<i>$1</i>');
+  const flush=()=>{if(tb.length){h+='<table>'+tb.filter(r=>!/^\|?\s*-+/.test(r)).map(r=>'<tr>'+r.replace(/^\||\|$/g,'').split('|').map(c=>'<td>'+inl(c.trim())+'</td>').join('')+'</tr>').join('')+'</table>';tb=[]}};
+  for(const l of L){if(/^\s*\|/.test(l)){tb.push(l.trim());continue}flush();if(/^#{1,4}\s/.test(l))h+='<h3>'+inl(l.replace(/^#+\s*/,''))+'</h3>';else if(l.trim())h+='<p>'+inl(l)+'</p>'}flush();return h}
+async function brut(chemin){const r=await fetch(API+'/repos/'+R+'/contents/'+chemin+'?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw 0;return r.blob()}
+async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n+'?ref=fichiers')).map(f=>f.name)}catch(e){return}
+  const a=x=>ls.includes(x);let h='<div class="row">';
+  if(a('video.mp4'))h+='<button data-f="video.mp4">▶ Regarder la vidéo</button>';
+  if(a('apercu_plans.png'))h+='<button class="sec" data-f="apercu_plans.png">🖼 Voir l\'aperçu</button>';
+  if(a('planches.html'))h+='<button data-f="planches.html">☑ Planches à cocher</button>';
   z.innerHTML=h+'</div><div class="vue"></div>';const v=z.querySelector('.vue');
-  const montre=async(a,fait)=>{v.innerHTML='<p class="muted">Téléchargement…</p>';try{fait(await blob(a))}catch(e){v.innerHTML='<p class="msg">Ouverture directe impossible ici : '+lien(a)+'</p>'}};
-  z.querySelector('[data-f=vid]')?.addEventListener('click',()=>montre(leg,b=>v.innerHTML=`<video controls playsinline src="${URL.createObjectURL(b)}"></video>`));
-  z.querySelector('[data-f=ap]')?.addEventListener('click',()=>montre(ap,b=>v.innerHTML=`<img class="prev" alt="aperçu des plans" src="${URL.createObjectURL(b)}">`));
-  z.querySelector('[data-f=pl]')?.addEventListener('click',()=>montre(pl,async b=>{v.innerHTML='<p class="muted">Cochez, appuyez sur « Copier », puis collez la réponse dans « Réponse aux planches ».</p><iframe></iframe>';v.querySelector('iframe').srcdoc=await b.text()}))}
+  z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
+    if(f.endsWith('.mp4'))v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div>';
+    else if(f.endsWith('.png'))v.innerHTML='<img class="prev" alt="aperçu des plans" src="'+u+'">';
+    else{v.innerHTML='<p class="muted">Cochez, appuyez sur « Copier », puis collez la réponse dans « Réponse aux planches ».</p><iframe></iframe>';v.querySelector('iframe').srcdoc=await bl.text()}}
+    catch(e){v.innerHTML='<p class="msg">Fichier introuvable pour l\'instant. Réessayez dans un moment.</p>'}})}
+$('#minutes').onclick=async()=>{const t=$('#tableau');if(t.innerHTML){t.innerHTML='';return}t.innerHTML='<div class="card"><p class="muted">Chargement…</p></div>';
+  try{const [i2,runs]=await Promise.all([api('/repos/'+R+'/issues/2'),api('/repos/'+R+'/actions/runs?per_page=8').catch(()=>({workflow_runs:[]}))]);
+    const enc=runs.workflow_runs.filter(r=>r.status!=='completed').map(r=>'<p>⏳ '+esc(r.name)+' — '+(r.status==='queued'?'en attente d\'une machine':'en cours')+' depuis '+Math.round((Date.now()-new Date(r.run_started_at||r.created_at))/60000)+' min</p>').join('');
+    t.innerHTML='<div class="card md"><h3>Fabrications en cours</h3>'+(enc||'<p class="muted">Aucune.</p>')+md(i2.body)+'</div>'}catch(e){t.innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}};
 $('#maj').onclick=charger;vue(TOK?'eps':'cfg');
 </script>
 </body></html>

@@ -72,6 +72,9 @@ jobs:
             MSG="❌ L'aperçu n'a pas pu être fait. Fin du journal :"$'\n```\n'"$(tail -15 journal.txt)"$'\n```'
           fi
           if [ -n "$ISSUE" ]; then gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$MSG" > /dev/null; else echo "$MSG"; fi
+      - name: Fichiers pour la page Studio mobile
+        if: always() && github.event.inputs.issue != ''
+        run: bash .github/scripts/fichiers.sh "$ISSUE" sortie/apercu_plans.png sortie/planches/* || true
   voix:
     if: github.event.inputs.apercu != 'true'
     runs-on: ubuntu-latest
@@ -156,6 +159,9 @@ jobs:
             MSG="❌ La vidéo n'a pas pu être finie. Voir : https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           fi
           if [ -n "$ISSUE" ]; then gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$MSG" > /dev/null; else echo "$MSG"; fi
+      - name: Fichiers pour la page Studio mobile
+        if: always() && github.event.inputs.issue != ''
+        run: bash .github/scripts/fichiers.sh "$ISSUE" sortie/*_leger.mp4 || true
       - name: Garder les têtes tournées pour la prochaine fois
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
