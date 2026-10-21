@@ -32,13 +32,13 @@
   - LivePortrait (têtes tournées, bouches) : `bash studio/lp/install.sh`.
   - Machine : 2 processeurs, 8 Go → lancer la voix (Chatterbox) **seule**, sinon la mémoire sature.
 
-## Assistant de secours (quand Claude n'est pas disponible)
-- Dans la page **Studio mobile** (`outils/studio_mobile.html`), onglet **🤖 Assistant** : Issa colle le script validé → « Mettre au format » → l'IA gratuite (Groq `openai/gpt-oss-120b`, puis Cerebras, puis OpenRouter si Groq est saturé) le met au format, scène par scène.
-- Ses consignes = **`docs/ASSISTANT.md`** (lu dans le dépôt à chaque fois). Toute nouvelle règle de format validée par Issa doit y être ajoutée aussi.
-- La page corrige ensuite toute seule (émotions sans accent, indications inconnues retirées, réplique vide → RÉACTION, DÉCOR en double, postures), affiche les alertes, la durée estimée et les scripts de voix par personnage.
-- Issa relit, coche « J'ai relu et je valide », puis lance : **Extrait de 40 s** (vidéo courte pour tester), **Aperçu des plans** ou **Épisode complet** (crée la demande GitHub comme le formulaire).
-- Bouton **🖼 Fiche Gemini** de chaque épisode = commentaire « fiche » → `.github/workflows/fiche.yml` → fiche + images à joindre affichées dans la page.
-- Clés Groq / Cerebras / OpenRouter : **seulement sur le téléphone d'Issa** (onglet Assistant, `localStorage`), jamais dans le dépôt ni la conversation. L'assistant ne touche jamais au code : les corrections du studio restent pour Claude.
+## Assistant (travaille sans Claude, depuis le téléphone d'Issa)
+- Page **Studio mobile** (`outils/studio_mobile.html`). Clés (Groq, Cerebras, OpenRouter, **Gemini**) et jeton GitHub **seulement sur le téléphone d'Issa** (`localStorage`), jamais dans le dépôt ni la conversation. Jeton GitHub : Issues RW, **Contents RW**, Actions R.
+- **Mettre au format** (onglet 🤖 Assistant) : Groq `openai/gpt-oss-120b` (puis Cerebras / OpenRouter), consignes `docs/ASSISTANT.md`, corrections automatiques dans la page (chiffres en lettres, émotions, absent du décor = au téléphone, objets inconnus retirés…). Puis extrait 40 s / aperçu / épisode complet.
+- **💬 Discuter** (chaque épisode) : Gemini Flash (clé gratuite AI Studio, modèle choisi tout seul) voit l'aperçu, regarde la vidéo, écoute ; consignes `docs/ASSISTANT_ACTIONS.md` (+ ASSISTANT.md) ; reçoit le script, `plans_resume.json` (liste minutée des plans, branche `fichiers`), les choix, `studio/reglages.json`, la liste des poses. Répond en JSON avec des **actions** qu'Issa coche puis applique :
+  script (remplacement exact) · cadrage d'un plan (seul / epaule / large) · pose · place et taille d'un acteur (`acteurs`: dx, dy, taille, retourner, cacher → `demandes/episode_N.choix.json`, `director.apply_corrections`) · durée d'un plan muet · prononciation (`studio/lexique.txt`) · réglage général (`studio/reglages.json` : bouche, rangs, decor_large) · relancer aperçu / vidéo / planches · fiche Gemini · **code** (studio/*.py seulement : mis sur une branche `assistant-N-…`, commentaire « essai code … » → `.github/workflows/essai-code.yml` fabrique l'aperçu de l'épisode + ép. 17 + ép. 15 ; Issa **Accepter** (fusion dans main) ou **Refuser**).
+- **🧩 Renvoyer les images Gemini** : Issa choisit les images, met le numéro de demande, « Vérifier avec l'IA » (Gemini les regarde), puis envoi → `demandes/gemini/N/` + commentaire « importer 1=… » → `.github/workflows/import.yml` (découpe, détourage, bouches, catalogue, planche `import.png`) ; « annuler import <code> » le retire.
+- Quand Claude revient : relire les commits « (assistant de la page Studio mobile) » et les branches `assistant-*`, transformer en règles propres ce qui revient souvent.
 
 ## Fichiers clés
 - `studio/script.py` lecture du script · `voices.py` voix + vérification Whisper + fins de phrase jamais coupées + rires + `lexique.txt` (prononciations « écrit = prononcé », ex. « Kôrôbalé wou = Kôrôbaléou ») et « plus » négatif sans S.
@@ -57,7 +57,7 @@
 - **Postures** respectées (assis reste assis), décor cohérent dans une scène, décors sans figurants, bouches ouvertes sans que les yeux bougent.
 
 ## Où on en est (21/10/2026)
-- Assistant de secours ajouté (Groq gratuit) et testé sur un extrait de 40 s (demande n° 5).
+- Assistant complet ajouté (Groq + Gemini) : format, discussion avec actions, images Gemini, essais de code. Tests sur la demande n° 5.
 - Planches A / B / C automatiques ajoutées (local et GitHub) + rendu partiel automatique par morceaux.
 - Épisode 15 « La rumeur » fini (v5) ; script : `exemples/episode15_la_rumeur.txt` (+ début réécrit : `exemples/episode15_debut_corrige.txt`).
 - Plus tard : vues de dos des personnages qui n'en ont pas ; nettoyer le décor BUREAU (figurants) ; pose de Karim assis.
