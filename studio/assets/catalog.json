@@ -3457,6 +3457,41 @@
    "genere": "gemini",
    "head_x": 0.637,
    "mouth_auto": true
+  },
+  "mod_assis_mefiant": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "mefiant",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    775,
+    1600
+   ],
+   "head_x": 0.884,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_rire"
+  },
+  "bak_fier": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "fier"
+   ],
+   "mouth": false,
+   "size": [
+    810,
+    1600
+   ],
+   "head_x": 0.081,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout"
   }
  },
  "decors": {
