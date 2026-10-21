@@ -53,7 +53,7 @@ jobs:
         if: github.event.inputs.choix != ''
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
-          git add "${SCRIPT%.*}.choix.json" && (git commit -m "Choix d'Issa sur les planches (${{ github.event.inputs.choix }})" && git pull --rebase && git push || true)
+          git add "${SCRIPT%.*}.choix.json" && (git commit -m "Choix d'Issa sur les planches (${{ github.event.inputs.choix }})" && git pull --rebase --autostash && git push || echo "::warning::choix NON enregistrés")
       - name: Publier l'aperçu
         if: always()
         run: |
@@ -167,7 +167,7 @@ jobs:
       - name: Garder les têtes tournées pour la prochaine fois
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
-          git add studio/assets/poses/tourne/*.webp && git commit -m "Têtes tournées préparées par l'application" && git push || echo "rien à garder"
+          git add studio/assets/poses/tourne/*.webp && git commit -m "Têtes tournées préparées par l'application" && git pull -q --rebase --autostash && git push || echo "rien à garder"
   echec:
     needs: [voix, plans, rendu, final]
     if: failure() && github.event.inputs.issue != ''

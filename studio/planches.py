@@ -163,7 +163,7 @@ h2{{font-size:15px;margin:0}}.q{{margin:2px 0;color:var(--accent);font-weight:70
 .barre button{{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 14px;font-weight:700;font-size:15px;flex:none}}
 </style></head><body>
 <h1>Planches à valider — {nom}</h1>
-<p class="aide">Touchez une image par question. Ensuite, appuyez sur « Copier » et envoyez la réponse à Claude (ou en commentaire sur GitHub). {aide}</p>
+<p class="aide">Touchez une image par question, puis « Copier » : dans la page Studio mobile, le bouton « Envoyer ma réponse » apparaît (ou collez la réponse en commentaire sur GitHub). {aide}</p>
 {''.join(cartes)}
 <div class="barre"><code id="rep">Aucun choix</code><button id="copie">Copier</button></div>
 <script>

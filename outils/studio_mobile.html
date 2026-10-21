@@ -30,6 +30,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 .md{overflow-x:auto;font-size:13px}.md table{border-collapse:collapse;width:100%;margin:6px 0}.md td,.md th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;font-variant-numeric:tabular-nums}.md h3,.md h4{font:700 15px var(--display);margin:10px 0 4px}
 .chat p{margin:6px 0;padding:8px 10px;border-radius:10px;white-space:pre-wrap}.chat .moi{background:var(--bg);margin-left:18%}.chat .ia{background:rgba(46,125,50,.12);margin-right:18%}
 .act{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin:8px 0}.act input{width:auto;margin-top:4px}pre{white-space:pre-wrap;word-break:break-word;font-size:11px;background:var(--bg);padding:6px;border-radius:8px;max-width:100%;overflow:auto}img.mini{width:64px;height:64px;object-fit:cover;border-radius:8px}
+.etp{border-left:4px solid var(--accent);margin:8px 0}.etp .row{margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
@@ -104,7 +105,7 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>vue(b.dataset
 // ---- réglage de la clé
 $('#c-tok').value=TOK;
 $('#c-save').onclick=async()=>{TOK=$('#c-tok').value.trim();try{localStorage.setItem('ss_tok',TOK)}catch(e){}
-  try{const u=await api('/user');await api('/repos/'+R);$('#c-msg').innerHTML='<p class="msg">✅ Connecté : '+esc(u.login)+'</p>'}catch(e){$('#c-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+' — vérifiez la clé et ses droits.</p>'}};
+  try{const u=await api('/user');await api('/repos/'+R);let w='';try{const sha=(await api('/repos/'+R+'/git/ref/heads/main')).object.sha,nm='test-jeton-'+Date.now().toString(36);await api('/repos/'+R+'/git/refs',{method:'POST',body:JSON.stringify({ref:'refs/heads/'+nm,sha})});await api('/repos/'+R+'/git/refs/heads/'+nm,{method:'DELETE'}).catch(()=>{});w='<br>✅ Écriture autorisée : l\'assistant peut enregistrer ses corrections.'}catch(e){w='<br>❌ Écriture refusée : sur GitHub, mettez <b>Contents : Read and write</b> sur ce jeton, sinon les corrections de l\'assistant ne sont pas enregistrées.'}$('#c-msg').innerHTML='<p class="msg">✅ Connecté : '+esc(u.login)+w+'</p>'}catch(e){$('#c-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+' — vérifiez la clé et ses droits.</p>'}};
 $('#c-del').onclick=()=>{TOK='';$('#c-tok').value='';try{localStorage.removeItem('ss_tok')}catch(e){}$('#c-msg').innerHTML='<p class="msg">Clé effacée.</p>'};
 // ---- nouvel épisode
 $('#n-fichier').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{$('#n-script').value=t;const m=t.match(/TITRE:\s*(.*)/);if(m&&!$('#n-titre').value)$('#n-titre').value=m[1].split(/[–-]/).slice(1).join('–').trim()||m[1]})};
@@ -114,10 +115,15 @@ $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-ms
   $('#n-go').disabled=true;try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+($('#n-titre').value||'nouveau'),body:corps($('#n-mode').value,s),labels:['episode']})});
   $('#n-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. Suivez-la dans « Épisodes ».</p>';$('#n-script').value='';$('#n-titre').value=''}catch(e){$('#n-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#n-go').disabled=false};
 // ---- liste des épisodes
-function etat(cs){cs=cs.filter(c=>!/^(✅|✖) Modification du code/.test(c.body||''));const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1],last=cs[cs.length-1];
-  if(last&&last.user.type!=='Bot'&&(!b||new Date(last.created_at)>new Date(b.created_at)))return{t:'Demande envoyée…',k:'warn',b};
+const SORTE=x=>/vidéo|video/i.test(x)&&!/aperçu/i.test(x.split('\n')[0])?'la vidéo':/fiche/i.test(x)?'la fiche Gemini':/images|import/i.test(x)?'les images':/code/i.test(x)?'l\'essai du code':'l\'aperçu';
+function etat(cs){cs=cs.filter(c=>!/^(✅|✖) Modification du code/.test(c.body||''));const bot=cs.filter(c=>c.user.type==='Bot'),last=cs[cs.length-1];
+  const enCours=[];let b=null;for(const c of bot){const x=c.body||'';if(/^⏳/.test(x)){enCours.push(SORTE(x));continue}const k=enCours.indexOf(SORTE(x));if(k>=0)enCours.splice(k,1);b=c}   // plusieurs fabrications peuvent tourner en même temps
+  if(last&&last.user.type!=='Bot'&&(!bot.length||new Date(last.created_at)>new Date(bot[bot.length-1].created_at)))return{t:'Demande envoyée…',k:'warn',b};
+  if(enCours.length)return{t:'En fabrication : '+[...new Set(enCours)].join(', ')+'…',k:'warn',b};
   if(!b)return{t:'En attente',k:'warn',b};const x=b.body;
-  if(x.includes('❌'))return{t:'Erreur',k:'bad',b};if(x.includes('🎬'))return{t:'Vidéo prête',k:'ok',b};if(x.includes('🖼️'))return{t:'Fiche Gemini prête',k:'ok',b};if(x.includes('🧩'))return{t:'Images rangées',k:'ok',b};if(x.includes('↩️'))return{t:'Import annulé',k:'ok',b};if(x.includes('🧪'))return{t:'Essai du code prêt',k:'ok',b};if(x.includes('✅'))return{t:'Aperçu prêt',k:'ok',b};return{t:'En fabrication…',k:'warn',b}}
+  if(/^❌|n'a pas pu|n'ont pas pu|raté/.test(x))return{t:'Erreur',k:'bad',b};if(/La vidéo est prête/.test(x))return{t:'Vidéo prête',k:'ok',b};if(/Aperçu des plans prêt/.test(x))return{t:/Planches à valider/.test(x)?'Aperçu prêt · planches à cocher':'Aperçu prêt',k:'ok',b};
+  if(/Fiche Gemini prête/.test(x))return{t:'Fiche Gemini prête',k:'ok',b};if(/Images rangées/.test(x))return{t:'Images rangées',k:'ok',b};if(/Import annulé/.test(x))return{t:'Import annulé',k:'ok',b};if(/Essai du code/.test(x))return{t:'Essai du code prêt',k:'ok',b};
+  return{t:'Prêt',k:'ok',b}}
 async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Ajoutez d\'abord votre clé GitHub (onglet 🔑 Clé).</p></div>';return}
   $('#liste').innerHTML='<p class="muted">Chargement…</p>';
   try{const is=await api('/repos/'+R+'/issues?labels=episode&state=all&per_page=12');if(!is.length){$('#liste').innerHTML='<p class="muted">Aucun épisode.</p>';return}
@@ -125,7 +131,7 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
   catch(e){$('#liste').innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}}
 async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
-  <div class="zone"></div>
+  <div class="etape"></div><div class="zone"></div>
   <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button><button data-a="fiche" class="sec">🖼 Fiche Gemini</button></div>
   <details><summary>Planches et corrections</summary>
     <label>Réponse aux planches (ex. 1B 3C)</label><div class="row"><input class="rep" placeholder="1B 3C"><button data-x="rep">Envoyer</button></div>
@@ -146,7 +152,7 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
   d.querySelector('[data-x=pl]').onclick=()=>{const a=d.querySelector('.de').value.trim(),b=d.querySelector('.a').value.trim();if(a&&b)dire('planches '+a+'-'+b)};
   d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur Aperçu ou Vidéo.')}catch(x){out('❌ '+esc(x.message))}};
   d.querySelector('.histo').innerHTML=cs.map(c=>'<p class="muted">'+new Date(c.created_at).toLocaleString('fr-FR')+' · '+(c.user.type==='Bot'?'application':'vous')+'</p>'+md(c.body)).join('')||'<p class="muted">Rien pour l\'instant.</p>';
-  discuter(i,d,d.querySelector('.scr').value);retourGemini(i,d);
+  discuter(i,d,d.querySelector('.scr').value);retourGemini(i,d);prochaine(i,d,cs,e);
   fichiers(i.number,d.querySelector('.zone')).then(()=>boutonsBot(i,d,cs));if(e.k==='warn'){bloque(i,cs,d);setTimeout(()=>carte(i,d),45000)}}
 // GitHub peut refuser de lancer les machines (minutes du mois épuisées, paiement) : la demande resterait « en fabrication » sans message
 async function bloque(i,cs,d){try{const us=cs.filter(c=>c.user.type!=='Bot'),t0=new Date(us.length?us[us.length-1].created_at:i.created_at)-5000;
@@ -173,7 +179,11 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
     else if(f.endsWith('.png'))v.innerHTML='<img class="prev" alt="aperçu des plans" src="'+u+'">';
     else if(f==='fiche_gemini.html'){const im=ls.filter(x=>/^image_.*\.(jpe?g|png)$/i.test(x)).sort();v.innerHTML='<p class="muted">Pour chaque demande : joignez l\'image à joindre dans Gemini, collez le texte, puis renvoyez à Claude les images obtenues.</p><iframe></iframe><div class="imgs"></div>';v.querySelector('iframe').srcdoc=await bl.text();
       for(const x of im){const u2=URL.createObjectURL(await brut(n+'/'+x));v.querySelector('.imgs').insertAdjacentHTML('beforeend','<p class="muted">'+esc(x)+'</p><img class="prev" src="'+u2+'"><div class="row"><a class="btn sec" download="'+esc(x)+'" href="'+u2+'">⬇ Enregistrer cette image</a></div>')}}
-    else{v.innerHTML='<p class="muted">Cochez, appuyez sur « Copier », puis collez la réponse dans « Réponse aux planches ».</p><iframe></iframe>';v.querySelector('iframe').srcdoc=await bl.text()}}
+    else{v.innerHTML='<p class="muted">Touchez une image par question, puis « Copier » : la réponse apparaît ici, prête à envoyer.</p><iframe></iframe><div class="prep"></div>';
+      const fr=v.querySelector('iframe');fr.srcdoc=(await bl.text()).replace('</body>','<script>document.getElementById("copie")&&document.getElementById("copie").addEventListener("click",()=>parent.postMessage({planches:document.getElementById("rep").textContent},"*"))<\/script></body>');
+      window.addEventListener('message',ev=>{if(ev.source!==fr.contentWindow||!ev.data||!ev.data.planches)return;const r=String(ev.data.planches).trim();const z=v.querySelector('.prep');
+        if(!/[A-D]/i.test(r)||/aucun/i.test(r)){z.innerHTML='<p class="msg">Touchez d\'abord une image par question.</p>';return}
+        z.innerHTML='<div class="row"><button class="go">📨 Envoyer ma réponse : '+esc(r)+'</button></div>';z.querySelector('.go').onclick=async()=>{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:r.toUpperCase()})});z.innerHTML='<p class="msg">✅ Réponse « '+esc(r)+' » envoyée : un nouvel aperçu avec vos choix arrive dans environ 10 minutes.</p>'}})}}
     catch(e){v.innerHTML='<p class="msg">Fichier introuvable pour l\'instant. Réessayez dans un moment.</p>'}})}
 $('#minutes').onclick=async()=>{const t=$('#tableau');if(t.innerHTML){t.innerHTML='';return}t.innerHTML='<div class="card"><p class="muted">Chargement…</p></div>';
   try{const [i2,runs]=await Promise.all([api('/repos/'+R+'/issues/2'),api('/repos/'+R+'/actions/runs?per_page=8').catch(()=>({workflow_runs:[]}))]);
@@ -244,7 +254,8 @@ function apres(s,brut,al){const L=s.split('\n'),out=[],W=new Set(paires(brut)),p
       l.replace(/^\s*PLAN\s*:/i,'').split(/[\s,\[\]]+/).forEach(w=>{const n=nomP(w);if(PERSOS.includes(n))pres.add(n)})}
     const m=l.match(TETE);
     if(m&&!m[1]&&!fin&&m[2].trim()!=='VOIX_OFF'){const txt=L[i+1]||'',ws=paires(txt);   // réplique dont presque aucun groupe de deux mots n'est dans le script d'origine = inventée
-      if(ws.length>=3&&ws.filter(w=>W.has(w)).length/ws.length<0.34){al.push('Réplique inventée retirée : '+m[2].trim()+' « '+txt.replace(/\{[^}]*\}/g,'').trim()+' »');i++;continue}
+      const wm=mots(txt),WM=new Set(mots(brut));
+      if((ws.length>=3&&ws.filter(w=>W.has(w)).length/ws.length<0.34)||(ws.length<3&&wm.length>=2&&!wm.some(w=>w.length>2&&WM.has(w)))){al.push('Réplique inventée retirée : '+m[2].trim()+' « '+txt.replace(/\{[^}]*\}/g,'').trim()+' »');i++;continue}
       const rg=m[3].match(/regarde\s*:\s*([^·)]*[^·)\s])/i);if(rg){const c=nomP(rg[1].trim());if(tel.has(c)&&!pres.has(c))l=l.replace(rg[0],'regarde: téléphone')}}
     if(l.trim())prev=l;out.push(l)}
   return out.join('\n')}
@@ -256,11 +267,11 @@ function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.
         if(m[1]){al.push('Pensée de '+qui+' supprimée : '+qui+' n\'est pas dans ce décor');i++;continue}
         if(!parts.some(s=>/au t[ée]l[ée]phone/i.test(s))){for(let j=parts.length-1;j>=0;j--)if(/^voix\s*:/i.test(parts[j]))parts.splice(j,1);parts.push('voix: au téléphone');al.push(qui+' n\'est pas dans le décor : mis « au téléphone »')}}
       const vo=m[2].trim()==='VOIX_OFF';const p0=parts.findIndex(s=>!s.includes(':'));if(vo){}else if(p0<0)parts.unshift('neutre');else{const e=emo(parts[p0]);if(!e)al.push(m[2]+' : émotion « '+parts[p0]+' » remplacée par neutre');parts[p0]=e||'neutre'}
-      if(!vo&&!m[1]&&!parts.some(s=>/^regarde/i.test(s)))al.push(m[2]+' : pas de « regarde: »');
+      if(!vo&&!m[1]&&!parts.some(s=>/^regarde/i.test(s))&&!parts.some(s=>/au t[ée]l[ée]phone/i.test(s)))al.push(m[2]+' : pas de « regarde: »');
       l=(m[1]||'')+m[2].trim()+' ('+parts.join(' · ')+')';
       const txt=(L[i+1]||'').replace(/\{[^}]*\}/g,'').trim();
       if(!txt&&!m[1]&&m[2].trim()!=='VOIX_OFF'){out.push('[RÉACTION '+m[2].trim()+': '+(parts[p0<0?0:p0]||'neutre')+']');i++;continue}}
-    else if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l))l=l.replace(/\{([^}]*)\}/g,(a,x)=>{if(/^pose\s*:/i.test(x))return a;const y=sans(x).replace(/\s+/g,'_');const z=SYN[y]||y;return TAGS.has(z)?'{'+z+'}':''}).replace(/\s{2,}/g,' ');if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l)&&!TETE.test(l))l=lettres(l).replace(/^((?:\s*\{[^}]*\}\s*)*)([a-zà-ÿ])/,(x,p,c)=>p+c.toUpperCase());
+    else if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l))l=l.replace(/\{([^}]*)\}/g,(a,x)=>{if(/^pose\s*:/i.test(x))return a;const y=sans(x).replace(/\s+/g,'_');const z=SYN[y]||y;return TAGS.has(z)?'{'+z+'}':''}).replace(/\s{2,}/g,' ');if(!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l)&&!TETE.test(l))l=lettres(l).replace(/sounsouni\s+point\s+pro/gi,'sounsouni.pro').replace(/^((?:\s*\{[^}]*\}\s*)*)([a-zà-ÿ])/,(x,p,c)=>p+c.toUpperCase());
     if(/^\s*PLAN\s*:/i.test(l))l=l.replace(/\ben courant\b/gi,'court').replace(/\ben marchant\b/gi,'marche').replace(/;/g,',');
     if(/^\s*PLAN\s*:/i.test(l)){l=l.replace(/\[([^\]]*)\]/,(x,c)=>'['+c.split(',').map(s=>s.trim()).filter(s=>{const w=nomP(s.split(/\s+/)[0]);if(PERSOS.includes(w)||OBJOK.test(s))return true;al.push('Objet « '+s+' » retiré du plan (pas d\'image pour lui)');return false}).map(s=>{const w=s.split(/\s+/);const n=nomP(w[0]);return PERSOS.includes(n)?n.charAt(0)+n.slice(1).toLowerCase()+(w.length>1?' '+w.slice(1).join(' '):''):s}).join(', ')+']');
       if(/^\s*PLAN\s*:\s*large/i.test(l))pres.clear();l.replace(/^\s*PLAN\s*:/i,'').split(/[\s,\[\]]+/).forEach(w=>{const n=nomP(w);if(PERSOS.includes(n))pres.add(n)})}
@@ -386,6 +397,7 @@ async function appliquer(i,acts,out){const n=i.number,fait=[];
     await dire(a.quoi==='video'?'vidéo':a.quoi==='planches'?('planches'+(a.de&&a.a?' '+a.de+'-'+a.a:'')):'aperçu');fait.push(a.quoi+' relancé')}
   }catch(e){fait.push('❌ relance : '+e.message)}
 
+  if(fait.some(x=>!x.startsWith('❌')&&!/relancé|lancée/.test(x)))try{localStorage.setItem('ss_corr_'+n,Date.now())}catch(e){}
   return fait}
 function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.number;let H=[];try{H=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}
   const montrer=()=>{box.innerHTML=H.map(x=>'<p class="'+(x.r==='u'?'moi':'ia')+'">'+esc(x.t)+'</p>').join('')||'<p class="muted">Dites ce qu\'il faut changer : « à 1:20 Karim flotte », « enlève le téléphone au plan 12 », « Awa doit parler plus lentement »…</p>'};montrer();
@@ -427,5 +439,21 @@ function boutonsBot(i,d,cs){const z=d.querySelector('.zone'),tout=cs.map(c=>c.bo
       await dire('✅ Modification du code acceptée ('+br+')');z.querySelector('.cres').innerHTML='<p class="msg">✅ Modification entrée dans le studio. Relancez l\'aperçu.</p>'}catch(e){z.querySelector('.cres').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}};
     z.querySelector('.ref').onclick=async()=>{await api('/repos/'+R+'/git/refs/heads/'+br,{method:'DELETE'}).catch(()=>{});await dire('✖ Modification du code refusée ('+br+')');z.querySelector('.cres').innerHTML='<p class="msg">Modification refusée et supprimée.</p>'}}
   m=x.match(/annuler import ([0-9a-f]{7,40})/);if(m){const sha=m[1];z.insertAdjacentHTML('beforeend','<div class="row"><button class="sec ann">↩️ Annuler cet import</button></div>');z.querySelector('.ann').onclick=async()=>{await dire('annuler import '+sha);z.querySelector('.ann').textContent='Annulation demandée…'}}}
+// ---------------- « Que faire maintenant ? » : une étape claire et son bouton, sur chaque épisode ----------------
+function prochaine(i,d,cs,e){const z=d.querySelector('.etape'),n=i.number,b=e.b,x=b?b.body:'',tb=b?new Date(b.created_at):0;
+  let corr=0;try{corr=+localStorage.getItem('ss_corr_'+n)||0}catch(e){}
+  const dire=async(t,m)=>{try{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});z.innerHTML='<div class="msg">✅ '+m+'</div>';try{localStorage.removeItem('ss_corr_'+n)}catch(e){}}catch(er){z.innerHTML='<div class="msg">❌ '+esc(er.message)+'</div>'}};
+  const bouton=(lib,cmd,m)=>'<button data-c="'+esc(cmd)+'" data-m="'+esc(m)+'">'+lib+'</button>';
+  let h='';
+  if(e.k==='warn')h='⏳ <b>'+esc(e.t)+'</b> Rien à faire : cette carte se met à jour toute seule.';
+  else if(corr>tb)h='✅ <b>Vos corrections sont enregistrées</b> mais pas encore dans la vidéo.<br>1) Voyez-les sur l\'aperçu (10 min, gratuit). 2) Puis fabriquez la vidéo : seules les secondes changées sont refaites.<div class="row">'+bouton('👁 Voir l\'aperçu corrigé','aperçu','Aperçu lancé (environ 10 min).')+bouton('🎬 Vidéo corrigée','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
+  else if(/Planches à valider/.test(x)&&!cs.some(c=>new Date(c.created_at)>tb&&/^\s*\d+\s*[A-Da-d]\b/.test(c.body||'')))h='☑ <b>L\'application hésite sur certains plans.</b> Appuyez sur « ☑ Planches à cocher » ci-dessous, touchez une image par question, puis « Copier » : un bouton « Envoyer ma réponse » apparaît.<br>Si tout vous va déjà :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
+  else if(/Aperçu des plans prêt/.test(x))h='👁 <b>L\'aperçu est prêt</b> (bouton « Voir l\'aperçu »). S\'il vous plaît :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>Sinon : « 💬 Discuter avec l\'assistant » pour corriger.';
+  else if(/La vidéo est prête/.test(x))h='🎬 <b>La vidéo est prête</b> (« ▶ Regarder la vidéo »). Pour corriger : « 💬 Discuter avec l\'assistant » → « ✅ Appliquer », puis revenez ici.';
+  else if(/Fiche Gemini prête/.test(x))h='🖼 <b>La fiche Gemini est prête.</b> Elle ne corrige pas la vidéo : elle sert à créer dans Gemini les images qui manquent. Ouvrez « 🖼 Fiche Gemini », faites les images, puis « 🧩 Renvoyer les images Gemini ».<br>Pour continuer sans nouvelles images :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
+  else if(/Images rangées/.test(x))h='🧩 <b>Les nouvelles images sont rangées</b> (« 🧩 Images rangées » pour les voir). Pour les utiliser :<div class="row">'+bouton('👁 Nouvel aperçu','aperçu','Aperçu lancé (environ 10 min).')+'</div>';
+  else if(/Essai du code réussi/.test(x))h='🧪 <b>La modification du code a marché sur les essais.</b> Regardez les images « 🧪 Essai du code », puis « ✅ Accepter » ou « ✖ Refuser » ci-dessous.';
+  else if(/❌/.test(x))h='❌ <b>Problème pendant la fabrication.</b> Ouvrez « Détails de la fabrication », ou demandez à l\'assistant (« 💬 Discuter ») ce qui ne va pas.';
+  z.innerHTML=h?'<div class="msg etp">'+h+'</div>':'';z.querySelectorAll('[data-c]').forEach(bt=>bt.onclick=()=>dire(bt.dataset.c,bt.dataset.m))}
 </script>
 </body></html>

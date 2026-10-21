@@ -57,7 +57,7 @@ jobs:
               W.save('import.png')
           PY
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
-          git add studio/assets && git commit -qm "Images Gemini rangées (demande #$N) : $K" && git pull -q --rebase && git push -q && SHA=$(git rev-parse --short HEAD)
+          git add studio/assets && git commit -qm "Images Gemini rangées (demande #$N) : $K" && git pull -q --rebase --autostash && git push -q && SHA=$(git rev-parse --short HEAD)
           if [ -n "$SHA" ] && [ -f import.png ]; then
             bash .github/scripts/fichiers.sh "$N" import.png
             M="🧩 Images rangées dans le studio : $K"$'\n'"Planche : bouton « 🧩 Images rangées » de la page. Si une pose est ratée : **annuler import $SHA**"
