@@ -1,5 +1,5 @@
 """Écrit docs/CAPACITES.md : ce que l'application sait montrer aujourd'hui (personnages, poses, émotions, objets, décors).
-Généré à partir du catalogue : à relancer après l'ajout de nouvelles images."""
+Généré à partir du catalogue : à relancer après l'ajout de nouvelles images (essai assistant)."""
 import json, os, collections
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 cat = json.load(open(A + '/catalog.json')); P = cat['poses']
