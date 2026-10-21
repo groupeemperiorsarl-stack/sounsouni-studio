@@ -1,0 +1,55 @@
+TITRE: Les Plans de Bakary – Épisode test : Le thé de minuit
+
+DÉCOR: KIOSQUE · soir · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo assis sur le banc]
+
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Nouvelle commande ✔ · 3 thés à la menthe – 2500 F – avant 18h30]
+
+PENSÉE BAKARY (surpris · regarde: téléphone)
+{grand_sourire} Une commande de trois thés à la menthe…
+
+BAKARY (content · regarde: Modibo · voix: normal)
+{grand_sourire} Trois thés, deux mille cinq cents francs ! Van, la soirée commence bien !
+
+MODIBO (mefiant · regarde: Bakary · voix: normal)
+Bakary, regarde bien qui a commandé.
+
+[BRUITAGE: sonnerie]
+
+KARIM (moqueur · voix: au téléphone)
+Allô, le marchand de thé ? C’est moi qui ai commandé. Je veux voir si ton application marche vraiment.
+
+BAKARY (neutre · regarde: téléphone · voix: normal)
+{leve_yeux_ciel} Elle marche, Karim. Tout est sur sounsouni point pro.
+
+[RÉACTION MODIBO: rire_retenu]
+
+[BRUITAGE: talons]
+
+PLAN: large [Bakary debout, Modibo assis, Awa marche]
+
+AWA (colere · regarde: Bakary · voix: normal)
+Bonsoir ! Bakary, ton thé de midi était froid.
+
+PLAN: gros [Bakary debout, verre]
+
+BAKARY (neutre · regarde: AWA · voix: normal)
+{sourire} {tendre} Voici, prends.
+
+BAKARY (neutre · regarde: AWA · voix: normal)
+{sourire} Celui-ci est chaud !
+[RÉACTION MODIBO: sourire]
+
+AWA (gene · regarde: Bakary · voix: normal)
+Mimi va encore se moquer de moi…
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Découvrez Sounsouni, votre compagnon de commande. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
