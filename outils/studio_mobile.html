@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 <h1>Sounsouni Studio</h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
 
 <section id="v-eps">
-  <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ Minutes</button></div>
+  <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
   <div id="tableau"></div><div id="liste"><p class="muted">Chargement…</p></div>
 </section>
 
@@ -186,9 +186,9 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
         z.innerHTML='<div class="row"><button class="go">📨 Envoyer ma réponse : '+esc(r)+'</button></div>';z.querySelector('.go').onclick=async()=>{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:r.toUpperCase()})});z.innerHTML='<p class="msg">✅ Réponse « '+esc(r)+' » envoyée : un nouvel aperçu avec vos choix arrive dans environ 10 minutes.</p>'}})}}
     catch(e){v.innerHTML='<p class="msg">Fichier introuvable pour l\'instant. Réessayez dans un moment.</p>'}})}
 $('#minutes').onclick=async()=>{const t=$('#tableau');if(t.innerHTML){t.innerHTML='';return}t.innerHTML='<div class="card"><p class="muted">Chargement…</p></div>';
-  try{const [i2,runs]=await Promise.all([api('/repos/'+R+'/issues/2'),api('/repos/'+R+'/actions/runs?per_page=8').catch(()=>({workflow_runs:[]}))]);
+  try{const runs=await api('/repos/'+R+'/actions/runs?per_page=12').catch(()=>({workflow_runs:[]}));
     const enc=runs.workflow_runs.filter(r=>r.status!=='completed').map(r=>'<p>⏳ '+esc(r.name)+' — '+(r.status==='queued'?'en attente d\'une machine':'en cours')+' depuis '+Math.round((Date.now()-new Date(r.run_started_at||r.created_at))/60000)+' min</p>').join('');
-    t.innerHTML='<div class="card md"><h3>Fabrications en cours</h3>'+(enc||'<p class="muted">Aucune.</p>')+md(i2.body)+'</div>'}catch(e){t.innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}};
+    t.innerHTML='<div class="card md"><h3>Fabrications en cours</h3>'+(enc||'<p class="muted">Aucune.</p>')+'<p class="muted">Le dépôt est public : les machines de GitHub sont gratuites, sans limite de minutes (20 machines au plus en même temps ; une 2e demande attend que des machines se libèrent).</p></div>'}catch(e){t.innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}};
 $('#maj').onclick=charger;vue(TOK?'eps':'cfg');
 // ---------------- Assistant de secours (IA gratuite : Groq, puis Cerebras / OpenRouter) ----------------
 const K={groq:'',cer:'',or:''};try{K.groq=localStorage.getItem('ss_groq')||'';K.cer=localStorage.getItem('ss_cer')||'';K.or=localStorage.getItem('ss_or')||''}catch(e){}
@@ -421,10 +421,17 @@ function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.n
 // ---------------- Renvoyer les images Gemini depuis le téléphone ----------------
 function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector('.g-l'),msg=d.querySelector('.g-m');let F=[];
   inp.onchange=()=>{F=[...inp.files];lst.innerHTML=F.map((f,k)=>'<div class="row" style="align-items:center"><img class="mini" src="'+URL.createObjectURL(f)+'"><label style="margin:0">Demande n°</label><input class="g-n" style="width:70px" type="number" value="'+(k+1)+'"></div>').join('')};
-  d.querySelector('.g-v').onclick=async()=>{if(!F.length)return;msg.innerHTML='<p class="msg">L\'assistant regarde les images…</p>';try{const fj=await fetch(API+'/repos/'+R+'/contents/'+i.number+'/fiche_gemini.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.text():'');
-      const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value),parts=[{text:'Fiche Gemini (ce qui a été demandé pour chaque numéro de demande) :\n'+(fj||'(fiche introuvable : refaire « Fiche Gemini »)')+'\n\nVérifie chaque image ci-dessous selon la règle 5. Réponds en JSON {"reponse": "…", "actions": []}.'}];
-      for(let k=0;k<F.length;k++)parts.push({text:'Image pour la demande n° '+ns[k]+' :'},{inline_data:{mime_type:F[k].type||'image/png',data:await blob64(F[k])}});
-      if(!CONSIGNES)await contexte(i,'');const r=await gem(CONSIGNES,parts,t=>msg.innerHTML='<p class="msg">'+esc(t)+'</p>');msg.innerHTML='<p class="msg">'+esc(r.reponse||'')+'</p>'}catch(e){msg.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}};
+  d.querySelector('.g-v').onclick=async()=>{if(!F.length)return;const mm=t=>msg.innerHTML='<p class="msg">'+esc(t)+'</p>';mm('L\'assistant prépare la vérification…');try{
+      const fj=await fetch(API+'/repos/'+R+'/contents/'+i.number+'/fiche_gemini.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.json():null);
+      if(!fj){mm('Faites d\'abord « 🖼 Fiche Gemini » pour cet épisode : l\'assistant a besoin de savoir ce qui a été demandé pour vérifier les images.');return}
+      const ns=[...lst.querySelectorAll('.g-n')].map(x=>+x.value),parts=[{text:'Tu vérifies des images faites par Gemini pour le studio. Pour chaque image : compare-la aux IMAGES DE RÉFÉRENCE du ou des personnages demandés (visage, coiffure, habits, couleurs). Ne te fie qu\'à ce que tu VOIS. Si ce n\'est pas le bon personnage, dis-le clairement. Vérifie aussi : nombre de personnages, pose demandée, mains et pieds entiers, pas de texte, fond simple. Réponds en JSON {"reponse": "une ligne par image : n° — bonne ou à refaire, et pourquoi", "actions": []}.'}];
+      const refs=new Set();
+      for(let k=0;k<F.length;k++){const g=(fj.groupes||[]).find(x=>x.g===ns[k]);if(!g){parts.push({text:'Image '+(k+1)+' : numéro de demande '+ns[k]+' inconnu dans la fiche.'});continue}
+        const it=g.items.map(n=>fj.items.find(x=>x.n===n)).filter(Boolean);
+        for(const x of it)if(x.ref&&!refs.has(x.ref)){refs.add(x.ref);try{const r=await fetch(API+'/repos/'+R+'/contents/studio/assets/poses/'+x.ref+'.webp?ref=main',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});
+          if(r.ok)parts.push({text:'IMAGE DE RÉFÉRENCE de '+x.perso+' (voici exactement à quoi il ou elle ressemble) :'},{inline_data:{mime_type:'image/webp',data:await blob64(await r.blob())}})}catch(e){}}
+        parts.push({text:'Image '+(k+1)+' (demande n° '+ns[k]+'). Demandé : '+it.map(x=>x.perso+(x.posture?' '+x.posture:'')+(x.emo?' · '+x.emo:'')).join(' ; ')+(g.items.length>1?' — '+g.items.length+' personnages côte à côte, de gauche à droite dans cet ordre':'')+'. Texte de la demande : '+(g.demande||'').slice(0,600)},{inline_data:{mime_type:F[k].type||'image/png',data:await blob64(F[k])}})}
+      if(!CONSIGNES)await contexte(i,'');const r=await gem(CONSIGNES,parts,mm);mm(r.reponse||'')}catch(e){mm('❌ '+e.message)}};
   d.querySelector('.g-e').onclick=async()=>{if(!F.length)return;try{const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value),pr=[];
       for(let k=0;k<F.length;k++){msg.innerHTML='<p class="msg">Envoi de l\'image '+(k+1)+' sur '+F.length+'…</p>';const nom=ns[k]+'_'+Date.now().toString(36)+'.'+((F[k].name.split('.').pop()||'png').toLowerCase().replace(/[^a-z]/g,'')||'png');
         await ghEcrire('demandes/gemini/'+i.number+'/'+nom,await blob64(F[k]),'Image Gemini de la demande #'+i.number);pr.push(ns[k]+'='+nom)}
