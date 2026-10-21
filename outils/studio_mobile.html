@@ -309,25 +309,26 @@ $('#a-lap').onclick=()=>lancer('a',$('#a-out').value,$('#a-titre').value||'assis
 $('#a-lv').onclick=()=>lancer('v',$('#a-out').value,$('#a-titre').value||'assistant');
 // ---------------- Discuter avec l'assistant (Gemini : voit les images, écoute, regarde la vidéo) + actions sur l'application ----------------
 K.gem='';try{K.gem=localStorage.getItem('ss_gem')||''}catch(e){}$('#k-gem').value=K.gem;
-$('#k-save').addEventListener('click',()=>{K.gem=$('#k-gem').value.trim();try{localStorage.setItem('ss_gem',K.gem);localStorage.removeItem('ss_gem_m')}catch(e){}});
+$('#k-save').addEventListener('click',()=>{K.gem=$('#k-gem').value.trim();try{localStorage.setItem('ss_gem',K.gem);localStorage.removeItem('ss_gem_ms')}catch(e){}});
 const u8b64=s=>btoa(unescape(encodeURIComponent(s))),b64u8=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,''))));
 const blob64=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(String(f.result).split(',')[1]);f.readAsDataURL(b)});
 async function ghLire(chemin,ref='main'){const r=await fetch(API+'/repos/'+R+'/contents/'+chemin+'?ref='+ref,{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});return r.ok?r.text():null}
 async function ghSha(chemin,ref='main'){try{return (await api('/repos/'+R+'/contents/'+chemin+'?ref='+ref)).sha}catch(e){return null}}
 async function ghEcrire(chemin,contenu64,msg,ref='main'){const sha=await ghSha(chemin,ref);return api('/repos/'+R+'/contents/'+chemin,{method:'PUT',body:JSON.stringify({message:msg+'\n\n(assistant de la page Studio mobile)',content:contenu64,branch:ref,...(sha?{sha}:{})})})}
-async function modeleGem(){let m='';try{m=localStorage.getItem('ss_gem_m')||''}catch(e){}if(m)return m;
-  const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200',{headers:{'x-goog-api-key':K.gem}});if(!r.ok)throw new Error('clé Gemini refusée ('+r.status+')');
-  const ms=(await r.json()).models.filter(x=>(x.supportedGenerationMethods||[]).includes('generateContent')&&/flash/.test(x.name)&&!/lite|image|tts|live|audio|embed|thinking|exp/.test(x.name));
-  const v=x=>{const n=x.name.match(/(\d+(?:\.\d+)?)/);return (n?parseFloat(n[1]):0)-(/preview/.test(x.name)?0.01:0)};ms.sort((a,b)=>v(b)-v(a));
-  m=ms[0]?ms[0].name:'models/gemini-2.5-flash';try{localStorage.setItem('ss_gem_m',m)}catch(e){}return m}
-async function gem(sys,parts,prog){if(!K.gem)throw new Error('Ajoutez d\'abord la clé Gemini (onglet 🤖 Assistant, en bas).');const m=await modeleGem();
-  for(let essai=0;essai<3;essai++){const r=await fetch('https://generativelanguage.googleapis.com/v1beta/'+m+':generateContent',{method:'POST',headers:{'x-goog-api-key':K.gem,'Content-Type':'application/json'},
-      body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}],generationConfig:{temperature:0.2,responseMimeType:'application/json'}})});
-    if(r.status===429||r.status===503){prog&&prog('Gemini est occupé, nouvel essai dans 30 s…');await dodo(30000);continue}
-    if(!r.ok)throw new Error('Gemini : '+r.status+' '+(await r.text()).slice(0,200));
-    const d=await r.json(),t=(d.candidates?.[0]?.content?.parts||[]).map(p=>p.text||'').join('');
-    try{return JSON.parse(t.replace(/^\s*```(json)?|```\s*$/g,''))}catch(e){return{reponse:t,actions:[]}}}
-  throw new Error('Gemini est saturé pour le moment, réessayez dans quelques minutes.')}
+async function modelesGem(){let L=[];try{L=JSON.parse(localStorage.getItem('ss_gem_ms')||'[]')}catch(e){}if(L.length)return L;
+  let tok='',all=[];do{const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000'+(tok?'&pageToken='+tok:''),{headers:{'x-goog-api-key':K.gem}});if(!r.ok)throw new Error('clé Gemini refusée ('+r.status+')');const j=await r.json();all=all.concat(j.models||[]);tok=j.nextPageToken||''}while(tok);
+  const ms=all.filter(x=>(x.supportedGenerationMethods||[]).includes('generateContent')&&/flash/.test(x.name)&&!/lite|image|tts|live|audio|embed|exp/.test(x.name)).map(x=>x.name);
+  const v=n=>{const m=n.match(/(\d+(?:\.\d+)?)/);return (m?parseFloat(m[1]):0)-(/preview/.test(n)?0.05:0)-(/latest/.test(n)?0.02:0)};
+  L=[...new Set([...ms,'models/gemini-3.8-flash','models/gemini-flash-latest','models/gemini-3-flash-preview'])].sort((a,b)=>v(b)-v(a));try{localStorage.setItem('ss_gem_ms',JSON.stringify(L))}catch(e){}return L}
+async function gem(sys,parts,prog){if(!K.gem)throw new Error('Ajoutez d\'abord la clé Gemini (onglet 🤖 Assistant, en bas).');const L=await modelesGem();let err='';
+  for(let tour=0;tour<3;tour++){for(const m of L){   // un modèle saturé ou retiré : on passe tout de suite au suivant
+      const r=await fetch('https://generativelanguage.googleapis.com/v1beta/'+m+':generateContent',{method:'POST',headers:{'x-goog-api-key':K.gem,'Content-Type':'application/json'},
+        body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}],generationConfig:{temperature:0.2,responseMimeType:'application/json'}})});
+      if(!r.ok){err=m.replace('models/','')+' : '+r.status;if([400,403].includes(r.status)&&!/model/i.test(await r.clone().text()))throw new Error('Gemini : '+r.status+' '+(await r.text()).slice(0,200));continue}
+      const d=await r.json(),t=(d.candidates?.[0]?.content?.parts||[]).map(p=>p.text||'').join('');if(!t){err=m+' : réponse vide';continue}
+      try{return JSON.parse(t.replace(/^\s*```(json)?|```\s*$/g,''))}catch(e){return{reponse:t,actions:[]}}}
+    prog&&prog('Gemini est très demandé en ce moment, nouvel essai dans 20 s…');await dodo(20000)}
+  throw new Error('Gemini est saturé pour le moment ('+err+'), réessayez dans quelques minutes.')}
 let CONSIGNES='',POSESL='';
 async function contexte(i,scr){if(!CONSIGNES)CONSIGNES=(await ghLire('docs/ASSISTANT_ACTIONS.md'))+'\n\n## GUIDE DU FORMAT DU SCRIPT\n'+(await regles());
   if(!POSESL){const c=JSON.parse(await ghLire('studio/assets/catalog.json'));POSESL=Object.entries(c.poses).filter(([k])=>!k.includes('@')).map(([k,p])=>k+' : '+p.char+' · '+p.posture+' · '+(p.tags||[]).join(' ')).join('\n')}
@@ -339,9 +340,13 @@ function decrire(a){const p=a.plan!=null?'Plan '+a.plan+' : ':'';switch(a.type){
   case 'acteur':return p+a.qui+' — '+['dx','dy','taille','retourner','cacher'].filter(k=>a[k]!=null).map(k=>({dx:'gauche/droite',dy:'haut/bas',taille:'taille',retourner:'retourné',cacher:'caché'}[k])+' '+a[k]).join(', ');
   case 'duree':return p+'dure '+a.secondes+' s';case 'lexique':return 'Prononciation : « '+a.ecrit+' » se dit « '+a.prononce+' »';case 'reglage':return 'Réglage général '+a.cle+' = '+JSON.stringify(a.valeur);
   case 'relancer':return 'Relancer : '+a.quoi+(a.de?' '+a.de+'-'+a.a:'');case 'fiche':return 'Préparer la fiche Gemini';case 'code':return 'Code '+a.fichier+' (essayé sur une copie à part avant d\'entrer dans le studio)';default:return JSON.stringify(a)}}
+// remplace « ancien » par « nouveau » ; si l'IA a mal recopié les espaces ou les retours à la ligne, on accepte ces petites différences (jamais deux endroits à la fois)
+function remplacer(s,ancien,nouveau,ou){if(s.split(ancien).length===2)return s.replace(ancien,()=>nouveau);
+  const re=new RegExp(ancien.trim().split(/\s+/).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('\\s+'),'g'),m=s.match(re);
+  if(m&&m.length===1)return s.replace(re,()=>nouveau);throw new Error((m?'texte trouvé plusieurs fois':'texte introuvable')+' dans '+ou+' : « '+ancien.slice(0,60)+' »')}
 async function appliquer(i,acts,out){const n=i.number,fait=[];
   const sc=acts.filter(a=>a.type==='script');if(sc.length){let b=i.body||'';const m=b.match(/```(?:text)?\n([\s\S]*?)\n```/);let s=m?m[1]:b;
-    for(const a of sc){if(s.split(a.ancien).length!==2)throw new Error('texte introuvable (ou en double) dans le script : « '+a.ancien.slice(0,60)+' »');s=s.replace(a.ancien,()=>a.nouveau)}
+    for(const a of sc)s=remplacer(s,a.ancien,a.nouveau,'le script');
     await api('/repos/'+R+'/issues/'+n,{method:'PATCH',body:JSON.stringify({body:corps(/Vidéo complète/.test(b)?'v':'a',s)})});i.body=corps(/Vidéo complète/.test(b)?'v':'a',s);fait.push('script modifié')}
   const pl=acts.filter(a=>['plan','pose','acteur','duree'].includes(a.type));if(pl.length){const f='demandes/episode_'+n+'.choix.json';const ch=JSON.parse(await ghLire(f)||'{}');
     for(const a of pl){const c=ch[String(a.plan)]=ch[String(a.plan)]||{};if(a.type==='plan')c.cadrage=a.cadrage;if(a.type==='pose')c.pose={who:a.qui.toUpperCase(),key:a.pose};if(a.type==='duree')c.duree=a.secondes;
@@ -352,7 +357,7 @@ async function appliquer(i,acts,out){const n=i.number,fait=[];
     await ghEcrire('studio/reglages.json',u8b64(JSON.stringify(j,null,1)),'Réglages modifiés : '+rg.map(a=>a.cle).join(', '));fait.push('réglage(s) modifié(s)')}
   const cd=acts.filter(a=>a.type==='code');if(cd.length){for(const a of cd)if(!/^(studio\/[\w.-]+\.(py|json|txt)|docs\/[\w.-]+\.md)$/.test(a.fichier))throw new Error('fichier interdit pour l\'assistant : '+a.fichier);
     const br='assistant-'+n+'-'+Date.now().toString(36),main=(await api('/repos/'+R+'/git/ref/heads/main')).object.sha;await api('/repos/'+R+'/git/refs',{method:'POST',body:JSON.stringify({ref:'refs/heads/'+br,sha:main})});
-    const fs={};for(const a of cd){fs[a.fichier]=fs[a.fichier]??await ghLire(a.fichier,br);if(fs[a.fichier]==null||fs[a.fichier].split(a.ancien).length!==2)throw new Error('code introuvable (ou en double) dans '+a.fichier+' : « '+a.ancien.slice(0,60)+' »');fs[a.fichier]=fs[a.fichier].replace(a.ancien,()=>a.nouveau)}
+    const fs={};for(const a of cd){fs[a.fichier]=fs[a.fichier]??await ghLire(a.fichier,br);if(fs[a.fichier]==null)throw new Error('fichier introuvable : '+a.fichier);fs[a.fichier]=remplacer(fs[a.fichier],a.ancien,a.nouveau,a.fichier)}
     for(const [f,t] of Object.entries(fs))await ghEcrire(f,u8b64(t),'Modification proposée par l\'assistant : '+cd.map(a=>a.pourquoi||'').join(' ; ').slice(0,200),br);
     await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'essai code '+br})});fait.push('code mis sur une copie à part ('+br+'), essai lancé')}
   const rl=acts.filter(a=>a.type==='relancer'||a.type==='fiche');const dire=async t=>api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});
