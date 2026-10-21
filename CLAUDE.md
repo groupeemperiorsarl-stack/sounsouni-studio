@@ -9,12 +9,12 @@
 ## Façon de travailler demandée par Issa (important)
 1. **Valider sur des images fixes avant toute vidéo** : c'est **l'application** qui fabrique les planches A / B / C / D (`--planches`, voir « Fabriquer »). Claude n'a pas besoin de regarder ces images lui-même : il envoie `planches/planches.html` (page à cocher) à Issa, qui répond « 1B 3C ». Ne fabriquer la vidéo qu'après son accord.
 2. **Ne refaire que les secondes concernées** d'un épisode déjà fait (rendre le morceau, puis le recoller avec ffmpeg), jamais tout l'épisode.
-3. **Économiser** : ses crédits Claude et les minutes GitHub (2 000 minutes gratuites par mois ; un épisode complet sur 15 machines ≈ 170 minutes). Les essais se font en local, GitHub sert aux vrais épisodes.
+3. **Économiser** ses crédits Claude. Le dépôt est **public depuis le 21/10/2026** : les minutes GitHub sont gratuites et sans limite (au plus 20 machines en même temps sur le compte gratuit). Les essais rapides restent en local.
 4. Chercher soi-même des outils libres (GitHub) plutôt que de lui demander des images ou de passer par des services payants. Il ne télécharge rien lui-même.
 5. **Sécurité** : ne jamais écrire de clé ou de jeton dans le dépôt. Kaggle : jeton seulement en variable d'environnement `KAGGLE_API_TOKEN`, fourni par Issa dans la conversation. Supabase : lecture libre, aucune modification sans son accord explicite. GitHub : ne déposer que ce qu'il demande.
 
 ## Fabriquer
-- **Formulaire « Nouvel épisode »** (sans Claude) : `https://github.com/groupeemperiorsarl-stack/sounsouni-studio/issues/new?template=nouvel-episode.yml`. Il donne d'abord l'aperçu ; un commentaire d'un seul mot, « vidéo » ou « aperçu », lance la suite (`.github/workflows/demande.yml` → `episode.yml`, 15 machines ; vidéo publiée en *release*).
+- **Formulaire « Nouvel épisode »** (sans Claude) : `https://github.com/groupeemperiorsarl-stack/sounsouni-studio/issues/new?template=nouvel-episode.yml`. Il donne d'abord l'aperçu ; un commentaire d'un seul mot, « vidéo » ou « aperçu », lance la suite (`.github/workflows/demande.yml` → `episode.yml`, 20 machines ; vidéo publiée en *release*).
 - **Tableau de bord des minutes** : issue n° 2 (`.github/workflows/tableau.yml`).
 - **En local** :
   - aperçu sans voix : `STUDIO_FAUSSES_VOIX=1 python -m studio script.txt -o sortie --plans-seulement` → `sortie/apercu_plans.png` ;
@@ -60,4 +60,4 @@
 - Assistant de secours ajouté (Groq gratuit) et testé sur un extrait de 40 s (demande n° 5).
 - Planches A / B / C automatiques ajoutées (local et GitHub) + rendu partiel automatique par morceaux.
 - Épisode 15 « La rumeur » fini (v5) ; script : `exemples/episode15_la_rumeur.txt` (+ début réécrit : `exemples/episode15_debut_corrige.txt`).
-- Plus tard : passer de 15 à 5 machines (quand l'application sera bien réglée) ; vues de dos des personnages qui n'en ont pas ; nettoyer le décor BUREAU (figurants) ; pose de Karim assis.
+- Plus tard : vues de dos des personnages qui n'en ont pas ; nettoyer le décor BUREAU (figurants) ; pose de Karim assis.
