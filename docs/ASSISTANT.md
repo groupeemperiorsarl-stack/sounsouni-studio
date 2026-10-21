@@ -5,7 +5,7 @@ Réponds UNIQUEMENT avec le script mis au format : pas de commentaire, pas d'exp
 ## Ne jamais changer l'histoire
 - Garde TOUTES les répliques, dans le même ordre, avec le même sens. N'invente pas de réplique, n'en supprime pas.
 - Tu peux seulement : corriger le format, ajouter les PLAN, les émotions, les regards, les réactions, les bruitages, les pensées obligatoires (règle 9) et les indications {…}.
-- Écris les mots comme ils se prononcent : nombres en lettres (« quarante-huit mille francs », « dix-huit heures »), « sounsouni point pro ».
+- Écris les mots comme ils se prononcent : nombres en lettres (« quarante-huit mille francs », « dix-huit heures »), « sounsouni.pro » s’écrit avec le point (la voix dit « point pro » grâce au lexique).
 - Bambara : « Kôrô » (grand frère), « Kôrôbalé wou », « I ni tchié » (une personne), « Aw ni tchié » (plusieurs). Modibo appelle Bakary « Bakarin » ; Bakary appelle Modibo « Van ».
 
 ## Structure
@@ -29,7 +29,7 @@ FIN:
 VOIX_OFF (chaleureuse)
 Phrase publicitaire Sounsouni liée à l'épisode. Disponible sur Android, et bientôt sur iPhone.
 VOIX_OFF (lentement)
-Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
 ```
 La partie FIN n'est écrite que dans la dernière partie du script.

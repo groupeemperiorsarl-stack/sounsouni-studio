@@ -2,3 +2,5 @@
 # L'application remplace le mot écrit par la forme prononcée avant de fabriquer la voix (le texte affiché ne change pas).
 Kôrôbalé wou = Kôrôbaléou
 Kôrôbale wou = Kôrôbaléou
+sounsouni.pro = sounsouni point pro
+Android = Androïde

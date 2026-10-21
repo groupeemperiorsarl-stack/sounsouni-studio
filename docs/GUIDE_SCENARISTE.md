@@ -13,7 +13,7 @@ voix, visages, gestes, réactions, décors, bruitages. Tout ce qui est écrit se
 - **Durée visée : 3 à 4 minutes** (jamais moins de 3). Repère : 1 minute ≈ 110 à 130 mots de dialogue.
 - **Une réplique = une seule personne qui parle.** Si un autre personnage réagit, on l'écrit avec `[RÉACTION …]`.
 - **Les indications sont accrochées au mot qui suit** : `{sourire} Bonjour` → le sourire commence sur « Bonjour ».
-- **Écrire les mots comme ils doivent être prononcés** (« V.D.B. », « cinq cents », « sounsouni point pro »).
+- **Écrire les mots comme ils doivent être prononcés** (« V.D.B. », « cinq cents »). Exception : « sounsouni.pro » s’écrit avec le point, la voix dit « point pro » toute seule.
 - **Pas d'action impossible** : un personnage ne dit à voix haute que ce que les autres peuvent entendre.
   Ce qu'il pense se met en **PENSÉE** (voir § 4).
 - **Plans d'ensemble obligatoires** dès que plusieurs personnages sont concernés (dispute, appel, révélation).
@@ -202,7 +202,7 @@ FIN:
 VOIX_OFF (chaleureuse)
 <phrase publicitaire Sounsouni adaptée à l'épisode>
 VOIX_OFF (lentement)
-Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
 ```
 

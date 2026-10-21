@@ -342,9 +342,9 @@ async function gem(sys,parts,prog){if(!K.gem)throw new Error('Ajoutez d\'abord l
 let CONSIGNES='',POSESL='';
 async function contexte(i,scr){if(!CONSIGNES)CONSIGNES=(await ghLire('docs/ASSISTANT_ACTIONS.md'))+'\n\n## GUIDE DU FORMAT DU SCRIPT\n'+(await regles());
   if(!POSESL){const c=JSON.parse(await ghLire('studio/assets/catalog.json'));POSESL=Object.entries(c.poses).filter(([k])=>!k.includes('@')).map(([k,p])=>k+' : '+p.char+' · '+p.posture+' · '+(p.tags||[]).join(' ')).join('\n')}
-  const [pr,ch,rg]=await Promise.all([fetch(API+'/repos/'+R+'/contents/'+i.number+'/plans_resume.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.text():'(pas encore d\'aperçu : relancer l\'aperçu)'),
-    ghLire('demandes/episode_'+i.number+'.choix.json').then(x=>x||'{}'),ghLire('studio/reglages.json')]);
-  return '## SCRIPT DE L\'ÉPISODE (demande n° '+i.number+')\n'+scr+'\n\n## PLANS MINUTÉS (plans_resume)\n'+pr+'\n\n## CHOIX ET CORRECTIONS DÉJÀ FAITS (par numéro de plan)\n'+ch+'\n\n## RÉGLAGES\n'+rg+'\n\n## POSES DISPONIBLES (clé : personnage · posture · étiquettes)\n'+POSESL}
+  const [pr,ch,rg,lx]=await Promise.all([fetch(API+'/repos/'+R+'/contents/'+i.number+'/plans_resume.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.text():'(pas encore d\'aperçu : relancer l\'aperçu)'),
+    ghLire('demandes/episode_'+i.number+'.choix.json').then(x=>x||'{}'),ghLire('studio/reglages.json'),ghLire('studio/lexique.txt')]);
+  return '## SCRIPT DE L\'ÉPISODE (demande n° '+i.number+')\n'+scr+'\n\n## PLANS MINUTÉS (plans_resume)\n'+pr+'\n\n## CHOIX ET CORRECTIONS DÉJÀ FAITS (par numéro de plan)\n'+ch+'\n\n## RÉGLAGES\n'+rg+'\n\n## LEXIQUE (prononciations déjà connues)\n'+lx+'\n\n## POSES DISPONIBLES (clé : personnage · posture · étiquettes)\n'+POSESL}
 function decrire(a){const p=a.plan!=null?'Plan '+a.plan+' : ':'';switch(a.type){
   case 'script':return 'Script : « '+a.ancien+' » → « '+a.nouveau+' »';case 'plan':return p+'cadrage « '+a.cadrage+' »';case 'pose':return p+a.qui+' prend la pose '+a.pose;
   case 'acteur':return p+a.qui+' — '+['dx','dy','taille','retourner','cacher'].filter(k=>a[k]!=null).map(k=>({dx:'gauche/droite',dy:'haut/bas',taille:'taille',retourner:'retourné',cacher:'caché'}[k])+' '+a[k]).join(', ');
@@ -355,24 +355,37 @@ function remplacer(s,ancien,nouveau,ou){if(s.split(ancien).length===2)return s.r
   const re=new RegExp(ancien.trim().split(/\s+/).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('\\s+'),'g'),m=s.match(re);
   if(m&&m.length===1)return s.replace(re,()=>nouveau);throw new Error((m?'texte trouvé plusieurs fois':'texte introuvable')+' dans '+ou+' : « '+ancien.slice(0,60)+' »')}
 async function appliquer(i,acts,out){const n=i.number,fait=[];
+  try{
   const sc=acts.filter(a=>a.type==='script');if(sc.length){let b=i.body||'';const m=b.match(/```(?:text)?\n([\s\S]*?)\n```/);let s=m?m[1]:b;
-    for(const a of sc)s=remplacer(s,a.ancien,a.nouveau,'le script');
-    await api('/repos/'+R+'/issues/'+n,{method:'PATCH',body:JSON.stringify({body:corps(/Vidéo complète/.test(b)?'v':'a',s)})});i.body=corps(/Vidéo complète/.test(b)?'v':'a',s);fait.push('script modifié')}
+    let nb=0;for(const a of sc){if(a.nouveau&&s.includes(a.nouveau)&&!s.includes(a.ancien))continue;s=remplacer(s,a.ancien,a.nouveau,'le script');nb++}if(!nb){fait.push('script déjà corrigé')}else{
+    await api('/repos/'+R+'/issues/'+n,{method:'PATCH',body:JSON.stringify({body:corps(/Vidéo complète/.test(b)?'v':'a',s)})});i.body=corps(/Vidéo complète/.test(b)?'v':'a',s);fait.push('script modifié')}}
+  }catch(e){fait.push('❌ script : '+e.message)}
+  try{
   const pl=acts.filter(a=>['plan','pose','acteur','duree'].includes(a.type));if(pl.length){const f='demandes/episode_'+n+'.choix.json';const ch=JSON.parse(await ghLire(f)||'{}');
     for(const a of pl){const c=ch[String(a.plan)]=ch[String(a.plan)]||{};if(a.type==='plan')c.cadrage=a.cadrage;if(a.type==='pose')c.pose={who:a.qui.toUpperCase(),key:a.pose};if(a.type==='duree')c.duree=a.secondes;
       if(a.type==='acteur'){c.acteurs=c.acteurs||{};const q=c.acteurs[a.qui.toUpperCase()]=c.acteurs[a.qui.toUpperCase()]||{};for(const k of ['dx','dy','taille','retourner','cacher'])if(a[k]!=null)q[k]=a[k]}}
     await ghEcrire(f,u8b64(JSON.stringify(ch,null,1)),'Corrections de plans (demande #'+n+')');fait.push(pl.length+' correction(s) de plans')}
+  }catch(e){fait.push('❌ plans : '+e.message)}
+  try{
   const lx=acts.filter(a=>a.type==='lexique');if(lx.length){const t=await ghLire('studio/lexique.txt')||'';await ghEcrire('studio/lexique.txt',u8b64(t.replace(/\n*$/,'\n')+lx.map(a=>a.ecrit+' = '+a.prononce).join('\n')+'\n'),'Prononciations ajoutées');fait.push('prononciation(s) ajoutée(s)')}
+  }catch(e){fait.push('❌ prononciation : '+e.message)}
+  try{
   const rg=acts.filter(a=>a.type==='reglage');if(rg.length){const j=JSON.parse(await ghLire('studio/reglages.json'));for(const a of rg){const ks=a.cle.split('.');let o=j;ks.slice(0,-1).forEach(k=>o=o[k]=o[k]||{});o[ks[ks.length-1]]=a.valeur}
     await ghEcrire('studio/reglages.json',u8b64(JSON.stringify(j,null,1)),'Réglages modifiés : '+rg.map(a=>a.cle).join(', '));fait.push('réglage(s) modifié(s)')}
+  }catch(e){fait.push('❌ réglages : '+e.message)}
+  try{
   const cd=acts.filter(a=>a.type==='code');if(cd.length){for(const a of cd)if(!/^(studio\/[\w.-]+\.(py|json|txt)|docs\/[\w.-]+\.md)$/.test(a.fichier))throw new Error('fichier interdit pour l\'assistant : '+a.fichier);
     const br='assistant-'+n+'-'+Date.now().toString(36),main=(await api('/repos/'+R+'/git/ref/heads/main')).object.sha;await api('/repos/'+R+'/git/refs',{method:'POST',body:JSON.stringify({ref:'refs/heads/'+br,sha:main})});
     const fs={};for(const a of cd){fs[a.fichier]=fs[a.fichier]??await ghLire(a.fichier,br);if(fs[a.fichier]==null)throw new Error('fichier introuvable : '+a.fichier);fs[a.fichier]=remplacer(fs[a.fichier],a.ancien,a.nouveau,a.fichier)}
     for(const [f,t] of Object.entries(fs))await ghEcrire(f,u8b64(t),'Modification proposée par l\'assistant : '+cd.map(a=>a.pourquoi||'').join(' ; ').slice(0,200),br);
     await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'essai code '+br})});fait.push('code mis sur une copie à part ('+br+'), essai lancé')}
+  }catch(e){fait.push('❌ code : '+e.message)}
+  try{
   const rl=acts.filter(a=>a.type==='relancer'||a.type==='fiche');const dire=async t=>api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});
   for(const a of rl){if(a.type==='fiche'){await dire('fiche');fait.push('fiche Gemini lancée');continue}
     await dire(a.quoi==='video'?'vidéo':a.quoi==='planches'?('planches'+(a.de&&a.a?' '+a.de+'-'+a.a:'')):'aperçu');fait.push(a.quoi+' relancé')}
+  }catch(e){fait.push('❌ relance : '+e.message)}
+
   return fait}
 function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.number;let H=[];try{H=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}
   const montrer=()=>{box.innerHTML=H.map(x=>'<p class="'+(x.r==='u'?'moi':'ia')+'">'+esc(x.t)+'</p>').join('')||'<p class="muted">Dites ce qu\'il faut changer : « à 1:20 Karim flotte », « enlève le téléphone au plan 12 », « Awa doit parler plus lentement »…</p>'};montrer();
@@ -391,7 +404,7 @@ function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.n
         '<div class="row"><button class="ok">✅ Appliquer</button><button class="sec non">✖ Rien</button></div><div class="res"></div>';
       acts.querySelector('.non').onclick=()=>acts.innerHTML='';
       acts.querySelector('.ok').onclick=async()=>{const ch=[...acts.querySelectorAll('[data-k]')].filter(x=>x.checked).map(x=>A[+x.dataset.k]);const res=acts.querySelector('.res');res.innerHTML='<p class="msg">Application…</p>';
-        try{const f=await appliquer(i,ch,res);res.innerHTML='<p class="msg">✅ Fait : '+esc(f.join(', '))+'.'+(ch.some(a=>a.type==='relancer')?' Le résultat arrivera ici.':' Pensez à relancer l\'aperçu pour voir le résultat.')+'</p>'}catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
+        try{const f=await appliquer(i,ch,res);const bad=f.some(x=>x.startsWith('❌'));res.innerHTML='<p class="msg">'+(bad?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(f.join(' · '))+'.'+(bad&&/403|404/.test(f.join(''))?' Vérifiez que votre jeton GitHub a « Contents : Read and write ».':'')+(ch.some(a=>a.type==='relancer')?' Le résultat arrivera ici.':' Pensez à relancer l\'aperçu pour voir le résultat.')+'</p>'}catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
     catch(e){prog('❌ '+e.message)}bt.disabled=false}}
 // ---------------- Renvoyer les images Gemini depuis le téléphone ----------------
 function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector('.g-l'),msg=d.querySelector('.g-m');let F=[];
