@@ -65,6 +65,9 @@ La partie FIN n'est écrite que dans la dernière partie du script.
 17. « Le téléphone sonne, c'est X (depuis ailleurs) » : X parle avec `voix: au téléphone`, il n'est dans AUCUN PLAN de la scène, et il n'a JAMAIS de PENSÉE (on ne voit pas sa tête). N'invente jamais de pensée ni de réplique pour lui.
 18. Objets dans les PLAN : seulement téléphone, verre (de thé), machine, grill, robe, brochette. Un autre objet du script (sac, livre…) n'est pas écrit dans le PLAN.
 19. L'émotion « très content », « un peu gêné »… devient un seul mot de la liste (content, gene). Garde l'émotion écrite par le scénariste, ne la remplace pas par neutre.
+20. Une seule personne par en-tête : « Bakary et Modibo (ensemble) » s'écrit `BAKARY (…)` puis la phrase, puis `[RÉACTION MODIBO: sourire]`.
+21. `PLAN: objet téléphone` seulement s'il est suivi d'un `[ÉCRAN …]`. Pour un appel, rien de plus : la réplique `voix: au téléphone` montre déjà l'écran d'appel.
+22. Une action sans parole (« Bakary lui tend un verre ») devient un PLAN avec l'objet (`PLAN: gros [Bakary debout, verre]`), JAMAIS une nouvelle réplique inventée.
 
 ## Exemple
 Texte reçu :

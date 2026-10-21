@@ -114,7 +114,7 @@ $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-ms
   $('#n-go').disabled=true;try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+($('#n-titre').value||'nouveau'),body:corps($('#n-mode').value,s),labels:['episode']})});
   $('#n-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. Suivez-la dans « Épisodes ».</p>';$('#n-script').value='';$('#n-titre').value=''}catch(e){$('#n-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#n-go').disabled=false};
 // ---- liste des épisodes
-function etat(cs){const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1],last=cs[cs.length-1];
+function etat(cs){cs=cs.filter(c=>!/^(✅|✖) Modification du code/.test(c.body||''));const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1],last=cs[cs.length-1];
   if(last&&last.user.type!=='Bot'&&(!b||new Date(last.created_at)>new Date(b.created_at)))return{t:'Demande envoyée…',k:'warn',b};
   if(!b)return{t:'En attente',k:'warn',b};const x=b.body;
   if(x.includes('❌'))return{t:'Erreur',k:'bad',b};if(x.includes('🎬'))return{t:'Vidéo prête',k:'ok',b};if(x.includes('🖼️'))return{t:'Fiche Gemini prête',k:'ok',b};if(x.includes('🧩'))return{t:'Images rangées',k:'ok',b};if(x.includes('↩️'))return{t:'Import annulé',k:'ok',b};if(x.includes('🧪'))return{t:'Essai du code prêt',k:'ok',b};if(x.includes('✅'))return{t:'Aperçu prêt',k:'ok',b};return{t:'En fabrication…',k:'warn',b}}
@@ -219,6 +219,35 @@ function parties(brut){const L=brut.replace(/\r/g,'').split('\n'),out=[];let cur
   for(const l of L){if(/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(l)&&cur.join('').trim()&&cur.some(x=>/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(x))){out.push(cur.join('\n'));cur=[]}cur.push(l)}
   if(cur.join('').trim())out.push(cur.join('\n'));
   const fin=[];for(const p of out){if(p.length<=3500){fin.push(p);continue}let b='';for(const bl of p.split(/\n\s*\n/)){if((b+bl).length>3500&&b){fin.push(b);b=''}b+=bl+'\n\n'}if(b.trim())fin.push(b)}return fin}
+// ---- corrections sûres ajoutées après le test complet n° 8 ----
+// avant l'IA : l'émotion écrite par le scénariste (« très content ») devient le mot de la liste (content), pour que l'IA la garde
+function preBrut(b){return b.split('\n').map(l=>l.replace(/^(\s*[A-ZÀ-Ÿa-zà-ÿ][\wÀ-ÿ' -]{1,30}?)\s*\(([^)]*)\)\s*:/,(x,nom,inn)=>{const ps=inn.split(','),e=emo(ps[0]);if(!e||sans(ps[0])===e)return x;ps[0]=e;return nom+' ('+ps.join(',')+') :'})).join('\n')}
+const mots=t=>sans(lettres(t)).replace(/\{[^}]*\}/g,' ').split(/[^a-z]+/).filter(Boolean),paires=t=>{const w=mots(t);return w.slice(1).map((x,k)=>w[k]+' '+x)};
+// sur la réponse de l'IA, avant le nettoyage
+function avant(t){const L=t.replace(/\r/g,'').split('\n'),out=[];
+  for(let i=0;i<L.length;i++){let l=L[i];
+    const dd=l.match(/^\s*([A-ZÀ-Ÿ_]+)\s+(?:et|ET|&)\s+([A-ZÀ-Ÿ_]+)\s*\((.*)\)\s*$/);   // « BAKARY et MODIBO (ensemble) » : un seul parle, l'autre réagit
+    if(dd){const ps=dd[3].split('·').map(s=>s.trim()).filter(s=>!/^ensemble$/i.test(s));out.push(dd[1]+' ('+ps.join(' · ')+')');if(L[i+1]!=null){out.push(L[++i])}
+      out.push('[RÉACTION '+dd[2]+': '+(emo(ps.find(s=>!s.includes(':'))||'')||'sourire')+']');continue}
+    if(/^\s*PLAN\s*:\s*objet\s+t[ée]l[ée]phone\s*$/i.test(l)&&!L.slice(i+1).filter(x=>x.trim()).slice(0,2).some(x=>/^\s*\[(ÉCRAN|ECRAN)/i.test(x)))continue;   // téléphone montré sans écran : inutile (l'appel a son propre écran)
+    const tg=!/^\s*(\[|PLAN|DÉCOR|DECOR|TITRE|FIN|NOUVE)/i.test(l)&&!TETE.test(l)&&l.match(/^(.*?\S)\s*(\{[^}]+\})\s*([.!?…]*)\s*$/);   // {indication} seule en fin de phrase → devant la phrase
+    if(tg&&!l.trim().startsWith(tg[2]))l=tg[2]+' '+tg[1]+tg[3];
+    out.push(l)}return out.join('\n')}
+// après le nettoyage : arrivées qui marchent, répliques inventées, regard vers le téléphone
+function apres(s,brut,al){const L=s.split('\n'),out=[],W=new Set(paires(brut)),pres=new Set(),tel=new Set();let prev='',fin=false;
+  L.forEach(l=>{const m=l.match(TETE);if(m&&/au t[ée]l[ée]phone/i.test(m[3]))tel.add(m[2].trim())});
+  for(let i=0;i<L.length;i++){let l=L[i];if(/^FIN\s*:/.test(l))fin=true;
+    if(/^\s*(DÉCOR|DECOR)\s*:/i.test(l))pres.clear();
+    if(/^\s*PLAN\s*:/i.test(l)){const arr=/\[BRUITAGE:\s*(talons|pas)/i.test(prev),avant=new Set(pres);if(/^\s*PLAN\s*:\s*large/i.test(l))pres.clear();
+      l=l.replace(/\[([^\]]*)\]/,(x,c)=>'['+c.split(',').map(it=>{const w=it.trim().split(/\s+/),n=nomP(w[0]);if(!PERSOS.includes(n))return it.trim();pres.add(n);
+        if(arr&&avant.size&&!avant.has(n)&&!/marche|court/i.test(it)){al.push(w[0]+' arrive (bruitage '+prev.match(/talons|pas/i)[0]+') : mis « marche »');return w[0]+' marche'}return it.trim()}).join(', ')+']');
+      l.replace(/^\s*PLAN\s*:/i,'').split(/[\s,\[\]]+/).forEach(w=>{const n=nomP(w);if(PERSOS.includes(n))pres.add(n)})}
+    const m=l.match(TETE);
+    if(m&&!m[1]&&!fin&&m[2].trim()!=='VOIX_OFF'){const txt=L[i+1]||'',ws=paires(txt);   // réplique dont presque aucun groupe de deux mots n'est dans le script d'origine = inventée
+      if(ws.length>=3&&ws.filter(w=>W.has(w)).length/ws.length<0.34){al.push('Réplique inventée retirée : '+m[2].trim()+' « '+txt.replace(/\{[^}]*\}/g,'').trim()+' »');i++;continue}
+      const rg=m[3].match(/regarde\s*:\s*([^·)]*[^·)\s])/i);if(rg){const c=nomP(rg[1].trim());if(tel.has(c)&&!pres.has(c))l=l.replace(rg[0],'regarde: téléphone')}}
+    if(l.trim())prev=l;out.push(l)}
+  return out.join('\n')}
 function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];const pres=new Set();
   for(let i=0;i<L.length;i++){let l=L[i].replace(/^\s*\[\s+/,'[').replace(/\s+\]\s*$/,']');const m=l.match(TETE);
     if(m&&(PERSOS.includes(m[2].trim().replace(/ /g,'_'))||/^[A-Z_]{3,}$/.test(m[2].trim()))){const parts=m[3].split('·').map(s=>s.trim());
@@ -258,11 +287,11 @@ function verifier(){const t=$('#a-out').value,al=[...(window.ALIA||[])],L=t.spli
   const tt=t.match(/TITRE:\s*(.*)/);if(tt&&!$('#a-titre').value)$('#a-titre').value=tt[1].split(/[–-]/).slice(1).join('–').trim()||tt[1]}
 $('#a-fichier').onchange=e=>{const f=e.target.files[0];if(f)f.text().then(t=>$('#a-brut').value=t)};
 $('#a-go').onclick=async()=>{const brut=$('#a-brut').value;if(!brut.trim())return;const pr=t=>$('#a-prog').innerHTML='<p class="msg">'+esc(t)+'</p>';$('#a-go').disabled=true;
-  try{const sys=await regles(),ps=parties(brut),res=[];let qui='';
+  try{const sys=await regles(),ps=parties(preBrut(brut)),res=[];let qui='';
     for(let i=0;i<ps.length;i++){pr('Partie '+(i+1)+' sur '+ps.length+'…');
       const consigne='Partie '+(i+1)+' sur '+ps.length+' du script validé. '+(i===0?'':'N\'écris ni TITRE ni lignes NOUVEAU… (déjà faits). ')+(i===ps.length-1?'C\'est la dernière partie : termine par la FIN.':'Ce n\'est pas la dernière partie : n\'écris PAS la FIN.')+' Mets-la au format exact.\n\n'+ps[i];
       const r=await ia([{role:'system',content:sys},{role:'user',content:consigne}],pr);res.push(r.t);qui=r.n}
-    const c=nettoyer(res.join('\n\n'));window.ALIA=c.al;$('#a-out').value=c.s;$('#a-res').hidden=false;$('#a-ok').checked=false;bascule();verifier();pr('✅ Fait par '+qui+'. Relisez le script ci-dessous.')}
+    const c=nettoyer(avant(res.join('\n\n')));c.s=apres(c.s,brut,c.al);window.ALIA=c.al;$('#a-out').value=c.s;$('#a-res').hidden=false;$('#a-ok').checked=false;bascule();verifier();pr('✅ Fait par '+qui+'. Relisez le script ci-dessous.')}
   catch(e){pr('❌ '+e.message)}$('#a-go').disabled=false};
 $('#a-verif').onclick=()=>{window.ALIA=[];verifier()};
 $('#a-out').oninput=()=>{$('#a-ok').checked=false;bascule()};
@@ -362,12 +391,13 @@ function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector
       await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:'importer '+pr.join(' ')})});msg.innerHTML='<p class="msg">✅ Images envoyées. L\'application les découpe, les détoure et crée les bouches (environ 10 min), puis montre la planche ici.</p>'}
     catch(e){msg.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
 // ---------------- Accepter / refuser un essai de code, annuler un import ----------------
-function boutonsBot(i,d,cs){const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1];if(!b)return;const z=d.querySelector('.zone'),x=b.body;
+function boutonsBot(i,d,cs){const z=d.querySelector('.zone'),tout=cs.map(c=>c.body||''),apres=(re,mot)=>{let k=-1;tout.forEach((x,j)=>{if(re.test(x))k=j});return k<0?null:(tout.slice(k+1).some(x=>x.includes(mot))?null:tout[k])};
+  const x=(apres(/Essai du code réussi \(branche /,'Modification du code ')||'')+'\n'+(apres(/^🧩 Images rangées/,'annuler import')||'');
   const dire=t=>api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:t})});
   let m=x.match(/Essai du code réussi \(branche ([\w.-]+)\)/);if(m){const br=m[1];z.insertAdjacentHTML('beforeend','<div class="row"><button class="acc">✅ Accepter la modification du code</button><button class="sec ref">✖ Refuser</button></div><div class="cres"></div>');
     z.querySelector('.acc').onclick=async()=>{try{await api('/repos/'+R+'/merges',{method:'POST',body:JSON.stringify({base:'main',head:br,commit_message:'Modification du code acceptée par Issa ('+br+')'})});await api('/repos/'+R+'/git/refs/heads/'+br,{method:'DELETE'}).catch(()=>{});
-      z.querySelector('.cres').innerHTML='<p class="msg">✅ Modification entrée dans le studio. Relancez l\'aperçu.</p>'}catch(e){z.querySelector('.cres').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}};
-    z.querySelector('.ref').onclick=async()=>{await api('/repos/'+R+'/git/refs/heads/'+br,{method:'DELETE'}).catch(()=>{});z.querySelector('.cres').innerHTML='<p class="msg">Modification refusée et supprimée.</p>'}}
+      await dire('✅ Modification du code acceptée ('+br+')');z.querySelector('.cres').innerHTML='<p class="msg">✅ Modification entrée dans le studio. Relancez l\'aperçu.</p>'}catch(e){z.querySelector('.cres').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}};
+    z.querySelector('.ref').onclick=async()=>{await api('/repos/'+R+'/git/refs/heads/'+br,{method:'DELETE'}).catch(()=>{});await dire('✖ Modification du code refusée ('+br+')');z.querySelector('.cres').innerHTML='<p class="msg">Modification refusée et supprimée.</p>'}}
   m=x.match(/annuler import ([0-9a-f]{7,40})/);if(m){const sha=m[1];z.insertAdjacentHTML('beforeend','<div class="row"><button class="sec ann">↩️ Annuler cet import</button></div>');z.querySelector('.ann').onclick=async()=>{await dire('annuler import '+sha);z.querySelector('.ann').textContent='Annulation demandée…'}}}
 </script>
 </body></html>

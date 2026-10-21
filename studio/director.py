@@ -48,6 +48,7 @@ POS = {'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'content', 'fier', '
 NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'degout', 'choc', 'mepris'}
 OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
+ENSEMBLE = {'verre': ('plateau', 'the'), 'the': ('plateau', 'verre'), 'telephone': ('cartes',)}   # objets qui vont ensemble
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
 GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
 TENUE = {}   # tenue portée en ce moment par chaque personnage ([TENUE AWA: bazin doré]) ; vide = tenue de tous les jours
@@ -81,9 +82,9 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
             elif p['posture'] in ('assis', 'banc', 'dos', 'tombe', 'court', 'marche') and posture != p['posture']: s -= 4
         elif p['posture'] in ('dos', 'tombe', 'court', 'marche') and p['posture'] not in w and not (tags & w & {'tombe', 'glisse', 'court', 'dos', 'marche'}): s -= 5
         props = set(p.get('props', [])) | (tags & OBJ)
-        unasked = props - w - set(extra_ok) - set(must)
+        unasked = props - w - set(extra_ok) - set(must) - {y for x in must for y in ENSEMBLE.get(x, ())}   # le plateau qui porte le verre demandé n'est pas « en trop »
         s -= 7 * len(unasked - LIGHT) + 1.5 * len(unasked & LIGHT)   # un objet (brochette, téléphone…) ou des larmes jamais montrés sans raison
-        s += 6 * len(set(must) & (tags | props))
+        s += 14 * len(set(must) & (tags | props))   # validé par Issa : un objet écrit dans le PLAN est toujours montré
         if side and face_dir(k) != 0: s += 2.5
         if calm and side and face_dir(k) != 0 and not ((tags & (GESTE | POS | NEG | {'gene', 'rire', 'surpris', 'fatigue', 'sale'})) - w): s += 5   # validé par Issa (pose D) : de trois-quarts, même dessin que la suite de la scène
         if calm:   # personne ne parle encore : attitude tranquille, ni geste ni grande émotion
