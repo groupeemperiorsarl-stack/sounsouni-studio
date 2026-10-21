@@ -421,7 +421,11 @@ def build(meta, events, log=print, choix=None, variantes=False):
             moods[who] = emo[:1]
             sh = {'kind': 'line', 'who': who, 'line': e, 'lead': lead, 'dur': dur}
             if laugh_line: sh['sfx'] = [(lead + e.get('dur', 2) + 0.05, 'rire:' + who + (':petit' if e.get('emotion') in ('rire_retenu', 'moqueur') else ''), 0.9)]
-            if who == 'VOIX_OFF' or ending:
+            if e.get('thought') and last_shot and last_shot['kind'] == 'screen' and who in HEIGHT and not ending:
+                # pensée juste après un écran de téléphone : l'écran reste, la tête du personnage pense dans une bulle (demande d'Issa)
+                sh['kind'] = 'pensee_ecran'; sh['text'] = last_shot['text']
+                sh['tete'] = pick(who, ['pensif'] + emo[:1], 'buste', stage.post(who), need_mouth=False) or pick(who, [], None, None)
+            elif who == 'VOIX_OFF' or ending:
                 sh['kind'] = 'endline'
             elif 'telephone' in e.get('voice', '') and who not in stage.order:
                 sh['kind'] = 'phonecall'

@@ -193,6 +193,22 @@ def draw(s, lt):
             if o is not None: paste(fr, o, 540, 1050, eo(prog(lt, 0, 0.3)), 1.0 + 0.05 * eo(prog(lt, 0, d)))
             sticker(fr, s.get('object', ''), 540, 1700 if o is not None else 900, lt, 0.15, 70 if o is not None else 90, (30, 30, 30))
         fx_draw(fr, s.get('fx', []), lt, (540, 600)); return fr
+    if k == 'pensee_ecran':   # l'écran du téléphone + la tête du personnage qui pense, dans une bulle, + sa pensée écrite
+        fr = draw(dict(s, kind='screen', dur=99), 9.0).convert('RGBA'); p = POSES[s['tete']]
+        H0 = 1500; im = pose_img(s['tete'], H0); w = im.width
+        hs = int(H0 * (0.22 if p['posture'] in ('assis', 'banc') else {'pied': 0.15, 'buste': 0.32}.get(p['frame'], 0.45)))   # assis : la tête prend plus de place dans l'image
+        top = (im.getchannel('A').getbbox() or (0, 0, w, H0))[1]   # haut de la tête (chignon compris) ; le visage est un peu plus bas
+        cx = int(w * p.get('head_x', 0.5)); cy = top + int(hs * (0.82 if p['posture'] in ('assis', 'banc') else 0.78))
+        tete = im.crop((cx - hs // 2, cy - hs // 2, cx + hs // 2, cy + hs // 2)).resize((330, 330), Image.LANCZOS)
+        ro = 1.5 * math.sin(lt * 1.6); tete = tete.rotate(ro, resample=Image.BICUBIC)   # la tête bouge doucement, l'air de réfléchir
+        bx, by = 250, 1590 + int(8 * math.sin(lt * 1.3)); d = ImageDraw.Draw(fr)
+        for i, (rx, ry, rr) in enumerate([(420, 1400, 22), (470, 1330, 15), (510, 1275, 10)]):   # petites bulles vers le téléphone
+            if lt > 0.15 * i: d.ellipse((rx - rr, ry - rr, rx + rr, ry + rr), fill=(255, 255, 255, 235), outline=(60, 60, 60, 255), width=3)
+        d.ellipse((bx - 190, by - 190, bx + 190, by + 190), fill=(255, 255, 255, 240), outline=(60, 60, 60, 255), width=5)
+        m = Image.new('L', (330, 330), 0); ImageDraw.Draw(m).ellipse((0, 0, 329, 329), fill=255)
+        fond = Image.new('RGBA', (330, 330), (235, 228, 215, 255)); fond.alpha_composite(tete); fond.putalpha(m); fr.alpha_composite(fond, (bx - 165, by - 165))
+        line = s['line']; gfx.subtitle(fr, s['who'], line['text'], lt - s.get('lead', 0) + 0.1, True)
+        return fr
     if k == 'phonecall':
         fr = background(s, lt, blur=8); paste(fr, gfx.phone_with(gfx.call_screen(gfx.nom(s['who']))), 540, 1100, 1.0, 1.1)
         line = s['line']; gfx.subtitle(fr, s['who'], line['text'], lt - s['lead'] + 0.1); return fr

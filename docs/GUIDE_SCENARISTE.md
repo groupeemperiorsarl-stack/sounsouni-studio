@@ -190,6 +190,10 @@ Musiques : `joyeuse`, `suspense`, `romantique`, `drôle`, `triste`, `action`.
 
 ---
 
+### Écrans du téléphone : toujours expliqués
+Après chaque `[ÉCRAN …]` (commande, notification, avis, message), le personnage concerné explique ce qu'il voit dans une **pensée** à voix haute : `PENSÉE AWA (surpris · regarde: téléphone)` puis la phrase. Le public voit l'écran **et** entend l'explication.
+Un personnage n'apparaît que dans le décor où il se trouve (pas de Bakary dans l'atelier pendant qu'Awa pense à lui : on le dit dans la pensée).
+
 ## 7. Fin d'épisode (obligatoire)
 
 ```
