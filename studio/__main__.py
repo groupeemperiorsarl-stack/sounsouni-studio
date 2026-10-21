@@ -6,6 +6,12 @@ Réponse d'Issa :      --choix "1B 3C"   (gardée dans episode.choix.json, puis 
 import sys, os, json, argparse, hashlib, time, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import script, voices, director, render, audio, planches
+def resume(shots, out):
+    """Liste minutée des plans (plans_resume.json), lue par l'assistant de secours : « à 1:20 » = quel plan, qui, quelle pose."""
+    def _qui(s): return [{'qui': x['who'], 'pose': x.get('key'), 'x': round(x.get('x', 0) / 1080, 2), 'taille': round(x.get('h', 0) / 1920, 2), 'retourne': bool(x.get('flip'))} for x in s.get('actors', []) if x.get('who')]
+    json.dump([{'plan': i, 'debut': f"{int(s['t0'] // 60)}:{s['t0'] % 60:04.1f}", 'duree': round(s['dur'], 1), 'type': s.get('kind'), 'decor': s.get('decor'),
+                'parle': s.get('who'), 'texte': ((s.get('line') or {}).get('text') if isinstance(s.get('line'), dict) else '') or s.get('text') or s.get('title') or '', 'cadrage': s.get('cadrage') or s.get('mode'),
+                'acteurs': _qui(s)} for i, s in enumerate(shots)], open(os.path.join(out, 'plans_resume.json'), 'w'), ensure_ascii=False, indent=0)   # liste minutée des plans, lue par l'assistant
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('script'); ap.add_argument('-o', '--out', default=None)
     ap.add_argument('--plans-seulement', action='store_true', help="s'arrête après la mise en scène (aperçu des plans)")
@@ -43,6 +49,7 @@ def main():
                 for kk in (ac.get('key'), ac.get('stop_key')):
                     if kk and '@' in kk and kk not in director.POSES: director.yaw_variant(*director.parse_variant(kk))
         if a.etape == 'rendu': render.video(shots, tot, work, a.workers, log, part=part); return
+        resume(shots, out)
         silent = render.video(shots, tot, work, a.workers, log); v, m = audio.build(shots, tot, work, log)
         final = os.path.join(out, name + '.mp4'); audio.mix(silent, v, m, final); ok = audio.light(final, os.path.join(out, name + '_leger.mp4'), tot)
         log(f"fini : {final} ({tot:.0f} s) — version légère {'vérifiée' if ok else 'À VÉRIFIER'}"); return
@@ -56,6 +63,7 @@ def main():
     lines = voices.run(ev, director.CAT, work, log)
     shots, tot = director.build(meta, ev, log, choix=choix, variantes=a.planches)
     json.dump(shots, open(os.path.join(work, 'plans.json'), 'w'), ensure_ascii=False, indent=0, default=str)
+    resume(shots, out)
     render.prepare_turns(shots, log)
     render.contact(shots, os.path.join(out, 'apercu_plans.png')); log('aperçu des plans : apercu_plans.png')
     if a.planches:

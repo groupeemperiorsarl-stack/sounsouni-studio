@@ -1,0 +1,65 @@
+name: Ranger les images Gemini (envoyées depuis la page)
+on:
+  workflow_dispatch:
+    inputs:
+      issue: { description: "Numéro de la demande", required: true }
+      mode: { description: "importer ou annuler", default: "importer" }
+      arg: { description: "ex. 1=a.png 2=b.jpg (images dans demandes/gemini/N/) ou le code à annuler", required: true }
+permissions: { contents: write, issues: write }
+env: { GH_TOKEN: "${{ github.token }}", N: "${{ github.event.inputs.issue }}", ARG: "${{ github.event.inputs.arg }}" }
+jobs:
+  ranger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 20 }
+      - name: Annuler un import
+        if: github.event.inputs.mode == 'annuler'
+        run: |
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          if git revert --no-edit "$ARG" && git push; then M="↩️ Import annulé : les images rangées par $ARG sont retirées du studio."; else M="❌ Impossible d'annuler $ARG."; fi
+          gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="$M" > /dev/null
+      - uses: actions/setup-python@v5
+        if: github.event.inputs.mode == 'importer'
+        with: { python-version: "3.11" }
+      - name: Outils
+        if: github.event.inputs.mode == 'importer'
+        run: |
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa scipy opencv-python-headless rembg onnxruntime transformers
+          bash studio/lp/install.sh
+      - name: Découper, détourer, ranger, créer les bouches
+        if: github.event.inputs.mode == 'importer'
+        run: |
+          set -o pipefail; mkdir -p sortie_gemini
+          gh api -H "Accept: application/vnd.github.raw" "repos/${{ github.repository }}/contents/$N/fiche_gemini.json?ref=fichiers" > sortie_gemini/fiche_gemini.json
+          P=""; for x in $ARG; do P="$P ${x%%=*}=demandes/gemini/$N/${x#*=}"; done
+          python -m studio.gemini -o sortie_gemini --importer "$P" 2>&1 | tee journal.txt
+          K=$(grep -oE "(rangée|objet rangé|décor rangé) : [A-Za-z0-9_]+" journal.txt | awk '{print $NF}' | paste -sd, -)
+          echo "K=$K" >> $GITHUB_ENV
+          [ -n "$K" ] && STUDIO_POSES="$K" python studio/automouth.py 2>&1 | tail -3 | tee -a journal.txt || true
+      - name: Planche des poses rangées, garder dans le studio, prévenir
+        if: always() && github.event.inputs.mode == 'importer'
+        run: |
+          python - <<'PY'
+          import os, json
+          from PIL import Image, ImageDraw
+          K = [k for k in os.environ.get('K', '').split(',') if k]; A = 'studio/assets'; ims = []
+          for k in K:
+              f = next((p for p in (f'{A}/poses/{k}.webp', f'{A}/decors/{k}.jpg') if os.path.exists(p)), None)
+              if not f: continue
+              im = Image.open(f).convert('RGBA'); im.thumbnail((300, 520)); c = Image.new('RGB', (320, 580), (235, 240, 235)); c.paste(im, ((320 - im.width) // 2, 10), im)
+              o = f'{A}/poses/{k}_o.webp'
+              if os.path.exists(o): b = Image.open(o).convert('RGBA'); b.thumbnail((90, 150)); c.paste(b, (225, 420), b)
+              ImageDraw.Draw(c).text((8, 552), k, fill=(0, 0, 0)); ims.append(c)
+          if ims:
+              W = Image.new('RGB', (320 * min(4, len(ims)), 580 * ((len(ims) + 3) // 4)), 'white')
+              for i, c in enumerate(ims): W.paste(c, (320 * (i % 4), 580 * (i // 4)))
+              W.save('import.png')
+          PY
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add studio/assets && git commit -qm "Images Gemini rangées (demande #$N) : $K" && git pull -q --rebase && git push -q && SHA=$(git rev-parse --short HEAD)
+          if [ -n "$SHA" ] && [ -f import.png ]; then
+            bash .github/scripts/fichiers.sh "$N" import.png
+            M="🧩 Images rangées dans le studio : $K"$'\n'"Planche : bouton « 🧩 Images rangées » de la page. Si une pose est ratée : **annuler import $SHA**"
+          else M="❌ Les images n'ont pas pu être rangées. Fin du journal :"$'\n```\n'"$(tail -12 journal.txt)"$'\n```'; fi
+          gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="$M" > /dev/null

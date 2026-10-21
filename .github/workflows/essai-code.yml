@@ -1,0 +1,38 @@
+name: Essai d'une modification du code (proposée par l'assistant)
+on:
+  workflow_dispatch:
+    inputs:
+      issue: { description: "Numéro de la demande", required: true }
+      branche: { description: "Branche à essayer (assistant-…)", required: true }
+      script: { description: "Script de l'épisode", default: "" }
+permissions: { contents: write, issues: write }
+env: { GH_TOKEN: "${{ github.token }}", N: "${{ github.event.inputs.issue }}", B: "${{ github.event.inputs.branche }}" }
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.event.inputs.branche }}" }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Outils
+        run: |
+          sudo apt-get install -y -qq ffmpeg > /dev/null
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
+          bash studio/lp/install.sh
+      - name: Vérifier que rien n'est cassé (épisode + scènes déjà validées)
+        run: |
+          set +e; OK=1; : > journal.txt
+          python -m py_compile studio/*.py >> journal.txt 2>&1 || OK=0
+          git fetch -q origin main && git show "origin/main:${{ github.event.inputs.script }}" > episode.txt 2>/dev/null || cp "${{ github.event.inputs.script }}" episode.txt
+          i=0; for s in episode.txt exemples/episode17_la_courroie.txt exemples/episode15_la_rumeur.txt; do i=$((i+1)); [ -f "$s" ] || continue
+            STUDIO_FAUSSES_VOIX=1 timeout 900 python -m studio "$s" -o "essai_$i" --plans-seulement >> journal.txt 2>&1 || OK=0
+            [ -f "essai_$i/apercu_plans.png" ] && cp "essai_$i/apercu_plans.png" "essai_$i.png" || OK=0; done
+          echo "OK=$OK" >> $GITHUB_ENV
+      - name: Prévenir
+        if: always()
+        run: |
+          bash .github/scripts/fichiers.sh "$N" essai_*.png || true
+          if [ "$OK" = "1" ]; then M="🧪 Essai du code réussi (branche $B) : l'épisode et 2 épisodes déjà validés se fabriquent. Regardez les aperçus (bouton « 🧪 Essai du code »), puis **Accepter** ou **Refuser** dans la page."
+          else M="❌ Essai du code raté (branche $B) : la modification casse quelque chose. Elle n'est PAS dans le studio. Fin du journal :"$'\n```\n'"$(tail -15 journal.txt)"$'\n```'; fi
+          gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="$M" > /dev/null

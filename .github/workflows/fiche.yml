@@ -19,7 +19,7 @@ jobs:
       - name: Ranger pour la page Studio mobile et prévenir
         if: always()
         run: |
-          N=${ISSUE:-manuel}; F=(sortie_gemini/fiche_gemini.html sortie_gemini/a_joindre/*)
+          N=${ISSUE:-manuel}; F=(sortie_gemini/fiche_gemini.html sortie_gemini/fiche_gemini.json sortie_gemini/a_joindre/*)
           if [ -f sortie_gemini/fiche_gemini.html ]; then
             bash .github/scripts/fichiers.sh "$N" "${F[@]}"
             K=$(grep -o 'fiche Gemini : .*' journal.txt | tail -1)

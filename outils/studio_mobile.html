@@ -28,6 +28,8 @@ iframe{width:100%;height:75vh;border:1px solid var(--line);border-radius:10px;ma
 .msg{padding:10px;border-radius:10px;background:var(--bg);font-size:13px;margin-top:8px;overflow-wrap:anywhere;white-space:pre-wrap}
 details summary{cursor:pointer;font-weight:700;margin-top:8px}
 .md{overflow-x:auto;font-size:13px}.md table{border-collapse:collapse;width:100%;margin:6px 0}.md td,.md th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;font-variant-numeric:tabular-nums}.md h3,.md h4{font:700 15px var(--display);margin:10px 0 4px}
+.chat p{margin:6px 0;padding:8px 10px;border-radius:10px;white-space:pre-wrap}.chat .moi{background:var(--bg);margin-left:18%}.chat .ia{background:rgba(46,125,50,.12);margin-right:18%}
+.act{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin:8px 0}.act input{width:auto;margin-top:4px}pre{white-space:pre-wrap;word-break:break-word;font-size:11px;background:var(--bg);padding:6px;border-radius:8px;max-width:100%;overflow:auto}img.mini{width:64px;height:64px;object-fit:cover;border-radius:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
@@ -70,6 +72,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
     <label for="k-groq">Clé Groq</label><input id="k-groq" type="password" placeholder="gsk_…" autocomplete="off">
     <label for="k-cer">Clé Cerebras (facultatif)</label><input id="k-cer" type="password" placeholder="csk-…" autocomplete="off">
     <label for="k-or">Clé OpenRouter (facultatif)</label><input id="k-or" type="password" placeholder="sk-or-…" autocomplete="off">
+    <label for="k-gem">Clé Gemini (pour « Discuter » : l'assistant voit les images, écoute et regarde la vidéo) — gratuite sur <b>aistudio.google.com/apikey</b></label><input id="k-gem" type="password" placeholder="AIza…" autocomplete="off">
     <div class="row"><button id="k-save">Enregistrer les clés</button></div><div id="k-msg"></div>
   </div>
 </section>
@@ -80,7 +83,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
       <li>Ouvrez <a target="_blank" href="https://github.com/settings/personal-access-tokens/new">github.com/settings/personal-access-tokens/new</a></li>
       <li>Nom : <b>studio mobile</b> · Expiration : 1 an</li>
       <li>Repository access : <b>Only select repositories</b> → <b>sounsouni-studio</b></li>
-      <li>Permissions → Repository : <b>Issues : Read and write</b>, <b>Contents : Read-only</b>, <b>Actions : Read-only</b></li>
+      <li>Permissions → Repository : <b>Issues : Read and write</b>, <b>Contents : Read and write</b> (l'assistant enregistre ses corrections), <b>Actions : Read-only</b></li>
       <li><b>Generate token</b>, copiez-la et collez-la ici.</li>
     </ol>
     <label for="c-tok">Clé</label><input id="c-tok" type="password" placeholder="github_pat_…" autocomplete="off">
@@ -114,7 +117,7 @@ $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-ms
 function etat(cs){const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1],last=cs[cs.length-1];
   if(last&&last.user.type!=='Bot'&&(!b||new Date(last.created_at)>new Date(b.created_at)))return{t:'Demande envoyée…',k:'warn',b};
   if(!b)return{t:'En attente',k:'warn',b};const x=b.body;
-  if(x.includes('❌'))return{t:'Erreur',k:'bad',b};if(x.includes('🎬'))return{t:'Vidéo prête',k:'ok',b};if(x.includes('🖼️'))return{t:'Fiche Gemini prête',k:'ok',b};if(x.includes('✅'))return{t:'Aperçu prêt',k:'ok',b};return{t:'En fabrication…',k:'warn',b}}
+  if(x.includes('❌'))return{t:'Erreur',k:'bad',b};if(x.includes('🎬'))return{t:'Vidéo prête',k:'ok',b};if(x.includes('🖼️'))return{t:'Fiche Gemini prête',k:'ok',b};if(x.includes('🧩'))return{t:'Images rangées',k:'ok',b};if(x.includes('↩️'))return{t:'Import annulé',k:'ok',b};if(x.includes('🧪'))return{t:'Essai du code prêt',k:'ok',b};if(x.includes('✅'))return{t:'Aperçu prêt',k:'ok',b};return{t:'En fabrication…',k:'warn',b}}
 async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Ajoutez d\'abord votre clé GitHub (onglet 🔑 Clé).</p></div>';return}
   $('#liste').innerHTML='<p class="muted">Chargement…</p>';
   try{const is=await api('/repos/'+R+'/issues?labels=episode&state=all&per_page=12');if(!is.length){$('#liste').innerHTML='<p class="muted">Aucun épisode.</p>';return}
@@ -129,6 +132,11 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
     <label>Planches sur un passage</label><div class="row"><input class="de" placeholder="1:20"><input class="a" placeholder="1:45"><button data-x="pl">Demander</button></div>
     <label>Modifier le script</label><textarea class="scr"></textarea><div class="row"><button data-x="save" class="sec">Enregistrer le script</button></div>
   </details>
+  <details class="disc"><summary>💬 Discuter avec l'assistant</summary><div class="chat"></div>
+    <textarea class="q" placeholder="Ex. : à 1:20 Karim flotte, descends-le ; enlève le téléphone au plan 12…"></textarea>
+    <div class="row" style="align-items:center;gap:10px"><button class="sec mic">🎤 Dicter</button><label style="margin:0"><input type="checkbox" class="j-ap" checked style="width:auto"> aperçu</label><label style="margin:0"><input type="checkbox" class="j-vi" style="width:auto"> vidéo</label><button class="envoi">Envoyer</button></div><div class="acts"></div></details>
+  <details><summary>🧩 Renvoyer les images Gemini</summary><p class="muted">Choisissez les images faites par Gemini, mettez le numéro de demande de la fiche à chacune, faites-les vérifier, puis envoyez.</p>
+    <input type="file" class="g-f" accept="image/*" multiple><div class="g-l"></div><div class="row"><button class="sec g-v">🔎 Vérifier avec l'IA</button><button class="g-e">📤 Envoyer et ranger</button></div><div class="g-m"></div></details>
   <details><summary>Détails de la fabrication</summary><div class="md histo"></div></details><div class="out"></div>`;
   const m=(i.body||'').match(/```(?:text)?\n([\s\S]*?)\n```/);d.querySelector('.scr').value=m?m[1]:(i.body||'');
   const out=t=>d.querySelector('.out').innerHTML='<p class="msg">'+t+'</p>';
@@ -138,7 +146,8 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
   d.querySelector('[data-x=pl]').onclick=()=>{const a=d.querySelector('.de').value.trim(),b=d.querySelector('.a').value.trim();if(a&&b)dire('planches '+a+'-'+b)};
   d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur Aperçu ou Vidéo.')}catch(x){out('❌ '+esc(x.message))}};
   d.querySelector('.histo').innerHTML=cs.map(c=>'<p class="muted">'+new Date(c.created_at).toLocaleString('fr-FR')+' · '+(c.user.type==='Bot'?'application':'vous')+'</p>'+md(c.body)).join('')||'<p class="muted">Rien pour l\'instant.</p>';
-  fichiers(i.number,d.querySelector('.zone'));if(e.k==='warn'){bloque(i,cs,d);setTimeout(()=>carte(i,d),45000)}}
+  discuter(i,d,d.querySelector('.scr').value);retourGemini(i,d);
+  fichiers(i.number,d.querySelector('.zone')).then(()=>boutonsBot(i,d,cs));if(e.k==='warn'){bloque(i,cs,d);setTimeout(()=>carte(i,d),45000)}}
 // GitHub peut refuser de lancer les machines (minutes du mois épuisées, paiement) : la demande resterait « en fabrication » sans message
 async function bloque(i,cs,d){try{const us=cs.filter(c=>c.user.type!=='Bot'),t0=new Date(us.length?us[us.length-1].created_at:i.created_at)-5000;
   const rs=(await api('/repos/'+R+'/actions/runs?per_page=15')).workflow_runs.filter(r=>new Date(r.created_at)>=t0&&new Date(r.created_at)-t0<40*60000);
@@ -156,6 +165,8 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
   if(a('apercu_plans.png'))h+='<button class="sec" data-f="apercu_plans.png">🖼 Voir l\'aperçu</button>';
   if(a('planches.html'))h+='<button data-f="planches.html">☑ Planches à cocher</button>';
   if(a('fiche_gemini.html'))h+='<button class="sec" data-f="fiche_gemini.html">🖼 Fiche Gemini</button>';
+  if(a('import.png'))h+='<button class="sec" data-f="import.png">🧩 Images rangées</button>';
+  ls.filter(x=>/^essai_\d+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🧪 Essai du code '+x.match(/\d+/)[0]+'</button>');
   z.innerHTML=h+'</div><div class="vue"></div>';const v=z.querySelector('.vue');
   z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
     if(f.endsWith('.mp4'))v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div>';
@@ -267,5 +278,96 @@ async function lancer(mode,script,titre){if(!/^TITRE:/m.test(script))script='TIT
 $('#a-l40').onclick=()=>lancer('v',extrait($('#a-out').value),($('#a-titre').value||'assistant')+' (extrait 40 s)');
 $('#a-lap').onclick=()=>lancer('a',$('#a-out').value,$('#a-titre').value||'assistant');
 $('#a-lv').onclick=()=>lancer('v',$('#a-out').value,$('#a-titre').value||'assistant');
+// ---------------- Discuter avec l'assistant (Gemini : voit les images, écoute, regarde la vidéo) + actions sur l'application ----------------
+K.gem='';try{K.gem=localStorage.getItem('ss_gem')||''}catch(e){}$('#k-gem').value=K.gem;
+$('#k-save').addEventListener('click',()=>{K.gem=$('#k-gem').value.trim();try{localStorage.setItem('ss_gem',K.gem);localStorage.removeItem('ss_gem_m')}catch(e){}});
+const u8b64=s=>btoa(unescape(encodeURIComponent(s))),b64u8=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,''))));
+const blob64=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(String(f.result).split(',')[1]);f.readAsDataURL(b)});
+async function ghLire(chemin,ref='main'){const r=await fetch(API+'/repos/'+R+'/contents/'+chemin+'?ref='+ref,{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});return r.ok?r.text():null}
+async function ghSha(chemin,ref='main'){try{return (await api('/repos/'+R+'/contents/'+chemin+'?ref='+ref)).sha}catch(e){return null}}
+async function ghEcrire(chemin,contenu64,msg,ref='main'){const sha=await ghSha(chemin,ref);return api('/repos/'+R+'/contents/'+chemin,{method:'PUT',body:JSON.stringify({message:msg+'\n\n(assistant de la page Studio mobile)',content:contenu64,branch:ref,...(sha?{sha}:{})})})}
+async function modeleGem(){let m='';try{m=localStorage.getItem('ss_gem_m')||''}catch(e){}if(m)return m;
+  const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200',{headers:{'x-goog-api-key':K.gem}});if(!r.ok)throw new Error('clé Gemini refusée ('+r.status+')');
+  const ms=(await r.json()).models.filter(x=>(x.supportedGenerationMethods||[]).includes('generateContent')&&/flash/.test(x.name)&&!/lite|image|tts|live|audio|embed|thinking|exp/.test(x.name));
+  const v=x=>{const n=x.name.match(/(\d+(?:\.\d+)?)/);return (n?parseFloat(n[1]):0)-(/preview/.test(x.name)?0.01:0)};ms.sort((a,b)=>v(b)-v(a));
+  m=ms[0]?ms[0].name:'models/gemini-2.5-flash';try{localStorage.setItem('ss_gem_m',m)}catch(e){}return m}
+async function gem(sys,parts,prog){if(!K.gem)throw new Error('Ajoutez d\'abord la clé Gemini (onglet 🤖 Assistant, en bas).');const m=await modeleGem();
+  for(let essai=0;essai<3;essai++){const r=await fetch('https://generativelanguage.googleapis.com/v1beta/'+m+':generateContent',{method:'POST',headers:{'x-goog-api-key':K.gem,'Content-Type':'application/json'},
+      body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}],generationConfig:{temperature:0.2,responseMimeType:'application/json'}})});
+    if(r.status===429||r.status===503){prog&&prog('Gemini est occupé, nouvel essai dans 30 s…');await dodo(30000);continue}
+    if(!r.ok)throw new Error('Gemini : '+r.status+' '+(await r.text()).slice(0,200));
+    const d=await r.json(),t=(d.candidates?.[0]?.content?.parts||[]).map(p=>p.text||'').join('');
+    try{return JSON.parse(t.replace(/^\s*```(json)?|```\s*$/g,''))}catch(e){return{reponse:t,actions:[]}}}
+  throw new Error('Gemini est saturé pour le moment, réessayez dans quelques minutes.')}
+let CONSIGNES='',POSESL='';
+async function contexte(i,scr){if(!CONSIGNES)CONSIGNES=(await ghLire('docs/ASSISTANT_ACTIONS.md'))+'\n\n## GUIDE DU FORMAT DU SCRIPT\n'+(await regles());
+  if(!POSESL){const c=JSON.parse(await ghLire('studio/assets/catalog.json'));POSESL=Object.entries(c.poses).filter(([k])=>!k.includes('@')).map(([k,p])=>k+' : '+p.char+' · '+p.posture+' · '+(p.tags||[]).join(' ')).join('\n')}
+  const [pr,ch,rg]=await Promise.all([fetch(API+'/repos/'+R+'/contents/'+i.number+'/plans_resume.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.text():'(pas encore d\'aperçu : relancer l\'aperçu)'),
+    ghLire('demandes/episode_'+i.number+'.choix.json').then(x=>x||'{}'),ghLire('studio/reglages.json')]);
+  return '## SCRIPT DE L\'ÉPISODE (demande n° '+i.number+')\n'+scr+'\n\n## PLANS MINUTÉS (plans_resume)\n'+pr+'\n\n## CHOIX ET CORRECTIONS DÉJÀ FAITS (par numéro de plan)\n'+ch+'\n\n## RÉGLAGES\n'+rg+'\n\n## POSES DISPONIBLES (clé : personnage · posture · étiquettes)\n'+POSESL}
+function decrire(a){const p=a.plan!=null?'Plan '+a.plan+' : ':'';switch(a.type){
+  case 'script':return 'Script : « '+a.ancien+' » → « '+a.nouveau+' »';case 'plan':return p+'cadrage « '+a.cadrage+' »';case 'pose':return p+a.qui+' prend la pose '+a.pose;
+  case 'acteur':return p+a.qui+' — '+['dx','dy','taille','retourner','cacher'].filter(k=>a[k]!=null).map(k=>({dx:'gauche/droite',dy:'haut/bas',taille:'taille',retourner:'retourné',cacher:'caché'}[k])+' '+a[k]).join(', ');
+  case 'duree':return p+'dure '+a.secondes+' s';case 'lexique':return 'Prononciation : « '+a.ecrit+' » se dit « '+a.prononce+' »';case 'reglage':return 'Réglage général '+a.cle+' = '+JSON.stringify(a.valeur);
+  case 'relancer':return 'Relancer : '+a.quoi+(a.de?' '+a.de+'-'+a.a:'');case 'fiche':return 'Préparer la fiche Gemini';case 'code':return 'Code '+a.fichier+' (essayé sur une copie à part avant d\'entrer dans le studio)';default:return JSON.stringify(a)}}
+async function appliquer(i,acts,out){const n=i.number,fait=[];
+  const sc=acts.filter(a=>a.type==='script');if(sc.length){let b=i.body||'';const m=b.match(/```(?:text)?\n([\s\S]*?)\n```/);let s=m?m[1]:b;
+    for(const a of sc){if(s.split(a.ancien).length!==2)throw new Error('texte introuvable (ou en double) dans le script : « '+a.ancien.slice(0,60)+' »');s=s.replace(a.ancien,()=>a.nouveau)}
+    await api('/repos/'+R+'/issues/'+n,{method:'PATCH',body:JSON.stringify({body:corps(/Vidéo complète/.test(b)?'v':'a',s)})});i.body=corps(/Vidéo complète/.test(b)?'v':'a',s);fait.push('script modifié')}
+  const pl=acts.filter(a=>['plan','pose','acteur','duree'].includes(a.type));if(pl.length){const f='demandes/episode_'+n+'.choix.json';const ch=JSON.parse(await ghLire(f)||'{}');
+    for(const a of pl){const c=ch[String(a.plan)]=ch[String(a.plan)]||{};if(a.type==='plan')c.cadrage=a.cadrage;if(a.type==='pose')c.pose={who:a.qui.toUpperCase(),key:a.pose};if(a.type==='duree')c.duree=a.secondes;
+      if(a.type==='acteur'){c.acteurs=c.acteurs||{};const q=c.acteurs[a.qui.toUpperCase()]=c.acteurs[a.qui.toUpperCase()]||{};for(const k of ['dx','dy','taille','retourner','cacher'])if(a[k]!=null)q[k]=a[k]}}
+    await ghEcrire(f,u8b64(JSON.stringify(ch,null,1)),'Corrections de plans (demande #'+n+')');fait.push(pl.length+' correction(s) de plans')}
+  const lx=acts.filter(a=>a.type==='lexique');if(lx.length){const t=await ghLire('studio/lexique.txt')||'';await ghEcrire('studio/lexique.txt',u8b64(t.replace(/\n*$/,'\n')+lx.map(a=>a.ecrit+' = '+a.prononce).join('\n')+'\n'),'Prononciations ajoutées');fait.push('prononciation(s) ajoutée(s)')}
+  const rg=acts.filter(a=>a.type==='reglage');if(rg.length){const j=JSON.parse(await ghLire('studio/reglages.json'));for(const a of rg){const ks=a.cle.split('.');let o=j;ks.slice(0,-1).forEach(k=>o=o[k]=o[k]||{});o[ks[ks.length-1]]=a.valeur}
+    await ghEcrire('studio/reglages.json',u8b64(JSON.stringify(j,null,1)),'Réglages modifiés : '+rg.map(a=>a.cle).join(', '));fait.push('réglage(s) modifié(s)')}
+  const cd=acts.filter(a=>a.type==='code');if(cd.length){for(const a of cd)if(!/^(studio\/[\w.-]+\.(py|json|txt)|docs\/[\w.-]+\.md)$/.test(a.fichier))throw new Error('fichier interdit pour l\'assistant : '+a.fichier);
+    const br='assistant-'+n+'-'+Date.now().toString(36),main=(await api('/repos/'+R+'/git/ref/heads/main')).object.sha;await api('/repos/'+R+'/git/refs',{method:'POST',body:JSON.stringify({ref:'refs/heads/'+br,sha:main})});
+    const fs={};for(const a of cd){fs[a.fichier]=fs[a.fichier]??await ghLire(a.fichier,br);if(fs[a.fichier]==null||fs[a.fichier].split(a.ancien).length!==2)throw new Error('code introuvable (ou en double) dans '+a.fichier+' : « '+a.ancien.slice(0,60)+' »');fs[a.fichier]=fs[a.fichier].replace(a.ancien,()=>a.nouveau)}
+    for(const [f,t] of Object.entries(fs))await ghEcrire(f,u8b64(t),'Modification proposée par l\'assistant : '+cd.map(a=>a.pourquoi||'').join(' ; ').slice(0,200),br);
+    await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'essai code '+br})});fait.push('code mis sur une copie à part ('+br+'), essai lancé')}
+  const rl=acts.filter(a=>a.type==='relancer'||a.type==='fiche');const dire=async t=>api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});
+  for(const a of rl){if(a.type==='fiche'){await dire('fiche');fait.push('fiche Gemini lancée');continue}
+    await dire(a.quoi==='video'?'vidéo':a.quoi==='planches'?('planches'+(a.de&&a.a?' '+a.de+'-'+a.a:'')):'aperçu');fait.push(a.quoi+' relancé')}
+  return fait}
+function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.number;let H=[];try{H=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}
+  const montrer=()=>{box.innerHTML=H.map(x=>'<p class="'+(x.r==='u'?'moi':'ia')+'">'+esc(x.t)+'</p>').join('')||'<p class="muted">Dites ce qu\'il faut changer : « à 1:20 Karim flotte », « enlève le téléphone au plan 12 », « Awa doit parler plus lentement »…</p>'};montrer();
+  const q=d.querySelector('.q'),acts=d.querySelector('.acts');
+  d.querySelector('.mic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){acts.innerHTML='<p class="msg">Dictée non disponible ici : utilisez le micro du clavier.</p>';return}
+    const s=new SR();s.lang='fr-FR';s.interimResults=false;s.onresult=e=>q.value+=(q.value?' ':'')+e.results[0][0].transcript;s.start()};
+  d.querySelector('.envoi').onclick=async()=>{const t=q.value.trim();if(!t)return;const prog=x=>acts.innerHTML='<p class="msg">'+esc(x)+'</p>';const bt=d.querySelector('.envoi');bt.disabled=true;
+    try{prog('L\'assistant prépare le contexte…');const ctx=await contexte(i,scr),parts=[{text:ctx+'\n\n## CONVERSATION\n'+H.slice(-10).map(x=>(x.r==='u'?'Issa : ':'Assistant : ')+x.t).join('\n')+'\nIssa : '+t}];
+      if(d.querySelector('.j-ap').checked){try{const b=await brut(i.number+'/apercu_plans.png');parts.push({text:'Image jointe : aperçu des plans (chaque vignette porte son numéro de plan et sa durée).'},{inline_data:{mime_type:'image/png',data:await blob64(b)}})}catch(e){}}
+      if(d.querySelector('.j-vi').checked){try{const b=await brut(i.number+'/video.mp4');if(b.size<19e6)parts.push({text:'Vidéo jointe : la vidéo actuelle de l\'épisode (images et son).'},{inline_data:{mime_type:'video/mp4',data:await blob64(b)}});else prog('Vidéo trop lourde pour l\'assistant, il regarde l\'aperçu à la place.')}catch(e){}}
+      prog('L\'assistant regarde et réfléchit…');let r=await gem(CONSIGNES,parts,prog);
+      const lc=(r.actions||[]).find(a=>a.type==='lire_code');if(lc){prog('L\'assistant lit le code…');for(const f of (lc.fichiers||[]).slice(0,3))if(/^studio\/[\w.-]+\.(py|json|txt)$/.test(f))parts.push({text:'\n## FICHIER '+f+'\n'+(await ghLire(f)||'(introuvable)')});parts.push({text:'Voici le code demandé. Propose maintenant les actions.'});r=await gem(CONSIGNES,parts,prog)}
+      H.push({r:'u',t},{r:'a',t:r.reponse||''});try{localStorage.setItem(key,JSON.stringify(H.slice(-30)))}catch(e){}montrer();q.value='';
+      const A=(r.actions||[]).filter(a=>a.type!=='lire_code');if(!A.length){acts.innerHTML='';return}
+      acts.innerHTML='<p class="muted">Ce que l\'assistant propose (décochez ce que vous ne voulez pas) :</p>'+A.map((a,k)=>'<label class="act"><input type="checkbox" checked data-k="'+k+'"> <span><b>'+esc(decrire(a))+'</b><br><span class="muted">'+esc(a.pourquoi||'')+'</span>'+(a.type==='code'?'<details><summary>voir le code</summary><pre>'+esc('− '+a.ancien+'\n+ '+a.nouveau)+'</pre></details>':'')+'</span></label>').join('')+
+        '<div class="row"><button class="ok">✅ Appliquer</button><button class="sec non">✖ Rien</button></div><div class="res"></div>';
+      acts.querySelector('.non').onclick=()=>acts.innerHTML='';
+      acts.querySelector('.ok').onclick=async()=>{const ch=[...acts.querySelectorAll('[data-k]')].filter(x=>x.checked).map(x=>A[+x.dataset.k]);const res=acts.querySelector('.res');res.innerHTML='<p class="msg">Application…</p>';
+        try{const f=await appliquer(i,ch,res);res.innerHTML='<p class="msg">✅ Fait : '+esc(f.join(', '))+'.'+(ch.some(a=>a.type==='relancer')?' Le résultat arrivera ici.':' Pensez à relancer l\'aperçu pour voir le résultat.')+'</p>'}catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
+    catch(e){prog('❌ '+e.message)}bt.disabled=false}}
+// ---------------- Renvoyer les images Gemini depuis le téléphone ----------------
+function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector('.g-l'),msg=d.querySelector('.g-m');let F=[];
+  inp.onchange=()=>{F=[...inp.files];lst.innerHTML=F.map((f,k)=>'<div class="row" style="align-items:center"><img class="mini" src="'+URL.createObjectURL(f)+'"><label style="margin:0">Demande n°</label><input class="g-n" style="width:70px" type="number" value="'+(k+1)+'"></div>').join('')};
+  d.querySelector('.g-v').onclick=async()=>{if(!F.length)return;msg.innerHTML='<p class="msg">L\'assistant regarde les images…</p>';try{const fj=await fetch(API+'/repos/'+R+'/contents/'+i.number+'/fiche_gemini.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.text():'');
+      const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value),parts=[{text:'Fiche Gemini (ce qui a été demandé pour chaque numéro de demande) :\n'+(fj||'(fiche introuvable : refaire « Fiche Gemini »)')+'\n\nVérifie chaque image ci-dessous selon la règle 5. Réponds en JSON {"reponse": "…", "actions": []}.'}];
+      for(let k=0;k<F.length;k++)parts.push({text:'Image pour la demande n° '+ns[k]+' :'},{inline_data:{mime_type:F[k].type||'image/png',data:await blob64(F[k])}});
+      if(!CONSIGNES)await contexte(i,'');const r=await gem(CONSIGNES,parts,t=>msg.innerHTML='<p class="msg">'+esc(t)+'</p>');msg.innerHTML='<p class="msg">'+esc(r.reponse||'')+'</p>'}catch(e){msg.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}};
+  d.querySelector('.g-e').onclick=async()=>{if(!F.length)return;try{const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value),pr=[];
+      for(let k=0;k<F.length;k++){msg.innerHTML='<p class="msg">Envoi de l\'image '+(k+1)+' sur '+F.length+'…</p>';const nom=ns[k]+'_'+Date.now().toString(36)+'.'+((F[k].name.split('.').pop()||'png').toLowerCase().replace(/[^a-z]/g,'')||'png');
+        await ghEcrire('demandes/gemini/'+i.number+'/'+nom,await blob64(F[k]),'Image Gemini de la demande #'+i.number);pr.push(ns[k]+'='+nom)}
+      await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:'importer '+pr.join(' ')})});msg.innerHTML='<p class="msg">✅ Images envoyées. L\'application les découpe, les détoure et crée les bouches (environ 10 min), puis montre la planche ici.</p>'}
+    catch(e){msg.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
+// ---------------- Accepter / refuser un essai de code, annuler un import ----------------
+function boutonsBot(i,d,cs){const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1];if(!b)return;const z=d.querySelector('.zone'),x=b.body;
+  const dire=t=>api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:t})});
+  let m=x.match(/Essai du code réussi \(branche ([\w.-]+)\)/);if(m){const br=m[1];z.insertAdjacentHTML('beforeend','<div class="row"><button class="acc">✅ Accepter la modification du code</button><button class="sec ref">✖ Refuser</button></div><div class="cres"></div>');
+    z.querySelector('.acc').onclick=async()=>{try{await api('/repos/'+R+'/merges',{method:'POST',body:JSON.stringify({base:'main',head:br,commit_message:'Modification du code acceptée par Issa ('+br+')'})});await api('/repos/'+R+'/git/refs/heads/'+br,{method:'DELETE'}).catch(()=>{});
+      z.querySelector('.cres').innerHTML='<p class="msg">✅ Modification entrée dans le studio. Relancez l\'aperçu.</p>'}catch(e){z.querySelector('.cres').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}};
+    z.querySelector('.ref').onclick=async()=>{await api('/repos/'+R+'/git/refs/heads/'+br,{method:'DELETE'}).catch(()=>{});z.querySelector('.cres').innerHTML='<p class="msg">Modification refusée et supprimée.</p>'}}
+  m=x.match(/annuler import ([0-9a-f]{7,40})/);if(m){const sha=m[1];z.insertAdjacentHTML('beforeend','<div class="row"><button class="sec ann">↩️ Annuler cet import</button></div>');z.querySelector('.ann').onclick=async()=>{await dire('annuler import '+sha);z.querySelector('.ann').textContent='Annulation demandée…'}}}
 </script>
 </body></html>

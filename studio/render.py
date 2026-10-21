@@ -20,7 +20,9 @@ def decor(name, moment, blur):
     im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS); im = gfx.tint(im, moment)
     if blur: im = im.filter(ImageFilter.GaussianBlur(blur))
     return im
-DECOR_LARGE = {'KIOSQUE': (0.32, 0.12)}   # plan large : zoom et hauteur du cadrage (la théière au premier plan du kiosque sort de l'image, personne n'a les pieds dessus)
+DECOR_LARGE = {'KIOSQUE': (0.32, 0.12)}
+try: DECOR_LARGE.update({k: tuple(v) for k, v in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reglages.json'), encoding='utf-8')).get('decor_large', {}).items()})
+except Exception: pass   # plan large : zoom et hauteur du cadrage (la théière au premier plan du kiosque sort de l'image, personne n'a les pieds dessus)
 def background(s, lt, blur=0, zoom=0.0, pan=0.0, haut=0.45):
     """pan (-1 à 1) : en gros plan, la caméra regarde la partie du décor où se trouve le personnage."""
     im = decor(s['decor'], s['moment'], blur); x = int((im.width - W) / 2 + 16 * math.sin(lt * 0.25)); y = int((im.height - H) * 0.6)

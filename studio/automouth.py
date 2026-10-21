@@ -3,7 +3,9 @@ import json, os, subprocess, sys
 from PIL import Image
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); W = '/tmp/claude-0/automouth'; os.makedirs(W, exist_ok=True)
 cat = json.load(open(A + '/catalog.json')); jobs = []; regions = {}
-OUV = os.environ.get('STUDIO_BOUCHE', '0.2')   # ouverture de la bouche (barbe épaisse : plus grand)
+try: _R = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reglages.json'), encoding='utf-8'))
+except Exception: _R = {}
+OUV = os.environ.get('STUDIO_BOUCHE', str(_R.get('bouche', 0.2)))   # ouverture de la bouche (barbe épaisse : plus grand)
 SEUL = set(filter(None, os.environ.get('STUDIO_POSES', '').split(',')))   # refaire seulement ces poses
 for k, p in cat['poses'].items():
     if SEUL and k not in SEUL: continue

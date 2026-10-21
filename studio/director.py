@@ -165,6 +165,10 @@ def depth_staging(acts, speaker=None, arrivals=()):
     sit = behind + sit
     return sit + [a for a in std if a not in behind]
 RANGS = {'devant': {'x': (0.25, 0.73), 'pieds': 0.945, 'h': 1080}, 'derriere': {'x': (0.5, 0.1, 0.9, 0.3, 0.7), 'pieds': 0.745, 'h': 900}}
+try:   # réglages généraux modifiables par l'assistant (studio/reglages.json)
+    REGLAGES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reglages.json'), encoding='utf-8'))
+    for _r, _v in REGLAGES.get('rangs', {}).items(): RANGS.setdefault(_r, {}).update({k: tuple(x) if isinstance(x, list) else x for k, x in _v.items()})
+except Exception: REGLAGES = {}
 def deux_rangees(acts, stage, speaker=None, partner=None):
     """Plan d'ensemble à 4 personnes et plus, d'après la scène modèle (Gemini, épisode 16) : devant, les deux qui se parlent,
     grands et face à face ; derrière, les autres, plus petits, placés dans les espaces libres pour que tous les visages se voient."""
@@ -337,6 +341,22 @@ def set_pose(a, k):
         a['by'] = a['by'] - a['h'] + b['h'] if a.get('scale', 1.0) != 1.0 else b['by']; a['h'] = b['h']; a['x'] = b['x']
     else: a['w'] = POSES[k]['size'][0] * a['h'] / POSES[k]['size'][1]
     return a
+def apply_corrections(shots):
+    """Corrections précises d'un plan (demandées à l'assistant) : {"12": {"acteurs": {"KARIM": {"dx": -0.1, "dy": 0, "taille": 1.2,
+    "retourner": true, "cacher": false, "pose": "kar_sourire"}}, "duree": 3}}. dx / dy en part de la largeur / hauteur de l'image (+ = droite / bas)."""
+    for idx, ch in CHOIX.items():
+        if not str(idx).isdigit() or int(idx) >= len(shots): continue
+        sh = shots[int(idx)]
+        if ch.get('duree') and sh.get('kind') not in ('line',) and not sh.get('line'): sh['dur'] = max(0.5, float(ch['duree']))   # la durée d'une réplique suit sa voix
+        for who, c in (ch.get('acteurs') or {}).items():
+            acts = [a for a in sh.get('actors', []) if a['who'] == who.upper()]
+            if c.get('cacher'): sh['actors'] = [a for a in sh.get('actors', []) if a['who'] != who.upper()]; continue
+            for a in acts:
+                if c.get('pose') in POSES and POSES[c['pose']]['char'] == a['who']: set_pose(a, c['pose'])
+                if c.get('taille'): f = float(c['taille']); a['h'] *= f; a['w'] = a.get('w', 0) * f; a['scale'] = a.get('scale', 1.0) * f
+                if c.get('dx'): a['x'] += float(c['dx']) * 1080
+                if c.get('dy'): a['by'] += float(c['dy']) * 1920
+                if 'retourner' in c: a['flip'] = bool(c['retourner']) != bool(a.get('flip'))
 def apply_pose_choices(shots):
     """Poses choisies par Issa sur les planches : {"12": {"pose": {"who": "BAKARY", "key": "bak_explique"}}}."""
     for idx, ch in CHOIX.items():
@@ -532,6 +552,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
         i += 1
     if not any(s['kind'] == 'endcard' for s in shots): add({'kind': 'endcard', 'dur': 3.0, 'step': 2})
     apply_pose_choices(shots)
+    apply_corrections(shots)
     for sh in shots: orient_shot(sh)
     t0 = 0
     for s in shots: s['t0'] = t0; t0 += s['dur']
