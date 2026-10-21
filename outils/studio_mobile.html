@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sounsouni Studio</title>
+<style>
+/* Studio mobile v1 — une colonne, cartes par épisode, barre d'onglets en bas */
+:root{--bg:#f6f2ec;--card:#fffdf9;--fg:#2a2118;--muted:#76685a;--line:#e4d9cc;--accent:#d9661c;--on:#fff;--ok:#2e8b57;--warn:#c98a00;--bad:#c0392b;
+--display:"Baloo 2",system-ui,sans-serif;--body:"Nunito Sans",system-ui,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#1a1511;--card:#251e18;--fg:#f1e8dd;--muted:#b3a291;--line:#3b3128;--accent:#f0843c;--on:#1a1511;--ok:#5fc48c;--warn:#e8b83a;--bad:#ef6b5b;color-scheme:dark}}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 var(--body);padding:12px max(14px,env(safe-area-inset-left)) 90px max(14px,env(safe-area-inset-right));overflow-x:hidden}
+h1{font:800 22px/1.1 var(--display);margin:4px 0 2px}h2{font:700 17px/1.2 var(--display);margin:0}
+.muted{color:var(--muted);font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:0 0 12px;min-width:0}
+label{display:block;font-weight:700;font-size:13px;margin:10px 0 4px}
+input,textarea,select{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px}
+textarea{min-height:220px;font:13px/1.4 ui-monospace,monospace}
+button,.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--accent);color:var(--on);border:0;border-radius:10px;padding:10px 12px;font:700 14px var(--body);text-decoration:none;cursor:pointer}
+button.sec,.btn.sec{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+button:disabled{opacity:.5}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.row>*{flex:1 1 140px;min-width:0}
+.pill{display:inline-block;font:700 12px var(--body);padding:3px 9px;border-radius:99px;color:#fff;background:var(--muted)}
+.pill.ok{background:var(--ok)}.pill.warn{background:var(--warn);color:#1a1511}.pill.bad{background:var(--bad)}
+.ep-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.ep-head>div{min-width:0}
+.ep-title{font:700 16px var(--display);overflow-wrap:anywhere}
+img.prev,video{width:100%;border-radius:10px;margin-top:8px;display:block;max-width:100%}
+iframe{width:100%;height:75vh;border:1px solid var(--line);border-radius:10px;margin-top:8px;background:#fff}
+.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right))}
+.tabs button{flex:1;background:none;color:var(--muted);border-radius:10px;padding:9px 4px;font-size:13px}.tabs button.on{color:var(--accent);background:var(--bg)}
+.msg{padding:10px;border-radius:10px;background:var(--bg);font-size:13px;margin-top:8px;overflow-wrap:anywhere;white-space:pre-wrap}
+details summary{cursor:pointer;font-weight:700;margin-top:8px}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
+</head><body>
+<h1>Sounsouni Studio</h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
+
+<section id="v-eps">
+  <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><a class="btn sec" target="_blank" href="https://github.com/groupeemperiorsarl-stack/sounsouni-studio/issues/2">Minutes GitHub</a></div>
+  <div id="liste"><p class="muted">Chargement…</p></div>
+</section>
+
+<section id="v-new" hidden>
+  <div class="card"><h2>Nouvel épisode</h2>
+    <label for="n-titre">Titre</label><input id="n-titre" placeholder="Épisode 18 – …">
+    <label for="n-script">Script (du TITRE jusqu'à la FIN)</label><textarea id="n-script" placeholder="TITRE: Les Plans de Bakary – Épisode 18 : …"></textarea>
+    <div class="row"><label class="btn sec" for="n-fichier" style="margin:0">📄 Charger un fichier .txt</label><input id="n-fichier" type="file" accept=".txt,text/plain" hidden></div>
+    <label for="n-mode">Que faire ?</label>
+    <select id="n-mode"><option value="a">Aperçu des plans d'abord (≈ 10 min)</option><option value="v">Vidéo complète directement (≈ 30 min)</option></select>
+    <div class="row"><button id="n-go">🎬 Lancer</button></div><div id="n-msg"></div>
+  </div>
+</section>
+
+<section id="v-cfg" hidden>
+  <div class="card"><h2>Clé GitHub</h2>
+    <p class="muted">La page a besoin d'une clé personnelle (« token ») pour parler à votre dépôt. Elle reste seulement dans ce navigateur, jamais dans le dépôt.</p>
+    <ol class="muted" style="padding-left:18px">
+      <li>Ouvrez <a target="_blank" href="https://github.com/settings/personal-access-tokens/new">github.com/settings/personal-access-tokens/new</a></li>
+      <li>Nom : <b>studio mobile</b> · Expiration : 1 an</li>
+      <li>Repository access : <b>Only select repositories</b> → <b>sounsouni-studio</b></li>
+      <li>Permissions → Repository : <b>Issues : Read and write</b>, <b>Contents : Read-only</b>, <b>Actions : Read-only</b></li>
+      <li><b>Generate token</b>, copiez-la et collez-la ici.</li>
+    </ol>
+    <label for="c-tok">Clé</label><input id="c-tok" type="password" placeholder="github_pat_…" autocomplete="off">
+    <div class="row"><button id="c-save">Enregistrer et tester</button><button id="c-del" class="sec">Effacer la clé</button></div><div id="c-msg"></div>
+  </div>
+</section>
+
+<nav class="tabs"><button data-v="eps" class="on">📋 Épisodes</button><button data-v="new">➕ Nouveau</button><button data-v="cfg">🔑 Clé</button></nav>
+
+<script>
+const R='groupeemperiorsarl-stack/sounsouni-studio', API='https://api.github.com';
+const $=s=>document.querySelector(s); let TOK=''; try{TOK=localStorage.getItem('ss_tok')||''}catch(e){}
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function api(p,o={}){const r=await fetch(API+p,{...o,headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github+json',...(o.headers||{})}});
+  if(!r.ok){let m='';try{m=(await r.json()).message}catch(e){}throw new Error(r.status+' '+m)}return r.status==204?null:r.json()}
+function vue(v){document.querySelectorAll('section').forEach(s=>s.hidden=s.id!=='v-'+v);document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(v==='eps')charger()}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>vue(b.dataset.v));
+// ---- réglage de la clé
+$('#c-tok').value=TOK;
+$('#c-save').onclick=async()=>{TOK=$('#c-tok').value.trim();try{localStorage.setItem('ss_tok',TOK)}catch(e){}
+  try{const u=await api('/user');await api('/repos/'+R);$('#c-msg').innerHTML='<p class="msg">✅ Connecté : '+esc(u.login)+'</p>'}catch(e){$('#c-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+' — vérifiez la clé et ses droits.</p>'}};
+$('#c-del').onclick=()=>{TOK='';$('#c-tok').value='';try{localStorage.removeItem('ss_tok')}catch(e){}$('#c-msg').innerHTML='<p class="msg">Clé effacée.</p>'};
+// ---- nouvel épisode
+$('#n-fichier').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{$('#n-script').value=t;const m=t.match(/TITRE:\s*(.*)/);if(m&&!$('#n-titre').value)$('#n-titre').value=m[1].split(/[–-]/).slice(1).join('–').trim()||m[1]})};
+const corps=(mode,script)=>"### Que faire ?\n\n"+(mode==='v'?"Vidéo complète directement (environ 30 minutes)":"Aperçu des plans d'abord (rapide, environ 10 minutes)")+"\n\n### Script de l'épisode\n\n```text\n"+script.trim()+"\n```\n";
+$('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-msg').innerHTML='<p class="msg">Collez d\'abord le script.</p>';return}
+  $('#n-go').disabled=true;try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+($('#n-titre').value||'nouveau'),body:corps($('#n-mode').value,s),labels:['episode']})});
+  $('#n-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. Suivez-la dans « Épisodes ».</p>';$('#n-script').value='';$('#n-titre').value=''}catch(e){$('#n-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#n-go').disabled=false};
+// ---- liste des épisodes
+function etat(cs){const bot=cs.filter(c=>c.user.type==='Bot'),b=bot[bot.length-1],last=cs[cs.length-1];
+  if(last&&last.user.type!=='Bot'&&(!b||new Date(last.created_at)>new Date(b.created_at)))return{t:'Demande envoyée…',k:'warn',b};
+  if(!b)return{t:'En attente',k:'warn',b};const x=b.body;
+  if(x.includes('❌'))return{t:'Erreur',k:'bad',b};if(x.includes('🎬'))return{t:'Vidéo prête',k:'ok',b};if(x.includes('✅'))return{t:'Aperçu prêt',k:'ok',b};return{t:'En fabrication…',k:'warn',b}}
+async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Ajoutez d\'abord votre clé GitHub (onglet 🔑 Clé).</p></div>';return}
+  $('#liste').innerHTML='<p class="muted">Chargement…</p>';
+  try{const is=await api('/repos/'+R+'/issues?labels=episode&state=all&per_page=12');if(!is.length){$('#liste').innerHTML='<p class="muted">Aucun épisode.</p>';return}
+    $('#liste').innerHTML='';for(const i of is){const d=document.createElement('div');d.className='card';d.id='ep'+i.number;$('#liste').appendChild(d);carte(i,d)}}
+  catch(e){$('#liste').innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}}
+async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
+  const tag=e.b&&(e.b.body.match(/releases\/(?:tag|download)\/([^\/\s)]+)/)||[])[1];
+  d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
+  <div class="zone"></div>
+  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button></div>
+  <details><summary>Planches et corrections</summary>
+    <label>Réponse aux planches (ex. 1B 3C)</label><div class="row"><input class="rep" placeholder="1B 3C"><button data-x="rep">Envoyer</button></div>
+    <label>Planches sur un passage</label><div class="row"><input class="de" placeholder="1:20"><input class="a" placeholder="1:45"><button data-x="pl">Demander</button></div>
+    <label>Modifier le script</label><textarea class="scr"></textarea><div class="row"><button data-x="save" class="sec">Enregistrer le script</button></div>
+  </details>
+  <div class="row"><a class="btn sec" target="_blank" href="${i.html_url}">Voir sur GitHub</a></div><div class="out"></div>`;
+  const m=(i.body||'').match(/```(?:text)?\n([\s\S]*?)\n```/);d.querySelector('.scr').value=m?m[1]:(i.body||'');
+  const out=t=>d.querySelector('.out').innerHTML='<p class="msg">'+t+'</p>';
+  const dire=async t=>{try{await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:t})});out('✅ « '+esc(t)+' » envoyé. Actualisez dans quelques minutes.')}catch(x){out('❌ '+esc(x.message))}};
+  d.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>dire(b.dataset.a));
+  d.querySelector('[data-x=rep]').onclick=()=>{const v=d.querySelector('.rep').value.trim();if(v)dire(v.toUpperCase())};
+  d.querySelector('[data-x=pl]').onclick=()=>{const a=d.querySelector('.de').value.trim(),b=d.querySelector('.a').value.trim();if(a&&b)dire('planches '+a+'-'+b)};
+  d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur Aperçu ou Vidéo.')}catch(x){out('❌ '+esc(x.message))}};
+  if(tag)fichiers(tag,d.querySelector('.zone'));if(e.k==='warn')setTimeout(()=>carte(i,d),45000)}
+async function blob(a){const r=await fetch(API+'/repos/'+R+'/releases/assets/'+a.id,{headers:{Authorization:'Bearer '+TOK,Accept:'application/octet-stream'}});if(!r.ok)throw 0;return r.blob()}
+async function fichiers(tag,z){let rel;try{rel=await api('/repos/'+R+'/releases/tags/'+encodeURIComponent(tag))}catch(e){return}
+  const as=rel.assets,f=n=>as.find(a=>a.name===n),leg=as.find(a=>/_leger\.mp4$/.test(a.name)),ap=f('apercu_plans.png'),pl=f('planches.html');
+  const lien=a=>`<a class="btn sec" target="_blank" href="${a.browser_download_url}">⬇ ${esc(a.name)}</a>`;
+  let h='<div class="row">';
+  if(leg)h+=`<button data-f="vid">▶ Regarder la vidéo</button>`+lien(leg);
+  if(ap)h+=`<button class="sec" data-f="ap">🖼 Voir l'aperçu</button>`;
+  if(pl)h+=`<button data-f="pl">☑ Planches à cocher</button>`;
+  z.innerHTML=h+'</div><div class="vue"></div>';const v=z.querySelector('.vue');
+  const montre=async(a,fait)=>{v.innerHTML='<p class="muted">Téléchargement…</p>';try{fait(await blob(a))}catch(e){v.innerHTML='<p class="msg">Ouverture directe impossible ici : '+lien(a)+'</p>'}};
+  z.querySelector('[data-f=vid]')?.addEventListener('click',()=>montre(leg,b=>v.innerHTML=`<video controls playsinline src="${URL.createObjectURL(b)}"></video>`));
+  z.querySelector('[data-f=ap]')?.addEventListener('click',()=>montre(ap,b=>v.innerHTML=`<img class="prev" alt="aperçu des plans" src="${URL.createObjectURL(b)}">`));
+  z.querySelector('[data-f=pl]')?.addEventListener('click',()=>montre(pl,async b=>{v.innerHTML='<p class="muted">Cochez, appuyez sur « Copier », puis collez la réponse dans « Réponse aux planches ».</p><iframe></iframe>';v.querySelector('iframe').srcdoc=await b.text()}))}
+$('#maj').onclick=charger;vue(TOK?'eps':'cfg');
+</script>
+</body></html>
