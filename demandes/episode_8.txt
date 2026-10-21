@@ -19,13 +19,11 @@ Bakary, regarde bien qui a commandé.
 
 [BRUITAGE: sonnerie]
 
-PLAN: objet téléphone
-
 KARIM (moqueur · regarde: téléphone · voix: au téléphone)
 Allô, le marchand de thé ? C'est moi qui ai commandé. Je veux voir si ton application marche vraiment.
 
-BAKARY (surpris · regarde: Karim · voix: normal)
-{leve_yeux_ciel} Elle marche, Karim. Tout est sur sounsouni point pro.
+BAKARY (surpris · regarde: téléphone · voix: normal)
+{leve_yeux_ciel} Elle marche, Karim. Tout est sur Sounsouni.pro.
 
 [RÉACTION MODIBO: rire_retenu]
 
@@ -41,16 +39,17 @@ PLAN: gros [Bakary debout, verre]
 BAKARY (content · regarde: Awa · voix: normal)
 {sourire} Voilà, un verre bien chaud.
 
-BAKARY et MODIBO (ensemble · regarde: Awa · voix: normal)
+BAKARY (sourire · regarde: Awa · voix: normal)
 {sourire} Celui-ci est chaud !
+[RÉACTION MODIBO: sourire]
 
 AWA (gene · regarde: Bakary · voix: normal)
-Mimi va encore se moquer de moi… {pensif}
+{pensif} Mimi va encore se moquer de moi…
 
 FIN:
 [ÉCRAN: À suivre…]
 VOIX_OFF (chaleureuse)
 Découvrez Sounsouni, votre compagnon de commande, disponible sur Android, et bientôt sur iPhone.
 VOIX_OFF (lentement)
-Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
-[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
+Pour télécharger l'application Sounsouni, rendez-vous sur le site Sounsouni.pro.
+[ÉCRAN FIN: logo · Sounsouni.pro · Android · iPhone bientôt]
