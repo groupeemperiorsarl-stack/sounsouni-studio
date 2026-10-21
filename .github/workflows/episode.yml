@@ -90,6 +90,15 @@ jobs:
           sudo apt-get install -y -qq ffmpeg > /dev/null
           python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile
           pip install -q numpy pillow soundfile librosa
+      - name: Reprendre le travail de la vidéo précédente (seules les répliques et les secondes changées sont refaites)
+        if: github.event.inputs.issue != ''
+        run: |
+          T=$(gh release list --limit 100 --json tagName,createdAt -q "[.[] | select(.tagName | startswith(\"episode-${ISSUE}-\"))] | sort_by(.createdAt) | last | .tagName")
+          [ -n "$T" ] && gh release download "$T" -p travail.zip -D /tmp/prec 2>/dev/null && unzip -qo /tmp/prec/travail.zip -d /tmp/prec && mkdir -p sortie/travail || { echo "pas de vidéo précédente"; exit 0; }
+          cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null || { mkdir -p sortie/travail/voix && cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null; } || true
+          S=$( git ls-tree -r HEAD studio/assets | md5sum | cut -c1-12)
+          if [ "0" = "1" ] && [ "$(cat /tmp/prec/travail/poses.stamp 2>/dev/null)" = "$S" ]; then cp -n /tmp/prec/travail/seg_* sortie/travail/ 2>/dev/null || true; echo "morceaux repris : $(ls sortie/travail/seg_* 2>/dev/null | wc -l)"; else echo "images changées ou pas de morceaux : tout le rendu est refait"; fi
+          echo "voix reprises : $(ls sortie/travail/voix/*.wav 2>/dev/null | wc -l)"
       - run: python -m studio "$SCRIPT" -o sortie --etape voix --part ${{ matrix.i }}/20
       - uses: actions/upload-artifact@v4
         with: { name: "voix_${{ matrix.i }}", path: "sortie/travail/voix/*.wav", if-no-files-found: ignore }
@@ -128,6 +137,15 @@ jobs:
       - uses: actions/download-artifact@v4
         with: { name: tourne, path: studio/assets/poses/tourne }
       - run: sudo apt-get install -y -qq ffmpeg > /dev/null && pip install -q numpy pillow soundfile librosa opencv-python-headless
+      - name: Reprendre le travail de la vidéo précédente (seules les répliques et les secondes changées sont refaites)
+        if: github.event.inputs.issue != ''
+        run: |
+          T=$(gh release list --limit 100 --json tagName,createdAt -q "[.[] | select(.tagName | startswith(\"episode-${ISSUE}-\"))] | sort_by(.createdAt) | last | .tagName")
+          [ -n "$T" ] && gh release download "$T" -p travail.zip -D /tmp/prec 2>/dev/null && unzip -qo /tmp/prec/travail.zip -d /tmp/prec && mkdir -p sortie/travail || { echo "pas de vidéo précédente"; exit 0; }
+          cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null || { mkdir -p sortie/travail/voix && cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null; } || true
+          S=$( git ls-tree -r HEAD studio/assets | md5sum | cut -c1-12)
+          if [ "1" = "1" ] && [ "$(cat /tmp/prec/travail/poses.stamp 2>/dev/null)" = "$S" ]; then cp -n /tmp/prec/travail/seg_* sortie/travail/ 2>/dev/null || true; echo "morceaux repris : $(ls sortie/travail/seg_* 2>/dev/null | wc -l)"; else echo "images changées ou pas de morceaux : tout le rendu est refait"; fi
+          echo "voix reprises : $(ls sortie/travail/voix/*.wav 2>/dev/null | wc -l)"
       - run: python -m studio "$SCRIPT" -o sortie --etape rendu --part ${{ matrix.i }}/20 --workers 2
       - uses: actions/upload-artifact@v4
         with: { name: "rendu_${{ matrix.i }}", path: "sortie/travail/seg_*", if-no-files-found: ignore }
@@ -154,7 +172,8 @@ jobs:
         run: |
           N=${ISSUE:-manuel}; TAG="episode-$N-${{ github.run_number }}"
           if ls sortie/*_leger.mp4 >/dev/null 2>&1; then
-            (cd sortie && zip -qr travail.zip travail/plans.json travail/voix) || true   # fichiers de travail gardés : la prochaine correction ne refera que les secondes concernées
+            git ls-tree -r HEAD studio/assets | md5sum | cut -c1-12 > sortie/travail/poses.stamp
+            (cd sortie && zip -qr travail.zip travail/plans.json travail/poses.stamp travail/voix travail/seg_*) || true   # fichiers de travail gardés : la prochaine correction ne refera que les secondes concernées
             gh release create "$TAG" sortie/*.mp4 $(ls sortie/travail.zip 2>/dev/null) --title "Épisode – demande $N" --notes "Vidéo fabriquée par Sounsouni Studio. Le fichier _leger (moins de 28 Mo) est pour WhatsApp."
             MSG="🎬 La vidéo est prête : https://github.com/${{ github.repository }}/releases/tag/$TAG"$'\n'"(le fichier **_leger** est pour WhatsApp)"
           else
