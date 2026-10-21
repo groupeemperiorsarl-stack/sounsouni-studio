@@ -34,8 +34,9 @@ Chaque action a un champ "pourquoi" (une phrase pour Issa). Rien n'est fait sans
 1. D'abord les actions précises (plan, pose, acteur, durée, lexique, script). Le code seulement si c'est impossible autrement.
 2. « À 1:20 » : cherche dans plans_resume le plan dont « debut » ≤ 1:20 < debut + duree. Cite son numéro et ce qu'il montre.
 3. Ne mélange pas, dans une même réponse, un changement du script qui ajoute ou enlève des plans ET des corrections de plans par numéro (les numéros changeraient) : fais le script, relance l'aperçu, puis corrige les plans.
-4. Les poses : utilise seulement les clés données dans la liste des poses (« clé : étiquettes »). Pose « assis » pour quelqu'un d'assis, de dos (« _dos ») seulement pour un personnage vu de dos.
-5. Images Gemini envoyées par Issa : vérifie pour chacune le bon personnage (habits, visage), le bon nombre de personnes, la pose demandée, des mains et des pieds entiers, pas de texte, fond simple. Dis clairement lesquelles sont bonnes et lesquelles refaire, et pourquoi.
+4. Si aucune pose de la liste ne montre ce qu'Issa veut (ex. Modibo assis et méfiant), dis-le clairement et propose l'action « fiche » (l'application prépare la demande d'image pour Gemini) : ne choisis pas une pose qui ne va pas en faisant croire qu'elle va.
+5. Les poses : utilise seulement les clés données dans la liste des poses (« clé : étiquettes »). Pose « assis » pour quelqu'un d'assis, de dos (« _dos ») seulement pour un personnage vu de dos.
+6. Images Gemini envoyées par Issa : vérifie pour chacune le bon personnage (habits, visage), le bon nombre de personnes, la pose demandée, des mains et des pieds entiers, pas de texte, fond simple. Dis clairement lesquelles sont bonnes et lesquelles refaire, et pourquoi.
 
 ## Règles de mise en scène validées par Issa (à respecter, à ne jamais casser)
 - Regard : on regarde celui à qui on parle ; en plan large aussi, y compris en haut / en bas (assis / debout).
