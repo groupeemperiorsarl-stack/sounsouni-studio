@@ -5,6 +5,8 @@ issue = ev['issue']; body = issue.get('body') or ''
 m = re.search(r"### Script de l'épisode\s*\n+```(?:text)?\n(.*?)\n```", body, re.S) or re.search(r"### Script de l'épisode\s*\n+(.*)$", body, re.S)
 script = (m.group(1) if m else body).strip()
 mode = 'video' if re.search(r'Vidéo complète', body) else 'apercu'
+auto = 'true' if re.search(r'Mise au format par l.assistant puis aperçu', body) else 'false'
+if not ev.get('comment') and re.search(r'Mise au format par l.assistant', body): mode = 'format'   # le téléphone envoie le script brut, GitHub le met au format
 reponse = de = fin = arg = ''
 if ev.get('comment'):   # commentaire « vidéo », « aperçu », « planches 1:20-1:45 » ou réponse aux planches « 1B 3C »
     c = ((ev['comment'].get('body') or '').strip().splitlines() or [''])[0].lower().strip(' .!')   # 1re ligne seulement (une signature peut suivre)
@@ -23,5 +25,5 @@ os.makedirs('demandes', exist_ok=True)
 path = f"demandes/episode_{issue['number']}.txt"
 open(path, 'w', encoding='utf-8').write(script + '\n')
 with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-    f.write(f"mode={mode}\npath={path}\nnumber={issue['number']}\nreponse={reponse}\nde={de}\nfin={fin}\narg={arg}\n")
+    f.write(f"mode={mode}\npath={path}\nnumber={issue['number']}\nreponse={reponse}\nde={de}\nfin={fin}\narg={arg}\nauto={auto}\n")
 print(mode, path, len(script), 'caractères', reponse, de, fin)

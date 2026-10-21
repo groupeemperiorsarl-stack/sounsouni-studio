@@ -7,7 +7,7 @@ jobs:
   lire:
     if: contains(github.event.issue.labels.*.name, 'episode') && (github.event_name == 'issues' || github.event.comment.user.login == github.event.issue.user.login)
     runs-on: ubuntu-latest
-    outputs: { mode: "${{ steps.s.outputs.mode }}", path: "${{ steps.s.outputs.path }}", reponse: "${{ steps.s.outputs.reponse }}", de: "${{ steps.s.outputs.de }}", fin: "${{ steps.s.outputs.fin }}", arg: "${{ steps.s.outputs.arg }}" }
+    outputs: { mode: "${{ steps.s.outputs.mode }}", path: "${{ steps.s.outputs.path }}", reponse: "${{ steps.s.outputs.reponse }}", de: "${{ steps.s.outputs.de }}", fin: "${{ steps.s.outputs.fin }}", arg: "${{ steps.s.outputs.arg }}", auto: "${{ steps.s.outputs.auto }}" }
     steps:
       - uses: actions/checkout@v4
       - id: s
@@ -23,6 +23,8 @@ jobs:
         run: |
           N=${{ github.event.issue.number }}; C="repos/${{ github.repository }}/issues/$N/comments"
           case "${{ steps.s.outputs.mode }}" in
+            format) gh workflow run format.yml -f issue="$N" -f auto="${{ steps.s.outputs.auto }}"
+              gh api "$C" -f body="⏳ C'est parti : l'assistant met le script au format sur GitHub (5 à 10 minutes). Vous pouvez fermer la page." > /dev/null; exit 0;;
             importer|annuler) gh workflow run import.yml -f issue="$N" -f mode="${{ steps.s.outputs.mode }}" -f arg="${{ steps.s.outputs.arg }}"
               gh api "$C" -f body="⏳ C'est parti : l'application range les images Gemini (environ 10 minutes)." > /dev/null; exit 0;;
             essai) gh workflow run essai-code.yml -f issue="$N" -f branche="${{ steps.s.outputs.arg }}" -f script="${{ steps.s.outputs.path }}"

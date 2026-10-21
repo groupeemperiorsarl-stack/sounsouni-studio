@@ -1,0 +1,36 @@
+name: Mise au format par l'assistant (sur GitHub, le téléphone peut être fermé)
+on:
+  workflow_dispatch:
+    inputs:
+      issue: { description: "Numéro de la demande", required: true }
+      auto: { description: "true = lancer l'aperçu juste après", default: "false" }
+permissions: { contents: write, issues: write, actions: write }
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Mettre au format (Groq, puis Cerebras / OpenRouter / Gemini)
+        env:
+          ISSUE: ${{ github.event.inputs.issue }}
+          AUTO: ${{ github.event.inputs.auto }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node .github/scripts/format.mjs
+      - name: Garder le script au format et lancer l'aperçu si demandé
+        env: { GH_TOKEN: "${{ github.token }}", N: "${{ github.event.inputs.issue }}" }
+        run: |
+          cp script_au_format.txt "demandes/episode_$N.txt"
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add "demandes/episode_$N.txt" && (git commit -qm "Script de la demande #$N mis au format par l'assistant" && git pull -q --rebase --autostash && git push -q || true)
+          if [ "${{ github.event.inputs.auto }}" = "true" ]; then
+            gh workflow run episode.yml -f script="demandes/episode_$N.txt" -f issue="$N" -f apercu=true
+            gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="⏳ C'est parti : l'application fabrique l'aperçu des plans et les planches à valider (environ 10 minutes)." > /dev/null
+          fi

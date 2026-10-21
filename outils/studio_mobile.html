@@ -56,7 +56,12 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
   <div class="card"><h2>🤖 Assistant de secours</h2>
     <p class="muted">Quand Claude n'est pas disponible : l'assistant (IA gratuite) met le script au format du studio, vous relisez, puis vous lancez. Le montage reste fait par l'application. Il ne touche jamais au code.</p>
     <label for="a-brut">Script validé (tel que le scénariste l'a écrit)</label><textarea id="a-brut" placeholder="Collez ici le script validé…"></textarea>
-    <div class="row"><label class="btn sec" for="a-fichier" style="margin:0">📄 Charger un .txt</label><input id="a-fichier" type="file" accept=".txt,text/plain" hidden><button id="a-go">1 · Mettre au format</button></div>
+    <div class="row"><label class="btn sec" for="a-fichier" style="margin:0">📄 Charger un .txt</label><input id="a-fichier" type="file" accept=".txt,text/plain" hidden></div>
+    <label for="a-gtitre">Titre (facultatif, sinon celui du script)</label><input id="a-gtitre" placeholder="Épisode 18 : L'avis">
+    <label class="row" style="align-items:center;gap:8px;font-weight:600"><input type="checkbox" id="a-auto" style="width:auto"> Lancer l'aperçu tout de suite après</label>
+    <div class="row"><button id="a-gh">☁️ 1 · Mettre au format sur GitHub</button></div>
+    <p class="muted">Conseillé : GitHub fait le travail (5 à 10 min), vous pouvez fermer la page ou le téléphone. Le résultat arrive dans « 📋 Épisodes ».</p>
+    <div class="row"><button id="a-go" class="sec">Mettre au format ici (rester sur la page)</button></div><div id="a-ghmsg"></div>
     <div id="a-prog"></div>
   </div>
   <div class="card" id="a-res" hidden><h2>2 · Relire ce que l'assistant a préparé</h2>
@@ -115,14 +120,14 @@ $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-ms
   $('#n-go').disabled=true;try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+($('#n-titre').value||'nouveau'),body:corps($('#n-mode').value,s),labels:['episode']})});
   $('#n-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. Suivez-la dans « Épisodes ».</p>';$('#n-script').value='';$('#n-titre').value=''}catch(e){$('#n-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#n-go').disabled=false};
 // ---- liste des épisodes
-const SORTE=x=>/vidéo|video/i.test(x)&&!/aperçu/i.test(x.split('\n')[0])?'la vidéo':/fiche/i.test(x)?'la fiche Gemini':/images|import/i.test(x)?'les images':/code/i.test(x)?'l\'essai du code':'l\'aperçu';
+const SORTE=x=>/format/i.test(x.split('\n')[0])?'la mise au format':/vidéo|video/i.test(x)&&!/aperçu/i.test(x.split('\n')[0])?'la vidéo':/fiche/i.test(x)?'la fiche Gemini':/images|import/i.test(x)?'les images':/code/i.test(x)?'l\'essai du code':'l\'aperçu';
 function etat(cs){cs=cs.filter(c=>!/^(✅|✖) Modification du code/.test(c.body||''));const bot=cs.filter(c=>c.user.type==='Bot'),last=cs[cs.length-1];
   const enCours=[];let b=null;for(const c of bot){const x=c.body||'';if(/^⏳/.test(x)){enCours.push(SORTE(x));continue}const k=enCours.indexOf(SORTE(x));if(k>=0)enCours.splice(k,1);b=c}   // plusieurs fabrications peuvent tourner en même temps
   if(last&&last.user.type!=='Bot'&&(!bot.length||new Date(last.created_at)>new Date(bot[bot.length-1].created_at)))return{t:'Demande envoyée…',k:'warn',b};
   if(enCours.length)return{t:'En fabrication : '+[...new Set(enCours)].join(', ')+'…',k:'warn',b};
   if(!b)return{t:'En attente',k:'warn',b};const x=b.body;
   if(/^❌|n'a pas pu|n'ont pas pu|raté/.test(x))return{t:'Erreur',k:'bad',b};if(/La vidéo est prête/.test(x))return{t:'Vidéo prête',k:'ok',b};if(/Aperçu des plans prêt/.test(x))return{t:/Planches à valider/.test(x)?'Aperçu prêt · planches à cocher':'Aperçu prêt',k:'ok',b};
-  if(/Fiche Gemini prête/.test(x))return{t:'Fiche Gemini prête',k:'ok',b};if(/Images rangées/.test(x))return{t:'Images rangées',k:'ok',b};if(/Import annulé/.test(x))return{t:'Import annulé',k:'ok',b};if(/Essai du code/.test(x))return{t:'Essai du code prêt',k:'ok',b};
+  if(/Script mis au format/.test(x))return{t:'Script prêt à relire',k:'ok',b};if(/Fiche Gemini prête/.test(x))return{t:'Fiche Gemini prête',k:'ok',b};if(/Images rangées/.test(x))return{t:'Images rangées',k:'ok',b};if(/Import annulé/.test(x))return{t:'Import annulé',k:'ok',b};if(/Essai du code/.test(x))return{t:'Essai du code prêt',k:'ok',b};
   return{t:'Prêt',k:'ok',b}}
 async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Ajoutez d\'abord votre clé GitHub (onglet 🔑 Clé).</p></div>';return}
   $('#liste').innerHTML='<p class="muted">Chargement…</p>';
@@ -198,6 +203,7 @@ const K={groq:'',cer:'',or:''};try{K.groq=localStorage.getItem('ss_groq')||'';K.
 $('#k-groq').value=K.groq;$('#k-cer').value=K.cer;$('#k-or').value=K.or;
 $('#k-save').onclick=()=>{K.groq=$('#k-groq').value.trim();K.cer=$('#k-cer').value.trim();K.or=$('#k-or').value.trim();
   try{localStorage.setItem('ss_groq',K.groq);localStorage.setItem('ss_cer',K.cer);localStorage.setItem('ss_or',K.or)}catch(e){}$('#k-msg').innerHTML='<p class="msg">✅ Clés enregistrées sur ce téléphone.</p>'};
+// <<format (fonctions sans écran : la machine GitHub les réutilise telles quelles, .github/scripts/format.mjs)
 const sans=t=>String(t).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
 const EMO=new Set('neutre sourire grand_sourire sourire_malin rire rire_retenu colere furieux choc surpris peur panique triste gene mepris mefiant amoureux fier moue degout innocent confus timide determine emerveille reveur sage victoire froide taquin moqueur pensif inquiet serieux content tendre chaleureuse hesitante joie severe emu fiere'.split(' '));
 const SYN={surprise:'surpris',mefiante:'mefiant',essouffle:'inquiet',essoufflee:'inquiet',rire_doux:'rire_retenu',rigole:'rire',heureux:'content',heureuse:'content',contente:'content',inquiete:'inquiet',furieuse:'furieux',amoureuse:'amoureux',determinee:'determine',emerveillee:'emerveille',reveuse:'reveur',fache:'colere',fachee:'colere',enerve:'colere',enervee:'colere',etonne:'surpris',etonnee:'surpris',gene_:'gene',genee:'gene',honteux:'gene',honteuse:'gene',calme:'neutre',serieuse:'serieux',moqueuse:'moqueur',taquine:'taquin',pensive:'pensif',triste_:'triste',paniquee:'panique',panique_:'panique',choquee:'choc',choque:'choc'};
@@ -217,6 +223,7 @@ const lettres=t=>t.replace(/\b(\d{1,2})\s?h\s?(\d{2})?\b/gi,(a,h,mi)=>enLettres(
   .replace(/(\d+),(\d+)/g,(a,x,y)=>enLettres(+x)+' virgule '+enLettres(+y)).replace(/\d+/g,x=>enLettres(+x));
 const OBJOK=/t[ée]l[ée]phone|verre|\bth[ée]\b|machine|courroie|grill|robe|brochette/i;
 const nomP=w=>sans(w).toUpperCase().replace(/[^A-Z_]/g,'');
+// format>>
 let REGLES='';
 async function regles(){if(REGLES)return REGLES;const r=await fetch(API+'/repos/'+R+'/contents/docs/ASSISTANT.md',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw new Error('règles introuvables ('+r.status+')');return REGLES=await r.text()}
 const dodo=ms=>new Promise(r=>setTimeout(r,ms));
@@ -231,6 +238,7 @@ async function ia(messages,prog){const P=[['Groq','https://api.groq.com/openai/v
       const d=await r.json();const t=d.choices?.[0]?.message?.content;if(t)return{t,n};err=n+' : réponse vide';break}catch(e){err=n+' : '+e.message;break}}
   if(K.gem){try{prog((err?err+' — ':'')+'Gemini prend le relais…');const t=await gem(messages.filter(x=>x.role==='system').map(x=>x.content).join('\n'),[{text:messages.filter(x=>x.role!=='system').map(x=>x.content).join('\n\n')}],prog,false);if(t)return{t,n:'Gemini'}}catch(e){err+=(err?' · ':'')+e.message}}
   throw new Error(err||'aucune IA disponible')}
+// <<format
 function parties(brut){const L=brut.replace(/\r/g,'').split('\n'),out=[];let cur=[];
   for(const l of L){if(/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(l)&&cur.join('').trim()&&cur.some(x=>/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(x))){out.push(cur.join('\n'));cur=[]}cur.push(l)}
   if(cur.join('').trim())out.push(cur.join('\n'));
@@ -293,14 +301,17 @@ function duree(t){let d=0;const L=t.split('\n');let tete=false;
     m=l.match(/^\[SILENCE\s*(\d+)/i);if(m){d+=+m[1];continue}m=l.match(/^PLAN:\s*(\d+(?:[.,]\d+)?)\s*s/i);if(m){d+=parseFloat(m[1].replace(',','.'));continue}
     if(tete&&l.trim()&&!/^\s*[\[A-Z]{2,}:/.test(l)){d+=l.replace(/\{[^}]*\}/g,'').split(/\s+/).filter(Boolean).length/2.2;tete=false}}return d+5}
 const mmss=s=>Math.floor(s/60)+' min '+String(Math.round(s%60)).padStart(2,'0')+' s';
-function verifier(){const t=$('#a-out').value,al=[...(window.ALIA||[])],L=t.split('\n');
+function controle(t,al0){const al=[...(al0||[])],L=t.split('\n');   // alertes et durée (aussi utilisé par la machine GitHub)
   L.forEach((l,i)=>{if(/^PLAN:.*;/.test(l))al.push('Ligne '+(i+1)+' : point-virgule dans un PLAN');
     if(/^\[(ÉCRAN|ECRAN) /i.test(l)&&!/FIN|suivre/i.test(l)){const suite=L.slice(i+1,i+8).filter(x=>x.trim()&&!/^\[(ÉCRAN|ECRAN|BRUITAGE|MUSIQUE)|^PLAN/i.test(x));if(!suite[0]||!/^PENS/i.test(suite[0]))al.push('Ligne '+(i+1)+' : écran du téléphone sans PENSÉE qui l\'explique')}
     const m=l.match(TETE);if(m&&!PERSOS.includes(m[2].trim())&&!new RegExp('NOUVEAU PERSONNAGE:\\s*'+m[2].trim(),'i').test(t))al.push('Ligne '+(i+1)+' : personnage inconnu « '+m[2].trim()+' »');
     if(m&&/au t[ée]l[ée]phone/i.test(m[3])){let j=i;while(j>0&&!/^(DÉCOR|DECOR)/.test(L[j]))j--;if(L.slice(j,i).some(x=>/^PLAN:/.test(x)&&new RegExp('\\b'+m[2].trim()+'\\b','i').test(x)))al.push('Ligne '+(i+1)+' : '+m[2].trim()+' est au téléphone mais il est dans le PLAN de la scène')}});
   if(!/^FIN\s*:/m.test(t))al.push('Pas de FIN (voix off Sounsouni et écran de fin)');
-  const d=duree(t);$('#a-duree').innerHTML='Durée estimée : <b>'+mmss(d)+'</b>'+(d<180?' — un peu court (moins de 3 min)':d>245?' — un peu long (plus de 4 min)':' ✅');
-  $('#a-alertes').innerHTML=al.length?'<div class="msg">⚠️ À vérifier :\n• '+al.map(esc).join('\n• ')+'</div>':'<p class="msg">✅ Aucun problème de format trouvé.</p>';
+  const d=duree(t);return{al,d,dtxt:'Durée estimée : '+mmss(d)+(d<180?' — un peu court (moins de 3 min)':d>245?' — un peu long (plus de 4 min)':' ✅')}}
+// format>>
+function verifier(){const t=$('#a-out').value,c=controle(t,window.ALIA);
+  $('#a-duree').innerHTML=esc(c.dtxt).replace(/(\d+ min \d+ s)/,'<b>$1</b>');
+  $('#a-alertes').innerHTML=c.al.length?'<div class="msg">⚠️ À vérifier :\n• '+c.al.map(esc).join('\n• ')+'</div>':'<p class="msg">✅ Aucun problème de format trouvé.</p>';
   const tt=t.match(/TITRE:\s*(.*)/);if(tt&&!$('#a-titre').value)$('#a-titre').value=tt[1].split(/[–-]/).slice(1).join('–').trim()||tt[1]}
 $('#a-fichier').onchange=e=>{const f=e.target.files[0];if(f)f.text().then(t=>$('#a-brut').value=t)};
 $('#a-go').onclick=async()=>{const brut=$('#a-brut').value;if(!brut.trim())return;const pr=t=>$('#a-prog').innerHTML='<p class="msg">'+esc(t)+'</p>';$('#a-go').disabled=true;
@@ -310,6 +321,11 @@ $('#a-go').onclick=async()=>{const brut=$('#a-brut').value;if(!brut.trim())retur
       const r=await ia([{role:'system',content:sys},{role:'user',content:consigne}],pr);res.push(r.t);qui=r.n}
     const c=nettoyer(avant(res.join('\n\n')));c.s=apres(c.s,brut,c.al);window.ALIA=c.al;$('#a-out').value=c.s;$('#a-res').hidden=false;$('#a-ok').checked=false;bascule();verifier();pr('✅ Fait par '+qui+'. Relisez le script ci-dessous.')}
   catch(e){pr('❌ '+e.message)}$('#a-go').disabled=false};
+$('#a-gh').onclick=async()=>{const brut=$('#a-brut').value.trim(),m=$('#a-ghmsg');if(!brut){m.innerHTML='<p class="msg">Collez d\'abord le script.</p>';return}
+  const tt=(brut.match(/^TITRE:\s*(.*)$/m)||[,''])[1].replace(/^Les Plans de Bakary\s*[–-]\s*/,''),titre=$('#a-gtitre').value.trim()||tt||'nouvel épisode';$('#a-gh').disabled=true;
+  try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+titre,labels:['episode'],body:"### Que faire ?\n\nMise au format par l'assistant"+($('#a-auto').checked?' puis aperçu':'')+"\n\n### Script de l'épisode\n\n```text\n"+brut+"\n```\n"})});
+    m.innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. GitHub met le script au format (5 à 10 min) : vous pouvez fermer la page. Le résultat arrivera dans « 📋 Épisodes ».</p>';$('#a-brut').value=''}
+  catch(e){m.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#a-gh').disabled=false};
 $('#a-verif').onclick=()=>{window.ALIA=[];verifier()};
 $('#a-out').oninput=()=>{$('#a-ok').checked=false;bascule()};
 function bascule(){['#a-l40','#a-lap','#a-lv'].forEach(b=>$(b).disabled=!$('#a-ok').checked)}$('#a-ok').onchange=bascule;
@@ -462,11 +478,12 @@ function prochaine(i,d,cs,e){const z=d.querySelector('.etape'),n=i.number,b=e.b,
   else if(corr>tb)h='✅ <b>Vos corrections sont enregistrées</b> mais pas encore dans la vidéo.<br>1) Voyez-les sur l\'aperçu (10 min, gratuit). 2) Puis fabriquez la vidéo : seules les secondes changées sont refaites.<div class="row">'+bouton('👁 Voir l\'aperçu corrigé','aperçu','Aperçu lancé (environ 10 min).')+bouton('🎬 Vidéo corrigée','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
   else if(/Planches à valider/.test(x)&&!cs.some(c=>new Date(c.created_at)>tb&&/^\s*\d+\s*[A-Da-d]\b/.test(c.body||'')))h='☑ <b>L\'application hésite sur certains plans.</b> Appuyez sur « ☑ Planches à cocher » ci-dessous, touchez une image par question, puis « Copier » : un bouton « Envoyer ma réponse » apparaît.<br>Si tout vous va déjà :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
   else if(/Aperçu des plans prêt/.test(x))h='👁 <b>L\'aperçu est prêt</b> (bouton « Voir l\'aperçu »). S\'il vous plaît :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>Sinon : « 💬 Discuter avec l\'assistant » pour corriger.';
+  else if(/Script mis au format/.test(x))h='🤖 <b>Le script est mis au format.</b> Lisez ce qu\'il faut vérifier dans « Détails de la fabrication », relisez le script, puis lancez l\'aperçu.<div class="row"><button class="sec relire">📝 Relire le script</button>'+bouton('👁 Lancer l\'aperçu','aperçu','Aperçu lancé (environ 10 min).')+'</div>';
   else if(/La vidéo est prête/.test(x))h='🎬 <b>La vidéo est prête</b> (« ▶ Regarder la vidéo »). Pour corriger : « 💬 Discuter avec l\'assistant » → « ✅ Appliquer », puis revenez ici.';
   else if(/Fiche Gemini prête/.test(x))h='🖼 <b>La fiche Gemini est prête.</b> Elle ne corrige pas la vidéo : elle sert à créer dans Gemini les images qui manquent. Ouvrez « 🖼 Fiche Gemini », faites les images, puis « 🧩 Renvoyer les images Gemini ».<br>Pour continuer sans nouvelles images :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
   else if(/Images rangées/.test(x))h='🧩 <b>Les nouvelles images sont rangées</b> (« 🧩 Images rangées » pour les voir). Pour les utiliser :<div class="row">'+bouton('👁 Nouvel aperçu','aperçu','Aperçu lancé (environ 10 min).')+'</div>';
   else if(/Essai du code réussi/.test(x))h='🧪 <b>La modification du code a marché sur les essais.</b> Regardez les images « 🧪 Essai du code », puis « ✅ Accepter » ou « ✖ Refuser » ci-dessous.';
   else if(/❌/.test(x))h='❌ <b>Problème pendant la fabrication.</b> Ouvrez « Détails de la fabrication », ou demandez à l\'assistant (« 💬 Discuter ») ce qui ne va pas.';
-  z.innerHTML=h?'<div class="msg etp">'+h+'</div>':'';z.querySelectorAll('[data-c]').forEach(bt=>bt.onclick=()=>dire(bt.dataset.c,bt.dataset.m))}
+  z.innerHTML=h?'<div class="msg etp">'+h+'</div>':'';const rl=z.querySelector('.relire');if(rl)rl.onclick=()=>{const dt=[...d.querySelectorAll('details')].find(x=>/Planches et corrections/.test(x.textContent));if(dt){dt.open=true;d.querySelector('.scr').scrollIntoView({behavior:'smooth',block:'center'})}};z.querySelectorAll('[data-c]').forEach(bt=>bt.onclick=()=>dire(bt.dataset.c,bt.dataset.m))}
 </script>
 </body></html>
