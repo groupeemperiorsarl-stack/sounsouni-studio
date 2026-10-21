@@ -58,6 +58,7 @@
 
 ## Où on en est (21/10/2026)
 - Assistant complet ajouté (Groq + Gemini) : format, discussion avec actions, images Gemini, essais de code. Tests sur la demande n° 5.
+- Essai complet de la page (demande n° 9, comme sur le téléphone) : format → aperçu → planches (bouton « Envoyer ma réponse ») → discussion → corrections → aperçu → vidéo (19 min) → correction → vidéo (14 min : voix et morceaux de 12 s repris de la vidéo précédente). Bandeau « que faire maintenant » sur chaque épisode. Corrigé : les choix des planches n'étaient jamais enregistrés sur GitHub (pull --rebase sans autostash).
 - Planches A / B / C automatiques ajoutées (local et GitHub) + rendu partiel automatique par morceaux.
 - Épisode 15 « La rumeur » fini (v5) ; script : `exemples/episode15_la_rumeur.txt` (+ début réécrit : `exemples/episode15_debut_corrige.txt`).
 - Plus tard : vues de dos des personnages qui n'en ont pas ; nettoyer le décor BUREAU (figurants) ; pose de Karim assis.
