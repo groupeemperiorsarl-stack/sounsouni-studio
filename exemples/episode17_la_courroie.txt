@@ -1,0 +1,219 @@
+TITRE: Les Plans de Bakary – Épisode 17 : La courroie
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+PLAN: large [Awa assise, Mimi assise]
+[BRUITAGE: notification]
+
+PLAN: gros [Awa assise, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Nouvelle commande ✔ · 12 boubous pour un baptême · Retrait par le livreur : aujourd'hui à 18 h 00]
+
+AWA (fiere · regarde: Mimi · voix: normal)
+Douze boubous avant ce soir ? {grand_sourire} Facile. Mimi, au travail !
+
+AWA (fier · regarde: loin · voix: normal)
+Douze boubous, c'est quarante-huit mille francs. {fiere} Ce soir, Awa Couture fait sa meilleure journée.
+
+MIMI (content · regarde: Awa · voix: normal)
+Oui, Tantie Awa !
+[MUSIQUE: joyeuse]
+
+PLAN: 3 s · large [Awa assise, Mimi assise] · {coud}
+[ÉCRAN 2 s: 15 h 00]
+[BRUITAGE: fracas]
+[MUSIQUE: suspense]
+
+PLAN: gros [Awa assise, machine]
+
+AWA (choc · regarde: bas · voix: lentement)
+Non… non, non, non…
+
+MIMI (inquiet · regarde: Awa · voix: chuchote)
+C'est la courroie, Tantie. {inquiet} Elle a sauté.
+
+MIMI (inquiet · regarde: Awa · voix: normal)
+On a encore la petite machine… {pensif} mais elle est trop lente pour douze boubous.
+
+AWA (panique · regarde: bas · voix: vite)
+Elle va repartir. {colere} Allez… allez, machine !
+[BRUITAGE: clic]
+[BRUITAGE: clic]
+[SILENCE 2 s: grillon]
+
+PLAN: gros [Awa assise, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Recherche : « courroie machine à coudre » · Livraison : demain]
+
+AWA (furieux · regarde: téléphone · voix: crie)
+Demain ?! {furieux} C'est ce soir que j'en ai besoin !
+
+MIMI (timide · regarde: Awa · voix: chuchote)
+Tantie… {timide} on demande de l'aide ?
+
+AWA (fiere · regarde: Mimi · voix: normal)
+Awa ne demande jamais d'aide. {mepris} Jamais.
+
+DÉCOR: KIOSQUE · après-midi · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+
+PLAN: 3 s · gros Bakary · {inquiet}
+
+BAKARY (inquiet · regarde: loin · voix: normal)
+Van… regarde Awa. {pensif} Elle tourne en rond devant sa machine depuis tout à l'heure.
+
+MODIBO (serieux · regarde: loin · voix: normal)
+Et Mimi a les bras croisés. {sage} Quand l'apprentie ne coud pas, c'est que la machine est morte.
+
+DIASABI (fier · regarde: Bakary · voix: vite)
+Je vais l'aider ! {bras_ouverts} À Bobo, j'ai réparé une machine à…
+
+BAKARY (panique · regarde: Diasabi · voix: crie)
+Non ! {non} Surtout pas toi !
+[RÉACTION DIASABI: triste]
+[RÉACTION MODIBO: rire]
+
+MODIBO (explique · regarde: Bakary · voix: normal)
+Moi, je répare les téléphones. {idee} Mais Moussa, lui, il répare tout ce qui tourne.
+
+BAKARY (pensif · regarde: loin · voix: normal)
+Si j'y vais moi-même, elle va refuser. {soupir} Elle refuse tout ce qui vient de moi.
+
+PLAN: gros [Bakary debout, téléphone]
+[BRUITAGE: sonnerie]
+
+BAKARY (serieux · regarde: téléphone · voix: normal)
+Moussa ? Tu viens au kiosque, vite. {chuchote} Tu vas chez Awa. Mais ce n'est pas moi qui t'envoie, compris ?
+
+MOUSSA (content · voix: au téléphone)
+Compris, Kôrô. J'arrive !
+
+[BRUITAGE: whoosh]
+PLAN: large [Bakary debout, Modibo sur le banc, Moussa debout]
+
+BAKARY (offre · regarde: Moussa · voix: chuchote)
+Prends ce thé. {sourire} Tu dis que c'est pour saluer.
+
+PLAN: objet verre de thé
+
+DÉCOR: ATELIER · après-midi · ambiance: rue calme
+PLAN: large [Awa debout, Mimi assise, Moussa debout]
+[BRUITAGE: whoosh]
+
+MOUSSA (salue · regarde: Awa · voix: normal)
+I ni tchié, grande sœur ! {grand_sourire} Je passais vous saluer.
+[RÉACTION MIMI: rougit]
+
+MOUSSA (sourire · regarde: Mimi · voix: normal)
+Et toi, petite sœur… {sourire} toujours aussi concentrée ?
+
+MIMI (timide · regarde: bas · voix: chuchote)
+Euh… oui.
+
+AWA (mefiant · regarde: Moussa · voix: normal)
+Je n'ai pas commandé de thé.
+
+MOUSSA (sourire · regarde: Awa · voix: normal)
+Le thé, c'est pour saluer. {sourire} Ah… votre machine ne tourne pas ? C'est la courroie.
+
+AWA (fiere · regarde: Moussa · voix: normal)
+Je n'ai besoin de personne.
+
+[ÉCRAN 2 s: 16 h 30]
+PLAN: 2 s · très gros Awa · {inquiet}
+
+AWA (gene · regarde: bas · voix: chuchote)
+… Bon. Regarde-la. {detourne_regard} Juste regarder.
+
+PLAN: gros [Awa assise, machine]
+[BRUITAGE: clic]
+[BRUITAGE: clic]
+[BRUITAGE: pop]
+
+MOUSSA (fier · regarde: Awa · voix: normal)
+Voilà, grande sœur. {fier} Elle tourne comme neuve.
+[BRUITAGE: grésillement]
+
+MIMI (grand_sourire · regarde: Moussa · voix: normal)
+Moussa, tu es un magicien !
+
+MOUSSA (rougit · regarde: Mimi · voix: normal)
+Non… {sourire} juste un mécanicien.
+
+AWA (surpris · regarde: Moussa · voix: normal)
+Déjà ? {neutre} Combien je te dois ?
+
+MOUSSA (sourire · regarde: Awa · voix: normal)
+Rien. {sourire} Le thé a déjà payé.
+[RÉACTION AWA: surpris]
+
+PLAN: 3 s · gros Awa · {pensif}
+[MUSIQUE: romantique]
+
+PLAN: 3 s · large [Bakary debout] · {sourire}
+
+AWA (reveur · regarde: loin · voix: chuchote)
+Le thé…
+[RÉACTION AWA: sourire]
+
+PLAN: 3 s · très gros Awa · {sourire}
+
+MIMI (sourire_malin · regarde: Awa · voix: normal)
+Tantie… {sourire_malin} vous souriez ?
+
+AWA (froide · regarde: Mimi · voix: normal)
+Non. {neutre} Couds.
+[RÉACTION MIMI: rire_retenu]
+[MUSIQUE: action]
+
+PLAN: 3 s · large [Awa assise, Mimi assise] · {coud}
+[ÉCRAN 2 s: 17 h 58]
+
+MIMI (content · regarde: Awa · voix: vite)
+Le douzième… {grand_sourire} fini !
+[BRUITAGE: moto]
+[ÉCRAN 2 s: 18 h 00]
+
+PLAN: large [Awa debout, Mimi debout, Seydou debout]
+
+SEYDOU (grand_sourire · regarde: Awa · voix: normal)
+Livraison Sounsouni ! {grand_sourire} Je viens chercher les douze boubous.
+
+AWA (fiere · regarde: Seydou · voix: normal)
+Tout est prêt, Seydou. {fier} Comme toujours.
+
+SEYDOU (sourire · regarde: Awa · voix: normal)
+Madame Awa… {sourire} vous êtes de bonne humeur, aujourd'hui.
+
+AWA (froide · regarde: Seydou · voix: normal)
+Ne commence pas, Seydou.
+[RÉACTION MIMI: rire_retenu]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Commande récupérée ✔ · 12 boubous · Livraison en cours]
+
+DÉCOR: ATELIER · nuit · ambiance: grillons
+PLAN: gros [Awa assise, téléphone]
+[MUSIQUE: romantique]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Kiosque Chez Bakary · ★ 4,9 · Laisser un avis]
+
+PENSÉE AWA (pensif · regarde: téléphone)
+Juste un avis. {moue} Ça ne veut rien dire…
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Votre avis : ★★★★★ « Ici, le thé répare même les machines. » · [Publier]]
+
+PLAN: 3 s · très gros Awa · {rougit}
+[MUSIQUE: suspense]
+
+PENSÉE AWA (gene · regarde: téléphone)
+Publier… {pensif} ou pas ?
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, chaque commande a son heure, et chaque boutique a ses avis. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]

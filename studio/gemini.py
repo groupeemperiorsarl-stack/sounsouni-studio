@@ -38,6 +38,20 @@ FOND = "Corps entier de la tête aux pieds, sur un fond gris clair uni, sans auc
 
 CANON = {'fiere': 'fier', 'determinee': 'determine', 'emerveillee': 'emerveille', 'reveuse': 'reveur', 'contente': 'content', 'surprise': 'surpris',
          'inquiete': 'inquiet', 'furieuse': 'furieux', 'amoureuse': 'amoureux'}   # féminin → même pose
+IDENTITE = {   # fiche d'identité de chaque personnage (tenue habituelle, physique) : écrite entre parenthèses dans chaque demande Gemini
+    'BAKARY': "jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron",
+    'AWA': "jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts",
+    'MODIBO': "jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir",
+    'DIASABI': "homme très grand et très mince, long cou, cheveux très courts, grosses lèvres, chemise à carreaux verts aux manches retroussées, pantalon gris retroussé aux chevilles, sandales",
+    'KARIM': "homme au crâne rasé, barbe courte bien taillée, costume bleu marine avec pochette blanche, chemise blanche col ouvert, montre dorée, chaussures noires",
+    'FATIM': "jeune femme, grand foulard rose fuchsia noué sur la tête, longues tresses, robe en pagne rose et blanc à motifs, bracelets de perles, boucles d'oreilles dorées, sandales",
+    'MIMI': "jeune apprentie couturière mince, tresses en queue de cheval avec un élastique jaune, robe en pagne jaune-kaki à petits motifs ronds, mètre ruban jaune autour du cou, sandales dorées",
+    'MOUSSA': "jeune homme mince, petites dreadlocks courtes, t-shirt blanc ample, casque audio noir autour du cou, jean bleu clair, baskets blanches ; debout sur le sol, sans hoverboard",
+    'SEYDOU': "livreur souriant, casquette verte, polo vert, pantalon beige, baskets grises",
+    'KADI': "femme âgée, lunettes, foulard bordeaux sur la tête, grand boubou bordeaux brodé d'or, canne en bois",
+    'SALI': "jeune femme, foulard jaune noué sur la tête, robe en pagne bleu à motifs orange et bordure dorée, sandales",
+}
+def ident(c): return f"{gfx.nom(c)} ({IDENTITE[c]})" if c in IDENTITE else gfx.nom(c)
 TENUES = {}; OBJETS = {}   # descriptions lues dans l'en-tête des scripts (NOUVELLE TENUE / NOUVEL OBJET)
 def desc(mot, femme):
     if mot.startswith('pose:'): return mot[5:].replace('_', ' ')
@@ -143,6 +157,7 @@ def demande(x):
     elif x.get('tenue') and rp.get('tenue') != x['tenue']:   # première image dans la nouvelle tenue : on décrit les habits
         st = ("Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, "
               "mais " + ('habillée' if f else 'habillé') + " de : " + TENUES.get((x['perso'], x['tenue']), (x['tenue'], x['tenue'].replace('_', ' ')))[1] + ". ")
+    st = st.replace("que sur l'image jointe", "que sur l'image jointe, " + ident(x['perso']), 1)
     return st + 'Montre-' + ('la ' if f else 'le ') + pose + '. ' + (('Elle' if f else 'Il') + ' ne tient rien dans les mains. ' if objet else '') + FOND
 def ref_pour(x):
     if x['type'] == 'decor':
@@ -201,6 +216,7 @@ def demande_groupe(grp, items):
         tete = ("Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais "
                 + ('habillée' if f else 'habillé') + ' de : ' + TENUES.get((x0['perso'], x0['tenue']), (x0['tenue'], x0['tenue'].replace('_', ' ')))[1] + '. ')
     else: tete = STYLE
+    if not (x0.get('tenue') and not grp.get('suite_de')): tete = tete.replace("que sur l'image jointe", "que sur l'image jointe, " + ident(x0['perso']), 1)
     rp = director.POSES.get(x0.get('ref') or '', {}); objet = set(rp.get('props', [])) | (set(rp.get('tags', [])) & director.OBJ)
     rien = (('Elle' if f else 'Il') + ' ne tient rien dans les mains. ') if objet else ''
     if len(xs) == 1: return tete + 'Montre-' + ('la ' if f else 'le ') + pose_phrase(x0) + '. ' + rien + FOND
