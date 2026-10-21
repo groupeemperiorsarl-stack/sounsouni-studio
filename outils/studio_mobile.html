@@ -107,6 +107,7 @@ $('#c-del').onclick=()=>{TOK='';$('#c-tok').value='';try{localStorage.removeItem
 $('#n-fichier').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{$('#n-script').value=t;const m=t.match(/TITRE:\s*(.*)/);if(m&&!$('#n-titre').value)$('#n-titre').value=m[1].split(/[–-]/).slice(1).join('–').trim()||m[1]})};
 const corps=(mode,script)=>"### Que faire ?\n\n"+(mode==='v'?"Vidéo complète directement (environ 30 minutes)":"Aperçu des plans d'abord (rapide, environ 10 minutes)")+"\n\n### Script de l'épisode\n\n```text\n"+script.trim()+"\n```\n";
 $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-msg').innerHTML='<p class="msg">Collez d\'abord le script.</p>';return}
+  if(!TETE.test(s.split('\n').find(l=>TETE.test(l))||'')||!/^(DÉCOR|DECOR)\s*:/m.test(s)){$('#a-brut').value=s;vue('ia');$('#a-prog').innerHTML='<p class="msg">Ce script n\'est pas encore au format du studio. Je l\'ai mis ici : appuyez sur « 1 · Mettre au format », relisez, puis lancez.</p>';return}
   $('#n-go').disabled=true;try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+($('#n-titre').value||'nouveau'),body:corps($('#n-mode').value,s),labels:['episode']})});
   $('#n-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. Suivez-la dans « Épisodes ».</p>';$('#n-script').value='';$('#n-titre').value=''}catch(e){$('#n-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#n-go').disabled=false};
 // ---- liste des épisodes

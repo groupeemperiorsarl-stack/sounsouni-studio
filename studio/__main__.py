@@ -30,6 +30,9 @@ def main():
         if new: log(f'analyse des objets sur {len(new)} nouvelles poses'); autotag.run(new); director.reload()
     except Exception as err: log(f'analyse des objets impossible : {err}')
     log(f"script : {sum(1 for e in ev if e['type'] == 'line')} répliques, {sum(1 for e in ev if e['type'] == 'scene')} scènes")
+    if not any(e['type'] == 'line' for e in ev):   # script brut (pas au format) : on s'arrête tout de suite avec un message clair
+        log("ERREUR : script pas au format du studio (aucune réplique « NOM (émotion · regarde: …) » trouvée). "
+            "Passez d'abord par l'onglet 🤖 Assistant de la page Studio mobile (« Mettre au format »), puis relancez."); sys.exit(2)
     part = tuple(int(x) for x in a.part.split('/')) if a.part else None
     if a.etape == 'voix':
         voices.gen_part(ev, director.CAT, work, part[0], part[1], log) if part else voices.gen(voices.first_jobs(ev, director.CAT, work), work); return

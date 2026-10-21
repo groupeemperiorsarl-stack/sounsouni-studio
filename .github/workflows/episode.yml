@@ -57,8 +57,10 @@ jobs:
       - name: Publier l'aperçu
         if: always()
         run: |
-          N=${ISSUE:-manuel}; TAG="apercu-$N-${{ github.run_number }}"
-          if [ -f sortie/apercu_plans.png ]; then
+          shopt -s nullglob; set +e; N=${ISSUE:-manuel}; TAG="apercu-$N-${{ github.run_number }}"
+          if grep -q "script pas au format" journal.txt 2>/dev/null; then
+            MSG="❌ Ce script n'est pas au format du studio (aucune réplique reconnue). Passez d'abord par l'onglet 🤖 Assistant de la page Studio mobile : « Mettre au format », relisez, puis lancez depuis là."
+          elif [ -f sortie/apercu_plans.png ]; then
             gh release create "$TAG" sortie/apercu_plans.png sortie/planches/* --prerelease --title "Aperçu des plans – demande $N" --notes "Aperçu des plans et planches à valider"
             D="https://github.com/${{ github.repository }}/releases/download/$TAG"
             MSG="✅ Aperçu des plans prêt :"$'\n'"![aperçu]($D/apercu_plans.png)"$'\n'"$D/apercu_plans.png"
