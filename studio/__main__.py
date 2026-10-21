@@ -6,6 +6,13 @@ Réponse d'Issa :      --choix "1B 3C"   (gardée dans episode.choix.json, puis 
 import sys, os, json, argparse, hashlib, time, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import script, voices, director, render, audio, planches
+def versions(final, log):
+    """Règle de publication (validée par Issa) : versions YouTube complète, TikTok 3:00, Shorts 2:58, Facebook 1:00 avec bandeau « chaîne YouTube »."""
+    if os.environ.get('STUDIO_SANS_VERSIONS'): return
+    try:
+        import publication
+        for f in publication.fabriquer_versions(final): log(f'version de publication : {os.path.basename(f)}')
+    except Exception as e: log(f'versions de publication impossibles : {e}')
 def resume(shots, out):
     """Liste minutée des plans (plans_resume.json), lue par l'assistant de secours : « à 1:20 » = quel plan, qui, quelle pose."""
     def _qui(s): return [{'qui': x['who'], 'pose': x.get('key'), 'x': round(x.get('x', 0) / 1080, 2), 'taille': round(x.get('h', 0) / 1920, 2), 'retourne': bool(x.get('flip'))} for x in s.get('actors', []) if x.get('who')]
@@ -51,7 +58,7 @@ def main():
         if a.etape == 'rendu': render.video(shots, tot, work, a.workers, log, part=part); return
         resume(shots, out)
         silent = render.video(shots, tot, work, a.workers, log); v, m = audio.build(shots, tot, work, log)
-        final = os.path.join(out, name + '.mp4'); audio.mix(silent, v, m, final); ok = audio.light(final, os.path.join(out, name + '_leger.mp4'), tot)
+        final = os.path.join(out, name + '.mp4'); audio.mix(silent, v, m, final); ok = audio.light(final, os.path.join(out, name + '_leger.mp4'), tot); versions(final, log)
         log(f"fini : {final} ({tot:.0f} s) — version légère {'vérifiée' if ok else 'À VÉRIFIER'}"); return
     cpath = a.fichier_choix or os.path.splitext(a.script)[0] + '.choix.json'
     if a.choix:
@@ -80,6 +87,6 @@ def main():
     silent = render.video(shots, tot, work, a.workers, log)
     v, m = audio.build(shots, tot, work, log)
     final = os.path.join(out, name + '.mp4'); audio.mix(silent, v, m, final)
-    ok = audio.light(final, os.path.join(out, name + '_leger.mp4'), tot)
+    ok = audio.light(final, os.path.join(out, name + '_leger.mp4'), tot); versions(final, log)
     log(f"fini : {final} ({tot:.0f} s) — version légère {'vérifiée' if ok else 'À VÉRIFIER'}")
 if __name__ == '__main__': main()

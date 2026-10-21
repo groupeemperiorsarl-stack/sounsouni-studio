@@ -173,7 +173,10 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
   if(a('fiche_gemini.html'))h+='<button class="sec" data-f="fiche_gemini.html">🖼 Fiche Gemini</button>';
   if(a('import.png'))h+='<button class="sec" data-f="import.png">🧩 Images rangées</button>';
   ls.filter(x=>/^essai_\d+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🧪 Essai du code '+x.match(/\d+/)[0]+'</button>');
-  z.innerHTML=h+'</div><div class="vue"></div>';const v=z.querySelector('.vue');
+  z.innerHTML=h+'</div><div class="pub"></div><div class="vue"></div>';const v=z.querySelector('.vue');
+  if(a('video.mp4'))api('/repos/'+R+'/releases?per_page=30').then(rs=>{const r=rs.filter(x=>x.tag_name.startsWith('episode-'+n+'-')).sort((x,y)=>new Date(y.created_at)-new Date(x.created_at))[0];if(!r)return;   // versions prêtes à publier (règle de publication)
+    const L=[['_youtube','YouTube (complet)'],['_tiktok','TikTok (3:00)'],['_shorts','Shorts (2:58)'],['_facebook','Facebook (1:00)']].map(([s,lib])=>{const f=r.assets.find(x=>x.name.endsWith(s+'.mp4'));return f?'<a class="btn sec" href="'+f.browser_download_url+'" download>⬇ '+lib+'</a>':''}).join('');
+    if(L)z.querySelector('.pub').innerHTML='<p class="muted" style="margin:8px 0 4px">Versions à publier (bandeau « chaîne YouTube » inclus) :</p><div class="row">'+L+'</div>'}).catch(()=>{});
   z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
     if(f.endsWith('.mp4'))v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div>';
     else if(f.endsWith('.png'))v.innerHTML='<img class="prev" alt="aperçu des plans" src="'+u+'">';

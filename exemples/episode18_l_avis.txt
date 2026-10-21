@@ -1,0 +1,198 @@
+TITRE: Les Plans de Bakary – Épisode 18 : L'avis
+
+DÉCOR: ATELIER · nuit · ambiance: grillons
+PLAN: gros [Awa assis, téléphone]
+[MUSIQUE: romantique]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Votre avis : ★★★★★ « Ici, le thé répare même les machines. » · [Publier]]
+
+PENSÉE AWA (pensif · regarde: téléphone)
+Publier… {moue} ou pas ?
+
+PENSÉE AWA (fiere · regarde: loin)
+Non. {secoue_tete} Awa ne publie pas ce genre de choses. Je déciderai demain.
+
+PLAN: 3 s · gros Awa · {nuit}{ferme_yeux}
+[SILENCE 3 s: grillon]
+
+PLAN: objet téléphone
+[BRUITAGE: clic]
+[ÉCRAN 3 s: Avis publié ✔]
+[MUSIQUE: drôle]
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+[BRUITAGE: coq]
+[BRUITAGE: notification]
+
+PLAN: gros [Bakary debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Nouvel avis ★★★★★ · Awa Couture : « Ici, le thé répare même les machines. »]
+
+BAKARY (lit · regarde: téléphone · voix: lentement)
+« Ici… le thé… répare même les machines. » {emu} Signé… Awa Couture.
+[RÉACTION MODIBO: surpris]
+
+BAKARY (emerveille · regarde: Modibo · voix: vite)
+Van ! Awa a écrit un avis ! Sur MON kiosque ! {amoureux}{coeurs} Cinq étoiles !
+
+MODIBO (taquin · regarde: Bakary · voix: normal)
+Bakarin… calme-toi. {sourire} C'est un avis, pas une demande en mariage.
+
+DIASABI (confus · regarde: Bakary · voix: normal)
+Les machines ? {confus} Ton thé répare les machines, maintenant ? À Bobo, on le boit seulement.
+[RÉACTION MODIBO: rire]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Avis d'Awa Couture · ★★★★★ « Ici, le thé répare même les machines. » · 👁 214 vues]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Seydou debout]
+[BRUITAGE: moto]
+
+SEYDOU (grand_sourire · regarde: Bakary · voix: normal)
+Bakary ! {grand_sourire} Tout le quartier parle de l'avis ! Même mes clients me demandent : c'est vrai, l'histoire du thé qui répare les machines ?
+[RÉACTION BAKARY: timide]
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+PLAN: gros [Awa assis, téléphone]
+[BRUITAGE: notification]
+[BRUITAGE: notification]
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Votre avis a été publié · 👁 214 vues]
+
+PLAN: très gros Awa
+
+AWA (choc · regarde: téléphone · voix: lentement)
+Publié… ? {panique} PUBLIÉ ?!
+[BRUITAGE sur "PUBLIÉ": tonnerre]
+
+AWA (panique · regarde: téléphone · voix: vite)
+Deux cent quatorze vues… {sueur} Tout le quartier a vu !
+
+AWA (furieux · regarde: loin · voix: crie)
+Mimi ! {furieux}{fumee_tete} Tu as touché mon téléphone ?!
+
+PLAN: large [Awa assis, Mimi debout]
+
+MIMI (essouffle · regarde: Awa · voix: essoufflé)
+Tantie… {inquiet} je dormais chez moi !
+
+MIMI (sourire_malin · regarde: Awa · voix: normal)
+Mais il est très joli, votre avis, Tantie…
+
+AWA (colere · regarde: Mimi · voix: crie)
+Tais-toi !
+[RÉACTION MIMI: rire_retenu]
+
+DÉCOR: RUE · matin · ambiance: circulation
+PLAN: deux [Awa debout, Modibo debout]
+
+AWA (mefiant · regarde: Modibo · voix: chuchote)
+Modibo. Toi, tu répares les téléphones. {cache} Dis à tout le monde que mon téléphone a un virus. Que ce n'est pas moi qui ai écrit ça.
+
+PLAN: objet billets
+
+AWA (serieux · regarde: Modibo · voix: chuchote)
+Prends. Et pas un mot.
+[RÉACTION MODIBO: serieux]
+
+PLAN: large [Awa debout, Modibo debout, Bakary debout, Diasabi debout]
+[BRUITAGE: pas]
+[MUSIQUE: suspense]
+
+PLAN: 3 s · gros Modibo · {repare}
+
+PENSÉE MODIBO (serieux · regarde: bas)
+Mentir pour Awa… ou trahir Bakarin ? {secoue_tete} Non. Jamais.
+
+MODIBO (sage · regarde: Awa · voix: lentement)
+Tiens, Awa. Ton argent. {sage} Ton téléphone n'a pas de virus. Il a juste dit la vérité.
+[RÉACTION AWA sur "vérité": rougit]
+[RÉACTION BAKARY: surpris]
+[SILENCE 2 s]
+
+DIASABI (proverbe · regarde: Awa · voix: normal)
+À Bobo, on dit : un téléphone ne ment jamais. {sincere} Sauf le mien. Il dit toujours que j'ai du crédit.
+[RÉACTION MODIBO: rire]
+
+AWA (froide · regarde: Bakary · voix: normal)
+Bon. {fiere} Le thé est bon. C'est tout. Ça ne veut rien dire.
+
+BAKARY (sourire · regarde: Awa · voix: chuchote)
+D'accord. {timide} Ça ne veut rien dire.
+
+PLAN: 3 s · gros Awa · {gene}
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Nouvel avis sous le vôtre · ★★★★★ « Le thé est bon, et le vendeur de thé est encore plus gentil 😘 » – Fatim]
+[MUSIQUE: suspense]
+
+PLAN: très gros Awa · {colere}
+
+PLAN: large [Awa debout, Bakary debout, Modibo debout, Diasabi debout, Fatim debout]
+[BRUITAGE: talons]
+
+FATIM (tendre · regarde: Bakary · voix: normal)
+Bakary ! {sourire} Tu as vu mon avis ?
+[RÉACTION AWA: mepris]
+[RÉACTION BAKARY: gene]
+
+AWA (mepris · regarde: Fatim · voix: normal)
+Cinq étoiles pour un thé ? {mepris} Tu es bien généreuse, Fatim.
+
+FATIM (joie · regarde: Awa · voix: normal)
+Ben oui ! J'ai vu ton avis, tout le quartier l'a lu. {sourire} Alors moi aussi, j'ai mis mes étoiles ! C'est toi qui as commencé, non ?
+[RÉACTION AWA: gene]
+[SILENCE 2 s: grillon]
+
+[BRUITAGE: whoosh]
+PLAN: large [Awa debout, Bakary debout, Modibo debout, Diasabi debout, Fatim debout, Moussa debout]
+[MUSIQUE: joyeuse]
+
+MOUSSA (grand_sourire · regarde: caméra · voix: crie)
+Kôrôbalé wou ! {fier} Grande nouvelle ! Ma grande sœur se marie ! Samedi soir, grand dîner de mariage… et tout le quartier est invité !
+[RÉACTION DIASABI: joie]
+[RÉACTION FATIM: joie]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Invitation · Dîner de mariage · Samedi · 20 h 00 · Tout le quartier est invité 🎉]
+
+MOUSSA (sourire · regarde: Bakary · voix: normal)
+Mais attention ! {salue} La mariée a dit : personne ne vient seul. Chacun vient avec sa cavalière… ou son cavalier.
+[RÉACTION BAKARY sur "cavalière": choc]
+[RÉACTION AWA sur "cavalière": surpris]
+[BRUITAGE sur "seul": tonnerre]
+
+DIASABI (triste · regarde: Modibo · voix: lentement)
+Avec quelqu'un ? {triste} Mais moi… je n'ai personne.
+
+MODIBO (taquin · regarde: loin · voix: normal)
+Moi, je sais déjà qui je vais inviter. {sourire} Elle vend des beignets.
+
+PLAN: deux [Fatim debout, Bakary debout]
+[MUSIQUE: romantique]
+
+FATIM (propose · regarde: Bakary · voix: normal)
+Bakary… {tendre} tu m'emmènes ?
+[RÉACTION AWA sur "emmènes": choc]
+
+PLAN: 3 s · très gros Bakary · {sueur}{panique}
+
+PLAN: 2 s · gros Awa · {detourne_regard}{froide}
+
+BAKARY (gene · regarde: Awa · voix: chuchote)
+Je… {sueur} je…
+[MUSIQUE: suspense]
+[BRUITAGE: tonnerre]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, un avis peut tout changer : pour une boutique… et parfois pour un cœur. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]

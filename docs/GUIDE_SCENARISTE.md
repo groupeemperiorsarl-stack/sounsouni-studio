@@ -272,3 +272,17 @@ Résultat dans `sortie_mon_episode/` :
 
 Si on corrige le script et qu'on relance, les voix déjà bonnes sont réutilisées (beaucoup plus rapide).
 Temps sur un ordinateur sans carte graphique : environ 2 minutes par réplique pour les voix, puis 15 à 20 minutes pour l'image.
+
+## 11. Publication automatique (4 versions, à chaque épisode)
+L'application fabrique toute seule, à partir de l'épisode complet :
+
+| Version | Durée | Bandeau « chaîne YouTube » |
+|---|---|---|
+| YouTube | épisode entier | aucun |
+| TikTok | coupée à 3:00 | de 2:50 à 3:00 |
+| YouTube Shorts | coupée à 2:58 | de 2:50 à 2:58 |
+| Facebook | coupée à 1:00 | de 0:50 à 1:00 |
+
+Pendant le bandeau : logo YouTube, « Suivez tout l'épisode sur notre chaîne YouTube : Sounsouni », « sounsouni.pro » en petit, voix off (voix de la série) « Si vous voulez suivre tout l'épisode, rendez-vous sur notre chaîne YouTube Sounsouni. », son de l'épisode baissé.
+Conseil d'écriture : placer un moment fort (suspense, chute) juste **avant 0:50** et juste **avant 2:50**, pour donner envie d'aller voir la suite sur YouTube.
+Réglages (durées, textes) : en haut de `studio/publication.py`.
