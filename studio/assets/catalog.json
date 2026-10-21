@@ -3061,6 +3061,315 @@
    "genere": "gemini",
    "depart": "mim_debout",
    "mouth_auto": true
+  },
+  "awa_assis_fier": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "fier",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    729,
+    1600
+   ],
+   "head_x": 0.555,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis_determine",
+   "mouth_auto": true
+  },
+  "awa_assis_panique": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "panique",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    713,
+    1600
+   ],
+   "head_x": 0.527,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis_determine",
+   "mouth_auto": true
+  },
+  "awa_assis_surpris": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "surpris",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    728,
+    1600
+   ],
+   "head_x": 0.544,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis_determine",
+   "mouth_auto": true
+  },
+  "awa_assis_pensif": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "pensif",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    728,
+    1600
+   ],
+   "head_x": 0.556,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis_determine",
+   "mouth_auto": true
+  },
+  "mim_dos": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    502,
+    1600
+   ],
+   "head_x": 0.589,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mim_debout"
+  },
+  "mim_assis_inquiet": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "inquiet",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    711,
+    1600
+   ],
+   "head_x": 0.439,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mim_machine",
+   "mouth_auto": true
+  },
+  "mim_assis_timide": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "timide",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    703,
+    1600
+   ],
+   "head_x": 0.47,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mim_machine",
+   "mouth_auto": true
+  },
+  "obj_verre_the": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "verre",
+    "the"
+   ],
+   "mouth": false,
+   "size": [
+    1036,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "mou_dos": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    546,
+    1600
+   ],
+   "head_x": 0.496,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_salue"
+  },
+  "mou_sourire": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    541,
+    1600
+   ],
+   "head_x": 0.539,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_salue",
+   "mouth_auto": true
+  },
+  "mou_content": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "content"
+   ],
+   "mouth": true,
+   "size": [
+    530,
+    1600
+   ],
+   "head_x": 0.522,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_salue",
+   "mouth_auto": true
+  },
+  "bak_pensif": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pensif"
+   ],
+   "mouth": true,
+   "size": [
+    538,
+    1600
+   ],
+   "head_x": 0.535,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
+  },
+  "awa_assis_froide": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "froide",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    714,
+    1600
+   ],
+   "head_x": 0.547,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis_determine",
+   "mouth_auto": true
+  },
+  "awa_assis_telephone": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "telephone",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    689,
+    1600
+   ],
+   "head_x": 0.471,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis_determine",
+   "mouth_auto": true
+  },
+  "sey_dos": {
+   "char": "SEYDOU",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    546,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sey_livre"
+  },
+  "dia_dos": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    420,
+    1600
+   ],
+   "head_x": 0.496,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre"
+  },
+  "sey_debout_neutre": {
+   "char": "SEYDOU",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "sourire",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    570,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "gemini",
+   "mouth_auto": true
   }
  },
  "decors": {
