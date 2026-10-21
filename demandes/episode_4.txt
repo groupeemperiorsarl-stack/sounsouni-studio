@@ -8,6 +8,9 @@ PLAN: gros [Awa assise, téléphone]
 PLAN: objet téléphone
 [ÉCRAN 5 s: Sounsouni · Nouvelle commande ✔ · 12 boubous pour un baptême · Retrait par le livreur : aujourd'hui à 18 h 00]
 
+PENSÉE AWA (surpris · regarde: téléphone)
+Une nouvelle commande sur Sounsouni… {grand_sourire} douze boubous pour un baptême ! Le livreur passe les prendre ce soir à dix-huit heures.
+
 AWA (fiere · regarde: Mimi · voix: normal)
 Douze boubous avant ce soir ? {grand_sourire} Facile. Mimi, au travail !
 
@@ -43,6 +46,9 @@ Elle va repartir. {colere} Allez… allez, machine !
 PLAN: gros [Awa assise, téléphone]
 PLAN: objet téléphone
 [ÉCRAN 4 s: Sounsouni · Recherche : « courroie machine à coudre » · Livraison : demain]
+
+PENSÉE AWA (inquiet · regarde: téléphone)
+Une courroie neuve sur Sounsouni… {choc} mais livrée seulement demain.
 
 AWA (furieux · regarde: téléphone · voix: crie)
 Demain ?! {furieux} C'est ce soir que j'en ai besoin !
@@ -149,8 +155,6 @@ Rien. {sourire} Le thé a déjà payé.
 PLAN: 3 s · gros Awa · {pensif}
 [MUSIQUE: romantique]
 
-PLAN: 3 s · large [Bakary debout] · {sourire}
-
 AWA (reveur · regarde: loin · voix: chuchote)
 Le thé…
 [RÉACTION AWA: sourire]
@@ -191,6 +195,9 @@ Ne commence pas, Seydou.
 PLAN: objet téléphone
 [ÉCRAN 4 s: Sounsouni · Commande récupérée ✔ · 12 boubous · Livraison en cours]
 
+PENSÉE AWA (fier · regarde: téléphone)
+Commande récupérée. {sourire} Mes douze boubous sont en route pour le baptême.
+
 DÉCOR: ATELIER · nuit · ambiance: grillons
 PLAN: gros [Awa assise, téléphone]
 [MUSIQUE: romantique]
@@ -199,7 +206,7 @@ PLAN: objet téléphone
 [ÉCRAN 4 s: Sounsouni · Kiosque Chez Bakary · ★ 4,9 · Laisser un avis]
 
 PENSÉE AWA (pensif · regarde: téléphone)
-Juste un avis. {moue} Ça ne veut rien dire…
+Le kiosque de Bakary… quatre virgule neuf étoiles. {moue} Je peux lui laisser un avis. Juste un avis… ça ne veut rien dire.
 
 PLAN: objet téléphone
 [ÉCRAN 5 s: Votre avis : ★★★★★ « Ici, le thé répare même les machines. » · [Publier]]
@@ -208,7 +215,7 @@ PLAN: 3 s · très gros Awa · {rougit}
 [MUSIQUE: suspense]
 
 PENSÉE AWA (gene · regarde: téléphone)
-Publier… {pensif} ou pas ?
+« Ici, le thé répare même les machines. » {pensif} Si je publie… il saura que j'ai compris. Publier… ou pas ?
 
 FIN:
 [ÉCRAN: À suivre…]
