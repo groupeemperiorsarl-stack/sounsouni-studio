@@ -189,6 +189,7 @@ def pose_phrase(x):
     """La pose demandée, en quelques mots (pour la liste « 1) … 2) … » d'une image groupée)."""
     f = x['perso'] in FEMMES
     if x['posture'] == 'dos': return ('vue' if f else 'vu') + ' de dos, debout, bras le long du corps, visage caché'
+    if x['posture'] == 'assis' and x['emo'] == 'telephone': return ('assise' if f else 'assis') + ' sur un petit banc en bois, de trois-quarts, qui tient son téléphone à deux mains et le regarde'
     if x['posture'] == 'assis': return ('assise' if f else 'assis') + ' sur un petit banc en bois, de trois-quarts, mains sur les genoux' + (', ' + desc(x['emo'], f) if x['emo'] else ', bouche fermée')
     return 'debout, de trois-quarts, ' + (desc(x['emo'], f) if x['emo'] else "calme, l'air neutre") + ', bouche fermée'
 def groupes(items):
@@ -208,7 +209,45 @@ def groupes(items):
                 else: premier[(x0['perso'], x0['tenue'])] = grp['g']
             out.append(grp)
     return out
+def melanger(gs, par_n):
+    """Plusieurs personnages sur une même image Gemini (une image jointe par personnage) : 4 poses par demande.
+    Les demandes d'une nouvelle tenue restent seules (elles décrivent les habits)."""
+    seuls = [g for g in gs if g.get('suite_de') or any(par_n[n].get('tenue') and not director.POSES.get(par_n[n].get('ref') or '', {}).get('tenue') for n in g['items'])]
+    bins = []
+    for g in sorted([g for g in gs if g not in seuls], key=lambda g: -len(g['items'])):
+        b = next((b for b in bins if sum(len(x['items']) for x in b) + len(g['items']) <= PAR_IMAGE), None)
+        if b is None: bins.append([g])
+        else: b.append(g)
+    out = []
+    for b in bins:
+        its = [n for g in b for n in g['items']]
+        out.append({'items': its, 'fichier_ref': b[0]['fichier_ref'], 'refs': list(persos_ref([par_n[n] for n in its]).values()) if len(b) > 1 else None})
+    for g in seuls: out.append(dict(g))
+    ancien = {}
+    for i, g in enumerate(out, 1): ancien[g.get('g')] = i; g['g'] = i
+    for g in out:
+        if g.get('suite_de'): g['suite_de'] = ancien.get(g['suite_de'], g['suite_de'])
+    return out
+def persos_ref(xs):
+    """Une image jointe par personnage (sa première image de référence), dans l'ordre d'apparition."""
+    out = {}
+    for x in xs:
+        if x['type'] == 'pose' and x['perso'] not in out: out[x['perso']] = x['fichier_ref']
+    return out
+def demande_melange(grp, items):
+    xs = [items[n] for n in grp['items']]; pr = persos_ref(xs); num = {c: i for i, c in enumerate(pr, 1)}
+    jointes = ' ; '.join(f"image {num[c]} = {ident(c)}" for c in pr)
+    def fig(x):
+        if x['type'] == 'objet': return f"{x['texte']}, l'objet seul, posé, dessiné en grand"
+        mains = '' if 'telephone' in str(x.get('emo')) else ', les mains vides'
+        return f"{gfx.nom(x['perso'])} (image {num[x['perso']]}), " + pose_phrase(x) + mains
+    liste = ' ; '.join(f'{i}) {fig(x)}' for i, x in enumerate(xs, 1))
+    return ("Images jointes, dans l'ordre : " + jointes + ". Garde exactement chaque personnage comme sur son image : même visage, même coiffure, "
+            "mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec "
+            f"{len(xs)} figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres "
+            "(un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : " + liste + '.')
 def demande_groupe(grp, items):
+    if grp.get('refs'): return demande_melange(grp, items)
     xs = [items[n] for n in grp['items']]; x0 = xs[0]
     if len(xs) == 1 and x0['type'] != 'pose': return demande(x0)
     f = x0['perso'] in FEMMES
@@ -242,14 +281,17 @@ def fiche(items, out, log=print):
     for x in items:
         kind, k = ref_pour(x); x['ref'] = k if kind == 'pose' else None
         f = image_ref(kind, k, out); x['fichier_ref'] = os.path.basename(f)
-    par_n = {x['n']: x for x in items}; gs = groupes(items)
+    par_n = {x['n']: x for x in items}; gs = melanger(groupes(items), par_n)
     d = os.path.join(out, 'a_joindre'); shutil.rmtree(d, ignore_errors=True); os.makedirs(d)
     for grp in gs:
         grp['demande'] = demande_groupe(grp, par_n); xs = [par_n[n] for n in grp['items']]; g = grp['g']
-        if not grp.get('suite_de'): shutil.copy(os.path.join(out, 'references', grp['fichier_ref']), os.path.join(d, f'image_{g}.jpg'))
-        th = Image.open(os.path.join(out, 'references', grp['fichier_ref'])); th.thumbnail((420, 640)); b = io.BytesIO(); th.save(b, 'JPEG', quality=82)
+        refs = grp.get('refs') or [grp['fichier_ref']]; noms = []
+        if not grp.get('suite_de'):
+            for i, rf in enumerate(refs, 1):
+                nm = f'image_{g}' + (f'_{i}' if len(refs) > 1 else '') + '.jpg'; shutil.copy(os.path.join(out, 'references', rf), os.path.join(d, nm)); noms.append(nm[:-4])
+        th = Image.open(os.path.join(out, 'references', refs[0])); th.thumbnail((420, 640)); b = io.BytesIO(); th.save(b, 'JPEG', quality=82)
         quoi = ''.join('<li>' + html.escape(titre(x)) + '</li>' for x in xs)
-        ref = ('<p class="note">① Joignez l\'image obtenue au n° %d (même tenue).</p>' % grp['suite_de']) if grp.get('suite_de') else ('<p class="note">① Joignez le fichier « image_%d ».</p>' % g)
+        ref = ('<p class="note">① Joignez l\'image obtenue au n° %d (même tenue).</p>' % grp['suite_de']) if grp.get('suite_de') else ('<p class="note">① Joignez %s.</p>' % ' puis '.join('« ' + n + ' »' for n in noms))
         cartes.append('<section><h2><span class="n">%d</span>%d image%s en une seule demande</h2><ul>%s</ul>' % (g, len(xs), 's' if len(xs) > 1 else '', quoi)
                       + '<div class="ligne"><div class="ref"><img src="data:image/jpeg;base64,%s" alt="image à joindre"></div>' % base64.b64encode(b.getvalue()).decode()
                       + '<div class="dem">%s<p class="txt" id="d%d">%s</p><button data-c="d%d">② Copier la demande</button></div></div></section>' % (ref, g, html.escape(grp['demande']), g))
@@ -271,7 +313,7 @@ def decouper(im, k):
     m = np.asarray(remove(im, session=new_session('isnet-general-use'), only_mask=True, post_process_mask=True)) > 60
     lab, n = ndimage.label(ndimage.binary_closing(m, iterations=6))
     objs = sorted([(int((lab[sl] == i).sum()), sl) for i, sl in enumerate(ndimage.find_objects(lab), 1) if sl is not None], key=lambda t: -t[0])
-    big = [sl for a, sl in objs[:k] if a > 0.15 * objs[0][0]] if objs else []
+    big = [sl for a, sl in objs[:k] if a > 0.03 * objs[0][0]] if objs else []   # un petit objet (verre) compte aussi
     if len(big) != k:   # personnages qui se touchent : découpe en bandes égales
         w = im.width // k; return [im.crop((i * w, 0, (i + 1) * w, im.height)) for i in range(k)]
     out = []
