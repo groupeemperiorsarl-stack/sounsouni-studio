@@ -4,5 +4,13 @@
    "who": "MODIBO",
    "key": "mod_banc"
   }
+ },
+ "14": {
+  "acteurs": {
+   "AWA": {
+    "dx": -0.1,
+    "taille": 1.15
+   }
+  }
  }
 }
