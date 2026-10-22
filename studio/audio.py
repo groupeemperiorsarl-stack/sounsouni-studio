@@ -1,7 +1,10 @@
 """Piste son : voix placées au bon instant, bruitages, ambiance, musique, mixage final."""
 import os, subprocess, wave
-import numpy as np, soundfile as sf, librosa
+import numpy as np, soundfile as sf, librosa, re, json
+import ambiances
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); SR = 44100
+try: REGLES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reglages.json'), encoding='utf-8'))   # ambiance_sous_voix, ambiance_baisse_parole
+except Exception: REGLES = {}
 GAIN = {'thunder': 0.6, 'cricket': 0.45, 'heart': 0.45, 'crowd': 0.3, 'boum': 0.8, 'door': 0.9, 'sew': 0.5, 'klaxon': 0.45, 'pourw': 0.35, 'whistlew': 0.35,
         'beeps': 0.35, 'motor': 0.5, 'sparkle': 0.4, 'heels': 0.6, 'steps': 0.5, 'call': 0.5, 'buzz': 0.6}
 def rd(p):
@@ -23,14 +26,28 @@ def build(shots, tot, work, log=print):
                 if not os.path.exists(p): p = f'{work}/voix/rire_{c}.wav'
                 if os.path.exists(p): y = rd(p); put(y / (np.abs(y).max() + 1e-6) * 0.7, s['t0'] + t, g or 0.9)
                 continue
+            if f == 'cricket': put(ambiances.grillons(2.5, seed=int(s['t0'] * 10)) * 0.8, s['t0'] + t, g or GAIN.get(f, 0.6)); continue   # bruitage « grillons » : les mêmes grillons doux (l'ancien son ressemblait à une alarme)
             p = f'{A}/sfx/{f}.wav'
             if os.path.exists(p): put(rd(p), s['t0'] + t, g or GAIN.get(f, 0.6))
-    # ambiances par scène
+    # ambiances par scène (règle d'Issa, 22/10/2026 : une ambiance ne doit jamais être stressante ni couvrir les voix)
+    voix_seules = out.copy(); amb = np.zeros_like(out)
     for s in shots:
-        amb = s.get('ambiance', '')
-        f = 'crowd' if 'marche' in amb else ('cricket' if 'grillon' in amb else None)
-        if f:
-            y = rd(f'{A}/sfx/{f}.wav'); y = np.resize(y, int(s['dur'] * SR)); put(y, s['t0'], 0.10)
+        a = s.get('ambiance', '') or ''; i = int(s['t0'] * SR); m = int(s['dur'] * SR)
+        if re.search(r'grillon|cigale|insecte|cri-cri', a):   # insectes de nuit fabriqués en code : doux, irréguliers, jamais en boucle
+            y = ambiances.grillons(s['dur'] + 0.01, seed=i % 9973)
+        elif 'marche' in a: y = np.resize(rd(f'{A}/sfx/crowd.wav'), m)
+        else: continue
+        j = min(len(amb), i + m); amb[i:j] += y[:j - i]
+    if amb.any():
+        sous = float(REGLES.get('ambiance_sous_voix', 24)); baisse = float(REGLES.get('ambiance_baisse_parole', 8))
+        k = int(0.3 * SR); env = np.convolve(np.abs(voix_seules), np.ones(k) / k, 'same'); parle = env > 0.02
+        rms = lambda x: float(np.sqrt(np.mean(x ** 2))) if len(x) else 0.0
+        v = rms(voix_seules[parle]) or 0.15; a0 = rms(amb[amb != 0])
+        amb *= v * 10 ** (-sous / 20) / (a0 + 1e-9)   # toujours « sous » dB sous le niveau des voix
+        lisse = np.convolve(parle.astype(np.float32), np.ones(k) / k, 'same')
+        amb *= 1 - (1 - 10 ** (-baisse / 20)) * lisse   # et encore plus bas pendant les répliques
+        log(f"son : ambiance réglée à {sous:.0f} dB sous les voix, {baisse:.0f} dB de plus pendant les répliques (avant : {20 * np.log10(a0 / v + 1e-9):+.0f} dB par rapport aux voix)")
+        out += amb
     w = f'{work}/voix.wav'; sf.write(w, np.clip(out[:int(tot * SR)], -1, 1), SR, subtype='PCM_16')
     import music; m = f'{work}/musique.wav'; music.make(tot, m)
     return w, m

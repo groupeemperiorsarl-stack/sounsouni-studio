@@ -243,6 +243,7 @@ const OUTILS = [
   O('demandes', 'Liste des demandes (épisodes) ouvertes.'),
   O('demande', 'Texte et derniers messages d\'une demande d\'épisode.', { numero: I('numéro de la demande') }, ['numero']),
   O('fichiers_demande', 'Fichiers rangés pour une demande (aperçu, planches, vidéo légère, plans_resume.json…).', { numero: I('numéro') }, ['numero']),
+  O('ecouter', 'Lire ce que l\'OREILLE du studio (earshot) a entendu dans la dernière vidéo d\'une demande : alertes (aigus perçants, saturation, scène trop forte), volume par scène, sons entendus seconde par seconde.', { numero: I('numéro de la demande') }, ['numero']),
   O('regarder', 'Faire regarder une image, une petite vidéo ou un son par Gemini. chemin = "<numéro de demande>/<fichier>" (fichiers rangés) ou chemin dans le dépôt.', { chemin: S('ex. "10/apercu_plans.png" ou "10/video.mp4"'), question: S('ce qu\'il faut vérifier') }, ['chemin']),
   O('lire', 'Lire un fichier du studio (numéros de ligne).', { chemin: S('ex. studio/director.py'), debut: I('première ligne'), fin: I('dernière ligne'), branche: S('autre branche (facultatif)') }, ['chemin']),
   O('chercher', 'Chercher un mot ou une expression dans les fichiers du studio.', { motif: S('expression régulière'), dossier: S('dossier (facultatif)') }, ['motif']),
@@ -256,8 +257,9 @@ const OUTILS = [
   O('fusionner', 'Mettre dans le vrai studio une modification essayée (seulement après l\'accord d\'Issa).', { branche: S('technicien-… ou assistant-…') }, ['branche']),
   O('noter', 'Noter dans le carnet une leçon utile pour la prochaine fois (pour toutes les IA du studio) : symptôme → cause → remède, en une phrase.', { theme: { type: 'string', enum: ['fabrication', 'format', 'ia', 'images', 'mise-en-scene', 'voix', 'son', 'page', 'pour-claude'] }, lecon: S('la leçon') }, ['theme', 'lecon']),
 ];
-const FAIRE = { etat, journal, demandes, demande, fichiers_demande: fichiersDemande, regarder, lire, chercher, lister, arreter, relancer, lancer, essayer_code: essayerCode, attendre, proposer, fusionner, noter };
-const DIRE = { etat: '🔎 Je regarde les fabrications', journal: '📜 Je lis le journal', demandes: '📋 Je regarde les demandes', demande: '📋 Je lis la demande', fichiers_demande: '🗂 Je regarde les fichiers', regarder: '👀 Je regarde', lire: '📖 Je lis', chercher: '🔍 Je cherche', lister: '📁 Je regarde le dossier',
+const ecouter = async ({ numero }) => { try { return await gh('/contents/' + numero + '/ecoute.txt?ref=fichiers', { accept: 'application/vnd.github.raw', texte: true }); } catch (e) { return 'pas encore d\'écoute pour la demande ' + numero + ' (elle est faite automatiquement après chaque vidéo complète)'; } };
+const FAIRE = { ecouter, etat, journal, demandes, demande, fichiers_demande: fichiersDemande, regarder, lire, chercher, lister, arreter, relancer, lancer, essayer_code: essayerCode, attendre, proposer, fusionner, noter };
+const DIRE = { etat: '🔎 Je regarde les fabrications', journal: '📜 Je lis le journal', demandes: '📋 Je regarde les demandes', demande: '📋 Je lis la demande', fichiers_demande: '🗂 Je regarde les fichiers', regarder: '👀 Je regarde', ecouter: '👂 J\'écoute', lire: '📖 Je lis', chercher: '🔍 Je cherche', lister: '📁 Je regarde le dossier',
   arreter: '⏹ J\'arrête', relancer: '🔁 Je relance', lancer: '▶️ Je lance', essayer_code: '🧪 J\'essaie une modification', attendre: '⏳ J\'attends', proposer: '🙋 Je prépare une proposition', fusionner: '✅ Je mets la modification dans le studio', noter: '📝 Je note une leçon' };
 
 // ---------------- la conversation ----------------

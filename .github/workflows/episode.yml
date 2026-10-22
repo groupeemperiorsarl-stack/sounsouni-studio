@@ -117,7 +117,7 @@ jobs:
           T=$(gh release list --limit 100 --json tagName,createdAt -q "[.[] | select(.tagName | startswith(\"episode-${ISSUE}-\"))] | sort_by(.createdAt) | last | .tagName")
           [ -n "$T" ] && gh release download "$T" -p travail.zip -D /tmp/prec 2>/dev/null && unzip -qo /tmp/prec/travail.zip -d /tmp/prec && mkdir -p sortie/travail || { echo "pas de vidéo précédente"; exit 0; }
           cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null || { mkdir -p sortie/travail/voix && cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null; } || true
-          S=$( git ls-tree -r HEAD studio/assets | md5sum | cut -c1-12)
+          S=$( git ls-tree -r HEAD studio/assets | grep -v '/poses/tourne/' | md5sum | cut -c1-12)
           if [ "0" = "1" ] && [ "$(cat /tmp/prec/travail/poses.stamp 2>/dev/null)" = "$S" ]; then cp -n /tmp/prec/travail/seg_* sortie/travail/ 2>/dev/null || true; echo "morceaux repris : $(ls sortie/travail/seg_* 2>/dev/null | wc -l)"; else echo "images changées ou pas de morceaux : tout le rendu est refait"; fi
           echo "voix reprises : $(ls sortie/travail/voix/*.wav 2>/dev/null | wc -l)"
       - run: python -m studio "$SCRIPT" -o sortie --etape voix --part ${{ matrix.i }}/20
@@ -173,7 +173,7 @@ jobs:
           T=$(gh release list --limit 100 --json tagName,createdAt -q "[.[] | select(.tagName | startswith(\"episode-${ISSUE}-\"))] | sort_by(.createdAt) | last | .tagName")
           [ -n "$T" ] && gh release download "$T" -p travail.zip -D /tmp/prec 2>/dev/null && unzip -qo /tmp/prec/travail.zip -d /tmp/prec && mkdir -p sortie/travail || { echo "pas de vidéo précédente"; exit 0; }
           cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null || { mkdir -p sortie/travail/voix && cp -n /tmp/prec/travail/voix/*.wav sortie/travail/voix/ 2>/dev/null; } || true
-          S=$( git ls-tree -r HEAD studio/assets | md5sum | cut -c1-12)
+          S=$( git ls-tree -r HEAD studio/assets | grep -v '/poses/tourne/' | md5sum | cut -c1-12)
           if [ "1" = "1" ] && [ "$(cat /tmp/prec/travail/poses.stamp 2>/dev/null)" = "$S" ]; then cp -n /tmp/prec/travail/seg_* sortie/travail/ 2>/dev/null || true; echo "morceaux repris : $(ls sortie/travail/seg_* 2>/dev/null | wc -l)"; else echo "images changées ou pas de morceaux : tout le rendu est refait"; fi
           echo "voix reprises : $(ls sortie/travail/voix/*.wav 2>/dev/null | wc -l)"
       - run: python -m studio "$SCRIPT" -o sortie --etape rendu --part ${{ matrix.i }}/20 --workers 2
@@ -202,7 +202,7 @@ jobs:
         run: |
           N=${ISSUE:-manuel}; TAG="episode-$N-${{ github.run_number }}"
           if ls sortie/*_leger.mp4 >/dev/null 2>&1; then
-            git ls-tree -r HEAD studio/assets | md5sum | cut -c1-12 > sortie/travail/poses.stamp
+            git ls-tree -r HEAD studio/assets | grep -v '/poses/tourne/' | md5sum | cut -c1-12 > sortie/travail/poses.stamp
             (cd sortie && zip -qr travail.zip travail/plans.json travail/poses.stamp travail/voix travail/seg_*) || true   # fichiers de travail gardés : la prochaine correction ne refera que les secondes concernées
             gh release create "$TAG" sortie/*.mp4 $(ls sortie/travail.zip 2>/dev/null) --title "Épisode – demande $N" --notes "Vidéo fabriquée par Sounsouni Studio. Le fichier _leger (moins de 28 Mo) est pour WhatsApp."
             MSG="🎬 La vidéo est prête : https://github.com/${{ github.repository }}/releases/tag/$TAG"$'\n'"(le fichier **_leger** est pour WhatsApp)"
@@ -217,6 +217,37 @@ jobs:
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
           git add studio/assets/poses/tourne/*.webp && git commit -m "Têtes tournées préparées par l'application" && git pull -q --rebase --autostash && git push || echo "rien à garder"
+  ecoute:
+    needs: final
+    if: github.event.inputs.issue != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - uses: actions/download-artifact@v4
+        with: { name: video, path: sortie }
+      - uses: actions/download-artifact@v4
+        with: { name: travail, path: sortie/travail }
+      - name: Oreille déjà prête (gardée d'une fabrication à l'autre)
+        uses: actions/cache@v4
+        with: { path: "~/.cache/earshot\n~/.cache/pip", key: oreille-v1-925ebe5 }
+      - name: L'oreille écoute la vidéo (earshot, outil libre)
+        timeout-minutes: 35
+        run: |
+          bash .github/scripts/ffmpeg.sh
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q "earshot @ git+https://github.com/Leonxlnx/earshot@925ebe56a1b755e5d354ab642bb8f344440cfa9c"
+          python studio/oreille.py sortie/*_leger.mp4 sortie/travail/plans.json -o ecoute.txt
+      - name: Ranger le compte rendu et prévenir s'il y a une alerte
+        if: always()
+        run: |
+          [ -f ecoute.txt ] || exit 0
+          bash .github/scripts/fichiers.sh "$ISSUE" ecoute.txt || true
+          if ! grep -q "^ALERTES : aucune" ecoute.txt; then
+            A=$(sed -n '/^ALERTES/,/^$/p' ecoute.txt | sed '1d')
+            gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="👂 L'oreille du studio a écouté la vidéo et a entendu :"$'\n'"$A"$'\n\n'"Pour corriger : « 💬 Discuter avec l'assistant » (il lit ce compte rendu) ou l'onglet 🛠 Technicien." > /dev/null
+          fi
   echec:
     needs: [voix, plans, rendu, final]
     if: failure() && github.event.inputs.issue != ''

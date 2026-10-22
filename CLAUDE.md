@@ -40,6 +40,11 @@
 - **🧩 Renvoyer les images Gemini** : Issa choisit les images, met le numéro de demande, « Vérifier avec l'IA » (Gemini les regarde), puis envoi → `demandes/gemini/N/` + commentaire « importer 1=… » → `.github/workflows/import.yml` (découpe, détourage, bouches, catalogue, planche `import.png`) ; « annuler import <code> » le retire.
 - Quand Claude revient : relire les commits « (assistant de la page Studio mobile) » et les branches `assistant-*`, transformer en règles propres ce qui revient souvent.
 
+## Oreille du studio (son) — 22/10/2026
+- **earshot** (libre, MIT, github.com/Leonxlnx/earshot, figé au commit 925ebe5, processeur, sans clé) : `studio/oreille.py vidéo plans.json -o ecoute.txt` ; job `ecoute` d'episode.yml après chaque vidéo (ne retarde pas la vidéo) → `ecoute.txt` dans la branche fichiers + commentaire « 👂 » s'il y a une alerte (aigus perçants d'une scène, saturation, scène trop forte). Lu par l'assistant (💬 Discuter) et le technicien (outil `ecouter`). Local : `python -m venv ~/ear && ~/ear/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu && ~/ear/bin/pip install "earshot @ git+https://github.com/Leonxlnx/earshot@925ebe5"` puis `EARSHOT=~/ear/bin/earshot`.
+- **Ambiances** (règle d'Issa : jamais stressantes) : grillons / cigales fabriqués en code (`studio/ambiances.py`, earshot les entend « crickets at night » ; l'ancien cricket.wav = « alarme / erreur », gardé seulement pour ne pas changer les poses) ; `audio.build` les tient `ambiance_sous_voix` dB sous les voix (24) et `ambiance_baisse_parole` dB de plus pendant les répliques (8), réglables dans `studio/reglages.json`.
+- `poses.stamp` ne compte plus `poses/tourne/` (têtes tournées refaites à chaque vidéo : sinon aucun morceau de 12 s n'était jamais repris).
+
 ## Fichiers clés
 - `studio/script.py` lecture du script · `voices.py` voix + vérification Whisper + fins de phrase jamais coupées + rires + `lexique.txt` (prononciations « écrit = prononcé », ex. « Kôrôbalé wou = Kôrôbaléou ») et « plus » négatif sans S.
 - `studio/planches.py` planches A / B / C / D (questions, images, page à cocher, lecture de la réponse).
