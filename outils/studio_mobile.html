@@ -199,7 +199,16 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
   if(a('video.mp4'))api('/repos/'+R+'/releases?per_page=30').then(rs=>{const r=rs.filter(x=>x.tag_name.startsWith('episode-'+n+'-')).sort((x,y)=>new Date(y.created_at)-new Date(x.created_at))[0];if(!r)return;   // versions prêtes à publier (règle de publication)
     const L=[['_youtube','YouTube (complet)'],['_tiktok','TikTok (3:00)'],['_shorts','Shorts (2:58)'],['_facebook','Facebook (1:00)']].map(([s,lib])=>{const f=r.assets.find(x=>x.name.endsWith(s+'.mp4'));return f?'<a class="btn sec" href="'+f.browser_download_url+'" download>⬇ '+lib+'</a>':''}).join('');
     if(L)z.querySelector('.pub').innerHTML='<p class="muted" style="margin:8px 0 4px">Versions à publier (bandeau « chaîne YouTube » inclus) :</p><div class="row">'+L+'</div>'}).catch(()=>{});
-  z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
+  z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';
+    if(f.endsWith('.mp4')){   // la vidéo est lue en continu (elle démarre tout de suite, même avec une connexion faible) ; en secours, elle est téléchargée en entier
+      const raw='https://raw.githubusercontent.com/'+R+'/fichiers/'+n+'/'+f+'?v='+Date.now();
+      v.innerHTML='<video controls playsinline preload="metadata" src="'+raw+'"></video><p class="muted vt"></p><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+raw+'">⬇ Enregistrer la vidéo</a></div>';
+      const ve=v.querySelector('video'),vt=v.querySelector('.vt');let essai=0;
+      ve.onerror=async()=>{if(essai++)return;vt.textContent='Lecture directe impossible : je télécharge la vidéo (environ 30 Mo, patientez)…';
+        for(let k=1;k<=3;k++){try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);ve.src=u;v.querySelector('a').href=u;vt.textContent='';return}catch(e){vt.textContent='Connexion lente : nouvel essai ('+k+' sur 3)…';await new Promise(r=>setTimeout(r,4000))}}
+        vt.textContent='❌ La vidéo n\'a pas pu être chargée (connexion trop faible ?). Elle est bien là : réessayez avec le Wi-Fi, ou utilisez le bouton ⬇ YouTube.'};
+      return}
+    try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
     if(f.endsWith('.mp4'))v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div>';
     else if(/^planche_[a-z]+_(tour|action)_/.test(f)){const nom=f.slice(8,-4);v.innerHTML='<img class="prev" alt="planche" src="'+u+'"><p class="muted">Les images sur fond rose sont floues ou déformées : « Tout garder » les laisse de côté.</p><div class="row"><button class="tg">✅ Tout garder</button></div><label>Ou seulement ces numéros</label><div class="row"><input class="gn" placeholder="1 3 5"><button class="sec gs">Garder</button></div><div class="gm"></div>';
       const dire=t=>api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})}).then(()=>v.querySelector('.gm').innerHTML='<p class="msg">✅ Envoyé : les images sont rangées dans le studio (environ 10 min).</p>');
@@ -212,7 +221,7 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
       window.addEventListener('message',ev=>{if(ev.source!==fr.contentWindow||!ev.data||!ev.data.planches)return;const r=String(ev.data.planches).trim();const z=v.querySelector('.prep');
         if(!/[A-D]/i.test(r)||/aucun/i.test(r)){z.innerHTML='<p class="msg">Touchez d\'abord une image par question.</p>';return}
         z.innerHTML='<div class="row"><button class="go">📨 Envoyer ma réponse : '+esc(r)+'</button></div>';z.querySelector('.go').onclick=async()=>{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:r.toUpperCase()})});z.innerHTML='<p class="msg">✅ Réponse « '+esc(r)+' » envoyée : un nouvel aperçu avec vos choix arrive dans environ 10 minutes.</p>'}})}}
-    catch(e){v.innerHTML='<p class="msg">Fichier introuvable pour l\'instant. Réessayez dans un moment.</p>'}})}
+    catch(e){v.innerHTML='<p class="msg">Le fichier n\'a pas pu être chargé (connexion faible, ou fichier pas encore rangé). Réessayez dans un moment.</p>'}})}
 $('#minutes').onclick=async()=>{const t=$('#tableau');if(t.innerHTML){t.innerHTML='';return}t.innerHTML='<div class="card"><p class="muted">Chargement…</p></div>';
   try{const runs=await api('/repos/'+R+'/actions/runs?per_page=12').catch(()=>({workflow_runs:[]}));
     const enc=runs.workflow_runs.filter(r=>r.status!=='completed').map(r=>'<p>⏳ '+esc(r.name)+' — '+(r.status==='queued'?'en attente d\'une machine':'en cours')+' depuis '+Math.round((Date.now()-new Date(r.run_started_at||r.created_at))/60000)+' min</p>').join('');
