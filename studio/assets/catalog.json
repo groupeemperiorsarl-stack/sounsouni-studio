@@ -3463,8 +3463,7 @@
    "frame": "pied",
    "posture": "debout",
    "tags": [
-    "grand_sourire",
-    "robe"
+    "grand_sourire"
    ],
    "mouth": true,
    "size": [
@@ -3472,9 +3471,7 @@
     1600
    ],
    "head_x": 0.504,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "face",
    "sequence": {
@@ -3492,7 +3489,6 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -3501,9 +3497,7 @@
     1600
    ],
    "head_x": 0.492,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "trois_quarts",
    "sequence": {
@@ -3521,7 +3515,6 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "robe",
     "profil"
    ],
    "mouth": true,
@@ -3530,9 +3523,7 @@
     1600
    ],
    "head_x": 0.534,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "profil",
    "sequence": {
@@ -3550,7 +3541,6 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "robe",
     "profil"
    ],
    "mouth": true,
@@ -3559,9 +3549,7 @@
     1600
    ],
    "head_x": 0.517,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "profil",
    "sequence": {
@@ -3743,7 +3731,6 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "robe",
     "profil"
    ],
    "mouth": true,
@@ -3752,9 +3739,7 @@
     1600
    ],
    "head_x": 0.48,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "profil",
    "sequence": {
@@ -3772,7 +3757,6 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "robe",
     "profil"
    ],
    "mouth": true,
@@ -3781,9 +3765,7 @@
     1600
    ],
    "head_x": 0.471,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "profil",
    "sequence": {
@@ -3801,7 +3783,6 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -3810,9 +3791,7 @@
     1600
    ],
    "head_x": 0.522,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "trois_quarts",
    "sequence": {
@@ -3830,7 +3809,6 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -3839,9 +3817,7 @@
     1600
    ],
    "head_x": 0.492,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "trois_quarts",
    "sequence": {
@@ -3858,8 +3834,7 @@
    "frame": "pied",
    "posture": "debout",
    "tags": [
-    "sourire",
-    "robe"
+    "sourire"
    ],
    "mouth": true,
    "size": [
@@ -3867,9 +3842,7 @@
     1600
    ],
    "head_x": 0.491,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "face",
    "sequence": {
@@ -3886,8 +3859,7 @@
    "frame": "pied",
    "posture": "debout",
    "tags": [
-    "sourire",
-    "robe"
+    "sourire"
    ],
    "mouth": true,
    "size": [
@@ -3895,9 +3867,7 @@
     1600
    ],
    "head_x": 0.505,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "face",
    "sequence": {
@@ -3915,8 +3885,7 @@
    "posture": "debout",
    "tags": [
     "sourire",
-    "ferme_yeux",
-    "robe"
+    "ferme_yeux"
    ],
    "mouth": true,
    "size": [
@@ -3924,9 +3893,7 @@
     1600
    ],
    "head_x": 0.53,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "face",
    "sequence": {
@@ -3945,7 +3912,6 @@
    "tags": [
     "sourire",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -3956,7 +3922,6 @@
    ],
    "head_x": 0.494,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -3977,7 +3942,6 @@
    "tags": [
     "sourire",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -3988,7 +3952,6 @@
    ],
    "head_x": 0.501,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4009,7 +3972,6 @@
    "tags": [
     "sourire",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4020,7 +3982,6 @@
    ],
    "head_x": 0.519,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4041,7 +4002,6 @@
    "tags": [
     "surpris",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4052,7 +4012,6 @@
    ],
    "head_x": 0.556,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4073,7 +4032,6 @@
    "tags": [
     "emerveille",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4084,7 +4042,6 @@
    ],
    "head_x": 0.563,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4105,7 +4062,6 @@
    "tags": [
     "joie",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4116,7 +4072,6 @@
    ],
    "head_x": 0.523,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4137,7 +4092,6 @@
    "tags": [
     "joie",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4148,7 +4102,6 @@
    ],
    "head_x": 0.533,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4170,7 +4123,6 @@
     "choc",
     "main_bouche",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4181,7 +4133,6 @@
    ],
    "head_x": 0.538,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4203,7 +4154,6 @@
     "choc",
     "main_bouche",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4214,7 +4164,6 @@
    ],
    "head_x": 0.507,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4236,7 +4185,6 @@
     "choc",
     "main_bouche",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4247,7 +4195,6 @@
    ],
    "head_x": 0.497,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4269,7 +4216,6 @@
     "choc",
     "main_bouche",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4280,7 +4226,6 @@
    ],
    "head_x": 0.507,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4302,7 +4247,6 @@
     "choc",
     "main_bouche",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4313,7 +4257,6 @@
    ],
    "head_x": 0.526,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4334,7 +4277,6 @@
    "tags": [
     "joie",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4345,7 +4287,6 @@
    ],
    "head_x": 0.53,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4366,7 +4307,6 @@
    "tags": [
     "sourire",
     "regarde_bas",
-    "robe",
     "telephone",
     "trois_quarts"
    ],
@@ -4377,7 +4317,6 @@
    ],
    "head_x": 0.546,
    "props": [
-    "robe",
     "telephone"
    ],
    "genere": "video",
@@ -4799,7 +4738,6 @@
     "serieux",
     "bras_croises",
     "ferme_yeux",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -4808,9 +4746,7 @@
     1600
    ],
    "head_x": 0.384,
-   "props": [
-    "robe"
-   ],
+   "props": [],
    "genere": "video",
    "vue": "trois_quarts",
    "sequence": {
@@ -4829,7 +4765,6 @@
    "tags": [
     "surpris",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -4839,8 +4774,7 @@
    ],
    "head_x": 0.425,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -4860,7 +4794,6 @@
    "tags": [
     "surpris",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -4870,8 +4803,7 @@
    ],
    "head_x": 0.528,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -4891,7 +4823,6 @@
    "tags": [
     "choc",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -4901,8 +4832,7 @@
    ],
    "head_x": 0.477,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -4922,7 +4852,6 @@
    "tags": [
     "choc",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -4932,8 +4861,7 @@
    ],
    "head_x": 0.45,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -4953,7 +4881,6 @@
    "tags": [
     "choc",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -4963,8 +4890,7 @@
    ],
    "head_x": 0.416,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -4985,7 +4911,6 @@
     "choc",
     "mains_tete",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -4995,8 +4920,7 @@
    ],
    "head_x": 0.541,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -5017,7 +4941,6 @@
     "choc",
     "mains_tete",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -5027,8 +4950,7 @@
    ],
    "head_x": 0.502,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -5049,7 +4971,6 @@
     "choc",
     "mains_tete",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -5059,8 +4980,7 @@
    ],
    "head_x": 0.501,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -5080,7 +5000,6 @@
    "tags": [
     "surpris",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -5090,8 +5009,7 @@
    ],
    "head_x": 0.541,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -5111,7 +5029,6 @@
    "tags": [
     "sourire",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -5121,8 +5038,7 @@
    ],
    "head_x": 0.605,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -5142,7 +5058,6 @@
    "tags": [
     "sourire",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -5152,8 +5067,7 @@
    ],
    "head_x": 0.381,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",
@@ -5173,7 +5087,6 @@
    "tags": [
     "sourire",
     "telephone",
-    "robe",
     "trois_quarts"
    ],
    "mouth": true,
@@ -5183,8 +5096,7 @@
    ],
    "head_x": 0.396,
    "props": [
-    "telephone",
-    "robe"
+    "telephone"
    ],
    "genere": "video",
    "vue": "trois_quarts",

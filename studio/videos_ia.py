@@ -110,7 +110,7 @@ def decrire(cands, perso):
         if x.get('vue') in ('face', 'trois_quarts', 'profil', 'trois_quarts_dos', 'dos'): c['vue_type'] = x['vue']
         if x.get('regard') in ('face', 'gauche', 'droite'): c['regard'] = x['regard']
         if x.get('emotion') in director.EMOS: c['emotion'] = x['emotion']
-        c['gestes'] = [g for g in x.get('gestes', []) if isinstance(g, str)][:4]; c['objets'] = [o for o in x.get('objets', []) if o in director.OBJ]
+        c['gestes'] = [g for g in x.get('gestes', []) if isinstance(g, str)][:4]; c['objets'] = [o for o in x.get('objets', []) if o in director.OBJ and o not in PAS_OBJET]
         c['nette'] = bool(x.get('nette', True)); c['description'] = str(x.get('description', ''))[:120]
     log('images décrites par Gemini')
     return cands
@@ -149,6 +149,7 @@ def preparer(video, perso, sorte, out, tags=''):
     log(f'planche : {os.path.join(d, "planche.png")}')
     return d
 
+PAS_OBJET = {'robe', 'nuit', 'sale', 'porte'}   # habits ou décor vus par Gemini : ce ne sont pas des objets tenus
 YAW = {'face': 0, 'trois_quarts': 32, 'profil': 75}   # orientation approximative ; autoyaw la mesure ensuite quand le visage est visible
 
 def garder(reponse, d):
