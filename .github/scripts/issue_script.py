@@ -14,6 +14,8 @@ if ev.get('comment'):   # commentaire « vidéo », « aperçu », « planches 1
     brut = ((ev['comment'].get('body') or '').strip().splitlines() or [''])[0].strip()
     if re.match(r'importer\s+\d+\s*=', c): mode = 'importer'; arg = re.sub(r'(?i)^importer\s+', '', brut)   # images Gemini envoyées depuis la page
     elif re.match(r'annuler import\s+[0-9a-f]{7,40}$', c): mode = 'annuler'; arg = c.split()[-1]
+    elif re.match(r'mini-?vid[ée]o\s+\w+\s+(tour|action)\s+\S+$', c): mode = 'video'; arg = brut.split(None, 1)[1]   # « mini-vidéo BAKARY tour fichier.mp4 »
+    elif re.match(r'garder\s+(tout|[\d\s]+)\s+[a-z]+_(tour|action)_\w+$', c): mode = 'garder'; arg = brut.split(None, 1)[1]   # « garder tout bakary_tour_650014 »
     elif re.match(r'essai code\s+[\w./-]+$', c): mode = 'essai'; arg = brut.split()[-1]   # modification du code proposée par l'assistant, sur une branche à part
     elif re.fullmatch(r'vid[ée]o', c): mode = 'video'
     elif re.fullmatch(r'fiches?( gemini)?', c): mode = 'fiche'

@@ -1,0 +1,48 @@
+name: Mini-vidéos des personnages → poses
+on:
+  workflow_dispatch:
+    inputs:
+      issue: { description: "Numéro de la demande", required: true }
+      mode: { description: "preparer ou garder", default: "preparer" }
+      perso: { description: "ex. BAKARY", default: "" }
+      sorte: { description: "tour ou action", default: "tour" }
+      fichier: { description: "vidéo dans demandes/videos/N/", default: "" }
+      nom: { description: "nom du lot (pour garder)", default: "" }
+      reponse: { description: "tout, ou 1 3 5", default: "tout" }
+permissions: { contents: write, issues: write }
+env:
+  GH_TOKEN: ${{ github.token }}
+  N: ${{ github.event.inputs.issue }}
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+jobs:
+  video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Outils
+        run: |
+          sudo apt-get install -y -qq ffmpeg > /dev/null
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow scipy rembg onnxruntime opencv-python-headless soundfile librosa transformers
+      - name: Découper la vidéo, détourer, décrire chaque image (Gemini), planche
+        if: github.event.inputs.mode == 'preparer'
+        run: |
+          set -o pipefail; mkdir -p sv
+          python -m studio.videos_ia "demandes/videos/$N/${{ github.event.inputs.fichier }}" --perso "${{ github.event.inputs.perso }}" --sorte "${{ github.event.inputs.sorte }}" -o sv 2>&1 | tee journal.txt
+          D=$(ls -d sv/*/ | head -1); NOM=$(basename "$D"); cp "$D/planche.png" "planche_$NOM.png"; (cd sv && zip -qr "../$NOM.zip" "$NOM")
+          bash .github/scripts/fichiers.sh "$N" "planche_$NOM.png" "$NOM.zip"
+          K=$(python -c "import json;d=json.load(open('$D/candidats.json'));print(len(d['candidats']))")
+          gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="🎞 Planche prête : $NOM ($K images de ${{ github.event.inputs.perso }}, chacune décrite). Bouton « 🎞 Planche $NOM » dans la page, puis « ✅ Tout garder » ou « garder 1 3 5 $NOM »." > /dev/null
+      - name: Ranger les images gardées (catalogue + bouches)
+        if: github.event.inputs.mode == 'garder'
+        run: |
+          set -o pipefail; NOM="${{ github.event.inputs.nom }}"; mkdir -p sv
+          gh api -H "Accept: application/vnd.github.raw" "repos/${{ github.repository }}/contents/$N/$NOM.zip?ref=fichiers" > "$NOM.zip" && unzip -qo "$NOM.zip" -d sv
+          python -m studio.videos_ia --garder "${{ github.event.inputs.reponse }}" -o "sv/$NOM" 2>&1 | tee journal.txt
+          K=$(grep -o 'NOUVELLES_POSES=.*' journal.txt | cut -d= -f2); echo "K=$K" >> $GITHUB_ENV
+          if [ -n "$K" ]; then bash studio/lp/install.sh > /dev/null 2>&1 && STUDIO_POSES="$K" python studio/automouth.py 2>&1 | tail -2 || echo "bouches : pas faites"; fi
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add studio/assets && git commit -qm "Poses tirées de la mini-vidéo $NOM (demande #$N)" && git pull -q --rebase --autostash && git push -q && SHA=$(git rev-parse --short HEAD)
+          if [ -n "$SHA" ]; then M="🧩 Images rangées dans le studio : $(echo "$K" | tr ',' ' ' | wc -w) poses de $NOM. Si besoin : **annuler import $SHA**"; else M="❌ Les images de $NOM n'ont pas pu être rangées."; fi
+          gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="$M" > /dev/null
