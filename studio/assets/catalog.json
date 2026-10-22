@@ -808,7 +808,8 @@
     "colere",
     "furieux",
     "pointe",
-    "crie"
+    "crie",
+    "gifle"
    ],
    "mouth": true,
    "size": [
@@ -924,7 +925,8 @@
    "tags": [
     "colere",
     "furieux",
-    "non"
+    "non",
+    "gifle"
    ],
    "mouth": true,
    "size": [

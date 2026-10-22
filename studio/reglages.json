@@ -1,5 +1,5 @@
 {
- "_aide": "Réglages généraux du studio, modifiables par l'assistant de secours (page Studio mobile). bouche : ouverture des bouches créées automatiquement (0.2 normal, 0.7 barbe épaisse). rangs : places des groupes de 4 et plus (x de 0 à 1, pieds = hauteur du sol de 0 à 1, h = taille en pixels). decor_large : pour chaque décor, [zoom, hauteur du cadrage] des plans larges. ambiance_sous_voix : de combien de dB les ambiances (grillons, foule…) restent sous les voix (24 = discret ; plus grand = plus bas). ambiance_baisse_parole : baisse en plus pendant les répliques (dB).",
+ "_aide": "Réglages généraux du studio, modifiables par l'assistant de secours (page Studio mobile). bouche : ouverture des bouches créées automatiquement (0.2 normal, 0.7 barbe épaisse). rangs : places des groupes de 4 et plus (x de 0 à 1, pieds = hauteur du sol de 0 à 1, h = taille en pixels). decor_large : pour chaque décor, [zoom, hauteur du cadrage] des plans larges. ambiance_sous_voix : de combien de dB les ambiances (grillons, foule…) restent sous les voix (24 = discret ; plus grand = plus bas). ambiance_baisse_parole : baisse en plus pendant les répliques (dB). bouche_perso : ouverture de bouche propre à un personnage (ex. DIASABI 0.45), utilisée quand les bouches sont refaites.",
  "bouche": 0.2,
  "rangs": {
   "devant": {
@@ -29,5 +29,8 @@
   ]
  },
  "ambiance_sous_voix": 24,
- "ambiance_baisse_parole": 8
+ "ambiance_baisse_parole": 8,
+ "bouche_perso": {
+  "DIASABI": 0.45
+ }
 }

@@ -69,6 +69,8 @@ def main():
     if choix: log(f'choix d\'Issa appliqués : {len(choix)} plan(s) ({os.path.basename(cpath)})')
     lines = voices.run(ev, director.CAT, work, log)
     shots, tot = director.build(meta, ev, log, choix=choix, variantes=a.planches)
+    if director.MANQUES:   # émotions sans image : visage calme à la place ; liste gardée pour le relecteur et la fiche Gemini
+        json.dump(sorted(director.MANQUES), open(os.path.join(out, 'manques.json'), 'w'), ensure_ascii=False); log('images manquantes (visage calme à la place) : ' + ', '.join(f'{c} {e} ({p})' for c, e, p in sorted(director.MANQUES)))
     json.dump(shots, open(os.path.join(work, 'plans.json'), 'w'), ensure_ascii=False, indent=0, default=str)
     resume(shots, out)
     render.prepare_turns(shots, log)

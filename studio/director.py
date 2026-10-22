@@ -52,6 +52,7 @@ ENSEMBLE = {'verre': ('plateau', 'the'), 'the': ('plateau', 'verre'), 'telephone
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
 GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
 TENUE = {}   # tenue portée en ce moment par chaque personnage ([TENUE AWA: bazin doré]) ; vide = tenue de tous les jours
+MANQUES = set()   # (personnage, émotion, posture) sans image : listé pour la fiche Gemini et le relecteur
 LASTPICK = {}   # dernier choix de pose : gardé sur l'acteur pour que les planches proposent les autres poses possibles
 def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
     t = TENUE.get(char, '')
@@ -83,7 +84,7 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         elif p['posture'] in ('dos', 'tombe', 'court', 'marche') and p['posture'] not in w and not (tags & w & {'tombe', 'glisse', 'court', 'dos', 'marche'}): s -= 5
         props = set(p.get('props', [])) | (tags & OBJ)
         unasked = props - w - set(extra_ok) - set(must) - {y for x in must for y in ENSEMBLE.get(x, ())}   # le plateau qui porte le verre demandé n'est pas « en trop »
-        s -= 7 * len(unasked - LIGHT) + 1.5 * len(unasked & LIGHT)   # un objet (brochette, téléphone…) ou des larmes jamais montrés sans raison
+        s -= 16 * len(unasked - LIGHT) + 1.5 * len(unasked & LIGHT)   # un objet (brochette, téléphone, rouleau…) ou des larmes jamais montrés sans raison : plus fort qu'une émotion bien trouvée (Issa, ép. 18 : Seydou et son rouleau)
         s += 14 * len(set(must) & (tags | props))   # validé par Issa : un objet écrit dans le PLAN est toujours montré
         if side and face_dir(k) != 0: s += 2.5
         if calm and side and face_dir(k) != 0 and not ((tags & (GESTE | POS | NEG | {'gene', 'rire', 'surpris', 'fatigue', 'sale'})) - w): s += 5   # validé par Issa (pose D) : de trois-quarts, même dessin que la suite de la scène
@@ -96,10 +97,15 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         if w & NEG and tags & POS and not (w & POS): s -= 4
         # validé par Issa (test assistant, ép. test) : un éclat de rire ne remplace jamais une émotion sérieuse (méfiant, sérieux, pensif, gêné…)
         if 'rire' in tags and w and not (w & {'rire', 'rire_retenu', 'moqueur', 'taquin', 'joie', 'grand_sourire', 'content', 'victoire'}): s -= 9
+        if 'gifle' in tags and not (w & {'gifle', 'frappe', 'pointe', 'non'}): s -= 20   # validé par Issa (ép. 18) : jamais un geste de gifle si le script ne le demande pas
         if need_mouth and p['mouth']: s += 1.5
         if 'neutre' in tags and not w: s += 1
         if not w and tags & NEG: s -= 3   # sans émotion demandée : jamais un visage fâché ou triste
         out.append((k, s))
+    emo = w & (EMOS | POS | NEG)
+    if emo and out and not any(set(POSES[k]['tags']) & emo for k, _ in out):   # aucune image pour cette émotion : visage calme (jamais l'émotion contraire), et on le note
+        out = [(k, s + (5 if set(POSES[k]['tags']) & {'neutre', 'serieux', 'ecoute'} else 0) - (4 if set(POSES[k]['tags']) & POS and not emo & POS else 0)) for k, s in out]
+        MANQUES.add((char, '/'.join(sorted(emo)), posture or 'debout'))
     return sorted(out, key=lambda x: -x[1])   # à égalité, la première du catalogue (comme avant)
 def pick_args(k):
     return dict(LASTPICK['args']) if LASTPICK.get('key') == k and k else None
@@ -126,6 +132,8 @@ class Stage:
             if w.get('pose'):
                 self.posture[w['who']] = posture_of(w['pose'])
                 pw = norm(w['pose']); self.props[w['who']] = [x for x in sorted(OBJ | {'machine'}) if x in pw]
+    def ici(self):   # présents en ce moment (validé par Issa, ép. 18 : ceux qui arrivent plus tard dans la scène ne sont jamais montrés avant)
+        return [c for c in self.order if c not in self.arrivals or c in self.seq]
     def add(self, who):
         if who and who not in self.order and who in HEIGHT: self.order.append(who)
     def post(self, who):
@@ -417,17 +425,20 @@ def build(meta, events, log=print, choix=None, variantes=False):
                     g = group_pick([w['who'] for w in e['who']], [x[1] for x in fx]); add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor('+'.join(w['who'] for w in e['who']), g)], 'fx': fx, 'mode': 'close'})
                     plan = {'kind': 'group', 'key': g, 'who': e['who']}; i += 1; continue
                 elif e['kind'] == 'large' or len(e['who']) > 1:
-                    add({'kind': 'wide', 'dur': e['dur'], 'actors': wide_layout(stage, [w['who'] for w in e['who']] or stage.order, moods), 'fx': fx}); plan = None
+                    add({'kind': 'wide', 'dur': e['dur'], 'actors': wide_layout(stage, [w['who'] for w in e['who']] or stage.ici(), moods), 'fx': fx}); plan = None
                 else:
                     c = e['who'][0]['who']; want = [x[1] for x in fx]
+                    if not tagwords(want) & (EMOS | POS | NEG):   # gros plan muet sans émotion écrite : l'émotion de sa prochaine réplique ou pensée (Issa, ép. 18 : Modibo souriait au lieu d'être troublé)
+                        nx = next((x for x in events[i + 1:] if x['type'] in ('line', 'scene') and (x['type'] == 'scene' or x.get('who') == c)), None)
+                        if nx and nx['type'] == 'line' and nx.get('emotion'): want = want + [nx['emotion']]
                     k = pick(c, want + stage.props.get(c, []), 'buste' if e['kind'] == 'tresgros' else None, stage.post(c))
                     add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor(c, k, tight=e['kind'] == 'tresgros')], 'fx': fx})
                     plan = None
             elif e['kind'] == 'large':
-                add({'kind': 'wide', 'dur': 2.4, 'actors': wide_layout(stage, [w['who'] for w in e['who']] or stage.order, moods), 'establish': True}); first_in_scene = False
+                add({'kind': 'wide', 'dur': 2.4, 'actors': wide_layout(stage, [w['who'] for w in e['who']] or stage.ici(), moods), 'establish': True}); first_in_scene = False
         elif t == 'line':
             if first_in_scene and not ending:
-                add({'kind': 'wide', 'dur': 2.2, 'actors': wide_layout(stage, stage.order, moods), 'establish': True, 'card': scene['decor']}); first_in_scene = False
+                add({'kind': 'wide', 'dur': 2.2, 'actors': wide_layout(stage, stage.ici(), moods), 'establish': True, 'card': scene['decor']}); first_in_scene = False
             who = e['who']; reacts = []
             j = i + 1
             while j < len(events) and events[j]['type'] in ('reaction', 'sfx'):
@@ -459,7 +470,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
                     a = close_actor('+'.join(w['who'] for w in plan['who']), plan['key']); a['h'] = int(a['h'] * 1.15); a['by'] = 330 + a['h']
                     sh['actors'] = [a]; sh['mode'] = 'close'; sh['group'] = True
                 elif mode == 'large':
-                    acts = wide_layout(stage, [w['who'] for w in plan['who']] or stage.order, moods, speaker=who, partner=cible(e, last_speaker))
+                    acts = wide_layout(stage, [w['who'] for w in plan['who']] or stage.ici(), moods, speaker=who, partner=cible(e, last_speaker))
                     for a in acts: a['speaker'] = a['who'] == who
                     sh['actors'] = acts; sh['mode'] = 'wide'; plan = None
                 elif mode == 'deux' and plan and len(plan['who']) >= 2 and who not in [w['who'] for w in plan['who']][:2]:
@@ -541,7 +552,8 @@ def build(meta, events, log=print, choix=None, variantes=False):
         elif t == 'music':
             music = e['name']
         elif t == 'silence':
-            base = dict(last_shot) if last_shot and last_shot['kind'] in ('line', 'close', 'wide') else {'kind': 'wide', 'actors': wide_layout(stage, stage.order, moods)}
+            avant = next((x for x in reversed(shots) if x['kind'] in ('line', 'close', 'wide')), None) if shots and shots[-1].get('decor', scene['decor']) == scene['decor'] else None   # après un gros plan d'objet : on revient aux personnages du dernier plan
+            base = dict(last_shot) if last_shot and last_shot['kind'] in ('line', 'close', 'wide') else (dict(avant) if avant else {'kind': 'wide', 'actors': wide_layout(stage, stage.ici(), moods)})
             s = {'kind': 'close' if base.get('mode') == 'close' or base['kind'] == 'close' else 'wide', 'dur': e['dur'], 'actors': [dict(a, speaker=False) for a in base.get('actors', [])]}
             if e.get('sfx'): s['sfx'] = [(0.2, sfx_file(e['sfx']))]
             add(s)
