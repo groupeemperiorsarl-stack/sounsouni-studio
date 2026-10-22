@@ -34,6 +34,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
+      - name: Outils déjà prêts (gardés d'une fabrication à l'autre, bien plus rapide)
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/tts
+            ~/.cache/pip
+            ~/.cache/huggingface
+          key: outils-v1-${{ runner.os }}-${{ hashFiles('studio/lp/install.sh') }}
       - name: Outils
         run: |
           sudo apt-get install -y -qq ffmpeg > /dev/null
@@ -85,10 +93,18 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
+      - name: Outils déjà prêts (gardés d'une fabrication à l'autre, bien plus rapide)
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/tts
+            ~/.cache/pip
+            ~/.cache/huggingface
+          key: outils-v1-${{ runner.os }}-${{ hashFiles('studio/lp/install.sh') }}
       - name: Outils
         run: |
           sudo apt-get install -y -qq ffmpeg > /dev/null
-          python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile
+          [ -x /home/runner/tts/bin/python ] && /home/runner/tts/bin/python -c 'import chatterbox' 2>/dev/null || { python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile; }
           pip install -q numpy pillow soundfile librosa
       - name: Reprendre le travail de la vidéo précédente (seules les répliques et les secondes changées sont refaites)
         if: github.event.inputs.issue != ''
@@ -111,10 +127,18 @@ jobs:
         with: { python-version: "3.11" }
       - uses: actions/download-artifact@v4
         with: { pattern: "voix_*", path: sortie/travail/voix, merge-multiple: true }
+      - name: Outils déjà prêts (gardés d'une fabrication à l'autre, bien plus rapide)
+        uses: actions/cache@v4
+        with:
+          path: |
+            /home/runner/tts
+            ~/.cache/pip
+            ~/.cache/huggingface
+          key: outils-v1-${{ runner.os }}-${{ hashFiles('studio/lp/install.sh') }}
       - name: Outils
         run: |
           sudo apt-get install -y -qq ffmpeg > /dev/null
-          python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile
+          [ -x /home/runner/tts/bin/python ] && /home/runner/tts/bin/python -c 'import chatterbox' 2>/dev/null || { python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile; }
           pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
           bash studio/lp/install.sh
       - run: python -m studio "$SCRIPT" -o sortie --etape plans
