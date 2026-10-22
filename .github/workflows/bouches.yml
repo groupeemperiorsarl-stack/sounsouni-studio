@@ -1,0 +1,21 @@
+name: Bouches des nouvelles poses (LivePortrait)
+on:
+  workflow_dispatch:
+    inputs:
+      poses: { description: "clés des poses, séparées par des virgules", required: true }
+permissions: { contents: write }
+jobs:
+  bouches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow scipy opencv-python-headless
+          bash studio/lp/install.sh
+      - name: Créer les bouches ouvertes et ranger
+        run: |
+          STUDIO_POSES="${{ github.event.inputs.poses }}" python studio/automouth.py 2>&1 | tail -3
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add studio/assets && git commit -qm "Bouches des nouvelles poses" && git pull -q --rebase --autostash && git push -q || echo "rien à garder"

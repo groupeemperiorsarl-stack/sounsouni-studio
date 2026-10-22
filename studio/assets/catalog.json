@@ -3457,6 +3457,1695 @@
    "genere": "gemini",
    "head_x": 0.637,
    "mouth_auto": true
+  },
+  "bak_v_tour_650014_01": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "grand_sourire",
+    "robe"
+   ],
+   "mouth": false,
+   "size": [
+    593,
+    1600
+   ],
+   "head_x": 0.504,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 0,
+    "temps": 0.12
+   },
+   "description": "Bakary se tient debout de face avec un grand sourire.",
+   "yaw": 0
+  },
+  "bak_v_tour_650014_02": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    577,
+    1600
+   ],
+   "head_x": 0.492,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 1,
+    "temps": 0.5
+   },
+   "description": "Bakary est tourné de trois quarts vers la gauche de l'image.",
+   "yaw": 32
+  },
+  "bak_v_tour_650014_03": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe",
+    "profil"
+   ],
+   "mouth": false,
+   "size": [
+    452,
+    1600
+   ],
+   "head_x": 0.534,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "profil",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 2,
+    "temps": 1.12
+   },
+   "description": "Bakary est vu de profil, regardant vers la gauche.",
+   "yaw": 75
+  },
+  "bak_v_tour_650014_04": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe",
+    "profil"
+   ],
+   "mouth": false,
+   "size": [
+    386,
+    1600
+   ],
+   "head_x": 0.517,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "profil",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 3,
+    "temps": 1.38
+   },
+   "description": "Bakary est en profil complet vers la gauche.",
+   "yaw": 75
+  },
+  "bak_v_tour_650014_05": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "dos",
+    "trois_quarts_dos"
+   ],
+   "mouth": false,
+   "size": [
+    322,
+    1600
+   ],
+   "head_x": 0.48,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts_dos",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 4,
+    "temps": 1.88
+   },
+   "description": "Bakary est vu de trois quarts dos, tourné vers la gauche."
+  },
+  "bak_v_tour_650014_06": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    471,
+    1600
+   ],
+   "head_x": 0.497,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 5,
+    "temps": 2.5
+   },
+   "description": "Bakary est vu de dos."
+  },
+  "bak_v_tour_650014_07": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    545,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 6,
+    "temps": 2.75
+   },
+   "description": "Bakary est de dos, immobile."
+  },
+  "bak_v_tour_650014_08": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    596,
+    1600
+   ],
+   "head_x": 0.494,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 7,
+    "temps": 3.12
+   },
+   "description": "Bakary est présenté de dos."
+  },
+  "bak_v_tour_650014_09": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    600,
+    1600
+   ],
+   "head_x": 0.478,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 8,
+    "temps": 3.62
+   },
+   "description": "Bakary est de dos sur un fond uni."
+  },
+  "bak_v_tour_650014_10": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    576,
+    1600
+   ],
+   "head_x": 0.498,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 9,
+    "temps": 4.12
+   },
+   "description": "Bakary est vu de dos, de la tête aux pieds."
+  },
+  "bak_v_tour_650014_11": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "dos",
+    "trois_quarts_dos"
+   ],
+   "mouth": false,
+   "size": [
+    484,
+    1600
+   ],
+   "head_x": 0.498,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts_dos",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 10,
+    "temps": 4.5
+   },
+   "description": "Bakary est vu de trois quarts dos, tourné vers la droite."
+  },
+  "bak_v_tour_650014_12": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe",
+    "profil"
+   ],
+   "mouth": false,
+   "size": [
+    356,
+    1600
+   ],
+   "head_x": 0.48,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "profil",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 11,
+    "temps": 5.12
+   },
+   "description": "Bakary est de profil, regardant vers la droite.",
+   "yaw": -75
+  },
+  "bak_v_tour_650014_13": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe",
+    "profil"
+   ],
+   "mouth": false,
+   "size": [
+    358,
+    1600
+   ],
+   "head_x": 0.471,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "profil",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 12,
+    "temps": 5.62
+   },
+   "description": "Bakary est en profil complet vers la droite.",
+   "yaw": -75
+  },
+  "bak_v_tour_650014_14": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    429,
+    1600
+   ],
+   "head_x": 0.522,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 13,
+    "temps": 6.0
+   },
+   "description": "Bakary est tourné de trois quarts vers la droite.",
+   "yaw": -32
+  },
+  "bak_v_tour_650014_15": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    539,
+    1600
+   ],
+   "head_x": 0.492,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 14,
+    "temps": 6.5
+   },
+   "description": "Bakary se tourne progressivement vers l'avant.",
+   "yaw": -32
+  },
+  "bak_v_tour_650014_16": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe"
+   ],
+   "mouth": false,
+   "size": [
+    579,
+    1600
+   ],
+   "head_x": 0.491,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_tour_650014",
+    "ordre": 15,
+    "temps": 6.88
+   },
+   "description": "Bakary est de nouveau de face et sourit.",
+   "yaw": 0
+  },
+  "bak_v_action_642164_01": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "robe"
+   ],
+   "mouth": false,
+   "size": [
+    587,
+    1600
+   ],
+   "head_x": 0.505,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 0,
+    "temps": 0.0
+   },
+   "description": "Bakary se tient debout de face et sourit.",
+   "yaw": 0
+  },
+  "bak_v_action_642164_02": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "ferme_yeux",
+    "robe"
+   ],
+   "mouth": false,
+   "size": [
+    618,
+    1600
+   ],
+   "head_x": 0.53,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 1,
+    "temps": 0.5
+   },
+   "description": "Bakary sourit en fermant les yeux.",
+   "yaw": 0
+  },
+  "bak_v_action_642164_03": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    538,
+    1600
+   ],
+   "head_x": 0.494,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 2,
+    "temps": 0.88
+   },
+   "description": "Bakary regarde son téléphone avec un sourire.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_04": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    544,
+    1600
+   ],
+   "head_x": 0.501,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 3,
+    "temps": 1.12
+   },
+   "description": "Bakary sourit en consultant son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_05": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    546,
+    1600
+   ],
+   "head_x": 0.519,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 4,
+    "temps": 1.5
+   },
+   "description": "Bakary regarde attentivement son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_06": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    580,
+    1600
+   ],
+   "head_x": 0.556,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 5,
+    "temps": 3.38
+   },
+   "description": "Bakary a l'air surpris par ce qu'il voit sur son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_07": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "emerveille",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    623,
+    1600
+   ],
+   "head_x": 0.563,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 6,
+    "temps": 4.12
+   },
+   "description": "Bakary est émerveillé devant son écran.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_08": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    618,
+    1600
+   ],
+   "head_x": 0.523,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 7,
+    "temps": 4.75
+   },
+   "description": "Bakary exprime une grande joie en regardant son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_09": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    614,
+    1600
+   ],
+   "head_x": 0.533,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 8,
+    "temps": 4.88
+   },
+   "description": "Bakary rit aux éclats en tenant son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_10": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "main_bouche",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    606,
+    1600
+   ],
+   "head_x": 0.538,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 9,
+    "temps": 5.38
+   },
+   "description": "Bakary est choqué et met sa main devant sa bouche.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_11": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "main_bouche",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    597,
+    1600
+   ],
+   "head_x": 0.507,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 10,
+    "temps": 5.75
+   },
+   "description": "Bakary porte sa main à son visage, stupéfait.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_12": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "main_bouche",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    595,
+    1600
+   ],
+   "head_x": 0.497,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 11,
+    "temps": 6.38
+   },
+   "description": "Bakary regarde son téléphone avec une expression de choc.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_13": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "main_bouche",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    610,
+    1600
+   ],
+   "head_x": 0.507,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 12,
+    "temps": 6.62
+   },
+   "description": "Bakary est très surpris par ce qu'il lit sur son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_14": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "main_bouche",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    616,
+    1600
+   ],
+   "head_x": 0.526,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 13,
+    "temps": 7.25
+   },
+   "description": "Bakary reste bouche bée devant son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_15": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    606,
+    1600
+   ],
+   "head_x": 0.53,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 14,
+    "temps": 7.5
+   },
+   "description": "Bakary sourit joyeusement en regardant son téléphone.",
+   "yaw": -32
+  },
+  "bak_v_action_642164_16": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "robe",
+    "telephone",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    613,
+    1600
+   ],
+   "head_x": 0.546,
+   "props": [
+    "robe",
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "bakary_action_642164",
+    "ordre": 15,
+    "temps": 7.75
+   },
+   "description": "Bakary finit par sourire devant son téléphone.",
+   "yaw": -32
+  },
+  "awa_v_tour_702324_01": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "bras_croises",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    442,
+    1600
+   ],
+   "head_x": 0.381,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 0,
+    "temps": 0.12
+   },
+   "description": "Awa se tient debout les bras croisés avec un léger sourire.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_02": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "bras_croises",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    446,
+    1600
+   ],
+   "head_x": 0.382,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 1,
+    "temps": 0.62
+   },
+   "description": "Awa pose de trois-quarts avec les bras croisés.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_03": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "bras_croises",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    444,
+    1600
+   ],
+   "head_x": 0.403,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 2,
+    "temps": 1.12
+   },
+   "description": "Awa regarde vers l'avant en croisant les bras.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_04": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    485,
+    1600
+   ],
+   "head_x": 0.469,
+   "props": [],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 3,
+    "temps": 1.75
+   },
+   "description": "Awa se tient de face avec un sourire chaleureux.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_05": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    569,
+    1600
+   ],
+   "head_x": 0.515,
+   "props": [],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 4,
+    "temps": 2.12
+   },
+   "description": "Awa est debout de face et sourit.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_06": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    559,
+    1600
+   ],
+   "head_x": 0.55,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 5,
+    "temps": 2.38
+   },
+   "description": "Awa regarde vers l'avant avec un sourire calme.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_07": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "dos",
+    "trois_quarts_dos"
+   ],
+   "mouth": false,
+   "size": [
+    413,
+    1600
+   ],
+   "head_x": 0.454,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts_dos",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 6,
+    "temps": 3.12
+   },
+   "description": "Awa est vue de trois-quarts dos."
+  },
+  "awa_v_tour_702324_08": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    459,
+    1600
+   ],
+   "head_x": 0.508,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 7,
+    "temps": 3.62
+   },
+   "description": "Awa est vue de dos."
+  },
+  "awa_v_tour_702324_09": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    472,
+    1600
+   ],
+   "head_x": 0.596,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 8,
+    "temps": 4.12
+   },
+   "description": "Awa se tient de dos."
+  },
+  "awa_v_tour_702324_10": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    473,
+    1600
+   ],
+   "head_x": 0.579,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 9,
+    "temps": 4.38
+   },
+   "description": "Awa est de dos, montrant sa robe à motifs."
+  },
+  "awa_v_tour_702324_11": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    455,
+    1600
+   ],
+   "head_x": 0.623,
+   "props": [],
+   "genere": "video",
+   "vue": "dos",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 10,
+    "temps": 4.88
+   },
+   "description": "Awa est vue de dos en pied."
+  },
+  "awa_v_tour_702324_12": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "profil"
+   ],
+   "mouth": false,
+   "size": [
+    319,
+    1600
+   ],
+   "head_x": 0.423,
+   "props": [],
+   "genere": "video",
+   "vue": "profil",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 11,
+    "temps": 5.62
+   },
+   "description": "Awa est vue de profil en train de sourire.",
+   "yaw": -75
+  },
+  "awa_v_tour_702324_13": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    403,
+    1600
+   ],
+   "head_x": 0.517,
+   "props": [],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 12,
+    "temps": 6.0
+   },
+   "description": "Awa est de trois-quarts avec un léger sourire.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_14": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    531,
+    1600
+   ],
+   "head_x": 0.48,
+   "props": [],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 13,
+    "temps": 6.5
+   },
+   "description": "Awa se tient de face et sourit doucement.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_15": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    491,
+    1600
+   ],
+   "head_x": 0.464,
+   "props": [],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 14,
+    "temps": 6.88
+   },
+   "description": "Awa regarde l'objectif avec un sourire.",
+   "yaw": 0
+  },
+  "awa_v_tour_702324_16": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": false,
+   "size": [
+    494,
+    1600
+   ],
+   "head_x": 0.467,
+   "props": [],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "awa_tour_702324",
+    "ordre": 15,
+    "temps": 7.5
+   },
+   "description": "Awa sourit en se tenant de face.",
+   "yaw": 0
+  },
+  "awa_v_action_659144_01": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "serieux",
+    "bras_croises",
+    "ferme_yeux",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    444,
+    1600
+   ],
+   "head_x": 0.384,
+   "props": [
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 0,
+    "temps": 0.0
+   },
+   "description": "Awa a les bras croisés et les yeux fermés comme si elle parlait.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_05": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    500,
+    1600
+   ],
+   "head_x": 0.425,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 4,
+    "temps": 1.0
+   },
+   "description": "Awa regarde son téléphone avec un air étonné.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_06": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    435,
+    1600
+   ],
+   "head_x": 0.528,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 5,
+    "temps": 1.25
+   },
+   "description": "Awa semble surprise par ce qu'elle voit sur son écran.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_07": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    437,
+    1600
+   ],
+   "head_x": 0.477,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 6,
+    "temps": 3.0
+   },
+   "description": "Awa est sous le choc en consultant son téléphone.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_08": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    461,
+    1600
+   ],
+   "head_x": 0.45,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 7,
+    "temps": 3.25
+   },
+   "description": "Awa a la bouche ouverte de stupeur devant son téléphone.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_09": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    500,
+    1600
+   ],
+   "head_x": 0.416,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 8,
+    "temps": 3.62
+   },
+   "description": "Awa exprime un choc profond en regardant son écran.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_10": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "mains_tete",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    604,
+    1600
+   ],
+   "head_x": 0.541,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 9,
+    "temps": 4.75
+   },
+   "description": "Awa porte la main à son front, totalement choquée.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_11": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "mains_tete",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    603,
+    1600
+   ],
+   "head_x": 0.502,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 10,
+    "temps": 5.0
+   },
+   "description": "Awa est désemparée et se tient la tête devant son téléphone.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_12": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc",
+    "mains_tete",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    609,
+    1600
+   ],
+   "head_x": 0.501,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 11,
+    "temps": 5.25
+   },
+   "description": "Awa semble paniquée par une nouvelle sur son téléphone.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_13": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    638,
+    1600
+   ],
+   "head_x": 0.541,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 12,
+    "temps": 6.38
+   },
+   "description": "Awa regarde son téléphone avec une expression de surprise.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_14": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    663,
+    1600
+   ],
+   "head_x": 0.605,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 13,
+    "temps": 7.62
+   },
+   "description": "Awa commence à sourire en tenant son téléphone.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_15": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    725,
+    1600
+   ],
+   "head_x": 0.381,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 14,
+    "temps": 7.75
+   },
+   "description": "Awa affiche un sourire serein en regardant vers la droite.",
+   "yaw": -32
+  },
+  "awa_v_action_659144_16": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "telephone",
+    "robe",
+    "trois_quarts"
+   ],
+   "mouth": false,
+   "size": [
+    651,
+    1600
+   ],
+   "head_x": 0.396,
+   "props": [
+    "telephone",
+    "robe"
+   ],
+   "genere": "video",
+   "vue": "trois_quarts",
+   "sequence": {
+    "video": "awa_action_659144",
+    "ordre": 15,
+    "temps": 7.88
+   },
+   "description": "Awa sourit doucement, le téléphone à la main.",
+   "yaw": -32
   }
  },
  "decors": {
