@@ -180,7 +180,7 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
   if(a('planches.html'))h+='<button data-f="planches.html">☑ Planches à cocher</button>';
   if(a('fiche_gemini.html'))h+='<button class="sec" data-f="fiche_gemini.html">🖼 Fiche Gemini</button>';
   if(a('import.png'))h+='<button class="sec" data-f="import.png">🧩 Images rangées</button>';
-  ls.filter(x=>/^planche_.+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🎞 '+esc(x.slice(8,-4).replace(/_/g,' '))+'</button>');
+  ls.filter(x=>/^planche_[a-z]+_(tour|action)_\w+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🎞 '+esc('Mini-vidéo '+x.slice(8,-4).split('_').slice(0,2).join(' ').replace('action','geste'))+'</button>');
   ls.filter(x=>/^essai_\d+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🧪 Essai du code '+x.match(/\d+/)[0]+'</button>');
   z.innerHTML=h+'</div><div class="pub"></div><div class="vue"></div>';const v=z.querySelector('.vue');
   if(a('video.mp4'))api('/repos/'+R+'/releases?per_page=30').then(rs=>{const r=rs.filter(x=>x.tag_name.startsWith('episode-'+n+'-')).sort((x,y)=>new Date(y.created_at)-new Date(x.created_at))[0];if(!r)return;   // versions prêtes à publier (règle de publication)
@@ -188,7 +188,7 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
     if(L)z.querySelector('.pub').innerHTML='<p class="muted" style="margin:8px 0 4px">Versions à publier (bandeau « chaîne YouTube » inclus) :</p><div class="row">'+L+'</div>'}).catch(()=>{});
   z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
     if(f.endsWith('.mp4'))v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div>';
-    else if(/^planche_/.test(f)){const nom=f.slice(8,-4);v.innerHTML='<img class="prev" alt="planche" src="'+u+'"><p class="muted">Les images sur fond rose sont floues ou déformées : « Tout garder » les laisse de côté.</p><div class="row"><button class="tg">✅ Tout garder</button></div><label>Ou seulement ces numéros</label><div class="row"><input class="gn" placeholder="1 3 5"><button class="sec gs">Garder</button></div><div class="gm"></div>';
+    else if(/^planche_[a-z]+_(tour|action)_/.test(f)){const nom=f.slice(8,-4);v.innerHTML='<img class="prev" alt="planche" src="'+u+'"><p class="muted">Les images sur fond rose sont floues ou déformées : « Tout garder » les laisse de côté.</p><div class="row"><button class="tg">✅ Tout garder</button></div><label>Ou seulement ces numéros</label><div class="row"><input class="gn" placeholder="1 3 5"><button class="sec gs">Garder</button></div><div class="gm"></div>';
       const dire=t=>api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})}).then(()=>v.querySelector('.gm').innerHTML='<p class="msg">✅ Envoyé : les images sont rangées dans le studio (environ 10 min).</p>');
       v.querySelector('.tg').onclick=()=>dire('garder tout '+nom);v.querySelector('.gs').onclick=()=>{const x=v.querySelector('.gn').value.trim();if(/^[\d\s]+$/.test(x))dire('garder '+x+' '+nom)}}
     else if(f.endsWith('.png'))v.innerHTML='<img class="prev" alt="aperçu des plans" src="'+u+'">';
