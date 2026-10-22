@@ -25,7 +25,8 @@ jobs:
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           set -e; T0=$(date +%s); sudo mkdir -p /mnt/m && sudo chown $USER /mnt/m; df -h /mnt | tail -1; nproc; free -g | head -2
-          A=$(gh release view -R ggml-org/llama.cpp --json assets -q '.assets[].name' | grep -E 'bin-ubuntu-x64\.(zip|tar\.gz)$' | head -1); echo "moteur : $A"
+          gh release view -R ggml-org/llama.cpp --json assets -q '.assets[].name' > /mnt/m/noms.txt; grep -i ubuntu /mnt/m/noms.txt || cat /mnt/m/noms.txt
+          A=$(grep -iE 'ubuntu.*x64.*\.(zip|tar\.gz)$' /mnt/m/noms.txt | grep -viE 'vulkan|cuda|rocm|hip|sycl|openvino|kleidi|s390|arm' | head -1); echo "moteur : $A"
           gh release download -R ggml-org/llama.cpp -p "$A" -D /mnt/m
           mkdir -p /mnt/m/llama; case "$A" in *.zip) unzip -q "/mnt/m/$A" -d /mnt/m/llama;; *) tar -xzf "/mnt/m/$A" -C /mnt/m/llama;; esac
           curl -sfL -o /mnt/m/model.gguf "${{ matrix.url }}"; ls -la /mnt/m/model.gguf
