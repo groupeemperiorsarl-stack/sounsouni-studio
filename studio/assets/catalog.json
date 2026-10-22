@@ -1555,7 +1555,8 @@
    "yaw": -10.8,
    "props_auto": {},
    "props": [],
-   "mouth_auto": true
+   "mouth_auto": true,
+   "bouche_fixe": true
   },
   "dia_main_coeur": {
    "char": "DIASABI",

@@ -203,6 +203,7 @@ async function morceaux(chemin,prog,T=2*1024*1024,ouvriers=3){
 async function brut(chemin){const r=await fetch(API+'/repos/'+R+'/contents/'+chemin+'?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw 0;return r.blob()}
 async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n+'?ref=fichiers')).map(f=>f.name)}catch(e){return}
   const a=x=>ls.includes(x);let h='<div class="row">';
+  if(a('relecture.json'))h+='<button data-f="relecture.json">🔎 Relecture : problèmes trouvés</button>';
   if(a('video.mp4'))h+='<button data-f="video.mp4">▶ Regarder la vidéo</button>';
   if(a('apercu_plans.png'))h+='<button class="sec" data-f="apercu_plans.png">🖼 Voir l\'aperçu</button>';
   if(a('planches.html'))h+='<button data-f="planches.html">☑ Planches à cocher</button>';
@@ -215,6 +216,22 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
     const L=[['_youtube','YouTube (complet)'],['_tiktok','TikTok (3:00)'],['_shorts','Shorts (2:58)'],['_facebook','Facebook (1:00)']].map(([s,lib])=>{const f=r.assets.find(x=>x.name.endsWith(s+'.mp4'));return f?'<a class="btn sec" href="'+f.browser_download_url+'" download>⬇ '+lib+'</a>':''}).join('');
     if(L)z.querySelector('.pub').innerHTML='<p class="muted" style="margin:8px 0 4px">Versions à publier (bandeau « chaîne YouTube » inclus) :</p><div class="row">'+L+'</div>'}).catch(()=>{});
   z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';
+    if(f==='relecture.json'){   // le relecteur automatique : problèmes trouvés + corrections à cocher (mêmes actions que « Discuter »)
+      try{const r=JSON.parse(await (await brut(n+'/'+f)).text()),P=r.problemes||[],A=[];
+        let h2='<p class="muted">Relu le '+esc(r.date||'')+' ('+esc(r.modele||'')+'). '+esc(r.resume||'')+'</p>';
+        if(!P.length)h2+='<p class="msg">✅ Le relecteur n\'a rien trouvé d\'anormal.</p>';
+        P.forEach(p=>{h2+='<div class="card" style="margin:8px 0;padding:10px"><b>'+({fort:'🔴',moyen:'🟠'}[p.gravite]||'🟡')+' '+esc((p.moment?p.moment+' · ':'')+(p.quoi||''))+'</b>';
+          (p.actions||[]).forEach(x=>{A.push(x);h2+='<label class="act"><input type="checkbox" checked data-k="'+(A.length-1)+'"> <span>'+esc(decrire(x))+'<br><span class="muted">'+esc(x.pourquoi||'')+'</span></span></label>'});
+          if(!(p.actions||[]).length)h2+='<p class="muted">(pas de correction automatique : à voir avec l\'assistant ou le technicien)</p>';h2+='</div>'});
+        if(A.length)h2+='<div class="row"><button class="ok">✅ Appliquer les corrections cochées</button></div><div class="res"></div>';
+        h2+='<div class="row"><button class="sec rel">🔎 Relire encore</button></div>';v.innerHTML=h2;
+        const rel=v.querySelector('.rel');rel.onclick=async()=>{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'relecture'})});rel.outerHTML='<p class="msg">✅ Relecture relancée (environ 3 minutes).</p>'};
+        const ok=v.querySelector('.ok');if(ok)ok.onclick=async()=>{const res=v.querySelector('.res');res.innerHTML='<p class="msg">Application…</p>';
+          try{const i=await api('/repos/'+R+'/issues/'+n),ch=[...v.querySelectorAll('[data-k]')].filter(x=>x.checked).map(x=>A[+x.dataset.k]);const fa=await appliquer(i,ch,res);
+            res.innerHTML='<p class="msg">'+(fa.some(x=>x.startsWith('❌'))?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(fa.join(' · '))+'. Relancez maintenant l\'aperçu (bouton 👁 Aperçu) : le relecteur repassera tout seul.</p>'}
+          catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
+      catch(e){v.innerHTML='<p class="msg">❌ Relecture illisible : '+esc(e.message)+'</p>'}
+      return}
     if(f.endsWith('.mp4')){   // téléchargement par petits morceaux (2 Mo, 3 à la fois) : si la connexion coupe, seul le morceau coupé est repris (avant : tout recommençait à zéro)
       v.innerHTML='<p class="muted vt">Chargement de la vidéo…</p><div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden"><div class="vb" style="height:8px;width:0;background:var(--accent)"></div></div>';
       const vt=v.querySelector('.vt'),vb=v.querySelector('.vb');

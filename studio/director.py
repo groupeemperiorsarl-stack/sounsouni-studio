@@ -99,6 +99,7 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         if 'rire' in tags and w and not (w & {'rire', 'rire_retenu', 'moqueur', 'taquin', 'joie', 'grand_sourire', 'content', 'victoire'}): s -= 9
         if 'gifle' in tags and not (w & {'gifle', 'frappe', 'pointe', 'non'}): s -= 20   # validé par Issa (ép. 18) : jamais un geste de gifle si le script ne le demande pas
         if need_mouth and p['mouth']: s += 1.5
+        if need_mouth and p.get('bouche_fixe'): s -= 8   # bouche qui ne s'ouvre presque pas (grimace dents serrées) : jamais pour celui qui parle (Issa, ép. 18 : Diasabi)
         if 'neutre' in tags and not w: s += 1
         if not w and tags & NEG: s -= 3   # sans émotion demandée : jamais un visage fâché ou triste
         out.append((k, s))
