@@ -1,27 +1,56 @@
-Épisode test – Le thé de minuit
+TITRE: Les Plans de Bakary – Épisode test : Le thé de minuit
 
-Le soir, au kiosque de Bakary. Bakary est debout derrière son réchaud ; Modibo est assis sur le banc.
+DÉCOR: KIOSQUE · soir · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo assis sur le banc]
 
-Le téléphone de Bakary vibre : notification Sounsouni, « Nouvelle commande : 3 thés à la menthe – 2500 F – à livrer avant 18h30 ».
+[BRUITAGE: notification]
 
-Bakary (très content) : 3 thés, 2500 francs ! Van, la soirée commence bien.
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Nouvelle commande ✔ · 3 thés à la menthe · 2500 F · avant 18h30]
 
-Modibo (méfiant) : Bakary, regarde bien qui a commandé.
+PENSÉE BAKARY (content · regarde: téléphone)
+{grand_sourire} Trois thés, deux mille cinq cents francs ! Van, la soirée commence bien.
 
-Le téléphone sonne. C'est Karim, depuis son bureau.
+BAKARY (content · regarde: Modibo · voix: normal)
+{grand_sourire} Trois thés, deux mille cinq cents francs ! Van, la soirée commence bien.
+[RÉACTION MODIBO: mefiant]
 
-Karim (moqueur) : Allô, le marchand de thé ? C'est moi qui ai commandé. Je veux voir si ton application marche vraiment.
+MODIBO (mefiant · regarde: Bakary · voix: normal)
+Bakary, regarde bien qui a commandé.
 
-Bakary (il lève les yeux au ciel) : Elle marche, Karim. Tout est sur sounsouni.pro.
+[BRUITAGE: sonnerie]
 
-Modibo éclate de rire.
+KARIM (moqueur · voix: au téléphone)
+Allô, le marchand de thé ? C'est moi qui ai commandé. Je veux voir si ton application marche vraiment.
 
-On entend des talons. Awa arrive, un sac de tissu à la main.
+BAKARY (surpris · regarde: ciel · voix: normal)
+{leve_yeux_ciel} Elle marche, Karim. Tout est sur sounsouni.pro.
 
-Awa (énervée) : Bonsoir ! Bakary, ton thé de midi était froid.
+[RÉACTION MODIBO: rire_retenu]
 
-Bakary lui tend un verre de thé.
+[BRUITAGE: talons]
 
-Bakary et Modibo (ensemble) : Celui-ci est chaud !
+PLAN: large [Bakary debout, Modibo assis sur le banc, Awa marche]
 
-Awa (gênée, elle pense à Mimi restée à l'atelier) : Mimi va encore se moquer de moi…
+AWA (colere · regarde: Bakary · voix: normal)
+Bonsoir ! Bakary, ton thé de midi était froid.
+
+PLAN: gros [Bakary debout, verre]
+
+BAKARY (content · regarde: AWA · voix: normal)
+{sourire} (tend le verre)
+
+BAKARY (content · regarde: Modibo · voix: normal)
+{sourire} Celui-ci est chaud !
+[RÉACTION MODIBO: sourire]
+
+PENSÉE AWA (gene · regarde: rien)
+Mimi va encore se moquer de moi…
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Découvrez Sounsouni, votre compagnon de commande de thé. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
