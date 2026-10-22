@@ -26,6 +26,8 @@ env:
   ISSUE: ${{ github.event.inputs.issue }}
   GH_TOKEN: ${{ github.token }}
   STUDIO_TTS_PY: /home/runner/tts/bin/python
+  PIP_DEFAULT_TIMEOUT: "60"   # un téléchargement bloqué est abandonné et refait (au lieu de bloquer la machine des heures)
+  PIP_RETRIES: "8"
 jobs:
   apercu:
     if: github.event.inputs.apercu == 'true'
@@ -43,6 +45,7 @@ jobs:
             ~/.cache/huggingface
           key: outils-v1-${{ runner.os }}-${{ hashFiles('studio/lp/install.sh') }}
       - name: Outils
+        timeout-minutes: 25
         run: |
           sudo apt-get install -y -qq ffmpeg > /dev/null
           pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
@@ -102,6 +105,7 @@ jobs:
             ~/.cache/huggingface
           key: outils-v1-${{ runner.os }}-${{ hashFiles('studio/lp/install.sh') }}
       - name: Outils
+        timeout-minutes: 25
         run: |
           sudo apt-get install -y -qq ffmpeg > /dev/null
           [ -x /home/runner/tts/bin/python ] && /home/runner/tts/bin/python -c 'import chatterbox' 2>/dev/null || { python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile; }
@@ -136,6 +140,7 @@ jobs:
             ~/.cache/huggingface
           key: outils-v1-${{ runner.os }}-${{ hashFiles('studio/lp/install.sh') }}
       - name: Outils
+        timeout-minutes: 25
         run: |
           sudo apt-get install -y -qq ffmpeg > /dev/null
           [ -x /home/runner/tts/bin/python ] && /home/runner/tts/bin/python -c 'import chatterbox' 2>/dev/null || { python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile; }
