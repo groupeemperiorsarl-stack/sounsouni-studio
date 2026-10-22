@@ -8,7 +8,7 @@ from PIL import Image
 R = os.environ.get('GITHUB_REPOSITORY', 'groupeemperiorsarl-stack/sounsouni-studio'); N = os.environ.get('ISSUE', '')
 K = os.environ.get('GEMINI_API_KEY', '')
 def req(url, data=None, headers=None, raw=False, timeout=300):
-    h = dict(headers or {});
+    h = {'User-Agent': 'sounsouni-studio-relecteur/1.0', **(headers or {})}
     if data is not None and not isinstance(data, bytes): data = json.dumps(data).encode(); h.setdefault('Content-Type', 'application/json')
     r = urllib.request.urlopen(urllib.request.Request(url, data=data, headers=h), timeout=timeout); b = r.read()
     return b if raw else json.loads(b or b'null')
