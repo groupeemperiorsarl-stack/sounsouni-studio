@@ -1,0 +1,63 @@
+{
+ "12": {
+  "acteurs": {
+   "BAKARY": {}
+  }
+ },
+ "20": {
+  "acteurs": {
+   "SEYDOU": {}
+  }
+ },
+ "21": {
+  "acteurs": {
+   "SEYDOU": {}
+  }
+ },
+ "26": {
+  "acteurs": {
+   "AWA": {}
+  }
+ },
+ "34": {
+  "acteurs": {
+   "FATIM": {
+    "cacher": true
+   },
+   "MOUSSA": {
+    "cacher": true
+   },
+   "MODIBO": {
+    "cacher": true
+   },
+   "AWA": {
+    "cacher": true
+   }
+  }
+ },
+ "38": {
+  "acteurs": {
+   "BAKARY": {
+    "cacher": true
+   },
+   "DIASABI": {
+    "dx": 0.4
+   }
+  }
+ },
+ "39": {
+  "acteurs": {
+   "MODIBO": {}
+  }
+ },
+ "51": {
+  "acteurs": {
+   "AWA": {
+    "dy": 0.05
+   },
+   "FATIM": {
+    "dy": 0.05
+   }
+  }
+ }
+}
