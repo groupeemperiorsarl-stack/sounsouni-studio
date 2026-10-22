@@ -19,7 +19,7 @@ def norm(s):
 
 CHAR_ALIASES = {'bakary': 'BAKARY', 'awa': 'AWA', 'modibo': 'MODIBO', 'diasabi': 'DIASABI', 'sali': 'SALI', 'fatim': 'FATIM',
                 'mimi': 'MIMI', 'seydou': 'SEYDOU', 'vendeuse': 'VENDEUSE', 'voix_off': 'VOIX_OFF', 'voix off': 'VOIX_OFF',
-                'tantie kadi': 'KADI', 'kadi': 'KADI', 'tantie_kadi': 'KADI', 'moussa': 'MOUSSA', 'karim': 'KARIM'}
+                'tantie kadi': 'KADI', 'kadi': 'KADI', 'tantie_kadi': 'KADI', 'moussa': 'MOUSSA', 'karim': 'KARIM', 'van': 'MODIBO'}   # « Van » : autre nom de Modibo (Issa, 22/10/2026)
 def who(name):
     n = norm(name).replace('-', ' ')
     return CHAR_ALIASES.get(n, n.upper().replace(' ', '_'))

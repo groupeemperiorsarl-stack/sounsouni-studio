@@ -80,6 +80,8 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         if posture:
             if p['posture'] == posture: s += 3
             elif posture in ('assis', 'banc') and p['posture'] in ('assis', 'banc'): s += 2
+            elif p['posture'] in ('court', 'tombe', 'marche') and posture == 'debout' and not (tags & w): s -= 10   # debout et calme : jamais une pose de course ou de chute
+            elif p['posture'] in ('assis', 'banc') and posture == 'debout': s -= 12   # debout dans le script : jamais assis sur un banc qui n'est pas dans le décor (Issa : postures respectées)
             elif p['posture'] in ('assis', 'banc', 'dos', 'tombe', 'court', 'marche') and posture != p['posture']: s -= 4
         elif p['posture'] in ('dos', 'tombe', 'court', 'marche') and p['posture'] not in w and not (tags & w & {'tombe', 'glisse', 'court', 'dos', 'marche'}): s -= 5
         props = set(p.get('props', [])) | (tags & OBJ)
@@ -179,6 +181,7 @@ try:   # réglages généraux modifiables par l'assistant (studio/reglages.json)
     REGLAGES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reglages.json'), encoding='utf-8'))
     for _r, _v in REGLAGES.get('rangs', {}).items(): RANGS.setdefault(_r, {}).update({k: tuple(x) if isinstance(x, list) else x for k, x in _v.items()})
 except Exception: REGLAGES = {}
+DECOR_ACTUEL = ['']
 def deux_rangees(acts, stage, speaker=None, partner=None):
     """Plan d'ensemble à 4 personnes et plus, d'après la scène modèle (Gemini, épisode 16) : devant, les deux qui se parlent,
     grands et face à face ; derrière, les autres, plus petits, placés dans les espaces libres pour que tous les visages se voient."""
@@ -190,7 +193,8 @@ def deux_rangees(acts, stage, speaker=None, partner=None):
         if c and c in std and c not in pair: pair.append(c)
         if len(pair) == 2: break
     pair.sort(key=rang)   # le héros de la scène (premier nommé) à gauche
-    D, R = RANGS['devant'], RANGS['derriere']; out_front, out_back = [], []
+    od = REGLAGES.get('rangs_decor', {}).get(DECOR_ACTUEL[0], {})   # décor profond (RUE…) : la rangée de derrière plus loin et plus petite, sinon elle flotte
+    D, R = {**RANGS['devant'], **od.get('devant', {})}, {**RANGS['derriere'], **od.get('derriere', {})}; out_front, out_back = [], []
     def poser(a, x, h, pieds):
         p = POSES[a['key']]; h = int(h * (0.86 if assis(a) else 1.0) * (1.0 if p['frame'] == 'pied' else 0.8))
         a['h'] = h; a['w'] = p['size'][0] * h / p['size'][1]; a['by'] = int(pieds * 1920)
@@ -391,7 +395,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
     while i < len(events):
         e = events[i]; t = e['type']
         if t == 'scene':
-            scene = dict(e); stage = Stage(); plan = None; first_in_scene = True; moods = {}; last_speaker = None
+            scene = dict(e); DECOR_ACTUEL[0] = str(e.get('decor', '')).upper(); stage = Stage(); plan = None; first_in_scene = True; moods = {}; last_speaker = None
             present = []
             # personnages de la scène : ceux qui parlent avant le prochain décor
             # arrivée annoncée par des pas / talons avant la première réplique : le premier qui parle entre dans le plan

@@ -106,7 +106,10 @@ def besoins(paths, log=print, tout=False, maxi=16):
                 if not pa or a.get('fg') or a.get('back'): continue
                 verif(pa, add, ou)
             for c in s.get('cuts', []): verif({'char': c['who'], 'want': c['actions'] + c.get('props', []), 'frame': 'buste', 'posture': c.get('posture'), 'need_mouth': False}, add, ou)
-    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 3}.get(x['type'], 4 if x.get('tenue') or str(x.get('emo', '')).startswith('pose:') else 0)
+    for c, e, post in sorted(getattr(director, 'MANQUES', ())):   # émotions sans aucune image (visage calme mis à la place) : toujours demandées
+        for mot in e.split('/')[:1]:
+            add(('pose', c, 'assis' if post in ('assis', 'banc') else 'debout', CANON.get(mot, mot)), {'type': 'pose', 'perso': c, 'posture': 'assis' if post in ('assis', 'banc') else 'debout', 'emo': CANON.get(mot, mot), 'manque': True}, 'image manquante')
+    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 3}.get(x['type'], 4 if x.get('tenue') or x.get('manque') or str(x.get('emo', '')).startswith('pose:') else 0)
     out = sorted(b.values(), key=lambda x: (-prio(x), -len(x['ou'])))
     if not tout:   # le nécessaire : nouveautés (personnages, décors, tenues, objets, {POSE}), vues de dos, assis, émotions demandées au moins 2 fois
         out = [x for x in out if prio(x) or x['type'] != 'pose' or not x['emo'] or len(x['ou']) >= 2][:maxi]

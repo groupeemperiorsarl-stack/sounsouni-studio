@@ -45,6 +45,9 @@
 - **Ambiances** (règle d'Issa : jamais stressantes) : grillons / cigales fabriqués en code (`studio/ambiances.py`, earshot les entend « crickets at night » ; l'ancien cricket.wav = « alarme / erreur », gardé seulement pour ne pas changer les poses) ; `audio.build` les tient `ambiance_sous_voix` dB sous les voix (24) et `ambiance_baisse_parole` dB de plus pendant les répliques (8), réglables dans `studio/reglages.json`.
 - `poses.stamp` ne compte plus `poses/tourne/` (têtes tournées refaites à chaque vidéo : sinon aucun morceau de 12 s n'était jamais repris).
 
+## Personnages : autres noms
+- « Van » = Modibo (Bakary l'appelle ainsi) ; « Bakarin » = Bakary. Alias dans `script.CHAR_ALIASES`.
+
 ## Fichiers clés
 - `studio/script.py` lecture du script · `voices.py` voix + vérification Whisper + fins de phrase jamais coupées + rires + `lexique.txt` (prononciations « écrit = prononcé », ex. « Kôrôbalé wou = Kôrôbaléou ») et « plus » négatif sans S.
 - `studio/planches.py` planches A / B / C / D (questions, images, page à cocher, lecture de la réponse).
