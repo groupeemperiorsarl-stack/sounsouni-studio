@@ -46,6 +46,7 @@ for r in restants:   # au-dessus de 60 % : les plus anciennes d'abord
     supprimer(r, 'place au-dessus de 60 %')
 log.append(f'Après le ménage : {total / 1e9:.2f} Go ({100 * total / (LIMITE_GO * 1e9):.0f} %)')
 d = api('')['size'] / 1024 / 1024
-log.append(f'Dépôt (scripts, poses, historique) : {d:.2f} Go' + (' — ⚠️ au-dessus de 60 % de 5 Go : prévenir Claude pour un grand ménage' if d > 3 else ''))
+log.append(f'Dépôt (scripts, poses, historique) : {d:.2f} Go' + (' — au-dessus de 60 % de 5 Go : grand ménage automatique de l\'historique' if d > 3 else ''))
+if os.environ.get('GITHUB_OUTPUT'): open(os.environ['GITHUB_OUTPUT'], 'a').write(f"grand={'oui' if d > 3 or os.environ.get('FORCER') == '1' else 'non'}\n")
 print('\n'.join(log))
 if os.environ.get('GITHUB_STEP_SUMMARY'): open(os.environ['GITHUB_STEP_SUMMARY'], 'a').write('\n'.join('- ' + l for l in log) + '\n')
