@@ -1,4 +1,10 @@
 {
+ "1": {
+  "pose": {
+   "key": "awa_assis_determine",
+   "who": "AWA"
+  }
+ },
  "12": {
   "acteurs": {
    "BAKARY": {}
@@ -14,23 +20,63 @@
    "SEYDOU": {}
   }
  },
+ "22": {
+  "pose": {
+   "key": "bak_mains_levees",
+   "who": "BAKARY"
+  }
+ },
+ "23": {
+  "pose": {
+   "key": "awa_tel2",
+   "who": "AWA"
+  }
+ },
  "26": {
   "acteurs": {
    "AWA": {}
+  },
+  "pose": {
+   "key": "awa_v_action_659144_08",
+   "who": "AWA"
+  }
+ },
+ "27": {
+  "pose": {
+   "key": "awa_tel2",
+   "who": "AWA"
+  }
+ },
+ "28": {
+  "pose": {
+   "key": "awa_tel2",
+   "who": "AWA"
+  }
+ },
+ "30": {
+  "pose": {
+   "key": "mim_machine",
+   "who": "MIMI"
+  }
+ },
+ "32": {
+  "pose": {
+   "key": "awa_pointe",
+   "who": "AWA"
   }
  },
  "34": {
   "acteurs": {
-   "FATIM": {
+   "AWA": {
     "cacher": true
    },
-   "MOUSSA": {
+   "FATIM": {
     "cacher": true
    },
    "MODIBO": {
     "cacher": true
    },
-   "AWA": {
+   "MOUSSA": {
     "cacher": true
    }
   }
@@ -48,6 +94,46 @@
  "39": {
   "acteurs": {
    "MODIBO": {}
+  },
+  "pose": {
+   "key": "mod_choc",
+   "who": "MODIBO"
+  }
+ },
+ "4": {
+  "pose": {
+   "key": "awa_tel2",
+   "who": "AWA"
+  }
+ },
+ "42": {
+  "pose": {
+   "key": "bak_joue",
+   "who": "BAKARY"
+  }
+ },
+ "43": {
+  "pose": {
+   "key": "bak_joue",
+   "who": "BAKARY"
+  }
+ },
+ "44": {
+  "pose": {
+   "key": "dia_neutre",
+   "who": "DIASABI"
+  }
+ },
+ "47": {
+  "pose": {
+   "key": "bak_v_tour_650014_02",
+   "who": "BAKARY"
+  }
+ },
+ "5": {
+  "pose": {
+   "key": "awa_assis_telephone",
+   "who": "AWA"
   }
  },
  "51": {
@@ -58,6 +144,18 @@
    "FATIM": {
     "dy": 0.05
    }
+  }
+ },
+ "6": {
+  "pose": {
+   "key": "awa_assis_telephone",
+   "who": "AWA"
+  }
+ },
+ "62": {
+  "pose": {
+   "key": "fat_mains",
+   "who": "FATIM"
   }
  }
 }
