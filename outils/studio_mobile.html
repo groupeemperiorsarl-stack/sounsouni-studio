@@ -269,7 +269,7 @@ function apres(s,brut,al){const L=s.split('\n'),out=[],W=new Set(paires(brut)),p
     const m=l.match(TETE);
     if(m&&!m[1]&&!fin&&m[2].trim()!=='VOIX_OFF'){const txt=L[i+1]||'',ws=paires(txt);   // réplique dont presque aucun groupe de deux mots n'est dans le script d'origine = inventée
       const wm=mots(txt),WM=new Set(mots(brut));
-      if((ws.length>=3&&ws.filter(w=>W.has(w)).length/ws.length<0.34)||(ws.length<3&&wm.length>=2&&!wm.some(w=>w.length>2&&WM.has(w)))){al.push('Réplique inventée retirée : '+m[2].trim()+' « '+txt.replace(/\{[^}]*\}/g,'').trim()+' »');i++;continue}
+      if((ws.length>=3&&ws.filter(w=>W.has(w)).length/ws.length<0.34)||(ws.length<3&&wm.filter(w=>w.length>2).length>=2&&!wm.some(w=>w.length>2&&WM.has(w)))){al.push('Réplique inventée retirée : '+m[2].trim()+' « '+txt.replace(/\{[^}]*\}/g,'').trim()+' »');i++;continue}
       const rg=m[3].match(/regarde\s*:\s*([^·)]*[^·)\s])/i);if(rg){const c=nomP(rg[1].trim());if(tel.has(c)&&!pres.has(c))l=l.replace(rg[0],'regarde: téléphone')}}
     if(l.trim())prev=l;out.push(l)}
   return out.join('\n')}
