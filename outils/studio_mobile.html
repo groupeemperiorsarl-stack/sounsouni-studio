@@ -185,6 +185,21 @@ function md(t){t=String(t||'').replace(/\n---\n_Generated[\s\S]*$/,'').replace(/
   const inl=x=>esc(x).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/_([^_]+)_/g,'<i>$1</i>');
   const flush=()=>{if(tb.length){h+='<table>'+tb.filter(r=>!/^\|?\s*-+/.test(r)).map(r=>'<tr>'+r.replace(/^\||\|$/g,'').split('|').map(c=>'<td>'+inl(c.trim())+'</td>').join('')+'</tr>').join('')+'</table>';tb=[]}};
   for(const l of L){if(/^\s*\|/.test(l)){tb.push(l.trim());continue}flush();if(/^#{1,4}\s/.test(l))h+='<h3>'+inl(l.replace(/^#+\s*/,''))+'</h3>';else if(l.trim())h+='<p>'+inl(l)+'</p>'}flush();return h}
+// Grand fichier de la branche « fichiers » téléchargé par morceaux (dépôt public, serveur qui accepte les morceaux) ; adresse figée sur la version du moment
+async function morceaux(chemin,prog,T=2*1024*1024,ouvriers=3){
+  const sha=(await api('/repos/'+R+'/branches/fichiers')).commit.sha,dos=chemin.slice(0,chemin.lastIndexOf('/')),nom=chemin.slice(chemin.lastIndexOf('/')+1);
+  const it=(await api('/repos/'+R+'/contents/'+dos+'?ref='+sha)).find(x=>x.name===nom);if(!it)throw new Error('fichier introuvable');
+  const tot=it.size,url='https://raw.githubusercontent.com/'+R+'/'+sha+'/'+chemin,nb=Math.ceil(tot/T),parts=new Array(nb),t0=Date.now();let recu=0,suivant=0,entier=null;
+  async function ouvrier(){while(suivant<nb&&!entier){const i=suivant++,a=i*T,b=Math.min(tot,a+T)-1;
+    for(let e=1;;e++){try{const c=new AbortController(),to=setTimeout(()=>c.abort(),60000);
+        const r=await fetch(url,{headers:{Range:'bytes='+a+'-'+b},signal:c.signal,cache:'no-store'});
+        if(r.status===200){entier=await r.arrayBuffer();clearTimeout(to);return}   // le serveur a tout envoyé d'un coup
+        if(r.status!==206)throw new Error('erreur '+r.status);const buf=await r.arrayBuffer();clearTimeout(to);
+        if(buf.byteLength!==b-a+1)throw new Error('morceau incomplet');parts[i]=buf;recu+=buf.byteLength;prog(recu,tot,t0);break}
+      catch(err){if(e>=10)throw new Error('connexion trop faible');prog(recu,tot,t0,'Connexion coupée : morceau '+(i+1)+' repris');await new Promise(z=>setTimeout(z,1500*Math.min(e,5)))}}}}
+  await Promise.all(Array.from({length:ouvriers},ouvrier));
+  if(entier){prog(tot,tot,t0);return new Blob([entier],{type:'video/mp4'})}
+  return new Blob(parts,{type:'video/mp4'})}
 async function brut(chemin){const r=await fetch(API+'/repos/'+R+'/contents/'+chemin+'?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw 0;return r.blob()}
 async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n+'?ref=fichiers')).map(f=>f.name)}catch(e){return}
   const a=x=>ls.includes(x);let h='<div class="row">';
@@ -200,17 +215,15 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
     const L=[['_youtube','YouTube (complet)'],['_tiktok','TikTok (3:00)'],['_shorts','Shorts (2:58)'],['_facebook','Facebook (1:00)']].map(([s,lib])=>{const f=r.assets.find(x=>x.name.endsWith(s+'.mp4'));return f?'<a class="btn sec" href="'+f.browser_download_url+'" download>⬇ '+lib+'</a>':''}).join('');
     if(L)z.querySelector('.pub').innerHTML='<p class="muted" style="margin:8px 0 4px">Versions à publier (bandeau « chaîne YouTube » inclus) :</p><div class="row">'+L+'</div>'}).catch(()=>{});
   z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';
-    if(f.endsWith('.mp4')){   // comme avant (c'était le plus rapide pour Issa) : la vidéo vient par l'adresse de la page (API GitHub), avec le pourcentage et 3 essais ; « Enregistrer » garde ce qui est déjà téléchargé (instantané)
-      v.innerHTML='<p class="muted vt">Chargement de la vidéo…</p>';const vt=v.querySelector('.vt');
-      for(let k=1;k<=3;k++){try{
-        const r=await fetch(API+'/repos/'+R+'/contents/'+n+'/'+f+'?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw new Error(r.status);
-        const tot=+r.headers.get('content-length')||0,lec=r.body.getReader(),morceaux=[];let recu=0,t0=Date.now();
-        for(;;){const {done,value}=await lec.read();if(done)break;morceaux.push(value);recu+=value.length;
-          vt.textContent='Chargement de la vidéo : '+(tot?Math.round(recu*100/tot)+' %':Math.round(recu/1e6)+' Mo')+' ('+Math.round(recu/1e6)+' Mo, '+Math.round(recu/1e3/Math.max(1,(Date.now()-t0)/1000))+' Ko/s)'}
-        const u=URL.createObjectURL(new Blob(morceaux,{type:'video/mp4'}));
-        v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div><p class="muted">La vidéo est déjà dans le téléphone : « Enregistrer » est immédiat.</p>';return
-      }catch(e){vt.textContent='Connexion coupée : nouvel essai ('+k+' sur 3)…';await new Promise(r=>setTimeout(r,4000))}}
-      vt.textContent='❌ La vidéo n\'a pas pu être chargée (connexion trop faible ?). Elle est bien là : réessayez un peu plus tard.';return}
+    if(f.endsWith('.mp4')){   // téléchargement par petits morceaux (2 Mo, 3 à la fois) : si la connexion coupe, seul le morceau coupé est repris (avant : tout recommençait à zéro)
+      v.innerHTML='<p class="muted vt">Chargement de la vidéo…</p><div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden"><div class="vb" style="height:8px;width:0;background:var(--accent)"></div></div>';
+      const vt=v.querySelector('.vt'),vb=v.querySelector('.vb');
+      try{const bl=await morceaux(n+'/'+f,(recu,tot,t0,msg)=>{const pc=Math.floor(recu*100/tot);vb.style.width=pc+'%';
+          vt.textContent=(msg?msg+' · ':'')+'Chargement : '+pc+' % ('+(recu/1e6).toFixed(1)+' sur '+(tot/1e6).toFixed(1)+' Mo, '+Math.round(recu/1e3/Math.max(0.5,(Date.now()-t0)/1000))+' Ko/s)'});
+        const u=URL.createObjectURL(bl);
+        v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div><p class="muted">La vidéo est déjà dans le téléphone : « Enregistrer » est immédiat.</p>'}
+      catch(e){vt.textContent='❌ La vidéo n\'a pas pu être chargée ('+e.message+'). Elle est bien là : réessayez un peu plus tard.'}
+      return}
     try{const bl=await brut(n+'/'+f),u=URL.createObjectURL(bl);
     if(f.endsWith('.mp4'))v.innerHTML='<video controls playsinline src="'+u+'"></video><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+u+'">⬇ Enregistrer la vidéo</a></div>';
     else if(/^planche_[a-z]+_(tour|action)_/.test(f)){const nom=f.slice(8,-4);v.innerHTML='<img class="prev" alt="planche" src="'+u+'"><p class="muted">Les images sur fond rose sont floues ou déformées : « Tout garder » les laisse de côté.</p><div class="row"><button class="tg">✅ Tout garder</button></div><label>Ou seulement ces numéros</label><div class="row"><input class="gn" placeholder="1 3 5"><button class="sec gs">Garder</button></div><div class="gm"></div>';
