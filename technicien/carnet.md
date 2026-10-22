@@ -8,6 +8,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-21 · Claude · Choix des planches jamais gardés sur GitHub → « git pull --rebase » sans « --autostash » échouait en silence → toujours « --autostash » quand on enregistre pendant une fabrication.
 - 2026-10-22 · Claude · « Bloqué par GitHub » / fabrications refusées → plus de minutes ou problème de facturation → le dépôt est public (minutes gratuites) ; si ça revient, regarder la page de facturation, ce n'est pas le code.
 - 2026-10-21 · Claude · Une vidéo refaite après une petite correction ne refait que les morceaux de 12 s changés → si tout est refait, regarder si les poses ont changé (poses.stamp) : c'est normal après un import d'images.
+- 2026-10-22 · Gemini · Outil `demande` renvoie 404 pour un numéro d'épisode → le numéro d'épisode n'est pas le numéro du ticket GitHub → utiliser `demandes` pour trouver le vrai numéro de ticket.
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
