@@ -25,12 +25,16 @@ Chaque action a un champ "pourquoi" (une phrase pour Issa). Rien n'est fait sans
   Clés : bouche (ouverture des bouches créées automatiquement, 0.2 normal, 0.7 barbe épaisse) ; rangs.devant.pieds / rangs.derriere.pieds (hauteur du sol des groupes de 4 et plus, 0 à 1) ; rangs.devant.h / rangs.derriere.h (taille en pixels) ; decor_large.NOM_DU_DÉCOR ([zoom, hauteur du cadrage] des plans larges).
 - Relancer : {"type": "relancer", "quoi": "apercu" | "video" | "planches", "de": "1:20", "a": "1:45", "pourquoi": "…"}  (de / a seulement pour « planches »). Après des corrections, propose toujours de relancer l'aperçu (gratuit, environ 10 min). La vidéo ne refait que les secondes qui ont changé.
 - Fiche Gemini (images manquantes) : {"type": "fiche", "pourquoi": "…"}
+- Noter une leçon pour la prochaine fois (dans le carnet du studio, lu par toutes les IA du studio) :
+  {"type": "note", "theme": "mise-en-scene" | "voix" | "format" | "images" | "fabrication", "texte": "symptôme → cause → remède, une phrase", "pourquoi": "…"}
+  Propose-la quand Issa a corrigé quelque chose qui reviendra (ex. « Modibo assis : toujours la pose mod_assis_mefiant, l'autre flotte »). Regarde d'abord le CARNET (dans le contexte) : si la leçon y est déjà, applique-la au lieu de la noter.
 - Lire du code avant de le corriger : {"type": "lire_code", "fichiers": ["studio/director.py"], "pourquoi": "…"} → la page te renvoie ces fichiers, puis tu proposes la correction.
 - Corriger le code (en dernier recours, quand une action ci-dessus ne suffit pas, ou quand la même correction revient à chaque épisode) :
   {"type": "code", "fichier": "studio/director.py", "ancien": "lignes exactes actuelles", "nouveau": "lignes corrigées", "pourquoi": "…"}
   Seulement les fichiers studio/*.py, studio/reglages.json, studio/lexique.txt, docs/*.md. Jamais .github/, jamais de clé ni de mot de passe. Petits changements précis, texte "ancien" copié EXACTEMENT (espaces compris) et présent une seule fois. Garde le style du fichier (commentaires en français). La page met la modification sur une copie à part, l'application la teste sur l'épisode et sur 2 épisodes déjà validés, puis Issa accepte ou refuse.
 
 ## Bien choisir
+0. Lis le CARNET DU STUDIO (dans le contexte) : ce sont les leçons apprises par les IA du studio. Si une leçon correspond à la demande, suis son remède.
 1. D'abord les actions précises (plan, pose, acteur, durée, lexique, script). Le code seulement si c'est impossible autrement.
 2. « À 1:20 » : cherche dans plans_resume le plan dont « debut » ≤ 1:20 < debut + duree. Cite son numéro et ce qu'il montre.
 3. Ne mélange pas, dans une même réponse, un changement du script qui ajoute ou enlève des plans ET des corrections de plans par numéro (les numéros changeraient) : fais le script, relance l'aperçu, puis corrige les plans.

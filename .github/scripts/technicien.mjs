@@ -44,12 +44,13 @@ function ajouterLecon(theme, texte, qui) {
 }
 
 // ---------------- les IA (format OpenAI pour toutes, Gemini par sa porte compatible) ----------------
-async function listeGemini(k) {
-  let L = ['gemini-3-flash-preview', 'gemini-flash-latest', 'gemini-2.5-flash'];
+async function listeGemini(k) {   // les modèles gratuits changent souvent : on prend les « flash » disponibles, du plus récent au plus ancien
+  let v = [];
   try { const j = await (await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000', { headers: { 'x-goog-api-key': k } })).json();
-    const v = (j.models || []).filter(x => (x.supportedGenerationMethods || []).includes('generateContent') && /flash|pro/.test(x.name) && !/lite|image|tts|live|audio|embed|exp|vision/.test(x.name)).map(x => x.name.replace('models/', ''));
-    L = [...new Set([...L.filter(x => v.includes(x)), ...v.filter(x => /flash/.test(x)).reverse()])].slice(0, 6); } catch (e) {}
-  return L;
+    v = (j.models || []).filter(x => (x.supportedGenerationMethods || []).includes('generateContent') && /flash/.test(x.name) && !/lite|image|tts|live|audio|embed|exp|vision|thinking/.test(x.name)).map(x => x.name.replace('models/', '')); } catch (e) {}
+  const num = m => { const x = m.match(/gemini-(\d+(?:\.\d+)?)/); return x ? +x[1] - (/preview/.test(m) ? 0.01 : 0) : (/latest/.test(m) ? 2.95 : 0); };
+  v.sort((a, b) => num(b) - num(a));
+  return v.length ? v.slice(0, 6) : ['gemini-flash-latest', 'gemini-3-flash-preview'];
 }
 async function fournisseurs() {
   const P = [];
@@ -92,9 +93,9 @@ async function penser(msgs, outils) {   // un tour de l'IA ; en cas de panne on 
 // ---------------- les outils du technicien ----------------
 const NOMS = {};   // nom de fabrication par id
 async function etat({ nombre = 25 } = {}) {
-  const j = await gh('/actions/runs?per_page=' + Math.min(50, nombre));
+  const j = await gh('/actions/runs?per_page=' + Math.min(50, Math.max(15, nombre) + 3));
   const lignes = [];
-  for (const r of j.workflow_runs) {
+  for (const r of j.workflow_runs.filter(r => !(String(r.id) === process.env.GITHUB_RUN_ID)).slice(0, Math.max(15, nombre))) {
     NOMS[r.id] = r.name;
     let l = `#${r.id} · ${r.name} · ${r.status === 'completed' ? (r.conclusion === 'success' ? 'réussie' : r.conclusion === 'cancelled' ? 'arrêtée' : r.conclusion === 'skipped' ? 'ignorée' : 'RATÉE') : r.status === 'in_progress' ? 'EN COURS' : 'en attente'} · lancée ${r.created_at.slice(5, 16).replace('T', ' ')} UTC · ${minutes(r.run_started_at || r.created_at, r.status === 'completed' ? r.updated_at : null)} min${r.display_title && r.display_title !== r.name ? ' · « ' + r.display_title.slice(0, 60) + ' »' : ''}`;
     if (r.status !== 'completed') try {
@@ -140,7 +141,8 @@ function lister({ dossier = '' }) {
   catch (e) { return 'dossier introuvable'; }
 }
 async function demande({ numero }) {
-  const i = await gh('/issues/' + numero), c = await gh('/issues/' + numero + '/comments?per_page=100');
+  let i; try { i = await gh('/issues/' + numero); } catch (e) { return 'Il n\'y a pas de demande n° ' + numero + ' (le numéro d\'un épisode n\'est pas celui de sa demande). Regarde la liste avec « demandes ».'; }
+  const c = await gh('/issues/' + numero + '/comments?per_page=100');
   return `Demande n° ${numero} : « ${i.title} » (${i.state})\n--- début du texte ---\n${court(i.body, 1500)}\n--- derniers messages ---\n` + c.slice(-10).map(x => `[${x.created_at.slice(5, 16).replace('T', ' ')} · ${x.user.login.includes('[bot]') ? 'studio' : 'Issa'}] ${court(x.body, 700)}`).join('\n');
 }
 async function demandes() {
@@ -180,14 +182,14 @@ async function lancer({ quoi, numero, de, a, choix }) {
   await gh('/issues/' + numero + '/comments', { method: 'POST', body: JSON.stringify({ body: '⏳ Le technicien relance ' + M + '. Vous serez prévenu ici.' }) });
   return quoi + ' lancé pour la demande ' + numero + '. Utilise attendre(quoi="episode") si tu dois vérifier le résultat.';
 }
-const PERMIS = /^(studio\/[\w./-]+\.(py|json|txt|sh)|docs\/[\w./-]+\.md|outils\/[\w.-]+\.(html|md)|exemples\/[\w.-]+\.txt|technicien\/[\w.-]+\.md)$/;
+const PERMIS = /^(studio\/[\w./-]+\.(py|json|txt|sh)|docs\/[\w./-]+\.md|outils\/[\w.-]+\.(html|md)|exemples\/[\w.-]+\.txt|demandes\/[\w.-]+\.(txt|json)|technicien\/[\w.-]+\.md)$/;
 async function essayerCode({ changements, explication, episode }) {
   if (!Array.isArray(changements) || !changements.length) return 'aucun changement donné';
   const br = 'technicien-' + new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '') + '-' + Math.random().toString(36).slice(2, 5), D = '/tmp/essai-' + br;
   sh('git', ['worktree', 'add', '-q', '-b', br, D, 'origin/main']);
   try {
     for (const c of changements) {
-      if (!PERMIS.test(c.fichier || '') || /\.\./.test(c.fichier)) return 'fichier interdit : ' + c.fichier + ' (permis : studio/, docs/, outils/, exemples/ ; jamais .github/)';
+      if (!PERMIS.test(c.fichier || '') || /\.\./.test(c.fichier)) return 'fichier interdit : ' + c.fichier + ' (permis : studio/, docs/, outils/, exemples/, demandes/ ; jamais .github/)';
       const f = D + '/' + c.fichier;
       if (!c.ancien) { if (fs.existsSync(f)) return 'le fichier ' + c.fichier + ' existe déjà : donne « ancien » (texte exact à remplacer)'; fs.mkdirSync(f.replace(/\/[^/]+$/, ''), { recursive: true }); fs.writeFileSync(f, c.nouveau); continue; }
       if (!fs.existsSync(f)) return 'fichier introuvable : ' + c.fichier;

@@ -24,10 +24,11 @@ button:disabled{opacity:.5}
 img.prev,video{width:100%;border-radius:10px;margin-top:8px;display:block;max-width:100%}
 iframe{width:100%;height:75vh;border:1px solid var(--line);border-radius:10px;margin-top:8px;background:#fff}
 .tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right))}
-.tabs button{flex:1;background:none;color:var(--muted);border-radius:10px;padding:9px 4px;font-size:13px}.tabs button.on{color:var(--accent);background:var(--bg)}
+.tabs button{flex:1;min-width:0;background:none;color:var(--muted);border-radius:10px;padding:9px 2px;font-size:12px;white-space:normal;line-height:1.2}.tabs button.on{color:var(--accent);background:var(--bg)}
 .msg{padding:10px;border-radius:10px;background:var(--bg);font-size:13px;margin-top:8px;overflow-wrap:anywhere;white-space:pre-wrap}
 details summary{cursor:pointer;font-weight:700;margin-top:8px}
 .md{overflow-x:auto;font-size:13px}.md table{border-collapse:collapse;width:100%;margin:6px 0}.md td,.md th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;font-variant-numeric:tabular-nums}.md h3,.md h4{font:700 15px var(--display);margin:10px 0 4px}
+.tchat{max-height:60vh;overflow-y:auto}.tchat>div{margin:6px 0;padding:8px 10px;border-radius:10px;overflow-wrap:anywhere}.tchat>div.moi{background:var(--bg);margin-left:12%}.tchat>div.ia{background:rgba(46,125,50,.12);margin-right:8%}.tchat details{margin-top:6px;font-size:13px;color:var(--muted)}.tchat .heure{font-size:11px;color:var(--muted)}
 .chat p{margin:6px 0;padding:8px 10px;border-radius:10px;white-space:pre-wrap}.chat .moi{background:var(--bg);margin-left:18%}.chat .ia{background:rgba(46,125,50,.12);margin-right:18%}
 .act{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin:8px 0}.act input{width:auto;margin-top:4px}pre{white-space:pre-wrap;word-break:break-word;font-size:11px;background:var(--bg);padding:6px;border-radius:8px;max-width:100%;overflow:auto}img.mini{width:64px;height:64px;object-fit:cover;border-radius:8px}
 .etp{border-left:4px solid var(--accent);margin:8px 0}.etp .row{margin-top:8px}
@@ -97,7 +98,19 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
   </div>
 </section>
 
-<nav class="tabs"><button data-v="eps" class="on">📋 Épisodes</button><button data-v="new">➕ Nouveau</button><button data-v="ia">🤖 Assistant</button><button data-v="cfg">🔑 Clé</button></nav>
+<section id="v-tech" hidden>
+  <div class="card"><h2>🛠 Technicien</h2>
+    <p class="muted">Dites-lui ce qui ne va pas : « la vidéo de l'épisode 18 ne finit pas », « l'aperçu a raté », « pourquoi c'est si lent ? ». Il cherche sur une machine GitHub (vous pouvez fermer la page), répare, vérifie, et note ce qu'il apprend pour la prochaine fois. Il vous demande toujours avant de changer le studio pour de bon ou de lancer une vidéo.</p>
+    <div class="chat tchat" id="t-chat"><p class="muted">Chargement…</p></div>
+    <div id="t-acc"></div>
+    <label for="t-q">Votre message</label><textarea id="t-q" style="min-height:80px" placeholder="Ex. : l'épisode 18 est lancé depuis une heure, va voir ce qui bloque."></textarea>
+    <div class="row"><button id="t-go">📨 Envoyer</button><button class="sec" id="t-mic">🎤 Dicter</button><button class="sec" id="t-maj">↻</button></div><div id="t-msg"></div>
+  </div>
+  <div class="card"><h2>📝 Ce qu'il a appris</h2><p class="muted">Le carnet du studio : les leçons notées par le technicien et l'assistant. Toutes les IA du studio le relisent avant de travailler.</p>
+    <div class="row"><button class="sec" id="t-carnet">Voir le carnet</button></div><div id="t-carnetout"></div></div>
+</section>
+
+<nav class="tabs"><button data-v="eps" class="on">📋 Épisodes</button><button data-v="new">➕ Nouveau</button><button data-v="ia">🤖 Assistant</button><button data-v="tech">🛠 Technicien</button><button data-v="cfg">🔑 Clé</button></nav>
 
 <script>
 const R='groupeemperiorsarl-stack/sounsouni-studio', API='https://api.github.com';
@@ -105,7 +118,7 @@ const $=s=>document.querySelector(s); let TOK=''; try{TOK=localStorage.getItem('
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function api(p,o={}){const r=await fetch(API+p,{...o,headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github+json',...(o.headers||{})}});
   if(!r.ok){let m='';try{m=(await r.json()).message}catch(e){}throw new Error(r.status+' '+m)}return r.status==204?null:r.json()}
-function vue(v){document.querySelectorAll('section').forEach(s=>s.hidden=s.id!=='v-'+v);document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(v==='eps')charger()}
+function vue(v){document.querySelectorAll('section').forEach(s=>s.hidden=s.id!=='v-'+v);document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(v==='eps')charger();if(v==='tech')techCharger()}
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>vue(b.dataset.v));
 // ---- réglage de la clé
 $('#c-tok').value=TOK;
@@ -387,14 +400,14 @@ async function gem(sys,parts,prog,json=true){if(!K.gem)throw new Error('Ajoutez 
 let CONSIGNES='',POSESL='';
 async function contexte(i,scr){if(!CONSIGNES)CONSIGNES=(await ghLire('docs/ASSISTANT_ACTIONS.md'))+'\n\n## GUIDE DU FORMAT DU SCRIPT\n'+(await regles());
   if(!POSESL){const c=JSON.parse(await ghLire('studio/assets/catalog.json'));POSESL=Object.entries(c.poses).filter(([k])=>!k.includes('@')).map(([k,p])=>k+' : '+p.char+' · '+p.posture+' · '+(p.tags||[]).join(' ')).join('\n')}
-  const [pr,ch,rg,lx]=await Promise.all([fetch(API+'/repos/'+R+'/contents/'+i.number+'/plans_resume.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.text():'(pas encore d\'aperçu : relancer l\'aperçu)'),
-    ghLire('demandes/episode_'+i.number+'.choix.json').then(x=>x||'{}'),ghLire('studio/reglages.json'),ghLire('studio/lexique.txt')]);
-  return '## SCRIPT DE L\'ÉPISODE (demande n° '+i.number+')\n'+scr+'\n\n## PLANS MINUTÉS (plans_resume)\n'+pr+'\n\n## CHOIX ET CORRECTIONS DÉJÀ FAITS (par numéro de plan)\n'+ch+'\n\n## RÉGLAGES\n'+rg+'\n\n## LEXIQUE (prononciations déjà connues)\n'+lx+'\n\n## POSES DISPONIBLES (clé : personnage · posture · étiquettes)\n'+POSESL}
+  const [pr,ch,rg,lx,cn]=await Promise.all([fetch(API+'/repos/'+R+'/contents/'+i.number+'/plans_resume.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.text():'(pas encore d\'aperçu : relancer l\'aperçu)'),
+    ghLire('demandes/episode_'+i.number+'.choix.json').then(x=>x||'{}'),ghLire('studio/reglages.json'),ghLire('studio/lexique.txt'),ghLire('technicien/carnet.md').then(x=>x||'')]);
+  return '## SCRIPT DE L\'ÉPISODE (demande n° '+i.number+')\n'+scr+'\n\n## PLANS MINUTÉS (plans_resume)\n'+pr+'\n\n## CHOIX ET CORRECTIONS DÉJÀ FAITS (par numéro de plan)\n'+ch+'\n\n## RÉGLAGES\n'+rg+'\n\n## LEXIQUE (prononciations déjà connues)\n'+lx+'\n\n## CARNET DU STUDIO (leçons déjà apprises par les IA du studio)\n'+cn.replace(/^#[^\n]*\n/,'')+'\n\n## POSES DISPONIBLES (clé : personnage · posture · étiquettes)\n'+POSESL}
 function decrire(a){const p=a.plan!=null?'Plan '+a.plan+' : ':'';switch(a.type){
   case 'script':return 'Script : « '+a.ancien+' » → « '+a.nouveau+' »';case 'plan':return p+'cadrage « '+a.cadrage+' »';case 'pose':return p+a.qui+' prend la pose '+a.pose;
   case 'acteur':return p+a.qui+' — '+['dx','dy','taille','retourner','cacher'].filter(k=>a[k]!=null).map(k=>({dx:'gauche/droite',dy:'haut/bas',taille:'taille',retourner:'retourné',cacher:'caché'}[k])+' '+a[k]).join(', ');
   case 'duree':return p+'dure '+a.secondes+' s';case 'lexique':return 'Prononciation : « '+a.ecrit+' » se dit « '+a.prononce+' »';case 'reglage':return 'Réglage général '+a.cle+' = '+JSON.stringify(a.valeur);
-  case 'relancer':return 'Relancer : '+a.quoi+(a.de?' '+a.de+'-'+a.a:'');case 'fiche':return 'Préparer la fiche Gemini';case 'code':return 'Code '+a.fichier+' (essayé sur une copie à part avant d\'entrer dans le studio)';default:return JSON.stringify(a)}}
+  case 'relancer':return 'Relancer : '+a.quoi+(a.de?' '+a.de+'-'+a.a:'');case 'fiche':return 'Préparer la fiche Gemini';case 'note':return '📝 Noter pour la prochaine fois ('+(a.theme||'')+') : '+a.texte;case 'code':return 'Code '+a.fichier+' (essayé sur une copie à part avant d\'entrer dans le studio)';default:return JSON.stringify(a)}}
 // remplace « ancien » par « nouveau » ; si l'IA a mal recopié les espaces ou les retours à la ligne, on accepte ces petites différences (jamais deux endroits à la fois)
 function remplacer(s,ancien,nouveau,ou){if(s.split(ancien).length===2)return s.replace(ancien,()=>nouveau);
   const re=new RegExp(ancien.trim().split(/\s+/).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('\\s+'),'g'),m=s.match(re);
@@ -431,6 +444,13 @@ async function appliquer(i,acts,out){const n=i.number,fait=[];
     await dire(a.quoi==='video'?'vidéo':a.quoi==='planches'?('planches'+(a.de&&a.a?' '+a.de+'-'+a.a:'')):'aperçu');fait.push(a.quoi+' relancé')}
   }catch(e){fait.push('❌ relance : '+e.message)}
 
+  try{
+  const nt=acts.filter(a=>a.type==='note'&&a.texte);if(nt.length){let c=await ghLire('technicien/carnet.md')||'# Carnet du studio\n';const j=new Date().toISOString().slice(0,10);
+    for(const a of nt){const th=String(a.theme||'mise-en-scene').toLowerCase().replace(/[^a-z-]/g,'')||'mise-en-scene',l='- '+j+' · Assistant · '+String(a.texte).replace(/\s+/g,' ').trim().slice(0,400);
+      if(c.toLowerCase().includes(String(a.texte).toLowerCase().slice(0,60)))continue;const L=c.split('\n'),k=L.findIndex(x=>x.trim()==='## '+th);
+      if(k<0){c=c.replace(/\n*$/,'\n\n## '+th+'\n'+l+'\n')}else{let m=k+1;while(m<L.length&&!L[m].startsWith('## '))m++;while(m>k+1&&!L[m-1].trim())m--;L.splice(m,0,l);c=L.join('\n')}}
+    await ghEcrire('technicien/carnet.md',u8b64(c),'Carnet : leçon notée par l\'assistant');fait.push('leçon notée dans le carnet')}
+  }catch(e){fait.push('❌ carnet : '+e.message)}
   if(fait.some(x=>!x.startsWith('❌')&&!/relancé|lancée/.test(x)))try{localStorage.setItem('ss_corr_'+n,Date.now())}catch(e){}
   return fait}
 function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.number;let H=[];try{H=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}
@@ -506,5 +526,34 @@ function prochaine(i,d,cs,e){const z=d.querySelector('.etape'),n=i.number,b=e.b,
   else if(/Essai du code réussi/.test(x))h='🧪 <b>La modification du code a marché sur les essais.</b> Regardez les images « 🧪 Essai du code », puis « ✅ Accepter » ou « ✖ Refuser » ci-dessous.';
   else if(/❌/.test(x))h='❌ <b>Problème pendant la fabrication.</b> Ouvrez « Détails de la fabrication », ou demandez à l\'assistant (« 💬 Discuter ») ce qui ne va pas.';
   z.innerHTML=h?'<div class="msg etp">'+h+'</div>':'';const rl=z.querySelector('.relire');if(rl)rl.onclick=()=>{const dt=[...d.querySelectorAll('details')].find(x=>/Planches et corrections/.test(x.textContent));if(dt){dt.open=true;d.querySelector('.scr').scrollIntoView({behavior:'smooth',block:'center'})}};z.querySelectorAll('[data-c]').forEach(bt=>bt.onclick=()=>dire(bt.dataset.c,bt.dataset.m))}
+
+// ---- 🛠 Technicien : conversation sur la demande « 🛠 Technicien » ; le travail est fait par une machine GitHub (.github/workflows/technicien.yml)
+let TECH=null,tMinuteur=null;
+async function techDemande(){if(TECH)return TECH;const L=await api('/repos/'+R+'/issues?labels=technicien&state=open&per_page=5');if(L.length){TECH=L[0].number;return TECH}
+  const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'🛠 Technicien',labels:['technicien'],body:'Conversation avec le technicien du studio (page Studio mobile, onglet 🛠).'})});TECH=i.number;return TECH}
+function techTexte(b){let det='';b=String(b||'').replace(/<details><summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/,(x,s,c)=>{det='<details><summary>'+esc(s)+'</summary><div style="white-space:pre-wrap">'+esc(c.trim())+'</div></details>';return '\u0000'})
+  .replace(/<!--[\s\S]*?-->/g,'').replace(/\n+_Generated by[\s\S]*$/,'').trim();
+  let h=esc(b).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/!\[[^\]]*\]\((https:[^)\s]+)\)/g,'<img src="$1" style="max-width:100%;border-radius:8px">').replace(/\n/g,'<br>');return h.replace('\u0000',det)}
+async function techCharger(){if(!TOK){$('#t-chat').innerHTML='<p class="muted">Ajoutez d\'abord votre clé GitHub (onglet 🔑 Clé).</p>';return}
+  try{const n=await techDemande(),i=await api('/repos/'+R+'/issues/'+n),pg=Math.max(1,Math.ceil(i.comments/100));let C=await api('/repos/'+R+'/issues/'+n+'/comments?per_page=100&page='+pg);
+    if(pg>1&&C.length<20)C=(await api('/repos/'+R+'/issues/'+n+'/comments?per_page=100&page='+(pg-1))).concat(C);
+    const vus=C.filter(c=>!/^\s*(👍|👎)\s*$/u.test(c.body||'')).slice(-40);
+    $('#t-chat').innerHTML=vus.map(c=>'<div class="'+(c.user.type==='Bot'?'ia':'moi')+'"><div class="heure">'+(c.user.type==='Bot'?'🛠 Technicien · ':'Vous · ')+new Date(c.created_at).toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div>'+techTexte(c.body)+'</div>').join('')||'<p class="muted">Pas encore de message. Écrivez-lui ci-dessous.</p>';
+    const last=C[C.length-1],travaille=last&&(last.user.type!=='Bot'&&!/^\s*(👍|👎)\s*$/u.test(last.body)||/tech:encours/.test(last.body)),acc=$('#t-acc');acc.innerHTML='';
+    if(travaille)acc.innerHTML='<p class="msg">⏳ Le technicien travaille (la page se met à jour toute seule ; vous pouvez la fermer).</p>';
+    else{const fin=[...C].reverse().find(c=>c.user.type==='Bot'&&/tech:fin/.test(c.body));
+      if(fin&&fin===last){if(/tech:attente/.test(fin.body))acc.innerHTML='<div class="row"><button id="t-oui">✅ Oui, vas-y</button><button class="sec" id="t-non">✋ Non</button></div>';
+        acc.innerHTML+='<div class="row"><button class="sec" id="t-up">👍 Bonne réponse</button><button class="sec" id="t-down">👎 Pas bien</button></div><p class="muted">Votre avis aide le studio à choisir la meilleure IA pour le technicien.</p>';
+        const b=(s,t)=>{const e=$(s);if(e)e.onclick=()=>techEnvoyer(t)};b('#t-oui','Oui, vas-y.');b('#t-non','Non, ne le fais pas.');b('#t-up','👍');b('#t-down','👎')}}
+    $('#t-chat').scrollTop=1e9;clearTimeout(tMinuteur);if(travaille&&!$('#v-tech').hidden)tMinuteur=setTimeout(techCharger,10000)
+  }catch(e){$('#t-chat').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}
+async function techEnvoyer(t){t=String(t||'').trim();if(!t)return;$('#t-go').disabled=true;$('#t-msg').innerHTML='';
+  try{const n=await techDemande();await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});$('#t-q').value='';
+    $('#t-msg').innerHTML=/^(👍|👎)$/u.test(t)?'<p class="msg">Merci, c\'est noté.</p>':'<p class="msg">📨 Envoyé. Le technicien démarre sur une machine GitHub (environ 30 s), puis vous voyez ce qu\'il fait ici.</p>';await techCharger()}
+  catch(e){$('#t-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#t-go').disabled=false}
+$('#t-go').onclick=()=>techEnvoyer($('#t-q').value);$('#t-maj').onclick=techCharger;
+$('#t-mic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('#t-msg').innerHTML='<p class="msg">Dictée non disponible ici : utilisez le micro du clavier.</p>';return}
+  const s=new SR();s.lang='fr-FR';s.interimResults=false;s.onresult=e=>$('#t-q').value+=($('#t-q').value?' ':'')+e.results[0][0].transcript;s.start()};
+$('#t-carnet').onclick=async()=>{const t=await ghLire('technicien/carnet.md');$('#t-carnetout').innerHTML=t?'<div style="white-space:pre-wrap;font-size:13px;margin-top:8px">'+esc(t.replace(/^#[^\n]*\n/,'')).replace(/^## (.*)$/gm,'<b>— $1 —</b>')+'</div>':'<p class="msg">Carnet introuvable.</p>'};
 </script>
 </body></html>

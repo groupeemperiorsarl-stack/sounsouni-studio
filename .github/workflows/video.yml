@@ -1,4 +1,5 @@
 name: Mini-vidéos des personnages → poses
+run-name: "Demande ${{ inputs.issue }} · mini-vidéo ${{ inputs.mode }} ${{ inputs.perso }}${{ inputs.nom }}"
 on:
   workflow_dispatch:
     inputs:

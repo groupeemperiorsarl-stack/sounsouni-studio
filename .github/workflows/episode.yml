@@ -1,4 +1,5 @@
 name: Fabriquer un épisode (20 ordinateurs en parallèle)
+run-name: "Demande ${{ inputs.issue || 'manuelle' }} · ${{ inputs.apercu == 'true' && (inputs.de != '' && format('planches {0}-{1}', inputs.de, inputs.fin) || 'aperçu') || 'vidéo complète' }}"
 on:
   workflow_dispatch:
     inputs:

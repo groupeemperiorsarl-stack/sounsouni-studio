@@ -1,4 +1,5 @@
 name: Ranger les images Gemini (envoyées depuis la page)
+run-name: "Demande ${{ inputs.issue }} · import d'images (${{ inputs.mode }})"
 on:
   workflow_dispatch:
     inputs:

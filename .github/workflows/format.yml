@@ -1,4 +1,5 @@
 name: Mise au format par l'assistant (sur GitHub, le téléphone peut être fermé)
+run-name: "Demande ${{ inputs.issue }} · mise au format"
 on:
   workflow_dispatch:
     inputs:

@@ -8,6 +8,8 @@ const html = fs.readFileSync('outils/studio_mobile.html', 'utf8');
 const code = [...html.matchAll(/\/\/ <<format[^\n]*\n([\s\S]*?)\/\/ format>>/g)].map(m => m[1]).join('\n');
 const F = new Function(code + '\nreturn {preBrut,parties,avant,nettoyer,apres,controle,dejaFormat,regles_seules};')();
 const dodo = ms => new Promise(r => setTimeout(r, ms));
+// leçons du carnet du studio (technicien/carnet.md, thème « format ») : la mise au format profite de ce que les autres IA ont appris
+const LECONS = (() => { try { const c = fs.readFileSync('technicien/carnet.md', 'utf8').match(/^## format\s*\n([\s\S]*?)(?=^## |$(?![\s\S]))/m); return c && c[1].trim() ? '\n\n## LEÇONS DÉJÀ APPRISES (carnet du studio)\n' + c[1].trim() : ''; } catch (e) { return ''; } })();
 const gh = async (chemin, o = {}) => {
   const r = await fetch('https://api.github.com/repos/' + REPO + chemin, { ...o, headers: { Authorization: 'Bearer ' + GH_TOKEN, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' } });
   if (!r.ok) throw new Error('GitHub ' + r.status + ' ' + (await r.text()).slice(0, 200));
@@ -63,7 +65,7 @@ async function ia(messages) {   // Groq, puis Cerebras, OpenRouter, Gemini : com
 }
 
 if (process.env.SCRIPT_FILE) {   // essai sans demande GitHub : on chronomètre la mise au format d'un fichier
-  const brut = fs.readFileSync(process.env.SCRIPT_FILE, 'utf8'), sys = fs.readFileSync('docs/ASSISTANT.md', 'utf8');
+  const brut = fs.readFileSync(process.env.SCRIPT_FILE, 'utf8'), sys = fs.readFileSync('docs/ASSISTANT.md', 'utf8') + LECONS;
   const ps = F.parties(F.preBrut(brut)), res = [], t0 = Date.now();
   for (let i = 0; i < ps.length; i++) { const t1 = Date.now();
     const consigne = 'Partie ' + (i + 1) + ' sur ' + ps.length + ' du script validé. ' + (i === 0 ? '' : 'N\'écris ni TITRE ni lignes NOUVEAU… (déjà faits). ') + (i === ps.length - 1 ? 'C\'est la dernière partie : termine par la FIN.' : 'Ce n\'est pas la dernière partie : n\'écris PAS la FIN.') + ' Mets-la au format exact.\n\n' + ps[i];
@@ -76,7 +78,7 @@ try {
   const issue = await gh('/issues/' + ISSUE);
   const m = (issue.body || '').match(/```(?:text)?\n([\s\S]*?)\n```/);
   const brut = (m ? m[1] : issue.body || '').trim();
-  const sys = fs.readFileSync('docs/ASSISTANT.md', 'utf8');
+  const sys = fs.readFileSync('docs/ASSISTANT.md', 'utf8') + LECONS;
   const ps = F.dejaFormat(brut) ? [] : F.parties(F.preBrut(brut)), res = []; let qui = F.dejaFormat(brut) ? 'les règles du studio (script déjà au format, sans IA)' : '';
   for (let i = 0; i < ps.length; i++) {
     log('partie ' + (i + 1) + ' sur ' + ps.length);

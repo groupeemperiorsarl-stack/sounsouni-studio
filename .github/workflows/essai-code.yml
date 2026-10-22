@@ -1,4 +1,5 @@
 name: Essai d'une modification du code (proposée par l'assistant)
+run-name: "Demande ${{ inputs.issue }} · essai de ${{ inputs.branche }}"
 on:
   workflow_dispatch:
     inputs:

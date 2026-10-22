@@ -1,4 +1,5 @@
 name: Fiche Gemini (images manquantes)
+run-name: "Demande ${{ inputs.issue }} · fiche Gemini"
 on:
   workflow_dispatch:
     inputs:
