@@ -1,12 +1,13 @@
 {
  "Gemini gemini-flash-latest": {
-  "sessions": 1,
-  "reussies": 1,
+  "sessions": 2,
+  "reussies": 2,
   "pouces_haut": 0,
   "pouces_bas": 0,
-  "etapes": 8,
+  "etapes": 30,
   "themes": {
-   "suivi": 1
+   "suivi": 1,
+   "fabrication": 1
   }
  }
 }
