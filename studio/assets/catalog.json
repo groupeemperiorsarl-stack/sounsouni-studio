@@ -5108,6 +5108,468 @@
    "description": "Awa sourit doucement, le téléphone à la main.",
    "yaw": -32,
    "mouth_auto": true
+  },
+  "bak_v_action_4_01": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    587,
+    1600
+   ],
+   "head_x": 0.505,
+   "props": [],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 0,
+    "temps": 0.0
+   },
+   "description": "Bakary sourit de face en tenue traditionnelle bleue.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_02": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "content",
+    "ferme_yeux"
+   ],
+   "mouth": true,
+   "size": [
+    618,
+    1600
+   ],
+   "head_x": 0.53,
+   "props": [],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 1,
+    "temps": 0.5
+   },
+   "description": "Bakary sourit sereinement les yeux fermés.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_03": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    538,
+    1600
+   ],
+   "head_x": 0.494,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 2,
+    "temps": 0.88
+   },
+   "description": "Bakary regarde son téléphone avec un léger sourire.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_04": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    544,
+    1600
+   ],
+   "head_x": 0.501,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 3,
+    "temps": 1.12
+   },
+   "description": "Bakary consulte son téléphone en souriant.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_05": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    546,
+    1600
+   ],
+   "head_x": 0.519,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 4,
+    "temps": 1.5
+   },
+   "description": "Bakary regarde l'écran de son téléphone portable.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_06": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    580,
+    1600
+   ],
+   "head_x": 0.556,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 5,
+    "temps": 3.38
+   },
+   "description": "Bakary semble surpris par ce qu'il voit sur son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_07": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    623,
+    1600
+   ],
+   "head_x": 0.563,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 6,
+    "temps": 4.12
+   },
+   "description": "Bakary exprime une grande joie devant son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_08": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    618,
+    1600
+   ],
+   "head_x": 0.523,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 7,
+    "temps": 4.75
+   },
+   "description": "Bakary rit en regardant son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_09": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    614,
+    1600
+   ],
+   "head_x": 0.533,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 8,
+    "temps": 4.88
+   },
+   "description": "Bakary est très enthousiaste en consultant son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_10": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "regarde_bas",
+    "main_bouche",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    606,
+    1600
+   ],
+   "head_x": 0.538,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 9,
+    "temps": 5.38
+   },
+   "description": "Bakary met sa main devant sa bouche, étonné par son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_11": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "regarde_bas",
+    "main_bouche",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    597,
+    1600
+   ],
+   "head_x": 0.507,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 10,
+    "temps": 5.75
+   },
+   "description": "Bakary a une expression de surprise totale face à son écran.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_12": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "regarde_bas",
+    "main_bouche",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    595,
+    1600
+   ],
+   "head_x": 0.497,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 11,
+    "temps": 6.38
+   },
+   "description": "Bakary est stupéfait par une nouvelle sur son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_13": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "regarde_bas",
+    "main_bouche",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    610,
+    1600
+   ],
+   "head_x": 0.507,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 12,
+    "temps": 6.62
+   },
+   "description": "Bakary réagit avec stupeur en regardant son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_14": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris",
+    "regarde_bas",
+    "main_bouche",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    616,
+    1600
+   ],
+   "head_x": 0.526,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 13,
+    "temps": 7.25
+   },
+   "description": "Bakary est choqué par ce qu'il découvre sur son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_15": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "joie",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    606,
+    1600
+   ],
+   "head_x": 0.53,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 14,
+    "temps": 7.5
+   },
+   "description": "Bakary rit aux éclats en regardant son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
+  },
+  "bak_v_action_4_16": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire",
+    "regarde_bas",
+    "telephone"
+   ],
+   "mouth": true,
+   "size": [
+    613,
+    1600
+   ],
+   "head_x": 0.546,
+   "props": [
+    "telephone"
+   ],
+   "genere": "video",
+   "vue": "face",
+   "sequence": {
+    "video": "bakary_action_4",
+    "ordre": 15,
+    "temps": 7.75
+   },
+   "description": "Bakary sourit de nouveau en consultant son téléphone.",
+   "yaw": 0,
+   "mouth_auto": true
   }
  },
  "decors": {
