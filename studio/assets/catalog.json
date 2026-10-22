@@ -3466,7 +3466,7 @@
     "grand_sourire",
     "robe"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     593,
     1600
@@ -3483,7 +3483,8 @@
     "temps": 0.12
    },
    "description": "Bakary se tient debout de face avec un grand sourire.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_02": {
    "char": "BAKARY",
@@ -3494,7 +3495,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     577,
     1600
@@ -3511,7 +3512,8 @@
     "temps": 0.5
    },
    "description": "Bakary est tourné de trois quarts vers la gauche de l'image.",
-   "yaw": 32
+   "yaw": 32,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_03": {
    "char": "BAKARY",
@@ -3522,7 +3524,7 @@
     "robe",
     "profil"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     452,
     1600
@@ -3539,7 +3541,8 @@
     "temps": 1.12
    },
    "description": "Bakary est vu de profil, regardant vers la gauche.",
-   "yaw": 75
+   "yaw": 75,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_04": {
    "char": "BAKARY",
@@ -3550,7 +3553,7 @@
     "robe",
     "profil"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     386,
     1600
@@ -3567,7 +3570,8 @@
     "temps": 1.38
    },
    "description": "Bakary est en profil complet vers la gauche.",
-   "yaw": 75
+   "yaw": 75,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_05": {
    "char": "BAKARY",
@@ -3577,7 +3581,7 @@
     "dos",
     "trois_quarts_dos"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     322,
     1600
@@ -3591,7 +3595,8 @@
     "ordre": 4,
     "temps": 1.88
    },
-   "description": "Bakary est vu de trois quarts dos, tourné vers la gauche."
+   "description": "Bakary est vu de trois quarts dos, tourné vers la gauche.",
+   "mouth_auto": true
   },
   "bak_v_tour_650014_06": {
    "char": "BAKARY",
@@ -3741,7 +3746,7 @@
     "robe",
     "profil"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     356,
     1600
@@ -3758,7 +3763,8 @@
     "temps": 5.12
    },
    "description": "Bakary est de profil, regardant vers la droite.",
-   "yaw": -75
+   "yaw": -75,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_13": {
    "char": "BAKARY",
@@ -3769,7 +3775,7 @@
     "robe",
     "profil"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     358,
     1600
@@ -3786,7 +3792,8 @@
     "temps": 5.62
    },
    "description": "Bakary est en profil complet vers la droite.",
-   "yaw": -75
+   "yaw": -75,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_14": {
    "char": "BAKARY",
@@ -3797,7 +3804,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     429,
     1600
@@ -3814,7 +3821,8 @@
     "temps": 6.0
    },
    "description": "Bakary est tourné de trois quarts vers la droite.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_15": {
    "char": "BAKARY",
@@ -3825,7 +3833,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     539,
     1600
@@ -3842,7 +3850,8 @@
     "temps": 6.5
    },
    "description": "Bakary se tourne progressivement vers l'avant.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_tour_650014_16": {
    "char": "BAKARY",
@@ -3852,7 +3861,7 @@
     "sourire",
     "robe"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     579,
     1600
@@ -3869,7 +3878,8 @@
     "temps": 6.88
    },
    "description": "Bakary est de nouveau de face et sourit.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "bak_v_action_642164_01": {
    "char": "BAKARY",
@@ -3879,7 +3889,7 @@
     "sourire",
     "robe"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     587,
     1600
@@ -3896,7 +3906,8 @@
     "temps": 0.0
    },
    "description": "Bakary se tient debout de face et sourit.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "bak_v_action_642164_02": {
    "char": "BAKARY",
@@ -3907,7 +3918,7 @@
     "ferme_yeux",
     "robe"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     618,
     1600
@@ -3924,7 +3935,8 @@
     "temps": 0.5
    },
    "description": "Bakary sourit en fermant les yeux.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "bak_v_action_642164_03": {
    "char": "BAKARY",
@@ -3937,7 +3949,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     538,
     1600
@@ -3955,7 +3967,8 @@
     "temps": 0.88
    },
    "description": "Bakary regarde son téléphone avec un sourire.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_04": {
    "char": "BAKARY",
@@ -3968,7 +3981,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     544,
     1600
@@ -3986,7 +3999,8 @@
     "temps": 1.12
    },
    "description": "Bakary sourit en consultant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_05": {
    "char": "BAKARY",
@@ -3999,7 +4013,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     546,
     1600
@@ -4017,7 +4031,8 @@
     "temps": 1.5
    },
    "description": "Bakary regarde attentivement son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_06": {
    "char": "BAKARY",
@@ -4030,7 +4045,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     580,
     1600
@@ -4048,7 +4063,8 @@
     "temps": 3.38
    },
    "description": "Bakary a l'air surpris par ce qu'il voit sur son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_07": {
    "char": "BAKARY",
@@ -4061,7 +4077,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     623,
     1600
@@ -4079,7 +4095,8 @@
     "temps": 4.12
    },
    "description": "Bakary est émerveillé devant son écran.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_08": {
    "char": "BAKARY",
@@ -4092,7 +4109,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     618,
     1600
@@ -4110,7 +4127,8 @@
     "temps": 4.75
    },
    "description": "Bakary exprime une grande joie en regardant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_09": {
    "char": "BAKARY",
@@ -4123,7 +4141,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     614,
     1600
@@ -4141,7 +4159,8 @@
     "temps": 4.88
    },
    "description": "Bakary rit aux éclats en tenant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_10": {
    "char": "BAKARY",
@@ -4155,7 +4174,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     606,
     1600
@@ -4173,7 +4192,8 @@
     "temps": 5.38
    },
    "description": "Bakary est choqué et met sa main devant sa bouche.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_11": {
    "char": "BAKARY",
@@ -4187,7 +4207,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     597,
     1600
@@ -4205,7 +4225,8 @@
     "temps": 5.75
    },
    "description": "Bakary porte sa main à son visage, stupéfait.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_12": {
    "char": "BAKARY",
@@ -4219,7 +4240,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     595,
     1600
@@ -4237,7 +4258,8 @@
     "temps": 6.38
    },
    "description": "Bakary regarde son téléphone avec une expression de choc.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_13": {
    "char": "BAKARY",
@@ -4251,7 +4273,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     610,
     1600
@@ -4269,7 +4291,8 @@
     "temps": 6.62
    },
    "description": "Bakary est très surpris par ce qu'il lit sur son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_14": {
    "char": "BAKARY",
@@ -4283,7 +4306,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     616,
     1600
@@ -4301,7 +4324,8 @@
     "temps": 7.25
    },
    "description": "Bakary reste bouche bée devant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_15": {
    "char": "BAKARY",
@@ -4314,7 +4338,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     606,
     1600
@@ -4332,7 +4356,8 @@
     "temps": 7.5
    },
    "description": "Bakary sourit joyeusement en regardant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "bak_v_action_642164_16": {
    "char": "BAKARY",
@@ -4345,7 +4370,7 @@
     "telephone",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     613,
     1600
@@ -4363,7 +4388,8 @@
     "temps": 7.75
    },
    "description": "Bakary finit par sourire devant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_01": {
    "char": "AWA",
@@ -4374,7 +4400,7 @@
     "bras_croises",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     442,
     1600
@@ -4389,7 +4415,8 @@
     "temps": 0.12
    },
    "description": "Awa se tient debout les bras croisés avec un léger sourire.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_02": {
    "char": "AWA",
@@ -4400,7 +4427,7 @@
     "bras_croises",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     446,
     1600
@@ -4415,7 +4442,8 @@
     "temps": 0.62
    },
    "description": "Awa pose de trois-quarts avec les bras croisés.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_03": {
    "char": "AWA",
@@ -4426,7 +4454,7 @@
     "bras_croises",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     444,
     1600
@@ -4441,7 +4469,8 @@
     "temps": 1.12
    },
    "description": "Awa regarde vers l'avant en croisant les bras.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_04": {
    "char": "AWA",
@@ -4450,7 +4479,7 @@
    "tags": [
     "sourire"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     485,
     1600
@@ -4465,7 +4494,8 @@
     "temps": 1.75
    },
    "description": "Awa se tient de face avec un sourire chaleureux.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_05": {
    "char": "AWA",
@@ -4474,7 +4504,7 @@
    "tags": [
     "sourire"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     569,
     1600
@@ -4489,7 +4519,8 @@
     "temps": 2.12
    },
    "description": "Awa est debout de face et sourit.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_06": {
    "char": "AWA",
@@ -4499,7 +4530,7 @@
     "sourire",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     559,
     1600
@@ -4514,7 +4545,8 @@
     "temps": 2.38
    },
    "description": "Awa regarde vers l'avant avec un sourire calme.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_07": {
    "char": "AWA",
@@ -4640,7 +4672,7 @@
     "sourire",
     "profil"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     319,
     1600
@@ -4655,7 +4687,8 @@
     "temps": 5.62
    },
    "description": "Awa est vue de profil en train de sourire.",
-   "yaw": -75
+   "yaw": -75,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_13": {
    "char": "AWA",
@@ -4665,7 +4698,7 @@
     "sourire",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     403,
     1600
@@ -4680,7 +4713,8 @@
     "temps": 6.0
    },
    "description": "Awa est de trois-quarts avec un léger sourire.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_14": {
    "char": "AWA",
@@ -4689,7 +4723,7 @@
    "tags": [
     "sourire"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     531,
     1600
@@ -4704,7 +4738,8 @@
     "temps": 6.5
    },
    "description": "Awa se tient de face et sourit doucement.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_15": {
    "char": "AWA",
@@ -4713,7 +4748,7 @@
    "tags": [
     "sourire"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     491,
     1600
@@ -4728,7 +4763,8 @@
     "temps": 6.88
    },
    "description": "Awa regarde l'objectif avec un sourire.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_tour_702324_16": {
    "char": "AWA",
@@ -4737,7 +4773,7 @@
    "tags": [
     "sourire"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     494,
     1600
@@ -4752,7 +4788,8 @@
     "temps": 7.5
    },
    "description": "Awa sourit en se tenant de face.",
-   "yaw": 0
+   "yaw": 0,
+   "mouth_auto": true
   },
   "awa_v_action_659144_01": {
    "char": "AWA",
@@ -4765,7 +4802,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     444,
     1600
@@ -4782,7 +4819,8 @@
     "temps": 0.0
    },
    "description": "Awa a les bras croisés et les yeux fermés comme si elle parlait.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_05": {
    "char": "AWA",
@@ -4794,7 +4832,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     500,
     1600
@@ -4812,7 +4850,8 @@
     "temps": 1.0
    },
    "description": "Awa regarde son téléphone avec un air étonné.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_06": {
    "char": "AWA",
@@ -4824,7 +4863,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     435,
     1600
@@ -4842,7 +4881,8 @@
     "temps": 1.25
    },
    "description": "Awa semble surprise par ce qu'elle voit sur son écran.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_07": {
    "char": "AWA",
@@ -4854,7 +4894,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     437,
     1600
@@ -4872,7 +4912,8 @@
     "temps": 3.0
    },
    "description": "Awa est sous le choc en consultant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_08": {
    "char": "AWA",
@@ -4884,7 +4925,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     461,
     1600
@@ -4902,7 +4943,8 @@
     "temps": 3.25
    },
    "description": "Awa a la bouche ouverte de stupeur devant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_09": {
    "char": "AWA",
@@ -4914,7 +4956,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     500,
     1600
@@ -4932,7 +4974,8 @@
     "temps": 3.62
    },
    "description": "Awa exprime un choc profond en regardant son écran.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_10": {
    "char": "AWA",
@@ -4945,7 +4988,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     604,
     1600
@@ -4963,7 +5006,8 @@
     "temps": 4.75
    },
    "description": "Awa porte la main à son front, totalement choquée.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_11": {
    "char": "AWA",
@@ -4976,7 +5020,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     603,
     1600
@@ -4994,7 +5038,8 @@
     "temps": 5.0
    },
    "description": "Awa est désemparée et se tient la tête devant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_12": {
    "char": "AWA",
@@ -5007,7 +5052,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     609,
     1600
@@ -5025,7 +5070,8 @@
     "temps": 5.25
    },
    "description": "Awa semble paniquée par une nouvelle sur son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_13": {
    "char": "AWA",
@@ -5037,7 +5083,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     638,
     1600
@@ -5055,7 +5101,8 @@
     "temps": 6.38
    },
    "description": "Awa regarde son téléphone avec une expression de surprise.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_14": {
    "char": "AWA",
@@ -5067,7 +5114,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     663,
     1600
@@ -5085,7 +5132,8 @@
     "temps": 7.62
    },
    "description": "Awa commence à sourire en tenant son téléphone.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_15": {
    "char": "AWA",
@@ -5097,7 +5145,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     725,
     1600
@@ -5115,7 +5163,8 @@
     "temps": 7.75
    },
    "description": "Awa affiche un sourire serein en regardant vers la droite.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   },
   "awa_v_action_659144_16": {
    "char": "AWA",
@@ -5127,7 +5176,7 @@
     "robe",
     "trois_quarts"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     651,
     1600
@@ -5145,7 +5194,8 @@
     "temps": 7.88
    },
    "description": "Awa sourit doucement, le téléphone à la main.",
-   "yaw": -32
+   "yaw": -32,
+   "mouth_auto": true
   }
  },
  "decors": {
