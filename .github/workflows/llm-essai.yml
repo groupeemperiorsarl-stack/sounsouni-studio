@@ -25,11 +25,12 @@ jobs:
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           set -e; T0=$(date +%s); sudo mkdir -p /mnt/m && sudo chown $USER /mnt/m; df -h /mnt | tail -1; nproc; free -g | head -2
-          gh release view -R ggml-org/llama.cpp --json assets -q '.assets[].name' > /mnt/m/noms.txt; grep -i ubuntu /mnt/m/noms.txt || cat /mnt/m/noms.txt
-          A=$(grep -iE 'ubuntu.*x64.*\.(zip|tar\.gz)$' /mnt/m/noms.txt | grep -viE 'vulkan|cuda|rocm|hip|sycl|openvino|kleidi|s390|arm' | head -1); echo "moteur : $A"
-          gh release download -R ggml-org/llama.cpp -p "$A" -D /mnt/m
-          mkdir -p /mnt/m/llama; case "$A" in *.zip) unzip -q "/mnt/m/$A" -d /mnt/m/llama;; *) tar -xzf "/mnt/m/$A" -C /mnt/m/llama;; esac
-          curl -sfL -o /mnt/m/model.gguf "${{ matrix.url }}"; ls -la /mnt/m/model.gguf
+          (curl -sfL -o /mnt/m/model.gguf "${{ matrix.url }}" && echo modele-ok) &
+          git clone -q --depth 1 https://github.com/ggml-org/llama.cpp /mnt/m/src
+          cmake -S /mnt/m/src -B /mnt/m/build -DGGML_NATIVE=ON -DLLAMA_CURL=OFF -DLLAMA_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release > /dev/null
+          cmake --build /mnt/m/build --target llama-server -j $(nproc) > /dev/null && mkdir -p /mnt/m/llama && cp -r /mnt/m/build/bin/* /mnt/m/llama/
+          wait
+          ls -la /mnt/m/model.gguf
           echo "préparation : $(( $(date +%s)-T0 )) s"
       - name: Mise au format chronométrée
         run: |
