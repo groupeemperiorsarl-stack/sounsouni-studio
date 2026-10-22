@@ -32,6 +32,8 @@ jobs:
           python -m studio.videos_ia "demandes/videos/$N/${{ github.event.inputs.fichier }}" --perso "${{ github.event.inputs.perso }}" --sorte "${{ github.event.inputs.sorte }}" -o sv 2>&1 | tee journal.txt
           D=$(ls -d sv/*/ | head -1); NOM=$(basename "$D"); cp "$D/planche.png" "planche_$NOM.png"; (cd sv && zip -qr "../$NOM.zip" "$NOM")
           bash .github/scripts/fichiers.sh "$N" "planche_$NOM.png" "$NOM.zip"
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"   # la vidéo n'est plus utile : ses images sont dans la planche (et bientôt dans le studio)
+          git rm -q "demandes/videos/$N/${{ github.event.inputs.fichier }}" && git commit -qm "Mini-vidéo traitée, retirée du dépôt" && git pull -q --rebase --autostash && git push -q || true
           K=$(python -c "import json;d=json.load(open('$D/candidats.json'));print(len(d['candidats']))")
           gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="🎞 Planche prête : $NOM ($K images de ${{ github.event.inputs.perso }}, chacune décrite). Bouton « 🎞 Planche $NOM » dans la page, puis « ✅ Tout garder » ou « garder 1 3 5 $NOM »." > /dev/null
       - name: Ranger les images gardées (catalogue + bouches)

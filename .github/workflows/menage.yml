@@ -1,0 +1,15 @@
+name: Ménage automatique de la place (vidéos anciennes)
+on:
+  schedule: [{ cron: "17 3 * * *" }]
+  workflow_run: { workflows: ["Fabriquer un épisode (20 ordinateurs en parallèle)"], types: [completed] }
+  workflow_dispatch:
+    inputs:
+      essai: { description: "1 = montrer seulement, sans rien supprimer", default: "0" }
+permissions: { contents: write }
+jobs:
+  menage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python .github/scripts/menage.py
+        env: { GH_TOKEN: "${{ github.token }}", ESSAI: "${{ github.event.inputs.essai }}" }
