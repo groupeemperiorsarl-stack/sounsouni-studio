@@ -95,6 +95,10 @@ try {
   log('fini');
 } catch (e) {
   console.error(e);
+  if (process.env.SECOURS_LIBRE === '1' && !process.env.LOCAL_LLM_URL && !/GitHub /.test(e.message)) {   // toutes les IA à clé sont bloquées : la machine essaiera le modèle libre
+    await dire('⏳ Groq, Cerebras et Gemini sont bloqués : l\'assistant passe au modèle libre installé sur la machine GitHub (sans clé, environ 15 minutes).').catch(() => {});
+    process.exit(3);
+  }
   await dire('❌ La mise au format n\'a pas pu être faite : ' + e.message).catch(() => {});
   process.exit(1);
 }

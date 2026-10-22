@@ -4,6 +4,7 @@ on:
     inputs:
       issue: { description: "Numéro de la demande", required: true }
       auto: { description: "true = lancer l'aperçu juste après", default: "false" }
+      sans_cles: { description: "true = essai du dernier secours (comme si toutes les clés étaient bloquées)", default: "false" }
 permissions: { contents: write, issues: write, actions: write }
 jobs:
   format:
@@ -19,12 +20,32 @@ jobs:
           AUTO: ${{ github.event.inputs.auto }}
           REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node .github/scripts/format.mjs
+          GROQ_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.GROQ_API_KEY || '' }}
+          CEREBRAS_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.CEREBRAS_API_KEY || '' }}
+          OPENROUTER_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.OPENROUTER_API_KEY || '' }}
+          GEMINI_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.GEMINI_API_KEY || '' }}
+          SECOURS_LIBRE: "1"
+        id: f
+        run: |
+          set +e; node .github/scripts/format.mjs; c=$?; echo "code=$c" >> $GITHUB_OUTPUT; [ $c = 0 ] || [ $c = 3 ]
+      - name: Dernier secours sans clé - modèle libre gpt-oss-20b sur la machine
+        if: steps.f.outputs.code == '3'
+        env:
+          ISSUE: ${{ github.event.inputs.issue }}
+          AUTO: ${{ github.event.inputs.auto }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e; sudo mkdir -p /mnt/m && sudo chown $USER /mnt/m
+          (curl -sfL -o /mnt/m/model.gguf https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-MXFP4.gguf) &
+          git clone -q --depth 1 https://github.com/ggml-org/llama.cpp /mnt/m/src
+          cmake -S /mnt/m/src -B /mnt/m/build -DGGML_NATIVE=ON -DLLAMA_CURL=OFF -DLLAMA_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release > /dev/null
+          cmake --build /mnt/m/build --target llama-server -j $(nproc) > /dev/null; wait
+          export LD_LIBRARY_PATH=/mnt/m/build/bin; /mnt/m/build/bin/llama-server -m /mnt/m/model.gguf -c 16384 -t $(nproc) --jinja --port 8080 > /mnt/m/serveur.log 2>&1 &
+          for i in $(seq 1 120); do curl -s localhost:8080/health | grep -q ok && break; sleep 5; done
+          LOCAL_LLM_URL=http://127.0.0.1:8080/v1/chat/completions LOCAL_LLM_EXTRA='{"chat_template_kwargs":{"reasoning_effort":"low"}}' node .github/scripts/format.mjs
       - name: Garder le script au format et lancer l'aperçu si demandé
+        if: success()
         env: { GH_TOKEN: "${{ github.token }}", N: "${{ github.event.inputs.issue }}" }
         run: |
           cp script_au_format.txt "demandes/episode_$N.txt"
