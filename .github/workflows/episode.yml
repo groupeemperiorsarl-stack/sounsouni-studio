@@ -47,7 +47,7 @@ jobs:
       - name: Outils
         timeout-minutes: 25
         run: |
-          sudo apt-get install -y -qq ffmpeg > /dev/null
+          bash .github/scripts/ffmpeg.sh
           pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
           bash studio/lp/install.sh
       - name: Planches précédentes (pour lire la réponse « 1B 3C »)
@@ -107,7 +107,7 @@ jobs:
       - name: Outils
         timeout-minutes: 25
         run: |
-          sudo apt-get install -y -qq ffmpeg > /dev/null
+          bash .github/scripts/ffmpeg.sh
           [ -x /home/runner/tts/bin/python ] && /home/runner/tts/bin/python -c 'import chatterbox' 2>/dev/null || { python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile; }
           pip install -q numpy pillow soundfile librosa
       - name: Reprendre le travail de la vidéo précédente (seules les répliques et les secondes changées sont refaites)
@@ -142,7 +142,7 @@ jobs:
       - name: Outils
         timeout-minutes: 25
         run: |
-          sudo apt-get install -y -qq ffmpeg > /dev/null
+          bash .github/scripts/ffmpeg.sh
           [ -x /home/runner/tts/bin/python ] && /home/runner/tts/bin/python -c 'import chatterbox' 2>/dev/null || { python -m venv /home/runner/tts && /home/runner/tts/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu && /home/runner/tts/bin/pip install -q chatterbox-tts==0.1.7 soundfile; }
           pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
           bash studio/lp/install.sh
@@ -165,7 +165,7 @@ jobs:
         with: { name: travail, path: sortie/travail }
       - uses: actions/download-artifact@v4
         with: { name: tourne, path: studio/assets/poses/tourne }
-      - run: sudo apt-get install -y -qq ffmpeg > /dev/null && pip install -q numpy pillow soundfile librosa opencv-python-headless
+      - run: bash .github/scripts/ffmpeg.sh && pip install -q numpy pillow soundfile librosa opencv-python-headless
       - name: Reprendre le travail de la vidéo précédente (seules les répliques et les secondes changées sont refaites)
         if: github.event.inputs.issue != ''
         run: |
@@ -192,7 +192,7 @@ jobs:
         with: { pattern: "rendu_*", path: sortie/travail, merge-multiple: true }
       - uses: actions/download-artifact@v4
         with: { name: tourne, path: studio/assets/poses/tourne }
-      - run: sudo apt-get install -y -qq ffmpeg > /dev/null && pip install -q numpy pillow soundfile librosa opencv-python-headless
+      - run: bash .github/scripts/ffmpeg.sh && pip install -q numpy pillow soundfile librosa opencv-python-headless
       - run: python -m studio "$SCRIPT" -o sortie --etape final
       - uses: actions/upload-artifact@v4
         with: { name: video, path: "sortie/*.mp4" }

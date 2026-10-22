@@ -23,7 +23,7 @@ jobs:
         with: { python-version: "3.11" }
       - name: Outils
         run: |
-          sudo apt-get install -y -qq ffmpeg > /dev/null
+          bash .github/scripts/ffmpeg.sh
           pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow scipy rembg onnxruntime opencv-python-headless soundfile librosa transformers
       - name: Découper la vidéo, détourer, décrire chaque image (Gemini), planche
         if: github.event.inputs.mode == 'preparer'

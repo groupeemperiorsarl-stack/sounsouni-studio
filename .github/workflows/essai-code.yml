@@ -17,7 +17,7 @@ jobs:
         with: { python-version: "3.11" }
       - name: Outils
         run: |
-          sudo apt-get install -y -qq ffmpeg > /dev/null
+          bash .github/scripts/ffmpeg.sh
           pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
           bash studio/lp/install.sh
       - name: Vérifier que rien n'est cassé (épisode + scènes déjà validées)

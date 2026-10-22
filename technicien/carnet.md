@@ -9,6 +9,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Claude · « Bloqué par GitHub » / fabrications refusées → plus de minutes ou problème de facturation → le dépôt est public (minutes gratuites) ; si ça revient, regarder la page de facturation, ce n'est pas le code.
 - 2026-10-21 · Claude · Une vidéo refaite après une petite correction ne refait que les morceaux de 12 s changés → si tout est refait, regarder si les poses ont changé (poses.stamp) : c'est normal après un import d'images.
 - 2026-10-22 · Gemini · Outil `demande` renvoie 404 pour un numéro d'épisode → le numéro d'épisode n'est pas le numéro du ticket GitHub → utiliser `demandes` pour trouver le vrai numéro de ticket.
+- 2026-10-22 · Claude · Une étape attend longtemps dans « Outils » alors que le travail lui-même dure quelques secondes → « apt-get install ffmpeg » mettait jusqu'à 16 min sur certaines machines (serveur Ubuntu lent), et toute la fabrication attend la plus lente → ffmpeg est maintenant pris tout prêt sur GitHub (.github/scripts/ffmpeg.sh, 16 s) ; pour vérifier, comparer l'heure de début de « Outils » et la fin de l'installation dans le journal de chaque machine.
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
