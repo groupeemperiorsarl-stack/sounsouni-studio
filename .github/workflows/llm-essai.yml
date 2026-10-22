@@ -1,0 +1,40 @@
+name: Essai d'un modèle libre (sans clé) pour la mise au format
+on:
+  workflow_dispatch:
+    inputs:
+      script: { description: "Script brut à mettre au format", default: "exemples/essai_ep18_brut.txt" }
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - nom: gpt-oss-20b
+            url: https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-mxfp4.gguf
+            extra: '{"chat_template_kwargs":{"reasoning_effort":"low"}}'
+          - nom: qwen3-8b
+            url: https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/Qwen3-8B-Q4_K_M.gguf
+            extra: '{"chat_template_kwargs":{"enable_thinking":false}}'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: llama.cpp (moteur libre) et le modèle
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          set -e; T0=$(date +%s); sudo mkdir -p /mnt/m && sudo chown $USER /mnt/m; df -h /mnt | tail -1; nproc; free -g | head -2
+          gh release download -R ggml-org/llama.cpp -p '*bin-ubuntu-x64.zip' -D /mnt/m && unzip -q /mnt/m/*.zip -d /mnt/m/llama
+          curl -sL -o /mnt/m/model.gguf "${{ matrix.url }}"; ls -la /mnt/m/model.gguf
+          echo "préparation : $(( $(date +%s)-T0 )) s"
+      - name: Mise au format chronométrée
+        run: |
+          S=$(find /mnt/m/llama -name llama-server -type f | head -1); chmod +x "$S"; export LD_LIBRARY_PATH=$(dirname "$S")
+          "$S" -m /mnt/m/model.gguf -c 16384 -t $(nproc) --jinja --port 8080 > /mnt/m/serveur.log 2>&1 &
+          for i in $(seq 1 120); do curl -s localhost:8080/health | grep -q ok && break; sleep 5; done
+          LOCAL_LLM_URL=http://127.0.0.1:8080/v1/chat/completions LOCAL_LLM_EXTRA='${{ matrix.extra }}' SCRIPT_FILE="${{ github.event.inputs.script }}" node .github/scripts/format.mjs
+          grep -E "eval time|prompt eval" /mnt/m/serveur.log | tail -4 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: "format_${{ matrix.nom }}", path: script_au_format.txt, if-no-files-found: ignore }

@@ -35,7 +35,7 @@ async function gemini(sys, user) {
 }
 
 async function ia(messages) {   // Groq, puis Cerebras, OpenRouter, Gemini : comme la page, mais ici on peut attendre longtemps
-  const P = [['Groq', 'https://api.groq.com/openai/v1/chat/completions', process.env.GROQ_API_KEY, 'openai/gpt-oss-120b', { reasoning_effort: 'low' }],
+  const P = [...(process.env.LOCAL_LLM_URL ? [['Modèle libre', process.env.LOCAL_LLM_URL, 'local', process.env.LOCAL_LLM_MODEL || 'local', JSON.parse(process.env.LOCAL_LLM_EXTRA || '{}')]] : []), ['Groq', 'https://api.groq.com/openai/v1/chat/completions', process.env.GROQ_API_KEY, 'openai/gpt-oss-120b', { reasoning_effort: 'low' }],
     ['Cerebras', 'https://api.cerebras.ai/v1/chat/completions', process.env.CEREBRAS_API_KEY, 'gpt-oss-120b', { reasoning_effort: 'low' }],
     ['OpenRouter', 'https://openrouter.ai/api/v1/chat/completions', process.env.OPENROUTER_API_KEY, 'openai/gpt-oss-120b:free', {}]].filter(p => p[2]);
   let err = '';
@@ -54,6 +54,16 @@ async function ia(messages) {   // Groq, puis Cerebras, OpenRouter, Gemini : com
   throw new Error(err || 'aucune clé d\'IA dans les secrets GitHub (GROQ_API_KEY ou GEMINI_API_KEY)');
 }
 
+if (process.env.SCRIPT_FILE) {   // essai sans demande GitHub : on chronomètre la mise au format d'un fichier
+  const brut = fs.readFileSync(process.env.SCRIPT_FILE, 'utf8'), sys = fs.readFileSync('docs/ASSISTANT.md', 'utf8');
+  const ps = F.parties(F.preBrut(brut)), res = [], t0 = Date.now();
+  for (let i = 0; i < ps.length; i++) { const t1 = Date.now();
+    const consigne = 'Partie ' + (i + 1) + ' sur ' + ps.length + ' du script validé. ' + (i === 0 ? '' : 'N\'écris ni TITRE ni lignes NOUVEAU… (déjà faits). ') + (i === ps.length - 1 ? 'C\'est la dernière partie : termine par la FIN.' : 'Ce n\'est pas la dernière partie : n\'écris PAS la FIN.') + ' Mets-la au format exact.\n\n' + ps[i];
+    const r = await ia([{ role: 'system', content: sys }, { role: 'user', content: consigne }]); res.push(r.t); log('partie ' + (i + 1) + '/' + ps.length + ' par ' + r.n + ' en ' + Math.round((Date.now() - t1) / 1000) + ' s'); }
+  const c = F.nettoyer(F.avant(res.join('\n\n'))); c.s = F.apres(c.s, brut, c.al); const k = F.controle(c.s, c.al);
+  fs.writeFileSync('script_au_format.txt', c.s); log('TOTAL ' + Math.round((Date.now() - t0) / 1000) + ' s · ' + k.dtxt + ' · alertes : ' + k.al.length); k.al.forEach(x => log('  - ' + x));
+  process.exit(0);
+}
 try {
   const issue = await gh('/issues/' + ISSUE);
   const m = (issue.body || '').match(/```(?:text)?\n([\s\S]*?)\n```/);
