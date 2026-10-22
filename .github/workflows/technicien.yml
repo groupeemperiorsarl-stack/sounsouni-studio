@@ -1,0 +1,31 @@
+name: Technicien (cherche et répare, depuis la page Studio mobile)
+on:
+  issue_comment: { types: [created] }
+  workflow_dispatch:
+    inputs:
+      issue: { description: "Numéro de la demande « 🛠 Technicien »", required: true }
+      message: { description: "Numéro du message à traiter (vide = le dernier d'Issa)", default: "" }
+permissions: { contents: write, issues: write, actions: write }
+concurrency: { group: technicien, cancel-in-progress: false }
+jobs:
+  technicien:
+    if: github.event_name == 'workflow_dispatch' || (contains(github.event.issue.labels.*.name, 'technicien') && github.event.comment.user.login == github.event.issue.user.login)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Le technicien cherche et répare
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number || github.event.inputs.issue }}
+          MESSAGE_ID: ${{ github.event.comment.id || github.event.inputs.message }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          git config user.name technicien; git config user.email studio@sounsouni.pro
+          node .github/scripts/technicien.mjs
