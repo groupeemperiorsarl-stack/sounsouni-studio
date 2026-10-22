@@ -20,4 +20,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE: ${{ github.event.inputs.issue }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python .github/scripts/relecture.py
+      - name: Prévenir si la relecture n'a pas pu se faire
+        if: failure()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh api "repos/${{ github.repository }}/issues/${{ github.event.inputs.issue }}/comments" -f body="🔎 La relecture automatique n'a pas pu se faire (les IA gratuites sont saturées). Écrivez **relecture** plus tard pour la relancer." > /dev/null

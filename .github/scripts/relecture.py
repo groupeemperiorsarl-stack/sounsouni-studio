@@ -43,7 +43,7 @@ def modeles():
     return sorted(v, key=num, reverse=True)[:6] or ['gemini-flash-latest', 'gemini-3-flash-preview']
 
 def gemini(sys_txt, parts):
-    for tour in range(6):
+    for tour in range(10):
         for m in modeles():
             try:
                 d = req(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent', {'systemInstruction': {'parts': [{'text': sys_txt}]}, 'contents': [{'role': 'user', 'parts': parts}],
@@ -51,8 +51,23 @@ def gemini(sys_txt, parts):
                 t = ''.join(p.get('text', '') for p in d['candidates'][0]['content']['parts'])
                 if t: print('relecture par', m); return m, json.loads(t[t.find('{'):t.rfind('}') + 1])
             except Exception as e: print(m, ':', str(e)[:160])
-        print('Gemini occupé, nouvel essai dans 30 s'); time.sleep(30)
+        print('Gemini occupé, nouvel essai dans 60 s'); time.sleep(60)
     raise RuntimeError('Gemini ne répond pas')
+
+def groq(sys_txt, user):   # passe « histoire » (texte seul) : Groq d'abord quand la clé existe (Gemini gratuit est souvent saturé)
+    k = os.environ.get('GROQ_API_KEY')
+    if not k: raise RuntimeError('pas de clé Groq')
+    for essai in range(6):
+        try:
+            d = req('https://api.groq.com/openai/v1/chat/completions', {'model': 'openai/gpt-oss-120b', 'temperature': 0.2, 'reasoning_effort': 'medium', 'response_format': {'type': 'json_object'},
+                    'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}]}, headers={'Authorization': 'Bearer ' + k}, timeout=300)
+            t = d['choices'][0]['message']['content']; print('histoire relue par Groq'); return 'Groq gpt-oss-120b', json.loads(t[t.find('{'):t.rfind('}') + 1])
+        except urllib.error.HTTPError as e:
+            b = e.read().decode()[:300]; print('Groq :', e.code, b[:160])
+            if e.code == 429 and 'per day' not in b: time.sleep(65); continue
+            raise
+    raise RuntimeError('Groq saturé')
+import urllib.error
 
 def main():
     scr, png, pr, mq, cpath = lire()
@@ -70,11 +85,18 @@ def main():
     ctx = ('## SCRIPT\n' + scr + '\n\n## PLANS MINUTÉS\n' + '\n'.join(lignes) + '\n\n## CHOIX DÉJÀ FAITS\n' + (lu(cpath) or '{}') + '\n\n## ÉMOTIONS SANS IMAGE (visage calme mis à la place)\n' + (mq.decode() if mq else '[]') +
            '\n\n## POSES DISPONIBLES PAR PERSONNAGE (clé (posture : étiquettes))\n' + '\n'.join(c + ' : ' + ' | '.join(v) for c, v in poses.items()) + '\n\n## IMAGES DE L\'APERÇU : les bandes suivent, dans l\'ordre des plans (numéro sous chaque vignette).')
     # deux passes, comme un vrai relecteur : d'abord l'histoire seule (le script, lu comme un spectateur), puis les images plan par plan
-    mA, resA = gemini(sys_txt + "\n\n## CETTE PASSE : SEULEMENT LA PARTIE A (L'HISTOIRE)\nLis le script ligne par ligne comme un spectateur qui découvre l'épisode. Cherche surtout : contradictions, personnes présentes qui ne devraient pas l'être (ou absentes), phrases adressées à quelqu'un écrites en PENSÉE ou mélangées à un monologue, entrées sans salutation, décor illogique pour l'histoire, objets importants jamais montrés, émotions qui ne vont pas avec la situation. Corrections par actions « script ». Pas de problème d'image dans cette passe.",
-                      [{'text': '## SCRIPT\n' + scr + '\n\n## PLANS MINUTÉS (pour donner le moment de chaque problème)\n' + '\n'.join(lignes)}])
+    A_sys = lu('docs/RELECTEUR.md') + "\n\n## CETTE PASSE : SEULEMENT LA PARTIE A (L'HISTOIRE)\nLis le script ligne par ligne comme un spectateur qui découvre l'épisode. Cherche surtout : contradictions, personnes présentes qui ne devraient pas l'être (ou absentes), phrases adressées à quelqu'un écrites en PENSÉE ou mélangées à un monologue, entrées sans salutation, décor illogique pour l'histoire, objets importants jamais montrés, émotions qui ne vont pas avec la situation. Corrections par actions « script » uniquement ({\"type\": \"script\", \"ancien\": \"texte exact\", \"nouveau\": \"texte corrigé\", \"pourquoi\": \"…\"}), et « note » pour une leçon. Pas de problème d'image dans cette passe."
+    A_user = '## SCRIPT\n' + scr
+    try: mA, resA = groq(A_sys, A_user)
+    except Exception as e:
+        print('passe histoire par Gemini (' + str(e)[:80] + ')')
+        try: mA, resA = gemini(A_sys + '\n\n## CONSIGNES DE L\'ASSISTANT\n' + lu('docs/ASSISTANT_ACTIONS.md'), [{'text': A_user + '\n\n## PLANS MINUTÉS\n' + '\n'.join(lignes)}])
+        except Exception as e2: mA, resA = '', {'resume': '', 'problemes': [], 'erreur': str(e2)}
     parts = [{'text': ctx}] + [{'inline_data': {'mime_type': 'image/jpeg', 'data': b}} for b in bandes(png)]
-    mB, resB = gemini(sys_txt + "\n\n## CETTE PASSE : SEULEMENT LA PARTIE B (LES IMAGES)\nL'histoire a déjà été relue. Regarde chaque vignette et les étiquettes des poses : décor, pieds au sol, personnes en trop, gestes, objets en trop, visage contraire à l'émotion, images manquantes. Corrections par actions de plan (pose, acteur, plan, fiche).", parts)
-    m = mA if mA == mB else mA + ' + ' + mB
+    try: mB, resB = gemini(sys_txt + "\n\n## CETTE PASSE : SEULEMENT LA PARTIE B (LES IMAGES)\nL'histoire a déjà été relue. Regarde chaque vignette et les étiquettes des poses : décor, pieds au sol, personnes en trop, gestes, objets en trop, visage contraire à l'émotion, images manquantes. Corrections par actions de plan (pose, acteur, plan, fiche).", parts)
+    except Exception as e: mB, resB = '', {'resume': 'Les images n\'ont pas pu être regardées (Gemini saturé) : relancez « relecture » plus tard.', 'problemes': []}
+    if not mA and not mB: raise RuntimeError('aucune IA disponible pour la relecture')
+    m = mA if mA == mB else ' + '.join(x for x in (mA, mB) if x)
     res = {'resume': (resA.get('resume', '') + ' ' + resB.get('resume', '')).strip(), 'problemes': (resA.get('problemes', []) + resB.get('problemes', []))[:20]}
     # contrôle des actions : poses existantes et du bon personnage, numéros de plan possibles, jamais de pose « gifle »
     nplans = len(plans)
