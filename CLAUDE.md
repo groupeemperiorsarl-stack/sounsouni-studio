@@ -72,6 +72,13 @@
 - **Objets** (brochette, téléphone, larmes…) : jamais montrés si le script ne le demande pas. Objet écrit dans le PLAN (`[Karim, téléphone]`) : toujours montré.
 - **Postures** respectées (assis reste assis), décor cohérent dans une scène, décors sans figurants, bouches ouvertes sans que les yeux bougent.
 
+## Où on en est (22/10/2026)
+- Ép. 18 « L'avis » corrigé et monté à la main par Claude (exception demandée par Issa) ; corrections transformées en règles : contours blancs (`render.sans_frange`), objet non demandé −16, pas de geste « gifle » sans demande (étiquette `gifle`), arrivées jamais montrées avant (`Stage.ici`), gros plan muet = émotion de la réplique suivante, émotion sans image → visage calme + `manques.json` (+ fiche Gemini), `bouche_fixe`, `bouche_perso`, RUE : `rangs_decor`, debout ≠ banc / course.
+- Relecteur automatique après chaque aperçu (`relecture.yml`, `.github/scripts/relecture.py`, `docs/RELECTEUR.md`) : histoire (Groq puis Gemini) + images (Gemini) → `relecture.json` + panneau « 🔎 Relecture » de la page (v22).
+- Technicien (`technicien.yml`, onglet 🛠) + carnet partagé `technicien/carnet.md` ; oreille earshot (`ecoute`).
+- Vitesse : ffmpeg sans apt, analyse des objets gardée (aperçu 2 min), vidéo ~30 min. Page : vidéo téléchargée par morceaux de 2 Mo.
+- À faire par Issa : images Gemini de la fiche ép. 18 (Modibo inquiet / méfiant, Fatim contente, Awa méprisante…).
+
 ## Où on en est (21/10/2026)
 - Assistant complet ajouté (Groq + Gemini) : format, discussion avec actions, images Gemini, essais de code. Tests sur la demande n° 5.
 - Essai complet de la page (demande n° 9, comme sur le téléphone) : format → aperçu → planches (bouton « Envoyer ma réponse ») → discussion → corrections → aperçu → vidéo (19 min) → correction → vidéo (14 min : voix et morceaux de 12 s repris de la vidéo précédente). Bandeau « que faire maintenant » sur chaque épisode. Corrigé : les choix des planches n'étaient jamais enregistrés sur GitHub (pull --rebase sans autostash).
