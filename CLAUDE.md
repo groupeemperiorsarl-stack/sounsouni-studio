@@ -50,6 +50,10 @@
 - À la fin de chaque vidéo (`__main__.versions` → `studio/publication.py`) : `_youtube` (complet), `_tiktok` (3:00, bandeau 2:50), `_shorts` (2:58, bandeau 2:50), `_facebook` (1:00, bandeau 0:50). Bandeau YouTube + voix off `studio/assets/publication/voix_youtube.wav` (voix VOIX_OFF de la série, 4,2 s). Publiées dans la *release* ; boutons de téléchargement dans la page. `STUDIO_SANS_VERSIONS=1` pour s'en passer. Guide §11.
 - Scripts du paquet : ép. 15–17 déjà plus à jour dans `exemples/` (gardés) ; ép. 18 « L'avis » ajouté (`exemples/episode18_l_avis.txt`, à passer par l'assistant avant fabrication).
 
+## Place sur GitHub (ménage automatique, demandé par Issa)
+- `.github/workflows/menage.yml` (chaque nuit + après chaque épisode) → `.github/scripts/menage.py` : si les releases dépassent **60 % de 5 Go**, les plus anciennes sont supprimées ; jamais la dernière vidéo d'un épisode modifié depuis moins de 30 jours ni la toute dernière fabrication ; aperçus de plus de 14 jours supprimés. Essai sans rien supprimer : lancer avec `essai=1`.
+- Mini-vidéos : retirées du dépôt dès que la planche est faite (`video.yml`). Dépôt (poses + historique) : 0,38 Go le 22/10/2026 ; au-delà de 3 Go, le script prévient.
+
 ## Règles de mise en scène validées par Issa (ne pas casser)
 - **Regard** : le sens des yeux et de la tête est réglé sur le « test B » (`director.orient`, `sd = d if flip else -d`). En plan large, on regarde l'autre, y compris en haut / en bas (assis / debout).
 - **Champ / contre-champ** (« test E ») : dès que deux personnes se parlent, la caméra est derrière l'épaule de celui qui écoute ; on garde l'image d'origine, retournée seulement si besoin. Pas d'image de dos → silhouette floue aux couleurs du personnage.
