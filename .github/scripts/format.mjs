@@ -6,7 +6,7 @@ import fs from 'fs';
 const { ISSUE, REPO, GH_TOKEN, AUTO } = process.env;
 const html = fs.readFileSync('outils/studio_mobile.html', 'utf8');
 const code = [...html.matchAll(/\/\/ <<format[^\n]*\n([\s\S]*?)\/\/ format>>/g)].map(m => m[1]).join('\n');
-const F = new Function(code + '\nreturn {preBrut,parties,avant,nettoyer,apres,controle};')();
+const F = new Function(code + '\nreturn {preBrut,parties,avant,nettoyer,apres,controle,dejaFormat,regles_seules};')();
 const dodo = ms => new Promise(r => setTimeout(r, ms));
 const gh = async (chemin, o = {}) => {
   const r = await fetch('https://api.github.com/repos/' + REPO + chemin, { ...o, headers: { Authorization: 'Bearer ' + GH_TOKEN, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' } });
@@ -59,13 +59,13 @@ try {
   const m = (issue.body || '').match(/```(?:text)?\n([\s\S]*?)\n```/);
   const brut = (m ? m[1] : issue.body || '').trim();
   const sys = fs.readFileSync('docs/ASSISTANT.md', 'utf8');
-  const ps = F.parties(F.preBrut(brut)), res = []; let qui = '';
+  const ps = F.dejaFormat(brut) ? [] : F.parties(F.preBrut(brut)), res = []; let qui = F.dejaFormat(brut) ? 'les règles du studio (script déjà au format, sans IA)' : '';
   for (let i = 0; i < ps.length; i++) {
     log('partie ' + (i + 1) + ' sur ' + ps.length);
     const consigne = 'Partie ' + (i + 1) + ' sur ' + ps.length + ' du script validé. ' + (i === 0 ? '' : 'N\'écris ni TITRE ni lignes NOUVEAU… (déjà faits). ') + (i === ps.length - 1 ? 'C\'est la dernière partie : termine par la FIN.' : 'Ce n\'est pas la dernière partie : n\'écris PAS la FIN.') + ' Mets-la au format exact.\n\n' + ps[i];
     const r = await ia([{ role: 'system', content: sys }, { role: 'user', content: consigne }]); res.push(r.t); qui = qui && qui !== r.n ? qui + ' + ' + r.n : r.n;
   }
-  const c = F.nettoyer(F.avant(res.join('\n\n'))); c.s = F.apres(c.s, brut, c.al);
+  const c = ps.length ? F.nettoyer(F.avant(res.join('\n\n'))) : F.regles_seules(brut); if (ps.length) c.s = F.apres(c.s, brut, c.al);
   let s = c.s; const titre = (s.match(/^TITRE:\s*(.*)$/m) || [, ''])[1];
   if (!titre) s = 'TITRE: ' + issue.title.replace(/^Épisode\s*:\s*/, '') + '\n\n' + s;
   const k = F.controle(s, c.al);

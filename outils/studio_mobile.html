@@ -239,6 +239,9 @@ async function ia(messages,prog){const P=[['Groq','https://api.groq.com/openai/v
   if(K.gem){try{prog((err?err+' — ':'')+'Gemini prend le relais…');const t=await gem(messages.filter(x=>x.role==='system').map(x=>x.content).join('\n'),[{text:messages.filter(x=>x.role!=='system').map(x=>x.content).join('\n\n')}],prog,false);if(t)return{t,n:'Gemini'}}catch(e){err+=(err?' · ':'')+e.message}}
   throw new Error(err||'aucune IA disponible')}
 // <<format
+// script déjà écrit au format du studio (DÉCOR, en-têtes « NOM (émotion · regarde: …) ») : pas besoin d'IA, les règles suffisent (quelques secondes)
+function dejaFormat(b){return /^\s*(DÉCOR|DECOR)\s*:/m.test(b)&&b.split('\n').filter(l=>TETE.test(l.trim())).length>=3}
+function regles_seules(b){const c=nettoyer(avant(preBrut(b)));c.s=apres(c.s,b,c.al);return c}
 function parties(brut){const L=brut.replace(/\r/g,'').split('\n'),out=[];let cur=[];
   for(const l of L){if(/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(l)&&cur.join('').trim()&&cur.some(x=>/^\s*(DÉCOR|DECOR)\b|^\s*sc[eè]ne\s*\d+/i.test(x))){out.push(cur.join('\n'));cur=[]}cur.push(l)}
   if(cur.join('').trim())out.push(cur.join('\n'));
@@ -315,6 +318,7 @@ function verifier(){const t=$('#a-out').value,c=controle(t,window.ALIA);
   const tt=t.match(/TITRE:\s*(.*)/);if(tt&&!$('#a-titre').value)$('#a-titre').value=tt[1].split(/[–-]/).slice(1).join('–').trim()||tt[1]}
 $('#a-fichier').onchange=e=>{const f=e.target.files[0];if(f)f.text().then(t=>$('#a-brut').value=t)};
 $('#a-go').onclick=async()=>{const brut=$('#a-brut').value;if(!brut.trim())return;const pr=t=>$('#a-prog').innerHTML='<p class="msg">'+esc(t)+'</p>';$('#a-go').disabled=true;
+  if(dejaFormat(brut)){const c=regles_seules(brut);window.ALIA=c.al;$('#a-out').value=c.s;$('#a-res').hidden=false;$('#a-ok').checked=false;bascule();verifier();pr('✅ Ce script est déjà au format du studio : corrigé en quelques secondes avec les règles, sans IA. Relisez-le ci-dessous.');$('#a-go').disabled=false;return}
   try{const sys=await regles(),ps=parties(preBrut(brut)),res=[];let qui='';
     for(let i=0;i<ps.length;i++){pr('Partie '+(i+1)+' sur '+ps.length+'…');
       const consigne='Partie '+(i+1)+' sur '+ps.length+' du script validé. '+(i===0?'':'N\'écris ni TITRE ni lignes NOUVEAU… (déjà faits). ')+(i===ps.length-1?'C\'est la dernière partie : termine par la FIN.':'Ce n\'est pas la dernière partie : n\'écris PAS la FIN.')+' Mets-la au format exact.\n\n'+ps[i];
@@ -322,6 +326,7 @@ $('#a-go').onclick=async()=>{const brut=$('#a-brut').value;if(!brut.trim())retur
     const c=nettoyer(avant(res.join('\n\n')));c.s=apres(c.s,brut,c.al);window.ALIA=c.al;$('#a-out').value=c.s;$('#a-res').hidden=false;$('#a-ok').checked=false;bascule();verifier();pr('✅ Fait par '+qui+'. Relisez le script ci-dessous.')}
   catch(e){pr('❌ '+e.message)}$('#a-go').disabled=false};
 $('#a-gh').onclick=async()=>{const brut=$('#a-brut').value.trim(),m=$('#a-ghmsg');if(!brut){m.innerHTML='<p class="msg">Collez d\'abord le script.</p>';return}
+  if(dejaFormat(brut)){m.innerHTML='';$('#a-go').click();return}   // déjà au format : fait tout de suite ici, pas besoin de GitHub
   const tt=(brut.match(/^TITRE:\s*(.*)$/m)||[,''])[1].replace(/^Les Plans de Bakary\s*[–-]\s*/,''),titre=$('#a-gtitre').value.trim()||tt||'nouvel épisode';$('#a-gh').disabled=true;
   try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+titre,labels:['episode'],body:"### Que faire ?\n\nMise au format par l'assistant"+($('#a-auto').checked?' puis aperçu':'')+"\n\n### Script de l'épisode\n\n```text\n"+brut+"\n```\n"})});
     m.innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. GitHub met le script au format (5 à 10 min) : vous pouvez fermer la page. Le résultat arrivera dans « 📋 Épisodes ».</p>';$('#a-brut').value=''}
