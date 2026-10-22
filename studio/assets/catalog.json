@@ -5570,6 +5570,24 @@
    "description": "Bakary sourit de nouveau en consultant son téléphone.",
    "yaw": 0,
    "mouth_auto": true
+  },
+  "obj_billet_2000": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "billet",
+    "argent",
+    "deux_mille",
+    "2000"
+   ],
+   "mouth": false,
+   "size": [
+    1514,
+    2311
+   ],
+   "props": [],
+   "genere": "code"
   }
  },
  "decors": {

@@ -1,7 +1,7 @@
 """Rendu image par image des plans, en parallèle, puis assemblage avec le son."""
 import os, math, json, subprocess, re
 from functools import lru_cache
-import numpy as np, soundfile as sf
+import numpy as np, soundfile as sf, cv2
 from PIL import Image, ImageDraw, ImageFilter
 import gfx
 from gfx import W, H, FPS, paste, sticker, prog, eo, lerp
@@ -41,8 +41,21 @@ def pose_img(key, h, opened=False, flip=False):
     if '@' not in key:
         p = f'{A}/poses/{key}{"_o" if opened else ""}.webp'
         if not os.path.exists(p): p = f'{A}/poses/{key}.webp'
-    im = Image.open(p).convert('RGBA'); im = im.resize((max(1, int(im.width * h / im.height)), h), Image.LANCZOS)
+    im = sans_frange(Image.open(p).convert('RGBA')); im = im.resize((max(1, int(im.width * h / im.height)), h), Image.LANCZOS)
     return im.transpose(Image.FLIP_LEFT_RIGHT) if flip else im
+def sans_frange(im, px=2):
+    """Règle d'Issa (22/10/2026) : jamais de contour blanc autour d'un personnage. Le bord du détourage garde souvent une fine ligne
+    du fond clair d'origine : on rentre le bord de 2 pixels, on recolore la bordure avec les couleurs du personnage juste à côté,
+    et on adoucit le bord (pas de marches)."""
+    if os.environ.get('STUDIO_SANS_DEFRANGE'): return im
+    a = np.array(im); al = a[..., 3]; plein = (al > 40).astype(np.uint8)
+    if plein.mean() > 0.97: return im   # objet ou image sans détourage
+    coeur = cv2.erode(plein, np.ones((3, 3), np.uint8), iterations=px)
+    bord = ((plein > 0) & (coeur == 0)).astype(np.uint8)
+    rgb = cv2.inpaint(np.ascontiguousarray(a[..., :3]), cv2.dilate(bord, np.ones((3, 3), np.uint8)) & plein, 3, cv2.INPAINT_TELEA)
+    doux = cv2.GaussianBlur(coeur.astype(np.float32), (0, 0), 0.9) * 255
+    a2 = np.dstack([rgb, np.minimum(al.astype(np.float32), doux).clip(0, 255).astype(np.uint8)])
+    return Image.fromarray(a2, 'RGBA')
 @lru_cache(64)
 def envelope(wav):
     y, sr = sf.read(wav); y = y if y.ndim == 1 else y.mean(1); hop = sr // FPS
