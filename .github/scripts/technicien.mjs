@@ -313,7 +313,7 @@ async function principal() {
       etapes.push(quoi + (detail ? ' (' + String(detail).slice(0, 60) + ')' : '')); await maj(); log('outil ' + nom + ' ' + JSON.stringify(args).slice(0, 200));
       let res; try { res = FAIRE[nom] ? await FAIRE[nom](args) : 'outil inconnu : ' + nom; } catch (e) { res = 'ERREUR : ' + e.message; }
       res = court(res, 9000); log('  → ' + res.slice(0, 160).replace(/\n/g, ' ¶ '));
-      etapes[etapes.length - 1] += ' — ' + res.split('\n')[0].slice(0, 90);
+      if (/^(ERREUR|fichier introuvable|fichier interdit|texte)/.test(res)) etapes[etapes.length - 1] += ' — ❌ ' + res.split('\n')[0].slice(0, 90);   // pour Issa : seulement ce qui a raté, sans le détail technique
       msgs.push({ role: 'tool', tool_call_id: t.id, name: nom, content: res });
     }
     // garder la conversation légère : les vieux résultats d'outils sont raccourcis
