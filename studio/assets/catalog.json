@@ -1517,7 +1517,8 @@
    "head_x": 0.485,
    "yaw": -1.7,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_debout": {
    "char": "DIASABI",
@@ -1534,7 +1535,8 @@
    "head_x": 0.502,
    "yaw": 1.2,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_gene": {
    "char": "DIASABI",
@@ -1552,7 +1554,8 @@
    "head_x": 0.535,
    "yaw": -10.8,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_main_coeur": {
    "char": "DIASABI",
@@ -1571,7 +1574,8 @@
    "head_x": 0.498,
    "yaw": 1.1,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_brochette": {
    "char": "DIASABI",
@@ -1595,7 +1599,8 @@
    ],
    "props_auto": {
     "brochette": 0.52
-   }
+   },
+   "mouth_auto": true
   },
   "dia_grill": {
    "char": "DIASABI",
@@ -1623,7 +1628,8 @@
     "louche": 0.27,
     "brochette": 0.33,
     "grill": 0.59
-   }
+   },
+   "mouth_auto": true
   },
   "dia_tombe": {
    "char": "DIASABI",
@@ -1662,7 +1668,8 @@
    "head_x": 0.5,
    "yaw": 1.5,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_bras": {
    "char": "DIASABI",
@@ -1680,7 +1687,8 @@
    "head_x": 0.5,
    "yaw": 1.5,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_brochettes": {
    "char": "DIASABI",
@@ -1703,7 +1711,8 @@
    ],
    "props_auto": {
     "brochette": 0.33
-   }
+   },
+   "mouth_auto": true
   },
   "dia_tel": {
    "char": "DIASABI",
@@ -1725,7 +1734,8 @@
    ],
    "props_auto": {
     "telephone": 0.77
-   }
+   },
+   "mouth_auto": true
   },
   "dia_court": {
    "char": "DIASABI",
@@ -1743,7 +1753,8 @@
    "head_x": 0.725,
    "yaw": -26.8,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_neutre": {
    "char": "DIASABI",
@@ -1761,7 +1772,8 @@
    "head_x": 0.497,
    "yaw": 0.1,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_tel_tend": {
    "char": "DIASABI",
@@ -1783,7 +1795,8 @@
    ],
    "props_auto": {
     "telephone": 0.82
-   }
+   },
+   "mouth_auto": true
   },
   "dia_doigt": {
    "char": "DIASABI",
@@ -1803,7 +1816,8 @@
    "head_x": 0.424,
    "yaw": 1.4,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_doigt2": {
    "char": "DIASABI",
@@ -1820,7 +1834,8 @@
    "head_x": 0.421,
    "yaw": 2.3,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_fatigue": {
    "char": "DIASABI",
@@ -1841,7 +1856,8 @@
    "head_x": 0.786,
    "yaw": -19.5,
    "props": [],
-   "props_auto": {}
+   "props_auto": {},
+   "mouth_auto": true
   },
   "dia_salue": {
    "char": "DIASABI",
@@ -1860,7 +1876,8 @@
    "head_x": 0.377,
    "yaw": -22.8,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "dia_mange": {
    "char": "DIASABI",
@@ -1883,7 +1900,8 @@
    ],
    "props_auto": {
     "gateau": 0.84
-   }
+   },
+   "mouth_auto": true
   },
   "fat_mains": {
    "char": "FATIM",
@@ -2625,7 +2643,8 @@
    "auto": true,
    "yaw": 0.5,
    "props_auto": {},
-   "props": []
+   "props": [],
+   "mouth_auto": true
   },
   "kar_sourire_auto": {
    "char": "KARIM",
