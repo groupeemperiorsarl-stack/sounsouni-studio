@@ -41,6 +41,14 @@ async function ia(messages) {   // Groq, puis Cerebras, OpenRouter, Gemini : com
   let err = '';
   for (const [n, u, k, m, x] of P) for (let essai = 0; essai < 8; essai++) {
     try {
+      if (k === 'local') {   // modèle libre sur la machine : réponse envoyée petit à petit (sinon Node coupe au bout de 5 min)
+        const r = await fetch(u, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: m, temperature: 0.2, stream: true, messages, ...x }) });
+        if (!r.ok) { err = n + ' : ' + r.status + ' ' + (await r.text()).slice(0, 160); break; }
+        let t = '', reste = ''; const dec = new TextDecoder();
+        for await (const bout of r.body) { reste += dec.decode(bout, { stream: true }); const L = reste.split('\n'); reste = L.pop();
+          for (const l of L) { if (!l.startsWith('data:') || l.includes('[DONE]')) continue; try { t += JSON.parse(l.slice(5)).choices?.[0]?.delta?.content || ''; } catch (e) {} } }
+        if (t) return { t, n }; err = n + ' : réponse vide'; break;
+      }
       const r = await fetch(u, { method: 'POST', headers: { Authorization: 'Bearer ' + k, 'Content-Type': 'application/json' }, body: JSON.stringify({ model: m, temperature: 0.2, messages, ...x }) });
       if (r.status === 429) { const b = await r.text(); if (/per day|\bTPD\b|\bRPD\b/i.test(b)) { err = n + ' : quota du jour épuisé'; break; }
         const mm = b.match(/try again in\s*(?:(\d+)m)?\s*([\d.]+)s/i), w = Math.min(90, Math.ceil(mm ? (+(mm[1] || 0) * 60 + parseFloat(mm[2])) : 30) + 2);

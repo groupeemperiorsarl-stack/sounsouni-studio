@@ -37,8 +37,11 @@ jobs:
           S=$(find /mnt/m/llama -name llama-server -type f | head -1); chmod +x "$S"; export LD_LIBRARY_PATH=$(dirname "$S")
           "$S" -m /mnt/m/model.gguf -c 16384 -t $(nproc) --jinja --port 8080 > /mnt/m/serveur.log 2>&1 &
           for i in $(seq 1 120); do curl -s localhost:8080/health | grep -q ok && break; sleep 5; done
+          curl -s localhost:8080/health; echo
           LOCAL_LLM_URL=http://127.0.0.1:8080/v1/chat/completions LOCAL_LLM_EXTRA='${{ matrix.extra }}' SCRIPT_FILE="${{ github.event.inputs.script }}" node .github/scripts/format.mjs
-          grep -E "eval time|prompt eval" /mnt/m/serveur.log | tail -4 || true
+      - name: Journal du moteur
+        if: always()
+        run: grep -E "eval time|prompt eval|error|failed|loaded" /mnt/m/serveur.log | tail -12 || tail -30 /mnt/m/serveur.log
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: "format_${{ matrix.nom }}", path: script_au_format.txt, if-no-files-found: ignore }
