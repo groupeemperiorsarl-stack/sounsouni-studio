@@ -69,8 +69,13 @@ def main():
     sys_txt = lu('docs/RELECTEUR.md') + '\n\n## CONSIGNES DE L\'ASSISTANT (les actions possibles)\n' + lu('docs/ASSISTANT_ACTIONS.md') + '\n\n## CARNET DU STUDIO\n' + lu('technicien/carnet.md')
     ctx = ('## SCRIPT\n' + scr + '\n\n## PLANS MINUTÉS\n' + '\n'.join(lignes) + '\n\n## CHOIX DÉJÀ FAITS\n' + (lu(cpath) or '{}') + '\n\n## ÉMOTIONS SANS IMAGE (visage calme mis à la place)\n' + (mq.decode() if mq else '[]') +
            '\n\n## POSES DISPONIBLES PAR PERSONNAGE (clé (posture : étiquettes))\n' + '\n'.join(c + ' : ' + ' | '.join(v) for c, v in poses.items()) + '\n\n## IMAGES DE L\'APERÇU : les bandes suivent, dans l\'ordre des plans (numéro sous chaque vignette).')
+    # deux passes, comme un vrai relecteur : d'abord l'histoire seule (le script, lu comme un spectateur), puis les images plan par plan
+    mA, resA = gemini(sys_txt + "\n\n## CETTE PASSE : SEULEMENT LA PARTIE A (L'HISTOIRE)\nLis le script ligne par ligne comme un spectateur qui découvre l'épisode. Cherche surtout : contradictions, personnes présentes qui ne devraient pas l'être (ou absentes), phrases adressées à quelqu'un écrites en PENSÉE ou mélangées à un monologue, entrées sans salutation, décor illogique pour l'histoire, objets importants jamais montrés, émotions qui ne vont pas avec la situation. Corrections par actions « script ». Pas de problème d'image dans cette passe.",
+                      [{'text': '## SCRIPT\n' + scr + '\n\n## PLANS MINUTÉS (pour donner le moment de chaque problème)\n' + '\n'.join(lignes)}])
     parts = [{'text': ctx}] + [{'inline_data': {'mime_type': 'image/jpeg', 'data': b}} for b in bandes(png)]
-    m, res = gemini(sys_txt, parts)
+    mB, resB = gemini(sys_txt + "\n\n## CETTE PASSE : SEULEMENT LA PARTIE B (LES IMAGES)\nL'histoire a déjà été relue. Regarde chaque vignette et les étiquettes des poses : décor, pieds au sol, personnes en trop, gestes, objets en trop, visage contraire à l'émotion, images manquantes. Corrections par actions de plan (pose, acteur, plan, fiche).", parts)
+    m = mA if mA == mB else mA + ' + ' + mB
+    res = {'resume': (resA.get('resume', '') + ' ' + resB.get('resume', '')).strip(), 'problemes': (resA.get('problemes', []) + resB.get('problemes', []))[:20]}
     # contrôle des actions : poses existantes et du bon personnage, numéros de plan possibles, jamais de pose « gifle »
     nplans = len(plans)
     for pb in res.get('problemes', []):
@@ -86,7 +91,7 @@ def main():
     res['modele'] = m; res['date'] = time.strftime('%Y-%m-%d %H:%M')
     json.dump(res, open('relecture.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     P = res.get('problemes', [])
-    msg = f"🔎 **Relecture automatique** : {len(P)} problème(s) trouvé(s). {res.get('resume', '')}\n\n" + '\n'.join(f"- {'🔴' if p.get('gravite') == 'fort' else '🟠' if p.get('gravite') == 'moyen' else '🟡'} {(p.get('moment') or '') + ' · ' if p.get('moment') else ''}{p.get('quoi', '')}" for p in P[:15]) + \
+    msg = f"🔎 **Relecture automatique** : {len(P)} problème(s) trouvé(s). {res.get('resume', '')}\n\n" + '\n'.join(f"- {'🔴' if p.get('gravite') == 'fort' else '🟠' if p.get('gravite') == 'moyen' else '🟡'} {(p.get('moment') or '') + ' · ' if p.get('moment') else ''}{p.get('quoi', '')}" for p in P[:20]) + \
           ("\n\nDans la page : « 🔎 Relecture » → cochez les corrections → « ✅ Appliquer », puis relancez l'aperçu." if P else '')
     print(msg)
     if N and '--local' not in sys.argv:
