@@ -12,7 +12,7 @@ jobs:
       matrix:
         include:
           - nom: gpt-oss-20b
-            url: https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-mxfp4.gguf
+            url: https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-MXFP4.gguf
             extra: '{"chat_template_kwargs":{"reasoning_effort":"low"}}'
           - nom: qwen3-8b
             url: https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/Qwen3-8B-Q4_K_M.gguf
@@ -25,8 +25,10 @@ jobs:
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           set -e; T0=$(date +%s); sudo mkdir -p /mnt/m && sudo chown $USER /mnt/m; df -h /mnt | tail -1; nproc; free -g | head -2
-          gh release download -R ggml-org/llama.cpp -p '*bin-ubuntu-x64.zip' -D /mnt/m && unzip -q /mnt/m/*.zip -d /mnt/m/llama
-          curl -sL -o /mnt/m/model.gguf "${{ matrix.url }}"; ls -la /mnt/m/model.gguf
+          A=$(gh release view -R ggml-org/llama.cpp --json assets -q '.assets[].name' | grep -E 'bin-ubuntu-x64\.(zip|tar\.gz)$' | head -1); echo "moteur : $A"
+          gh release download -R ggml-org/llama.cpp -p "$A" -D /mnt/m
+          mkdir -p /mnt/m/llama; case "$A" in *.zip) unzip -q "/mnt/m/$A" -d /mnt/m/llama;; *) tar -xzf "/mnt/m/$A" -C /mnt/m/llama;; esac
+          curl -sfL -o /mnt/m/model.gguf "${{ matrix.url }}"; ls -la /mnt/m/model.gguf
           echo "préparation : $(( $(date +%s)-T0 )) s"
       - name: Mise au format chronométrée
         run: |
