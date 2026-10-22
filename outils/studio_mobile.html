@@ -201,7 +201,9 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
     if(L)z.querySelector('.pub').innerHTML='<p class="muted" style="margin:8px 0 4px">Versions à publier (bandeau « chaîne YouTube » inclus) :</p><div class="row">'+L+'</div>'}).catch(()=>{});
   z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';
     if(f.endsWith('.mp4')){   // la vidéo est lue en continu (elle démarre tout de suite, même avec une connexion faible) ; en secours, elle est téléchargée en entier
-      const raw='https://raw.githubusercontent.com/'+R+'/fichiers/'+n+'/'+f+'?v='+Date.now();
+      let raw='https://raw.githubusercontent.com/'+R+'/fichiers/'+n+'/'+f+'?v='+Date.now();
+      try{const rs=await api('/repos/'+R+'/releases?per_page=30'),r=rs.filter(x=>x.tag_name.startsWith('episode-'+n+'-')).sort((x,y)=>new Date(y.created_at)-new Date(x.created_at))[0],a=r&&r.assets.find(x=>x.name.endsWith('_leger.mp4'));
+        if(a)raw=a.browser_download_url}catch(e){}   // même serveur rapide que les boutons ⬇ YouTube / TikTok : lecture et enregistrement directs
       v.innerHTML='<video controls playsinline preload="metadata" src="'+raw+'"></video><p class="muted vt"></p><div class="row"><a class="btn sec" download="episode_'+n+'.mp4" href="'+raw+'">⬇ Enregistrer la vidéo</a></div>';
       const ve=v.querySelector('video'),vt=v.querySelector('.vt');let essai=0;
       ve.onerror=async()=>{if(essai++)return;vt.textContent='Lecture directe impossible : je télécharge la vidéo (environ 30 Mo, patientez)…';
