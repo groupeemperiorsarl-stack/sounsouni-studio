@@ -148,6 +148,11 @@ jobs:
           pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q numpy pillow soundfile librosa faster-whisper opencv-python-headless transformers scipy
           bash studio/lp/install.sh
       - run: python -m studio "$SCRIPT" -o sortie --etape plans
+      - name: Garder l'analyse des objets des nouvelles poses (sinon refaite à chaque vidéo, 15 min perdues)
+        run: |
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git diff --quiet studio/assets/catalog.json && exit 0
+          git add studio/assets/catalog.json && git commit -qm "Objets reconnus sur les nouvelles poses (gardés pour les prochaines vidéos)" && git pull -q --rebase --autostash && git push -q || echo "::warning::analyse des objets non gardée"
       - uses: actions/upload-artifact@v4
         with: { name: travail, path: "sortie/travail" }
       - uses: actions/upload-artifact@v4
