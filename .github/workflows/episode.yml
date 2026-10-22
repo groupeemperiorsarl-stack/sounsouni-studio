@@ -21,7 +21,7 @@ on:
       fin:
         description: "fin (ex. 1:45)"
         default: ""
-permissions: { contents: write, issues: write }
+permissions: { contents: write, issues: write, actions: write }
 env:
   SCRIPT: ${{ github.event.inputs.script }}
   ISSUE: ${{ github.event.inputs.issue }}
@@ -88,7 +88,9 @@ jobs:
           if [ -n "$ISSUE" ]; then gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$MSG" > /dev/null; else echo "$MSG"; fi
       - name: Fichiers pour la page Studio mobile
         if: always() && github.event.inputs.issue != ''
-        run: bash .github/scripts/fichiers.sh "$ISSUE" sortie/apercu_plans.png sortie/plans_resume.json sortie/planches/* || true
+        run: |
+          bash .github/scripts/fichiers.sh "$ISSUE" sortie/apercu_plans.png sortie/plans_resume.json sortie/manques.json sortie/planches/* || true
+          [ -f sortie/apercu_plans.png ] && gh workflow run relecture.yml -f issue="$ISSUE" || true   # le relecteur passe tout seul après chaque aperçu
   voix:
     if: github.event.inputs.apercu != 'true'
     runs-on: ubuntu-latest

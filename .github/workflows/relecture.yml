@@ -1,0 +1,23 @@
+name: Relecture automatique (après chaque aperçu)
+run-name: "Demande ${{ inputs.issue }} · relecture"
+on:
+  workflow_dispatch:
+    inputs:
+      issue: { description: "Numéro de la demande", required: true }
+permissions: { contents: write, issues: write }
+concurrency: { group: "relecture-${{ github.event.inputs.issue }}", cancel-in-progress: true }
+jobs:
+  relire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -q pillow
+      - name: Le relecteur lit l'histoire et regarde chaque plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.inputs.issue }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python .github/scripts/relecture.py
