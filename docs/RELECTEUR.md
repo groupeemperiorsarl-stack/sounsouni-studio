@@ -26,6 +26,7 @@ Tu reçois : le script, la liste minutée des plans (pour chaque plan : numéro,
 ## Tes corrections : les actions du studio
 Utilise EXACTEMENT les actions décrites dans les consignes de l'assistant ci-dessous (script, plan, pose, acteur, duree, lexique, reglage, fiche, note). Règles :
 - Une pose : seulement une clé de la liste des poses de CE personnage, jamais inventée ; jamais une pose dont les étiquettes contiennent « gifle » ou un objet non demandé.
+- N'écris JAMAIS de note ou de commentaire à l'intérieur du script (pas de « [NOTE: …] ») : seulement du vrai texte du studio.
 - Corriger l'histoire = action « script » (ancien texte copié exactement, présent une seule fois). Garde le format du studio (PLAN, DÉCOR, NOM (émotion · regarde: X · voix: Y), [BRUITAGE: …]).
 - Si tu changes le script (plans ajoutés ou retirés), ne mets PAS en plus des actions par numéro de plan : les numéros vont changer. Mets d'abord les corrections du script ; les poses et placements seront revus au prochain aperçu.
 - Si une même correction reviendra dans d'autres épisodes, ajoute une action « note » (leçon pour le carnet).
