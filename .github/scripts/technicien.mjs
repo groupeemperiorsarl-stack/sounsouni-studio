@@ -205,6 +205,8 @@ async function essayerCode({ changements, explication, episode }) {
     sh('git', ['-C', D, 'add', '-A']); sh('git', ['-C', D, '-c', 'user.name=technicien', '-c', 'user.email=studio@sounsouni.pro', 'commit', '-qm', 'Technicien : ' + String(explication || 'modification').slice(0, 200)]);
     sh('git', ['-C', D, 'push', '-q', 'origin', br]);
   } finally { try { sh('git', ['worktree', 'remove', '--force', D]); } catch (e) {} }
+  if (changements.every(c => /^(demandes|technicien|docs)\//.test(c.fichier)))   // fichiers de données ou de texte : déjà vérifiés ci-dessus, pas besoin de fabriquer un essai
+    return 'Modification mise sur la copie « ' + br + ' » et vérifiée (fichier bien écrit). Pas besoin d\'essai de fabrication pour ce type de fichier. Appelle proposer(action="fusionner", cible="' + br + '") et demande l\'accord d\'Issa ; après son accord, relance ce qui avait raté et vérifie le résultat.';
   const t1 = new Date(Date.now() - 5000).toISOString();
   const scr = episode && fs.existsSync(String(episode)) ? episode : (episode && /^\d+$/.test(String(episode)) ? 'demandes/episode_' + episode + '.txt' : 'exemples/episode18_l_avis.txt');
   await gh('/actions/workflows/essai-code.yml/dispatches', { method: 'POST', body: JSON.stringify({ ref: 'main', inputs: { issue: String(ISSUE), branche: br, script: scr } }) });
@@ -227,7 +229,7 @@ async function fusionner({ branche }) {
   if (!accorde('fusionner', branche)) return 'Il faut l\'accord d\'Issa : appelle proposer(action="fusionner", cible="' + branche + '"), puis termine en lui posant la question.';
   await gh('/merges', { method: 'POST', body: JSON.stringify({ base: 'main', head: branche, commit_message: 'Modification du technicien acceptée par Issa (' + branche + ')' }) });
   await gh('/git/refs/heads/' + branche, { method: 'DELETE' }).catch(() => {});
-  attente = null; return 'modification ' + branche + ' entrée dans le studio. Les prochaines fabrications l\'utiliseront.';
+  attente = null; return 'modification ' + branche + ' entrée dans le studio. Maintenant relance ce qui avait raté (outil lancer) et vérifie le résultat avec attendre avant de dire à Issa que c\'est réparé.';
 }
 let proposition = null;
 function proposer({ action, cible, explication }) { proposition = { action, cible: String(cible), explication: explication || '' }; return 'Proposition enregistrée. Termine maintenant ta réponse en demandant à Issa s\'il est d\'accord (il répondra « oui » ou « non »).'; }

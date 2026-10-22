@@ -542,7 +542,7 @@ async function techCharger(){if(!TOK){$('#t-chat').innerHTML='<p class="muted">A
     const last=C[C.length-1],travaille=last&&(last.user.type!=='Bot'&&!/^\s*(👍|👎)\s*$/u.test(last.body)||/tech:encours/.test(last.body)),acc=$('#t-acc');acc.innerHTML='';
     if(travaille)acc.innerHTML='<p class="msg">⏳ Le technicien travaille (la page se met à jour toute seule ; vous pouvez la fermer).</p>';
     else{const fin=[...C].reverse().find(c=>c.user.type==='Bot'&&/tech:fin/.test(c.body));
-      if(fin&&fin===last){if(/tech:attente/.test(fin.body))acc.innerHTML='<div class="row"><button id="t-oui">✅ Oui, vas-y</button><button class="sec" id="t-non">✋ Non</button></div>';
+      if(fin&&!C.some(c=>c.user.type!=='Bot'&&new Date(c.created_at)>new Date(fin.created_at))){if(/tech:attente/.test(fin.body))acc.innerHTML='<div class="row"><button id="t-oui">✅ Oui, vas-y</button><button class="sec" id="t-non">✋ Non</button></div>';
         acc.innerHTML+='<div class="row"><button class="sec" id="t-up">👍 Bonne réponse</button><button class="sec" id="t-down">👎 Pas bien</button></div><p class="muted">Votre avis aide le studio à choisir la meilleure IA pour le technicien.</p>';
         const b=(s,t)=>{const e=$(s);if(e)e.onclick=()=>techEnvoyer(t)};b('#t-oui','Oui, vas-y.');b('#t-non','Non, ne le fais pas.');b('#t-up','👍');b('#t-down','👎')}}
     $('#t-chat').scrollTop=1e9;clearTimeout(tMinuteur);if(travaille&&!$('#v-tech').hidden)tMinuteur=setTimeout(techCharger,10000)
