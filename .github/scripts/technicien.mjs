@@ -87,7 +87,10 @@ async function penser(msgs, outils) {   // un tour de l'IA ; en cas de panne on 
       if (r.status === 429) { const b = await r.text(); err = p.nom + ' : 429 ' + b.slice(0, 120); if (/exceeded your current quota/i.test(b)) { p.epuise = true; } const mm = b.match(/try again in\s*(?:(\d+)m)?\s*([\d.]+)s/i);
         if (mm && !/per day|TPD|RPD/i.test(b) && +(mm[1] || 0) < 2) { const w = Math.ceil(+(mm[1] || 0) * 60 + parseFloat(mm[2])) + 2; log(p.nom + ' attend ' + w + ' s'); await dodo(w * 1000); k--; continue; }
         log(err); continue; }
-      if (!r.ok) { err = p.nom + ' : ' + r.status + ' ' + (await r.text()).slice(0, 200); log(err); continue; }
+      if (!r.ok) { const b = await r.text(); err = p.nom + ' : ' + r.status + ' ' + b.slice(0, 200); log(err);
+        if (r.status === 400 && /tool_use_failed|not in request\.tools/.test(b) && (p.rateOutil = (p.rateOutil || 0) + 1) <= 3) {   // l'IA a mal écrit le nom d'un outil : on lui redonne la liste exacte et elle recommence
+          msgs.push({ role: 'user', content: '(Message du studio : ce nom d\'outil n\'existe pas. Utilise EXACTEMENT un de ces noms : ' + (outils || []).map(o => o.function.name).join(', ') + '.)' }); k--; continue; }
+        continue; }
       const d = await r.json(), m = d.choices?.[0]?.message;
       if (!m || (!m.content && !(m.tool_calls || []).length)) { err = p.nom + ' : réponse vide'; log(err); continue; }
       if (actuel !== (actuel + k) % FOURN.length) log('→ ' + p.nom + ' prend le relais');
