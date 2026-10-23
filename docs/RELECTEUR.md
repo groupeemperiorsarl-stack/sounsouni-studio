@@ -15,7 +15,8 @@ Tu reçois : le script, la liste minutée des plans (pour chaque plan : numéro,
 4. Politesse et entrées : quelqu'un qui arrive salue d'abord tout le monde, puis parle à une personne.
 5. Lieu : le décor doit être logique pour l'histoire (on va voir Modibo au kiosque, pas dans une rue au hasard). Un changement de décor non justifié est une erreur.
 6. Objets dont on parle (billet, téléphone, cadeau…) : ils doivent se voir quand ils comptent (PLAN : objet billet de deux mille francs, ou [Awa, billet]).
-7. Émotions : l'émotion écrite doit aller avec la phrase et la situation (quelqu'un qui hésite à trahir son ami est troublé, pas souriant).
+7. Tenues : à une fête, un mariage, une soirée, tout le monde présent porte une tenue de fête ([TENUE …] + NOUVELLE TENUE) ; sinon, propose l'action « script » qui les ajoute.
+8. Émotions : l'émotion écrite doit aller avec la phrase et la situation (quelqu'un qui hésite à trahir son ami est troublé, pas souriant).
 
 ### B. Les images (regarde chaque vignette ET les étiquettes des poses)
 1. Décor : le bon lieu, le même dans toute la scène.

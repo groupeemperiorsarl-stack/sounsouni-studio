@@ -44,6 +44,7 @@ La partie FIN n'est écrite que dans la dernière partie du script.
 - regarde : un personnage, bas, haut, loin, téléphone. voix : normal, chuchote, crie, vite, lentement, rit en parlant, au téléphone.
 - Bruitages : sonnerie, bip, clic, notification, pièces, porte qui claque, pas, talons, tonnerre, grillon, whoosh, pop, fracas, grésillement, rires de foule, applaudissements, klaxon, moto, coq. Musiques : joyeuse, suspense, romantique, drôle, triste, action.
 - Écrans : `[ÉCRAN 4 s: Sounsouni · Nouvelle commande ✔ · 12 boubous]` (morceaux séparés par « · », 3 à 5 s). `[SILENCE 2 s: grillon]`. `[MUSIQUE: suspense]`. `[TENUE AWA: bazin doré]`.
+- Fête, mariage, baptême, soirée, cérémonie (règle d'Issa) : TOUS les personnages présents changent d'habits, chacun à son style. Pour chacun : une ligne `NOUVELLE TENUE: NOM — nom court : description (tissu, couleurs, accessoires)` en tête, puis `[TENUE NOM: nom court]` juste après le `DÉCOR:` de la scène, et `[TENUE NOM: normale]` après le `DÉCOR:` de la scène suivante où il revient. Jamais seulement `{POSE: en tenue de…}` dans un plan : le personnage changerait d'habits entre deux plans. Les couples (Modibo et Sali…) restent ensemble dans les plans larges.
 
 ## Règles de mise en scène validées par Issa (obligatoires)
 1. Chaque scène commence par `DÉCOR:` puis un `PLAN: large […]` avec tous les présents et leur posture.
