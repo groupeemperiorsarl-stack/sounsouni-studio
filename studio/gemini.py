@@ -359,8 +359,11 @@ def importer(pairs, out, log=print):
     for n, f in pairs.items():   # numéro de demande → image Gemini, découpée en autant de personnages que demandés
         g = gs.get(int(n))
         if not g: log(f'numéro {n} inconnu dans la fiche, ignoré'); continue
-        morceaux = decouper(Image.open(f), len(g['items']))
+        try: src = Image.open(f); src.load()
+        except Exception: log(f'⚠️ demande {n} : le fichier envoyé n\'est pas une image lisible ({os.path.basename(f)}), ignoré — renvoyez la vraie image Gemini'); continue
+        morceaux = decouper(src, len(g['items']))
         travail += list(zip([items[i] for i in g['items']], morceaux))
+    if not travail: raise SystemExit('Aucune image lisible : vérifiez le numéro de demande et renvoyez les images Gemini (fichiers .jpg ou .png).')
     for x, im in travail:
         if x['type'] == 'decor':
             im = im.convert('RGB'); s = max(1080 / im.width, 1920 / im.height, 1); im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS)
