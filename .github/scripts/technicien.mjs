@@ -56,6 +56,13 @@ async function fournisseurs() {
   const P = [];
   if (process.env.LOCAL_LLM_URL) P.push({ nom: 'Modèle libre gpt-oss-20b', url: process.env.LOCAL_LLM_URL, cle: 'local', modele: 'local', leger: true, local: true, x: { chat_template_kwargs: { reasoning_effort: 'low' } } });   // dernier secours sans clé, installé sur la machine
   const g = process.env.GEMINI_API_KEY; if (g) for (const m of await listeGemini(g)) P.push({ nom: 'Gemini ' + m, url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', cle: g, modele: m, gemini: true });
+  // IA gratuites en plus (Issa, 23/10/2026) : GitHub Models (sans clé : le jeton de la machine GitHub), Mistral, NVIDIA, Zhipu ; DeepSeek (payant, très bon marché) en dernier
+  const dispo = async (url, cle, voulus) => { try { const j = await (await fetch(url, { headers: { Authorization: 'Bearer ' + cle } })).json(); const ids = (Array.isArray(j) ? j : j.data || []).map(m => m.id || m.name); return voulus.filter(m => ids.includes(m)); } catch (e) { log('liste ' + url + ' : ' + e.message); return []; } };
+  if (process.env.GITHUB_MODELS_TOKEN) for (const m of await dispo('https://models.github.ai/catalog/models', process.env.GITHUB_MODELS_TOKEN, ['openai/gpt-4.1', 'openai/gpt-4.1-mini', 'deepseek/deepseek-v3-0324', 'openai/gpt-4o-mini', 'meta/llama-4-maverick-17b-128e-instruct-fp8']))
+    P.push({ nom: 'GitHub ' + m.split('/').pop(), url: 'https://models.github.ai/inference/chat/completions', cle: process.env.GITHUB_MODELS_TOKEN, modele: m, leger: true });
+  if (process.env.MISTRAL_API_KEY) for (const m of ['mistral-medium-latest', 'mistral-large-latest', 'mistral-small-latest']) P.push({ nom: 'Mistral ' + m.replace('-latest', ''), url: 'https://api.mistral.ai/v1/chat/completions', cle: process.env.MISTRAL_API_KEY, modele: m });
+  if (process.env.NVIDIA_API_KEY) for (const m of await dispo('https://integrate.api.nvidia.com/v1/models', process.env.NVIDIA_API_KEY, ['deepseek-ai/deepseek-v3.1', 'qwen/qwen3-235b-a22b', 'openai/gpt-oss-120b', 'meta/llama-3.3-70b-instruct']))
+    P.push({ nom: 'NVIDIA ' + m.split('/').pop(), url: 'https://integrate.api.nvidia.com/v1/chat/completions', cle: process.env.NVIDIA_API_KEY, modele: m });
   if (process.env.CEREBRAS_API_KEY) P.push({ nom: 'Cerebras gpt-oss-120b', url: 'https://api.cerebras.ai/v1/chat/completions', cle: process.env.CEREBRAS_API_KEY, modele: 'gpt-oss-120b', x: { reasoning_effort: 'medium' } });
   if (process.env.GROQ_API_KEY) {
     P.push({ nom: 'Groq gpt-oss-120b', url: 'https://api.groq.com/openai/v1/chat/completions', cle: process.env.GROQ_API_KEY, modele: 'openai/gpt-oss-120b', x: { reasoning_effort: 'medium' }, leger: true });
@@ -66,6 +73,8 @@ async function fournisseurs() {
     } catch (e) { log('liste Groq : ' + e.message); }
   }
   if (process.env.OPENROUTER_API_KEY) P.push({ nom: 'OpenRouter gpt-oss-120b', url: 'https://openrouter.ai/api/v1/chat/completions', cle: process.env.OPENROUTER_API_KEY, modele: 'openai/gpt-oss-120b:free' });
+  if (process.env.ZHIPU_API_KEY) P.push({ nom: 'Zhipu glm-4.5-flash', url: 'https://api.z.ai/api/paas/v4/chat/completions', cle: process.env.ZHIPU_API_KEY, modele: 'glm-4.5-flash' });
+  if (process.env.DEEPSEEK_API_KEY) P.push({ nom: 'DeepSeek (payant)', url: 'https://api.deepseek.com/chat/completions', cle: process.env.DEEPSEEK_API_KEY, modele: 'deepseek-chat' });
   // ordre selon l'usage : chaque modèle garde sa note (recherches réussies, 👍 / 👎 d'Issa) ; un modèle jamais essayé garde sa place d'origine
   const note = p => { const s = stats[p.nom]; if (!s) return null; return (s.reussies + 2 * s.pouces_haut + 1) / (s.sessions + 2 * (s.pouces_haut + s.pouces_bas) + 2); };
   return P.map((p, i) => ({ p, i, n: note(p) })).sort((a, b) => (a.n == null || b.n == null) ? a.i - b.i : (b.n - a.n) || (a.i - b.i)).map(x => x.p);

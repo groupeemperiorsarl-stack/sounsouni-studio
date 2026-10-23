@@ -6,7 +6,7 @@ on:
       issue: { description: "Numéro de la demande « 🛠 Technicien »", required: true }
       message: { description: "Numéro du message à traiter (vide = le dernier d'Issa)", default: "" }
       sans_cles: { description: "true = essai du dernier secours (comme si toutes les clés étaient épuisées)", default: "false" }
-permissions: { contents: write, issues: write, actions: write }
+permissions: { contents: write, issues: write, actions: write, models: read }
 concurrency: { group: technicien, cancel-in-progress: false }
 jobs:
   technicien:
@@ -39,6 +39,11 @@ jobs:
           GROQ_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.GROQ_API_KEY || '' }}
           CEREBRAS_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.CEREBRAS_API_KEY || '' }}
           OPENROUTER_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.OPENROUTER_API_KEY || '' }}
+          GITHUB_MODELS_TOKEN: ${{ github.event.inputs.sans_cles != 'true' && github.token || '' }}
+          MISTRAL_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.MISTRAL_API_KEY || '' }}
+          NVIDIA_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.NVIDIA_API_KEY || '' }}
+          ZHIPU_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.ZHIPU_API_KEY || '' }}
+          DEEPSEEK_API_KEY: ${{ github.event.inputs.sans_cles != 'true' && secrets.DEEPSEEK_API_KEY || '' }}
           SECOURS_LIBRE: "1"
         run: |
           git config user.name technicien; git config user.email studio@sounsouni.pro
