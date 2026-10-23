@@ -15,7 +15,7 @@ MODIBO (taquin · regarde: Bakary · voix: normal)
 PLAN: large [Bakary debout, Modibo sur le banc, Aminata debout]
 
 AMINATA (joyeux · regarde: tout le monde · voix: normal)
-Bonjour tout le monde ! Beignets tout chauds !
+Bonjour tout le monde ! Beignets bien chauds !
 
 PENSÉE MODIBO (amoureux · regarde: Aminata)
 Elle est encore plus belle que ses beignets…
