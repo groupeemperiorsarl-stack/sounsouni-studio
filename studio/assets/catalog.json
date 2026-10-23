@@ -5823,10 +5823,10 @@
    ],
    "mouth": false,
    "size": [
-    268,
+    760,
     1600
    ],
-   "head_x": 0.5,
+   "head_x": 0.547,
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout"
@@ -5840,10 +5840,10 @@
    ],
    "mouth": false,
    "size": [
-    245,
+    488,
     1600
    ],
-   "head_x": 0.622,
+   "head_x": 0.433,
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout"
@@ -5857,16 +5857,15 @@
     "a",
     "genoux"
    ],
-   "mouth": true,
+   "mouth": false,
    "size": [
-    233,
+    592,
     1600
    ],
-   "head_x": 0.285,
+   "head_x": 0.437,
    "props": [],
    "genere": "gemini",
-   "depart": "dia_neutre",
-   "mouth_auto": true
+   "depart": "dia_neutre"
   },
   "obj_land_cruiser_blanc": {
    "char": "OBJET",
@@ -5879,7 +5878,7 @@
    ],
    "mouth": false,
    "size": [
-    268,
+    2297,
     1600
    ],
    "props": [],
@@ -5895,7 +5894,7 @@
    ],
    "mouth": false,
    "size": [
-    801,
+    3139,
     1600
    ],
    "props": [],
@@ -5912,7 +5911,7 @@
    ],
    "mouth": false,
    "size": [
-    519,
+    2283,
     1600
    ],
    "props": [],
@@ -5925,16 +5924,15 @@
    "tags": [
     "mepris"
    ],
-   "mouth": true,
+   "mouth": false,
    "size": [
-    518,
+    475,
     1600
    ],
-   "head_x": 0.09,
+   "head_x": 0.44,
    "props": [],
    "genere": "gemini",
-   "depart": "awa_v_action_659144_01",
-   "mouth_auto": true
+   "depart": "awa_v_action_659144_01"
   },
   "mou_fier": {
    "char": "MOUSSA",
@@ -5943,16 +5941,15 @@
    "tags": [
     "fier"
    ],
-   "mouth": true,
+   "mouth": false,
    "size": [
-    798,
+    522,
     1600
    ],
-   "head_x": 0.287,
+   "head_x": 0.527,
    "props": [],
    "genere": "gemini",
-   "depart": "mou_content",
-   "mouth_auto": true
+   "depart": "mou_content"
   },
   "el_h_debout": {
    "char": "EL_HADJ",
@@ -6024,17 +6021,16 @@
     "turquoise",
     "debout"
    ],
-   "mouth": true,
+   "mouth": false,
    "size": [
-    5016,
+    455,
     1600
    ],
-   "head_x": 0.581,
+   "head_x": 0.454,
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "tenue": "tenue_de_soiree"
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement": {
    "char": "AWA",
@@ -6050,17 +6046,16 @@
     "marche",
     "lentement"
    ],
-   "mouth": true,
+   "mouth": false,
    "size": [
-    760,
+    979,
     1600
    ],
-   "head_x": 0.547,
+   "head_x": 0.649,
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "tenue": "tenue_de_soiree"
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_debout_le_bouquet_dans_les_mains": {
    "char": "AWA",
@@ -6079,17 +6074,16 @@
     "les",
     "mains"
    ],
-   "mouth": true,
+   "mouth": false,
    "size": [
-    488,
+    1036,
     1600
    ],
-   "head_x": 0.433,
+   "head_x": 0.498,
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "tenue": "tenue_de_soiree"
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_debout_jette_le_bouquet_par_dessus_son_epaule_sans_regarder": {
    "char": "AWA",
@@ -6114,10 +6108,10 @@
    ],
    "mouth": false,
    "size": [
-    2297,
+    911,
     1600
    ],
-   "head_x": 0.647,
+   "head_x": 0.525,
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
