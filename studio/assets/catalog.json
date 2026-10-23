@@ -5806,6 +5806,60 @@
    ],
    "props": [],
    "genere": "code"
+  },
+  "mod_assis_taquin": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "taquin",
+    "assis"
+   ],
+   "mouth": false,
+   "size": [
+    726,
+    1600
+   ],
+   "head_x": 0.72,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_rire"
+  },
+  "mod_assis_amoureux": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "amoureux",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    408,
+    1600
+   ],
+   "head_x": 0.624,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_rire",
+   "mouth_auto": true
+  },
+  "bak_content": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "content"
+   ],
+   "mouth": false,
+   "size": [
+    410,
+    1600
+   ],
+   "head_x": 0.251,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout"
   }
  },
  "decors": {
