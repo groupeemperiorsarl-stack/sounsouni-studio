@@ -1,0 +1,68 @@
+name: Technicien de garde (un ordinateur allumé 6 h, réponses rapides)
+# Règle d'Issa (23/10/2026) : un seul ordinateur pour le technicien, allumé 6 heures (le maximum de GitHub), installé une seule fois.
+# Il s'allume au début du travail sur un épisode (même sans message) et quand Issa écrit au technicien alors qu'aucun n'est allumé.
+# Il surveille la conversation « 🛠 Technicien » toutes les 10 secondes et répond tout de suite ; au bout de 6 h il s'éteint.
+on:
+  workflow_dispatch:
+    inputs:
+      message: { description: "Message d'Issa à traiter tout de suite (vide = aucun)", default: "" }
+permissions: { contents: write, issues: write, actions: write }
+jobs:
+  garde:
+    runs-on: ubuntu-latest
+    timeout-minutes: 359
+    steps:
+      - name: Un seul technicien de garde à la fois
+        id: seul
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          MOI=$(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}" --jq .created_at)
+          N=$(gh api "repos/${{ github.repository }}/actions/workflows/technicien-garde.yml/runs?per_page=20" --jq "[.workflow_runs[] | select(.status==\"in_progress\" or .status==\"queued\") | select(.id != ${{ github.run_id }}) | select(.created_at <= \"$MOI\")] | length")
+          if [ "$N" != "0" ]; then echo "déjà un technicien de garde"; echo "deja=1" >> $GITHUB_OUTPUT; fi
+      - uses: actions/checkout@v4
+        if: steps.seul.outputs.deja != '1'
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        if: steps.seul.outputs.deja != '1'
+        with: { node-version: "20" }
+      - name: Garde (6 h) — répond à chaque message d'Issa
+        if: steps.seul.outputs.deja != '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          PREMIER: ${{ github.event.inputs.message }}
+        run: |
+          git config user.name technicien; git config user.email studio@sounsouni.pro
+          R=${{ github.repository }}; FIN=$(( $(date +%s) + 350*60 ))
+          # le modèle libre (dernier secours sans clé) s'installe en arrière-plan, une seule fois : prêt si les IA à clé sont épuisées
+          ( set -e; sudo mkdir -p /mnt/m && sudo chown $USER /mnt/m
+            curl -sfL -o /mnt/m/model.gguf https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-MXFP4.gguf &
+            git clone -q --depth 1 https://github.com/ggml-org/llama.cpp /mnt/m/src
+            cmake -S /mnt/m/src -B /mnt/m/build -DGGML_NATIVE=ON -DLLAMA_CURL=OFF -DLLAMA_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release > /dev/null
+            cmake --build /mnt/m/build --target llama-server -j $(nproc) > /dev/null; wait
+            LD_LIBRARY_PATH=/mnt/m/build/bin nohup /mnt/m/build/bin/llama-server -m /mnt/m/model.gguf -c 32768 -t $(nproc) --jinja --port 8080 > /mnt/m/serveur.log 2>&1 & ) > /mnt/libre.log 2>&1 &
+          I=$(gh api "repos/$R/issues?labels=technicien&state=open&per_page=1" --jq '.[0].number')
+          OWNER=$(gh api "repos/$R/issues/$I" --jq .user.login)
+          DEPUIS=$(gh api "repos/$R/actions/runs/${{ github.run_id }}" --jq .created_at); FAITS=" "   # messages écrits pendant l'allumage : pas oubliés
+          traiter() {   # $1 = numéro du message d'Issa
+            git pull -q --rebase --autostash || true
+            set +e; ISSUE=$I MESSAGE_ID=$1 SECOURS_LIBRE=1 MAX_MIN=60 node .github/scripts/technicien.mjs; c=$?; set -e
+            if [ $c = 3 ]; then   # toutes les IA à clé épuisées : le modèle libre installé sur cet ordinateur
+              for k in $(seq 1 180); do curl -s localhost:8080/health | grep -q ok && break; sleep 10; done
+              ISSUE=$I MESSAGE_ID=$1 LOCAL_LLM_URL=http://127.0.0.1:8080/v1/chat/completions MAX_MIN=50 node .github/scripts/technicien.mjs || true
+            fi
+            FAITS="$FAITS$1 "
+          }
+          [ -n "$PREMIER" ] && traiter "$PREMIER"
+          echo "Technicien de garde jusqu'à $(date -u -d @$FIN +%H:%M) UTC"
+          while [ $(date +%s) -lt $FIN ]; do
+            for id in $(gh api "repos/$R/issues/$I/comments?since=$DEPUIS&per_page=100" --jq ".[] | select(.user.login==\"$OWNER\") | .id" 2>/dev/null); do
+              case "$FAITS" in *" $id "*) continue;; esac
+              traiter "$id"
+            done
+            sleep 10
+          done
+          echo "6 heures écoulées : le technicien de garde s'éteint."
