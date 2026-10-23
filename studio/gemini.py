@@ -52,6 +52,14 @@ IDENTITE = {   # fiche d'identité de chaque personnage (tenue habituelle, physi
     'SALI': "jeune femme, foulard jaune noué sur la tête, robe en pagne bleu à motifs orange et bordure dorée, sandales",
 }
 def ident(c): return f"{gfx.nom(c)} ({IDENTITE[c]})" if c in IDENTITE else gfx.nom(c)
+def ident_x(x):
+    """Comme ident, mais avec la tenue du moment : jamais les habits de tous les jours quand l'image jointe montre une tenue de fête."""
+    t = x.get('tenue')
+    if not t: return ident(x['perso'])
+    lab, dsc = TENUES.get((x['perso'], t), (t.replace('_', ' '), ''))
+    f = x['perso'] in FEMMES; rp = director.POSES.get(x.get('ref') or '', {})
+    if rp.get('tenue') == t: return f"{gfx.nom(x['perso'])} (dans sa tenue « {lab} », exactement comme sur l'image jointe" + (f" : {dsc}" if dsc and dsc != lab else '') + ")"
+    return f"{gfx.nom(x['perso'])} (même visage et même coiffure que sur l'image jointe, mais " + ('habillée' if f else 'habillé') + f" de : {dsc or lab})"
 TENUES = {}; OBJETS = {}; POSE_TXT = {}   # POSE_TXT : texte d'origine des {POSE: …} (avec les accents), retrouvé par son identifiant
 POSTURE_MOTS = r'\b(debout|assise?|à genoux|a genoux|accroupie?|allongée?|marche|court|danse)\b'
 def pose_texte(slug):
@@ -147,10 +155,12 @@ def verif(pa, add, ou):
         if emo: add(('pose', char, post, emo, t), {'type': 'pose', 'perso': char, 'posture': post, 'emo': emo, 'tenue': t}, ou)
         return
     if assis and best['posture'] not in ('assis', 'banc'):   # assis dans le script, mais aucune pose assise qui convient
-        add(('pose', char, 'assis', emo), {'type': 'pose', 'perso': char, 'posture': 'assis', 'emo': emo}, ou); return
-    for mot in want:
+        add(('pose', char, 'assis', emo, t), {'type': 'pose', 'perso': char, 'posture': 'assis', 'emo': emo, 'tenue': t}, ou); return
+    if pa.get('calm'): return   # plan muet : l'application montre exprès un visage calme (« pose D »)
+    tags = tags.union(*[set(director.POSES[k]['tags']) | set(director.POSES[k].get('props', [])) for k, sc in r if sc >= r[0][1]])   # poses à égalité
+    for mot in want:   # émotion sans image : demandée DANS la tenue du moment (robe de soirée à la fête, pas les habits de tous les jours)
         if (mot in director.EMOS or mot in director.GESTE or mot in DESC) and mot not in ('neutre',) and not (director.tagwords([mot]) & tags):
-            add(('pose', char, post, mot), {'type': 'pose', 'perso': char, 'posture': post, 'emo': mot}, ou); break
+            add(('pose', char, post, mot, t), {'type': 'pose', 'perso': char, 'posture': post, 'emo': mot, 'tenue': t}, ou); break
 
 def demande(x):
     """La phrase à coller dans Gemini (en français)."""
@@ -182,7 +192,7 @@ def demande(x):
     elif x.get('tenue') and rp.get('tenue') != x['tenue']:   # première image dans la nouvelle tenue : on décrit les habits
         st = ("Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, "
               "mais " + ('habillée' if f else 'habillé') + " de : " + TENUES.get((x['perso'], x['tenue']), (x['tenue'], x['tenue'].replace('_', ' ')))[1] + ". ")
-    st = st.replace("que sur l'image jointe", "que sur l'image jointe, " + ident(x['perso']), 1)
+    st = st.replace("que sur l'image jointe", "que sur l'image jointe, " + ident_x(x), 1)
     return st + 'Montre-' + ('la ' if f else 'le ') + pose + '. ' + (('Elle' if f else 'Il') + ' ne tient rien dans les mains. ' if objet else '') + FOND
 def ref_pour(x):
     if x['type'] == 'decor':
@@ -267,7 +277,10 @@ def persos_ref(xs):
     return out
 def demande_melange(grp, items):
     xs = [items[n] for n in grp['items']]; pr = persos_ref(xs); num = {c: i for i, c in enumerate(pr, 1)}
-    jointes = ' ; '.join(f"image {num[c]} = {ident(c)}" for c in pr)
+    prem = {}
+    for x in xs:
+        if x['type'] == 'pose': prem.setdefault(x['perso'], x)
+    jointes = ' ; '.join(f"image {num[c]} = {ident_x(prem[c])}" for c in pr)
     def fig(x):
         if x['type'] == 'objet': return f"{x['texte']}, l'objet seul, posé, dessiné en grand"
         mains = '' if re.search(r'telephone|bouquet|tient|tenant|attrape|dans les mains|main tendue|chapelet', script.norm(str(x.get('emo')) + ' ' + pose_texte(str(x.get('emo', ''))[5:]))) else ', les mains vides'
