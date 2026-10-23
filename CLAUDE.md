@@ -49,6 +49,7 @@
 - « Van » = Modibo (Bakary l'appelle ainsi) ; « Bakarin » = Bakary. Alias dans `script.CHAR_ALIASES`.
 
 ## Fichiers clés
+- **Attention** : les machines « voix » n'installent que numpy, pillow, soundfile, librosa. Tout autre outil (cv2, torch…) s'importe **dans la fonction** qui s'en sert, jamais en haut de `render.py` / `director.py` / `audio.py` (sinon toutes les vidéos s'arrêtent à l'étape des voix — arrivé le 23/10/2026).
 - `studio/script.py` lecture du script · `voices.py` voix + vérification Whisper + fins de phrase jamais coupées + rires + `lexique.txt` (prononciations « écrit = prononcé », ex. « Kôrôbalé wou = Kôrôbaléou ») et « plus » négatif sans S.
 - `studio/planches.py` planches A / B / C / D (questions, images, page à cocher, lecture de la réponse).
 - `studio/director.py` mise en scène : choix des poses, plans larges, champ / contre-champ, regards. `render.py` images (têtes tournées LivePortrait, détourage), `audio.py` son.

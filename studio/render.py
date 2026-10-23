@@ -1,7 +1,7 @@
 """Rendu image par image des plans, en parallèle, puis assemblage avec le son."""
 import os, math, json, subprocess, re
 from functools import lru_cache
-import numpy as np, soundfile as sf, cv2
+import numpy as np, soundfile as sf
 from PIL import Image, ImageDraw, ImageFilter
 import gfx
 from gfx import W, H, FPS, paste, sticker, prog, eo, lerp
@@ -48,6 +48,7 @@ def sans_frange(im, px=2):
     du fond clair d'origine : on rentre le bord de 2 pixels, on recolore la bordure avec les couleurs du personnage juste à côté,
     et on adoucit le bord (pas de marches)."""
     if os.environ.get('STUDIO_SANS_DEFRANGE'): return im
+    import cv2   # chargé seulement ici : les machines « voix » n'ont pas cet outil
     a = np.array(im); al = a[..., 3]; plein = (al > 40).astype(np.uint8)
     if plein.mean() > 0.97: return im   # objet ou image sans détourage
     coeur = cv2.erode(plein, np.ones((3, 3), np.uint8), iterations=px)
