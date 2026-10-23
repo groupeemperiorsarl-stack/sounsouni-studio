@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v28</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v29</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -152,7 +152,7 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
 async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
   <div class="etape"></div>
-  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button><button data-a="fiche" class="sec">🔄 Refaire la fiche Gemini</button></div><div class="out"></div><div class="zone"></div>
+  <div class="row"><button data-a="aperçu" class="sec">👁 Fabriquer l'aperçu</button><button data-a="vidéo">🎬 Fabriquer la vidéo</button><button data-a="fiche" class="sec">🔄 Refaire la fiche Gemini</button></div><div class="out"></div><div class="zone"></div>
   <details><summary>Planches et corrections</summary>
     <label>Réponse aux planches (ex. 1B 3C)</label><div class="row"><input class="rep" placeholder="1B 3C"><button data-x="rep">Envoyer</button></div>
     <label>Planches sur un passage</label><div class="row"><input class="de" placeholder="1:20"><input class="a" placeholder="1:45"><button data-x="pl">Demander</button></div>
@@ -174,7 +174,7 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
   d.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>dire(b.dataset.a));
   d.querySelector('[data-x=rep]').onclick=()=>{const v=d.querySelector('.rep').value.trim();if(v)dire(v.toUpperCase())};
   d.querySelector('[data-x=pl]').onclick=()=>{const a=d.querySelector('.de').value.trim(),b=d.querySelector('.a').value.trim();if(a&&b)dire('planches '+a+'-'+b)};
-  d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur Aperçu ou Vidéo.')}catch(x){out('❌ '+esc(x.message))}};
+  d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur « 👁 Fabriquer l\'aperçu » ou « 🎬 Fabriquer la vidéo ».')}catch(x){out('❌ '+esc(x.message))}};
   d.querySelector('.histo').innerHTML=cs.map(c=>'<p class="muted">'+new Date(c.created_at).toLocaleString('fr-FR')+' · '+(c.user.type==='Bot'?'application':'vous')+'</p>'+md(c.body)).join('')||'<p class="muted">Rien pour l\'instant.</p>';
   discuter(i,d,d.querySelector('.scr').value);retourGemini(i,d);miniVideo(i,d);prochaine(i,d,cs,e);
   fichiers(i.number,d.querySelector('.zone')).then(()=>boutonsBot(i,d,cs));if(e.k==='warn'){bloque(i,cs,d);setTimeout(()=>carte(i,d),45000)}}
@@ -234,7 +234,7 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
         const rel=v.querySelector('.rel');rel.onclick=async()=>{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'relecture'})});rel.outerHTML='<p class="msg">✅ Relecture relancée (environ 3 minutes).</p>'};
         const ok=v.querySelector('.ok');if(ok)ok.onclick=async()=>{const res=v.querySelector('.res');res.innerHTML='<p class="msg">Application…</p>';
           try{const i=await api('/repos/'+R+'/issues/'+n),ch=[...v.querySelectorAll('[data-k]')].filter(x=>x.checked).map(x=>A[+x.dataset.k]);const fa=await appliquer(i,ch,res);
-            res.innerHTML='<p class="msg">'+(fa.some(x=>x.startsWith('❌'))?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(fa.join(' · '))+'. Relancez maintenant l\'aperçu (bouton 👁 Aperçu) : le relecteur repassera tout seul.</p>'}
+            res.innerHTML='<p class="msg">'+(fa.some(x=>x.startsWith('❌'))?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(fa.join(' · '))+'. Relancez maintenant l\'aperçu (bouton 👁 Fabriquer l\'aperçu) : le relecteur repassera tout seul.</p>'}
           catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
       catch(e){v.innerHTML='<p class="msg">❌ Relecture illisible : '+esc(e.message)+'</p>'}
       return}
@@ -626,11 +626,12 @@ function boutonsBot(i,d,cs){const z=d.querySelector('.zone'),tout=cs.map(c=>c.bo
 // ---------------- « Que faire maintenant ? » : une étape claire et son bouton, sur chaque épisode ----------------
 function prochaine(i,d,cs,e){const z=d.querySelector('.etape'),n=i.number,b=e.b,x=b?b.body:'',tb=b?new Date(b.created_at):0;
   let corr=0;try{corr=+localStorage.getItem('ss_corr_'+n)||0}catch(e){}
-  const dire=async(t,m)=>{try{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});z.innerHTML='<div class="msg">✅ '+m+'</div>';try{localStorage.removeItem('ss_corr_'+n)}catch(e){}}catch(er){z.innerHTML='<div class="msg">❌ '+esc(er.message)+'</div>'}};
+  const dire=async(t,m)=>{try{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});note('✅ '+m);try{localStorage.removeItem('ss_corr_'+n)}catch(e){}}catch(er){note('❌ '+esc(er.message))}};
+  const note=t=>{let q=z.querySelector('.etp-note');if(!q){q=document.createElement('div');q.className='msg etp-note';q.style.marginTop='6px';z.appendChild(q)}q.innerHTML=t};   // les autres boutons restent (ex. « Fabriquer la vidéo » après avoir lancé l'aperçu)
   const bouton=(lib,cmd,m)=>'<button data-c="'+esc(cmd)+'" data-m="'+esc(m)+'">'+lib+'</button>';
   let h='';
   if(e.k==='warn')h='⏳ <b>'+esc(e.t)+'</b> Rien à faire : cette carte se met à jour toute seule.';
-  else if(corr>tb)h='✅ <b>Vos corrections sont enregistrées</b> mais pas encore dans la vidéo.<br>1) Voyez-les sur l\'aperçu (10 min, gratuit). 2) Puis fabriquez la vidéo : seules les secondes changées sont refaites.<div class="row">'+bouton('👁 Voir l\'aperçu corrigé','aperçu','Aperçu lancé (environ 10 min).')+bouton('🎬 Vidéo corrigée','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
+  else if(corr>tb)h='✅ <b>Vos corrections sont enregistrées</b> mais pas encore dans la vidéo.<br>1) Voyez-les sur l\'aperçu (10 min, gratuit). 2) Puis fabriquez la vidéo : seules les secondes changées sont refaites.<div class="row">'+bouton('👁 Fabriquer l\'aperçu corrigé','aperçu','Aperçu lancé (environ 10 min).')+bouton('🎬 Fabriquer la vidéo corrigée','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
   else if(/Planches à valider/.test(x)&&!cs.some(c=>new Date(c.created_at)>tb&&/^\s*\d+\s*[A-Da-d]\b/.test(c.body||'')))h='☑ <b>L\'application hésite sur certains plans.</b> Appuyez sur « ☑ Planches à cocher » ci-dessous, touchez une image par question, puis « Copier » : un bouton « Envoyer ma réponse » apparaît.<br>Si tout vous va déjà :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
   else if(/Aperçu des plans prêt/.test(x))h='👁 <b>L\'aperçu est prêt</b> (bouton « Voir l\'aperçu »). S\'il vous plaît :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>Sinon : « 💬 Discuter avec l\'assistant » pour corriger.';
   else if(/Script mis au format/.test(x))h='🤖 <b>Le script est mis au format.</b> Lisez ce qu\'il faut vérifier dans « Détails de la fabrication », relisez le script, puis lancez l\'aperçu.<div class="row"><button class="sec relire">📝 Relire le script</button>'+bouton('👁 Lancer l\'aperçu','aperçu','Aperçu lancé (environ 10 min).')+'</div>';
@@ -640,7 +641,7 @@ function prochaine(i,d,cs,e){const z=d.querySelector('.etape'),n=i.number,b=e.b,
   else if(/Images rangées/.test(x))h='🧩 <b>Les nouvelles images sont rangées</b> (« 🧩 Images rangées » pour les voir). Pour les utiliser :<div class="row">'+bouton('👁 Nouvel aperçu','aperçu','Aperçu lancé (environ 10 min).')+'</div>';
   else if(/Essai du code réussi/.test(x))h='🧪 <b>La modification du code a marché sur les essais.</b> Regardez les images « 🧪 Essai du code », puis « ✅ Accepter » ou « ✖ Refuser » ci-dessous.';
   else if(/❌/.test(x))h='❌ <b>Problème pendant la fabrication.</b> Ouvrez « Détails de la fabrication », ou demandez à l\'assistant (« 💬 Discuter ») ce qui ne va pas.';
-  z.innerHTML=h?'<div class="msg etp">'+h+'</div>':'';const rl=z.querySelector('.relire');if(rl)rl.onclick=()=>{const dt=[...d.querySelectorAll('details')].find(x=>/Planches et corrections/.test(x.textContent));if(dt){dt.open=true;d.querySelector('.scr').scrollIntoView({behavior:'smooth',block:'center'})}};z.querySelectorAll('[data-c]').forEach(bt=>bt.onclick=()=>dire(bt.dataset.c,bt.dataset.m))}
+  z.innerHTML=h?'<div class="msg etp">'+h+'</div>':'';const rl=z.querySelector('.relire');if(rl)rl.onclick=()=>{const dt=[...d.querySelectorAll('details')].find(x=>/Planches et corrections/.test(x.textContent));if(dt){dt.open=true;d.querySelector('.scr').scrollIntoView({behavior:'smooth',block:'center'})}};z.querySelectorAll('[data-c]').forEach(bt=>bt.onclick=()=>{bt.disabled=true;bt.textContent='✅ '+bt.textContent.replace(/^\S+\s/,'')+' : demandé';dire(bt.dataset.c,bt.dataset.m)})}
 
 // ---- 🛠 Technicien : conversation sur la demande « 🛠 Technicien » ; le travail est fait par une machine GitHub (.github/workflows/technicien.yml)
 let TECH=null,tMinuteur=null;
