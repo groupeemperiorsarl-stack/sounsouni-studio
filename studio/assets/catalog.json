@@ -6122,6 +6122,412 @@
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
    "tenue": "tenue_de_soiree"
+  },
+  "sal_robe_de_soiree": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    414,
+    1600
+   ],
+   "head_x": 0.429,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_beignet",
+   "tenue": "robe_de_soiree",
+   "mouth_auto": true
+  },
+  "sal_robe_de_soiree_taquin": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "taquin"
+   ],
+   "mouth": true,
+   "size": [
+    528,
+    1600
+   ],
+   "head_x": 0.429,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_beignet",
+   "tenue": "robe_de_soiree",
+   "mouth_auto": true
+  },
+  "mou_polo_chic": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    515,
+    1600
+   ],
+   "head_x": 0.512,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_content",
+   "tenue": "polo_chic",
+   "mouth_auto": true
+  },
+  "mou_polo_chic_grand_sourire": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "grand_sourire"
+   ],
+   "mouth": true,
+   "size": [
+    517,
+    1600
+   ],
+   "head_x": 0.473,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_content",
+   "tenue": "polo_chic",
+   "mouth_auto": true
+  },
+  "mod_chemise_chic": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    597,
+    1600
+   ],
+   "head_x": 0.53,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_joie",
+   "tenue": "chemise_chic",
+   "mouth_auto": true
+  },
+  "mod_chemise_chic_sage": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sage"
+   ],
+   "mouth": true,
+   "size": [
+    597,
+    1600
+   ],
+   "head_x": 0.532,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_joie",
+   "tenue": "chemise_chic",
+   "mouth_auto": true
+  },
+  "mod_chemise_chic_rire": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "rire"
+   ],
+   "mouth": true,
+   "size": [
+    616,
+    1600
+   ],
+   "head_x": 0.803,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_joie",
+   "tenue": "chemise_chic",
+   "mouth_auto": true
+  },
+  "mod_chemise_chic_choc": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc"
+   ],
+   "mouth": true,
+   "size": [
+    611,
+    1600
+   ],
+   "head_x": 0.503,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_joie",
+   "tenue": "chemise_chic",
+   "mouth_auto": true
+  },
+  "dia_chemise_repassee_a_genoux": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:a_genoux",
+    "a",
+    "genoux"
+   ],
+   "mouth": true,
+   "size": [
+    571,
+    1600
+   ],
+   "head_x": 0.496,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "tenue": "chemise_repassee",
+   "mouth_auto": true
+  },
+  "dia_chemise_repassee": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    404,
+    1600
+   ],
+   "head_x": 0.481,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "tenue": "chemise_repassee",
+   "mouth_auto": true
+  },
+  "dia_chemise_repassee_grand_sourire": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "grand_sourire"
+   ],
+   "mouth": true,
+   "size": [
+    407,
+    1600
+   ],
+   "head_x": 0.467,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "tenue": "chemise_repassee",
+   "mouth_auto": true
+  },
+  "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:debout_attrape_le_bouquet_a_deux_mains",
+    "debout",
+    "attrape",
+    "le",
+    "bouquet",
+    "a",
+    "deux",
+    "mains"
+   ],
+   "mouth": true,
+   "size": [
+    539,
+    1600
+   ],
+   "head_x": 0.496,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
+  },
+  "bak_tenue_simple_chic": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    440,
+    1600
+   ],
+   "head_x": 0.532,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
+  },
+  "bak_tenue_simple_chic_reveur": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "reveur"
+   ],
+   "mouth": true,
+   "size": [
+    443,
+    1600
+   ],
+   "head_x": 0.532,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
+  },
+  "bak_tenue_simple_chic_emerveille": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "emerveille"
+   ],
+   "mouth": true,
+   "size": [
+    458,
+    1600
+   ],
+   "head_x": 0.539,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
+  },
+  "fat_moue": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "moue"
+   ],
+   "mouth": true,
+   "size": [
+    514,
+    1600
+   ],
+   "head_x": 0.417,
+   "props": [],
+   "genere": "gemini",
+   "depart": "fat_mains",
+   "mouth_auto": true
+  },
+  "fat_triste": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "triste"
+   ],
+   "mouth": true,
+   "size": [
+    509,
+    1600
+   ],
+   "head_x": 0.401,
+   "props": [],
+   "genere": "gemini",
+   "depart": "fat_mains",
+   "mouth_auto": true
+  },
+  "chei_choc": {
+   "char": "CHEICK",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc"
+   ],
+   "mouth": true,
+   "size": [
+    534,
+    1600
+   ],
+   "head_x": 0.592,
+   "props": [],
+   "genere": "gemini",
+   "depart": "chei_debout",
+   "mouth_auto": true
+  },
+  "chei_fier": {
+   "char": "CHEICK",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "fier"
+   ],
+   "mouth": true,
+   "size": [
+    532,
+    1600
+   ],
+   "head_x": 0.504,
+   "props": [],
+   "genere": "gemini",
+   "depart": "chei_debout",
+   "mouth_auto": true
+  },
+  "chei_dos": {
+   "char": "CHEICK",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    581,
+    1600
+   ],
+   "head_x": 0.495,
+   "props": [],
+   "genere": "gemini",
+   "depart": "chei_debout"
+  },
+  "awa_mefiant": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "mefiant"
+   ],
+   "mouth": true,
+   "size": [
+    380,
+    1600
+   ],
+   "head_x": 0.561,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "mouth_auto": true
   }
  },
  "decors": {
