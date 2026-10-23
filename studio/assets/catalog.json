@@ -7048,5 +7048,52 @@
   "SALI": "ref_sali.wav",
   "VENDEUSE": "ref_kadi.wav",
   "VOIX_OFF": "ref_voixoff.wav"
+ },
+ "sol": {
+  "ATELIER": {
+   "haut": 0.604,
+   "bas": 1.0,
+   "fiable": true
+  },
+  "BUREAU": {
+   "haut": 0.708,
+   "bas": 0.844,
+   "fiable": true
+  },
+  "CABINE": {
+   "haut": 0.698,
+   "bas": 1.0,
+   "fiable": true
+  },
+  "KIOSQUE": {
+   "haut": 0.656,
+   "bas": 0.771,
+   "fiable": false
+  },
+  "MARCHE": {
+   "haut": 0.625,
+   "bas": 1.0,
+   "fiable": true
+  },
+  "RUE": {
+   "haut": 0.76,
+   "bas": 1.0,
+   "fiable": true
+  },
+  "SHOWROOM": {
+   "haut": 0.667,
+   "bas": 1.0,
+   "fiable": true
+  },
+  "VILLA": {
+   "haut": 0.615,
+   "bas": 1.0,
+   "fiable": true
+  },
+  "VILLA_FETE": {
+   "haut": 0.448,
+   "bas": 0.604,
+   "fiable": true
+  }
  }
 }

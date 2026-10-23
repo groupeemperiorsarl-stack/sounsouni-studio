@@ -3,7 +3,7 @@ import os, math, json, subprocess, re
 from functools import lru_cache
 import numpy as np, soundfile as sf
 from PIL import Image, ImageDraw, ImageFilter
-import gfx
+import gfx, script
 from gfx import W, H, FPS, paste, sticker, prog, eo, lerp
 from director import POSES, GROUND
 A = gfx.A
@@ -23,7 +23,8 @@ def decor(name, moment, blur):
     return im
 DECOR_LARGE = {'KIOSQUE': (0.32, 0.12)}
 try: DECOR_LARGE.update({k: tuple(v) for k, v in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reglages.json'), encoding='utf-8')).get('decor_large', {}).items()})
-except Exception: pass   # plan large : zoom et hauteur du cadrage (la théière au premier plan du kiosque sort de l'image, personne n'a les pieds dessus)
+except Exception: pass
+DECOR_REGLE = set(DECOR_LARGE)   # cadrage réglé à la main (validé par Issa) : gardé ; les autres décors suivent leur sol libre   # plan large : zoom et hauteur du cadrage (la théière au premier plan du kiosque sort de l'image, personne n'a les pieds dessus)
 def background(s, lt, blur=0, zoom=0.0, pan=0.0, haut=0.45):
     """pan (-1 à 1) : en gros plan, la caméra regarde la partie du décor où se trouve le personnage."""
     im = decor(s['decor'], s['moment'], blur); x = int((im.width - W) / 2 + 16 * math.sin(lt * 0.25)); y = int((im.height - H) * 0.6)
@@ -33,6 +34,20 @@ def background(s, lt, blur=0, zoom=0.0, pan=0.0, haut=0.45):
         ox = int((zw - W) / 2 * (1 + max(-1, min(1, pan)))); oy = int((zh - H) * haut)
         fr = fr.crop((ox, oy, ox + W, oy + H))
     return fr
+SOL = {}
+try: SOL = json.load(open(f'{A}/catalog.json', encoding='utf-8')).get('sol', {})
+except Exception: pass
+def background_sol(s, lt, pieds):
+    """Plan large cadré sur le SOL LIBRE du décor (studio/sol.py) : le bas de la bande de sol tombe en bas de l'image et sa partie haute
+    derrière les pieds les plus hauts (rangée du fond). Personne ne flotte, personne n'est debout sur une voiture ou une table.
+    Rend (image, genoux) : genoux = True si le sol est trop étroit même en zoomant (on cadre alors aux genoux, les pieds hors de l'image)."""
+    v = SOL.get(decor_file(s['decor']))
+    if not v or not v.get('fiable') or decor_file(s['decor']) in DECOR_REGLE: return None, False
+    im = decor(s['decor'], s['moment'], 0); a, b = v['haut'] * im.height, v['bas'] * im.height
+    k = max(1.0, (H + 20) / max(1, b), (H + 80 - pieds) / max(1, b - a)); genoux = k > 2.3; k = min(k, 2.3)
+    T = max(0, min(b - (H + 20) / k, im.height - H / k)); cw, ch = W / k, H / k
+    x0 = (im.width - cw) / 2 + 16 * math.sin(lt * 0.25) / k; x0 = max(0, min(im.width - cw, x0))
+    return im.crop((int(x0), int(T), int(x0 + cw), int(T + ch))).resize((W, H), Image.BILINEAR), genoux
 @lru_cache(96)
 def pose_img(key, h, opened=False, flip=False):
     if '@' in key:   # tête tournée (variante LivePortrait), sinon pose d'origine
@@ -123,9 +138,17 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
         pe = prog(lt, 0, 1.5); sd = 1 if a['x'] > 540 else -1
         walk_dx += sd * 650 * (1 - eo(pe)); dy -= abs(math.sin(lt * 9)) * 16 * (1 - pe)
     cx = a['x'] + dx + walk_dx; by = a['by'] + dy
+    if not (a.get('fg') or a.get('silhouette')) and POSES.get(key.split('@')[0], {}).get('frame') == 'pied' and by < H + 10 and not a.get('walk'):
+        ombre(fr, cx, by, im.width)
     if rot: im = im.rotate(rot, expand=True, resample=Image.BICUBIC, center=(im.width / 2, im.height))
     paste(fr, im, cx, by - im.height / 2, 1.0, 1.0, sh=not a.get('back'))
     return cx, by - h  # sommet de la tête
+def ombre(fr, cx, by, w):
+    """Ombre douce et plate sous les pieds (largeur ≈ 70 % du personnage)."""
+    ow, oh = int(w * 0.7), max(10, int(w * 0.09)); sh = Image.new('L', (ow + 40, oh + 40), 0)
+    from PIL import ImageDraw
+    ImageDraw.Draw(sh).ellipse((20, 20, 20 + ow, 20 + oh), fill=95); sh = sh.filter(ImageFilter.GaussianBlur(9))
+    noir = Image.new('RGBA', sh.size, (0, 0, 0, 255)); noir.putalpha(sh); fr.paste(noir, (int(cx - sh.width / 2), int(by - sh.height / 2 - 4)), noir)
 def fx_draw(fr, fx, lt, head):
     hx, hy = head; hy = max(hy, 340); hx = min(max(hx, 260), 820)   # jamais sous la bulle ni hors cadre
     for t0, tg in fx:
@@ -202,7 +225,9 @@ def draw(s, lt):
     if k == 'insert':
         fr = background(s, lt, blur=4, zoom=0.1); obj = gfx.norm if False else s.get('object', '').lower()
         cands = [(sum(w in obj for w in p['tags']), key) for key, p in POSES.items() if p['frame'] == 'objet']   # l'objet dont le plus de mots correspondent
-        cands = [c for c in cands if c[0] > 0]; hit = max(cands)[1] if cands else None
+        mots = [w for w in re.sub(r"[^a-z0-9àâçéèêëîïôûùüœ' ]", ' ', obj).replace("'", ' ').split() if len(w) > 2 and w not in ('les', 'des', 'une', 'avec', 'pour', 'sur')]
+        nom = script.norm(mots[0]) if mots else ''   # le mot principal (« bouquet » dans « bouquet de fleurs de la mariée ») doit correspondre : jamais une robe pour un bouquet
+        cands = [c for c in cands if c[0] > 0 and (not nom or nom in POSES[c[1]]['tags'] or any(t.startswith(nom[:5]) for t in POSES[c[1]]['tags']))]; hit = max(cands)[1] if cands else None
         if hit: paste(fr, pose_img(hit, 1450), 540, 1100, 1.0, 1.0 + 0.04 * eo(prog(lt, 0, d)))
         elif 'telephone' in obj or 'téléphone' in obj: paste(fr, gfx.phone_with(gfx.app_screen([s.get('object', '')])), 540, 1100, 1.0, 1.1)
         else:
@@ -244,7 +269,13 @@ def draw(s, lt):
                 fx_draw(fr, [(c['t'] + 0.05, x) for x in c['actions']], lt, head)
                 if line: gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.3, line.get('thought'))
                 return gfx.shake(fr, lt, c['t'], 0.4, 10) if 'choc' in c['actions'] or 'sursaut' in c['actions'] else fr
-    if mode in ('close', 'two') or (k == 'close' and len(acts) == 1): fr = background(s, lt, blur=5, zoom=0.4 + 0.03 * prog(lt, 0, d), pan=s.get('pan', 0))
+    # pieds visibles (personnages en pied) : le décor est cadré sur son sol libre, même pendant une réplique, pour que personne ne flotte
+    debout = [a['by'] for a in acts if not (a.get('fg') or a.get('fgwide') or a.get('silhouette')) and POSES.get(a['key'].split('@')[0], {}).get('frame') == 'pied' and a['by'] < H + 40]
+    fr, genoux = background_sol(s, lt, min(debout)) if debout else (None, False)
+    if fr is not None:
+        if mode in ('close', 'two'): fr = fr.filter(ImageFilter.GaussianBlur(4))
+        if genoux: acts = [dict(a, by=a['by'] + int(0.2 * a['h'])) if not a.get('fg') else a for a in acts]   # sol trop étroit : cadré aux genoux, jamais de pieds en l'air
+    elif mode in ('close', 'two') or (k == 'close' and len(acts) == 1): fr = background(s, lt, blur=5, zoom=0.4 + 0.03 * prog(lt, 0, d), pan=s.get('pan', 0))
     else: z, hy = DECOR_LARGE.get(decor_file(s['decor']), (0.1, 0.45)); fr = background(s, lt, zoom=z, haut=hy)
     head = (540, 400)
     for a in acts:

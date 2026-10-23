@@ -420,7 +420,9 @@ def build(meta, events, log=print, choix=None, variantes=False):
                     if not first_plan: stage.arrivals |= {w['who'] for w in events[j]['who'] if w['who'] not in stage.order}
                     if events[j]['who']: first_plan = False
                     stage.set(events[j]['who'])
-                if events[j]['type'] == 'line' and not events[j].get('thought') and 'telephone' not in events[j].get('voice', ''): stage.add(events[j]['who'])
+                if events[j]['type'] == 'line' and not events[j].get('thought') and 'telephone' not in events[j].get('voice', ''):
+                    if not first_plan and events[j]['who'] not in stage.order and events[j]['who'] in HEIGHT: stage.arrivals.add(events[j]['who'])   # parle pour la 1re fois après le premier plan : il arrive (jamais montré avant)
+                    stage.add(events[j]['who'])
                 j += 1
         elif t == 'plan':
             stage.set(e['who']); plan = e
@@ -452,6 +454,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
             elif e['kind'] == 'large':
                 add({'kind': 'wide', 'dur': 2.4, 'actors': wide_layout(stage, [w['who'] for w in e['who']] or stage.ici(), moods), 'establish': True}); first_in_scene = False
         elif t == 'line':
+            if e['who'] in stage.arrivals and e['who'] not in stage.seq: stage.seq.append(e['who'])   # il parle : il est arrivé
             if first_in_scene and not ending:
                 add({'kind': 'wide', 'dur': 2.2, 'actors': wide_layout(stage, stage.ici(), moods), 'establish': True, 'card': scene['decor']}); first_in_scene = False
             who = e['who']; reacts = []

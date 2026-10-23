@@ -166,7 +166,8 @@ def demande(x):
     """La phrase à coller dans Gemini (en français)."""
     if x['type'] == 'decor':
         return ("Crée un décor de dessin animé 3D, dans le même style que l'image jointe : " + x['texte'].rstrip('. ') +
-                ". Lieu malien réaliste et coloré, à Bamako, sans aucun personnage. Image verticale.")
+                ". Lieu malien réaliste et coloré, à Bamako, sans aucun personnage. Le bas de l'image (le tiers du bas) est un grand sol plat, dégagé et vide, "
+                "où des personnages pourront se tenir debout : aucune voiture, aucune table, aucun meuble ni objet au premier plan ; tout le décor est au fond et sur les côtés. Image verticale.")
     if x['type'] == 'objet':
         return ("Dessine cet objet dans exactement le même style dessin animé 3D que l'image jointe : " + x['texte'] +
                 ". L'objet seul, en entier, bien éclairé, sur un fond gris clair uni, sans personnage. Image verticale.")
@@ -390,7 +391,11 @@ def importer(pairs, out, log=print):
     for x, im in travail:
         if x['type'] == 'decor':
             im = im.convert('RGB'); s = max(1080 / im.width, 1920 / im.height, 1); im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS)
-            im.save(f'{A}/decors/{x["perso"]}.jpg', quality=92); faits.append(x['perso']); log(f"décor rangé : {x['perso']}"); continue
+            im.save(f'{A}/decors/{x["perso"]}.jpg', quality=92); faits.append(x['perso']); log(f"décor rangé : {x['perso']}")
+            try:   # le sol libre du nouveau décor est mesuré tout de suite (studio/sol.py) : les pieds y seront posés
+                import sol; cat.setdefault('sol', {})[x['perso']] = sol.mesurer(x['perso']); log(f"sol du décor : {cat['sol'][x['perso']]}")
+            except Exception as e: log(f'sol du décor non mesuré ({e})')
+            continue
         im = poses_ia.detourer(im)
         if x['type'] == 'objet':   # nouvel objet : gros plan « PLAN: objet … »
             mots = [w for w in re.sub(r'[^a-z0-9 ]', ' ', script.norm(x['perso'])).split() if len(w) > 2 and w not in ('les', 'des', 'une', 'pour', 'avec')]
