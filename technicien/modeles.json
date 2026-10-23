@@ -11,13 +11,14 @@
   }
  },
  "Gemini gemini-3.6-flash": {
-  "sessions": 1,
-  "reussies": 1,
+  "sessions": 2,
+  "reussies": 2,
   "pouces_haut": 0,
   "pouces_bas": 0,
-  "etapes": 5,
+  "etapes": 7,
   "themes": {
-   "apercu": 1
+   "apercu": 1,
+   "fabrication": 1
   }
  }
 }
