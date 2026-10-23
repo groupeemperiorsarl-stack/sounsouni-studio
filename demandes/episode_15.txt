@@ -13,6 +13,14 @@ NOUVEAU PERSONNAGE: INVITE — voix seulement, jamais à l'image : homme d'envir
 
 NOUVEAUX OBJETS: Land Cruiser blanc · Mercedes noire · 4x4 noir avec chauffeur · clés de voiture de Karim · verre brisé · bouquet de fleurs de la mariée
 
+NOUVELLE TENUE: BAKARY — boubou de fête : grand boubou en bazin blanc brodé d'or sur la poitrine, pantalon blanc assorti, lunettes de soleil bleues posées sur la tête, babouches dorées
+NOUVELLE TENUE: MODIBO — boubou de fête : grand boubou en bazin bordeaux brodé d'or, bonnet assorti brodé, babouches dorées
+NOUVELLE TENUE: MOUSSA — costume moderne : veste cintrée bleu nuit sur chemise blanche col mao, pantalon slim assorti, baskets blanches neuves, petites dreadlocks sans casque audio
+NOUVELLE TENUE: DIASABI — boubou de fête : grand boubou en bazin vert amande brodé de blanc, pantalon assorti, babouches noires
+NOUVELLE TENUE: SALI — robe de fête : longue robe en bazin jaune soleil brodée de perles dorées, foulard de fête assorti savamment noué, bijoux dorés, sandales dorées
+NOUVELLE TENUE: FATIM — tenue de soirée turquoise : longue robe de soirée en soie turquoise drapée avec broderies argentées, foulard turquoise assorti, bijoux argentés, sandales
+NOUVELLE TENUE: AWA — tenue de soirée époustouflante : spectaculaire robe sirène en bazin noir et or brodée de cristaux, haut chignon avec perles dorées, créoles dorées, escarpins dorés
+
 NOUVELLES POSES: Awa en tenue de soirée époustouflante (marche lentement · debout le bouquet dans les mains · debout en jetant le bouquet par-dessus son épaule) · Fatim en tenue de soirée turquoise (debout) · Diasabi à genoux · Bakary qui attrape le bouquet à deux mains
 
 DÉCOR: KIOSQUE · matin · ambiance: rue calme
@@ -73,6 +81,13 @@ C'est le but, Mimi. {sourire} C'est le but.
 [RÉACTION MIMI: rire_retenu]
 
 DÉCOR: VILLA_FETE · nuit · ambiance: musique lointaine
+[TENUE AWA: tenue de soirée époustouflante]
+[TENUE FATIM: tenue de soirée turquoise]
+[TENUE BAKARY: boubou de fête]
+[TENUE MODIBO: boubou de fête]
+[TENUE MOUSSA: costume moderne]
+[TENUE DIASABI: boubou de fête]
+[TENUE SALI: robe de fête]
 [MUSIQUE: joyeuse]
 PLAN: large [Bakary debout, Fatim debout, Modibo debout, Sali debout, Mimi debout, Seydou debout, Kadi sur le banc, Moussa debout, Diasabi debout]
 
@@ -84,7 +99,7 @@ Bienvenue au dîner de mariage de ma grande sœur ! {fier} Que chaque cavalier t
 [RÉACTION SALI: taquin]
 [BRUITAGE: talons]
 
-PLAN: large [Bakary debout, Fatim debout, Modibo debout, Moussa debout, Diasabi debout, Awa marche]
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Sali debout, Moussa debout, Diasabi debout, Awa marche]
 PLAN: 4 s · gros Awa · {POSE: en tenue de soirée époustouflante, marche lentement}{fier}
 [MUSIQUE: romantique]
 [RÉACTION BAKARY: emerveille]
@@ -211,7 +226,7 @@ PLAN: objet téléphone
 [BRUITAGE: whoosh]
 [ÉCRAN 2 s: 3 messages supprimés]
 
-PLAN: large [Bakary debout, Fatim debout, Modibo debout, Kadi sur le banc]
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Sali debout, Kadi sur le banc]
 
 FATIM (moue · regarde: Bakary · voix: normal)
 Bakary… Bakary ! {moue} Je suis là, moi !
@@ -260,7 +275,7 @@ PLAN: objet bouquet de fleurs de la mariée
 PLAN: 3 s · gros Bakary · {POSE: debout, attrape le bouquet à deux mains}{choc}
 [SILENCE 3 s]
 
-PLAN: large [Bakary debout, Fatim debout, Modibo debout, Diasabi debout, Awa debout]
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Sali debout, Diasabi debout, Awa debout]
 [RÉACTION FATIM: triste]
 [RÉACTION MODIBO: choc]
 
