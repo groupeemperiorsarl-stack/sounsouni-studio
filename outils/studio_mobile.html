@@ -35,7 +35,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v25</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v26</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -133,7 +133,7 @@ $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-ms
   $('#n-go').disabled=true;try{const i=await api('/repos/'+R+'/issues',{method:'POST',body:JSON.stringify({title:'Épisode : '+($('#n-titre').value||'nouveau'),body:corps($('#n-mode').value,s),labels:['episode']})});
   $('#n-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. Suivez-la dans « Épisodes ».</p>';$('#n-script').value='';$('#n-titre').value=''}catch(e){$('#n-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#n-go').disabled=false};
 // ---- liste des épisodes
-const SORTE=x=>/mini-vidéo|Planche prête/i.test(x.split('\n')[0])?'la mini-vidéo':/format/i.test(x.split('\n')[0])?'la mise au format':/vidéo|video/i.test(x)&&!/aperçu/i.test(x.split('\n')[0])?'la vidéo':/fiche/i.test(x)?'la fiche Gemini':/images|import/i.test(x)?'les images':/code/i.test(x)?'l\'essai du code':'l\'aperçu';
+const SORTE=x=>/^💬 \*\*Votre avis|^⚠️ Votre avis|costumier|Fiche Gemini prête|fiche Gemini n'a pas pu/.test(x)?'la fiche Gemini':/mini-vidéo|Planche prête/i.test(x.split('\n')[0])?'la mini-vidéo':/format/i.test(x.split('\n')[0])?'la mise au format':/vidéo|video/i.test(x)&&!/aperçu/i.test(x.split('\n')[0])?'la vidéo':/fiche/i.test(x)?'la fiche Gemini':/images|import/i.test(x)?'les images':/code/i.test(x)?'l\'essai du code':'l\'aperçu';
 function etat(cs){cs=cs.filter(c=>!/^(✅|✖) Modification du code|^🔎 |^👂 /.test(c.body||''));const bot=cs.filter(c=>c.user.type==='Bot'),last=cs[cs.length-1];
   const enCours=[];let b=null;for(const c of bot){const x=c.body||'';if(/^⏳/.test(x)){if(Date.now()-new Date(c.created_at)<2*3600e3)enCours.push(SORTE(x));continue}const s=SORTE(x);for(let k;(k=enCours.indexOf(s))>=0;)enCours.splice(k,1);b=c}   // un résultat clôt toutes les fabrications de la même sorte ; une fabrication sans nouvelles depuis 2 h (arrêtée, relancée) n'est plus « en cours »   // plusieurs fabrications peuvent tourner en même temps
   if(last&&last.user.type!=='Bot'&&(!bot.length||new Date(last.created_at)>new Date(bot[bot.length-1].created_at)))return{t:'Demande envoyée…',k:'warn',b};
@@ -250,7 +250,10 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
     else if(f==='fiche_gemini.html'){   // la fiche dans la page : pour chaque demande, les images à joindre (enregistrer / partager vers Gemini) et le texte à copier
       let j=null;try{j=JSON.parse(await (await brut(n+'/fiche_gemini.json')).text())}catch(e){}
       if(!j||!j.groupes){v.innerHTML='<iframe></iframe>';v.querySelector('iframe').srcdoc=await bl.text();return}
-      v.innerHTML='<p class="muted">Pour chaque demande : <b>①</b> enregistrez ou partagez les images à joindre, <b>②</b> dans Gemini, joignez-les dans l\'ordre, <b>③</b> copiez la demande et collez-la. Ensuite, renvoyez chaque image obtenue avec « 🧩 Renvoyer les images Gemini » en mettant le <b>numéro de la demande</b>.</p><div class="row"><a class="btn" target="_blank" rel="noopener" href="https://gemini.google.com/app">✨ Ouvrir Gemini</a></div><div class="fgs"></div>';
+      v.innerHTML='<p class="muted">Pour chaque demande : <b>①</b> enregistrez ou partagez les images à joindre, <b>②</b> dans Gemini, joignez-les dans l\'ordre, <b>③</b> copiez la demande et collez-la. Ensuite, renvoyez chaque image obtenue avec « 🧩 Renvoyer les images Gemini » en mettant le <b>numéro de la demande</b>.</p><div class="row"><a class="btn" target="_blank" rel="noopener" href="https://gemini.google.com/app">✨ Ouvrir Gemini</a></div><div class="card" style="margin:10px 0;padding:10px"><b>💬 Votre avis sur cette fiche</b><p class="muted" style="margin:4px 0">Une tenue à changer, quelqu\'un qui manque… Écrivez ou dictez : le costumier corrige le script et refait la fiche (environ 5 min).</p><div class="av-der"></div><textarea class="av-t" rows="3" placeholder="Ex. : c\'est une fête, tout le monde doit changer de tenue ; Sali doit apparaître."></textarea><div class="row"><button class="av-go">📨 Envoyer mon avis</button></div><div class="av-m"></div></div><div class="fgs"></div>';
+      (async()=>{try{const a=JSON.parse(await (await brut(n+'/avis_fiche.json')).text());v.querySelector('.av-der').innerHTML='<div class="msg" style="font-size:14px"><b>Dernier avis</b> ('+esc(a.date||'')+') : « '+esc(a.avis||'')+' »<br><b>Réponse du costumier :</b> '+esc(a.reponse||'')+((a.modifications||[]).length?'<br><b>Script corrigé :</b><br>'+a.modifications.map(m=>'• '+esc(m.pourquoi)).join('<br>'):'<br>⚠️ Script non modifié.')+'</div>'}catch(e){}})();
+      v.querySelector('.av-go').onclick=async()=>{const t=v.querySelector('.av-t').value.trim(),am=v.querySelector('.av-m');if(!t){am.innerHTML='<p class="msg">Écrivez d\'abord votre avis.</p>';return}
+        try{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'avis fiche :\n'+t})});v.querySelector('.av-t').value='';am.innerHTML='<p class="msg">📨 Envoyé. Le costumier lit votre avis, corrige le script et refait la fiche (environ 5 minutes). La carte se met à jour toute seule ; rouvrez ensuite la fiche.</p>'}catch(e){am.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}};
       const box=v.querySelector('.fgs');
       for(const g of j.groupes){const d=document.createElement('div');d.className='card';d.style.cssText='margin:10px 0;padding:10px';
         d.innerHTML='<b>Demande n° '+g.g+'</b> · '+(g.titres||[]).length+' image(s) à obtenir<ul class="muted" style="margin:4px 0 8px;padding-left:18px">'+(g.titres||[]).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>'+
@@ -427,6 +430,35 @@ K.gem='';try{K.gem=localStorage.getItem('ss_gem')||''}catch(e){}$('#k-gem').valu
 $('#k-save').addEventListener('click',()=>{K.gem=$('#k-gem').value.trim();try{localStorage.setItem('ss_gem',K.gem);localStorage.removeItem('ss_gem_ms')}catch(e){}});
 const u8b64=s=>btoa(unescape(encodeURIComponent(s))),b64u8=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,''))));
 const blob64=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(String(f.result).split(',')[1]);f.readAsDataURL(b)});
+// photo choisie sur le téléphone : réduite avant l'envoi (une image Gemini fait souvent 3 à 8 Mo ; réduite : quelques centaines de Ko, assez pour le studio)
+async function alleger(f,max=2048,q=0.9){try{const bm=await createImageBitmap(f);const s=Math.min(1,max/Math.max(bm.width,bm.height));const c=document.createElement('canvas');c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);
+  const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(bm,0,0,c.width,c.height);if(bm.close)bm.close();const b=await new Promise(r=>c.toBlob(r,'image/jpeg',q));return b&&b.size<f.size?b:f}catch(e){return f}}
+const Mo=n=>n>=1e6?(n/1e6).toFixed(1).replace('.',',')+' Mo':Math.max(1,Math.round(n/1e3))+' Ko';
+// suivi pas à pas : chaque étape avec son temps et ce qui se passe ; une étape plus longue que d'habitude est signalée
+function suivi(el,lent=60){const L=[];let iv=null;
+  const draw=()=>{const now=Date.now();el.innerHTML='<div class="msg" style="font-size:14px">'+L.map(x=>{const t=Math.round(((x.f||now)-x.t0)/1000);return '<div style="margin:3px 0">'+(x.etat==='ok'?'✅':x.etat==='err'?'❌':'⏳')+' '+esc(x.t)+(x.etat==='err'&&x.f===x.t0?'':' <span class="muted">· '+t+' s</span>')+
+    (x.d?'<div class="muted" style="font-size:13px;margin-left:24px;overflow-wrap:anywhere">'+esc(x.d)+'</div>':'')+(!x.etat&&t>=lent?'<div style="margin-left:24px;color:#b45309;font-size:13px">⚠️ Plus long que d\'habitude. Si rien ne bouge pendant 2 minutes, la connexion est sans doute coupée : la page réessaie toute seule.</div>':'')+'</div>'}).join('')+'</div>'};
+  const fin=e=>{const c=L[L.length-1];if(c&&!c.etat){c.etat=e;c.f=Date.now()}};
+  return{etape(t,d){fin('ok');L.push({t,d,t0:Date.now()});if(!iv)iv=setInterval(draw,1000);draw()},detail(d){const c=L[L.length-1];if(c){c.d=d;draw()}},
+    ok(){fin('ok');clearInterval(iv);iv=null;draw()},err(m){fin('err');const n=Date.now();if(m)L.push({t:m,etat:'err',t0:n,f:n});clearInterval(iv);iv=null;draw()},
+    total(){return L.length?Math.round((Date.now()-L[0].t0)/1000):0},html(){return el.innerHTML}}}
+// demande avec un délai maximum : sur le réseau mobile, une demande sans réponse ne bloque jamais la page
+async function fetchT(u,o={},ms=60000){const ac=new AbortController(),to=setTimeout(()=>ac.abort(),ms);try{return await fetch(u,{...o,signal:ac.signal})}
+  catch(e){throw new Error(e.name==='AbortError'?'pas de réponse après '+Math.round(ms/1000)+' s (connexion coupée ou très lente)':'connexion impossible ('+e.message+')')}finally{clearTimeout(to)}}
+// envoi d'un fichier sur GitHub avec la progression (Ko envoyés, vitesse, temps restant) ; si rien ne bouge pendant 90 s, on coupe et on réessaie (3 fois)
+async function ghEnvoyer(chemin,blob,msg,prog){let err='';for(let essai=1;essai<=3;essai++){try{
+    prog('Préparation de l\'envoi…'+(essai>1?' (essai '+essai+' sur 3)':''));const c64=await blob64(blob),sha=await ghSha(chemin);
+    const body=JSON.stringify({message:msg+'\n\n(assistant de la page Studio mobile)',content:c64,branch:'main',...(sha?{sha}:{})});
+    return await new Promise((res,rej)=>{const x=new XMLHttpRequest(),t0=Date.now();let last=Date.now(),envoye=0;
+      x.open('PUT',API+'/repos/'+R+'/contents/'+chemin);x.setRequestHeader('Authorization','Bearer '+TOK);x.setRequestHeader('Accept','application/vnd.github+json');x.setRequestHeader('Content-Type','application/json');
+      x.upload.onprogress=e=>{last=Date.now();envoye=e.loaded;const tot=e.total||body.length,v=e.loaded/Math.max(0.5,(Date.now()-t0)/1000);
+        prog(Mo(e.loaded)+' sur '+Mo(tot)+' envoyés · '+Mo(v)+'/s'+(v>0&&tot>e.loaded?' · encore environ '+Math.max(1,Math.round((tot-e.loaded)/v))+' s':'')+(essai>1?' · essai '+essai+' sur 3':''))};
+      x.upload.onload=()=>{last=Date.now();prog('Envoyé ('+Mo(body.length)+') · GitHub enregistre l\'image…')};
+      const wd=setInterval(()=>{if(Date.now()-last>90000){clearInterval(wd);x.abort()}},3000);
+      x.onload=()=>{clearInterval(wd);if(x.status>=200&&x.status<300)res(JSON.parse(x.responseText||'{}'));else{let m='';try{m=JSON.parse(x.responseText).message}catch(e){}rej(new Error('GitHub refuse l\'envoi ('+x.status+(m?' '+m:'')+')'))}};
+      x.onerror=()=>{clearInterval(wd);rej(new Error('connexion coupée'))};x.onabort=()=>{clearInterval(wd);rej(new Error('rien n\'a bougé pendant 90 s (après '+Mo(envoye)+' envoyés)'))};x.send(body)})}
+  catch(e){err=e.message;if(/\((401|403|404)/.test(err))break;if(essai<3){prog('⚠️ '+err+' · nouvel essai dans 5 s…');await dodo(5000)}}}
+  throw new Error(err)}
 async function ghLire(chemin,ref='main'){const r=await fetch(API+'/repos/'+R+'/contents/'+chemin+'?ref='+ref,{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});return r.ok?r.text():null}
 async function ghSha(chemin,ref='main'){try{return (await api('/repos/'+R+'/contents/'+chemin+'?ref='+ref)).sha}catch(e){return null}}
 async function ghEcrire(chemin,contenu64,msg,ref='main'){const sha=await ghSha(chemin,ref);return api('/repos/'+R+'/contents/'+chemin,{method:'PUT',body:JSON.stringify({message:msg+'\n\n(assistant de la page Studio mobile)',content:contenu64,branch:ref,...(sha?{sha}:{})})})}
@@ -532,22 +564,32 @@ function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.n
 // ---------------- Renvoyer les images Gemini depuis le téléphone ----------------
 function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector('.g-l'),msg=d.querySelector('.g-m');let F=[];
   inp.onchange=()=>{F=[...inp.files];lst.innerHTML=F.map((f,k)=>'<div class="row" style="align-items:center"><img class="mini" src="'+URL.createObjectURL(f)+'"><label style="margin:0">Demande n°</label><input class="g-n" style="width:70px" type="number" value="'+(k+1)+'"></div>').join('')};
-  d.querySelector('.g-v').onclick=async()=>{if(!F.length)return;const mm=t=>msg.innerHTML='<p class="msg">'+esc(t)+'</p>';mm('L\'assistant prépare la vérification…');try{
-      const fj=await fetch(API+'/repos/'+R+'/contents/'+i.number+'/fiche_gemini.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}}).then(r=>r.ok?r.json():null);
-      if(!fj){mm('Faites d\'abord « 🖼 Fiche Gemini » pour cet épisode : l\'assistant a besoin de savoir ce qui a été demandé pour vérifier les images.');return}
-      const ns=[...lst.querySelectorAll('.g-n')].map(x=>+x.value),parts=[{text:'Tu vérifies des images faites par Gemini pour le studio. Pour chaque image : compare-la aux IMAGES DE RÉFÉRENCE du ou des personnages demandés (visage, coiffure, habits, couleurs). Ne te fie qu\'à ce que tu VOIS. Si ce n\'est pas le bon personnage, dis-le clairement. Vérifie aussi : nombre de personnages, pose demandée, mains et pieds entiers, pas de texte, fond simple. Réponds en JSON {"reponse": "une ligne par image : n° — bonne ou à refaire, et pourquoi", "actions": []}.'}];
-      const refs=new Set();
-      for(let k=0;k<F.length;k++){const g=(fj.groupes||[]).find(x=>x.g===ns[k]);if(!g){parts.push({text:'Image '+(k+1)+' : numéro de demande '+ns[k]+' inconnu dans la fiche.'});continue}
+  const SYSV='Tu vérifies des images faites par Gemini pour le studio. Pour chaque image : compare-la aux IMAGES DE RÉFÉRENCE du ou des personnages demandés (visage, coiffure, habits, couleurs). Ne te fie qu\'à ce que tu VOIS. Si ce n\'est pas le bon personnage, dis-le clairement. Vérifie aussi : nombre de personnages, pose demandée, mains et pieds entiers, pas de texte, fond simple. Vérifie enfin que le numéro de demande choisi correspond bien à l\'image. Réponds en français simple, en JSON {"reponse": "une ligne par image : n° — ✅ bonne ou ❌ à refaire, et pourquoi", "actions": []}.';
+  const H=()=>({Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'});
+  d.querySelector('.g-v').onclick=async e=>{if(!F.length){msg.innerHTML='<p class="msg">Choisissez d\'abord les images (bouton au-dessus).</p>';return}const bt=e.currentTarget,S=suivi(msg,45);bt.disabled=true;try{
+      if(!K.gem)throw new Error('Ajoutez d\'abord la clé Gemini (onglet 🤖 Assistant, en bas).');
+      S.etape('Lecture de la fiche Gemini de l\'épisode');const r0=await fetchT(API+'/repos/'+R+'/contents/'+i.number+'/fiche_gemini.json?ref=fichiers',{headers:H()},30000);
+      if(!r0.ok){S.err('Pas de fiche Gemini pour cet épisode : appuyez d\'abord sur « 🔄 Refaire la fiche Gemini ».');return}const fj=await r0.json();S.detail((fj.groupes||[]).length+' demande(s) dans la fiche');
+      const ns=[...lst.querySelectorAll('.g-n')].map(x=>+x.value),parts=[{text:'Voici les images à vérifier.'}],refs=new Set();let poids=0;
+      for(let k=0;k<F.length;k++){const g=(fj.groupes||[]).find(x=>x.g===ns[k]);
+        if(!g){S.etape('Image '+(k+1)+' sur '+F.length,'⚠️ numéro de demande '+ns[k]+' inconnu dans la fiche : vérifiez le numéro');parts.push({text:'Image '+(k+1)+' : numéro de demande '+ns[k]+' inconnu dans la fiche.'});continue}
         const it=g.items.map(n=>fj.items.find(x=>x.n===n)).filter(Boolean);
-        for(const x of it)if(x.ref&&!refs.has(x.ref)){refs.add(x.ref);try{const r=await fetch(API+'/repos/'+R+'/contents/studio/assets/poses/'+x.ref+'.webp?ref=main',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});
-          if(r.ok)parts.push({text:'IMAGE DE RÉFÉRENCE de '+x.perso+' (voici exactement à quoi il ou elle ressemble) :'},{inline_data:{mime_type:'image/webp',data:await blob64(await r.blob())}})}catch(e){}}
-        parts.push({text:'Image '+(k+1)+' (demande n° '+ns[k]+'). Demandé : '+it.map(x=>x.perso+(x.posture?' '+x.posture:'')+(x.emo?' · '+x.emo:'')).join(' ; ')+(g.items.length>1?' — '+g.items.length+' personnages côte à côte, de gauche à droite dans cet ordre':'')+'. Texte de la demande : '+(g.demande||'').slice(0,600)},{inline_data:{mime_type:F[k].type||'image/png',data:await blob64(F[k])}})}
-      if(!CONSIGNES)await contexte(i,'');const r=await gem(CONSIGNES,parts,mm);mm(r.reponse||'')}catch(e){mm('❌ '+e.message)}};
-  d.querySelector('.g-e').onclick=async()=>{if(!F.length)return;try{const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value),pr=[];
-      for(let k=0;k<F.length;k++){msg.innerHTML='<p class="msg">Envoi de l\'image '+(k+1)+' sur '+F.length+'…</p>';const nom=ns[k]+'_'+Date.now().toString(36)+'.'+((F[k].name.split('.').pop()||'png').toLowerCase().replace(/[^a-z]/g,'')||'png');
-        await ghEcrire('demandes/gemini/'+i.number+'/'+nom,await blob64(F[k]),'Image Gemini de la demande #'+i.number);pr.push(ns[k]+'='+nom)}
-      await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:'importer '+pr.join(' ')})});msg.innerHTML='<p class="msg">✅ Images envoyées. L\'application les découpe, les détoure et crée les bouches (environ 10 min), puis montre la planche ici.</p>'}
-    catch(e){msg.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
+        for(const x of it)if(x.ref&&!refs.has(x.ref)){refs.add(x.ref);S.etape('Image de référence de '+x.perso);try{const r=await fetchT(API+'/repos/'+R+'/contents/studio/assets/poses/'+x.ref+'.webp?ref=main',{headers:H()},30000);
+          if(r.ok){const rb=await r.blob();poids+=rb.size;S.detail(Mo(rb.size));parts.push({text:'IMAGE DE RÉFÉRENCE de '+x.perso+' (voici exactement à quoi il ou elle ressemble) :'},{inline_data:{mime_type:'image/webp',data:await blob64(rb)}})}else S.detail('introuvable : vérification sans elle')}catch(er){S.detail(er.message+' : vérification sans elle')}}
+        S.etape('Image '+(k+1)+' sur '+F.length+' : préparation');const b=await alleger(F[k],1024,0.85);poids+=b.size;S.detail(Mo(F[k].size)+' → '+Mo(b.size));
+        parts.push({text:'Image '+(k+1)+' (demande n° '+ns[k]+'). Demandé : '+it.map(x=>x.perso+(x.posture?' '+x.posture:'')+(x.emo?' · '+x.emo:'')).join(' ; ')+(g.items.length>1?' — '+g.items.length+' images côte à côte, de gauche à droite dans cet ordre':'')+'. Texte de la demande : '+(g.demande||'').slice(0,600)},{inline_data:{mime_type:b.type||'image/jpeg',data:await blob64(b)}})}
+      S.etape('Gemini regarde les '+F.length+' image(s)','envoi de '+Mo(poids*1.37)+'…');const r=await gem(SYSV,parts,t=>S.detail(t));S.ok();
+      const h=S.html();msg.innerHTML='<div class="msg" style="white-space:pre-wrap">'+esc(r.reponse||'(pas de réponse)')+'</div><details><summary class="muted">Détails de la vérification ('+S.total()+' s)</summary>'+h+'</details>'}
+    catch(er){S.err('Arrêté : '+er.message)}finally{bt.disabled=false}};
+  d.querySelector('.g-e').onclick=async e=>{if(!F.length){msg.innerHTML='<p class="msg">Choisissez d\'abord les images (bouton au-dessus).</p>';return}const bt=e.currentTarget,S=suivi(msg,60);bt.disabled=true;
+    try{const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value.trim()),pr=[];if(ns.some(x=>!x))throw new Error('mettez le numéro de demande sous chaque image');
+      for(let k=0;k<F.length;k++){const f=F[k];if(f._nom){S.etape('Image '+(k+1)+' sur '+F.length,'déjà envoyée tout à l\'heure');pr.push(ns[k]+'='+f._nom);continue}
+        S.etape('Image '+(k+1)+' sur '+F.length+' : réduction','fichier de '+Mo(f.size)+'…');const b=await alleger(f);S.detail(Mo(f.size)+' → '+Mo(b.size));
+        const nom=ns[k]+'_'+Date.now().toString(36)+'.'+(b.type==='image/jpeg'?'jpg':((f.name.split('.').pop()||'png').toLowerCase().replace(/[^a-z]/g,'')||'png'));
+        S.etape('Image '+(k+1)+' sur '+F.length+' : envoi sur GitHub');await ghEnvoyer('demandes/gemini/'+i.number+'/'+nom,b,'Image Gemini de la demande #'+i.number,t=>S.detail(t));f._nom=nom;pr.push(ns[k]+'='+nom)}
+      S.etape('Demande de rangement à l\'application');await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:'importer '+pr.join(' ')})});S.ok();F.forEach(f=>delete f._nom);
+      const h=S.html();msg.innerHTML='<p class="msg">✅ '+F.length+' image(s) envoyée(s) en '+S.total()+' s. L\'application les découpe, les détoure et crée les bouches (environ 10 min), puis montre la planche ici.</p><details><summary class="muted">Détails de l\'envoi</summary>'+h+'</details>'}
+    catch(er){S.err('Arrêté : '+er.message+'. Appuyez de nouveau sur « Envoyer et ranger » : les images déjà envoyées ne seront pas renvoyées.')}finally{bt.disabled=false}}}
 // ---------------- Mini-vidéos des personnages (générateur gratuit) → poses ----------------
 function miniVideo(i,d){const sp=d.querySelector('.v-p');sp.innerHTML=PERSOS.filter(x=>x!=='VOIX_OFF').map(x=>'<option>'+x+'</option>').join('');
   d.querySelector('.v-e').onclick=async()=>{const f=d.querySelector('.v-f').files[0],m=d.querySelector('.v-m');if(!f){m.innerHTML='<p class="msg">Choisissez d\'abord la vidéo.</p>';return}

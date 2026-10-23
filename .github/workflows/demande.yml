@@ -32,6 +32,8 @@ jobs:
               gh api "$C" -f body="⏳ C'est parti : l'application découpe la mini-vidéo de $1 et décrit chaque image (environ 5 minutes)." > /dev/null; exit 0;;
             garder) A="${{ steps.s.outputs.arg }}"; NOM="${A##* }"; REP="${A% *}"; gh workflow run video.yml -f issue="$N" -f mode=garder -f nom="$NOM" -f reponse="$REP"
               gh api "$C" -f body="⏳ C'est parti : l'application range les images de $NOM dans le studio (environ 10 minutes)." > /dev/null; exit 0;;
+            avis) gh workflow run fiche.yml -f script="${{ steps.s.outputs.path }}" -f issue="$N" -f avis_id="${{ steps.s.outputs.arg }}"
+              gh api "$C" -f body="⏳ C'est parti : le costumier lit votre avis, corrige le script et refait la fiche Gemini (environ 5 minutes)." > /dev/null; exit 0;;
             relecture) gh workflow run relecture.yml -f issue="$N"
               gh api "$C" -f body="⏳ C'est parti : le relecteur lit l'histoire et regarde chaque plan (environ 3 minutes)." > /dev/null; exit 0;;
             essai) gh workflow run essai-code.yml -f issue="$N" -f branche="${{ steps.s.outputs.arg }}" -f script="${{ steps.s.outputs.path }}"

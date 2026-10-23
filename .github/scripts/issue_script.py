@@ -12,7 +12,8 @@ if ev.get('comment'):   # commentaire « vidéo », « aperçu », « planches 1
     c = ((ev['comment'].get('body') or '').strip().splitlines() or [''])[0].lower().strip(' .!')   # 1re ligne seulement (une signature peut suivre)
     m = re.fullmatch(r'planches?(?:\s+(?:de\s+)?(\d+:\d\d)\s*(?:-|à|a)\s*(\d+:\d\d))?', c)
     brut = ((ev['comment'].get('body') or '').strip().splitlines() or [''])[0].strip()
-    if re.match(r'importer\s+\d+\s*=', c): mode = 'importer'; arg = re.sub(r'(?i)^importer\s+', '', brut)   # images Gemini envoyées depuis la page
+    if re.match(r'avis(\s+sur\s+la)?\s+fiche\b', c): mode = 'avis'; arg = str(ev['comment']['id'])   # avis d'Issa sur la fiche Gemini (texte sur les lignes suivantes)
+    elif re.match(r'importer\s+\d+\s*=', c): mode = 'importer'; arg = re.sub(r'(?i)^importer\s+', '', brut)   # images Gemini envoyées depuis la page
     elif re.match(r'annuler import\s+[0-9a-f]{7,40}$', c): mode = 'annuler'; arg = c.split()[-1]
     elif re.match(r'mini-?vid[ée]o\s+\w+\s+(tour|action)\s+\S+$', c): mode = 'minivideo'; arg = brut.split(None, 1)[1]   # « mini-vidéo BAKARY tour fichier.mp4 »
     elif re.match(r'garder\s+(tout|[\d\s]+)\s+[a-z]+_(tour|action)_\w+$', c): mode = 'garder'; arg = brut.split(None, 1)[1]   # « garder tout bakary_tour_650014 »

@@ -5,6 +5,7 @@ on:
     inputs:
       script: { description: "Chemin du script (ex. demandes/episode_5.txt)", required: true }
       issue: { description: "Numéro de la demande", default: "" }
+      avis_id: { description: "Numéro du commentaire « avis fiche » d'Issa (vide = fiche simple)", default: "" }
 permissions: { contents: write, issues: write }
 env: { GH_TOKEN: "${{ github.token }}", ISSUE: "${{ github.event.inputs.issue }}" }
 jobs:
@@ -15,15 +16,27 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install -q numpy pillow soundfile librosa scipy opencv-python-headless
+      - name: Lire l'avis d'Issa et corriger le script (tenues, présences)
+        if: github.event.inputs.avis_id != ''
+        env:
+          COMMENT_ID: ${{ github.event.inputs.avis_id }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          python -W ignore .github/scripts/avis_fiche.py 2>&1 | tee avis_journal.txt || true
       - name: Fabriquer la fiche
         run: STUDIO_FAUSSES_VOIX=1 python -m studio.gemini "${{ github.event.inputs.script }}" -o sortie_gemini 2>&1 | tee journal.txt
       - name: Ranger pour la page Studio mobile et prévenir
         if: always()
         run: |
-          N=${ISSUE:-manuel}; F=(sortie_gemini/fiche_gemini.html sortie_gemini/fiche_gemini.json sortie_gemini/a_joindre/*)
+          N=${ISSUE:-manuel}; F=(sortie_gemini/fiche_gemini.html sortie_gemini/fiche_gemini.json sortie_gemini/a_joindre/*); [ -f avis_fiche.json ] && F+=(avis_fiche.json)
           if [ -f sortie_gemini/fiche_gemini.html ]; then
             bash .github/scripts/fichiers.sh "$N" "${F[@]}"
             K=$(grep -o 'fiche Gemini : .*' journal.txt | tail -1)
             M="🖼️ Fiche Gemini prête ($K). Ouvrez-la dans la page Studio mobile (bouton « Fiche Gemini » de l'épisode)."
+            if [ -f avis_message.txt ]; then M="$(cat avis_message.txt)"$'\n\n'"🖼️ Fiche Gemini prête, refaite avec votre avis ($K) : bouton « 🖼 Ouvrir la fiche Gemini ». Le script a changé : après avoir rangé les nouvelles images, relancez l'aperçu."
+            elif [ -n "${{ github.event.inputs.avis_id }}" ]; then M="⚠️ Votre avis n'a pas pu être lu par l'IA ($(tail -2 avis_journal.txt 2>/dev/null | tr '\n' ' ' | cut -c1-200)). La fiche a été refaite sans changement : renvoyez votre avis un peu plus tard."$'\n\n'"$M"; fi
+          elif [ -f avis_message.txt ]; then M="$(cat avis_message.txt)"$'\n\n'"❌ Mais la fiche Gemini n'a pas pu être refaite : $(tail -3 journal.txt | tr '\n' ' ')"
           else M="❌ La fiche Gemini n'a pas pu être faite : $(tail -3 journal.txt | tr '\n' ' ')"; fi
           [ -n "$ISSUE" ] && gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$M" > /dev/null || echo "$M"

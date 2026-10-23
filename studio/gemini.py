@@ -83,7 +83,7 @@ def analyse(path, log=print):
     voices.run(ev, director.CAT, work, lambda m: None)
     shots, _ = director.build(meta, ev, lambda m: None)
     return meta, shots
-def besoins(paths, log=print, tout=False, maxi=16):
+def besoins(paths, log=print, tout=False, maxi=32):
     """Ce qu'il faut générer pour ces scripts, le plus demandé d'abord."""
     b = {}; ep = lambda p: os.path.splitext(os.path.basename(p))[0]
     def add(key, item, ou):
@@ -115,10 +115,11 @@ def besoins(paths, log=print, tout=False, maxi=16):
         if e == 'personnage sans image' or not poses_de(c): continue   # nouveau personnage : demandé plus haut (« NOUVEAU PERSONNAGE »)
         for mot in e.split('/')[:1]:
             add(('pose', c, 'assis' if post in ('assis', 'banc') else 'debout', CANON.get(mot, mot)), {'type': 'pose', 'perso': c, 'posture': 'assis' if post in ('assis', 'banc') else 'debout', 'emo': CANON.get(mot, mot), 'manque': True}, 'image manquante')
-    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 3}.get(x['type'], 4 if x.get('tenue') or x.get('manque') or str(x.get('emo', '')).startswith('pose:') else 0)
+    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 5}.get(x['type'], 4 if x.get('tenue') or x.get('manque') or str(x.get('emo', '')).startswith('pose:') else 0)
     out = sorted(b.values(), key=lambda x: (-prio(x), -len(x['ou'])))
     if not tout:   # le nécessaire : nouveautés (personnages, décors, tenues, objets, {POSE}), vues de dos, assis, émotions demandées au moins 2 fois
-        out = [x for x in out if prio(x) or x['type'] != 'pose' or not x['emo'] or len(x['ou']) >= 2][:maxi]
+        out = [x for x in out if prio(x) or x['type'] != 'pose' or not x['emo'] or len(x['ou']) >= 2]
+        if len(out) > maxi: log(f"{len(out) - maxi} image(s) moins importante(s) gardée(s) pour une prochaine fiche"); out = out[:maxi]
     for n, x in enumerate(out, 1): x['n'] = n
     return out
 def verif(pa, add, ou):
