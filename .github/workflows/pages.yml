@@ -1,0 +1,20 @@
+name: Page Studio mobile en ligne (GitHub Pages)
+# La page est servie à une vraie adresse https (copier, partager vers Gemini, enregistrer une image marchent sur le téléphone) et se met à jour toute seule.
+# Une seule fois, sur GitHub : Settings → Pages → Source : « GitHub Actions ».
+on:
+  push: { branches: [main], paths: ["outils/studio_mobile.html", ".github/workflows/pages.yml"] }
+  workflow_dispatch:
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: true }
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: outils }
+      - run: mkdir -p site && cp outils/studio_mobile.html site/index.html && cp outils/studio_mobile.html site/studio_mobile.html && touch site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+      - id: d
+        uses: actions/deploy-pages@v4

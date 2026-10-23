@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v31</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v32</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -276,11 +276,12 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
         const jo=d.querySelector('.jo');if(!jo)continue;
         for(const [k,x] of (g.joindre||[]).entries()){try{const b=await brut(n+'/'+x),u2=URL.createObjectURL(b);const c=document.createElement('div');c.style.cssText='flex:1;min-width:0;text-align:center';
           c.innerHTML='<img src="'+u2+'" style="width:100%;max-width:160px;border-radius:8px"><div class="muted" style="font-size:12px">image '+(k+1)+'</div><button class="sec dl" style="font-size:13px;padding:6px">⬇ Enregistrer</button>'+(navigator.canShare?'<button class="sec sh" style="font-size:13px;padding:6px;margin-top:4px">📤 Partager</button>':'');
-          jo.appendChild(c);fichiersG.push(new File([b],x,{type:b.type||'image/jpeg'}));c.querySelector('.dl').onclick=()=>voirImage(b,x);c.querySelector('img').onclick=()=>voirImage(b,x);const sh=c.querySelector('.sh');if(sh)sh.onclick=async()=>{const fi=new File([b],x,{type:b.type||'image/jpeg'});try{if(navigator.canShare({files:[fi]}))await navigator.share({files:[fi],title:x})}catch(e){}}}
+          jo.appendChild(c);fichiersG.push(new File([b],x,{type:b.type||'image/jpeg'}));c.querySelector('.dl').onclick=()=>voirImage(b,x);c.querySelector('img').onclick=()=>voirImage(b,x);const sh=c.querySelector('.sh');if(sh)sh.onclick=async()=>{const r=await partager([new File([b],x,{type:b.type||'image/jpeg'})]);if(r!=='ok'&&r!=='annule')sh.textContent='❌ refusé'}}
           catch(e){jo.insertAdjacentHTML('beforeend','<p class="msg">'+esc(x)+' introuvable</p>')}}
         if(navigator.canShare&&fichiersG.length&&navigator.canShare({files:fichiersG})){const r=document.createElement('div');r.className='row';r.innerHTML='<button class="tg">✨ Tout envoyer à Gemini (images + demande)</button>';d.querySelector('.cp').parentNode.after(r);
           r.insertAdjacentHTML('afterend','<p class="muted" style="margin:2px 0 0;font-size:13px">Dans la liste qui s\'ouvre, choisissez <b>Gemini</b> : les images sont jointes dans le bon ordre. La demande est aussi copiée : si elle n\'apparaît pas, collez-la.</p>');
-          r.querySelector('.tg').onclick=async()=>{await copier(g.demande);try{await navigator.share({files:fichiersG,text:g.demande})}catch(e){}}}}}
+          r.querySelector('.tg').onclick=async e=>{const bt=e.currentTarget;const p=partager(fichiersG,g.demande);copier(g.demande);const res=await p;
+            bt.textContent=res==='ok'?'✅ Envoyé : choisissez Gemini, collez la demande si besoin':res==='annule'?'✨ Tout envoyer à Gemini (images + demande)':'❌ '+res}}}}
     else{v.innerHTML='<p class="muted">Touchez une image par question, puis « Copier » : la réponse apparaît ici, prête à envoyer.</p><iframe></iframe><div class="prep"></div>';
       const fr=v.querySelector('iframe');fr.srcdoc=(await bl.text()).replace('</body>','<script>document.getElementById("copie")&&document.getElementById("copie").addEventListener("click",()=>parent.postMessage({planches:document.getElementById("rep").textContent},"*"))<\/script></body>');
       window.addEventListener('message',ev=>{if(ev.source!==fr.contentWindow||!ev.data||!ev.data.planches)return;const r=String(ev.data.planches).trim();const z=v.querySelector('.prep');
@@ -452,9 +453,12 @@ async function copier(t){try{if(navigator.clipboard&&window.isSecureContext){awa
   const a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0';document.body.appendChild(a);a.focus();a.select();a.setSelectionRange(0,t.length);
   let ok=false;try{ok=document.execCommand('copy')}catch(e){}a.remove();return ok}
 const lireData=b=>new Promise((r,j)=>{const f=new FileReader();f.onload=()=>r(f.result);f.onerror=j;f.readAsDataURL(b)});
+// partage vers une autre application (Gemini) : images + texte, sinon images seules ; « ok », « annule » ou la raison du refus
+async function partager(files,text){const essais=[{files,text},{files}];let err='';for(const d of essais){try{if(navigator.canShare&&!navigator.canShare(d))continue;await navigator.share(d);return 'ok'}catch(e){if(e&&e.name==='AbortError')return 'annule';err=(e&&e.name)||'refus'}}
+  return 'votre téléphone refuse le partage depuis cette page ('+err+')'+(location.protocol==='https:'?'':' : ouvrez la page en ligne (lien tout en haut), là le partage marche')}
 async function voirImage(b,nom){const u=await lireData(b),o=document.createElement('div');o.className='ovl';o.style.cssText='position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:10px';
-  o.innerHTML='<p style="color:#fff;text-align:center;margin:0;font-size:16px"><b>Appuyez longuement sur l\'image</b>, puis « Télécharger l\'image » (ou « Enregistrer l\'image »).</p><img src="'+u+'" style="max-width:100%;max-height:68vh;border-radius:8px;background:#fff"><div class="row" style="width:100%;max-width:420px">'+(navigator.canShare?'<button class="o-sh">📤 Partager</button>':'')+'<button class="sec o-x" style="background:#fff">✖ Fermer</button></div>';
-  document.body.appendChild(o);o.querySelector('.o-x').onclick=()=>o.remove();const sh=o.querySelector('.o-sh');if(sh)sh.onclick=async()=>{try{await navigator.share({files:[new File([b],nom,{type:b.type||'image/jpeg'})]})}catch(e){}}}
+  o.innerHTML='<p style="color:#fff;text-align:center;margin:0;font-size:16px"><b>Appuyez longuement sur l\'image</b>, puis « Télécharger l\'image » (ou « Enregistrer l\'image »).</p><img src="'+u+'" style="max-width:100%;max-height:68vh;border-radius:8px;background:#fff"><div class="row" style="width:100%;max-width:420px"><a class="btn" download="'+esc(nom)+'" href="'+u+'">⬇ Télécharger</a>'+(navigator.canShare?'<button class="o-sh">📤 Partager</button>':'')+'<button class="sec o-x" style="background:#fff">✖ Fermer</button></div>';
+  document.body.appendChild(o);o.querySelector('.o-x').onclick=()=>o.remove();const sh=o.querySelector('.o-sh');if(sh)sh.onclick=async()=>{const r=await partager([new File([b],nom,{type:b.type||'image/jpeg'})]);if(r!=='ok'&&r!=='annule')sh.textContent='❌ '+r}}
 const Mo=n=>n>=1e6?(n/1e6).toFixed(1).replace('.',',')+' Mo':Math.max(1,Math.round(n/1e3))+' Ko';
 // suivi pas à pas : chaque étape avec son temps et ce qui se passe ; une étape plus longue que d'habitude est signalée
 function suivi(el,lent=60){const L=[];let iv=null;
