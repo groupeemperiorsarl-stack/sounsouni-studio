@@ -103,8 +103,12 @@ def parse_bracket(b):
     if m: return {'type': 'silence', 'dur': float(m.group(1).replace(',', '.')) if m.group(1) else 2.0, 'sfx': norm(m.group(2) or '')}
     return {'type': 'note', 'text': b}
 
+SIGNES = str.maketrans({'\u2010': '-', '\u2011': '-', '\u2012': '-', '\u2212': '-', '\u00a0': ' ', '\u202f': ' ', '\u2007': ' ', '\u200b': '', '\ufeff': ''})
+
 def parse(text):
     ev = []; meta = {'title': '', 'new_chars': [], 'new_decors': [], 'new_outfits': [], 'new_objects': []}
+    # signes que la police des bulles n'a pas (carré blanc à l'écran) → signe simple équivalent
+    text = text.translate(SIGNES)
     lines = [l.rstrip() for l in text.splitlines()]
     cur = None   # réplique en cours
     def flush():
