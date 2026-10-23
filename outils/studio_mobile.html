@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v37</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v38</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -82,6 +82,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
     <label for="k-cer">Clé Cerebras (facultatif)</label><input id="k-cer" type="password" placeholder="csk-…" autocomplete="off">
     <label for="k-or">Clé OpenRouter (facultatif)</label><input id="k-or" type="password" placeholder="sk-or-…" autocomplete="off">
     <label for="k-gem">Clé Gemini (pour « Discuter » : l'assistant voit les images, écoute et regarde la vidéo) — gratuite sur <b>aistudio.google.com/apikey</b></label><input id="k-gem" type="password" placeholder="AIza…" autocomplete="off">
+    <div id="k-plus"></div><div class="row"><button class="sec" id="k-ajout">➕ Ajouter une clé</button></div>
     <div class="row"><button id="k-save">Enregistrer les clés</button></div><div id="k-msg"></div>
   </div>
 </section>
@@ -337,9 +338,20 @@ const nomP=w=>sans(w).toUpperCase().replace(/[^A-Z_]/g,'');
 let REGLES='';
 async function regles(){if(REGLES)return REGLES;const r=await fetch(API+'/repos/'+R+'/contents/docs/ASSISTANT.md',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});if(!r.ok)throw new Error('règles introuvables ('+r.status+')');return REGLES=await r.text()}
 const dodo=ms=>new Promise(r=>setTimeout(r,ms));
+// clés en plus (autant qu'on veut) : Mistral, NVIDIA, Zhipu, DeepSeek… ou toute IA « compatible OpenAI » (adresse + modèle)
+const IA_PLUS={mistral:['Mistral','https://api.mistral.ai/v1/chat/completions','mistral-medium-latest'],nvidia:['NVIDIA','https://integrate.api.nvidia.com/v1/chat/completions','deepseek-ai/deepseek-v3.1'],
+  zhipu:['Zhipu GLM','https://api.z.ai/api/paas/v4/chat/completions','glm-4.5-flash'],deepseek:['DeepSeek (payant)','https://api.deepseek.com/chat/completions','deepseek-chat'],autre:['Autre (adresse + modèle)','','']};
+let PLUS=[];try{PLUS=JSON.parse(localStorage.getItem('ss_plus')||'[]')}catch(e){}
+function dessinerPlus(){const z=$('#k-plus');z.innerHTML=PLUS.map((c,i)=>'<div class="card" style="padding:8px;margin:6px 0"><div class="row" style="align-items:center"><select class="kp-f" data-i="'+i+'" style="flex:1;min-width:0">'+Object.entries(IA_PLUS).map(([k,v])=>'<option value="'+k+'"'+(c.f===k?' selected':'')+'>'+v[0]+'</option>').join('')+'</select><button class="sec kp-x" data-i="'+i+'" style="flex:none">✖</button></div>'+
+  '<input class="kp-c" data-i="'+i+'" type="password" autocomplete="off" placeholder="la clé" value="'+esc(c.c||'')+'">'+(c.f==='autre'?'<input class="kp-u" data-i="'+i+'" placeholder="adresse (…/chat/completions)" value="'+esc(c.u||'')+'"><input class="kp-m" data-i="'+i+'" placeholder="nom du modèle" value="'+esc(c.m||'')+'">':'')+'</div>').join('');
+  z.querySelectorAll('.kp-f').forEach(x=>x.onchange=()=>{lirePlus();PLUS[+x.dataset.i].f=x.value;dessinerPlus()});z.querySelectorAll('.kp-x').forEach(x=>x.onclick=()=>{lirePlus();PLUS.splice(+x.dataset.i,1);dessinerPlus()})}
+function lirePlus(){document.querySelectorAll('#k-plus .kp-c').forEach(x=>{const i=+x.dataset.i;PLUS[i].c=x.value.trim();const u=document.querySelector('#k-plus .kp-u[data-i="'+i+'"]'),m=document.querySelector('#k-plus .kp-m[data-i="'+i+'"]');if(u)PLUS[i].u=u.value.trim();if(m)PLUS[i].m=m.value.trim()})}
+$('#k-ajout').onclick=()=>{lirePlus();PLUS.push({f:'mistral',c:''});dessinerPlus()};dessinerPlus();
+$('#k-save').addEventListener('click',()=>{lirePlus();PLUS=PLUS.filter(c=>c.c);try{localStorage.setItem('ss_plus',JSON.stringify(PLUS))}catch(e){}dessinerPlus()});
 async function ia(messages,prog){const P=[['Groq','https://api.groq.com/openai/v1/chat/completions',K.groq,'openai/gpt-oss-120b',{reasoning_effort:'low'}],
-  ['Cerebras','https://api.cerebras.ai/v1/chat/completions',K.cer,'gpt-oss-120b',{reasoning_effort:'low'}],['OpenRouter','https://openrouter.ai/api/v1/chat/completions',K.or,'openai/gpt-oss-120b:free',{}]].filter(p=>p[2]);
-  if(!P.length&&!K.gem)throw new Error('Ajoutez d\'abord la clé Groq (en bas de cette page).');let err='';
+  ['Cerebras','https://api.cerebras.ai/v1/chat/completions',K.cer,'gpt-oss-120b',{reasoning_effort:'low'}],['OpenRouter','https://openrouter.ai/api/v1/chat/completions',K.or,'openai/gpt-oss-120b:free',{}],
+  ...PLUS.filter(c=>c.c).map(c=>{const v=IA_PLUS[c.f]||IA_PLUS.autre;return [v[0],c.f==='autre'?c.u:v[1],c.c,c.f==='autre'?c.m:v[2],{}]}).filter(p=>p[1]&&p[3])].filter(p=>p[2]);
+  if(!P.length&&!K.gem)throw new Error('Ajoutez d\'abord une clé d\'IA (Groq ou une autre, en bas de cette page).');let err='';
   for(const [n,u,k,m,x] of P)for(let essai=0;essai<5;essai++){try{const r=await fetch(u,{method:'POST',headers:{Authorization:'Bearer '+k,'Content-Type':'application/json'},body:JSON.stringify({model:m,temperature:0.2,messages,...x})});
       if(r.status===429){const b=await r.text();if(/per day|\bTPD\b|\bRPD\b/i.test(b)){err=n+' : quota du jour épuisé';break}   // quota du jour : on passe tout de suite à l'IA suivante
         const mm=b.match(/try again in\s*(?:(\d+)m)?\s*([\d.]+)s/i),w=Math.min(75,Math.ceil(mm?(+(mm[1]||0)*60+parseFloat(mm[2])):30)+2);   // quota par minute : on attend le temps demandé
@@ -714,7 +726,7 @@ $('#t-mic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechR
 $('#t-carnet').onclick=async()=>{const t=await ghLire('technicien/carnet.md');$('#t-carnetout').innerHTML=t?'<div style="white-space:pre-wrap;font-size:13px;margin-top:8px">'+esc(t.replace(/^#[^\n]*\n/,'')).replace(/^## (.*)$/gm,'<b>— $1 —</b>')+'</div>':'<p class="msg">Carnet introuvable.</p>'};
 
 // ---- Transfert des clés : ancienne page (fichier du téléphone) → page en ligne ; les clés ne quittent jamais le téléphone
-const EN_LIGNE='https://groupeemperiorsarl-stack.github.io',NOMS_CLES=['ss_tok','ss_groq','ss_cer','ss_or','ss_gem'];
+const EN_LIGNE='https://groupeemperiorsarl-stack.github.io',NOMS_CLES=['ss_tok','ss_groq','ss_cer','ss_or','ss_gem','ss_plus'];
 const lesCles=()=>{const o={};NOMS_CLES.forEach(n=>{try{const v=localStorage.getItem(n);if(v)o[n]=v}catch(e){}});return o};
 const poserCles=o=>{let k=0;NOMS_CLES.forEach(n=>{if(o&&typeof o[n]==='string'&&o[n].trim()){try{localStorage.setItem(n,o[n].trim());k++}catch(e){}}});return k};
 const tmsg=t=>$('#x-msg').innerHTML='<p class="msg">'+t+'</p>';
