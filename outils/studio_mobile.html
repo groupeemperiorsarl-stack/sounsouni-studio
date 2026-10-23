@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v36</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v37</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -249,7 +249,15 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
           catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
       catch(e){v.innerHTML='<p class="msg">❌ Relecture illisible : '+esc(e.message)+'</p>'}
       return}
-    if(f.endsWith('.mp4')){   // téléchargement par petits morceaux (2 Mo, 3 à la fois) : si la connexion coupe, seul le morceau coupé est repris (avant : tout recommençait à zéro)
+    if(f.endsWith('.mp4')&&!b.dataset.morceaux){   // lecture directe par le lecteur du téléphone (il charge lui-même au fur et à mesure, comme YouTube) : rien à télécharger avant de regarder
+      try{const sha=(await api('/repos/'+R+'/branches/fichiers')).commit.sha,u='https://raw.githubusercontent.com/'+R+'/'+sha+'/'+n+'/'+f;
+        let dl=u;try{const rs=await api('/repos/'+R+'/releases?per_page=30'),rl=rs.filter(x=>x.tag_name.startsWith('episode-'+n+'-')).sort((x,y)=>new Date(y.created_at)-new Date(x.created_at))[0],as=rl&&rl.assets.find(x=>/_leger\.mp4$/.test(x.name));if(as)dl=as.browser_download_url}catch(e){}
+        v.innerHTML='<video controls playsinline preload="metadata" src="'+u+'"></video><div class="row"><a class="btn sec" href="'+dl+'">⬇ Télécharger la vidéo (Chrome)</a><button class="sec vm">📥 Charger dans la page</button></div><p class="muted vmsg">La vidéo démarre en quelques secondes. Si elle ne se lance pas : « ⬇ Télécharger » (Chrome la range dans Téléchargements, et reprend tout seul si la connexion coupe), ou « 📥 Charger dans la page ».</p>';
+        const vd=v.querySelector('video');vd.onerror=()=>{v.querySelector('.vmsg').textContent='❌ Le lecteur n\'arrive pas à lire la vidéo en direct : appuyez sur « 📥 Charger dans la page ».'};
+        v.querySelector('.vm').onclick=()=>{b.dataset.morceaux=1;fermer();b.click()}}
+      catch(e){v.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}
+      return}
+    if(f.endsWith('.mp4')){delete b.dataset.morceaux;   // téléchargement par petits morceaux (2 Mo, 3 à la fois) : si la connexion coupe, seul le morceau coupé est repris (avant : tout recommençait à zéro)
       v.innerHTML='<p class="muted vt">Chargement de la vidéo…</p><div style="height:8px;background:var(--line);border-radius:4px;overflow:hidden"><div class="vb" style="height:8px;width:0;background:var(--accent)"></div></div>';
       const vt=v.querySelector('.vt'),vb=v.querySelector('.vb');
       try{const bl=await morceaux(n+'/'+f,(recu,tot,t0,msg)=>{const pc=Math.floor(recu*100/tot);vb.style.width=pc+'%';
