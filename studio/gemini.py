@@ -52,9 +52,12 @@ IDENTITE = {   # fiche d'identité de chaque personnage (tenue habituelle, physi
     'SALI': "jeune femme, foulard jaune noué sur la tête, robe en pagne bleu à motifs orange et bordure dorée, sandales",
 }
 def ident(c): return f"{gfx.nom(c)} ({IDENTITE[c]})" if c in IDENTITE else gfx.nom(c)
-TENUES = {}; OBJETS = {}   # descriptions lues dans l'en-tête des scripts (NOUVELLE TENUE / NOUVEL OBJET)
+TENUES = {}; OBJETS = {}; POSE_TXT = {}   # POSE_TXT : texte d'origine des {POSE: …} (avec les accents), retrouvé par son identifiant
+POSTURE_MOTS = r'\b(debout|assise?|à genoux|a genoux|accroupie?|allongée?|marche|court|danse)\b'
+def pose_texte(slug):
+    return POSE_TXT.get(slug) or slug.replace('_', ' ')   # descriptions lues dans l'en-tête des scripts (NOUVELLE TENUE / NOUVEL OBJET)
 def desc(mot, femme):
-    if mot.startswith('pose:'): return mot[5:].replace('_', ' ')
+    if mot.startswith('pose:'): return pose_texte(mot[5:])
     d = DESC.get(mot); return d[1 if femme else 0] if d else mot.replace('_', ' ')
 def objet_connu(o):
     n = script.norm(o)
@@ -74,7 +77,8 @@ def reference(c, posture='debout'):
 
 def analyse(path, log=print):
     """Plans d'un script (voix d'essai : seules les durées sont approximatives)."""
-    meta, ev = script.parse(open(path, encoding='utf-8').read())
+    txt = open(path, encoding='utf-8').read(); meta, ev = script.parse(txt)
+    for raw in re.findall(r'\{\s*POSE\s*:\s*([^}]+)\}', txt, re.I): POSE_TXT[script.pose_id(raw)[5:] if script.pose_id(raw).startswith('pose:') else script.pose_id(raw)] = raw.strip()
     work = os.path.join('/tmp', 'gemini_' + os.path.splitext(os.path.basename(path))[0]); os.makedirs(work, exist_ok=True)
     voices.run(ev, director.CAT, work, lambda m: None)
     shots, _ = director.build(meta, ev, lambda m: None)
@@ -127,7 +131,12 @@ def verif(pa, add, ou):
     assis = posture in ('assis', 'banc'); post = 'assis' if assis else 'debout'
     t = pa.get('tenue', '')
     for m in want:   # pose précise demandée par le script : {POSE: mains sur la tête}
-        if m.startswith('pose:') and m not in tags: add(('pose', char, post, m, t), {'type': 'pose', 'perso': char, 'posture': post, 'emo': m, 'tenue': t}, ou); return
+        if m.startswith('pose:') and m not in tags:
+            tx = pose_texte(m[5:]); tt = re.search(r"(?:\ben\s+)?(tenue\s+de\s+.+?)(?=\s+(?:debout|assise?|marche|qui|le|la|les|avec|en|jette|attrape)\b|,|$)", tx, re.I)
+            if tt and not t:   # « en tenue de soirée turquoise, debout » : une nouvelle tenue, décrite dans la demande (jamais « mêmes vêtements »)
+                lab = tt.group(1).strip(); t = script.tenue_id(' '.join(lab.split()[:3]))   # « tenue de soirée » et « tenue de soirée époustouflante » = la même tenue
+                old = TENUES.get((char, t)); TENUES[(char, t)] = (lab, lab) if not old or len(lab) > len(old[1]) else old
+            add(('pose', char, post, m, t), {'type': 'pose', 'perso': char, 'posture': post, 'emo': m, 'tenue': t}, ou); return
     emo = next((m for m in want if (m in director.EMOS or m in director.GESTE or m in DESC) and m != 'neutre'), '')
     emo = CANON.get(emo, emo)
     if t and best.get('tenue', '') != t:   # le personnage porte une tenue spéciale : il faut des images dans cette tenue
@@ -143,14 +152,22 @@ def verif(pa, add, ou):
 def demande(x):
     """La phrase à coller dans Gemini (en français)."""
     if x['type'] == 'decor':
-        return ("Crée un décor de dessin animé 3D, dans le même style que l'image jointe : " + x['texte'] +
+        return ("Crée un décor de dessin animé 3D, dans le même style que l'image jointe : " + x['texte'].rstrip('. ') +
                 ". Lieu malien réaliste et coloré, à Bamako, sans aucun personnage. Image verticale.")
     if x['type'] == 'objet':
         return ("Dessine cet objet dans exactement le même style dessin animé 3D que l'image jointe : " + x['texte'] +
                 ". L'objet seul, en entier, bien éclairé, sur un fond gris clair uni, sans personnage. Image verticale.")
     if x['type'] == 'personnage':
-        return ("Crée un nouveau personnage dans exactement le même style dessin animé 3D que le personnage de l'image jointe : " + x['texte'] +
-                ". Debout, de face, bras le long du corps, bouche fermée, expression neutre. " + FOND)
+        d = x['texte']; m = re.search(r'\((\d+)\s*images?\s*:\s*([^)]*)\)', d); vues = [v.strip() for v in re.split(r'\s*[·•;]\s*', m.group(2)) if v.strip()] if m else []
+        d = re.sub(r'\s*\(\d+\s*images?\s*:[^)]*\)', '', d); d = re.sub(r'\s*(Postures|Émotions|Emotions)\s*:[^.]*\.', '', d).strip()
+        if not vues:
+            return ("Crée un nouveau personnage dans exactement le même style dessin animé 3D que le personnage de l'image jointe : " + d +
+                    ". Debout, de face, bras le long du corps, bouche fermée, expression neutre. " + FOND)
+        figs = ['debout, de face, bras le long du corps, bouche fermée, expression neutre'] + vues[:3]
+        return ("Crée un nouveau personnage dans exactement le même style dessin animé 3D que le personnage de l'image jointe : " + d.rstrip('.') +
+                f". Fais UNE seule image en format paysage qui montre ce même personnage {len(figs)} fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, "
+                "tous à la même taille, bien séparés (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : "
+                + ' ; '.join(f'{i}) {v}' for i, v in enumerate(figs, 1)) + '.')
     f = x['perso'] in FEMMES
     if x['posture'] == 'dos': pose = 'vu de dos, debout, les bras le long du corps, on ne voit pas son visage' if not f else 'vue de dos, debout, les bras le long du corps, on ne voit pas son visage'
     elif x['posture'] == 'assis': pose = ('assise' if f else 'assis') + ' sur un petit banc en bois, de trois-quarts, les mains sur les genoux' + (', ' + desc(x['emo'], f) if x['emo'] else ', bouche fermée')
@@ -193,7 +210,11 @@ PAR_IMAGE = 4   # Gemini fait jusqu'à 4 personnages par image (au-delà la qual
 def pose_phrase(x):
     """La pose demandée, en quelques mots (pour la liste « 1) … 2) … » d'une image groupée)."""
     f = x['perso'] in FEMMES
-    if x['posture'] == 'dos': return ('vue' if f else 'vu') + ' de dos, debout, bras le long du corps, visage caché'
+    if str(x.get('emo', '')).startswith('pose:'):   # pose précise écrite par le scénariste : son texte, sans répéter la tenue ni « debout » deux fois
+        tx = pose_texte(x['emo'][5:])
+        if x.get('tenue'): tx = re.sub(r'(?:\ben\s+)?tenue\s+de\s+\S+(?:\s+(?!debout|assise?|marche|qui|le|la|les|avec)\S+)?\s*,?\s*', '', tx, count=1, flags=re.I).strip(' ,')
+        return (tx if re.search(POSTURE_MOTS, tx, re.I) else 'debout, de trois-quarts, ' + tx) + ', bouche fermée'
+    if x.get('posture') == 'dos': return ('vue' if f else 'vu') + ' de dos, debout, bras le long du corps, visage caché'
     if x['posture'] == 'assis' and x['emo'] == 'telephone': return ('assise' if f else 'assis') + ' sur un petit banc en bois, de trois-quarts, qui tient son téléphone à deux mains et le regarde'
     if x['posture'] == 'assis': return ('assise' if f else 'assis') + ' sur un petit banc en bois, de trois-quarts, mains sur les genoux' + (', ' + desc(x['emo'], f) if x['emo'] else ', bouche fermée')
     return 'debout, de trois-quarts, ' + (desc(x['emo'], f) if x['emo'] else "calme, l'air neutre") + ', bouche fermée'
@@ -245,7 +266,7 @@ def demande_melange(grp, items):
     jointes = ' ; '.join(f"image {num[c]} = {ident(c)}" for c in pr)
     def fig(x):
         if x['type'] == 'objet': return f"{x['texte']}, l'objet seul, posé, dessiné en grand"
-        mains = '' if 'telephone' in str(x.get('emo')) else ', les mains vides'
+        mains = '' if re.search(r'telephone|bouquet|tient|tenant|attrape|dans les mains|main tendue|chapelet', script.norm(str(x.get('emo')) + ' ' + pose_texte(str(x.get('emo', ''))[5:]))) else ', les mains vides'
         return f"{gfx.nom(x['perso'])} (image {num[x['perso']]}), " + pose_phrase(x) + mains
     liste = ' ; '.join(f'{i}) {fig(x)}' for i, x in enumerate(xs, 1))
     return ("Images jointes, dans l'ordre : " + jointes + ". Garde exactement chaque personnage comme sur son image : même visage, même coiffure, "
@@ -264,7 +285,7 @@ def demande_groupe(grp, items):
     if not (x0.get('tenue') and not grp.get('suite_de')): tete = tete.replace("que sur l'image jointe", "que sur l'image jointe, " + ident(x0['perso']), 1)
     rp = director.POSES.get(x0.get('ref') or '', {}); objet = set(rp.get('props', [])) | (set(rp.get('tags', [])) & director.OBJ)
     rien = (('Elle' if f else 'Il') + ' ne tient rien dans les mains. ') if objet else ''
-    if len(xs) == 1: return tete + 'Montre-' + ('la ' if f else 'le ') + pose_phrase(x0) + '. ' + rien + FOND
+    if len(xs) == 1: return tete + 'Montre-' + ('la' if f else 'le') + ' ainsi : ' + pose_phrase(x0) + '. ' + rien + FOND
     liste = ' ; '.join(f'{i}) {pose_phrase(x)}' for i, x in enumerate(xs, 1))
     return (tete + rien + f"Fais UNE seule image en format paysage qui montre ce personnage {len(xs)} fois, côte à côte sur une seule rangée, "
             "chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), "
