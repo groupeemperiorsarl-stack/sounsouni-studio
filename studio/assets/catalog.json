@@ -5806,6 +5806,322 @@
    ],
    "props": [],
    "genere": "code"
+  },
+  "bak_debout_attrape_le_bouquet_a_deux_mains": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:debout_attrape_le_bouquet_a_deux_mains",
+    "debout",
+    "attrape",
+    "le",
+    "bouquet",
+    "a",
+    "deux",
+    "mains"
+   ],
+   "mouth": false,
+   "size": [
+    268,
+    1600
+   ],
+   "head_x": 0.5,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout"
+  },
+  "bak_reveur": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "reveur"
+   ],
+   "mouth": false,
+   "size": [
+    245,
+    1600
+   ],
+   "head_x": 0.622,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout"
+  },
+  "dia_a_genoux": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:a_genoux",
+    "a",
+    "genoux"
+   ],
+   "mouth": true,
+   "size": [
+    233,
+    1600
+   ],
+   "head_x": 0.285,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
+  },
+  "obj_land_cruiser_blanc": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "land",
+    "cruiser",
+    "blanc"
+   ],
+   "mouth": false,
+   "size": [
+    268,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "obj_mercedes_noire": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "mercedes",
+    "noire"
+   ],
+   "mouth": false,
+   "size": [
+    801,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "obj_4x4_noir_chauffeur": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "4x4",
+    "noir",
+    "chauffeur"
+   ],
+   "mouth": false,
+   "size": [
+    519,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "awa_mepris": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "mepris"
+   ],
+   "mouth": true,
+   "size": [
+    518,
+    1600
+   ],
+   "head_x": 0.09,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "mouth_auto": true
+  },
+  "mou_fier": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "fier"
+   ],
+   "mouth": true,
+   "size": [
+    798,
+    1600
+   ],
+   "head_x": 0.287,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_content",
+   "mouth_auto": true
+  },
+  "el_h_debout": {
+   "char": "EL_HADJ",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    597,
+    1600
+   ],
+   "head_x": 0.493,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
+  },
+  "chei_debout": {
+   "char": "CHEICK",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    584,
+    1600
+   ],
+   "head_x": 0.502,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
+  },
+  "abdo_debout": {
+   "char": "ABDOUL",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "neutre",
+    "ecoute"
+   ],
+   "mouth": true,
+   "size": [
+    584,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
+  },
+  "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:en_tenue_de_soiree_turquoise_debout",
+    "en",
+    "tenue",
+    "de",
+    "soiree",
+    "turquoise",
+    "debout"
+   ],
+   "mouth": true,
+   "size": [
+    5016,
+    1600
+   ],
+   "head_x": 0.581,
+   "props": [],
+   "genere": "gemini",
+   "depart": "fat_mains",
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
+  },
+  "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:en_tenue_de_soiree_epoustouflante_marche_lentement",
+    "en",
+    "tenue",
+    "de",
+    "soiree",
+    "epoustouflante",
+    "marche",
+    "lentement"
+   ],
+   "mouth": true,
+   "size": [
+    760,
+    1600
+   ],
+   "head_x": 0.547,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
+  },
+  "awa_tenue_de_soiree_en_tenue_de_soiree_debout_le_bouquet_dans_les_mains": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:en_tenue_de_soiree_debout_le_bouquet_dans_les_mains",
+    "en",
+    "tenue",
+    "de",
+    "soiree",
+    "debout",
+    "le",
+    "bouquet",
+    "dans",
+    "les",
+    "mains"
+   ],
+   "mouth": true,
+   "size": [
+    488,
+    1600
+   ],
+   "head_x": 0.433,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
+  },
+  "awa_tenue_de_soiree_en_tenue_de_soiree_debout_jette_le_bouquet_par_dessus_son_epaule_sans_regarder": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pose:en_tenue_de_soiree_debout_jette_le_bouquet_par_dessus_son_epaule_sans_regarder",
+    "en",
+    "tenue",
+    "de",
+    "soiree",
+    "debout",
+    "jette",
+    "le",
+    "bouquet",
+    "par",
+    "dessus",
+    "son",
+    "epaule",
+    "sans",
+    "regarder"
+   ],
+   "mouth": false,
+   "size": [
+    2297,
+    1600
+   ],
+   "head_x": 0.647,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "tenue": "tenue_de_soiree"
   }
  },
  "decors": {
@@ -5854,7 +6170,10 @@
   "KADI": 0.88,
   "MOUSSA": 0.9,
   "MIMI": 0.86,
-  "VENDEUSE": 0.9
+  "VENDEUSE": 0.9,
+  "EL_HADJ": 1.0,
+  "CHEICK": 1.0,
+  "ABDOUL": 1.0
  },
  "voices": {
   "BAKARY": "ref_bakary.wav",
