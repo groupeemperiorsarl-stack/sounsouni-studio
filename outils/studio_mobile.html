@@ -22,6 +22,8 @@ button:disabled{opacity:.5}
 .ep-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.ep-head>div{min-width:0}
 .ep-title{font:700 16px var(--display);overflow-wrap:anywhere}
 img.prev,video{width:100%;border-radius:10px;margin-top:8px;display:block;max-width:100%}
+[hidden]{display:none!important}
+[data-f].actif{outline:3px solid var(--accent);outline-offset:2px}
 iframe{width:100%;height:75vh;border:1px solid var(--line);border-radius:10px;margin-top:8px;background:#fff}
 .tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right))}
 .tabs button{flex:1;min-width:0;background:none;color:var(--muted);border-radius:10px;padding:9px 2px;font-size:12px;white-space:normal;line-height:1.2}.tabs button.on{color:var(--accent);background:var(--bg)}
@@ -35,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v27</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v28</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -149,8 +151,8 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
   catch(e){$('#liste').innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}}
 async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
-  <div class="etape"></div><div class="zone"></div>
-  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button><button data-a="fiche" class="sec">🔄 Refaire la fiche Gemini</button></div>
+  <div class="etape"></div>
+  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button><button data-a="fiche" class="sec">🔄 Refaire la fiche Gemini</button></div><div class="out"></div><div class="zone"></div>
   <details><summary>Planches et corrections</summary>
     <label>Réponse aux planches (ex. 1B 3C)</label><div class="row"><input class="rep" placeholder="1B 3C"><button data-x="rep">Envoyer</button></div>
     <label>Planches sur un passage</label><div class="row"><input class="de" placeholder="1:20"><input class="a" placeholder="1:45"><button data-x="pl">Demander</button></div>
@@ -164,7 +166,8 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
   <details><summary>🎞 Mini-vidéos des personnages</summary><p class="muted">Vidéo de 5 à 8 s faite avec un générateur gratuit à partir de l'image du personnage (fond uni). L'application la découpe, détoure et décrit chaque image, puis vous montre la planche.</p>
     <div class="row"><select class="v-p"></select><select class="v-s"><option value="tour">Tour complet</option><option value="action">Geste</option></select></div>
     <input type="file" class="v-f" accept="video/*"><div class="row"><button class="v-e">🎞 Envoyer la mini-vidéo</button></div><div class="v-m"></div></details>
-  <details><summary>Détails de la fabrication</summary><div class="md histo"></div></details><div class="out"></div>`;
+  <details><summary>Détails de la fabrication</summary><div class="md histo"></div></details>`;
+  d.querySelectorAll('details').forEach(x=>{const r=document.createElement('div');r.className='row';r.innerHTML='<button class="sec ferme-d">✖ Fermer</button>';x.appendChild(r);r.querySelector('button').onclick=()=>{x.open=false;x.querySelector('summary').scrollIntoView({block:'center',behavior:'smooth'})}});
   const m=(i.body||'').match(/```(?:text)?\n([\s\S]*?)\n```/);d.querySelector('.scr').value=m?m[1]:(i.body||'');
   const out=t=>d.querySelector('.out').innerHTML='<p class="msg">'+t+'</p>';
   const dire=async t=>{try{await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:t})});out('✅ « '+esc(t)+' » envoyé. Actualisez dans quelques minutes.')}catch(x){out('❌ '+esc(x.message))}};
@@ -211,11 +214,14 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
   if(a('import.png'))h+='<button class="sec" data-f="import.png">🧩 Images rangées</button>';
   ls.filter(x=>/^planche_[a-z]+_(tour|action)_\w+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🎞 '+esc('Mini-vidéo '+x.slice(8,-4).split('_').slice(0,2).join(' ').replace('action','geste'))+'</button>');
   ls.filter(x=>/^essai_\d+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🧪 Essai du code '+x.match(/\d+/)[0]+'</button>');
-  z.innerHTML=h+'</div><div class="pub"></div><div class="vue"></div>';const v=z.querySelector('.vue');
+  z.innerHTML=h+'</div><div class="pub"></div><div class="vbar row" hidden style="justify-content:flex-end"><button class="sec ferme">✖ Fermer</button></div><div class="vue"></div><div class="vbar row" hidden style="justify-content:flex-end"><button class="sec ferme">✖ Fermer</button></div>';const box=z.querySelector('.vue');
+  const fermer=()=>{box.querySelectorAll('video').forEach(x=>{try{x.pause()}catch(e){}});box.replaceChildren();box.dataset.f='';z.querySelectorAll('.vbar').forEach(x=>x.hidden=true);z.querySelectorAll('[data-f]').forEach(x=>x.classList.remove('actif'))};
+  z.querySelectorAll('.ferme').forEach(x=>x.onclick=()=>{fermer();z.scrollIntoView({block:'start',behavior:'smooth'})});
   if(a('video.mp4'))api('/repos/'+R+'/releases?per_page=30').then(rs=>{const r=rs.filter(x=>x.tag_name.startsWith('episode-'+n+'-')).sort((x,y)=>new Date(y.created_at)-new Date(x.created_at))[0];if(!r)return;   // versions prêtes à publier (règle de publication)
     const L=[['_youtube','YouTube (complet)'],['_tiktok','TikTok (3:00)'],['_shorts','Shorts (2:58)'],['_facebook','Facebook (1:00)']].map(([s,lib])=>{const f=r.assets.find(x=>x.name.endsWith(s+'.mp4'));return f?'<a class="btn sec" href="'+f.browser_download_url+'" download>⬇ '+lib+'</a>':''}).join('');
     if(L)z.querySelector('.pub').innerHTML='<p class="muted" style="margin:8px 0 4px">Versions à publier (bandeau « chaîne YouTube » inclus) :</p><div class="row">'+L+'</div>'}).catch(()=>{});
-  z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;v.innerHTML='<p class="muted">Chargement…</p>';
+  z.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const f=b.dataset.f;if(box.dataset.f===f){fermer();return}fermer();box.dataset.f=f;b.classList.add('actif');z.querySelectorAll('.vbar').forEach(x=>x.hidden=false);
+    const v=document.createElement('div');box.appendChild(v);v.innerHTML='<p class="muted">Chargement…</p>';   // une vue fermée qui finit de charger ne se rouvre pas
     if(f==='relecture.json'){   // le relecteur automatique : problèmes trouvés + corrections à cocher (mêmes actions que « Discuter »)
       try{const r=JSON.parse(await (await brut(n+'/'+f)).text()),P=r.problemes||[],A=[];
         let h2='<p class="muted">Relu le '+esc(r.date||'')+' ('+esc(r.modele||'')+'). '+esc(r.resume||'')+'</p>';
@@ -570,14 +576,17 @@ function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector
       try{const ac=await Promise.race([src[k].arrayBuffer(),dodo(60000).then(()=>{throw new Error('plus de 60 s')})]);F.push(new File([ac],src[k].name,{type:src[k].type||'image/jpeg'}))}
       catch(e){S.err('Image '+(k+1)+' ('+src[k].name+') illisible : '+e.message+'. Si elle vient de Google Photos ou du nuage, enregistrez-la d\'abord sur le téléphone (⬇ Télécharger), puis choisissez-la de nouveau.');F=[];return}}
     S.ok();msg.innerHTML='<p class="msg">✅ '+F.length+' image(s) prête(s) ('+Mo(F.reduce((a,f)=>a+f.size,0))+'). Mettez le numéro de demande sous chaque image.</p>';
-    lst.innerHTML=F.map((f,k)=>'<div class="row" style="align-items:center"><img class="mini" src="'+URL.createObjectURL(f)+'"><label style="margin:0">Demande n°</label><input class="g-n" style="width:70px" type="number" value="'+(k+1)+'"></div>').join('')};
+    let gs=[];try{const r=await fetchT(API+'/repos/'+R+'/contents/'+i.number+'/fiche_gemini.json?ref=fichiers',{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}},30000);if(r.ok)gs=(await r.json()).groupes||[]}catch(e){}
+    const opts='<option value="">— Quelle demande de la fiche ? —</option>'+gs.map(g=>'<option value="'+g.g+'">n° '+g.g+' · '+esc((g.titres||[]).map(t=>t.split(' — ')[0]+(t.split(' — ')[1]?' ('+t.split(' — ')[1]+')':'')).join(', ')).slice(0,90)+' — '+(g.titres||[]).length+' image(s)</option>').join('');
+    lst.innerHTML=F.map((f,k)=>'<div style="display:flex;gap:8px;align-items:center;margin:6px 0"><img class="mini" src="'+URL.createObjectURL(f)+'" style="flex:none"><div style="flex:1;min-width:0">'+(gs.length?'<select class="g-n" style="width:100%;max-width:100%">'+opts+'</select>':'<label style="margin:0">Demande n°</label><input class="g-n" style="width:70px" type="number">')+'</div></div>').join('');
+    if(gs.length)msg.insertAdjacentHTML('beforeend','<p class="muted">Pour chaque image, choisissez sa demande dans la liste (regardez qui est sur l\'image et combien de personnes).</p>')};
   const SYSV='Tu vérifies des images faites par Gemini pour le studio. Pour chaque image : compare-la aux IMAGES DE RÉFÉRENCE du ou des personnages demandés (visage, coiffure, habits, couleurs). Ne te fie qu\'à ce que tu VOIS. Si ce n\'est pas le bon personnage, dis-le clairement. Vérifie aussi : nombre de personnages, pose demandée, mains et pieds entiers, pas de texte, fond simple. Vérifie enfin que le numéro de demande choisi correspond bien à l\'image. Réponds en français simple, en JSON {"reponse": "une ligne par image : n° — ✅ bonne ou ❌ à refaire, et pourquoi", "actions": []}.';
   const H=()=>({Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'});
   d.querySelector('.g-v').onclick=async e=>{if(!F.length){msg.innerHTML='<p class="msg">Choisissez d\'abord les images (bouton au-dessus).</p>';return}const bt=e.currentTarget,S=suivi(msg,45);bt.disabled=true;try{
       if(!K.gem)throw new Error('Ajoutez d\'abord la clé Gemini (onglet 🤖 Assistant, en bas).');
       S.etape('Lecture de la fiche Gemini de l\'épisode');const r0=await fetchT(API+'/repos/'+R+'/contents/'+i.number+'/fiche_gemini.json?ref=fichiers',{headers:H()},30000);
       if(!r0.ok){S.err('Pas de fiche Gemini pour cet épisode : appuyez d\'abord sur « 🔄 Refaire la fiche Gemini ».');return}const fj=await r0.json();S.detail((fj.groupes||[]).length+' demande(s) dans la fiche');
-      const ns=[...lst.querySelectorAll('.g-n')].map(x=>+x.value),parts=[{text:'Voici les images à vérifier.'}],refs=new Set();let poids=0;
+      const ns=[...lst.querySelectorAll('.g-n')].map(x=>+x.value);if(ns.some(x=>!x))throw new Error('choisissez la demande de chaque image (liste sous chaque image)');const parts=[{text:'Voici les images à vérifier.'}],refs=new Set();let poids=0;
       for(let k=0;k<F.length;k++){const g=(fj.groupes||[]).find(x=>x.g===ns[k]);
         if(!g){S.etape('Image '+(k+1)+' sur '+F.length,'⚠️ numéro de demande '+ns[k]+' inconnu dans la fiche : vérifiez le numéro');parts.push({text:'Image '+(k+1)+' : numéro de demande '+ns[k]+' inconnu dans la fiche.'});continue}
         const it=g.items.map(n=>fj.items.find(x=>x.n===n)).filter(Boolean);
@@ -589,7 +598,7 @@ function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector
       const h=S.html();msg.innerHTML='<div class="msg" style="white-space:pre-wrap">'+esc(r.reponse||'(pas de réponse)')+'</div><details><summary class="muted">Détails de la vérification ('+S.total()+' s)</summary>'+h+'</details>'}
     catch(er){S.err('Arrêté : '+er.message)}finally{bt.disabled=false}};
   d.querySelector('.g-e').onclick=async e=>{if(!F.length){msg.innerHTML='<p class="msg">Choisissez d\'abord les images (bouton au-dessus).</p>';return}const bt=e.currentTarget,S=suivi(msg,60);bt.disabled=true;
-    try{const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value.trim()),pr=[];if(ns.some(x=>!x))throw new Error('mettez le numéro de demande sous chaque image');
+    try{const ns=[...lst.querySelectorAll('.g-n')].map(x=>x.value.trim()),pr=[];if(ns.some(x=>!x))throw new Error('choisissez la demande de chaque image (liste sous chaque image)');
       for(let k=0;k<F.length;k++){const f=F[k];if(f._nom){S.etape('Image '+(k+1)+' sur '+F.length,'déjà envoyée tout à l\'heure');pr.push(ns[k]+'='+f._nom);continue}
         S.etape('Image '+(k+1)+' sur '+F.length+' : réduction','fichier de '+Mo(f.size)+'…');const b=await alleger(f);S.detail(Mo(f.size)+' → '+Mo(b.size));
         const nom=ns[k]+'_'+Date.now().toString(36)+'.'+(b.type==='image/jpeg'?'jpg':((f.name.split('.').pop()||'png').toLowerCase().replace(/[^a-z]/g,'')||'png'));

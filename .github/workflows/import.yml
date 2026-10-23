@@ -59,8 +59,10 @@ jobs:
           PY
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
           git add studio/assets && git commit -qm "Images Gemini rangées (demande #$N) : $K" && git pull -q --rebase --autostash && git push -q && SHA=$(git rev-parse --short HEAD)
-          if [ -n "$SHA" ] && [ -f import.png ]; then
+          W=$(grep "⚠️" journal.txt | sed 's/^/- /'); [ -n "$W" ] && W=$'\n\n'"$W"
+          if [ -z "$K" ] && [ -n "$W" ]; then M="⚠️ Aucune image rangée.$W"
+          elif [ -n "$SHA" ] && [ -f import.png ]; then
             bash .github/scripts/fichiers.sh "$N" import.png
-            M="🧩 Images rangées dans le studio : $K"$'\n'"Planche : bouton « 🧩 Images rangées » de la page. Si une pose est ratée : **annuler import $SHA**"
+            M="🧩 Images rangées dans le studio : $K"$'\n'"Planche : bouton « 🧩 Images rangées » de la page. Si une pose est ratée : **annuler import $SHA**$W"
           else M="❌ Les images n'ont pas pu être rangées. Fin du journal :"$'\n```\n'"$(tail -12 journal.txt)"$'\n```'; fi
           gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="$M" > /dev/null

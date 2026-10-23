@@ -345,9 +345,10 @@ def decouper(im, k):
     m = np.asarray(remove(im, session=new_session('isnet-general-use'), only_mask=True, post_process_mask=True)) > 60
     lab, n = ndimage.label(ndimage.binary_closing(m, iterations=6))
     objs = sorted([(int((lab[sl] == i).sum()), sl) for i, sl in enumerate(ndimage.find_objects(lab), 1) if sl is not None], key=lambda t: -t[0])
-    big = [sl for a, sl in objs[:k] if a > 0.03 * objs[0][0]] if objs else []   # un petit objet (verre) compte aussi
-    if len(big) != k:   # personnages qui se touchent : découpe en bandes égales
-        w = im.width // k; return [im.crop((i * w, 0, (i + 1) * w, im.height)) for i in range(k)]
+    vus = [sl for a, sl in objs if a > 0.03 * objs[0][0]] if objs else []   # un petit objet (verre) compte aussi
+    if len(vus) != k:   # jamais de découpe au hasard (des moitiés de personnes) : l'image ne correspond sans doute pas à cette demande
+        raise ValueError(len(vus))
+    big = vus
     out = []
     for sl in sorted(big, key=lambda s: s[1].start):
         y0, y1, x0, x1 = sl[0].start, sl[0].stop, sl[1].start, sl[1].stop; mx = int((x1 - x0) * 0.08) + 6; my = int((y1 - y0) * 0.04) + 6
@@ -365,9 +366,14 @@ def importer(pairs, out, log=print):
         if not g: log(f'numéro {n} inconnu dans la fiche, ignoré'); continue
         try: src = Image.open(f); src.load()
         except Exception: log(f'⚠️ demande {n} : le fichier envoyé n\'est pas une image lisible ({os.path.basename(f)}), ignoré — renvoyez la vraie image Gemini'); continue
-        morceaux = decouper(src, len(g['items']))
+        try: morceaux = decouper(src, len(g['items']))
+        except ValueError as e:
+            vu = int(str(e)); autres = [str(x['g']) for x in data['groupes'] if len(x['items']) == vu]
+            log(f"⚠️ Image de la demande {n} non rangée : j'y vois {vu} personnage(s) ou objet(s), mais la demande {n} en attend {len(g['items'])} (" + ' · '.join(g.get('titres') or [])[:120] + ")."
+                + (f" Si le numéro est faux, le bon est sans doute : {' ou '.join(autres)}." if autres else '')
+                + (f" Si c'est bien la demande {n}, Gemini a dessiné trop de personnages : refaites l'image dans Gemini (même demande)." if vu > len(g['items']) else f" Si c'est bien la demande {n}, des personnages se touchent : redemandez à Gemini de bien les espacer.")); continue
         travail += list(zip([items[i] for i in g['items']], morceaux))
-    if not travail: raise SystemExit('Aucune image lisible : vérifiez le numéro de demande et renvoyez les images Gemini (fichiers .jpg ou .png).')
+    if not travail: log('Aucune image rangée.')
     for x, im in travail:
         if x['type'] == 'decor':
             im = im.convert('RGB'); s = max(1080 / im.width, 1920 / im.height, 1); im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS)
