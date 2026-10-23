@@ -150,7 +150,7 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
 async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
   <div class="etape"></div><div class="zone"></div>
-  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button><button data-a="fiche" class="sec">🖼 Fiche Gemini</button></div>
+  <div class="row"><button data-a="aperçu" class="sec">👁 Aperçu</button><button data-a="vidéo">🎬 Vidéo</button><button data-a="fiche" class="sec">🔄 Refaire la fiche Gemini</button></div>
   <details><summary>Planches et corrections</summary>
     <label>Réponse aux planches (ex. 1B 3C)</label><div class="row"><input class="rep" placeholder="1B 3C"><button data-x="rep">Envoyer</button></div>
     <label>Planches sur un passage</label><div class="row"><input class="de" placeholder="1:20"><input class="a" placeholder="1:45"><button data-x="pl">Demander</button></div>
@@ -207,7 +207,7 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
   if(a('video.mp4'))h+='<button data-f="video.mp4">▶ Regarder la vidéo</button>';
   if(a('apercu_plans.png'))h+='<button class="sec" data-f="apercu_plans.png">🖼 Voir l\'aperçu</button>';
   if(a('planches.html'))h+='<button data-f="planches.html">☑ Planches à cocher</button>';
-  if(a('fiche_gemini.html'))h+='<button class="sec" data-f="fiche_gemini.html">🖼 Fiche Gemini</button>';
+  if(a('fiche_gemini.html'))h+='<button data-f="fiche_gemini.html">🖼 Ouvrir la fiche Gemini</button>';
   if(a('import.png'))h+='<button class="sec" data-f="import.png">🧩 Images rangées</button>';
   ls.filter(x=>/^planche_[a-z]+_(tour|action)_\w+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🎞 '+esc('Mini-vidéo '+x.slice(8,-4).split('_').slice(0,2).join(' ').replace('action','geste'))+'</button>');
   ls.filter(x=>/^essai_\d+\.png$/.test(x)).forEach(x=>h+='<button class="sec" data-f="'+x+'">🧪 Essai du code '+x.match(/\d+/)[0]+'</button>');
@@ -577,7 +577,7 @@ function prochaine(i,d,cs,e){const z=d.querySelector('.etape'),n=i.number,b=e.b,
   else if(/Aperçu des plans prêt/.test(x))h='👁 <b>L\'aperçu est prêt</b> (bouton « Voir l\'aperçu »). S\'il vous plaît :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>Sinon : « 💬 Discuter avec l\'assistant » pour corriger.';
   else if(/Script mis au format/.test(x))h='🤖 <b>Le script est mis au format.</b> Lisez ce qu\'il faut vérifier dans « Détails de la fabrication », relisez le script, puis lancez l\'aperçu.<div class="row"><button class="sec relire">📝 Relire le script</button>'+bouton('👁 Lancer l\'aperçu','aperçu','Aperçu lancé (environ 10 min).')+'</div>';
   else if(/La vidéo est prête/.test(x))h='🎬 <b>La vidéo est prête</b> (« ▶ Regarder la vidéo »). Pour corriger : « 💬 Discuter avec l\'assistant » → « ✅ Appliquer », puis revenez ici.';
-  else if(/Fiche Gemini prête/.test(x))h='🖼 <b>La fiche Gemini est prête.</b> Elle ne corrige pas la vidéo : elle sert à créer dans Gemini les images qui manquent. Ouvrez « 🖼 Fiche Gemini », faites les images, puis « 🧩 Renvoyer les images Gemini ».<br>Pour continuer sans nouvelles images :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
+  else if(/Fiche Gemini prête/.test(x))h='🖼 <b>La fiche Gemini est prête.</b> Elle ne corrige pas la vidéo : elle sert à créer dans Gemini les images qui manquent. Touchez « 🖼 Ouvrir la fiche Gemini », faites les images, puis « 🧩 Renvoyer les images Gemini ».<br>Pour continuer sans nouvelles images :<div class="row">'+bouton('🎬 Fabriquer la vidéo','vidéo','Vidéo lancée (environ 25 min).')+'</div>';
   else if(/Planche prête/.test(x))h='🎞 <b>La planche de la mini-vidéo est prête.</b> Ouvrez le bouton « 🎞 … » ci-dessous, puis « ✅ Tout garder » (ou choisissez les numéros).';
   else if(/Images rangées/.test(x))h='🧩 <b>Les nouvelles images sont rangées</b> (« 🧩 Images rangées » pour les voir). Pour les utiliser :<div class="row">'+bouton('👁 Nouvel aperçu','aperçu','Aperçu lancé (environ 10 min).')+'</div>';
   else if(/Essai du code réussi/.test(x))h='🧪 <b>La modification du code a marché sur les essais.</b> Regardez les images « 🧪 Essai du code », puis « ✅ Accepter » ou « ✖ Refuser » ci-dessous.';
