@@ -369,7 +369,7 @@ def importer(pairs, out, log=print):
         try: morceaux = decouper(src, len(g['items']))
         except ValueError as e:
             vu = int(str(e)); autres = [str(x['g']) for x in data['groupes'] if len(x['items']) == vu]
-            log(f"⚠️ Image de la demande {n} non rangée : j'y vois {vu} personnage(s) ou objet(s), mais la demande {n} en attend {len(g['items'])} (" + ' · '.join(g.get('titres') or [])[:120] + ")."
+            log(f"⚠️ Image de la demande {n} pas rangée, car j'y vois {vu} personnage(s) ou objet(s), mais la demande {n} en attend {len(g['items'])} (" + ' · '.join(g.get('titres') or [])[:120] + ")."
                 + (f" Si le numéro est faux, le bon est sans doute : {' ou '.join(autres)}." if autres else '')
                 + (f" Si c'est bien la demande {n}, Gemini a dessiné trop de personnages : refaites l'image dans Gemini (même demande)." if vu > len(g['items']) else f" Si c'est bien la demande {n}, des personnages se touchent : redemandez à Gemini de bien les espacer.")); continue
         travail += list(zip([items[i] for i in g['items']], morceaux))
