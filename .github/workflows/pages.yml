@@ -4,6 +4,7 @@ name: Page Studio mobile en ligne (GitHub Pages)
 on:
   push: { branches: [main], paths: ["outils/studio_mobile.html", ".github/workflows/pages.yml"] }
   workflow_dispatch:
+  schedule: [{ cron: "23 * * * *" }]   # une fois Pages allumé par Issa, la page se met en ligne toute seule dans l'heure
 permissions: { contents: read, pages: write, id-token: write }
 concurrency: { group: pages, cancel-in-progress: true }
 jobs:
