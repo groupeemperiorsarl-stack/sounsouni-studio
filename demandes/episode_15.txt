@@ -1,41 +1,279 @@
-TITRE: Les Plans de Bakary – Test complet : Les beignets
-NOUVEAU PERSONNAGE: AMINATA — vendeuse de beignets du quartier, la trentaine, souriante, foulard orange, pagne orange et vert, une bassine de beignets. Postures : debout, marche.
+TITRE: Les Plans de Bakary – Épisode 19 : La reine de la soirée
+
+NOUVEAU DÉCOR: VILLA_FETE — la cour de la villa décorée pour un dîner de mariage, la nuit : guirlandes lumineuses dorées, tables nappées blanc et or, piste de danse au centre, estrade des mariés au fond (les mariés restent hors champ), grosses voitures garées au portail.
+
+NOUVEAU PERSONNAGE: EL_HADJ — El Hadj Bourama, riche commerçant d'or du Grand Marché, la cinquantaine, un peu de ventre, grand boubou en bazin blanc brodé d'or, bonnet assorti, chapelet à la main, grosse montre en or. Postures : debout, marche. Émotions : sourire, offre, gene. (3 images : marche · debout souriant main tendue · debout vexé)
+
+NOUVEAU PERSONNAGE: CHEICK — Cheick « le Diaspo », 35 ans, rentré de Paris, costume slim BORDEAUX, chemise noire ouverte, chaîne en or, lunettes de soleil posées sur la tête. Postures : debout, marche. Émotions : fier, offre, surpris. (3 images : marche · debout main tendue pour inviter à danser · debout surpris)
+
+NOUVEAU PERSONNAGE: ABDOUL — Abdoul « le Grand », 40 ans, costume trois pièces gris anthracite, cravate argent, badge officiel au cou, un téléphone dans chaque main. Postures : debout, marche. Émotions : sourire, gene. (3 images : marche en téléphonant · debout souriant · debout vexé)
+
+NOUVEAU PERSONNAGE: INVITEE — voix seulement, jamais à l'image : femme d'environ 45 ans, commère, chuchote avec excitation.
+NOUVEAU PERSONNAGE: INVITE — voix seulement, jamais à l'image : homme d'environ 30 ans, voix enjouée.
+
+NOUVEAUX OBJETS: Land Cruiser blanc · Mercedes noire · 4x4 noir avec chauffeur · clés de voiture de Karim · verre brisé · bouquet de fleurs de la mariée
+
+NOUVELLES POSES: Awa en tenue de soirée époustouflante (marche lentement · debout le bouquet dans les mains · debout en jetant le bouquet par-dessus son épaule) · Fatim en tenue de soirée turquoise (debout) · Diasabi à genoux · Bakary qui attrape le bouquet à deux mains
 
 DÉCOR: KIOSQUE · matin · ambiance: rue calme
-PLAN: large [Bakary debout, Modibo sur le banc]
+PLAN: large [Awa debout, Bakary debout, Fatim debout, Moussa debout, Modibo sur le banc, Diasabi debout]
 
-BAKARY (content · regarde: Modibo · voix: normal)
-{grand_sourire} Van, aujourd'hui je sens que la journée sera belle.
+FATIM (tendre · regarde: Bakary · voix: normal)
+Comme amis, hein ! {sourire} Juste comme amis.
 
-MODIBO (taquin · regarde: Bakary · voix: normal)
-{sourire_malin} Tu dis ça tous les matins, Bakarin.
+PLAN: 2 s · gros Bakary · {inquiet}
 
+BAKARY (gene · regarde: Fatim · voix: chuchote)
+D'accord… {timide} comme amis.
+[RÉACTION AWA: froide]
+
+MOUSSA (sourire · regarde: Awa · voix: normal)
+Et vous, grande sœur ? {salue} Avec qui vous venez ?
+
+AWA (mepris · regarde: Moussa · voix: normal)
+Moi ? {fiere} Une reine n'a pas besoin de cavalier.
+[RÉACTION BAKARY: triste]
+
+PLAN: 2 s · large [Awa de dos]
+[BRUITAGE: talons]
+
+PLAN: large [Bakary debout, Fatim debout, Moussa debout, Modibo sur le banc, Diasabi debout]
+
+DIASABI (confus · regarde: Modibo · voix: normal)
+Une reine ? {confus} Depuis quand on a une reine dans le quartier ?
+
+MODIBO (sage · regarde: Bakary · voix: normal)
+Depuis toujours, Diasabi. {sourire} Demande à Bakarin.
+[RÉACTION BAKARY: gene]
+[MUSIQUE: suspense]
+
+DÉCOR: KIOSQUE · après-midi · ambiance: rue calme
+PLAN: large [Bakary debout, Diasabi debout]
+[BRUITAGE: notification]
+
+PLAN: gros [Bakary debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Nouvelle commande ✔ · Thé + 200 brochettes · Dîner de mariage · Samedi 20 h 00]
+
+BAKARY (content · regarde: Diasabi · voix: vite)
+Deux cents brochettes ! {grand_sourire} Diasabi, au grill !
+
+DIASABI (fier · regarde: Bakary · voix: normal)
+À Bobo, on dit : un mariage sans brochettes… c'est juste une réunion.
+
+DÉCOR: ATELIER · nuit · ambiance: grillons
+PLAN: large [Awa assis, Mimi debout]
+PLAN: 2 s · gros Awa · {coud}
+
+MIMI (content · regarde: Awa · voix: chuchote)
+Tantie… {grand_sourire} avec cette tenue, vous allez tuer tous les hommes.
+
+AWA (fiere · regarde: Mimi · voix: normal)
+C'est le but, Mimi. {sourire} C'est le but.
+[RÉACTION MIMI: rire_retenu]
+
+DÉCOR: VILLA_FETE · nuit · ambiance: musique lointaine
+[MUSIQUE: joyeuse]
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Sali debout, Mimi debout, Seydou debout, Kadi sur le banc, Moussa debout, Diasabi debout]
+
+PLAN: 2 s · gros Fatim · {POSE: en tenue de soirée turquoise, debout}{sourire}
+
+MOUSSA (grand_sourire · regarde: caméra · voix: crie)
+Bienvenue au dîner de mariage de ma grande sœur ! {fier} Que chaque cavalier tienne bien sa cavalière !
+[RÉACTION SEYDOU: rougit]
+[RÉACTION SALI: taquin]
+[BRUITAGE: talons]
+
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Moussa debout, Diasabi debout, Awa marche]
+PLAN: 4 s · gros Awa · {POSE: en tenue de soirée époustouflante, marche lentement}{fier}
+[MUSIQUE: romantique]
+[RÉACTION BAKARY: emerveille]
+[BRUITAGE: fracas]
+
+PLAN: objet verre brisé
+[RÉACTION FATIM: moue]
+
+AWA (fiere · regarde: caméra · voix: normal)
+Aw ni tchié.
+
+MOUSSA (neutre · regarde: Awa · voix: normal)
+Grande sœur… la règle ! {salue} Personne ne vient seul !
+
+AWA (mepris · regarde: Moussa · voix: lentement)
+Les règles, Moussa… {fiere} c'est pour les autres.
+
+PLAN: 3 s · gros Diasabi · {POSE: à genoux}{grand_sourire}
+
+DIASABI (neutre · regarde: Awa · voix: crie)
+À Bobo, on dit : devant une reine, on baisse la tête !
+
+AWA (mepris · regarde: Diasabi · voix: normal)
+Pousse-toi. {mepris} Tu bloques le passage.
+[RÉACTION MODIBO: rire]
+
+[BRUITAGE: klaxon]
+PLAN: objet Land Cruiser blanc
+
+INVITEE (neutre · voix: chuchote)
+Regarde ! C'est El Hadj Bourama ! Le roi de l'or du Grand Marché !
 [BRUITAGE: pas]
 
-PLAN: large [Bakary debout, Modibo sur le banc, Aminata debout]
+PLAN: large [Awa debout, Moussa debout]
 
-AMINATA (joyeux · regarde: tout le monde · voix: normal)
-Bonjour tout le monde ! Beignets bien chauds !
+EL_HADJ (sourire · regarde: caméra · voix: normal)
+Aw ni tchié, mes enfants !
 
-PENSÉE MODIBO (amoureux · regarde: Aminata)
-Elle est encore plus belle que ses beignets…
+PLAN: deux [Awa debout]
 
-BAKARY (surpris · regarde: Modibo · voix: normal)
-{surpris} Van ? Tu rougis ?
+EL_HADJ (sourire · regarde: Awa · voix: normal)
+Ma fille… tu illumines la soirée.
 
-DÉCOR: ATELIER · après‑midi · ambiance: marché
-PLAN: large [Awa assise, Mimi debout]
+AWA (froide · regarde: EL_HADJ · voix: normal)
+Merci, Tonton. {sourire} Saluez vos femmes pour moi.
+[RÉACTION EL_HADJ: gene]
 
-MIMI (inquiet · regarde: Awa · voix: normal)
-{penche_tete} Tantie, Modibo est amoureux de la vendeuse de beignets !
+[BRUITAGE: klaxon]
+PLAN: objet Mercedes noire
 
-AWA (mepris · regarde: Mimi · voix: normal)
-{sourire_malin} Laisse‑le. Au moins, elle, elle ne publie pas d'avis par erreur.
+INVITE (neutre · voix: normal)
+Eh ! C'est Cheick ! À Paris, on l'appelle le Prince !
+[BRUITAGE: pas]
+
+PLAN: large [Awa debout, Moussa debout]
+
+CHEICK (fier · regarde: caméra · voix: normal)
+Bonsoir, bonsoir tout le monde !
+
+PLAN: deux [Awa debout]
+
+CHEICK (fier · regarde: Awa · voix: normal)
+Mademoiselle, vous m'accordez une danse ?
+
+AWA (moue · regarde: CHEICK · voix: normal)
+Ici, on n'est pas à Paris, Prince.
+[RÉACTION CHEICK: surpris]
+
+[BRUITAGE: klaxon]
+PLAN: objet 4x4 noir avec chauffeur
+
+INVITEE (neutre · voix: chuchote)
+C'est le grand Abdoul ! Celui-là, c'est un vrai grand. Un seul coup de fil de lui, et ton atelier devient fournisseur officiel du gouvernement !
+[BRUITAGE: pas]
+
+PLAN: large [Awa debout, Moussa debout]
+
+ABDOUL (sourire · regarde: caméra · voix: normal)
+Bonsoir à tous.
+
+PLAN: deux [Awa debout]
+
+ABDOUL (sourire · regarde: Awa · voix: normal)
+Madame Awa, on m'a beaucoup parlé de votre travail…
+
+AWA (fiere · regarde: ABDOUL · voix: normal)
+Alors commandez sur Sounsouni. {mepris} Comme tout le monde.
+[RÉACTION ABDOUL: gene]
+
+[BRUITAGE: klaxon]
+PLAN: objet voiture de Karim
+[BRUITAGE: pas]
+
+PLAN: large [Awa debout, Moussa debout, Karim marche]
+
+KARIM (sourire · regarde: caméra · voix: normal)
+Bonsoir tout le monde.
+
+PLAN: deux [Karim debout, Awa debout]
+
+KARIM (grand_sourire · regarde: Awa · voix: normal)
+Awa… je te raccompagne ce soir ?
+
+PLAN: objet clés de voiture de Karim
+
+AWA (mepris · regarde: Karim · voix: normal)
+Garde ta voiture pour tes fiancées d'une semaine.
+[RÉACTION KARIM: surpris]
+
+PLAN: deux [Moussa debout, Awa debout]
+
+MOUSSA (grand_sourire · regarde: Awa · voix: normal)
+Grande sœur… {fier} une danse avec le meilleur danseur du quartier ?
+
+AWA (moue · regarde: Moussa · voix: normal)
+Tu es mignon, petit.
+[RÉACTION MOUSSA: rougit]
+[BRUITAGE: notification]
+[BRUITAGE: notification]
+
+PLAN: gros [Awa debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Awa Couture · Messages · « Madame, je veux une tenue… et votre numéro ? » · « Je vous envoie mon chauffeur ? » · « Vous êtes libre dimanche ? »]
+[BRUITAGE: whoosh]
+[ÉCRAN 2 s: 3 messages supprimés]
+
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Kadi sur le banc]
+
+FATIM (moue · regarde: Bakary · voix: normal)
+Bakary… Bakary ! {moue} Je suis là, moi !
+
+BAKARY (reveur · regarde: Awa · voix: normal)
+Hein ? Oui… {gene} oui, oui.
+
+MODIBO (sage · regarde: Bakary · voix: chuchote)
+Bakarin… ta cavalière, c'est Fatim. {serieux} Pas la reine.
+
+KADI (moqueur · regarde: Bakary · voix: lentement)
+Celui-là… il regarde la lune {sourire} et il oublie l'étoile à côté de lui.
+[RÉACTION FATIM: triste]
+
+PLAN: 3 s · gros Awa · {mefiant}
+
+PENSÉE AWA (mefiant · regarde: Bakary)
+Tous les hommes sont venus me voir… {moue} sauf lui.
+
+PENSÉE AWA (pensif · regarde: Bakary)
+Lui… il ne vient pas ?
+[MUSIQUE: suspense]
+
+PLAN: gros [Moussa debout]
+
+MOUSSA (grand_sourire · regarde: caméra · voix: crie)
+Attention ! {fier} La mariée va lancer son bouquet !
+[BRUITAGE: whoosh]
+
+PLAN: objet bouquet de fleurs de la mariée
+
+PLAN: 2 s · gros Awa · {POSE: en tenue de soirée, debout, le bouquet dans les mains}{surpris}
+
+INVITEE (neutre · voix: au téléphone)
+Ooooh ! La couturière va se marier !
+[BRUITAGE: applaudissements]
+
+AWA (mepris · regarde: loin · voix: normal)
+Pas pour moi.
+
+PLAN: 2 s · gros Awa · {POSE: en tenue de soirée, debout, jette le bouquet par-dessus son épaule sans regarder}{mepris}
+[BRUITAGE: whoosh]
+
+PLAN: objet bouquet de fleurs de la mariée
+
+PLAN: 3 s · gros Bakary · {POSE: debout, attrape le bouquet à deux mains}{choc}
+[SILENCE 3 s]
+
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Diasabi debout, Awa debout]
+[RÉACTION FATIM: triste]
+[RÉACTION MODIBO: choc]
+
+PLAN: 3 s · très gros Awa · {choc}{rougit}
+
+DIASABI (neutre · regarde: Bakary · voix: normal)
+À Bobo, on dit que celui qui attrape le bouquet… {grand_sourire} se marie avant la fin de l'année.
+[BRUITAGE: tonnerre]
 
 FIN:
 [ÉCRAN: À suivre…]
 VOIX_OFF (chaleureuse)
-Découvrez Sounsouni, l’appli qui simplifie vos achats. Disponible sur Android, et bientôt sur iPhone.
+Sur Sounsouni, tout le monde commande de la même façon : les grands comme les petits. Disponible sur Android, et bientôt sur iPhone.
 VOIX_OFF (lentement)
-Pour télécharger l'application Sounsouni, rendez‑vous sur le site sounsouni.pro.
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
