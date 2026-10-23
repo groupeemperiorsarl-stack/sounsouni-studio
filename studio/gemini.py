@@ -160,7 +160,7 @@ def verif(pa, add, ou):
     tags = tags.union(*[set(director.POSES[k]['tags']) | set(director.POSES[k].get('props', [])) for k, sc in r if sc >= r[0][1]])   # poses à égalité
     for mot in want:   # émotion sans image : demandée DANS la tenue du moment (robe de soirée à la fête, pas les habits de tous les jours)
         if (mot in director.EMOS or mot in director.GESTE or mot in DESC) and mot not in ('neutre',) and not (director.tagwords([mot]) & tags):
-            add(('pose', char, post, mot, t), {'type': 'pose', 'perso': char, 'posture': post, 'emo': mot, 'tenue': t}, ou); break
+            mot = CANON.get(mot, mot); add(('pose', char, post, mot, t), {'type': 'pose', 'perso': char, 'posture': post, 'emo': mot, 'tenue': t}, ou); break
 
 def demande(x):
     """La phrase à coller dans Gemini (en français)."""
