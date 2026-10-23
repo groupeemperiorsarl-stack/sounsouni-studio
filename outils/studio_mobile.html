@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v34</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v35</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -181,7 +181,8 @@ async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/c
   const m=(i.body||'').match(/```(?:text)?\n([\s\S]*?)\n```/);d.querySelector('.scr').value=m?m[1]:(i.body||'');
   const out=t=>d.querySelector('.out').innerHTML='<p class="msg">'+t+'</p>';
   const dire=async t=>{try{await api('/repos/'+R+'/issues/'+i.number+'/comments',{method:'POST',body:JSON.stringify({body:t})});out('✅ « '+esc(t)+' » envoyé. Actualisez dans quelques minutes.')}catch(x){out('❌ '+esc(x.message))}};
-  d.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>dire(b.dataset.a));
+  d.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{if(b.dataset.a==='vidéo'&&!b.dataset.ok){b.dataset.ok=1;const t=b.textContent;b.textContent='Appuyez encore pour lancer la vidéo (30 min)';setTimeout(()=>{delete b.dataset.ok;b.textContent=t},5000);return}dire(b.dataset.a)});   // vidéo : 2e appui pour confirmer (pas de lancement par erreur)
+  if(e.k==='warn'&&/^En fabrication/.test(e.t)){const r=document.createElement('div');r.className='row';r.innerHTML='<button class="sec stop">⏹ Arrêter la fabrication</button>';d.querySelector('.etape').before(r);r.querySelector('.stop').onclick=ev=>{const bt=ev.currentTarget;if(!bt.dataset.ok){bt.dataset.ok=1;bt.textContent='Appuyez encore pour arrêter';return}bt.disabled=true;dire('arrêter')}}
   d.querySelector('[data-x=rep]').onclick=()=>{const v=d.querySelector('.rep').value.trim();if(v)dire(v.toUpperCase())};
   d.querySelector('[data-x=pl]').onclick=()=>{const a=d.querySelector('.de').value.trim(),b=d.querySelector('.a').value.trim();if(a&&b)dire('planches '+a+'-'+b)};
   d.querySelector('[data-x=save]').onclick=async()=>{const mode=/Vidéo complète/.test(i.body||'')?'v':'a';try{await api('/repos/'+R+'/issues/'+i.number,{method:'PATCH',body:JSON.stringify({body:corps(mode,d.querySelector('.scr').value)})});out('✅ Script enregistré. Appuyez ensuite sur « 👁 Fabriquer l\'aperçu » ou « 🎬 Fabriquer la vidéo ».')}catch(x){out('❌ '+esc(x.message))}};

@@ -18,6 +18,7 @@ if ev.get('comment'):   # commentaire « vidéo », « aperçu », « planches 1
     elif re.match(r'mini-?vid[ée]o\s+\w+\s+(tour|action)\s+\S+$', c): mode = 'minivideo'; arg = brut.split(None, 1)[1]   # « mini-vidéo BAKARY tour fichier.mp4 »
     elif re.match(r'garder\s+(tout|[\d\s]+)\s+[a-z]+_(tour|action)_\w+$', c): mode = 'garder'; arg = brut.split(None, 1)[1]   # « garder tout bakary_tour_650014 »
     elif re.match(r'essai code\s+[\w./-]+$', c): mode = 'essai'; arg = brut.split()[-1]   # modification du code proposée par l'assistant, sur une branche à part
+    elif re.fullmatch(r'(arr[êe]ter|stop|annuler)( la fabrication)?', c): mode = 'arreter'   # bouton « ⏹ Arrêter » de la page
     elif re.fullmatch(r'vid[ée]o', c): mode = 'video'
     elif re.fullmatch(r'relecture|relire', c): mode = 'relecture'   # relecture automatique à la demande
     elif re.fullmatch(r'fiches?( gemini)?', c): mode = 'fiche'
