@@ -12,6 +12,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Claude · Une étape attend longtemps dans « Outils » alors que le travail lui-même dure quelques secondes → « apt-get install ffmpeg » mettait jusqu'à 16 min sur certaines machines (serveur Ubuntu lent), et toute la fabrication attend la plus lente → ffmpeg est maintenant pris tout prêt sur GitHub (.github/scripts/ffmpeg.sh, 16 s) ; pour vérifier, comparer l'heure de début de « Outils » et la fin de l'installation dans le journal de chaque machine.
 - 2026-10-22 · Gemini · Aperçu bloqué par JSONDecodeError → une virgule en trop dans le fichier .choix.json de l'épisode → enlever la virgule dans le JSON.
 - 2026-10-23 · Gemini · Étape voix qui plante avec ModuleNotFoundError cv2 → un outil image importé en haut d'un fichier commun → importer cv2 et render uniquement au besoin dans les fonctions de rendu (déjà intégré par Claude).
+- 2026-10-23 · Gemini · L'aperçu réussit mais la vidéo échoue → l'étape voix n'est pas testée lors de la génération d'aperçu → vérifier les imports dans le moteur audio indépendamment du succès des images.
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
@@ -21,6 +22,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 ## ia
 - 2026-10-22 · Claude · Gemini 503 / « surchargé » → les modèles gratuits changent souvent de nom → essayer la liste des modèles « flash » l'un après l'autre, et attendre 30 s entre deux tours.
 - 2026-10-22 · Claude · Modèle libre sur la machine : les fichiers tout prêts de llama.cpp ne sont plus publiés → le compiler depuis les sources ; réponse longue coupée par Node après 5 min → lire la réponse petit à petit (streaming).
+- 2026-10-23 · Gemini · Quota journalier Gemini épuisé → limite de l'offre gratuite → attendre le reset de 8h du matin (heure Bamako) ou changer de modèle.
 
 ## images
 - 2026-10-22 · Claude · LivePortrait plante sans « onnx » → paquet manquant → ajouté à l'installation (studio/lp/install.sh).
