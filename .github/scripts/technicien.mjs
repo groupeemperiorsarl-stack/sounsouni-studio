@@ -54,6 +54,7 @@ async function listeGemini(k) {   // les modèles gratuits changent souvent : on
 }
 async function fournisseurs() {
   const P = [];
+  if (process.env.LOCAL_LLM_URL) P.push({ nom: 'Modèle libre gpt-oss-20b', url: process.env.LOCAL_LLM_URL, cle: 'local', modele: 'local', leger: true, local: true, x: { chat_template_kwargs: { reasoning_effort: 'low' } } });   // dernier secours sans clé, installé sur la machine
   const g = process.env.GEMINI_API_KEY; if (g) for (const m of await listeGemini(g)) P.push({ nom: 'Gemini ' + m, url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', cle: g, modele: m, gemini: true });
   if (process.env.CEREBRAS_API_KEY) P.push({ nom: 'Cerebras gpt-oss-120b', url: 'https://api.cerebras.ai/v1/chat/completions', cle: process.env.CEREBRAS_API_KEY, modele: 'gpt-oss-120b', x: { reasoning_effort: 'medium' } });
   if (process.env.GROQ_API_KEY) {
@@ -83,7 +84,7 @@ async function penser(msgs, outils) {   // un tour de l'IA ; en cas de panne on 
     const p = FOURN[(actuel + k) % FOURN.length]; if (p.epuise) continue;
     try {
       const corps = { model: p.modele, messages: nettoyerPour(p, msgs), temperature: 0.3, ...(outils ? { tools: outils, tool_choice: 'auto' } : {}), ...(p.x || {}) };
-      const r = await fetch(p.url, { method: 'POST', headers: { Authorization: 'Bearer ' + p.cle, 'Content-Type': 'application/json' }, body: JSON.stringify(corps), signal: AbortSignal.timeout(240000) });
+      const r = await fetch(p.url, { method: 'POST', headers: { Authorization: 'Bearer ' + p.cle, 'Content-Type': 'application/json' }, body: JSON.stringify(corps), signal: AbortSignal.timeout(p.local ? 900000 : 240000) });
       if (r.status === 429) { const b = await r.text(); err = p.nom + ' : 429 ' + b.slice(0, 120); if (/exceeded your current quota/i.test(b)) { p.epuise = true; } const mm = b.match(/try again in\s*(?:(\d+)m)?\s*([\d.]+)s/i);
         if (mm && !/per day|TPD|RPD/i.test(b) && +(mm[1] || 0) < 2) { const w = Math.ceil(+(mm[1] || 0) * 60 + parseFloat(mm[2])) + 2; log(p.nom + ' attend ' + w + ' s'); await dodo(w * 1000); k--; continue; }
         log(err); continue; }
@@ -302,7 +303,7 @@ async function principal() {
   const at = derniere?.body.match(/<!--tech:attente (\{.*?\})-->/); if (at) try { attente = JSON.parse(at[1]); } catch (e) {}
   MSG_ACCORD = !!attente && ACCORD.test(texte);
 
-  FOURN = await fournisseurs(); if (!FOURN.length) throw new Error('aucune clé d\'IA dans les secrets GitHub');
+  FOURN = await fournisseurs(); if (!FOURN.length) throw new Error('aucune IA ne répond (aucune clé disponible)');
   SYS_LEGER = fs.readFileSync('docs/TECHNICIEN.md', 'utf8') + '\n\n## CARNET (leçons déjà apprises)\n' + carnet.slice(-5000) + '\n\nNous sommes le ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + '. La demande « Technicien » est le n° ' + ISSUE + '.';
   const sys = fs.readFileSync('docs/TECHNICIEN.md', 'utf8') + '\n\n## NOTES DU PROJET (écrites par Claude, à jour)\n' + fs.readFileSync('CLAUDE.md', 'utf8') + '\n\n## CARNET (leçons déjà apprises)\n' + carnet +
     '\n\nNous sommes le ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' (heure de Bamako = UTC). La demande « Technicien » est le n° ' + ISSUE + '.' +
@@ -381,6 +382,11 @@ try {
   if (nouvellesLecons.length && commentaire) await gh('/issues/comments/' + commentaire, { method: 'PATCH', body: JSON.stringify({ body: corps.replace('</details>', '</details>\n\n📝 Appris pour la prochaine fois :\n' + nouvellesLecons.map(l => '- ' + l).join('\n')) }) }).catch(() => {});
 } catch (e) {
   console.error(e);
+  if (process.env.SECOURS_LIBRE === '1' && !process.env.LOCAL_LLM_URL && /aucune IA ne répond/.test(e.message)) {   // toutes les IA à clé sont épuisées : la machine installe le modèle libre et recommence
+    const t2 = '⏳ Les IA gratuites avec clé sont épuisées pour le moment : je passe au modèle libre installé sur la machine GitHub (sans clé, environ 15 minutes de plus).';
+    if (commentaire) await gh('/issues/comments/' + commentaire, { method: 'PATCH', body: JSON.stringify({ body: t2 }) }).catch(() => {}); else await gh('/issues/' + ISSUE + '/comments', { method: 'POST', body: JSON.stringify({ body: t2 }) }).catch(() => {});
+    process.exit(3);
+  }
   const quota = FOURN.some(p => p.epuise), simple = /aucune IA ne répond/.test(e.message)
     ? '❌ Toutes les IA gratuites sont occupées' + (quota ? ' (Gemini a utilisé tout son quota du jour : il revient vers 8 h du matin à Bamako)' : '') + '. Réessayez un peu plus tard : vos messages sont gardés.'
     : '❌ Le technicien n\'a pas pu finir : ' + e.message + '\n\nRéessayez dans quelques minutes (vos messages sont gardés).';
