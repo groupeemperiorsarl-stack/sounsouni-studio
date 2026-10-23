@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v32</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v33</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -98,6 +98,12 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
     <label for="c-tok">Clé</label><input id="c-tok" type="password" placeholder="github_pat_…" autocomplete="off">
     <div class="row"><button id="c-save">Enregistrer et tester</button><button id="c-del" class="sec">Effacer la clé</button></div><div id="c-msg"></div>
   </div>
+  <div class="card"><h2>📦 Transférer toutes mes clés</h2>
+    <p class="muted">Pour passer de l'ancienne page (fichier) à la page en ligne sans rien recopier : clé GitHub, Groq, Cerebras, OpenRouter et Gemini.</p>
+    <div class="row"><button id="x-env">📦 Envoyer mes clés à la page en ligne</button></div>
+    <details><summary>Si ça ne marche pas : code de transfert</summary><p class="muted">Dans l'ancienne page : « Afficher le code », copiez-le. Dans la page en ligne : collez-le ici, puis « Prendre les clés ». Ce code contient vos clés : ne l'envoyez à personne.</p>
+      <div class="row"><button class="sec" id="x-voir">Afficher le code</button><button class="sec" id="x-cp">📋 Copier le code</button></div><textarea id="x-code" rows="3" placeholder="Code de transfert"></textarea><div class="row"><button id="x-pren">📥 Prendre les clés</button></div></details>
+    <div id="x-msg"></div></div>
 </section>
 
 <section id="v-tech" hidden>
@@ -696,5 +702,20 @@ $('#t-go').onclick=()=>techEnvoyer($('#t-q').value);$('#t-maj').onclick=techChar
 $('#t-mic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('#t-msg').innerHTML='<p class="msg">Dictée non disponible ici : utilisez le micro du clavier.</p>';return}
   const s=new SR();s.lang='fr-FR';s.interimResults=false;s.onresult=e=>$('#t-q').value+=($('#t-q').value?' ':'')+e.results[0][0].transcript;s.start()};
 $('#t-carnet').onclick=async()=>{const t=await ghLire('technicien/carnet.md');$('#t-carnetout').innerHTML=t?'<div style="white-space:pre-wrap;font-size:13px;margin-top:8px">'+esc(t.replace(/^#[^\n]*\n/,'')).replace(/^## (.*)$/gm,'<b>— $1 —</b>')+'</div>':'<p class="msg">Carnet introuvable.</p>'};
+
+// ---- Transfert des clés : ancienne page (fichier du téléphone) → page en ligne ; les clés ne quittent jamais le téléphone
+const EN_LIGNE='https://groupeemperiorsarl-stack.github.io',NOMS_CLES=['ss_tok','ss_groq','ss_cer','ss_or','ss_gem'];
+const lesCles=()=>{const o={};NOMS_CLES.forEach(n=>{try{const v=localStorage.getItem(n);if(v)o[n]=v}catch(e){}});return o};
+const poserCles=o=>{let k=0;NOMS_CLES.forEach(n=>{if(o&&typeof o[n]==='string'&&o[n].trim()){try{localStorage.setItem(n,o[n].trim());k++}catch(e){}}});return k};
+const tmsg=t=>$('#x-msg').innerHTML='<p class="msg">'+t+'</p>';
+$('#x-env').onclick=()=>{const o=lesCles(),n=Object.keys(o).length;if(location.origin===EN_LIGNE){tmsg('Vous êtes déjà sur la page en ligne : ouvrez l\'ancienne page (le fichier) et appuyez sur ce bouton là-bas.');return}
+  if(!n){tmsg('Aucune clé enregistrée dans cette page.');return}const w=window.open(EN_LIGNE+'/sounsouni-studio/#recevoir','_blank');if(!w){tmsg('Le téléphone a bloqué l\'ouverture : utilisez le code de transfert (plus bas).');return}
+  tmsg('⏳ La page en ligne s\'ouvre… revenez ici ensuite.');const ec=ev=>{if(ev.origin!==EN_LIGNE||!ev.data)return;if(ev.data.pret)w.postMessage({cles:o},EN_LIGNE);if(ev.data.recu!=null){tmsg('✅ '+ev.data.recu+' clé(s) envoyée(s). Utilisez maintenant la page en ligne (icône sur l\'écran d\'accueil).');removeEventListener('message',ec)}};addEventListener('message',ec)};
+$('#x-voir').onclick=()=>{const o=lesCles();$('#x-code').value=Object.keys(o).length?'SOUNSOUNI-CLES:'+btoa(unescape(encodeURIComponent(JSON.stringify(o)))):'';if(!$('#x-code').value)tmsg('Aucune clé enregistrée dans cette page.')};
+$('#x-cp').onclick=async()=>{if(!$('#x-code').value)$('#x-voir').onclick();if(await copier($('#x-code').value))tmsg('✅ Code copié. Collez-le dans la page en ligne (onglet 🔑 Clé, même endroit).');else{$('#x-code').select();tmsg('Code sélectionné : appuyez dessus longuement, puis « Copier ».')}};
+$('#x-pren').onclick=()=>{try{const t=$('#x-code').value.trim().replace(/^SOUNSOUNI-CLES:/,'');const k=poserCles(JSON.parse(decodeURIComponent(escape(atob(t)))));tmsg('✅ '+k+' clé(s) prise(s). La page se recharge…');setTimeout(()=>location.reload(),1500)}catch(e){tmsg('❌ Code incomplet : recopiez-le en entier.')}};
+if(location.origin===EN_LIGNE&&location.hash==='#recevoir'&&window.opener){vue('cfg');tmsg('⏳ Réception des clés de l\'ancienne page…');let fini=false;
+  const ec=ev=>{if(ev.source!==window.opener||!ev.data||!ev.data.cles)return;fini=true;const k=poserCles(ev.data.cles);try{window.opener.postMessage({recu:k},'*')}catch(e){}history.replaceState(null,'',location.pathname);tmsg('✅ '+k+' clé(s) reçue(s). La page se recharge…');setTimeout(()=>location.reload(),1500)};
+  addEventListener('message',ec);let n=0;const t=setInterval(()=>{if(fini||++n>60){clearInterval(t);if(!fini)tmsg('❌ Rien reçu : utilisez le code de transfert.');return}try{window.opener.postMessage({pret:1},'*')}catch(e){}},500)}
 </script>
 </body></html>
