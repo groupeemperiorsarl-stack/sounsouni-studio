@@ -28,5 +28,15 @@
   "pouces_bas": 0,
   "etapes": 1,
   "themes": {}
+ },
+ "Gemini gemini-3.8-flash": {
+  "sessions": 1,
+  "reussies": 1,
+  "pouces_haut": 0,
+  "pouces_bas": 0,
+  "etapes": 14,
+  "themes": {
+   "fabrication": 1
+  }
  }
 }
