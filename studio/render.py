@@ -228,7 +228,9 @@ def draw(s, lt):
         mots = [w for w in re.sub(r"[^a-z0-9àâçéèêëîïôûùüœ' ]", ' ', obj).replace("'", ' ').split() if len(w) > 2 and w not in ('les', 'des', 'une', 'avec', 'pour', 'sur')]
         nom = script.norm(mots[0]) if mots else ''   # le mot principal (« bouquet » dans « bouquet de fleurs de la mariée ») doit correspondre : jamais une robe pour un bouquet
         cands = [c for c in cands if c[0] > 0 and (not nom or nom in POSES[c[1]]['tags'] or any(t.startswith(nom[:5]) for t in POSES[c[1]]['tags']))]; hit = max(cands)[1] if cands else None
-        if hit: paste(fr, pose_img(hit, 1450), 540, 1100, 1.0, 1.0 + 0.04 * eo(prog(lt, 0, d)))
+        if hit:   # l'objet entier dans l'image (un objet large, comme un bouquet ou une voiture, n'est jamais coupé)
+            sz = POSES[hit]['size']; hh = int(min(1450, 980 * sz[1] / max(1, sz[0])) / 4) * 4
+            paste(fr, pose_img(hit, hh), 540, 1100, 1.0, 1.0 + 0.04 * eo(prog(lt, 0, d)))
         elif 'telephone' in obj or 'téléphone' in obj: paste(fr, gfx.phone_with(gfx.app_screen([s.get('object', '')])), 540, 1100, 1.0, 1.1)
         else:
             o = gfx.draw_object(obj)
