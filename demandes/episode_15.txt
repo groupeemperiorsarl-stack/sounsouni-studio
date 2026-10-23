@@ -12,9 +12,9 @@ MODIBO (taquin · regarde: Bakary · voix: normal)
 
 [BRUITAGE: pas]
 
-PLAN: large [Bakary debout, Modibo sur le banc]
+PLAN: large [Bakary debout, Modibo sur le banc, Aminata debout]
 
-AMINATA (neutre · regarde: tous le monde · voix: normal)
+AMINATA (joyeux · regarde: tout le monde · voix: normal)
 Bonjour tout le monde ! Beignets tout chauds !
 
 PENSÉE MODIBO (amoureux · regarde: Aminata)
