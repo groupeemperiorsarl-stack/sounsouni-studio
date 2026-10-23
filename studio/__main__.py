@@ -5,7 +5,7 @@ Réponse d'Issa :      --choix "1B 3C"   (gardée dans episode.choix.json, puis 
 """
 import sys, os, json, argparse, hashlib, time, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import script, voices, director, render, audio, planches
+import script, voices, director
 def versions(final, log):
     """Règle de publication (validée par Issa) : versions YouTube complète, TikTok 3:00, Shorts 2:58, Facebook 1:00 avec bandeau « chaîne YouTube »."""
     if os.environ.get('STUDIO_SANS_VERSIONS'): return
@@ -50,6 +50,7 @@ def main():
     if a.etape == 'voix':
         voices.gen_part(ev, director.CAT, work, part[0], part[1], log) if part else voices.gen(voices.first_jobs(ev, director.CAT, work), work); return
     if a.etape in ('rendu', 'final'):
+        import render, audio
         shots = json.load(open(os.path.join(work, 'plans.json'))); tot = shots[-1]['t0'] + shots[-1]['dur']
         for sh in shots:
             for ac in sh.get('actors', []):
@@ -62,6 +63,7 @@ def main():
         log(f"fini : {final} ({tot:.0f} s) — version légère {'vérifiée' if ok else 'À VÉRIFIER'}"); return
     cpath = a.fichier_choix or os.path.splitext(a.script)[0] + '.choix.json'
     if a.choix:
+        import planches
         pj = os.path.join(out, 'planches', 'planches.json')
         if os.path.exists(pj): planches.appliquer(a.choix, pj, cpath, log)
         else: log('choix : planches.json introuvable (lancer d\'abord --planches)')
@@ -73,12 +75,15 @@ def main():
         json.dump(sorted(director.MANQUES), open(os.path.join(out, 'manques.json'), 'w'), ensure_ascii=False); log('images manquantes (visage calme à la place) : ' + ', '.join(f'{c} {e} ({p})' for c, e, p in sorted(director.MANQUES)))
     json.dump(shots, open(os.path.join(work, 'plans.json'), 'w'), ensure_ascii=False, indent=0, default=str)
     resume(shots, out)
+    import render
     render.prepare_turns(shots, log)
     render.contact(shots, os.path.join(out, 'apercu_plans.png')); log('aperçu des plans : apercu_plans.png')
     if a.planches:
+        import planches
         sel = planches.choisir_plans(shots, planches.lire_plans(a.plans), planches.lire_temps(a.de), planches.lire_temps(a.a))
         planches.make(shots, out, sel, tuple(a.sujet.split(',')), choix, log, a.script); return
     if a.plans_seulement or a.etape == 'plans': return
+    import audio
     A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
     stamp = [os.path.getmtime(os.path.join(A, 'catalog.json'))] + sorted(os.path.getmtime(os.path.join(dp, f)) for dp, _, fs in os.walk(os.path.join(A, 'poses')) for f in fs if f.endswith('.webp'))[-3:]
     h = hashlib.md5(str(stamp).encode()).hexdigest()[:10]   # images de poses changées = on refait tout ; un plan changé = seulement ses morceaux (render.video)
