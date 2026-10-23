@@ -11,6 +11,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Gemini · Outil `demande` renvoie 404 pour un numéro d'épisode → le numéro d'épisode n'est pas le numéro du ticket GitHub → utiliser `demandes` pour trouver le vrai numéro de ticket.
 - 2026-10-22 · Claude · Une étape attend longtemps dans « Outils » alors que le travail lui-même dure quelques secondes → « apt-get install ffmpeg » mettait jusqu'à 16 min sur certaines machines (serveur Ubuntu lent), et toute la fabrication attend la plus lente → ffmpeg est maintenant pris tout prêt sur GitHub (.github/scripts/ffmpeg.sh, 16 s) ; pour vérifier, comparer l'heure de début de « Outils » et la fin de l'installation dans le journal de chaque machine.
 - 2026-10-22 · Gemini · Aperçu bloqué par JSONDecodeError → une virgule en trop dans le fichier .choix.json de l'épisode → enlever la virgule dans le JSON.
+- 2026-10-23 · Gemini · Étape voix qui plante avec ModuleNotFoundError cv2 → un outil image importé en haut d'un fichier commun → importer cv2 et render uniquement au besoin dans les fonctions de rendu (déjà intégré par Claude).
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
