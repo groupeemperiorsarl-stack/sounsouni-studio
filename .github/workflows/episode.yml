@@ -61,6 +61,13 @@ jobs:
         run: |
           set -o pipefail; ARGS=(--planches); [ -n "$CHOIX" ] && ARGS+=(--choix "$CHOIX"); [ -n "$DE" ] && ARGS+=(--de "$DE" --a "$FIN")
           STUDIO_FAUSSES_VOIX=1 python -m studio "$SCRIPT" -o sortie "${ARGS[@]}" 2>&1 | tee journal.txt
+      - name: Garder l'analyse des objets et les têtes tournées des nouvelles poses (sinon refaites à chaque aperçu et à la vidéo, environ 15 min)
+        if: always()
+        run: |
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add studio/assets/catalog.json studio/assets/poses/tourne/*.webp 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -qm "Objets reconnus et têtes tournées des nouvelles poses (gardés pour les prochains aperçus et vidéos)" && git pull -q --rebase --autostash && git push -q || echo "::warning::analyse non gardée"
       - name: Garder les choix dans le dépôt (la vidéo les suivra)
         if: github.event.inputs.choix != ''
         run: |
