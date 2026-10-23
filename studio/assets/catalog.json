@@ -5821,7 +5821,7 @@
     "deux",
     "mains"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     760,
     1600
@@ -5829,7 +5829,8 @@
    "head_x": 0.547,
    "props": [],
    "genere": "gemini",
-   "depart": "bak_debout"
+   "depart": "bak_debout",
+   "mouth_auto": true
   },
   "bak_reveur": {
    "char": "BAKARY",
@@ -5838,7 +5839,7 @@
    "tags": [
     "reveur"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     488,
     1600
@@ -5846,7 +5847,8 @@
    "head_x": 0.433,
    "props": [],
    "genere": "gemini",
-   "depart": "bak_debout"
+   "depart": "bak_debout",
+   "mouth_auto": true
   },
   "dia_a_genoux": {
    "char": "DIASABI",
@@ -5857,7 +5859,7 @@
     "a",
     "genoux"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     592,
     1600
@@ -5865,7 +5867,8 @@
    "head_x": 0.437,
    "props": [],
    "genere": "gemini",
-   "depart": "dia_neutre"
+   "depart": "dia_neutre",
+   "mouth_auto": true
   },
   "obj_land_cruiser_blanc": {
    "char": "OBJET",
@@ -5924,7 +5927,7 @@
    "tags": [
     "mepris"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     475,
     1600
@@ -5932,7 +5935,8 @@
    "head_x": 0.44,
    "props": [],
    "genere": "gemini",
-   "depart": "awa_v_action_659144_01"
+   "depart": "awa_v_action_659144_01",
+   "mouth_auto": true
   },
   "mou_fier": {
    "char": "MOUSSA",
@@ -5941,7 +5945,7 @@
    "tags": [
     "fier"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     522,
     1600
@@ -5949,7 +5953,8 @@
    "head_x": 0.527,
    "props": [],
    "genere": "gemini",
-   "depart": "mou_content"
+   "depart": "mou_content",
+   "mouth_auto": true
   },
   "el_h_debout": {
    "char": "EL_HADJ",
@@ -6021,7 +6026,7 @@
     "turquoise",
     "debout"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     455,
     1600
@@ -6030,7 +6035,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "tenue": "tenue_de_soiree"
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement": {
    "char": "AWA",
@@ -6046,7 +6052,7 @@
     "marche",
     "lentement"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     979,
     1600
@@ -6055,7 +6061,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "tenue": "tenue_de_soiree"
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_debout_le_bouquet_dans_les_mains": {
    "char": "AWA",
@@ -6074,7 +6081,7 @@
     "les",
     "mains"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     1036,
     1600
@@ -6083,7 +6090,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "tenue": "tenue_de_soiree"
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_debout_jette_le_bouquet_par_dessus_son_epaule_sans_regarder": {
    "char": "AWA",
@@ -6106,7 +6114,7 @@
     "sans",
     "regarder"
    ],
-   "mouth": false,
+   "mouth": true,
    "size": [
     911,
     1600
@@ -6115,7 +6123,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "tenue": "tenue_de_soiree"
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
   },
   "sal_robe_de_soiree": {
    "char": "SALI",
