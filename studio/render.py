@@ -11,6 +11,7 @@ DECOR_ALIAS = [('KIOSQUE', 'KIOSQUE'), ('ATELIER', 'ATELIER'), ('MARCHE', 'MARCH
                ('SHOWROOM', 'SHOWROOM'), ('VOITURE', 'RUE'), ('RUE', 'RUE')]
 def decor_file(name):
     n = name.upper()
+    if os.path.exists(f'{A}/decors/{n}.jpg'): return n   # décor du même nom (ex. VILLA_FETE rangé depuis Gemini) avant les autres noms (VILLA)
     for k, v in DECOR_ALIAS:
         if k in n: return v
     return 'KIOSQUE'

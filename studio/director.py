@@ -64,13 +64,14 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
     (pour se tourner vers l'autre dans les plans à plusieurs). Rend toutes les poses classées : [(clé, note), …], la meilleure d'abord."""
     out = []
     w = tagwords(want)
+    a_tenue = bool(tenue) and any(p['char'] == char and p.get('tenue') == tenue for p in POSES.values())
     for k, p in POSES.items():
         if p['char'] != char or '@' in k: continue   # les têtes tournées sont des variantes, pas des poses à choisir
         tags = set(p['tags'])
         if avoid_cycle and ('cycle_marche' in tags or 'cycle_marche_dos' in tags): continue
         s = 3 * len(w & tags)
         pt = p.get('tenue', '')
-        if tenue: s += 14 if pt == tenue else -14   # la tenue du moment d'abord (s'il n'y a aucune image dans cette tenue, la tenue habituelle)
+        if tenue: s += 14 if pt == tenue else (-60 if a_tenue else -14)   # la tenue du moment d'abord, même si le cadrage ou l'émotion vont moins bien (jamais les habits de tous les jours au milieu d'une fête) ; aucune image dans cette tenue : la tenue habituelle
         elif pt: s -= 40   # une tenue spéciale n'apparaît jamais sans [TENUE …] dans le script
         s += 8 * len({x for x in w if x.startswith('pose:')} & tags)   # {POSE: …} demandée par le script
         if frame:
@@ -213,7 +214,7 @@ def wide_layout(stage, chars, moods, speaker=None, partner=None):
     prio = sorted(chars, key=lambda c: (c != speaker, stage.posture.get(c) != 'marche', chars.index(c)))
     keep = set(prio[:6]); front = [c for c in chars if c in keep]; back = [c for c in chars if c not in keep]
     # celui qui arrive et s'adresse au groupe : au premier plan, DE DOS, face au groupe (validé par Issa)
-    has_back = lambda c: any(p['char'] == c and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags']) for p in POSES.values())
+    has_back = lambda c: bool(dos_de(c))
     rangs = len(front) >= 4 and not any(stage.posture.get(c) in ('marche', 'dos_marche') for c in front)   # groupe : deux rangées (scène modèle validée par Issa)
     fgc = [c for c in front if c in stage.arrivals and stage.posture.get(c) not in ('marche', 'dos_marche') and has_back(c)]
     late = stage.seq[-1] if stage.seq else None   # celui qui arrive, c'est le dernier arrivé (pas un ancien arrivant de la scène)
@@ -256,7 +257,7 @@ def wide_layout(stage, chars, moods, speaker=None, partner=None):
     for i, c in enumerate(back):
         k = pick(c, moods.get(c, []), 'pied', stage.posture.get(c)); acts.insert(0, {'key': k, 'who': c, 'x': int(160 + i * 260), 'by': BACK, 'h': int(600 * HEIGHT.get(c, 1)), 'back': True})
     for c in fgc:
-        backs = sorted([k for k, p in POSES.items() if p['char'] == c and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags'])], key=lambda k: len(POSES[k].get('props', [])))
+        backs = sorted(dos_de(c), key=lambda k: len(POSES[k].get('props', [])))
         k = backs[0] if backs else pick(c, [], 'pied', 'debout', need_mouth=False)
         h = int(1500 * HEIGHT.get(c, 1)); a = {'key': k, 'who': c, 'h': h, 'by': GROUND + 330, 'x': 820, 'fgwide': True, 'speaker': False}
         if not backs: a['silhouette'] = True; a['fg'] = True   # pas d'image de dos : silhouette sombre
@@ -332,9 +333,13 @@ def updown(stage, who, tgt):
     if not tgt: return 0
     sit = lambda c: stage.post(c) in ('assis', 'banc')
     return 1 if sit(who) and not sit(tgt) else (-1 if sit(tgt) and not sit(who) else 0)
+def dos_de(c):
+    """Vues de dos du personnage DANS SA TENUE DU MOMENT (à la fête : pas le dos des habits de tous les jours ; sinon silhouette)."""
+    t = TENUE.get(c, '')
+    return [k for k, p in POSES.items() if p['char'] == c and p['posture'] == 'dos' and '@' not in k and 'cycle' not in ' '.join(p['tags']) and p.get('tenue', '') == t]
 def over_shoulder(who, side, stage):
     """Celui qui écoute, vu de dos ou de trois-quarts, au premier plan sur le bord de l'image (caméra derrière lui)."""
-    back = [k for k, p in POSES.items() if p['char'] == who and p['posture'] == 'dos' and 'cycle' not in ' '.join(p['tags']) and not p.get('props')]
+    back = [k for k in dos_de(who) if not POSES[k].get('props')]
     if back: k = back[0]; d = 0
     else: k = pick(who, stage.props.get(who, []), 'buste', stage.post(who), need_mouth=False); d = -side
     a = close_actor(who, k, x=540 + (600 if back else 540) * side, scale=1.4); a['by'] = a['by'] + 420; a['fg'] = True; a['speaker'] = False
@@ -355,6 +360,9 @@ def set_pose(a, k):
         a['by'] = a['by'] - a['h'] + b['h'] if a.get('scale', 1.0) != 1.0 else b['by']; a['h'] = b['h']; a['x'] = b['x']
     else: a['w'] = POSES[k]['size'][0] * a['h'] / POSES[k]['size'][1]
     return a
+def meme_tenue(a, k):
+    base = POSES.get(a.get('key', '').split('@')[0], {})
+    return base.get('tenue', '') == POSES[k].get('tenue', '')
 def apply_corrections(shots):
     """Corrections précises d'un plan (demandées à l'assistant) : {"12": {"acteurs": {"KARIM": {"dx": -0.1, "dy": 0, "taille": 1.2,
     "retourner": true, "cacher": false, "pose": "kar_sourire"}}, "duree": 3}}. dx / dy en part de la largeur / hauteur de l'image (+ = droite / bas)."""
@@ -366,7 +374,7 @@ def apply_corrections(shots):
             acts = [a for a in sh.get('actors', []) if a['who'] == who.upper()]
             if c.get('cacher'): sh['actors'] = [a for a in sh.get('actors', []) if a['who'] != who.upper()]; continue
             for a in acts:
-                if c.get('pose') in POSES and POSES[c['pose']]['char'] == a['who']: set_pose(a, c['pose'])
+                if c.get('pose') in POSES and POSES[c['pose']]['char'] == a['who'] and meme_tenue(a, c['pose']): set_pose(a, c['pose'])
                 if c.get('taille'): f = float(c['taille']); a['h'] *= f; a['w'] = a.get('w', 0) * f; a['scale'] = a.get('scale', 1.0) * f
                 if c.get('dx'): a['x'] += float(c['dx']) * 1080
                 if c.get('dy'): a['by'] += float(c['dy']) * 1920
@@ -377,7 +385,9 @@ def apply_pose_choices(shots):
         p = ch.get('pose')
         if not p or not str(idx).isdigit() or int(idx) >= len(shots) or p.get('key') not in POSES: continue
         for a in shots[int(idx)].get('actors', []):
-            if a['who'] == p['who'] and not (a.get('fg') or a.get('back') or a.get('silhouette') or a.get('walk')): set_pose(a, p['key']); break
+            if a['who'] == p['who'] and not (a.get('fg') or a.get('back') or a.get('silhouette') or a.get('walk')):
+                if meme_tenue(a, p['key']): set_pose(a, p['key'])   # un choix fait avant la tenue de fête n'enlève jamais cette tenue
+                break
 def build(meta, events, log=print, choix=None, variantes=False):
     """choix : décisions prises sur les planches (par numéro de plan) ; variantes : garder les autres cadrages possibles (pour les planches)."""
     global VARIANTES
