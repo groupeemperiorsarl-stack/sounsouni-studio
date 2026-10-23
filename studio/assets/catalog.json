@@ -5830,7 +5830,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_reveur": {
    "char": "BAKARY",
@@ -5848,7 +5849,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_a_genoux": {
    "char": "DIASABI",
@@ -5868,7 +5870,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "obj_land_cruiser_blanc": {
    "char": "OBJET",
@@ -5936,7 +5939,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_fier": {
    "char": "MOUSSA",
@@ -5954,7 +5958,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_content",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "el_h_debout": {
    "char": "EL_HADJ",
@@ -5973,7 +5978,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "chei_debout": {
    "char": "CHEICK",
@@ -5992,7 +5998,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "abdo_debout": {
    "char": "ABDOUL",
@@ -6000,7 +6007,8 @@
    "posture": "debout",
    "tags": [
     "neutre",
-    "ecoute"
+    "ecoute",
+    "telephone"
    ],
    "mouth": true,
    "size": [
@@ -6008,10 +6016,15 @@
     1600
    ],
    "head_x": 0.499,
-   "props": [],
+   "props": [
+    "telephone"
+   ],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {
+    "telephone": 0.44
+   }
   },
   "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout": {
    "char": "FATIM",
@@ -6036,7 +6049,8 @@
    "genere": "gemini",
    "depart": "fat_mains",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement": {
    "char": "AWA",
@@ -6062,7 +6076,8 @@
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_debout_le_bouquet_dans_les_mains": {
    "char": "AWA",
@@ -6091,7 +6106,8 @@
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_en_tenue_de_soiree_debout_jette_le_bouquet_par_dessus_son_epaule_sans_regarder": {
    "char": "AWA",
@@ -6124,7 +6140,8 @@
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_robe_de_soiree": {
    "char": "SALI",
@@ -6144,7 +6161,8 @@
    "genere": "gemini",
    "depart": "sal_beignet",
    "tenue": "robe_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_robe_de_soiree_taquin": {
    "char": "SALI",
@@ -6163,7 +6181,8 @@
    "genere": "gemini",
    "depart": "sal_beignet",
    "tenue": "robe_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_polo_chic": {
    "char": "MOUSSA",
@@ -6183,7 +6202,8 @@
    "genere": "gemini",
    "depart": "mou_content",
    "tenue": "polo_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_polo_chic_grand_sourire": {
    "char": "MOUSSA",
@@ -6202,7 +6222,8 @@
    "genere": "gemini",
    "depart": "mou_content",
    "tenue": "polo_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_chemise_chic": {
    "char": "MODIBO",
@@ -6222,7 +6243,8 @@
    "genere": "gemini",
    "depart": "mod_joie",
    "tenue": "chemise_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_chemise_chic_sage": {
    "char": "MODIBO",
@@ -6241,7 +6263,8 @@
    "genere": "gemini",
    "depart": "mod_joie",
    "tenue": "chemise_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_chemise_chic_rire": {
    "char": "MODIBO",
@@ -6260,7 +6283,8 @@
    "genere": "gemini",
    "depart": "mod_joie",
    "tenue": "chemise_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_chemise_chic_choc": {
    "char": "MODIBO",
@@ -6279,7 +6303,8 @@
    "genere": "gemini",
    "depart": "mod_joie",
    "tenue": "chemise_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_chemise_repassee_a_genoux": {
    "char": "DIASABI",
@@ -6300,7 +6325,8 @@
    "genere": "gemini",
    "depart": "dia_neutre",
    "tenue": "chemise_repassee",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_chemise_repassee": {
    "char": "DIASABI",
@@ -6320,7 +6346,8 @@
    "genere": "gemini",
    "depart": "dia_neutre",
    "tenue": "chemise_repassee",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_chemise_repassee_grand_sourire": {
    "char": "DIASABI",
@@ -6339,7 +6366,8 @@
    "genere": "gemini",
    "depart": "dia_neutre",
    "tenue": "chemise_repassee",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains": {
    "char": "BAKARY",
@@ -6365,7 +6393,8 @@
    "genere": "gemini",
    "depart": "bak_debout",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic": {
    "char": "BAKARY",
@@ -6385,7 +6414,8 @@
    "genere": "gemini",
    "depart": "bak_debout",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_reveur": {
    "char": "BAKARY",
@@ -6404,7 +6434,8 @@
    "genere": "gemini",
    "depart": "bak_debout",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_emerveille": {
    "char": "BAKARY",
@@ -6423,7 +6454,8 @@
    "genere": "gemini",
    "depart": "bak_debout",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_moue": {
    "char": "FATIM",
@@ -6441,7 +6473,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_triste": {
    "char": "FATIM",
@@ -6459,7 +6492,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "chei_choc": {
    "char": "CHEICK",
@@ -6477,7 +6511,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "chei_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "chei_fier": {
    "char": "CHEICK",
@@ -6495,7 +6530,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "chei_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "chei_dos": {
    "char": "CHEICK",
@@ -6512,7 +6548,8 @@
    "head_x": 0.495,
    "props": [],
    "genere": "gemini",
-   "depart": "chei_debout"
+   "depart": "chei_debout",
+   "props_auto": {}
   },
   "awa_mefiant": {
    "char": "AWA",
@@ -6530,7 +6567,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "abdo_gene": {
    "char": "ABDOUL",
@@ -6548,7 +6586,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "abdo_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "abdo_sourire": {
    "char": "ABDOUL",
@@ -6566,7 +6605,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "abdo_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "abdo_dos": {
    "char": "ABDOUL",
@@ -6583,7 +6623,8 @@
    "head_x": 0.497,
    "props": [],
    "genere": "gemini",
-   "depart": "abdo_debout"
+   "depart": "abdo_debout",
+   "props_auto": {}
   },
   "dia_chemise_repassee_grand_sourire2": {
    "char": "DIASABI",
@@ -6602,7 +6643,8 @@
    "genere": "gemini",
    "depart": "dia_chemise_repassee_a_genoux",
    "tenue": "chemise_repassee",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "el_gene": {
    "char": "EL_HADJ",
@@ -6620,7 +6662,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "el_h_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "el_sourire": {
    "char": "EL_HADJ",
@@ -6638,7 +6681,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "el_h_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "el_dos": {
    "char": "EL_HADJ",
@@ -6655,7 +6699,8 @@
    "head_x": 0.497,
    "props": [],
    "genere": "gemini",
-   "depart": "el_h_debout"
+   "depart": "el_h_debout",
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_choc": {
    "char": "BAKARY",
@@ -6674,7 +6719,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_gene": {
    "char": "BAKARY",
@@ -6693,7 +6739,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_mepris": {
    "char": "AWA",
@@ -6712,7 +6759,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_fier": {
    "char": "AWA",
@@ -6731,7 +6779,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_moue": {
    "char": "AWA",
@@ -6750,7 +6799,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_froide": {
    "char": "AWA",
@@ -6769,7 +6819,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_mefiant": {
    "char": "AWA",
@@ -6788,7 +6839,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_pensif": {
    "char": "AWA",
@@ -6807,7 +6859,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_surpris": {
    "char": "AWA",
@@ -6826,7 +6879,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_choc": {
    "char": "AWA",
@@ -6845,7 +6899,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_tenue_de_soiree_moue": {
    "char": "FATIM",
@@ -6864,7 +6919,8 @@
    "genere": "gemini",
    "depart": "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_tenue_de_soiree_triste": {
    "char": "FATIM",
@@ -6883,7 +6939,8 @@
    "genere": "gemini",
    "depart": "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_tenue_de_soiree_sourire": {
    "char": "FATIM",
@@ -6902,7 +6959,8 @@
    "genere": "gemini",
    "depart": "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_polo_chic_fier": {
    "char": "MOUSSA",
@@ -6921,7 +6979,8 @@
    "genere": "gemini",
    "depart": "mou_polo_chic",
    "tenue": "polo_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
