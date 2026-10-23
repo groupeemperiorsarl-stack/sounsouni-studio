@@ -1,0 +1,41 @@
+name: Essai des IA (laquelle répond ?)
+# Diagnostic : essaie chaque IA du studio (GitHub Models, Gemini, Groq, Mistral, NVIDIA, Zhipu, Cerebras, OpenRouter, DeepSeek) avec une petite question.
+on: { workflow_dispatch: {} }
+permissions: { contents: read, models: read }
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Essayer chaque IA
+        env:
+          GITHUB_MODELS_TOKEN: ${{ github.token }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          cat > e.mjs <<'JS'
+          const E = process.env, L = [
+            ['GitHub Models gpt-4.1', 'https://models.github.ai/inference/chat/completions', E.GITHUB_MODELS_TOKEN, 'openai/gpt-4.1'],
+            ['GitHub Models gpt-4.1-mini', 'https://models.github.ai/inference/chat/completions', E.GITHUB_MODELS_TOKEN, 'openai/gpt-4.1-mini'],
+            ['Gemini flash', 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', E.GEMINI_API_KEY, 'gemini-flash-latest'],
+            ['Groq gpt-oss-120b', 'https://api.groq.com/openai/v1/chat/completions', E.GROQ_API_KEY, 'openai/gpt-oss-120b'],
+            ['Mistral medium', 'https://api.mistral.ai/v1/chat/completions', E.MISTRAL_API_KEY, 'mistral-medium-latest'],
+            ['NVIDIA deepseek-v3.1', 'https://integrate.api.nvidia.com/v1/chat/completions', E.NVIDIA_API_KEY, 'deepseek-ai/deepseek-v3.1'],
+            ['Zhipu glm-4.5-flash', 'https://api.z.ai/api/paas/v4/chat/completions', E.ZHIPU_API_KEY, 'glm-4.5-flash'],
+            ['Cerebras gpt-oss-120b', 'https://api.cerebras.ai/v1/chat/completions', E.CEREBRAS_API_KEY, 'gpt-oss-120b'],
+            ['OpenRouter gpt-oss-120b:free', 'https://openrouter.ai/api/v1/chat/completions', E.OPENROUTER_API_KEY, 'openai/gpt-oss-120b:free'],
+            ['DeepSeek', 'https://api.deepseek.com/chat/completions', E.DEEPSEEK_API_KEY, 'deepseek-chat']];
+          for (const [n, u, k, m] of L) {
+            if (!k) { console.log('⚪ ' + n + ' : pas de clé'); continue; }
+            try { const r = await fetch(u, { method: 'POST', headers: { Authorization: 'Bearer ' + k, 'Content-Type': 'application/json' }, body: JSON.stringify({ model: m, messages: [{ role: 'user', content: 'Réponds seulement : OK' }] }) });
+              const t = await r.text(); let j = {}; try { j = JSON.parse(t) } catch (e) {}
+              console.log((r.ok ? '✅ ' : '❌ ') + n + ' : ' + (r.ok ? (j.choices?.[0]?.message?.content || '').slice(0, 40) : r.status + ' ' + t.slice(0, 160)));
+            } catch (e) { console.log('❌ ' + n + ' : ' + e.message); }
+          }
+          JS
+          node e.mjs | tee -a $GITHUB_STEP_SUMMARY
