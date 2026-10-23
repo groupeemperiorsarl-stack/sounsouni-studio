@@ -87,7 +87,7 @@ DÉCOR: VILLA_FETE · nuit · ambiance: musique lointaine
 [TENUE FATIM: tenue_de_soiree]
 [TENUE AWA: tenue_de_soiree]
 [MUSIQUE: joyeuse]
-PLAN: large [Bakary debout, Fatim debout, Modibo debout, Sali debout, Mimi debout, Seydou debout, Kadi sur le banc, Moussa debout, Diasabi debout]
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Sali debout, Seydou debout, Moussa debout, Diasabi debout]
 
 PLAN: 2 s · gros Fatim · {POSE: en tenue de soirée turquoise, debout}{sourire}
 
@@ -100,7 +100,20 @@ Bienvenue au dîner de mariage de ma grande sœur ! {fier} Que chaque cavalier t
 PLAN: large [Bakary debout, Fatim debout, Modibo debout, Moussa debout, Diasabi debout, Awa marche]
 PLAN: 4 s · gros Awa · {POSE: en tenue de soirée époustouflante, marche lentement}{fier}
 [MUSIQUE: romantique]
-[RÉACTION BAKARY: emerveille]
+[BRUITAGE: sifflements]
+[BRUITAGE: cris de joie]
+
+SEYDOU (emerveille · regarde: Awa · voix: crie)
+Waouh ! {emerveille} Qu'elle est belle !
+
+MOUSSA (grand_sourire · regarde: Awa · voix: crie)
+Waouh ! Qu'elle est belle, {fier} ma grande sœur !
+
+MODIBO (emerveille · regarde: Bakary · voix: chuchote)
+Waouh… elle est vraiment splendide. {sourire} Je te comprends, mon gars !
+
+PLAN: 2 s · gros Bakary · {emerveille}{choc}
+[RÉACTION FATIM: confus]
 [BRUITAGE: fracas]
 
 PLAN: objet verre brisé
@@ -114,6 +127,12 @@ Grande sœur… la règle ! {salue} Personne ne vient seul !
 
 AWA (mepris · regarde: Moussa · voix: lentement)
 Les règles, Moussa… {fiere} c'est pour les autres.
+
+MOUSSA (taquin · regarde: Awa · voix: normal)
+D'accord… {sourire} de toute façon, tu n'es pas la seule. Il y en a beaucoup qui ne sont pas accompagnés.
+[RÉACTION DIASABI: rougit]
+[RÉACTION MODIBO: rougit]
+[RÉACTION SEYDOU: rougit]
 
 PLAN: 3 s · gros Diasabi · {POSE: à genoux}{grand_sourire}
 
@@ -224,7 +243,7 @@ PLAN: objet téléphone
 [BRUITAGE: whoosh]
 [ÉCRAN 2 s: 3 messages supprimés]
 
-PLAN: large [Bakary debout, Fatim debout, Modibo debout, Kadi sur le banc]
+PLAN: large [Bakary debout, Fatim debout, Modibo debout, Diasabi debout]
 
 FATIM (moue · regarde: Bakary · voix: normal)
 Bakary… Bakary ! {moue} Je suis là, moi !
@@ -235,8 +254,8 @@ Hein ? Oui… {gene} oui, oui.
 MODIBO (sage · regarde: Bakary · voix: chuchote)
 Bakarin… ta cavalière, c'est Fatim. {serieux} Pas la reine.
 
-KADI (moqueur · regarde: Bakary · voix: lentement)
-Celui-là… il regarde la lune {sourire} et il oublie l'étoile à côté de lui.
+DIASABI (moqueur · regarde: Bakary · voix: lentement)
+À Bobo, on dit : celui qui regarde la lune {sourire} oublie l'étoile à côté de lui.
 [RÉACTION FATIM: triste]
 
 PLAN: 3 s · gros Awa · {mefiant}
@@ -255,15 +274,19 @@ Attention ! {fier} La mariée va lancer son bouquet !
 [BRUITAGE: whoosh]
 
 PLAN: objet bouquet de fleurs de la mariée
+[BRUITAGE: whoosh]
 
 PLAN: 2 s · gros Awa · {POSE: en tenue de soirée, debout, le bouquet dans les mains}{surpris}
 
-INVITEE (neutre · voix: au téléphone)
-Ooooh ! La couturière va se marier !
+PENSÉE AWA (surpris · regarde: caméra)
+Oh… le bouquet est venu droit sur moi ! {choc} Il m'a visée… je n'avais pas le choix, je l'ai pris.
+
+INVITEE (neutre · voix: crie)
+Ooooh ! Celle qui attrape le bouquet sera la prochaine à se marier !
 [BRUITAGE: applaudissements]
 
 AWA (mepris · regarde: loin · voix: normal)
-Pas pour moi.
+Me marier ? {mepris} Si c'est comme ça… je le relance !
 
 PLAN: 2 s · gros Awa · {POSE: en tenue de soirée, debout, jette le bouquet par-dessus son épaule sans regarder}{mepris}
 [BRUITAGE: whoosh]
@@ -271,9 +294,12 @@ PLAN: 2 s · gros Awa · {POSE: en tenue de soirée, debout, jette le bouquet pa
 PLAN: objet bouquet de fleurs de la mariée
 
 PLAN: 3 s · gros Bakary · {POSE: debout, attrape le bouquet à deux mains}{choc}
-[SILENCE 3 s]
 
-PLAN: large [Bakary debout, Fatim debout, Modibo debout, Diasabi debout, Awa debout]
+PENSÉE BAKARY (choc · regarde: caméra)
+Hein ?! Le bouquet… {choc} il est tombé sur moi ?!
+[SILENCE 2 s]
+
+PLAN: large [Bakary debout bouquet, Fatim debout, Modibo debout, Diasabi debout, Awa debout]
 [RÉACTION FATIM: triste]
 [RÉACTION MODIBO: choc]
 

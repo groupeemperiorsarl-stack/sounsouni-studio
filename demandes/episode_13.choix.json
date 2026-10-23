@@ -11,29 +11,5 @@
    "who": "DIASABI",
    "key": "dia_doigt"
   }
- },
- "25": {
-  "pose": {
-   "who": "MOUSSA",
-   "key": "mou_the"
-  }
- },
- "65": {
-  "pose": {
-   "who": "MOUSSA",
-   "key": "mou_the"
-  }
- },
- "79": {
-  "pose": {
-   "who": "MOUSSA",
-   "key": "mou_the"
-  }
- },
- "91": {
-  "pose": {
-   "who": "AWA",
-   "key": "awa_choc"
-  }
  }
 }

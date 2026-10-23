@@ -5,7 +5,7 @@ import ambiances
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets'); SR = 44100
 try: REGLES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'reglages.json'), encoding='utf-8'))   # ambiance_sous_voix, ambiance_baisse_parole
 except Exception: REGLES = {}
-GAIN = {'thunder': 0.6, 'cricket': 0.45, 'heart': 0.45, 'crowd': 0.3, 'boum': 0.8, 'door': 0.9, 'sew': 0.5, 'klaxon': 0.45, 'pourw': 0.35, 'whistlew': 0.35,
+GAIN = {'thunder': 0.6, 'cricket': 0.45, 'heart': 0.45, 'crowd': 0.3, 'boum': 0.8, 'door': 0.9, 'sew': 0.5, 'klaxon': 0.45, 'pourw': 0.35, 'whistlew': 0.35, 'sifflets': 0.5,
         'beeps': 0.35, 'motor': 0.5, 'sparkle': 0.4, 'heels': 0.6, 'steps': 0.5, 'call': 0.5, 'buzz': 0.6}
 def rd(p):
     y, sr = sf.read(p); y = y if y.ndim == 1 else y.mean(1)

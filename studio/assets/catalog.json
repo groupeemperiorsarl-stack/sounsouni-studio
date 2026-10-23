@@ -6981,6 +6981,23 @@
    "tenue": "polo_chic",
    "mouth_auto": true,
    "props_auto": {}
+  },
+  "obj_bouquet_mariee": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "bouquet",
+    "fleurs",
+    "mariee"
+   ],
+   "mouth": false,
+   "size": [
+    2313,
+    1450
+   ],
+   "props": [],
+   "genere": "decoupe"
   }
  },
  "decors": {

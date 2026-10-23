@@ -31,7 +31,7 @@ FX = {'coeurs', 'etoiles', 'eclair', 'fumee_tete', 'goutte', 'sueur', 'point_exc
 SFX = {'sonnerie': 'call', 'telephone': 'call', 'bip': 'bip', 'clic': 'click', 'notification': 'ding', 'pieces': 'coin', 'porte': 'door', 'porte qui claque': 'door',
        'pas': 'steps', 'talons': 'heels', 'tonnerre': 'thunder', 'grillon': 'cricket', 'grillons': 'cricket', 'whoosh': 'whoosh', 'pop': 'pop', 'fracas': 'crack',
        'gresillement': 'sizzle', 'rires de foule': 'applause', 'applaudissements': 'applause', 'klaxon': 'klaxon', 'moto': 'motor', 'moteur': 'motor', 'vibreur': 'buzz',
-       'vibration': 'buzz', 'canne': 'cane', 'machine a coudre': 'sew', 'ciseaux': 'snip', 'the': 'pourw', 'gorgee': 'sip', 'sifflotement': 'whistlew',
+       'vibration': 'buzz', 'canne': 'cane', 'machine a coudre': 'sew', 'ciseaux': 'snip', 'the': 'pourw', 'gorgee': 'sip', 'sifflotement': 'whistlew', 'sifflements': 'sifflets', 'sifflement': 'sifflets', 'sifflets': 'sifflets', 'cris de joie': 'applause', 'acclamations': 'applause',
        'scintillement': 'sparkle', 'boum': 'boum', 'bong': 'bong', 'tic-tac': 'tick', 'tic tac': 'tick', 'coeur': 'heart', 'battements de coeur': 'heart', 'bam': 'door', 'cri-cri': 'cricket'}
 def sfx_file(name):
     n = norm(name)
@@ -46,7 +46,7 @@ def tagwords(t):
     return out
 POS = {'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'content', 'fier', 'fiere', 'amoureux', 'reveur', 'taquin', 'joie', 'heureux'}
 NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'degout', 'choc', 'mepris'}
-OBJ = {'telephone', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
+OBJ = {'telephone', 'bouquet', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
 ENSEMBLE = {'verre': ('plateau', 'the'), 'the': ('plateau', 'verre'), 'telephone': ('cartes',)}   # objets qui vont ensemble
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
@@ -448,7 +448,11 @@ def build(meta, events, log=print, choix=None, variantes=False):
                     if not tagwords(want) & (EMOS | POS | NEG):   # gros plan muet sans émotion écrite : l'émotion de sa prochaine réplique ou pensée (Issa, ép. 18 : Modibo souriait au lieu d'être troublé)
                         nx = next((x for x in events[i + 1:] if x['type'] in ('line', 'scene') and (x['type'] == 'scene' or x.get('who') == c)), None)
                         if nx and nx['type'] == 'line' and nx.get('emotion'): want = want + [nx['emotion']]
+                    tenu = [o for o in OBJ for x in want if x.startswith('pose:') and o in x.split('_')]   # {POSE: attrape le bouquet} : il garde le bouquet dans les plans suivants de la scène
+                    lache = any(x.startswith('pose:') and re.search(r'(^|_)(jette|lance|donne|pose|lache|range)(_|$)', x) for x in want)
+                    if tenu: stage.props[c] = sorted(set(stage.props.get(c, [])) | set(tenu))
                     k = pick(c, want + stage.props.get(c, []), 'buste' if e['kind'] == 'tresgros' else None, stage.post(c))
+                    if tenu and lache: stage.props[c] = [o for o in stage.props.get(c, []) if o not in tenu]   # il le jette / le donne : il ne l'a plus dans les plans suivants
                     add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor(c, k, tight=e['kind'] == 'tresgros')], 'fx': fx})
                     plan = None
             elif e['kind'] == 'large':
