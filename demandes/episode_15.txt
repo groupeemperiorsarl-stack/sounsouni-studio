@@ -1,16 +1,41 @@
-Titre : Les Plans de Bakary – Test complet : Les beignets
+TITRE: Les Plans de Bakary – Test complet : Les beignets
+NOUVEAU PERSONNAGE: AMINATA — vendeuse de beignets du quartier, la trentaine, souriante, foulard orange, pagne orange et vert, une bassine de beignets. Postures : debout, marche.
 
-NOUVEAU PERSONNAGE : AMINATA — vendeuse de beignets du quartier, la trentaine, souriante, foulard orange, pagne orange et vert, une bassine de beignets. Postures : debout, marche. (2 images : marche avec sa bassine · debout souriante)
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc]
 
-Scène 1 – Au kiosque, le matin. Bakary est debout derrière son kiosque, Modibo est assis sur le banc.
-Bakary (content) à Modibo : Van, aujourd'hui je sens que la journée sera belle.
-Modibo (taquin) : Tu dis ça tous les matins, Bakarin.
-On entend des pas. Aminata arrive avec sa bassine de beignets.
-Aminata (souriante), à tout le monde : Bonjour tout le monde ! Beignets tout chauds !
-Modibo (amoureux) pense : Elle est encore plus belle que ses beignets…
-Bakary (surpris) à Modibo : Van ? Tu rougis ?
+BAKARY (content · regarde: Modibo · voix: normal)
+{grand_sourire} Van, aujourd'hui je sens que la journée sera belle.
 
-Scène 2 – À l'atelier d'Awa, juste après. Awa est assise à sa machine, Mimi est debout.
-Mimi (inquiète) à Awa : Tantie, Modibo est amoureux de la vendeuse de beignets !
-Awa (mépris) : Laisse-le. Au moins, elle, elle ne publie pas d'avis par erreur.
-FIN
+MODIBO (taquin · regarde: Bakary · voix: normal)
+{sourire_malin} Tu dis ça tous les matins, Bakarin.
+
+[BRUITAGE: pas]
+
+PLAN: large [Bakary debout, Modibo sur le banc]
+
+AMINATA (neutre · regarde: tous le monde · voix: normal)
+Bonjour tout le monde ! Beignets tout chauds !
+
+PENSÉE MODIBO (amoureux · regarde: Aminata)
+Elle est encore plus belle que ses beignets…
+
+BAKARY (surpris · regarde: Modibo · voix: normal)
+{surpris} Van ? Tu rougis ?
+
+DÉCOR: ATELIER · après‑midi · ambiance: marché
+PLAN: large [Awa assise, Mimi debout]
+
+MIMI (inquiet · regarde: Awa · voix: normal)
+{penche_tete} Tantie, Modibo est amoureux de la vendeuse de beignets !
+
+AWA (mepris · regarde: Mimi · voix: normal)
+{sourire_malin} Laisse‑le. Au moins, elle, elle ne publie pas d'avis par erreur.
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Découvrez Sounsouni, l’appli qui simplifie vos achats. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez‑vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
