@@ -114,63 +114,63 @@ Pousse-toi. {mepris} Tu bloques le passage.
 [BRUITAGE: klaxon]
 PLAN: objet Land Cruiser blanc
 
-INVITEE (neutre · voix: au téléphone)
+INVITEE (neutre · voix: chuchote)
 Regarde ! C'est El Hadj Bourama ! Le roi de l'or du Grand Marché !
 [BRUITAGE: pas]
 
 PLAN: large [Awa debout, Moussa debout]
 
-EL_HADJ (sourire · regarde: caméra · voix: au téléphone)
+EL_HADJ (sourire · regarde: caméra · voix: normal)
 Aw ni tchié, mes enfants !
 
 PLAN: deux [Awa debout]
 
-EL_HADJ (sourire · regarde: Awa · voix: au téléphone)
+EL_HADJ (sourire · regarde: Awa · voix: normal)
 Ma fille… tu illumines la soirée.
 
-AWA (froide · regarde: téléphone · voix: normal)
+AWA (froide · regarde: EL_HADJ · voix: normal)
 Merci, Tonton. {sourire} Saluez vos femmes pour moi.
 [RÉACTION EL_HADJ: gene]
 
 [BRUITAGE: klaxon]
 PLAN: objet Mercedes noire
 
-INVITE (neutre · voix: au téléphone)
+INVITE (neutre · voix: normal)
 Eh ! C'est Cheick ! À Paris, on l'appelle le Prince !
 [BRUITAGE: pas]
 
 PLAN: large [Awa debout, Moussa debout]
 
-CHEICK (fier · regarde: caméra · voix: au téléphone)
+CHEICK (fier · regarde: caméra · voix: normal)
 Bonsoir, bonsoir tout le monde !
 
 PLAN: deux [Awa debout]
 
-CHEICK (fier · regarde: Awa · voix: au téléphone)
+CHEICK (fier · regarde: Awa · voix: normal)
 Mademoiselle, vous m'accordez une danse ?
 
-AWA (moue · regarde: téléphone · voix: normal)
+AWA (moue · regarde: CHEICK · voix: normal)
 Ici, on n'est pas à Paris, Prince.
 [RÉACTION CHEICK: surpris]
 
 [BRUITAGE: klaxon]
 PLAN: objet 4x4 noir avec chauffeur
 
-INVITEE (neutre · voix: au téléphone)
+INVITEE (neutre · voix: chuchote)
 C'est le grand Abdoul ! Celui-là, c'est un vrai grand. Un seul coup de fil de lui, et ton atelier devient fournisseur officiel du gouvernement !
 [BRUITAGE: pas]
 
 PLAN: large [Awa debout, Moussa debout]
 
-ABDOUL (sourire · regarde: caméra · voix: au téléphone)
+ABDOUL (sourire · regarde: caméra · voix: normal)
 Bonsoir à tous.
 
 PLAN: deux [Awa debout]
 
-ABDOUL (sourire · regarde: Awa · voix: au téléphone)
+ABDOUL (sourire · regarde: Awa · voix: normal)
 Madame Awa, on m'a beaucoup parlé de votre travail…
 
-AWA (fiere · regarde: téléphone · voix: normal)
+AWA (fiere · regarde: ABDOUL · voix: normal)
 Alors commandez sur Sounsouni. {mepris} Comme tout le monde.
 [RÉACTION ABDOUL: gene]
 
