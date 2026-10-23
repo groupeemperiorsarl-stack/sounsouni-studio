@@ -6122,6 +6122,56 @@
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
    "tenue": "tenue_de_soiree"
+  },
+  "obj_land_cruiser_blanc2": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "land",
+    "cruiser",
+    "blanc"
+   ],
+   "mouth": false,
+   "size": [
+    1011,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "obj_mercedes_noire2": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "mercedes",
+    "noire"
+   ],
+   "mouth": false,
+   "size": [
+    995,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "obj_4x4_noir_chauffeur2": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "4x4",
+    "noir",
+    "chauffeur"
+   ],
+   "mouth": false,
+   "size": [
+    979,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
   }
  },
  "decors": {
