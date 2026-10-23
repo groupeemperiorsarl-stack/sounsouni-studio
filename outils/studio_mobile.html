@@ -338,11 +338,12 @@ function apres(s,brut,al){const L=s.split('\n'),out=[],W=new Set(paires(brut)),p
       const rg=m[3].match(/regarde\s*:\s*([^·)]*[^·)\s])/i);if(rg){const c=nomP(rg[1].trim());if(tel.has(c)&&!pres.has(c))l=l.replace(rg[0],'regarde: téléphone')}}
     if(l.trim())prev=l;out.push(l)}
   return out.join('\n')}
-function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];const pres=new Set();
+function nettoyer(t){let L=t.replace(/\r/g,'').split('\n').filter(l=>!/^\s*```/.test(l)),out=[],al=[];const pres=new Set();const NOUV=new Set([...t.matchAll(/^\s*NOUVEAU PERSONNAGE\s*:\s*([A-ZÀ-Ÿ_]+)/gm)].map(x=>x[1]));   // nouveau personnage (pas encore d'image) : il est bien là, jamais « au téléphone »
+
   for(let i=0;i<L.length;i++){let l=L[i].replace(/^\s*\[\s+/,'[').replace(/\s+\]\s*$/,']');const m=l.match(TETE);
     if(m&&(PERSOS.includes(m[2].trim().replace(/ /g,'_'))||/^[A-Z_]{3,}$/.test(m[2].trim()))){const parts=m[3].split('·').map(s=>s.trim());
       const qui=m[2].trim();
-      if(qui!=='VOIX_OFF'&&pres.size&&!pres.has(qui)){   // pas dans le décor : il parle au téléphone, et on ne montre jamais sa pensée
+      if(qui!=='VOIX_OFF'&&!NOUV.has(qui)&&pres.size&&!pres.has(qui)){   // pas dans le décor : il parle au téléphone, et on ne montre jamais sa pensée
         if(m[1]){al.push('Pensée de '+qui+' supprimée : '+qui+' n\'est pas dans ce décor');i++;continue}
         if(!parts.some(s=>/au t[ée]l[ée]phone/i.test(s))){for(let j=parts.length-1;j>=0;j--)if(/^voix\s*:/i.test(parts[j]))parts.splice(j,1);parts.push('voix: au téléphone');al.push(qui+' n\'est pas dans le décor : mis « au téléphone »')}}
       const vo=m[2].trim()==='VOIX_OFF';const p0=parts.findIndex(s=>!s.includes(':'));if(vo){}else if(p0<0)parts.unshift('neutre');else{const e=emo(parts[p0]);if(!e)al.push(m[2]+' : émotion « '+parts[p0]+' » remplacée par neutre');parts[p0]=e||'neutre'}

@@ -43,29 +43,39 @@ def modeles():
     return sorted(v, key=num, reverse=True)[:6] or ['gemini-flash-latest', 'gemini-3-flash-preview']
 
 def gemini(sys_txt, parts):
+    epuises = set()
     for tour in range(10):
         for m in modeles():
+            if m in epuises: continue
             try:
                 d = req(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent', {'systemInstruction': {'parts': [{'text': sys_txt}]}, 'contents': [{'role': 'user', 'parts': parts}],
                         'generationConfig': {'temperature': 0.2, 'responseMimeType': 'application/json'}}, headers={'x-goog-api-key': K}, timeout=600)
                 t = ''.join(p.get('text', '') for p in d['candidates'][0]['content']['parts'])
                 if t: print('relecture par', m); return m, json.loads(t[t.find('{'):t.rfind('}') + 1])
+            except urllib.error.HTTPError as e:
+                b = e.read().decode()[:400]; print(m, ':', e.code, b[:120])
+                if e.code == 429 and 'exceeded your current quota' in b: epuises.add(m)   # quota du jour épuisé : inutile de réessayer ce modèle
             except Exception as e: print(m, ':', str(e)[:160])
+        if len(epuises) >= len(modeles()): raise RuntimeError('quota du jour de Gemini épuisé')
         print('Gemini occupé, nouvel essai dans 60 s'); time.sleep(60)
     raise RuntimeError('Gemini ne répond pas')
 
-def groq(sys_txt, user):   # passe « histoire » (texte seul) : Groq d'abord quand la clé existe (Gemini gratuit est souvent saturé)
+def groq(sys_txt, user):   # passe « histoire » (texte seul) : Groq d'abord ; gpt-oss est limité à 8 000 morceaux par minute, les autres modèles gratuits acceptent plus long
     k = os.environ.get('GROQ_API_KEY')
     if not k: raise RuntimeError('pas de clé Groq')
-    for essai in range(6):
-        try:
-            d = req('https://api.groq.com/openai/v1/chat/completions', {'model': 'openai/gpt-oss-120b', 'temperature': 0.2, 'reasoning_effort': 'medium', 'response_format': {'type': 'json_object'},
-                    'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}]}, headers={'Authorization': 'Bearer ' + k}, timeout=300)
-            t = d['choices'][0]['message']['content']; print('histoire relue par Groq'); return 'Groq gpt-oss-120b', json.loads(t[t.find('{'):t.rfind('}') + 1])
-        except urllib.error.HTTPError as e:
-            b = e.read().decode()[:300]; print('Groq :', e.code, b[:160])
-            if e.code == 429 and 'per day' not in b: time.sleep(65); continue
-            raise
+    try: dispo = [m['id'] for m in req('https://api.groq.com/openai/v1/models', headers={'Authorization': 'Bearer ' + k}, timeout=30).get('data', [])]
+    except Exception: dispo = []
+    for modele in ['openai/gpt-oss-120b'] + [m for m in ('meta-llama/llama-4-scout-17b-16e-instruct', 'meta-llama/llama-4-maverick-17b-128e-instruct', 'moonshotai/kimi-k2-instruct', 'qwen/qwen3-32b', 'llama-3.3-70b-versatile') if m in dispo]:
+        for essai in range(4):
+            try:
+                d = req('https://api.groq.com/openai/v1/chat/completions', {'model': modele, 'temperature': 0.2, **({'reasoning_effort': 'medium'} if 'gpt-oss' in modele else {}), 'response_format': {'type': 'json_object'},
+                        'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}]}, headers={'Authorization': 'Bearer ' + k}, timeout=300)
+                t = d['choices'][0]['message']['content']; print('histoire relue par Groq', modele); return 'Groq ' + modele.split('/')[-1], json.loads(t[t.find('{'):t.rfind('}') + 1])
+            except urllib.error.HTTPError as e:
+                b = e.read().decode()[:300]; print('Groq', modele, ':', e.code, b[:120])
+                if e.code == 429 and 'per day' not in b: time.sleep(65); continue
+                break   # trop long (413) ou quota du jour : modèle suivant
+            except Exception as e: print('Groq', modele, ':', str(e)[:120]); break
     raise RuntimeError('Groq saturé')
 import urllib.error
 

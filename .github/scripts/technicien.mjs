@@ -56,14 +56,23 @@ async function fournisseurs() {
   const P = [];
   const g = process.env.GEMINI_API_KEY; if (g) for (const m of await listeGemini(g)) P.push({ nom: 'Gemini ' + m, url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', cle: g, modele: m, gemini: true });
   if (process.env.CEREBRAS_API_KEY) P.push({ nom: 'Cerebras gpt-oss-120b', url: 'https://api.cerebras.ai/v1/chat/completions', cle: process.env.CEREBRAS_API_KEY, modele: 'gpt-oss-120b', x: { reasoning_effort: 'medium' } });
-  if (process.env.GROQ_API_KEY) P.push({ nom: 'Groq gpt-oss-120b', url: 'https://api.groq.com/openai/v1/chat/completions', cle: process.env.GROQ_API_KEY, modele: 'openai/gpt-oss-120b', x: { reasoning_effort: 'medium' } });
+  if (process.env.GROQ_API_KEY) {
+    P.push({ nom: 'Groq gpt-oss-120b', url: 'https://api.groq.com/openai/v1/chat/completions', cle: process.env.GROQ_API_KEY, modele: 'openai/gpt-oss-120b', x: { reasoning_effort: 'medium' }, leger: true });
+    try {   // modèles gratuits de Groq qui acceptent de plus longues conversations (gpt-oss est limité à 8 000 mots-morceaux par minute)
+      const dispo = ((await (await fetch('https://api.groq.com/openai/v1/models', { headers: { Authorization: 'Bearer ' + process.env.GROQ_API_KEY } })).json()).data || []).map(m => m.id);
+      for (const m of ['meta-llama/llama-4-scout-17b-16e-instruct', 'meta-llama/llama-4-maverick-17b-128e-instruct', 'qwen/qwen3-32b', 'moonshotai/kimi-k2-instruct', 'llama-3.3-70b-versatile'])
+        if (dispo.includes(m)) P.push({ nom: 'Groq ' + m.split('/').pop(), url: 'https://api.groq.com/openai/v1/chat/completions', cle: process.env.GROQ_API_KEY, modele: m, leger: true });
+    } catch (e) { log('liste Groq : ' + e.message); }
+  }
   if (process.env.OPENROUTER_API_KEY) P.push({ nom: 'OpenRouter gpt-oss-120b', url: 'https://openrouter.ai/api/v1/chat/completions', cle: process.env.OPENROUTER_API_KEY, modele: 'openai/gpt-oss-120b:free' });
   // ordre selon l'usage : chaque modèle garde sa note (recherches réussies, 👍 / 👎 d'Issa) ; un modèle jamais essayé garde sa place d'origine
   const note = p => { const s = stats[p.nom]; if (!s) return null; return (s.reussies + 2 * s.pouces_haut + 1) / (s.sessions + 2 * (s.pouces_haut + s.pouces_bas) + 2); };
   return P.map((p, i) => ({ p, i, n: note(p) })).sort((a, b) => (a.n == null || b.n == null) ? a.i - b.i : (b.n - a.n) || (a.i - b.i)).map(x => x.p);
 }
 let FOURN = [], actuel = 0;
-const nettoyerPour = (p, msgs) => msgs.map(m => { const c = { role: m.role, content: m.content ?? '' };
+let SYS_LEGER = '';
+const nettoyerPour = (p, msgs) => msgs.map((m, i) => { const c = { role: m.role, content: m.content ?? '' };
+  if (p.leger) { if (i === 0 && m.role === 'system' && SYS_LEGER) c.content = SYS_LEGER; else if (m.role === 'tool' && i < msgs.length - 4) c.content = String(c.content).slice(0, 700); }
   if (m.tool_calls) c.tool_calls = m.tool_calls.map(t => p.gemini ? t : { id: t.id, type: 'function', function: t.function });
   if (m.tool_call_id) { c.tool_call_id = m.tool_call_id; if (!p.gemini) c.name = m.name; }
   if (m.role === 'assistant' && m.tool_calls && !m.content) c.content = p.gemini ? null : '';
@@ -71,11 +80,11 @@ const nettoyerPour = (p, msgs) => msgs.map(m => { const c = { role: m.role, cont
 async function penser(msgs, outils) {   // un tour de l'IA ; en cas de panne on passe à la suivante (la conversation suit)
   let err = '';
   for (let tour = 0; tour < 3; tour++) { for (let k = 0; k < FOURN.length; k++) {
-    const p = FOURN[(actuel + k) % FOURN.length];
+    const p = FOURN[(actuel + k) % FOURN.length]; if (p.epuise) continue;
     try {
       const corps = { model: p.modele, messages: nettoyerPour(p, msgs), temperature: 0.3, ...(outils ? { tools: outils, tool_choice: 'auto' } : {}), ...(p.x || {}) };
       const r = await fetch(p.url, { method: 'POST', headers: { Authorization: 'Bearer ' + p.cle, 'Content-Type': 'application/json' }, body: JSON.stringify(corps), signal: AbortSignal.timeout(240000) });
-      if (r.status === 429) { const b = await r.text(); err = p.nom + ' : 429 ' + b.slice(0, 120); const mm = b.match(/try again in\s*(?:(\d+)m)?\s*([\d.]+)s/i);
+      if (r.status === 429) { const b = await r.text(); err = p.nom + ' : 429 ' + b.slice(0, 120); if (/exceeded your current quota/i.test(b)) { p.epuise = true; } const mm = b.match(/try again in\s*(?:(\d+)m)?\s*([\d.]+)s/i);
         if (mm && !/per day|TPD|RPD/i.test(b) && +(mm[1] || 0) < 2) { const w = Math.ceil(+(mm[1] || 0) * 60 + parseFloat(mm[2])) + 2; log(p.nom + ' attend ' + w + ' s'); await dodo(w * 1000); k--; continue; }
         log(err); continue; }
       if (!r.ok) { err = p.nom + ' : ' + r.status + ' ' + (await r.text()).slice(0, 200); log(err); continue; }
@@ -291,6 +300,7 @@ async function principal() {
   MSG_ACCORD = !!attente && ACCORD.test(texte);
 
   FOURN = await fournisseurs(); if (!FOURN.length) throw new Error('aucune clé d\'IA dans les secrets GitHub');
+  SYS_LEGER = fs.readFileSync('docs/TECHNICIEN.md', 'utf8') + '\n\n## CARNET (leçons déjà apprises)\n' + carnet.slice(-5000) + '\n\nNous sommes le ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + '. La demande « Technicien » est le n° ' + ISSUE + '.';
   const sys = fs.readFileSync('docs/TECHNICIEN.md', 'utf8') + '\n\n## NOTES DU PROJET (écrites par Claude, à jour)\n' + fs.readFileSync('CLAUDE.md', 'utf8') + '\n\n## CARNET (leçons déjà apprises)\n' + carnet +
     '\n\nNous sommes le ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' (heure de Bamako = UTC). La demande « Technicien » est le n° ' + ISSUE + '.' +
     (attente ? '\n\nEN ATTENTE DE L\'ACCORD D\'ISSA : ' + JSON.stringify(attente) + (MSG_ACCORD ? ' → Issa vient de dire OUI : fais-le maintenant.' : ' → s\'il ne dit pas oui clairement, ne le fais pas.') : '');
@@ -368,7 +378,10 @@ try {
   if (nouvellesLecons.length && commentaire) await gh('/issues/comments/' + commentaire, { method: 'PATCH', body: JSON.stringify({ body: corps.replace('</details>', '</details>\n\n📝 Appris pour la prochaine fois :\n' + nouvellesLecons.map(l => '- ' + l).join('\n')) }) }).catch(() => {});
 } catch (e) {
   console.error(e);
-  const t = '❌ Le technicien n\'a pas pu finir : ' + e.message + '\n\nRéessayez dans quelques minutes (vos messages sont gardés).\n<!--tech:fin modele="erreur"-->';
+  const quota = FOURN.some(p => p.epuise), simple = /aucune IA ne répond/.test(e.message)
+    ? '❌ Toutes les IA gratuites sont occupées' + (quota ? ' (Gemini a utilisé tout son quota du jour : il revient vers 8 h du matin à Bamako)' : '') + '. Réessayez un peu plus tard : vos messages sont gardés.'
+    : '❌ Le technicien n\'a pas pu finir : ' + e.message + '\n\nRéessayez dans quelques minutes (vos messages sont gardés).';
+  const t = simple + '\n<!--tech:fin modele="erreur"-->';
   if (commentaire) await gh('/issues/comments/' + commentaire, { method: 'PATCH', body: JSON.stringify({ body: t }) }).catch(() => {}); else await gh('/issues/' + ISSUE + '/comments', { method: 'POST', body: JSON.stringify({ body: t }) }).catch(() => {});
   process.exit(1);
 }

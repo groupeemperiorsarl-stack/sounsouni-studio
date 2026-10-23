@@ -466,6 +466,11 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 sh['tete'] = pick(who, ['pensif'] + emo[:1], 'buste', stage.post(who), need_mouth=False) or pick(who, [], None, None)
             elif who == 'VOIX_OFF' or ending:
                 sh['kind'] = 'endline'
+            elif not any(p['char'] == who for p in POSES.values()):   # personnage sans aucune image (nouveau, ou « voix seulement ») : sa voix hors champ, on voit ceux qui l'écoutent ; jamais d'arrêt de la fabrication
+                autres = [c for c in stage.ici() if c != who]
+                sh['actors'] = wide_layout(stage, autres, moods) if autres else []; sh['hors_champ'] = True
+                if not autres: sh['kind'] = 'pensee_ecran' if last_shot and last_shot['kind'] == 'screen' else sh['kind']
+                MANQUES.add((who, 'personnage sans image', 'debout'))
             elif 'telephone' in e.get('voice', ''):   # au téléphone = il est ailleurs : on voit l'écran d'appel, jamais lui dans le décor
                 sh['kind'] = 'phonecall'
             else:

@@ -88,6 +88,7 @@ def besoins(paths, log=print, tout=False, maxi=16):
         meta, shots = analyse(p, log)
         for nc in meta['new_chars']:
             nom = re.split(r'\s*[—–-]\s*', nc, 1)[0].strip().upper(); d = nc[len(nom):].strip(' —–-')
+            if re.search(r'voix seulement|jamais [àa] l.image', d, re.I): continue   # personnage qu'on entend sans le voir : pas d'image à faire
             if nom not in director.HEIGHT: add(('perso', nom), {'type': 'personnage', 'perso': nom, 'texte': d}, ep(p))
         for nd in meta['new_decors']:
             nom = re.split(r'\s*[—–:-]\s*', nd, 1)[0].strip().upper(); d = nd[len(nom):].strip(' —–:-')
@@ -107,6 +108,7 @@ def besoins(paths, log=print, tout=False, maxi=16):
                 verif(pa, add, ou)
             for c in s.get('cuts', []): verif({'char': c['who'], 'want': c['actions'] + c.get('props', []), 'frame': 'buste', 'posture': c.get('posture'), 'need_mouth': False}, add, ou)
     for c, e, post in sorted(getattr(director, 'MANQUES', ())):   # émotions sans aucune image (visage calme mis à la place) : toujours demandées
+        if e == 'personnage sans image' or not poses_de(c): continue   # nouveau personnage : demandé plus haut (« NOUVEAU PERSONNAGE »)
         for mot in e.split('/')[:1]:
             add(('pose', c, 'assis' if post in ('assis', 'banc') else 'debout', CANON.get(mot, mot)), {'type': 'pose', 'perso': c, 'posture': 'assis' if post in ('assis', 'banc') else 'debout', 'emo': CANON.get(mot, mot), 'manque': True}, 'image manquante')
     prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 3}.get(x['type'], 4 if x.get('tenue') or x.get('manque') or str(x.get('emo', '')).startswith('pose:') else 0)
@@ -215,12 +217,13 @@ def groupes(items):
 def melanger(gs, par_n):
     """Plusieurs personnages sur une même image Gemini (une image jointe par personnage) : 4 poses par demande.
     Les demandes d'une nouvelle tenue restent seules (elles décrivent les habits)."""
-    seuls = [g for g in gs if g.get('suite_de') or any(par_n[n].get('tenue') and not director.POSES.get(par_n[n].get('ref') or '', {}).get('tenue') for n in g['items'])]
+    seuls = [g for g in gs if g.get('suite_de') or any(par_n[n]['type'] in ('personnage', 'decor') for n in g['items']) or any(par_n[n].get('tenue') and not director.POSES.get(par_n[n].get('ref') or '', {}).get('tenue') for n in g['items'])]
     bins = []
     for g in sorted([g for g in gs if g not in seuls], key=lambda g: -len(g['items'])):
         b = next((b for b in bins if sum(len(x['items']) for x in b) + len(g['items']) <= PAR_IMAGE), None)
         if b is None: bins.append([g])
         else: b.append(g)
+    bins = [bb for b in bins for bb in ([b] if any(par_n[n]['type'] == 'pose' for g in b for n in g['items']) else [[g] for g in b])]   # que des objets : une demande par objet
     out = []
     for b in bins:
         its = [n for g in b for n in g['items']]
