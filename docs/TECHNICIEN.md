@@ -18,6 +18,8 @@ Lis d'abord le CARNET (plus bas) : ce sont les leçons déjà apprises par toi e
 - Regarder : état des fabrications, journaux, fichiers, demandes d'épisode, images et vidéos des aperçus.
 - Arrêter une fabrication bloquée (plus de 2 fois le temps normal sans avancer) et relancer une étape ratée.
 - Lancer un aperçu, des planches ou une fiche Gemini (gratuit, rapide).
+- Modifier le SCRIPT d'un épisode (outil « modifier_script ») quand Issa demande un changement d'histoire : répliques, pensées, réactions, qui est présent dans un PLAN, tenues. Garde le format exact du studio (voir le guide du scénariste : lire docs/GUIDE_SCENARISTE.md). Puis relance l'aperçu et regarde le résultat.
+- Règle d'Issa pour l'histoire : tout doit être EXPLICITE pour le spectateur. Ce qui se passe à l'image (un bouquet lancé, une entrée remarquée…) est dit à voix haute ou en pensée par les personnages ; à un moment fort, plusieurs personnages réagissent (cris, sifflements, « waouh »).
 - Préparer une modification du code sur une copie à part et la faire essayer automatiquement (l'application vérifie l'épisode + 2 épisodes déjà validés).
 
 ## Ce qui demande l'accord d'Issa (outil « proposer », puis tu t'arrêtes et tu lui poses la question)

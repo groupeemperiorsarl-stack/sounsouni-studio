@@ -226,6 +226,27 @@ async function essayerCode({ changements, explication, episode }) {
   let id = null; for (let i = 0; i < 10 && !id; i++) { await dodo(6000); const r = await gh('/actions/workflows/essai-code.yml/runs?per_page=5'); id = r.workflow_runs.find(x => x.created_at >= t1.slice(0, 19))?.id; }
   return 'Modification mise sur la copie « ' + br + ' » ; essai lancé' + (id ? ' (fabrication ' + id + ')' : '') + ' sur ' + scr + ' + 2 épisodes validés (environ 10 à 15 min). Appelle attendre(fabrication=' + (id || '…') + ') pour connaître le résultat. Si l\'essai réussit, appelle proposer(action="fusionner", cible="' + br + '") et demande l\'accord d\'Issa.';
 }
+async function modifierScript({ numero, changements, explication }) {
+  if (!Array.isArray(changements) || !changements.length) return 'aucun changement donné';
+  const iss = await gh('/issues/' + numero), body = iss.body || '', m = body.match(/(### Script de l'épisode\s*\n+```(?:text)?\n)([\s\S]*?)(\n```)/);
+  if (!m) return 'script introuvable dans la demande ' + numero;
+  let scr = m[2];
+  for (const c of changements) {
+    const n = scr.split(c.ancien).length - 1;
+    if (n === 1) { scr = scr.replace(c.ancien, () => c.nouveau); continue; }
+    const re = new RegExp(String(c.ancien).trim().split(/\s+/).map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('\\s+'), 'g'), t = scr.match(re) || [];
+    if (t.length !== 1) return (t.length ? 'texte trouvé ' + t.length + ' fois' : 'texte « ancien » introuvable') + ' dans le script : relis-le avec « demande » et recopie EXACTEMENT. Rien n\'a été changé.';
+    scr = scr.replace(re, () => c.nouveau);
+  }
+  if (/\[NOTE|TODO/i.test(scr)) return 'jamais de note dans le script : rien n\'a été changé';
+  const f = '/tmp/script_' + numero + '.txt'; fs.writeFileSync(f, scr + '\n');
+  try { sh('python3', ['-c', 'import sys; sys.path.insert(0,"studio"); import script; m,e=script.parse(open(sys.argv[1],encoding="utf-8").read()); assert any(x.get("type")=="line" for x in e), "aucune réplique"; print(len(e))', f]); }
+  catch (e) { return 'le script modifié ne se lit plus (' + court(e.stderr || e.message, 400) + ') : rien n\'a été changé. Corrige et réessaie.'; }
+  await gh('/issues/' + numero, { method: 'PATCH', body: JSON.stringify({ body: body.slice(0, m.index) + m[1] + scr + m[3] + body.slice(m.index + m[0].length) }) });
+  try { sh('git', ['pull', '-q', '--rebase', '--autostash']); fs.writeFileSync('demandes/episode_' + numero + '.txt', scr + '\n'); sh('git', ['add', 'demandes/episode_' + numero + '.txt']); sh('git', ['commit', '-qm', 'Technicien : script de la demande #' + numero + ' — ' + String(explication || '').slice(0, 150)]); sh('git', ['push', '-q']); } catch (e) {}
+  await gh('/issues/' + numero + '/comments', { method: 'POST', body: JSON.stringify({ body: '✏️ Le technicien a modifié le script (' + changements.length + ' changement(s)) : ' + (explication || '') }) });
+  return 'script de la demande ' + numero + ' modifié (' + changements.length + ' changement(s)) et vérifié. Relance maintenant l\'aperçu : lancer(quoi="apercu", numero=' + numero + ').';
+}
 async function attendre({ fabrication, quoi, minutes: mx = 20 }) {
   mx = Math.min(30, +mx || 20, MAX_MIN - (Date.now() - T0) / 60000 - 3);
   if (mx < 1) return 'plus le temps d\'attendre dans cette recherche : dis à Issa de te redemander dans quelques minutes';
@@ -265,15 +286,16 @@ const OUTILS = [
   O('relancer', 'Relancer une fabrication terminée (par défaut seulement les étapes ratées ou arrêtées : les autres sont gardées).', { fabrication: I('numéro'), tout: { type: 'boolean', description: 'true = tout refaire' } }, ['fabrication']),
   O('lancer', 'Lancer pour une demande : apercu, planches (de/a), fiche (Gemini) ou video (vidéo complète : accord d\'Issa obligatoire).', { quoi: { type: 'string', enum: ['apercu', 'planches', 'fiche', 'video'] }, numero: I('numéro de la demande'), de: S('planches : début, ex. 1:20'), a: S('planches : fin'), choix: S('réponse aux planches, ex. "1B 3C"') }, ['quoi', 'numero']),
   O('essayer_code', 'Modifier le code sur une copie à part et la faire essayer automatiquement. Chaque changement remplace un texte EXACT (lu avec « lire ») présent une seule fois. ancien vide = nouveau fichier.', { changements: { type: 'array', items: { type: 'object', properties: { fichier: S('ex. studio/director.py'), ancien: S('lignes exactes actuelles'), nouveau: S('lignes corrigées') }, required: ['fichier', 'ancien', 'nouveau'] } }, explication: S('ce que corrige la modification'), episode: S('numéro de la demande dont l\'épisode sert à l\'essai (facultatif)') }, ['changements', 'explication']),
+  O('modifier_script', 'Modifier le SCRIPT d\'un épisode (répliques, pensées, présences dans un PLAN, tenues, bruitages…) au format du studio. Chaque changement remplace un texte EXACT (lu avec « demande ») présent une seule fois ; pour ajouter des lignes, prends une ligne unique comme « ancien » et mets-la dans « nouveau » suivie des lignes ajoutées. Le script est vérifié (il doit encore se lire), puis rangé dans la demande. Ensuite, relance l\'aperçu (lancer).', { numero: I('numéro de la demande'), changements: { type: 'array', items: { type: 'object', properties: { ancien: S('texte exact du script'), nouveau: S('texte qui le remplace') }, required: ['ancien', 'nouveau'] } }, explication: S('ce que tu changes, en une phrase pour Issa') }, ['numero', 'changements']),
   O('attendre', 'Attendre la fin d\'une fabrication (au plus 30 min) et donner son résultat.', { fabrication: I('numéro'), quoi: S('ou : "essai", "episode", "format"'), minutes: I('au plus') }),
   O('proposer', 'Préparer une action qui demande l\'accord d\'Issa (fusionner une modification essayée, lancer une vidéo complète). Ensuite, termine ta réponse par la question.', { action: { type: 'string', enum: ['fusionner', 'video'] }, cible: S('branche (fusionner) ou numéro de demande (video)'), explication: S('pour Issa') }, ['action', 'cible']),
   O('fusionner', 'Mettre dans le vrai studio une modification essayée (seulement après l\'accord d\'Issa).', { branche: S('technicien-… ou assistant-…') }, ['branche']),
   O('noter', 'Noter dans le carnet une leçon utile pour la prochaine fois (pour toutes les IA du studio) : symptôme → cause → remède, en une phrase.', { theme: { type: 'string', enum: ['fabrication', 'format', 'ia', 'images', 'mise-en-scene', 'voix', 'son', 'page', 'pour-claude'] }, lecon: S('la leçon') }, ['theme', 'lecon']),
 ];
 const ecouter = async ({ numero }) => { try { return await gh('/contents/' + numero + '/ecoute.txt?ref=fichiers', { accept: 'application/vnd.github.raw', texte: true }); } catch (e) { return 'pas encore d\'écoute pour la demande ' + numero + ' (elle est faite automatiquement après chaque vidéo complète)'; } };
-const FAIRE = { ecouter, etat, journal, demandes, demande, fichiers_demande: fichiersDemande, regarder, lire, chercher, lister, arreter, relancer, lancer, essayer_code: essayerCode, attendre, proposer, fusionner, noter };
+const FAIRE = { modifier_script: modifierScript, ecouter, etat, journal, demandes, demande, fichiers_demande: fichiersDemande, regarder, lire, chercher, lister, arreter, relancer, lancer, essayer_code: essayerCode, attendre, proposer, fusionner, noter };
 const DIRE = { etat: '🔎 Je regarde les fabrications', journal: '📜 Je lis le journal', demandes: '📋 Je regarde les demandes', demande: '📋 Je lis la demande', fichiers_demande: '🗂 Je regarde les fichiers', regarder: '👀 Je regarde', ecouter: '👂 J\'écoute', lire: '📖 Je lis', chercher: '🔍 Je cherche', lister: '📁 Je regarde le dossier',
-  arreter: '⏹ J\'arrête', relancer: '🔁 Je relance', lancer: '▶️ Je lance', essayer_code: '🧪 J\'essaie une modification', attendre: '⏳ J\'attends', proposer: '🙋 Je prépare une proposition', fusionner: '✅ Je mets la modification dans le studio', noter: '📝 Je note une leçon' };
+  arreter: '⏹ J\'arrête', relancer: '🔁 Je relance', lancer: '▶️ Je lance', essayer_code: '🧪 J\'essaie une modification', modifier_script: '✏️ Je modifie le script', attendre: '⏳ J\'attends', proposer: '🙋 Je prépare une proposition', fusionner: '✅ Je mets la modification dans le studio', noter: '📝 Je note une leçon' };
 
 // ---------------- la conversation ----------------
 let commentaire = null; const etapes = [];
