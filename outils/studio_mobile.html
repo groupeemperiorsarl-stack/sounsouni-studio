@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v29</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v30</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -136,11 +136,11 @@ $('#n-go').onclick=async()=>{const s=$('#n-script').value;if(!s.trim()){$('#n-ms
   $('#n-msg').innerHTML='<p class="msg">✅ Demande n° '+i.number+' envoyée. Suivez-la dans « Épisodes ».</p>';$('#n-script').value='';$('#n-titre').value=''}catch(e){$('#n-msg').innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}$('#n-go').disabled=false};
 // ---- liste des épisodes
 const SORTE=x=>/^💬 \*\*Votre avis|^⚠️ Votre avis|costumier|Fiche Gemini prête|fiche Gemini n'a pas pu/.test(x)?'la fiche Gemini':/mini-vidéo|Planche prête/i.test(x.split('\n')[0])?'la mini-vidéo':/format/i.test(x.split('\n')[0])?'la mise au format':/vidéo|video/i.test(x)&&!/aperçu/i.test(x.split('\n')[0])?'la vidéo':/fiche/i.test(x)?'la fiche Gemini':/images|import/i.test(x)?'les images':/code/i.test(x)?'l\'essai du code':'l\'aperçu';
-function etat(cs){cs=cs.filter(c=>!/^(✅|✖) Modification du code|^🔎 |^👂 /.test(c.body||''));const bot=cs.filter(c=>c.user.type==='Bot'),last=cs[cs.length-1];
-  const enCours=[];let b=null;for(const c of bot){const x=c.body||'';if(/^⏳/.test(x)){if(Date.now()-new Date(c.created_at)<2*3600e3)enCours.push(SORTE(x));continue}const s=SORTE(x);for(let k;(k=enCours.indexOf(s))>=0;)enCours.splice(k,1);b=c}   // un résultat clôt toutes les fabrications de la même sorte ; une fabrication sans nouvelles depuis 2 h (arrêtée, relancée) n'est plus « en cours »   // plusieurs fabrications peuvent tourner en même temps
+function etat(cs,garder){cs=cs.filter(c=>!/^(✅|✖) Modification du code|^🔎 |^👂 /.test(c.body||''));const bot=cs.filter(c=>c.user.type==='Bot'),last=cs[cs.length-1];
+  const enCours=[];let b=null;for(const c of bot){const x=c.body||'';if(/^⏳/.test(x)){if((!garder||garder.includes(SORTE(x)))&&Date.now()-new Date(c.created_at)<2*3600e3)enCours.push(SORTE(x));continue}const s=SORTE(x);for(let k;(k=enCours.indexOf(s))>=0;)enCours.splice(k,1);b=c}   // un résultat clôt toutes les fabrications de la même sorte ; une fabrication sans nouvelles depuis 2 h (arrêtée, relancée) n'est plus « en cours »   // plusieurs fabrications peuvent tourner en même temps
   if(last&&last.user.type!=='Bot'&&(!bot.length||new Date(last.created_at)>new Date(bot[bot.length-1].created_at)))return{t:'Demande envoyée…',k:'warn',b};
-  if(enCours.length)return{t:'En fabrication : '+[...new Set(enCours)].join(', ')+'…',k:'warn',b};
-  if(!b)return{t:'En attente',k:'warn',b};const x=b.body;
+  if(enCours.length)return{t:'En fabrication : '+[...new Set(enCours)].join(', ')+'…',k:'warn',b,enCours:[...new Set(enCours)]};
+  if(!b)return{t:'En attente',k:'warn',b};const x=b.body;if(/^⏹/.test(x))return{t:'Arrêtée',k:'ok',b};
   if(/^❌|n'a pas pu|n'ont pas pu|raté/.test(x))return{t:'Erreur',k:'bad',b};if(/La vidéo est prête/.test(x))return{t:'Vidéo prête',k:'ok',b};if(/Aperçu des plans prêt/.test(x))return{t:/Planches à valider/.test(x)?'Aperçu prêt · planches à cocher':'Aperçu prêt',k:'ok',b};
   if(/Script mis au format/.test(x))return{t:'Script prêt à relire',k:'ok',b};if(/Fiche Gemini prête/.test(x))return{t:'Fiche Gemini prête',k:'ok',b};if(/Images rangées/.test(x))return{t:'Images rangées',k:'ok',b};if(/Planche prête/.test(x))return{t:'Mini-vidéo : planche à valider',k:'ok',b};if(/Import annulé/.test(x))return{t:'Import annulé',k:'ok',b};if(/Essai du code/.test(x))return{t:'Essai du code prêt',k:'ok',b};
   return{t:'Prêt',k:'ok',b}}
@@ -149,7 +149,11 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
   try{const is=await api('/repos/'+R+'/issues?labels=episode&state=all&per_page=12');if(!is.length){$('#liste').innerHTML='<p class="muted">Aucun épisode.</p>';return}
     $('#liste').innerHTML='';for(const i of is){const d=document.createElement('div');d.className='card';d.id='ep'+i.number;$('#liste').appendChild(d);carte(i,d)}}
   catch(e){$('#liste').innerHTML='<div class="card"><p>❌ '+esc(e.message)+'</p></div>'}}
-async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');const e=etat(cs);
+// « En fabrication » seulement si une machine travaille vraiment pour cette demande (une fabrication arrêtée ne reste pas « en cours »)
+const MACHINE={'la vidéo':/vidéo/i,'l\'aperçu':/aperçu|planches/i,'la fiche Gemini':/fiche/i,'les images':/import/i,'la mise au format':/format/i,'la mini-vidéo':/mini|vid[ée]o perso|planche/i,'l\'essai du code':/essai/i};
+async function machines(n){try{const L=[];for(const st of ['in_progress','queued'])L.push(...(await api('/repos/'+R+'/actions/runs?status='+st+'&per_page=50')).workflow_runs);return L.map(r=>r.display_title||'').filter(t=>t.startsWith('Demande '+n+' ·'))}catch(e){return null}}
+async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');let e=etat(cs);
+  if(/^En fabrication/.test(e.t)){const at=cs.filter(c=>/^⏳/.test(c.body||'')).pop(),vieux=at&&Date.now()-new Date(at.created_at)>4*60000;if(vieux){const T=await machines(i.number);if(T){const g=e.enCours.filter(x=>T.some(t=>(MACHINE[x]||/./).test(t)));if(g.length<e.enCours.length)e=etat(cs,g)}}}
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
   <div class="etape"></div>
   <div class="row"><button data-a="aperçu" class="sec">👁 Fabriquer l'aperçu</button><button data-a="vidéo">🎬 Fabriquer la vidéo</button><button data-a="fiche" class="sec">🔄 Refaire la fiche Gemini</button></div><div class="out"></div><div class="zone"></div>

@@ -263,6 +263,14 @@ jobs:
             A=$(sed -n '/^ALERTES/,/^$/p' ecoute.txt | sed '1d')
             gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="👂 L'oreille du studio a écouté la vidéo et a entendu :"$'\n'"$A"$'\n\n'"Pour corriger : « 💬 Discuter avec l'assistant » (il lit ce compte rendu) ou l'onglet 🛠 Technicien." > /dev/null
           fi
+  arret:   # fabrication arrêtée (bouton « Cancel » ou technicien) : la page ne doit pas rester sur « en fabrication »
+    needs: [apercu, voix, plans, rendu, final]
+    if: cancelled() && github.event.inputs.issue != ''
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [ "${{ github.event.inputs.apercu }}" = "true" ]; then M="⏹ L'aperçu a été arrêté avant la fin : rien n'est en cours. Relancez-le avec « 👁 Fabriquer l'aperçu »."; else M="⏹ La fabrication de la vidéo a été arrêtée avant la fin : rien n'est en cours. Relancez-la avec « 🎬 Fabriquer la vidéo »."; fi
+          gh api "repos/${{ github.repository }}/issues/$ISSUE/comments" -f body="$M"
   echec:
     needs: [voix, plans, rendu, final]
     if: failure() && github.event.inputs.issue != ''
