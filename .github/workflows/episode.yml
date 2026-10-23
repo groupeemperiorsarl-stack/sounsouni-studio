@@ -91,6 +91,7 @@ jobs:
         run: |
           bash .github/scripts/fichiers.sh "$ISSUE" sortie/apercu_plans.png sortie/plans_resume.json sortie/manques.json sortie/planches/* || true
           [ -f sortie/apercu_plans.png ] && gh workflow run relecture.yml -f issue="$ISSUE" || true   # le relecteur passe tout seul après chaque aperçu
+          if [ -f sortie/apercu_plans.png ] && { [ -s sortie/manques.json ] || grep -qiE '^NOUVE(AU|LLE|AUX|LLES) ' "$SCRIPT"; }; then gh workflow run fiche.yml -f script="$SCRIPT" -f issue="$ISSUE" || true; fi   # des images manquent : la fiche Gemini se prépare toute seule
   voix:
     if: github.event.inputs.apercu != 'true'
     runs-on: ubuntu-latest

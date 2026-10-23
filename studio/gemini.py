@@ -316,6 +316,7 @@ def fiche(items, out, log=print):
         if not grp.get('suite_de'):
             for i, rf in enumerate(refs, 1):
                 nm = f'image_{g}' + (f'_{i}' if len(refs) > 1 else '') + '.jpg'; shutil.copy(os.path.join(out, 'references', rf), os.path.join(d, nm)); noms.append(nm[:-4])
+        grp['joindre'] = [n + '.jpg' for n in noms]; grp['titres'] = [titre(x) for x in xs]   # pour la page Studio mobile (images à joindre + ce que la demande fabrique)
         th = Image.open(os.path.join(out, 'references', refs[0])); th.thumbnail((420, 640)); b = io.BytesIO(); th.save(b, 'JPEG', quality=82)
         quoi = ''.join('<li>' + html.escape(titre(x)) + '</li>' for x in xs)
         ref = ('<p class="note">① Joignez l\'image obtenue au n° %d (même tenue).</p>' % grp['suite_de']) if grp.get('suite_de') else ('<p class="note">① Joignez %s.</p>' % ' puis '.join('« ' + n + ' »' for n in noms))
