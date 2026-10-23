@@ -26,6 +26,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Claude · LivePortrait plante sans « onnx » → paquet manquant → ajouté à l'installation (studio/lp/install.sh).
 - 2026-10-22 · Claude · Boutons « 🎞 Planche » qui montraient planche_1 / planche_2 (planches d'épisode) → nom mal filtré → seules les planches « planche_<perso>_<tour|action>_… » sont des mini-vidéos.
 - 2026-10-23 · Costumier (gemini-3.8-flash) · Lors d'une fête ou d'une cérémonie, toujours prévoir une tenue habillée pour chaque invité régulier et garder les couples ensemble dans les plans larges.
+- 2026-10-23 · Costumier (gemini-3.8-flash) · Pour une fête ou un mariage, penser à habiller tous les invités principaux dès l'écriture du script.
 
 ## mise-en-scene
 
