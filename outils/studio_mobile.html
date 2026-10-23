@@ -455,7 +455,7 @@ async function ghEnvoyer(chemin,blob,msg,prog){let err='';for(let essai=1;essai<
         prog(Mo(e.loaded)+' sur '+Mo(tot)+' envoyés · '+Mo(v)+'/s'+(v>0&&tot>e.loaded?' · encore environ '+Math.max(1,Math.round((tot-e.loaded)/v))+' s':'')+(essai>1?' · essai '+essai+' sur 3':''))};
       x.upload.onload=()=>{last=Date.now();prog('Envoyé ('+Mo(body.length)+') · GitHub enregistre l\'image…')};
       const wd=setInterval(()=>{if(Date.now()-last>90000){clearInterval(wd);x.abort()}},3000);
-      x.onload=()=>{clearInterval(wd);if(x.status>=200&&x.status<300)res(JSON.parse(x.responseText||'{}'));else{let m='';try{m=JSON.parse(x.responseText).message}catch(e){}rej(new Error('GitHub refuse l\'envoi ('+x.status+(m?' '+m:'')+')'))}};
+      x.onload=()=>{clearInterval(wd);if(x.status>=200&&x.status<300){prog('✅ '+Mo(body.length)+' envoyés en '+Math.max(1,Math.round((Date.now()-t0)/1000))+' s'+(essai>1?' (essai '+essai+')':''));res(JSON.parse(x.responseText||'{}'))}else{let m='';try{m=JSON.parse(x.responseText).message}catch(e){}rej(new Error('GitHub refuse l\'envoi ('+x.status+(m?' '+m:'')+')'))}};
       x.onerror=()=>{clearInterval(wd);rej(new Error('connexion coupée'))};x.onabort=()=>{clearInterval(wd);rej(new Error('rien n\'a bougé pendant 90 s (après '+Mo(envoye)+' envoyés)'))};x.send(body)})}
   catch(e){err=e.message;if(/\((401|403|404)/.test(err))break;if(essai<3){prog('⚠️ '+err+' · nouvel essai dans 5 s…');await dodo(5000)}}}
   throw new Error(err)}

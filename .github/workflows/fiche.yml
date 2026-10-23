@@ -33,7 +33,7 @@ jobs:
           N=${ISSUE:-manuel}; F=(sortie_gemini/fiche_gemini.html sortie_gemini/fiche_gemini.json sortie_gemini/a_joindre/*); [ -f avis_fiche.json ] && F+=(avis_fiche.json)
           if [ -f sortie_gemini/fiche_gemini.html ]; then
             bash .github/scripts/fichiers.sh "$N" "${F[@]}"
-            K=$(grep -o 'fiche Gemini : .*' journal.txt | tail -1)
+            K=$(grep -o 'fiche Gemini : .*' journal.txt | tail -1 | sed 's/ → fiche_gemini.html//'); P=$(grep -o '[0-9]* image(s) moins importante(s).*' journal.txt | tail -1); [ -n "$P" ] && K="$K ; $P"
             M="🖼️ Fiche Gemini prête ($K). Ouvrez-la dans la page Studio mobile (bouton « Fiche Gemini » de l'épisode)."
             if [ -f avis_message.txt ]; then M="$(cat avis_message.txt)"$'\n\n'"🖼️ Fiche Gemini prête, refaite avec votre avis ($K) : bouton « 🖼 Ouvrir la fiche Gemini ». Le script a changé : après avoir rangé les nouvelles images, relancez l'aperçu."
             elif [ -n "${{ github.event.inputs.avis_id }}" ]; then M="⚠️ Votre avis n'a pas pu être lu par l'IA ($(tail -2 avis_journal.txt 2>/dev/null | tr '\n' ' ' | cut -c1-200)). La fiche a été refaite sans changement : renvoyez votre avis un peu plus tard."$'\n\n'"$M"; fi

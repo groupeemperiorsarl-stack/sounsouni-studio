@@ -115,7 +115,7 @@ def besoins(paths, log=print, tout=False, maxi=32):
         if e == 'personnage sans image' or not poses_de(c): continue   # nouveau personnage : demandé plus haut (« NOUVEAU PERSONNAGE »)
         for mot in e.split('/')[:1]:
             add(('pose', c, 'assis' if post in ('assis', 'banc') else 'debout', CANON.get(mot, mot)), {'type': 'pose', 'perso': c, 'posture': 'assis' if post in ('assis', 'banc') else 'debout', 'emo': CANON.get(mot, mot), 'manque': True}, 'image manquante')
-    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 5}.get(x['type'], 4 if x.get('tenue') or x.get('manque') or str(x.get('emo', '')).startswith('pose:') else 0)
+    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 5}.get(x['type'], 4.6 if str(x.get('emo', '')).startswith('pose:') else 4.5 if x.get('tenue') and not x.get('emo') else 4 if x.get('tenue') or x.get('manque') else 0)   # d'abord les poses écrites et la pose de base de chaque tenue
     out = sorted(b.values(), key=lambda x: (-prio(x), -len(x['ou'])))
     if not tout:   # le nécessaire : nouveautés (personnages, décors, tenues, objets, {POSE}), vues de dos, assis, émotions demandées au moins 2 fois
         out = [x for x in out if prio(x) or x['type'] != 'pose' or not x['emo'] or len(x['ou']) >= 2]
@@ -132,11 +132,13 @@ def verif(pa, add, ou):
     assis = posture in ('assis', 'banc'); post = 'assis' if assis else 'debout'
     t = pa.get('tenue', '')
     for m in want:   # pose précise demandée par le script : {POSE: mains sur la tête}
-        if m.startswith('pose:') and m not in tags:
+        if m.startswith('pose:') and (m not in tags or (t and best.get('tenue', '') != t)):   # pose écrite absente, ou présente mais pas dans la tenue du moment
             tx = pose_texte(m[5:]); tt = re.search(r"(?:\ben\s+)?(tenue\s+de\s+.+?)(?=\s+(?:debout|assise?|marche|qui|le|la|les|avec|en|jette|attrape)\b|,|$)", tx, re.I)
             if tt and not t:   # « en tenue de soirée turquoise, debout » : une nouvelle tenue, décrite dans la demande (jamais « mêmes vêtements »)
                 lab = tt.group(1).strip(); t = script.tenue_id(' '.join(lab.split()[:3]))   # « tenue de soirée » et « tenue de soirée époustouflante » = la même tenue
                 old = TENUES.get((char, t)); TENUES[(char, t)] = (lab, lab) if not old or len(lab) > len(old[1]) else old
+            reste = re.sub(r'\bdebout\b' if post == 'debout' else r'\bassise?\b', ' ', tt and tx.replace(tt.group(0), ' ') or tx, flags=re.I); reste = re.sub(r"[\s,.;:'’-]+|\b(en|et|qui|se tient)\b", '', reste, flags=re.I)
+            if not reste: m = ''   # « {POSE: en tenue de soirée, debout} » ou « {POSE: debout} » = la pose de base : pas une 2e demande identique
             add(('pose', char, post, m, t), {'type': 'pose', 'perso': char, 'posture': post, 'emo': m, 'tenue': t}, ou); return
     emo = next((m for m in want if (m in director.EMOS or m in director.GESTE or m in DESC) and m != 'neutre'), '')
     emo = CANON.get(emo, emo)
@@ -203,7 +205,8 @@ def titre(x):
     if x['type'] == 'decor': return f"Nouveau décor : {x['perso'].title()}"
     if x['type'] == 'personnage': return f"Nouveau personnage : {x['perso'].title()}"
     if x['type'] == 'objet': return f"Nouvel objet : {x['perso']}"
-    q = {'dos': 'vue de dos', 'assis': 'assis'}.get(x['posture'], 'debout') + (f", {desc(x['emo'], x['perso'] in FEMMES).split(',')[0]}" if x['emo'] else '')
+    if str(x.get('emo', '')).startswith('pose:'): q = pose_phrase(x).replace(', bouche fermée', '').replace('debout, de trois-quarts, ', 'debout, ')   # pose écrite par le scénariste : son texte entier (sans la tenue)
+    else: q = {'dos': 'vue de dos', 'assis': 'assis'}.get(x['posture'], 'debout') + (f", {desc(x['emo'], x['perso'] in FEMMES).split(',')[0]}" if x['emo'] else '')
     if x.get('tenue'): q += ' — ' + TENUES.get((x['perso'], x['tenue']), (x['tenue'].replace('_', ' '),))[0]
     return f"{gfx.nom(x['perso'])} — {q}"
 
