@@ -26,7 +26,8 @@ jobs:
             format) gh workflow run format.yml -f issue="$N" -f auto="${{ steps.s.outputs.auto }}"
               gh api "$C" -f body="⏳ C'est parti : l'assistant met le script au format sur GitHub (5 à 10 minutes). Vous pouvez fermer la page." > /dev/null; exit 0;;
             importer|annuler) gh workflow run import.yml -f issue="$N" -f mode="${{ steps.s.outputs.mode }}" -f arg="${{ steps.s.outputs.arg }}"
-              gh api "$C" -f body="⏳ C'est parti : l'application range les images Gemini (environ 10 minutes)." > /dev/null; exit 0;;
+              if [ "${{ steps.s.outputs.mode }}" = annuler ]; then M="⏳ C'est parti : l'application retire les images de cet import (environ 1 minute)."; else M="⏳ C'est parti : l'application range les images Gemini (environ 10 minutes)."; fi
+              gh api "$C" -f body="$M" > /dev/null; exit 0;;
             minivideo) set -- ${{ steps.s.outputs.arg }}; gh workflow run video.yml -f issue="$N" -f mode=preparer -f perso="$1" -f sorte="$2" -f fichier="$3"
               gh api "$C" -f body="⏳ C'est parti : l'application découpe la mini-vidéo de $1 et décrit chaque image (environ 5 minutes)." > /dev/null; exit 0;;
             garder) A="${{ steps.s.outputs.arg }}"; NOM="${A##* }"; REP="${A% *}"; gh workflow run video.yml -f issue="$N" -f mode=garder -f nom="$NOM" -f reponse="$REP"

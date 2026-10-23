@@ -594,9 +594,9 @@ function techTexte(b){let det='';b=String(b||'').replace(/<details><summary>([\s
 async function techCharger(){if(!TOK){$('#t-chat').innerHTML='<p class="muted">Ajoutez d\'abord votre clé GitHub (onglet 🔑 Clé).</p>';return}
   try{const n=await techDemande(),i=await api('/repos/'+R+'/issues/'+n),pg=Math.max(1,Math.ceil(i.comments/100));let C=await api('/repos/'+R+'/issues/'+n+'/comments?per_page=100&page='+pg);
     if(pg>1&&C.length<20)C=(await api('/repos/'+R+'/issues/'+n+'/comments?per_page=100&page='+(pg-1))).concat(C);
-    const vus=C.filter(c=>!/^\s*(👍|👎)\s*$/u.test(c.body||'')).slice(-40);
+    const vus=C.filter(c=>!/^\s*(👍|👎)\s*(\n+-{3,}[\s\S]*)?$/u.test(c.body||'')).slice(-40);
     $('#t-chat').innerHTML=vus.map(c=>'<div class="'+(c.user.type==='Bot'?'ia':'moi')+'"><div class="heure">'+(c.user.type==='Bot'?'🛠 Technicien · ':'Vous · ')+new Date(c.created_at).toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div>'+techTexte(c.body)+'</div>').join('')||'<p class="muted">Pas encore de message. Écrivez-lui ci-dessous.</p>';
-    const last=C[C.length-1],travaille=last&&(last.user.type!=='Bot'&&!/^\s*(👍|👎)\s*$/u.test(last.body)||/tech:encours/.test(last.body)),acc=$('#t-acc');acc.innerHTML='';
+    const last=C[C.length-1],travaille=last&&(last.user.type!=='Bot'&&!/^\s*(👍|👎)\s*(\n+-{3,}[\s\S]*)?$/u.test(last.body)||/tech:encours/.test(last.body)),acc=$('#t-acc');acc.innerHTML='';
     if(travaille)acc.innerHTML='<p class="msg">⏳ Le technicien travaille (la page se met à jour toute seule ; vous pouvez la fermer).</p>';
     else{const fin=[...C].reverse().find(c=>c.user.type==='Bot'&&/tech:fin/.test(c.body));
       if(fin&&!C.some(c=>c.user.type!=='Bot'&&new Date(c.created_at)>new Date(fin.created_at))){if(/tech:attente/.test(fin.body))acc.innerHTML='<div class="row"><button id="t-oui">✅ Oui, vas-y</button><button class="sec" id="t-non">✋ Non</button></div>';
