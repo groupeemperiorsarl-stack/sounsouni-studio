@@ -2,10 +2,23 @@
  "7": {
   "cadrage": "seul"
  },
+ "11": {
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_tenue_simple_chic_inquiet"
+  }
+ },
+ "12": {
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_tenue_simple_chic_inquiet"
+  }
+ },
  "20": {
   "acteurs": {
    "BAKARY": {
-    "dx": -0.15
+    "dx": -0.15,
+    "dy": 0.12
    }
   }
  },
@@ -13,6 +26,12 @@
   "pose": {
    "who": "BAKARY",
    "key": "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains"
+  }
+ },
+ "23": {
+  "pose": {
+   "who": "SEYDOU",
+   "key": "sey_debout_neutre"
   }
  },
  "49": {
