@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v39</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v40</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -159,10 +159,10 @@ async function charger(){if(!TOK){$('#liste').innerHTML='<div class="card"><p>Aj
 // « En fabrication » seulement si une machine travaille vraiment pour cette demande (une fabrication arrêtée ne reste pas « en cours »)
 const MACHINE={'la vidéo':/vidéo/i,'l\'aperçu':/aperçu|planches/i,'la fiche Gemini':/fiche/i,'les images':/import/i,'la mise au format':/format/i,'la mini-vidéo':/mini|vid[ée]o perso|planche/i,'l\'essai du code':/essai/i};
 async function machines(n){try{const L=[];for(const st of ['in_progress','queued'])L.push(...(await api('/repos/'+R+'/actions/runs?status='+st+'&per_page=50')).workflow_runs);return L.map(r=>r.display_title||'').filter(t=>t.startsWith('Demande '+n+' ·'))}catch(e){return null}}
-async function carte(i,d){const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');let e=etat(cs);
+async function carte(i,d){d._i=i;const cs=await api('/repos/'+R+'/issues/'+i.number+'/comments?per_page=100');let e=etat(cs);
   if(/^En fabrication/.test(e.t)){const at=cs.filter(c=>/^⏳/.test(c.body||'')).pop(),vieux=at&&Date.now()-new Date(at.created_at)>4*60000;if(vieux){const T=await machines(i.number);if(T){const g=e.enCours.filter(x=>T.some(t=>(MACHINE[x]||/./).test(t)));if(g.length<e.enCours.length)e=etat(cs,g)}}}
   d.innerHTML=`<div class="ep-head"><div><div class="ep-title">${esc(i.title.replace(/^Épisode\s*:\s*/,''))}</div><div class="muted">n° ${i.number} · ${new Date(i.updated_at).toLocaleString('fr-FR')}</div></div><span class="pill ${e.k}">${e.t}</span></div>
-  <div class="etape"></div>
+  <div class="live"></div><div class="etape"></div>
   <div class="row"><button data-a="aperçu" class="sec">👁 Fabriquer l'aperçu</button><button data-a="vidéo">🎬 Fabriquer la vidéo</button><button data-a="fiche" class="sec">🔄 Refaire la fiche Gemini</button></div><div class="out"></div><div class="zone"></div>
   <details><summary>Planches et corrections</summary>
     <label>Réponse aux planches (ex. 1B 3C)</label><div class="row"><input class="rep" placeholder="1B 3C"><button data-x="rep">Envoyer</button></div>
@@ -725,6 +725,31 @@ $('#t-mic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechR
   const s=new SR();s.lang='fr-FR';s.interimResults=false;s.onresult=e=>$('#t-q').value+=($('#t-q').value?' ':'')+e.results[0][0].transcript;s.start()};
 $('#t-carnet').onclick=async()=>{const t=await ghLire('technicien/carnet.md');$('#t-carnetout').innerHTML=t?'<div style="white-space:pre-wrap;font-size:13px;margin-top:8px">'+esc(t.replace(/^#[^\n]*\n/,'')).replace(/^## (.*)$/gm,'<b>— $1 —</b>')+'</div>':'<p class="msg">Carnet introuvable.</p>'};
 
+// ---- ÉTAT RÉEL (toutes les 10 s) : ce que les machines GitHub font vraiment pour chaque épisode, l'avancement, le temps restant ;
+// pendant une fabrication, les boutons qui lanceraient une autre fabrication sont bloqués ; à la fin, la carte se met à jour toute seule.
+const ATTENDU=[[/vidéo complète/i,32,'la vidéo complète',true],[/aperçu|planches/i,14,'l\'aperçu et les planches',true],[/import/i,8,'le rangement des images',true],[/mise au format/i,8,'la mise au format',true],
+  [/essai/i,15,'l\'essai du code',false],[/fiche/i,4,'la fiche Gemini',false],[/relecture/i,5,'la relecture',false],[/mini-vid/i,6,'la mini-vidéo',true]];
+const VUS={};let LIVE_T=null;
+async function etatReel(){clearTimeout(LIVE_T);LIVE_T=setTimeout(etatReel,10000);
+  if(!TOK||document.hidden||$('#v-eps').hidden)return;let rs;
+  try{rs=[...(await api('/repos/'+R+'/actions/runs?status=in_progress&per_page=30')).workflow_runs,...(await api('/repos/'+R+'/actions/runs?status=queued&per_page=30')).workflow_runs]}catch(e){return}
+  const par={};for(const r of rs){const m=(r.display_title||'').match(/^Demande (\d+) ·\s*(.*)$/);if(m)(par[m[1]]=par[m[1]]||[]).push(r)}
+  for(const d of document.querySelectorAll('#liste > .card[id^="ep"]')){const n=d.id.slice(2),L=par[n]||[],z=d.querySelector('.live');if(!z)continue;
+    if(!L.length){z.innerHTML='';d.querySelectorAll('[data-lock]').forEach(b=>{b.disabled=false;b.removeAttribute('data-lock')});
+      if(VUS[n]){delete VUS[n];if(d._i)carte(d._i,d)}continue}   // une fabrication vient de finir : la carte (état, que faire maintenant) se met à jour
+    VUS[n]=1;let h='',bloque=false;
+    for(const r of L){const t=r.display_title.replace(/^Demande \d+ ·\s*/,''),a=ATTENDU.find(x=>x[0].test(t))||[null,10,t,false],ec=Math.max(0,(Date.now()-new Date(r.run_started_at||r.created_at))/60000);
+      if(a[3])bloque=true;let det='',pc=Math.min(95,Math.round(ec*100/a[1]));
+      if(r.status==='queued')det='en attente d\'une machine GitHub (quelques secondes à quelques minutes)';
+      else try{const js=(await api('/repos/'+R+'/actions/runs/'+r.id+'/jobs?per_page=60')).jobs,fini=js.filter(j=>j.status==='completed').length,cours=js.filter(j=>j.status==='in_progress');
+        if(js.length>1)pc=Math.max(pc,Math.min(95,Math.round(fini*100/js.length)));
+        const st=cours.map(j=>{const s1=(j.steps||[]).find(x=>x.status==='in_progress');return j.name+(s1?' → '+s1.name.slice(0,60):'')});det=(js.length>1?fini+' étape(s) finie(s) sur '+js.length+' · ':'')+(st.length?'en cours : '+st.slice(0,3).join(' ; ')+(st.length>3?' (+'+(st.length-3)+')':''):'')}catch(e){}
+      const reste=Math.max(1,Math.round(a[1]-ec));
+      h+='<div style="margin:4px 0"><b>⏳ '+esc(a[2])+'</b> · '+Math.round(ec)+' min · fin dans ≈ '+reste+' min'+(ec>a[1]*2?' <span style="color:#b45309">(plus long que d\'habitude : le technicien peut regarder)</span>':'')+
+        '<div style="height:6px;background:var(--line);border-radius:3px;margin:4px 0"><div style="height:6px;width:'+pc+'%;background:var(--accent);border-radius:3px"></div></div><div class="muted" style="font-size:13px">'+esc(det)+'</div></div>'}
+    z.innerHTML='<div class="msg" style="border-left:4px solid var(--accent)">'+h+(bloque?'<p class="muted" style="margin:6px 0 0;font-size:13px">🔒 Les boutons de fabrication sont bloqués jusqu\'à la fin : la carte se mettra à jour toute seule.</p>':'')+'</div>';
+    d.querySelectorAll('[data-a],[data-c],.g-e,.v-e,[data-x="pl"],[data-x="rep"]').forEach(b=>{if(bloque){b.disabled=true;b.setAttribute('data-lock','1')}else if(b.hasAttribute('data-lock')){b.disabled=false;b.removeAttribute('data-lock')}})}}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)etatReel()});setTimeout(etatReel,4000);
 // ---- Transfert des clés : ancienne page (fichier du téléphone) → page en ligne ; les clés ne quittent jamais le téléphone
 const EN_LIGNE='https://groupeemperiorsarl-stack.github.io',NOMS_CLES=['ss_tok','ss_groq','ss_cer','ss_or','ss_gem','ss_plus'];
 const lesCles=()=>{const o={};NOMS_CLES.forEach(n=>{try{const v=localStorage.getItem(n);if(v)o[n]=v}catch(e){}});return o};
