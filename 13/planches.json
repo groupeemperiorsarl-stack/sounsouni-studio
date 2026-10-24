@@ -1,0 +1,517 @@
+{
+ "script": "demandes/episode_13.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    4
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_supplie"
+     },
+     "texte": "gene · supplie · pardon (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_mains_bouche"
+     },
+     "texte": "peur · gene · timide",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_joue"
+     },
+     "texte": "choc · gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_mains_levees"
+     },
+     "texte": "surpris · choc · recule",
+     "lettre": "D"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    9
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_dos"
+     },
+     "texte": "dos (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_08"
+     },
+     "texte": "dos",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_09"
+     },
+     "texte": "dos",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_10"
+     },
+     "texte": "dos",
+     "lettre": "D"
+    }
+   ],
+   "n": 2
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    19
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assise_chaise"
+     },
+     "texte": "coud · travaille (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_fier"
+     },
+     "texte": "fier · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_determine"
+     },
+     "texte": "determine · assis",
+     "lettre": "D"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "sujet": "pose",
+   "who": "MIMI",
+   "plans": [
+    20
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_debout"
+     },
+     "texte": "inquiet · neutre · timide (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_inquiete"
+     },
+     "texte": "inquiet · essouffle · explique",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_dos"
+     },
+     "texte": "dos",
+     "lettre": "D"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "sujet": "pose",
+   "who": "MIMI",
+   "plans": [
+    22
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_debout"
+     },
+     "texte": "inquiet · neutre · timide (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_inquiete"
+     },
+     "texte": "inquiet · essouffle · explique",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_dos"
+     },
+     "texte": "dos",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 5
+  },
+  {
+   "sujet": "pose",
+   "who": "MOUSSA",
+   "plans": [
+    25,
+    31,
+    76,
+    90
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_polo_chic_grand_sourire"
+     },
+     "texte": "grand_sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_polo_chic_fier"
+     },
+     "texte": "fier",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_polo_chic"
+     },
+     "texte": "neutre · ecoute",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_the"
+     },
+     "texte": "sourire · offre · verre",
+     "lettre": "D"
+    }
+   ],
+   "n": 6
+  },
+  {
+   "sujet": "pose",
+   "who": "MODIBO",
+   "plans": [
+    32,
+    42,
+    84
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_chemise_chic"
+     },
+     "texte": "neutre · ecoute (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_chemise_chic_sage"
+     },
+     "texte": "sage",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_chemise_chic_choc"
+     },
+     "texte": "choc",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_chemise_chic_rire"
+     },
+     "texte": "rire",
+     "lettre": "D"
+    }
+   ],
+   "n": 7
+  },
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    33
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_tenue_simple_chic_emerveille"
+     },
+     "texte": "emerveille (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_tenue_simple_chic_choc"
+     },
+     "texte": "choc",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_tenue_simple_chic"
+     },
+     "texte": "neutre · ecoute",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_tenue_simple_chic_reveur"
+     },
+     "texte": "reveur",
+     "lettre": "D"
+    }
+   ],
+   "n": 8
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    34
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout"
+     },
+     "texte": "pose:en_tenue_de_soiree_turquoise_debout · en · tenue (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_tenue_de_soiree_moue"
+     },
+     "texte": "moue",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_tenue_de_soiree_triste"
+     },
+     "texte": "triste",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_tenue_de_soiree_sourire"
+     },
+     "texte": "sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 9
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    39,
+    67
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tenue_de_soiree_mepris"
+     },
+     "texte": "mepris (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tenue_de_soiree_fier"
+     },
+     "texte": "fier",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement"
+     },
+     "texte": "pose:en_tenue_de_soiree_epoustouflante_marche_lentement · en · tenue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tenue_de_soiree_moue"
+     },
+     "texte": "moue",
+     "lettre": "D"
+    }
+   ],
+   "n": 10
+  },
+  {
+   "sujet": "pose",
+   "who": "MOUSSA",
+   "plans": [
+    40,
+    78
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_polo_chic"
+     },
+     "texte": "neutre · ecoute (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_polo_chic_grand_sourire"
+     },
+     "texte": "grand_sourire",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_polo_chic_fier"
+     },
+     "texte": "fier",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_sourire"
+     },
+     "texte": "sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 11
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    41,
+    85
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_chemise_repassee_a_genoux"
+     },
+     "texte": "pose:a_genoux · a · genoux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_chemise_repassee"
+     },
+     "texte": "neutre · ecoute",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_chemise_repassee_grand_sourire"
+     },
+     "texte": "grand_sourire",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_chemise_repassee_grand_sourire2"
+     },
+     "texte": "grand_sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 12
+  }
+ ]
+}

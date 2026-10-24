@@ -1,0 +1,1332 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "CABINE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 22 : La vérité",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.2,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_explique@--0",
+"x": 0.21,
+"taille": 0.45,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.71,
+"taille": 0.5,
+"retourne": true
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.2",
+"duree": 2.6,
+"type": "line",
+"decor": "CABINE",
+"parle": "BAKARY",
+"texte": "Fatim… je dois te dire la vérité.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:06.8",
+"duree": 2.0,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Tu vas me demander ? Déjà ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.38,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:08.9",
+"duree": 4.3,
+"type": "line",
+"decor": "CABINE",
+"parle": "BAKARY",
+"texte": "Non, Fatim. Je ne vais pas te demander. Ni demain, ni plus tard.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.63,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:13.2",
+"duree": 1.4,
+"type": "close",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive@--0",
+"x": 0.39,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:14.6",
+"duree": 5.7,
+"type": "line",
+"decor": "CABINE",
+"parle": "BAKARY",
+"texte": "Tu es gentille. Tu es la plus gentille du quartier. Mais mon cœur… il est déjà pris.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.63,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:20.2",
+"duree": 1.5,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Pris ? Par qui ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:21.7",
+"duree": 3.2,
+"type": "line",
+"decor": "CABINE",
+"parle": "BAKARY",
+"texte": "Ça, je ne peux pas le dire. Pardon, Fatim.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.65,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:24.9",
+"duree": 3.2,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Alors pourquoi tu es venu au mariage avec moi ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:28.1",
+"duree": 5.1,
+"type": "line",
+"decor": "CABINE",
+"parle": "BAKARY",
+"texte": "Parce que tu me l'as demandé… et je ne sais pas dire non. C'est mon défaut.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.63,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:33.2",
+"duree": 4.0,
+"type": "screen",
+"decor": "CABINE",
+"parle": null,
+"texte": "Sounsouni · Tenue de fiançailles · [Annuler la commande]",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 12,
+"debut": "0:37.2",
+"duree": 3.0,
+"type": "screen",
+"decor": "CABINE",
+"parle": null,
+"texte": "Commande annulée ✔",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 13,
+"debut": "0:40.2",
+"duree": 2.3,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Va-t'en, Bakary. S'il te plaît.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:42.5",
+"duree": 2.0,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.35,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_pensive@--0",
+"x": 0.84,
+"taille": 0.53,
+"retourne": true
+}
+]
+},
+{
+"plan": 15,
+"debut": "0:44.5",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.23,
+"taille": 0.4,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_machine@++0",
+"x": 0.72,
+"taille": 0.36,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "0:46.9",
+"duree": 2.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_machine_panique",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 17,
+"debut": "0:48.9",
+"duree": 5.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Awa Couture · Commande annulée par la cliente · Fatim · Tenue de fiançailles",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 18,
+"debut": "0:53.9",
+"duree": 1.4,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Annulée ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_pensif",
+"x": 0.44,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "0:55.4",
+"duree": 4.4,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Elle a annulé sa tenue de fiançailles… Alors il ne lui a pas demandé.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_pensif",
+"x": 0.44,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "0:59.8",
+"duree": 1.8,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Tantie… vous souriez encore.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire_auto",
+"x": 0.05,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:01.6",
+"duree": 2.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Une cliente de moins. Pourquoi je sourirais ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_pensif",
+"x": 0.28,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:04.2",
+"duree": 1.4,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire_auto@++0",
+"x": -0.01,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:05.6",
+"duree": 4.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Arrête, Awa. Ce n'est pas ton affaire… Mais alors pourquoi mon cœur danse ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_pensif",
+"x": 0.44,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 24,
+"debut": "1:10.1",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc",
+"x": 0.5,
+"taille": 0.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:12.5",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.28,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.77,
+"taille": 0.4,
+"retourne": true
+}
+]
+},
+{
+"plan": 26,
+"debut": "1:14.9",
+"duree": 2.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.53,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 27,
+"debut": "1:16.9",
+"duree": 3.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "C'est fait, Van. Je lui ai tout dit. Elle a pleuré.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.63,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 28,
+"debut": "1:20.7",
+"duree": 6.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Tu lui as dit la vérité, Bakarin. Ça fait mal ce soir… mais un jour, elle te dira merci.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt@--+",
+"x": 0.3,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 29,
+"debut": "1:26.6",
+"duree": 2.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Et si elle me déteste maintenant ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.63,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 30,
+"debut": "1:29.0",
+"duree": 4.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Fatim ne sait pas détester, Bakarin. Elle sait vendre du crédit… et sourire.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt@--+",
+"x": 0.3,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 31,
+"debut": "1:33.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.5,
+"taille": 0.68,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "1:35.7",
+"duree": 2.0,
+"type": "close",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 33,
+"debut": "1:37.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_explique@--0",
+"x": 0.27,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_beignet@++0",
+"x": 0.77,
+"taille": 0.6,
+"retourne": false
+}
+]
+},
+{
+"plan": 34,
+"debut": "1:40.1",
+"duree": 1.8,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "I ni sogoma, Fatim.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_salue@--0",
+"x": 0.27,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_beignet@++0",
+"x": 0.77,
+"taille": 0.6,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "1:41.8",
+"duree": 1.8,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "I ni sogoma, Sali.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive@--0",
+"x": 0.39,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 36,
+"debut": "1:43.6",
+"duree": 2.9,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "Tiens. Des beignets chauds. Mimi m'a tout raconté.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.55,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 37,
+"debut": "1:46.5",
+"duree": 2.4,
+"type": "insert",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 38,
+"debut": "1:48.9",
+"duree": 6.2,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "Un homme qui te dit la vérité en face, c'est rare. Garde ton cœur pour celui qui le mérite.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.55,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "1:55.1",
+"duree": 2.9,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Tes beignets sont meilleurs que les hommes, Sali.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.38,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.85,
+"taille": 1.24,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "1:58.0",
+"duree": 1.4,
+"type": "close",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel@++0",
+"x": 0.5,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 41,
+"debut": "1:59.4",
+"duree": 2.6,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Tu crois que j'ai été bête, Sali ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.85,
+"taille": 1.24,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "2:02.0",
+"duree": 3.2,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "Non. Tu as été sincère. Ce n'est pas pareil.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.55,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "2:05.2",
+"duree": 2.4,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_explique@--+",
+"x": 0.27,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_beignet@+++",
+"x": 0.77,
+"taille": 0.6,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 0.76,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 44,
+"debut": "2:07.6",
+"duree": 1.5,
+"type": "line",
+"decor": "CABINE",
+"parle": "DIASABI",
+"texte": "Aw ni tchié !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive@--+",
+"x": 0.21,
+"taille": 0.62,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_beignet@+++",
+"x": 0.72,
+"taille": 0.63,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 0.76,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 45,
+"debut": "2:09.1",
+"duree": 5.5,
+"type": "line",
+"decor": "CABINE",
+"parle": "DIASABI",
+"texte": "Fatim ! Une carte de mille, s'il te plaît. Alors, les fiançailles, c'est pour quand ? À Bobo, on dit…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "2:14.6",
+"duree": 1.4,
+"type": "close",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive@--0",
+"x": 0.39,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 47,
+"debut": "2:16.0",
+"duree": 1.4,
+"type": "close",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel@--0",
+"x": 0.29,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "2:17.4",
+"duree": 2.0,
+"type": "close",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel@--0",
+"x": 0.29,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 49,
+"debut": "2:19.4",
+"duree": 2.3,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Il n'y a pas de fiançailles.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 50,
+"debut": "2:21.7",
+"duree": 3.2,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "Diasabi ! Toi, tu viens avec moi. Tout de suite !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.24,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 51,
+"debut": "2:24.9",
+"duree": 2.0,
+"type": "line",
+"decor": "CABINE",
+"parle": "DIASABI",
+"texte": "Mais… je voulais aider, moi !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_court",
+"x": 1.1,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": -0.15,
+"taille": 1.24,
+"retourne": false
+}
+]
+},
+{
+"plan": 52,
+"debut": "2:27.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 0.68,
+"retourne": false
+}
+]
+},
+{
+"plan": 53,
+"debut": "2:29.4",
+"duree": 3.2,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Son cœur est déjà pris… Mais par qui ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 0.68,
+"retourne": false
+}
+]
+},
+{
+"plan": 54,
+"debut": "2:32.5",
+"duree": 6.4,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Le haut-parleur… Elle qui ne voulait pas le surveiller… Le bouquet qu'elle a jeté… et qui est tombé chez lui…",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 55,
+"debut": "2:38.9",
+"duree": 1.9,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Non… ce n'est pas possible…",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 56,
+"debut": "2:40.8",
+"duree": 3.0,
+"type": "close",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 57,
+"debut": "2:43.8",
+"duree": 1.4,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Awa ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 58,
+"debut": "2:45.2",
+"duree": 2.6,
+"type": "screen",
+"decor": "CABINE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 59,
+"debut": "2:47.8",
+"duree": 6.8,
+"type": "endline",
+"decor": "CABINE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, une commande peut s'annuler en un clic. Un cœur, c'est plus compliqué. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 60,
+"debut": "2:54.6",
+"duree": 3.8,
+"type": "endline",
+"decor": "CABINE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 61,
+"debut": "2:58.5",
+"duree": 3.0,
+"type": "endcard",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

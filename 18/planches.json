@@ -1,0 +1,393 @@
+{
+ "script": "demandes/episode_18.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    5,
+    7,
+    9,
+    13,
+    32,
+    35,
+    46,
+    49,
+    52
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_pensive"
+     },
+     "texte": "pensif · triste · moue (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_triste"
+     },
+     "texte": "triste",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "D"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    18
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_pensif"
+     },
+     "texte": "pensif · assis · telephone (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_telephone"
+     },
+     "texte": "telephone · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_action_659144_05"
+     },
+     "texte": "surpris · telephone · trois_quarts",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_action_659144_06"
+     },
+     "texte": "surpris · telephone · trois_quarts",
+     "lettre": "D"
+    }
+   ],
+   "n": 2
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    21,
+    23
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_pensif"
+     },
+     "texte": "pensif · assis · telephone (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_telephone"
+     },
+     "texte": "telephone · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tel"
+     },
+     "texte": "telephone",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tel2"
+     },
+     "texte": "telephone · commande",
+     "lettre": "D"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "sujet": "pose",
+   "who": "MODIBO",
+   "plans": [
+    24
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc"
+     },
+     "texte": "neutre · ecoute · boit (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc2"
+     },
+     "texte": "neutre · ecoute · verre",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_assis_rire"
+     },
+     "texte": "rire · assis",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_court"
+     },
+     "texte": "court · vite",
+     "lettre": "D"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    31
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_mains"
+     },
+     "texte": "neutre · sourire · tendre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_pensive"
+     },
+     "texte": "pensif · triste · moue",
+     "lettre": "D"
+    }
+   ],
+   "n": 5
+  },
+  {
+   "sujet": "pose",
+   "who": "SALI",
+   "plans": [
+    36,
+    42
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_tel"
+     },
+     "texte": "telephone · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_beignet"
+     },
+     "texte": "offre · sourire · beignets",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_hanches"
+     },
+     "texte": "neutre · fiere · taquin",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_robe_de_soiree"
+     },
+     "texte": "neutre · ecoute",
+     "lettre": "D"
+    }
+   ],
+   "n": 6
+  },
+  {
+   "sujet": "pose",
+   "who": "SALI",
+   "plans": [
+    40
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_tel"
+     },
+     "texte": "telephone · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_beignet"
+     },
+     "texte": "offre · sourire · beignets",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_hanches"
+     },
+     "texte": "neutre · fiere · taquin",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_robe_de_soiree_taquin"
+     },
+     "texte": "taquin",
+     "lettre": "D"
+    }
+   ],
+   "n": 7
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    51
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_court"
+     },
+     "texte": "court · vite (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_visage_triste"
+     },
+     "texte": "triste · gene",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_debout"
+     },
+     "texte": "neutre",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_main_coeur"
+     },
+     "texte": "fier · sincere · amoureux",
+     "lettre": "D"
+    }
+   ],
+   "n": 8
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    55
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_pensive"
+     },
+     "texte": "pensif · triste · moue (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_mains"
+     },
+     "texte": "neutre · sourire · tendre",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "D"
+    }
+   ],
+   "n": 9
+  }
+ ]
+}

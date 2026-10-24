@@ -1,0 +1,47 @@
+{
+ "resume": "L'histoire est fluide, cohérente et très bien rythmée. Aucune contradiction, les présences et émotions sont justes, et le piège de Fatim relance parfaitement l'intrigue. Deux incohérences visuelles ont été repérées : un bouquet en double au plan 26 et une expression trop calme d'Awa au plan 53.",
+ "problemes": [
+  {
+   "plan": 26,
+   "moment": "1:11",
+   "gravite": "moyen",
+   "quoi": "Bakary tient encore un bouquet de fleurs alors que Tantie Kadi tient déjà celui qu'il vient de lui offrir.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 26,
+     "qui": "BAKARY",
+     "pose": "bak_tenue_simple_chic_sourire",
+     "pourquoi": "Bakary a transmis son bouquet à Tantie Kadi et doit garder les mains libres en lui souriant."
+    },
+    {
+     "type": "relancer",
+     "quoi": "apercu",
+     "pourquoi": "Vérifier la correction du bouquet de Bakary au plan 26."
+    }
+   ]
+  },
+  {
+   "plan": 53,
+   "moment": "2:42",
+   "gravite": "moyen",
+   "quoi": "Awa a un visage calme et souriant alors qu'elle s'exclame sous le choc en lisant la note de Fatim.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 53,
+     "qui": "AWA",
+     "pose": "awa_v_action_659144_07",
+     "pourquoi": "Awa doit paraître choquée en regardant son téléphone pour correspondre à sa réplique."
+    },
+    {
+     "type": "relancer",
+     "quoi": "apercu",
+     "pourquoi": "Vérifier la pose choquée d'Awa au plan 53."
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.8-flash + gemini-3.6-flash",
+ "date": "2026-10-24 12:16"
+}

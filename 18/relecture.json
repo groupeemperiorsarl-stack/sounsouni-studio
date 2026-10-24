@@ -1,0 +1,191 @@
+{
+ "resume": "L'histoire est très touchante et bien rythmée. Deux incohérences de récit doivent être corrigées : Mimi ne pouvait pas savoir ce que Bakary a dit à Fatim, et Diasabi regarde la caméra en arrivant. L'épisode est bien mais Sali a un téléphone au lieu des beignets dans toute la scène finale, et Bakary sourit trop alors qu'il est triste.",
+ "problemes": [
+  {
+   "plan": 36,
+   "moment": "1:43",
+   "gravite": "fort",
+   "quoi": "Mimi ne peut pas avoir raconté les détails à Sali, car elle a seulement vu la notification d'annulation sur l'application.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "SALI (offre · regarde: Fatim · voix: normal)\nTiens. Des beignets chauds. {serieux} Mimi m'a tout raconté.\n\nPLAN: objet beignets\n\nSALI (serieux · regarde: Fatim · voix: lentement)\nUn homme qui te dit la vérité en face, c'est rare. Garde ton cœur pour celui qui le mérite.",
+     "nouveau": "SALI (offre · regarde: Fatim · voix: normal)\nTiens. Des beignets chauds. {serieux} Mimi m'a dit pour la commande.\n\nPLAN: objet beignets\n\nFATIM (triste · regarde: Sali · voix: chuchote)\nBakary est venu hier soir… Il m'a dit la vérité en face.\n\nSALI (serieux · regarde: Fatim · voix: lentement)\nUn homme qui te dit la vérité en face, c'est rare. Garde ton cœur pour celui qui le mérite.",
+     "pourquoi": "Fatim doit expliquer elle-même ce qui s'est passé, car Mimi ignorait tout du tête-à-tête."
+    },
+    {
+     "type": "note",
+     "theme": "mise-en-scene",
+     "texte": "Détails d'un tête-à-tête connus par un tiers → Mimi n'a vu qu'un écran → faire expliquer la scène par le personnage concerné.",
+     "pourquoi": "Empêcher qu'un personnage colporte magiquement une conversation intime qu'il n'a pas entendue."
+    }
+   ]
+  },
+  {
+   "plan": 44,
+   "moment": "2:07",
+   "gravite": "moyen",
+   "quoi": "Diasabi regarde la caméra en arrivant et sa salutation n'a pas l'orthographe habituelle de la série.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "DIASABI (salue · regarde: caméra · voix: normal)\nAw ni tchié !",
+     "nouveau": "DIASABI (salue · regarde: Fatim · voix: normal)\nAw ni tché !",
+     "pourquoi": "Diasabi salue les filles présentes au lieu de regarder la caméra, et « Aw ni tché » respecte le lexique de la série."
+    }
+   ]
+  },
+  {
+   "plan": 36,
+   "moment": "1:43",
+   "gravite": "fort",
+   "quoi": "Sali tient un téléphone au lieu des beignets dans presque tous ses plans.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 36,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Elle apporte des beignets, pas son téléphone."
+    },
+    {
+     "type": "pose",
+     "plan": 38,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 40,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 41,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 42,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 47,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 48,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 50,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 51,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Cohérence avec les beignets."
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "moment": "0:04",
+   "gravite": "moyen",
+   "quoi": "Bakary sourit alors qu'il va annoncer une mauvaise nouvelle.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 2,
+     "qui": "BAKARY",
+     "pose": "bak_supplie",
+     "pourquoi": "Il doit être sérieux ou triste pour cette vérité."
+    }
+   ]
+  },
+  {
+   "plan": 14,
+   "moment": "0:42",
+   "gravite": "moyen",
+   "quoi": "Bakary sourit et tend la main alors qu'il doit partir.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 14,
+     "qui": "BAKARY",
+     "pose": "bak_v_tour_650014_06",
+     "pourquoi": "Il doit être de dos pour s'en aller."
+    }
+   ]
+  },
+  {
+   "plan": 27,
+   "moment": "1:16",
+   "gravite": "moyen",
+   "quoi": "Bakary est debout alors qu'il vient de s'affaler sur le banc.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 27,
+     "qui": "BAKARY",
+     "pose": "bak_assis_triste",
+     "pourquoi": "Il s'est assis au plan précédent."
+    },
+    {
+     "type": "pose",
+     "plan": 29,
+     "qui": "BAKARY",
+     "pose": "bak_assis_triste",
+     "pourquoi": "Il reste assis sur le banc."
+    }
+   ]
+  },
+  {
+   "plan": 34,
+   "moment": "1:40",
+   "gravite": "moyen",
+   "quoi": "Fatim rit aux éclats alors qu'elle est triste.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 34,
+     "qui": "FATIM",
+     "pose": "fat_pensive",
+     "pourquoi": "Elle n'a pas le cœur à rire."
+    }
+   ]
+  },
+  {
+   "plan": 37,
+   "moment": "1:46",
+   "gravite": "petit",
+   "quoi": "L'image des beignets est un texte sur un kiosque, pas l'objet.",
+   "actions": [
+    {
+     "type": "fiche",
+     "pourquoi": "Il nous faut une belle image de beignets chauds dans un panier."
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.8-flash + gemini-3-flash-preview",
+ "date": "2026-10-24 10:26"
+}

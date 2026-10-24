@@ -1,0 +1,167 @@
+{
+ "items": [
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "inquiet",
+   "tenue": "tenue_simple_chic",
+   "ou": [
+    "episode_16 plan 11",
+    "episode_16 plan 12",
+    "episode_16 plan 17"
+   ],
+   "n": 1,
+   "ref": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "fichier_ref": "ref_bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "froide",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_16 plan 16",
+    "episode_16 plan 29"
+   ],
+   "n": 2,
+   "ref": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "sourire",
+   "tenue": "tenue_simple_chic",
+   "ou": [
+    "episode_16 plan 20",
+    "episode_16 plan 21"
+   ],
+   "n": 3,
+   "ref": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "fichier_ref": "ref_bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "choc",
+   "tenue": "tenue_simple_chic",
+   "ou": [
+    "episode_16 plan 2"
+   ],
+   "n": 4,
+   "ref": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "fichier_ref": "ref_bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "pensif",
+   "tenue": "tenue_simple_chic",
+   "ou": [
+    "episode_16 plan 18"
+   ],
+   "n": 5,
+   "ref": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "fichier_ref": "ref_bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "dos",
+   "emo": "",
+   "ou": [
+    "episode_16 plan 3",
+    "episode_16 plan 4",
+    "episode_16 plan 5",
+    "episode_16 plan 9",
+    "episode_16 plan 10",
+    "episode_16 plan 15",
+    "episode_16 plan 26"
+   ],
+   "n": 6,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "KADI",
+   "posture": "debout",
+   "emo": "grand_sourire",
+   "tenue": "",
+   "ou": [
+    "episode_16 plan 25",
+    "episode_16 plan 26"
+   ],
+   "n": 7,
+   "ref": "kadi_grand_sourire",
+   "fichier_ref": "ref_kadi_grand_sourire.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "dos",
+   "emo": "",
+   "ou": [
+    "episode_16 plan 7"
+   ],
+   "n": 8,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    1,
+    3,
+    4,
+    5
+   ],
+   "fichier_ref": "ref_bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains.jpg",
+   "refs": null,
+   "g": 1,
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Il ne tient rien dans les mains. Fais UNE seule image en format paysage qui montre ce personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de trois-quarts, inquiet, bouche fermée ; 2) debout, de trois-quarts, souriant, bouche fermée ; 3) debout, de trois-quarts, choqué, la bouche ouverte, bouche fermée ; 4) debout, de trois-quarts, pensif, la main au menton, bouche fermée.",
+   "joindre": [
+    "image_1.jpg"
+   ],
+   "titres": [
+    "Bakary — debout, inquiet — tenue simple chic",
+    "Bakary — debout, souriant — tenue simple chic",
+    "Bakary — debout, choqué — tenue simple chic",
+    "Bakary — debout, pensif — tenue simple chic"
+   ]
+  },
+  {
+   "items": [
+    2,
+    6,
+    7,
+    8
+   ],
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg",
+   "refs": [
+    "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg",
+    "ref_bak_debout.jpg",
+    "ref_kadi_grand_sourire.jpg"
+   ],
+   "g": 2,
+   "demande": "Images jointes, dans l'ordre : image 1 = Awa (dans sa tenue « tenue de soiree », exactement comme sur l'image jointe) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) ; image 3 = Tantie Kadi (femme âgée, lunettes, foulard bordeaux sur la tête, grand boubou bordeaux brodé d'or, canne en bois). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Awa (image 1), debout, de trois-quarts, froide et distante, bouche fermée, les mains vides ; 2) Bakary (image 2), vu de dos, debout, bras le long du corps, visage caché, les mains vides ; 3) Tantie Kadi (image 3), debout, de trois-quarts, grand sourire, bouche fermée, les mains vides ; 4) Awa (image 1), vue de dos, debout, bras le long du corps, visage caché, les mains vides.",
+   "joindre": [
+    "image_2_1.jpg",
+    "image_2_2.jpg",
+    "image_2_3.jpg"
+   ],
+   "titres": [
+    "Awa — debout, froide et distante — tenue de soiree",
+    "Bakary — vue de dos",
+    "Tantie Kadi — debout, grand sourire",
+    "Awa — vue de dos"
+   ]
+  }
+ ]
+}

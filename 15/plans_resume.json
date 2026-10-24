@@ -1,0 +1,317 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Les Plans de Bakary – Test complet : Les beignets",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": true
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 2.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van, aujourd'hui je sens que la journée sera belle.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_rire@---",
+"x": 0.19,
+"taille": 0.44,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.69,
+"taille": 0.34,
+"retourne": true
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:06.7",
+"duree": 2.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Tu dis ça tous les matins, Bakarin.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:09.1",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": true
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:11.5",
+"duree": 3.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AMINATA",
+"texte": "Bonjour tout le monde ! Beignets bien chauds !",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": true
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:14.5",
+"duree": 2.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Elle est encore plus belle que ses beignets…",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_rire@---",
+"x": 0.32,
+"taille": 0.69,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc2@--+",
+"x": 0.83,
+"taille": 0.54,
+"retourne": true
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:16.7",
+"duree": 2.5,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van ? Tu rougis ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_joue",
+"x": 0.4,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:19.2",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.3,
+"taille": 0.52,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.8,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:21.6",
+"duree": 2.4,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Tantie, Modibo est amoureux de la vendeuse de beignets !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.3,
+"taille": 0.52,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.8,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:24.0",
+"duree": 4.5,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Laisse‑le. Au moins, elle, elle ne publie pas d'avis par erreur.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:28.5",
+"duree": 2.6,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 12,
+"debut": "0:31.1",
+"duree": 6.3,
+"type": "endline",
+"decor": "ATELIER",
+"parle": "VOIX_OFF",
+"texte": "Découvrez Sounsouni, l’appli qui simplifie vos achats. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 13,
+"debut": "0:37.3",
+"duree": 4.5,
+"type": "endline",
+"decor": "ATELIER",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez‑vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 14,
+"debut": "0:41.9",
+"duree": 3.0,
+"type": "endcard",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

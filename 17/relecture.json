@@ -1,0 +1,193 @@
+{
+ "resume": "L'histoire est très prenante et bien rythmée. Il y a seulement trois petits défauts : Awa qui s'énerve dans une pensée intérieure, Fatim qui s'évapore de l'atelier sans dire au revoir après son paiement, et des personnages qui saluent en regardant la caméra. L'ensemble est bien rythmé, mais il y a une image d'objet manquante (mètre ruban), des visages contraires aux émotions (Awa souriante au lieu d'être triste, Bakary qui sourit au lieu d'être gêné) et quelques poses à corriger.",
+ "problemes": [
+  {
+   "plan": 44,
+   "moment": "2:07",
+   "gravite": "fort",
+   "quoi": "Awa a une pensée intérieure jalouse et triste, mais l'émotion « colere » lui fait pointer du doigt et crier vers Fatim.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "PENSÉE AWA (colere · regarde: Fatim)\nPourquoi ça me fait mal d'entendre son nom dans sa bouche ? Pourquoi ?",
+     "nouveau": "PENSÉE AWA (triste · regarde: bas)\nPourquoi ça me fait mal d'entendre son nom dans sa bouche ? Pourquoi ?",
+     "pourquoi": "Dans une pensée intime, Awa souffre en silence : elle doit regarder vers le bas avec tristesse au lieu d'agresser Fatim du doigt."
+    },
+    {
+     "type": "note",
+     "theme": "mise-en-scene",
+     "texte": "Pensée intérieure avec émotion colère → l'animation prend une pose de cri ou de doigt pointé vers l'autre → toujours utiliser une émotion intérieure (triste, pensif, troublé) avec regard vers le bas.",
+     "pourquoi": "Pour éviter qu'un personnage ne gesticule violemment pendant un monologue intérieur."
+    }
+   ]
+  },
+  {
+   "plan": 47,
+   "moment": "2:18",
+   "gravite": "moyen",
+   "quoi": "Fatim paie et disparaît de l'atelier sans dire au revoir, et Awa reste triste sans que sa pensée explique l'écran.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "FATIM (joie · regarde: téléphone · voix: normal)\nJe paie tout de suite sur Sounsouni !\n[BRUITAGE: clic]\n[BRUITAGE: notification]\n\nPLAN: gros [Awa debout, téléphone]\nPLAN: objet téléphone\n[ÉCRAN 4 s: Awa Couture · Paiement reçu ✔ · Fatim · Tenue de fiançailles]\n\nPLAN: 3 s · très gros Awa · {triste}",
+     "nouveau": "FATIM (joie · regarde: téléphone · voix: normal)\nJe paie tout de suite sur Sounsouni !\n[BRUITAGE: clic]\n\nFATIM (sourire · regarde: Awa · voix: normal)\nVoilà, c'est payé ! Merci Awa, à demain pour la suite !\n[BRUITAGE: talons]\n\nPLAN: gros [Awa debout, téléphone]\n[BRUITAGE: notification]\n\nPLAN: objet téléphone\n[ÉCRAN 4 s: Awa Couture · Paiement reçu ✔ · Fatim · Tenue de fiançailles]\n\nPENSÉE AWA (triste · regarde: téléphone)\nElle a payé… Je ne peux plus reculer.",
+     "pourquoi": "Fatim doit saluer et partir en marchant, puis Awa formule sa pensée en voyant la confirmation sur son téléphone."
+    }
+   ]
+  },
+  {
+   "plan": 13,
+   "moment": "0:37",
+   "gravite": "petit",
+   "quoi": "Mimi salue en fixant la caméra au lieu de regarder ses amis au kiosque.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "MIMI (sourire · regarde: caméra · voix: normal)\nAw ni tchié !",
+     "nouveau": "MIMI (sourire · regarde: Bakary · voix: normal)\nAw ni tchié !",
+     "pourquoi": "Quand un personnage arrive, il regarde ses interlocuteurs et non la caméra."
+    }
+   ]
+  },
+  {
+   "plan": 35,
+   "moment": "1:44",
+   "gravite": "petit",
+   "quoi": "Fatim entre dans l'atelier en fixant la caméra au lieu de regarder Awa.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "FATIM (joie · regarde: caméra · voix: normal)\nAw ni tchié !",
+     "nouveau": "FATIM (joie · regarde: Awa · voix: normal)\nAw ni tchié !",
+     "pourquoi": "Fatim vient voir Awa, elle doit regarder Awa en la saluant."
+    }
+   ]
+  },
+  {
+   "plan": 49,
+   "moment": "2:24",
+   "gravite": "fort",
+   "quoi": "Awa affiche un grand sourire sur son téléphone alors qu'elle a le cœur brisé en recevant le paiement.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 49,
+     "qui": "AWA",
+     "pose": "awa_inquiete",
+     "pourquoi": "Awa doit paraître triste et inquiète devant ce paiement de fiançailles, pas souriante."
+    }
+   ]
+  },
+  {
+   "plan": 39,
+   "moment": "1:55",
+   "gravite": "fort",
+   "quoi": "Le mètre ruban de couturière n'a pas d'image et affiche un bandeau noir provisoire.",
+   "actions": [
+    {
+     "type": "fiche",
+     "pourquoi": "Demander à Gemini l'image du mètre ruban de couturière pour l'atelier."
+    }
+   ]
+  },
+  {
+   "plan": 44,
+   "moment": "2:07",
+   "gravite": "fort",
+   "quoi": "Awa pointe agressivement le doigt vers Fatim alors qu'il s'agit seulement d'une pensée intérieure.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 44,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Dans une pensée intérieure, Awa doit garder les bras croisés sans geste accusateur visible."
+    }
+   ]
+  },
+  {
+   "plan": 26,
+   "moment": "1:14",
+   "gravite": "moyen",
+   "quoi": "Diasabi garde les bras en l'air tout joyeux pendant que Modibo donne une leçon sérieuse sur le mensonge.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 26,
+     "qui": "DIASABI",
+     "pose": "dia_debout",
+     "pourquoi": "Diasabi doit reprendre une posture calme et neutre pour écouter Modibo."
+    }
+   ]
+  },
+  {
+   "plan": 54,
+   "moment": "2:38",
+   "gravite": "moyen",
+   "quoi": "Fatim est minuscule à côté de Bakary et Bakary ne marche pas vers la cabine.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 54,
+     "qui": "BAKARY",
+     "pose": "bak_marche",
+     "pourquoi": "Bakary doit être en train de marcher vers la cabine comme l'indique le script."
+    },
+    {
+     "type": "acteur",
+     "plan": 54,
+     "qui": "FATIM",
+     "taille": 1.35,
+     "pourquoi": "Rétablir Fatim à une taille normale par rapport à Bakary."
+    }
+   ]
+  },
+  {
+   "plan": 35,
+   "moment": "1:44",
+   "gravite": "moyen",
+   "quoi": "Fatim est vue de dos alors qu'elle entre en saluant vers la caméra.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 35,
+     "qui": "FATIM",
+     "pose": "fat_salue",
+     "pourquoi": "Fatim doit faire face au groupe et saluer de face en entrant."
+    }
+   ]
+  },
+  {
+   "plan": 57,
+   "moment": "2:45",
+   "gravite": "moyen",
+   "quoi": "Bakary a un grand sourire alors qu'il s'apprête à faire un aveu difficile à Fatim.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 57,
+     "qui": "BAKARY",
+     "pose": "bak_supplie",
+     "pourquoi": "Bakary doit avoir l'air gêné et sérieux au moment d'aborder la vérité."
+    }
+   ]
+  },
+  {
+   "plan": 9,
+   "moment": "0:27",
+   "gravite": "petit",
+   "quoi": "Awa a l'air pensive et rêveuse avec le menton dans la main au lieu d'être coupante et énervée.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 9,
+     "qui": "AWA",
+     "pose": "awa_assis_froide",
+     "pourquoi": "Awa doit montrer de la froideur et de la fermeté assise face à Mimi."
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.8-flash",
+ "date": "2026-10-24 10:14"
+}

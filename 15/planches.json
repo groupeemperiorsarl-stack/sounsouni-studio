@@ -1,0 +1,223 @@
+{
+ "script": "demandes/episode_15.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    2
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_rire"
+     },
+     "texte": "rire · content (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_v_action_4_02"
+     },
+     "texte": "content · ferme_yeux",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_pointe"
+     },
+     "texte": "pointe · montre",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_main_tendue"
+     },
+     "texte": "explique · propose · offre",
+     "lettre": "D"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "sujet": "pose",
+   "who": "MODIBO",
+   "plans": [
+    3
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_doigt"
+     },
+     "texte": "taquin · idee · explique (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_rire"
+     },
+     "texte": "rire · moqueur · taquin",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_assis_rire"
+     },
+     "texte": "rire · assis",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc"
+     },
+     "texte": "neutre · ecoute · boit",
+     "lettre": "D"
+    }
+   ],
+   "n": 2
+  },
+  {
+   "sujet": "cadrage",
+   "who": "MODIBO",
+   "plans": [
+    3
+   ],
+   "options": [
+    {
+     "valeur": "epaule",
+     "texte": "Derrière l'épaule de celui qui écoute (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": "seul",
+     "texte": "Gros plan, seul",
+     "lettre": "B"
+    },
+    {
+     "valeur": "large",
+     "texte": "Plan large, tout le monde",
+     "lettre": "C"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "sujet": "pose",
+   "who": "MODIBO",
+   "plans": [
+    6
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc2"
+     },
+     "texte": "neutre · ecoute · verre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc"
+     },
+     "texte": "neutre · ecoute · boit",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_joie"
+     },
+     "texte": "joie · content · victoire",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_court"
+     },
+     "texte": "court · vite",
+     "lettre": "D"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    7
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_joue"
+     },
+     "texte": "choc · gene · surpris (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_mains_levees"
+     },
+     "texte": "surpris · choc · recule",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_panique"
+     },
+     "texte": "panique · peur · choc",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_debout"
+     },
+     "texte": "neutre · serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 5
+  },
+  {
+   "sujet": "cadrage",
+   "who": "BAKARY",
+   "plans": [
+    7
+   ],
+   "options": [
+    {
+     "valeur": "epaule",
+     "texte": "Derrière l'épaule de celui qui écoute (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": "seul",
+     "texte": "Gros plan, seul",
+     "lettre": "B"
+    },
+    {
+     "valeur": "large",
+     "texte": "Plan large, tout le monde",
+     "lettre": "C"
+    }
+   ],
+   "n": 6
+  }
+ ]
+}

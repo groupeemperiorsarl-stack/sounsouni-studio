@@ -1,0 +1,68 @@
+{
+ "items": [
+  {
+   "type": "objet",
+   "perso": "mètre ruban de couturière",
+   "texte": "mètre ruban de couturière",
+   "ou": [
+    "episode_17 plan 39"
+   ],
+   "n": 1,
+   "ref": "kar_voiture",
+   "fichier_ref": "ref_kar_voiture.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MIMI",
+   "posture": "debout",
+   "emo": "sourire",
+   "tenue": "",
+   "ou": [
+    "episode_17 plan 13",
+    "episode_17 plan 18"
+   ],
+   "n": 2,
+   "ref": "mim_debout",
+   "fichier_ref": "ref_mim_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "debout",
+   "emo": "surpris",
+   "tenue": "",
+   "ou": [
+    "episode_17 plan 18",
+    "episode_17 plan 32"
+   ],
+   "n": 3,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    1,
+    2,
+    3
+   ],
+   "fichier_ref": "ref_kar_voiture.jpg",
+   "refs": [
+    "ref_mim_debout.jpg",
+    "ref_dia_neutre.jpg"
+   ],
+   "g": 1,
+   "demande": "Images jointes, dans l'ordre : image 1 = Mimi (jeune apprentie couturière mince, tresses en queue de cheval avec un élastique jaune, robe en pagne jaune-kaki à petits motifs ronds, mètre ruban jaune autour du cou, sandales dorées) ; image 2 = Diasabi (homme très grand et très mince, long cou, cheveux très courts, grosses lèvres, chemise à carreaux verts aux manches retroussées, pantalon gris retroussé aux chevilles, sandales). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 3 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) mètre ruban de couturière, l'objet seul, posé, dessiné en grand ; 2) Mimi (image 1), debout, de trois-quarts, souriante, bouche fermée, les mains vides ; 3) Diasabi (image 2), debout, de trois-quarts, surpris, les yeux grands ouverts, bouche fermée, les mains vides.",
+   "joindre": [
+    "image_1_1.jpg",
+    "image_1_2.jpg"
+   ],
+   "titres": [
+    "Nouvel objet : mètre ruban de couturière",
+    "Mimi — debout, souriante",
+    "Diasabi — debout, surpris"
+   ]
+  }
+ ]
+}

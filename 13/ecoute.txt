@@ -1,0 +1,55 @@
+ALERTES : aucune (rien d'anormal entendu).
+
+SON DE LA VIDÉO (4:55) : -12.3 LUFS (cible -14), crête -1.2 dBTP, écart de volume 3.3 LU.
+
+PAR SCÈNE (début-fin · décor · ambiance : volume, brillance, aigus « presence » 4-6 kHz par rapport aux autres scènes)
+- 0:00-0:46 · KIOSQUE · rue calme : -12.5 LUFS, brillance 1065 Hz, aigus -22.9 dB (-3 dB)
+- 0:46-0:59 · ATELIER · grillons : -12.5 LUFS, brillance 1592 Hz, aigus -19.9 dB (+0 dB)
+- 0:59-4:55 · VILLA_FETE · musique lointaine : -12.2 LUFS, brillance 1374 Hz, aigus -19.7 dB (+0 dB)
+
+CE QUE L'OREILLE ENTEND (earshot timeline ; les étiquettes de sons sont des indices, les temps et niveaux sont des mesures)
+son.wav: 0:00.00-4:55.89 (295.9 s). Loudness -12.3 LUFS integrated, true peak -1.2 dBTP, LRA 3.3 LU; loudest 2:57.00-3:00.00 (-7.3 LUFS short-term). Beat grid: ~112 BPM (clear pulse, clarity 0.35, 554 beats). 10 section(s): 0:00.00-0:27.80 trap beat?, marimba; 0:27.80-0:59.65 inspirational corporate background music?, marimba; 0:59.65-1:18.65 glitch hop music?, vocal chop; 1:18.65-1:40.75 trap beat?, marimba; 1:40.75-2:38.55 inspirational corporate background music?, glockenspiel | also: speech synthesizer, music for children (AST) | voice: voice-over narration; 2:38.55-2:59.70 trap beat?, marimba. 2100 events (7.1/s); 20 tagged (12 ui, 3 note, 2 foley, 1 voice, 1 whoosh, 1 drum; tags are hints). Strongest accents over a running bed: 2:21.64 +38 dB (notification ding), 4:03.30 +37 dB (chat message pop), 3:51.65 +36 dB (plucked string note).
+
+SECTIONS
+  0:00.00-0:27.80  trap beat?, marimba  -12 LUFS
+  0:27.80-0:59.65  inspirational corporate background music?, marimba  -13 LUFS
+  0:59.65-1:18.65  glitch hop music?, vocal chop  -13 LUFS
+  1:18.65-1:40.75  trap beat?, marimba  -13 LUFS
+  1:40.75-2:38.55  inspirational corporate background music?, glockenspiel | also: speech synthesizer, music for children (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.72, speech 0.63]
+  2:38.55-2:59.70  trap beat?, marimba  -12 LUFS
+  2:59.70-3:33.50  cheerful ukulele music?, marimba | also: ding, ding-dong, glockenspiel (AST) | voice: voice-over narration  -13 LUFS  [AST music 0.49, speech 0.58]
+  3:33.50-4:15.05  inspirational corporate background music?, marimba | also: whoosh, swoosh, swish, plop (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.50, speech 0.41]
+  4:15.05-4:38.10  upbeat corporate pop music?, glockenspiel  -13 LUFS
+  4:38.10-4:55.89  inspirational corporate background music?, marimba  -13 LUFS
+
+TRANSCRIPT   time  kind   what (CLAP tag / runner-up)                     peak  over bed  length  centroid  | sync
+== 0:00.00-0:27.80  trap beat?, marimba  (+182 untagged onsets, 6.5/s)
+ 0:05.96  UI     chat message pop / glockenspiel note             -1.9 dBFS +32.9 dB    90 ms   375 Hz
+== 0:27.80-0:59.65  inspirational corporate background music?, marimba  (+238 untagged onsets, 7.5/s)
+ 0:45.49  UI     chat message pop / spoken word                   -3.0 dBFS   silent   310 ms   358 Hz
+== 0:59.65-1:18.65  glitch hop music?, vocal chop  (+129 untagged onsets, 6.8/s)
+ 1:09.43  FOLEY  wooden block hit / snare drum hit                -1.7 dBFS +19.9 dB    98 ms  3.5 kHz
+== 1:18.65-1:40.75  trap beat?, marimba  (+154 untagged onsets, 7.0/s)
+ 1:39.06  NOTE   plucked string note / short vocal sound          -1.4 dBFS   silent    90 ms  6.6 kHz
+== 1:40.75-2:38.55  inspirational corporate background music?, glockenspiel | also: speech synthesizer, music for children (AST) | voice: voice-over narration  (+398 untagged onsets, 6.9/s)
+ 2:01.36  UI     chat message pop / piano note                    -1.5 dBFS +27.0 dB   301 ms   615 Hz
+ 2:18.88  FOLEY  wooden block hit / chat message pop              -6.3 dBFS   silent    70 ms  5.6 kHz
+ 2:21.64  UI     notification ding / celesta note                 -2.0 dBFS +38.0 dB   170 ms   608 Hz  | strong accent (summary)
+ 2:37.86  UI     chat message pop / glockenspiel note             -1.6 dBFS +26.2 dB    50 ms   593 Hz
+== 2:38.55-2:59.70  trap beat?, marimba  (+156 untagged onsets, 7.4/s)
+ 2:52.17  VOICE  speech (AST 0.87) / glockenspiel note            -6.5 dBFS   silent   100 ms  5.5 kHz  [AST Speech 0.87]
+ 2:57.52  UI     chat message pop / bubble pop                    -6.0 dBFS   silent    40 ms  4.9 kHz
+== 2:59.70-3:33.50  cheerful ukulele music?, marimba | also: ding, ding-dong, glockenspiel (AST) | voice: voice-over narration  (+233 untagged onsets, 6.9/s)
+ 3:00.00  NOTE   glockenspiel note / notification ding            -3.8 dBFS +23.1 dB  2000 ms   176 Hz
+ 3:31.99  UI     chat message pop / plucked string note           -1.5 dBFS +25.2 dB   350 ms   225 Hz
+== 3:33.50-4:15.05  inspirational corporate background music?, marimba | also: whoosh, swoosh, swish, plop (AST) | voice: voice-over narration  (+297 untagged onsets, 7.1/s)
+ 3:42.33  UI     chat message pop / bubble pop                    -2.6 dBFS   silent    50 ms   759 Hz
+ 3:51.56  WHOOSH whip pan whoosh transition / sub bass drop       -1.4 dBFS +30.3 dB   203 ms   181 Hz
+ 3:51.65  NOTE   plucked string note / chat message pop           -1.6 dBFS +36.5 dB   100 ms   180 Hz  | strong accent (summary)
+ 4:03.30  UI     chat message pop / wooden block hit              -1.5 dBFS +37.2 dB   110 ms  1.1 kHz  | strong accent (summary)
+ 4:09.40  DRUM   snare drum hit / spacebar press                  -1.6 dBFS +26.0 dB   203 ms  2.8 kHz
+== 4:15.05-4:38.10  upbeat corporate pop music?, glockenspiel  (+170 untagged onsets, 7.4/s)
+== 4:38.10-4:55.89  inspirational corporate background music?, marimba  (+123 untagged onsets, 6.9/s)
+ 4:44.02  UI     chat message pop / spoken word                  -12.8 dBFS +30.4 dB    60 ms  6.2 kHz
+ 4:49.34  UI     chat message pop / wooden block hit              -1.5 dBFS   silent   110 ms   397 Hz
+ 4:51.79  UI     chat message pop / bubble pop                   -14.1 dBFS   silent    70 ms  4.6 kHz

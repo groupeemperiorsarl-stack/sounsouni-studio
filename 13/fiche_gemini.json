@@ -1,0 +1,409 @@
+{
+ "items": [
+  {
+   "type": "pose",
+   "perso": "MOUSSA",
+   "posture": "debout",
+   "emo": "taquin",
+   "tenue": "polo_chic",
+   "ou": [
+    "episode_13 plan 40",
+    "episode_13 plan 51",
+    "episode_13 plan 58",
+    "episode_13 plan 65",
+    "episode_13 plan 71"
+   ],
+   "n": 1,
+   "ref": "mou_polo_chic",
+   "fichier_ref": "ref_mou_polo_chic.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "choc",
+   "tenue": "tenue_simple_chic",
+   "ou": [
+    "episode_13 plan 98",
+    "episode_13 plan 99",
+    "episode_13 plan 100"
+   ],
+   "n": 2,
+   "ref": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "fichier_ref": "ref_bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "debout",
+   "emo": "emerveille",
+   "tenue": "chemise_chic",
+   "ou": [
+    "episode_13 plan 32",
+    "episode_13 plan 82"
+   ],
+   "n": 3,
+   "ref": "mod_chemise_chic",
+   "fichier_ref": "ref_mod_chemise_chic.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "surpris",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_13 plan 92",
+    "episode_13 plan 93"
+   ],
+   "n": 4,
+   "ref": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "mepris",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_13 plan 95",
+    "episode_13 plan 96"
+   ],
+   "n": 5,
+   "ref": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "sourire",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_13 plan 24"
+   ],
+   "n": 6,
+   "ref": "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout",
+   "fichier_ref": "ref_fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "fier",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_13 plan 29"
+   ],
+   "n": 7,
+   "ref": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "confus",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_13 plan 34"
+   ],
+   "n": 8,
+   "ref": "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout",
+   "fichier_ref": "ref_fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "debout",
+   "emo": "grand_sourire",
+   "tenue": "chemise_repassee",
+   "ou": [
+    "episode_13 plan 44"
+   ],
+   "n": 9,
+   "ref": "dia_chemise_repassee_a_genoux",
+   "fichier_ref": "ref_dia_chemise_repassee_a_genoux.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "sourire",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_13 plan 53"
+   ],
+   "n": 10,
+   "ref": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "debout",
+   "emo": "moqueur",
+   "tenue": "chemise_repassee",
+   "ou": [
+    "episode_13 plan 85"
+   ],
+   "n": 11,
+   "ref": "dia_chemise_repassee_a_genoux",
+   "fichier_ref": "ref_dia_chemise_repassee_a_genoux.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "telephone",
+   "tenue": "tenue_de_soiree",
+   "ou": [
+    "episode_13 plan 87"
+   ],
+   "n": 12,
+   "ref": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "confus",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 13,
+   "ref": "fat_mains",
+   "fichier_ref": "ref_fat_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MOUSSA",
+   "posture": "debout",
+   "emo": "taquin",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 14,
+   "ref": "mou_fier",
+   "fichier_ref": "ref_mou_fier.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "SEYDOU",
+   "posture": "debout",
+   "emo": "amoureux",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 15,
+   "ref": "sey_debout_neutre",
+   "fichier_ref": "ref_sey_debout_neutre.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "dos",
+   "emo": "",
+   "ou": [
+    "episode_13 plan 52",
+    "episode_13 plan 59",
+    "episode_13 plan 66",
+    "episode_13 plan 72",
+    "episode_13 plan 76",
+    "episode_13 plan 83",
+    "episode_13 plan 90"
+   ],
+   "n": 16,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "dos",
+   "emo": "",
+   "ou": [
+    "episode_13 plan 32",
+    "episode_13 plan 84",
+    "episode_13 plan 85",
+    "episode_13 plan 105"
+   ],
+   "n": 17,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MOUSSA",
+   "posture": "dos",
+   "emo": "",
+   "ou": [
+    "episode_13 plan 39",
+    "episode_13 plan 77"
+   ],
+   "n": 18,
+   "ref": "mou_fier",
+   "fichier_ref": "ref_mou_fier.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "dos",
+   "emo": "",
+   "ou": [
+    "episode_13 plan 37"
+   ],
+   "n": 19,
+   "ref": "mod_joie",
+   "fichier_ref": "ref_mod_joie.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "dos",
+   "emo": "",
+   "ou": [
+    "episode_13 plan 46"
+   ],
+   "n": 20,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    4,
+    5,
+    7,
+    10
+   ],
+   "fichier_ref": "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg",
+   "refs": null,
+   "g": 1,
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage qui montre ce personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de trois-quarts, surprise, les yeux grands ouverts, bouche fermée ; 2) debout, de trois-quarts, méprisante, bouche fermée ; 3) debout, de trois-quarts, fière, le menton levé, bouche fermée ; 4) debout, de trois-quarts, souriante, bouche fermée.",
+   "joindre": [
+    "image_1.jpg"
+   ],
+   "titres": [
+    "Awa — debout, surprise — tenue de soiree",
+    "Awa — debout, méprisante — tenue de soiree",
+    "Awa — debout, fière — tenue de soiree",
+    "Awa — debout, souriante — tenue de soiree"
+   ]
+  },
+  {
+   "items": [
+    6,
+    8,
+    9,
+    11
+   ],
+   "fichier_ref": "ref_fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout.jpg",
+   "refs": [
+    "ref_fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout.jpg",
+    "ref_dia_chemise_repassee_a_genoux.jpg"
+   ],
+   "g": 2,
+   "demande": "Images jointes, dans l'ordre : image 1 = Fatim (dans sa tenue « tenue de soiree », exactement comme sur l'image jointe) ; image 2 = Diasabi (dans sa tenue « chemise repassée », exactement comme sur l'image jointe : chemise blanche bien boutonnée et repassée, pantalon droit gris sombre, sandales propres). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Fatim (image 1), debout, de trois-quarts, souriante, bouche fermée, les mains vides ; 2) Fatim (image 1), debout, de trois-quarts, perdue, qui se gratte la tête, bouche fermée, les mains vides ; 3) Diasabi (image 2), debout, de trois-quarts, grand sourire, bouche fermée, les mains vides ; 4) Diasabi (image 2), debout, de trois-quarts, moqueur, bouche fermée, les mains vides.",
+   "joindre": [
+    "image_2_1.jpg",
+    "image_2_2.jpg"
+   ],
+   "titres": [
+    "Fatim — debout, souriante — tenue de soiree",
+    "Fatim — debout, perdue — tenue de soiree",
+    "Diasabi — debout, grand sourire — chemise repassée",
+    "Diasabi — debout, moqueur — chemise repassée"
+   ]
+  },
+  {
+   "items": [
+    14,
+    18,
+    1,
+    2
+   ],
+   "fichier_ref": "ref_mou_fier.jpg",
+   "refs": [
+    "ref_mou_fier.jpg",
+    "ref_bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains.jpg"
+   ],
+   "g": 3,
+   "demande": "Images jointes, dans l'ordre : image 1 = Moussa (jeune homme mince, petites dreadlocks courtes, t-shirt blanc ample, casque audio noir autour du cou, jean bleu clair, baskets blanches ; debout sur le sol, sans hoverboard) ; image 2 = Bakary (dans sa tenue « tenue simple chic », exactement comme sur l'image jointe : chemise en lin beige brodée discrètement au col, pantalon en toile marron propre, lunettes de soleil bleues sur la tête, chaussures marron souples). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Moussa (image 1), debout, de trois-quarts, taquin, un sourire en coin, bouche fermée, les mains vides ; 2) Moussa (image 1), vu de dos, debout, bras le long du corps, visage caché, les mains vides ; 3) Moussa (image 1), debout, de trois-quarts, taquin, un sourire en coin, bouche fermée, les mains vides ; 4) Bakary (image 2), debout, de trois-quarts, choqué, la bouche ouverte, bouche fermée, les mains vides.",
+   "joindre": [
+    "image_3_1.jpg",
+    "image_3_2.jpg"
+   ],
+   "titres": [
+    "Moussa — debout, taquin",
+    "Moussa — vue de dos",
+    "Moussa — debout, taquin — polo chic",
+    "Bakary — debout, choqué — tenue simple chic"
+   ]
+  },
+  {
+   "items": [
+    3,
+    12,
+    13,
+    15
+   ],
+   "fichier_ref": "ref_mod_chemise_chic.jpg",
+   "refs": [
+    "ref_mod_chemise_chic.jpg",
+    "ref_awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement.jpg",
+    "ref_fat_mains.jpg",
+    "ref_sey_debout_neutre.jpg"
+   ],
+   "g": 4,
+   "demande": "Images jointes, dans l'ordre : image 1 = Modibo (dans sa tenue « chemise chic », exactement comme sur l'image jointe : chemise cintrée en wax marron et ocre, pantalon droit noir, baskets propres, montre en cuir, sans casquette) ; image 2 = Awa (dans sa tenue « tenue de soiree », exactement comme sur l'image jointe) ; image 3 = Fatim (jeune femme, grand foulard rose fuchsia noué sur la tête, longues tresses, robe en pagne rose et blanc à motifs, bracelets de perles, boucles d'oreilles dorées, sandales) ; image 4 = Seydou (livreur souriant, casquette verte, polo vert, pantalon beige, baskets grises). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Modibo (image 1), debout, de trois-quarts, émerveillé, les yeux brillants, bouche entrouverte, bouche fermée, les mains vides ; 2) Awa (image 2), debout, de trois-quarts, qui regarde son téléphone, bouche fermée ; 3) Fatim (image 3), debout, de trois-quarts, perdue, qui se gratte la tête, bouche fermée, les mains vides ; 4) Seydou (image 4), debout, de trois-quarts, amoureux, le regard rêveur, bouche fermée, les mains vides.",
+   "joindre": [
+    "image_4_1.jpg",
+    "image_4_2.jpg",
+    "image_4_3.jpg",
+    "image_4_4.jpg"
+   ],
+   "titres": [
+    "Modibo — debout, émerveillé — chemise chic",
+    "Awa — debout, qui regarde son téléphone — tenue de soiree",
+    "Fatim — debout, perdue",
+    "Seydou — debout, amoureux"
+   ]
+  },
+  {
+   "items": [
+    16,
+    17,
+    19,
+    20
+   ],
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "refs": [
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_bak_debout.jpg",
+    "ref_mod_joie.jpg",
+    "ref_dia_neutre.jpg"
+   ],
+   "g": 5,
+   "demande": "Images jointes, dans l'ordre : image 1 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) ; image 3 = Modibo (jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir) ; image 4 = Diasabi (homme très grand et très mince, long cou, cheveux très courts, grosses lèvres, chemise à carreaux verts aux manches retroussées, pantalon gris retroussé aux chevilles, sandales). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Awa (image 1), vue de dos, debout, bras le long du corps, visage caché, les mains vides ; 2) Bakary (image 2), vu de dos, debout, bras le long du corps, visage caché, les mains vides ; 3) Modibo (image 3), vu de dos, debout, bras le long du corps, visage caché, les mains vides ; 4) Diasabi (image 4), vu de dos, debout, bras le long du corps, visage caché, les mains vides.",
+   "joindre": [
+    "image_5_1.jpg",
+    "image_5_2.jpg",
+    "image_5_3.jpg",
+    "image_5_4.jpg"
+   ],
+   "titres": [
+    "Awa — vue de dos",
+    "Bakary — vue de dos",
+    "Modibo — vue de dos",
+    "Diasabi — vue de dos"
+   ]
+  }
+ ]
+}

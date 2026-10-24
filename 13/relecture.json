@@ -1,0 +1,105 @@
+{
+ "resume": "L'histoire est très bien construite et hilarante. Une seule incohérence est à corriger : Moussa annonce le mariage de sa grande sœur, ce qui fait croire qu'Awa se marie. Les tenues de soirée et les décors sont superbes. Il faut corriger deux images d'objets (verre brisé et clés de Karim), remettre Diasabi debout après sa courbette et poser les pieds de Karim au sol.",
+ "problemes": [
+  {
+   "plan": 25,
+   "moment": "0:59",
+   "gravite": "moyen",
+   "quoi": "Moussa dit « dîner de mariage de ma grande sœur », faisant croire qu'Awa est la mariée alors qu'elle vient en simple invitée.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "Bienvenue au dîner de mariage de ma grande sœur ! {fier} Que chaque cavalier tienne bien sa cavalière !",
+     "nouveau": "Bienvenue au dîner de mariage ! {fier} Que chaque cavalier tienne bien sa cavalière !",
+     "pourquoi": "Comme Moussa appelle Awa « grande sœur » tout au long de l'épisode, cette phrase fait croire qu me c'est le mariage d'Awa, alors qu me celle-ci arrive ensuite seule comme invitée et attrape le bouquet de la vraie mariée."
+    }
+   ]
+  },
+  {
+   "actions": [
+    {
+     "pourquoi": "Demander à Gemini l'image du trousseau de clés de voiture de Karim pour remplacer le texte provisoire.",
+     "type": "fiche"
+    }
+   ],
+   "gravite": "fort",
+   "moment": "3:00",
+   "plan": 73,
+   "quoi": "L'image des clés de voiture de Karim affiche un texte provisoire écrit sur le décor au lieu d'un véritable objet."
+  },
+  {
+   "actions": [
+    {
+     "pourquoi": "Demander à Gemini l'image des débris de verre brisé au sol.",
+     "type": "fiche"
+    }
+   ],
+   "gravite": "fort",
+   "moment": "1:26",
+   "plan": 35,
+   "quoi": "Le plan montre un verre de thé intact alors que le script demande les débris du verre brisé par Bakary."
+  },
+  {
+   "actions": [
+    {
+     "plan": 85,
+     "pose": "dia_chemise_repassee",
+     "pourquoi": "Diasabi doit être debout pour s'adresser calmement à Bakary.",
+     "qui": "DIASABI",
+     "type": "pose"
+    }
+   ],
+   "gravite": "moyen",
+   "moment": "3:29",
+   "plan": 85,
+   "quoi": "Diasabi a gardé la pose à genoux alors qu'il est debout en train de parler à Bakary."
+  },
+  {
+   "actions": [
+    {
+     "plan": 94,
+     "pose": "dia_chemise_repassee",
+     "pourquoi": "Remettre Diasabi debout avec les autres invités pour le lancer du bouquet.",
+     "qui": "DIASABI",
+     "type": "pose"
+    }
+   ],
+   "gravite": "moyen",
+   "moment": "3:56",
+   "plan": 94,
+   "quoi": "Diasabi est resté avec l'étiquette à genoux au milieu des invités pendant le lancer de bouquet."
+  },
+  {
+   "actions": [
+    {
+     "dy": 0.08,
+     "plan": 70,
+     "pourquoi": "Abaisser Karim pour poser ses pieds sur le sol de la cour.",
+     "qui": "KARIM",
+     "type": "acteur"
+    }
+   ],
+   "gravite": "moyen",
+   "moment": "2:54",
+   "plan": 70,
+   "quoi": "Karim flotte au-dessus du sol à son arrivée dans la cour de la villa."
+  },
+  {
+   "actions": [
+    {
+     "dy": 0.08,
+     "plan": 49,
+     "pourquoi": "Abaisser Diasabi pour qu'il soit au même niveau que le reste du second rang.",
+     "qui": "DIASABI",
+     "type": "acteur"
+    }
+   ],
+   "gravite": "petit",
+   "moment": "2:00",
+   "plan": 49,
+   "quoi": "Diasabi est placé trop haut au second rang et semble flotter au-dessus des invités."
+  }
+ ],
+ "modele": "gemini-3.6-flash + gemini-3.8-flash",
+ "date": "2026-10-23 20:31"
+}

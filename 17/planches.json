@@ -1,0 +1,432 @@
+{
+ "script": "demandes/episode_17.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "MIMI",
+   "plans": [
+    3,
+    10,
+    13,
+    15,
+    20,
+    24
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_debout"
+     },
+     "texte": "inquiet · neutre · timide (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_inquiete"
+     },
+     "texte": "inquiet · essouffle · explique",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_choc"
+     },
+     "texte": "choc",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_dos"
+     },
+     "texte": "dos",
+     "lettre": "D"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    5,
+    6,
+    9
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_pensif"
+     },
+     "texte": "pensif · assis · telephone (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_telephone"
+     },
+     "texte": "telephone · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tel"
+     },
+     "texte": "telephone",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tel2"
+     },
+     "texte": "telephone · commande",
+     "lettre": "D"
+    }
+   ],
+   "n": 2
+  },
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    14
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_explique"
+     },
+     "texte": "explique · propose · sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_v_tour_650014_02"
+     },
+     "texte": "sourire · trois_quarts",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_v_tour_650014_03"
+     },
+     "texte": "sourire · profil",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_v_tour_650014_04"
+     },
+     "texte": "sourire · profil",
+     "lettre": "D"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    21
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_joie"
+     },
+     "texte": "joie · victoire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_debout"
+     },
+     "texte": "neutre",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_main_coeur"
+     },
+     "texte": "fier · sincere · amoureux",
+     "lettre": "D"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "sujet": "pose",
+   "who": "MODIBO",
+   "plans": [
+    26
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc"
+     },
+     "texte": "neutre · ecoute · boit (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc2"
+     },
+     "texte": "neutre · ecoute · verre",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_joie"
+     },
+     "texte": "joie · content · victoire",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_court"
+     },
+     "texte": "court · vite",
+     "lettre": "D"
+    }
+   ],
+   "n": 5
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    32
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_debout"
+     },
+     "texte": "neutre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_gene"
+     },
+     "texte": "gene · confus",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_bras"
+     },
+     "texte": "explique · bras_ouverts",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_neutre"
+     },
+     "texte": "neutre · ecoute",
+     "lettre": "D"
+    }
+   ],
+   "n": 6
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    44
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 7
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    46
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_mefiant"
+     },
+     "texte": "mefiant",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 8
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    49
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tel"
+     },
+     "texte": "telephone (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_tel2"
+     },
+     "texte": "telephone · commande",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_action_659144_05"
+     },
+     "texte": "surpris · telephone · trois_quarts",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_action_659144_06"
+     },
+     "texte": "surpris · telephone · trois_quarts",
+     "lettre": "D"
+    }
+   ],
+   "n": 9
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    53
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_mains"
+     },
+     "texte": "neutre · sourire · tendre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_pensive"
+     },
+     "texte": "pensif · triste · moue",
+     "lettre": "D"
+    }
+   ],
+   "n": 10
+  }
+ ]
+}
