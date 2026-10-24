@@ -7582,6 +7582,153 @@
    "tenue": "tenue_simple_chic",
    "mouth_auto": true,
    "props_auto": {}
+  },
+  "awa_tenue_de_soiree_froide3": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "froide"
+   ],
+   "mouth": true,
+   "size": [
+    810,
+    1600
+   ],
+   "head_x": 0.582,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "tenue": "tenue_de_soiree",
+   "mouth_auto": true
+  },
+  "bak_dos4": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    638,
+    1600
+   ],
+   "head_x": 0.494,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout"
+  },
+  "kadi_grand_sourire2": {
+   "char": "KADI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "grand_sourire"
+   ],
+   "mouth": true,
+   "size": [
+    807,
+    1600
+   ],
+   "head_x": 0.447,
+   "props": [],
+   "genere": "gemini",
+   "depart": "kadi_grand_sourire",
+   "mouth_auto": true
+  },
+  "awa_dos4": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    770,
+    1600
+   ],
+   "head_x": 0.488,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01"
+  },
+  "bak_tenue_simple_chic_inquiet3": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "inquiet"
+   ],
+   "mouth": true,
+   "size": [
+    550,
+    1600
+   ],
+   "head_x": 0.501,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
+  },
+  "bak_tenue_simple_chic_sourire3": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    549,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
+  },
+  "bak_tenue_simple_chic_choc4": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc"
+   ],
+   "mouth": true,
+   "size": [
+    594,
+    1600
+   ],
+   "head_x": 0.495,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
+  },
+  "bak_tenue_simple_chic_pensif3": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pensif"
+   ],
+   "mouth": true,
+   "size": [
+    456,
+    1600
+   ],
+   "head_x": 0.465,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "tenue": "tenue_simple_chic",
+   "mouth_auto": true
   }
  },
  "decors": {
