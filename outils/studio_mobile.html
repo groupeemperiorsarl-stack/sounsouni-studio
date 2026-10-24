@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v38</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v39</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -516,8 +516,8 @@ async function ghEnvoyer(chemin,blob,msg,prog){let err='';for(let essai=1;essai<
   catch(e){err=e.message;if(/\((401|403|404)/.test(err))break;if(essai<3){prog('⚠️ '+err+' · nouvel essai dans 5 s…');await dodo(5000)}}}
   throw new Error(err)}
 async function ghLire(chemin,ref='main'){const r=await fetch(API+'/repos/'+R+'/contents/'+chemin+'?ref='+ref,{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw'}});return r.ok?r.text():null}
-async function ghSha(chemin,ref='main'){try{return (await api('/repos/'+R+'/contents/'+chemin+'?ref='+ref)).sha}catch(e){return null}}
-async function ghEcrire(chemin,contenu64,msg,ref='main'){const sha=await ghSha(chemin,ref);return api('/repos/'+R+'/contents/'+chemin,{method:'PUT',body:JSON.stringify({message:msg+'\n\n(assistant de la page Studio mobile)',content:contenu64,branch:ref,...(sha?{sha}:{})})})}
+async function ghSha(chemin,ref='main'){try{return (await api('/repos/'+R+'/contents/'+chemin+'?ref='+ref+'&t='+Date.now(),{cache:'no-store'})).sha}catch(e){return null}}
+async function ghEcrire(chemin,contenu64,msg,ref='main'){for(let e=0;;e++){const sha=await ghSha(chemin,ref);try{return await api('/repos/'+R+'/contents/'+chemin,{method:'PUT',body:JSON.stringify({message:msg+'\n\n(assistant de la page Studio mobile)',content:contenu64,branch:ref,...(sha?{sha}:{})})})}catch(x){if(e>=2||!/^(409|422)/.test(x.message))throw x;await dodo(1500)}}}   // fichier changé entre-temps (ou version mal lue) : on relit sa version et on réessaie
 async function modelesGem(){let L=[];try{L=JSON.parse(localStorage.getItem('ss_gem_ms')||'[]')}catch(e){}if(L.length)return L;
   let tok='',all=[];do{const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000'+(tok?'&pageToken='+tok:''),{headers:{'x-goog-api-key':K.gem}});if(!r.ok)throw new Error('clé Gemini refusée ('+r.status+')');const j=await r.json();all=all.concat(j.models||[]);tok=j.nextPageToken||''}while(tok);
   const ms=all.filter(x=>(x.supportedGenerationMethods||[]).includes('generateContent')&&/flash/.test(x.name)&&!/lite|image|tts|live|audio|embed|exp/.test(x.name)).map(x=>x.name);
