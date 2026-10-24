@@ -125,6 +125,8 @@ AWA (fiere · regarde: caméra · voix: normal)
 Comme tout le monde. {sourire} Je le lui avais dit.
 
 DÉCOR: KIOSQUE · matin · ambiance: rue calme
+[TENUE BAKARY: normale]
+[TENUE MODIBO: normale]
 PLAN: large [Bakary debout, Modibo sur le banc]
 [BRUITAGE: notification]
 
@@ -138,15 +140,18 @@ BAKARY (grand_sourire · regarde: Modibo · voix: normal)
 Alors on fait chauffer la théière, Van ! {grand_sourire} Sounsouni ne dort jamais !
 
 DÉCOR: ATELIER · matin · ambiance: calme
-PLAN: gros [Awa debout, téléphone]
+PLAN: large [Awa debout téléphone, Mimi debout]
 [BRUITAGE: notification]
 [MUSIQUE: suspense]
 
 PLAN: objet téléphone
 [ÉCRAN 5 s: Awa Couture · Nouvelle commande · Fatim : Tenue de fiançailles · Note : « Pour le jour où Bakary me demandera ❤️ »]
 
-PLAN: 3 s · très gros Awa · {choc}
+PLAN: 3 s · gros Awa · {choc}
 [SILENCE 2 s]
+
+PENSÉE AWA (choc · regarde: caméra)
+Une tenue de fiançailles… {choc} pour quand Bakary va la demander ?!
 
 MIMI (surpris · regarde: Awa · voix: chuchote)
 Tantie… {surpris} vous acceptez ?
