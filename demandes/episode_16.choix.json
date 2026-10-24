@@ -3,7 +3,8 @@
   "pose": {
    "key": "dia_chemise_repassee_grand_sourire",
    "who": "DIASABI"
-  }
+  },
+  "sig": "DIASABI|Offre ! Offre !#0"
  },
  "11": {
   "pose": {
@@ -23,13 +24,15 @@
   "pose": {
    "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "who": "BAKARY"
-  }
+  },
+  "sig": "BAKARY|Si je le donne à Fatim… je mens. Si je le donne à Awa… elle #0"
  },
  "18": {
   "pose": {
    "key": "bak_tenue_simple_chic_pensif",
    "who": "BAKARY"
-  }
+  },
+  "sig": "BAKARY|Réfléchis, Bakary… réfléchis !#0"
  },
  "20": {
   "acteurs": {
@@ -44,13 +47,15 @@
   "pose": {
    "key": "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains",
    "who": "BAKARY"
-  }
+  },
+  "sig": "BAKARY|Tantie Kadi… pour la plus belle femme de la soirée. Celle qu#0"
  },
  "23": {
   "pose": {
    "key": "sey_debout_neutre",
    "who": "SEYDOU"
-  }
+  },
+  "sig": "BAKARY|Tantie Kadi… pour la plus belle femme de la soirée. Celle qu#2"
  },
  "26": {
   "pose": {
@@ -63,13 +68,15 @@
   "pose": {
    "key": "fat_tenue_de_soiree_triste",
    "who": "FATIM"
-  }
+  },
+  "sig": "FATIM|Il ne voulait pas me gêner devant tout le monde… c'est tout.#0"
  },
  "30": {
   "pose": {
    "key": "awa_tenue_de_soiree_mepris",
    "who": "AWA"
-  }
+  },
+  "sig": "AWA|Il ne me l'a pas donné… Tant mieux. Je m'en fiche.#0"
  },
  "32": {
   "pose": {
@@ -82,13 +89,15 @@
   "pose": {
    "key": "mim_choc",
    "who": "MIMI"
-  }
+  },
+  "sig": "MIMI|Tantie ! Douze commandes ! Tout le monde veut votre tenue du#0"
  },
  "43": {
   "pose": {
    "key": "bak_explique",
    "who": "BAKARY"
-  }
+  },
+  "sig": "BAKARY|Alors on fait chauffer la théière, Van ! Sounsouni ne dort j#0"
  },
  "46": {
   "pose": {
@@ -101,7 +110,8 @@
   "pose": {
    "key": "awa_v_action_659144_07",
    "who": "AWA"
-  }
+  },
+  "sig": "|Awa Couture · Nouvelle commande · Fatim : Tenue de fiançaill#2"
  },
  "48": {
   "pose": {
@@ -129,6 +139,7 @@
   "pose": {
    "key": "mou_polo_chic_grand_sourire",
    "who": "MOUSSA"
-  }
+  },
+  "sig": "MOUSSA|Écoutez tous ! Chez nous, celui qui attrape le bouquet doit #0"
  }
 }

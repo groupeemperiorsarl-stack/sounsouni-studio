@@ -139,6 +139,19 @@ Bakarin ! {rire} Tout Bamako veut boire le thé de l'homme au bouquet !
 BAKARY (grand_sourire · regarde: Modibo · voix: normal)
 Alors on fait chauffer la théière, Van ! {grand_sourire} Sounsouni ne dort jamais !
 
+DÉCOR: RUE · matin · ambiance: rue calme
+[TENUE FATIM: normale]
+PLAN: 3 s · gros Fatim · {pensif}
+
+PENSÉE FATIM (pensif · regarde: loin)
+Bakary n'arrive pas à se décider… {pensif} Alors je vais l'aider un peu.
+
+PENSÉE FATIM (sourire · regarde: caméra)
+Ma tenue de fiançailles chez Awa Couture… {sourire} Quand il le saura, il sera bien obligé de réagir !
+
+PLAN: objet téléphone
+[ÉCRAN 3 s: Sounsouni · Awa Couture · Commander : Tenue de fiançailles · Envoyé ✓]
+
 DÉCOR: ATELIER · matin · ambiance: calme
 PLAN: large [Awa debout téléphone, Mimi debout]
 [BRUITAGE: notification]
