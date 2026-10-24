@@ -32,6 +32,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-23 · Costumier (gemini-3.8-flash) · Pour une soirée de fête, toujours déclarer une tenue d'invité pour chaque personnage présent dès le début de la scène.
 
 ## mise-en-scene
+- 2026-10-24 · Assistant · Réplique qui répond à une pensée → un personnage ne peut pas entendre la pensée d'un autre → faire dire la réplique à voix haute si quelqu'un doit y réagir.
 
 ## son
 - 2026-10-22 · Claude · Cri des grillons / cigales trop fort et stressant (épisode 18, scène de nuit d'Awa) → l'ancien son cricket.wav ressemblait à une alarme (earshot : « error buzz ») et restait à 10 dB seulement sous les voix → grillons fabriqués en code (studio/ambiances.py) et ambiance toujours 24 dB sous les voix (réglage ambiance_sous_voix) ; l'oreille (ecoute.txt) signale une scène aux aigus perçants.
