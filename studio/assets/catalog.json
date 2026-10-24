@@ -7016,7 +7016,8 @@
    "genere": "gemini",
    "depart": "mou_polo_chic",
    "tenue": "polo_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_polo_chic_rire": {
    "char": "MOUSSA",
@@ -7035,7 +7036,8 @@
    "genere": "gemini",
    "depart": "mou_polo_chic",
    "tenue": "polo_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_rire": {
    "char": "MOUSSA",
@@ -7053,7 +7055,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_fier",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_taquin": {
    "char": "MOUSSA",
@@ -7071,7 +7074,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_fier",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_dos2": {
    "char": "MODIBO",
@@ -7088,7 +7092,8 @@
    "head_x": 0.5,
    "props": [],
    "genere": "gemini",
-   "depart": "mod_joie"
+   "depart": "mod_joie",
+   "props_auto": {}
   },
   "mim_choc": {
    "char": "MIMI",
@@ -7106,7 +7111,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mim_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sey_rire": {
    "char": "SEYDOU",
@@ -7124,7 +7130,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sey_debout_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_dos2": {
    "char": "BAKARY",
@@ -7141,7 +7148,8 @@
    "head_x": 0.498,
    "props": [],
    "genere": "gemini",
-   "depart": "bak_debout"
+   "depart": "bak_debout",
+   "props_auto": {}
   },
   "awa_dos2": {
    "char": "AWA",
@@ -7158,7 +7166,8 @@
    "head_x": 0.512,
    "props": [],
    "genere": "gemini",
-   "depart": "awa_v_action_659144_01"
+   "depart": "awa_v_action_659144_01",
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains": {
    "char": "BAKARY",
@@ -7185,7 +7194,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_inquiet": {
    "char": "BAKARY",
@@ -7204,7 +7214,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_choc2": {
    "char": "BAKARY",
@@ -7223,7 +7234,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_pensif": {
    "char": "BAKARY",
@@ -7242,7 +7254,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "kadi_debout_le_bouquet_dans_les_mains_souriante": {
    "char": "KADI",
@@ -7267,7 +7280,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "kadi",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "kadi_rire": {
    "char": "KADI",
@@ -7285,7 +7299,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "kadi",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "kadi_dos": {
    "char": "KADI",
@@ -7302,7 +7317,8 @@
    "head_x": 0.496,
    "props": [],
    "genere": "gemini",
-   "depart": "kadi"
+   "depart": "kadi",
+   "props_auto": {}
   },
   "awa_tenue_de_soiree_debout_bras_croises_regarde_ailleurs": {
    "char": "AWA",
@@ -7326,7 +7342,8 @@
    "genere": "gemini",
    "depart": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement",
    "tenue": "tenue_de_soiree",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_sourire": {
    "char": "BAKARY",
@@ -7345,7 +7362,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_tenue_simple_chic_grand_sourire": {
    "char": "BAKARY",
@@ -7364,7 +7382,8 @@
    "genere": "gemini",
    "depart": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
    "tenue": "tenue_simple_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_chemise_chic_assis": {
    "char": "MODIBO",
@@ -7385,7 +7404,8 @@
    "genere": "gemini",
    "depart": "mod_chemise_chic",
    "tenue": "chemise_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_chemise_chic_assis_rire": {
    "char": "MODIBO",
@@ -7405,7 +7425,8 @@
    "genere": "gemini",
    "depart": "mod_chemise_chic",
    "tenue": "chemise_chic",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
