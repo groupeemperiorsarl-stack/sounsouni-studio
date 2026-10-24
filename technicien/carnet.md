@@ -30,6 +30,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-23 · Costumier (gemini-3.8-flash) · Lors d'une fête ou d'une cérémonie, toujours prévoir une tenue habillée pour chaque invité régulier et garder les couples ensemble dans les plans larges.
 - 2026-10-23 · Costumier (gemini-3.8-flash) · Pour une fête ou un mariage, penser à habiller tous les invités principaux dès l'écriture du script.
 - 2026-10-23 · Costumier (gemini-3.8-flash) · Pour une soirée de fête, toujours déclarer une tenue d'invité pour chaque personnage présent dès le début de la scène.
+- 2026-10-24 · Gemini · Incertitude sur la réussite d'un import → l'outil etat confirme la fin technique mais pas le résultat produit → utiliser fichiers_demande pour valider la présence des images découpées (image_X_Y.jpg) et des planches.
 
 ## mise-en-scene
 - 2026-10-24 · Assistant · Réplique qui répond à une pensée → un personnage ne peut pas entendre la pensée d'un autre → faire dire la réplique à voix haute si quelqu'un doit y réagir.
