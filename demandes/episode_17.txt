@@ -1,0 +1,198 @@
+TITRE: Les Plans de Bakary – Épisode 21 : Accepter ou refuser
+
+NOUVEAUX OBJETS: mètre ruban de couturière
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+PLAN: large [Awa assis, Mimi debout]
+PLAN: gros [Awa assis, téléphone]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Nouvelle commande · Fatim · Tenue de fiançailles · Note : « Pour le jour où Bakary me demandera ❤️ » · [Accepter] [Refuser]]
+
+MIMI (inquiet · regarde: Awa · voix: chuchote)
+Tantie… vous acceptez ?
+
+PENSÉE AWA (pensif · regarde: téléphone)
+Si je refuse, elle va me demander pourquoi. Et je n'ai aucune raison de refuser… aucune.
+
+PENSÉE AWA (mefiant · regarde: téléphone)
+Mais si j'accepte… je vais coudre la tenue de fiançailles de Fatim. Pour Bakary.
+
+AWA (fiere · regarde: Mimi · voix: normal)
+Awa Couture ne refuse jamais une cliente.
+[BRUITAGE: clic]
+
+PLAN: objet téléphone
+[ÉCRAN 3 s: Commande acceptée ✔ · Essayage aujourd'hui à 16 h 00]
+
+MIMI (timide · regarde: Awa · voix: chuchote)
+Mais Tantie… et Bakary ?
+
+AWA (colere · regarde: Mimi · voix: crie)
+Quoi, Bakary ? {pointe} Bakary, c'est le vendeur de thé d'en face. C'est tout !
+[RÉACTION MIMI: inquiet]
+[MUSIQUE: suspense]
+
+DÉCOR: KIOSQUE · midi · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+[BRUITAGE: pas]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Mimi debout]
+
+MIMI (sourire · regarde: caméra · voix: normal)
+Aw ni tchié !
+
+BAKARY (sourire · regarde: Mimi · voix: normal)
+I ni tchié, Mimi.
+
+MIMI (content · regarde: Diasabi · voix: normal)
+Diasabi, deux brochettes, s'il te plaît.
+
+PLAN: objet billet de cinq cents francs
+
+DIASABI (grand_sourire · regarde: Mimi · voix: normal)
+Pour toi, les meilleures !
+
+PLAN: gros [Mimi debout, brochette]
+
+MIMI (mange · regarde: Bakary · voix: normal)
+Au fait, Bakary… félicitations ! {sourire} Fatim a commandé sa tenue de fiançailles chez nous ce matin.
+[RÉACTION BAKARY sur "fiançailles": choc]
+[RÉACTION MODIBO sur "fiançailles": choc]
+[RÉACTION DIASABI sur "fiançailles": surpris]
+[BRUITAGE sur "fiançailles": tonnerre]
+
+BAKARY (panique · regarde: Mimi · voix: vite)
+Ses fiançailles ? {sueur} Avec qui ?
+
+MIMI (taquin · regarde: Bakary · voix: normal)
+Avec toi, pardi ! C'est écrit dans la commande : « Pour le jour où Bakary me demandera ».
+
+DIASABI (joie · regarde: Bakary · voix: crie)
+Waouh ! {bras_ouverts} Bakary va se marier ! À Bobo, on dit que le bouquet ne ment jamais !
+
+BAKARY (panique · regarde: Diasabi · voix: crie)
+Mais je ne lui ai jamais rien demandé, moi ! {mains_tete} Jamais !
+[SILENCE 2 s: grillon]
+
+MIMI (inquiet · regarde: bas · voix: chuchote)
+Oh non… Tantie Awa va me tuer.
+[BRUITAGE: pas]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+
+MODIBO (serieux · regarde: Bakary · voix: normal)
+Bakarin. Écoute-moi bien. {serieux} Fatim est une fille bien. Si elle paie une tenue pour un rêve qui n'existe pas, c'est toi qui lui fais du mal.
+
+BAKARY (triste · regarde: bas · voix: normal)
+Je ne veux pas lui faire de mal, Van. {soupir} Elle est gentille avec moi.
+
+MODIBO (sage · regarde: Bakary · voix: lentement)
+Justement. La vérité fait mal une fois. Le mensonge fait mal tous les jours.
+
+DIASABI (confus · regarde: Modibo · voix: normal)
+Attends… s'il n'aime pas Fatim… {confus} il aime qui, alors ?
+[SILENCE 2 s: grillon]
+
+MODIBO (taquin · regarde: Diasabi · voix: normal)
+Diasabi… {sourire} tes brochettes brûlent.
+[RÉACTION DIASABI: surpris]
+[BRUITAGE: grésillement]
+
+DÉCOR: ATELIER · après-midi · ambiance: rue calme
+PLAN: large [Awa debout, Mimi assis]
+[BRUITAGE: talons]
+
+PLAN: large [Awa debout, Mimi assis, Fatim debout]
+
+FATIM (joie · regarde: caméra · voix: normal)
+Aw ni tchié !
+
+MIMI (timide · regarde: Fatim · voix: normal)
+I ni tchié, Fatim.
+
+FATIM (tendre · regarde: Awa · voix: normal)
+Awa, je viens pour l'essayage. {sourire} Je veux être la plus belle du quartier… après toi, bien sûr !
+
+AWA (froide · regarde: Fatim · voix: normal)
+Lève les bras.
+
+PLAN: objet mètre ruban de couturière
+
+FATIM (pensif · regarde: Awa · voix: normal)
+Dis-moi, toi qui es juste en face… tu crois qu'il m'aime, Bakary ?
+[RÉACTION AWA: gene]
+[RÉACTION MIMI: inquiet]
+
+AWA (froide · regarde: bas · voix: normal)
+Moi, je couds des tenues. Pas des cœurs.
+
+PENSÉE AWA (colere · regarde: Fatim)
+Pourquoi ça me fait mal d'entendre son nom dans sa bouche ? Pourquoi ?
+
+FATIM (sourire · regarde: Awa · voix: normal)
+Au mariage, il a donné le bouquet à Tantie Kadi. {sourire} Mais c'est parce qu'il est timide !
+
+AWA (mefiant · regarde: Fatim · voix: lentement)
+Timide… oui.
+
+FATIM (joie · regarde: téléphone · voix: normal)
+Je paie tout de suite sur Sounsouni !
+[BRUITAGE: clic]
+[BRUITAGE: notification]
+
+PLAN: gros [Awa debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Awa Couture · Paiement reçu ✔ · Fatim · Tenue de fiançailles]
+
+PLAN: 3 s · très gros Awa · {triste}
+
+DÉCOR: KIOSQUE · après-midi · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc]
+
+BAKARY (serieux · regarde: Modibo · voix: normal)
+Van, j'y vais. Je vais tout dire à Fatim. Maintenant.
+
+MODIBO (sourire · regarde: Bakary · voix: normal)
+Va, Bakarin. {sage} Je garde le kiosque.
+[MUSIQUE: suspense]
+
+DÉCOR: CABINE · soir · ambiance: rue calme
+PLAN: large [Fatim debout]
+[BRUITAGE: pas]
+
+PLAN: large [Fatim debout, Bakary marche]
+
+BAKARY (gene · regarde: Fatim · voix: normal)
+I ni wula, Fatim.
+
+FATIM (joie · regarde: Bakary · voix: normal)
+Bakary ! J'allais justement t'appeler. {sourire} J'ai une surprise pour toi.
+
+PLAN: deux [Fatim debout, Bakary debout]
+
+BAKARY (serieux · regarde: Fatim · voix: normal)
+Fatim… moi aussi, je dois te dire quelque chose.
+
+FATIM (tendre · regarde: Bakary · voix: normal)
+Attends ! Moi d'abord. {sourire} Regarde.
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Awa Couture · Tenue de fiançailles · Payée ✔ · « Pour le jour où Bakary me demandera ❤️ »]
+
+FATIM (joie · regarde: Bakary · voix: normal)
+Je l'ai déjà payée !
+
+PLAN: 3 s · très gros Bakary · {sueur}{panique}
+
+PENSÉE BAKARY (panique · regarde: Fatim)
+Elle l'a déjà payée… Comment je vais lui dire la vérité maintenant ?
+[BRUITAGE: tonnerre]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, on commande, on paie et on suit sa commande en un clic. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
