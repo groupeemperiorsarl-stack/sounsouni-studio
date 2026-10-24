@@ -1,20 +1,35 @@
 {
- "7": {
-  "cadrage": "seul"
+ "10": {
+  "pose": {
+   "key": "dia_chemise_repassee_grand_sourire",
+   "who": "DIASABI"
+  }
  },
  "11": {
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains"
+   "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "who": "BAKARY"
   },
   "sig": "DIASABI|Offre ! Offre !#1"
  },
  "12": {
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains"
+   "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "who": "BAKARY"
   },
   "sig": "DIASABI|Offre ! Offre !#2"
+ },
+ "17": {
+  "pose": {
+   "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+   "who": "BAKARY"
+  }
+ },
+ "18": {
+  "pose": {
+   "key": "bak_tenue_simple_chic_pensif",
+   "who": "BAKARY"
+  }
  },
  "20": {
   "acteurs": {
@@ -27,56 +42,93 @@
  },
  "21": {
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains"
+   "key": "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains",
+   "who": "BAKARY"
   }
  },
  "23": {
   "pose": {
-   "who": "SEYDOU",
-   "key": "sey_debout_neutre"
+   "key": "sey_debout_neutre",
+   "who": "SEYDOU"
   }
  },
  "26": {
-  "sig": "KADI|Mon fils… ce soir, tu n'es ni fou, ni amoureux… tu es malin #0",
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_tenue_simple_chic_sourire"
+   "key": "bak_tenue_simple_chic_sourire",
+   "who": "BAKARY"
+  },
+  "sig": "KADI|Mon fils… ce soir, tu n'es ni fou, ni amoureux… tu es malin #0"
+ },
+ "28": {
+  "pose": {
+   "key": "fat_tenue_de_soiree_triste",
+   "who": "FATIM"
+  }
+ },
+ "30": {
+  "pose": {
+   "key": "awa_tenue_de_soiree_mepris",
+   "who": "AWA"
   }
  },
  "32": {
-  "sig": "AWA|Je m'en fiche… vraiment ?#1",
   "pose": {
-   "who": "AWA",
-   "key": "awa_bras_croises"
+   "key": "awa_bras_croises",
+   "who": "AWA"
+  },
+  "sig": "AWA|Je m'en fiche… vraiment ?#1"
+ },
+ "34": {
+  "pose": {
+   "key": "mim_choc",
+   "who": "MIMI"
+  }
+ },
+ "43": {
+  "pose": {
+   "key": "bak_explique",
+   "who": "BAKARY"
   }
  },
  "46": {
-  "sig": "|Awa Couture · Nouvelle commande · Fatim : Tenue de fiançaill#1",
   "pose": {
-   "who": "AWA",
-   "key": "awa_tel"
+   "key": "awa_tel",
+   "who": "AWA"
+  },
+  "sig": "|Awa Couture · Nouvelle commande · Fatim : Tenue de fiançaill#1"
+ },
+ "47": {
+  "pose": {
+   "key": "awa_v_action_659144_07",
+   "who": "AWA"
   }
  },
  "48": {
-  "sig": "AWA|Une tenue de fiançailles… pour quand Bakary va la demander ?#0",
   "pose": {
-   "who": "AWA",
-   "key": "awa_tel"
-  }
+   "key": "awa_tel",
+   "who": "AWA"
+  },
+  "sig": "AWA|Une tenue de fiançailles… pour quand Bakary va la demander ?#0"
  },
  "49": {
   "pose": {
-   "who": "AWA",
-   "key": "awa_choc"
+   "key": "awa_choc",
+   "who": "AWA"
   },
   "sig": "MIMI|Tantie… vous acceptez ?#0"
  },
  "50": {
   "pose": {
-   "who": "AWA",
-   "key": "awa_choc"
+   "key": "awa_choc",
+   "who": "AWA"
   },
   "sig": "AWA|Accepter… ou refuser ?#0"
+ },
+ "7": {
+  "cadrage": "seul",
+  "pose": {
+   "key": "mou_polo_chic_grand_sourire",
+   "who": "MOUSSA"
+  }
  }
 }
