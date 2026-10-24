@@ -2,7 +2,26 @@
  "7": {
   "cadrage": "seul"
  },
+ "20": {
+  "acteurs": {
+   "BAKARY": {
+    "dx": -0.15
+   }
+  }
+ },
+ "21": {
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains"
+  }
+ },
  "49": {
+  "pose": {
+   "who": "AWA",
+   "key": "awa_v_action_659144_07"
+  }
+ },
+ "50": {
   "pose": {
    "who": "AWA",
    "key": "awa_v_action_659144_07"
