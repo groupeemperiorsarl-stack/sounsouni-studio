@@ -5,22 +5,25 @@
  "11": {
   "pose": {
    "who": "BAKARY",
-   "key": "bak_tenue_simple_chic_inquiet"
-  }
+   "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains"
+  },
+  "sig": "DIASABI|Offre ! Offre !#1"
  },
  "12": {
   "pose": {
    "who": "BAKARY",
-   "key": "bak_tenue_simple_chic_inquiet"
-  }
+   "key": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains"
+  },
+  "sig": "DIASABI|Offre ! Offre !#2"
  },
  "20": {
   "acteurs": {
    "BAKARY": {
-    "dx": -0.15,
-    "dy": 0.12
+    "dx": 0,
+    "dy": 0.05
    }
-  }
+  },
+  "sig": "BAKARY|Réfléchis, Bakary… réfléchis !#2"
  },
  "21": {
   "pose": {
@@ -34,16 +37,46 @@
    "key": "sey_debout_neutre"
   }
  },
+ "26": {
+  "sig": "KADI|Mon fils… ce soir, tu n'es ni fou, ni amoureux… tu es malin #0",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_tenue_simple_chic_sourire"
+  }
+ },
+ "32": {
+  "sig": "AWA|Je m'en fiche… vraiment ?#1",
+  "pose": {
+   "who": "AWA",
+   "key": "awa_bras_croises"
+  }
+ },
+ "46": {
+  "sig": "|Awa Couture · Nouvelle commande · Fatim : Tenue de fiançaill#1",
+  "pose": {
+   "who": "AWA",
+   "key": "awa_tel"
+  }
+ },
+ "48": {
+  "sig": "AWA|Une tenue de fiançailles… pour quand Bakary va la demander ?#0",
+  "pose": {
+   "who": "AWA",
+   "key": "awa_tel"
+  }
+ },
  "49": {
   "pose": {
    "who": "AWA",
-   "key": "awa_v_action_659144_07"
-  }
+   "key": "awa_choc"
+  },
+  "sig": "MIMI|Tantie… vous acceptez ?#0"
  },
  "50": {
   "pose": {
    "who": "AWA",
-   "key": "awa_v_action_659144_07"
-  }
+   "key": "awa_choc"
+  },
+  "sig": "AWA|Accepter… ou refuser ?#0"
  }
 }
