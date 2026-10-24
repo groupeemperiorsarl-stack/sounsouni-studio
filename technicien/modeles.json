@@ -11,14 +11,14 @@
   }
  },
  "Gemini gemini-3.6-flash": {
-  "sessions": 4,
-  "reussies": 4,
+  "sessions": 5,
+  "reussies": 5,
   "pouces_haut": 0,
   "pouces_bas": 0,
-  "etapes": 8,
+  "etapes": 9,
   "themes": {
    "apercu": 1,
-   "fabrication": 3
+   "fabrication": 4
   }
  },
  "Modèle libre gpt-oss-20b": {
