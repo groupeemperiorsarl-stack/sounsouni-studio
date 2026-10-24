@@ -1,0 +1,164 @@
+TITRE: Les Plans de Bakary – Épisode 20 : Le bouquet
+
+NOUVELLES POSES: Bakary à genoux, tendant le bouquet à deux mains · Tantie Kadi debout, le bouquet dans les mains, souriante · Awa debout, bras croisés, regarde ailleurs
+
+DÉCOR: VILLA_FETE · nuit · ambiance: musique lointaine
+[TENUE BAKARY: tenue simple chic]
+[TENUE MODIBO: chemise chic]
+[TENUE DIASABI: chemise repassée]
+[TENUE MOUSSA: polo chic]
+[TENUE SALI: robe de soiree]
+[TENUE FATIM: tenue_de_soiree]
+[TENUE AWA: tenue_de_soiree]
+[MUSIQUE: joyeuse]
+PLAN: large [Bakary debout bouquet, Fatim debout, Awa debout, Modibo debout, Sali debout, Moussa debout, Diasabi debout, Seydou debout, Kadi debout]
+
+PLAN: 3 s · gros Bakary · {POSE: debout, attrape le bouquet à deux mains}{choc}
+[BRUITAGE: sifflements]
+[BRUITAGE: cris de joie]
+
+SEYDOU (grand_sourire · regarde: Bakary · voix: crie)
+Waouh ! {grand_sourire} Bakary a le bouquet !
+
+MODIBO (rire · regarde: Bakary · voix: crie)
+Ooooh ! {rire} Bakarin, c'est ton année !
+
+FATIM (grand_sourire · regarde: Bakary · voix: crie)
+Le bouquet est chez mon cavalier ! {grand_sourire} Chez mon cavalier !
+
+PENSÉE AWA (moue · regarde: Bakary)
+Je l'ai jeté… et il est tombé chez lui. {moue} Bravo, Awa.
+
+PLAN: gros [Moussa debout]
+
+MOUSSA (grand_sourire · regarde: caméra · voix: crie)
+Écoutez tous ! Chez nous, celui qui attrape le bouquet doit l'offrir à la femme de son choix ! {fier} Devant tout le monde !
+
+PENSÉE MOUSSA (taquin · regarde: Bakary)
+Kôrô… {clin_oeil} je te donne ta chance.
+
+[BRUITAGE: applaudissements]
+SEYDOU (grand_sourire · regarde: Bakary · voix: crie)
+Offre ! Offre ! {grand_sourire} Offre !
+
+DIASABI (grand_sourire · regarde: Bakary · voix: crie)
+Offre ! {grand_sourire} Offre !
+
+PLAN: 3 s · gros Bakary · {POSE: debout, attrape le bouquet à deux mains}{inquiet}
+[MUSIQUE: suspense]
+[SILENCE 2 s: battements de coeur]
+
+PLAN: large [Bakary debout bouquet, Fatim debout, Awa debout]
+
+PLAN: 2 s · gros Fatim · {grand_sourire}
+
+FATIM (grand_sourire · regarde: Bakary · voix: normal)
+C'est pour moi, n'est-ce pas ? {grand_sourire} Donne, donne !
+
+PLAN: 2 s · gros Awa · {POSE: debout, bras croisés, regarde ailleurs}{froide}
+
+PENSÉE BAKARY (inquiet · regarde: caméra)
+Si je le donne à Fatim… je mens. {inquiet} Si je le donne à Awa… elle va me tuer devant tout le monde.
+
+PENSÉE BAKARY (pensif · regarde: caméra)
+Réfléchis, Bakary… {idee} réfléchis !
+
+PLAN: large [Bakary debout bouquet, Kadi debout, Fatim debout, Awa debout]
+[BRUITAGE: pas]
+
+PLAN: 3 s · gros Bakary · {POSE: à genoux, tendant le bouquet à deux mains}{sourire}
+
+BAKARY (sourire · regarde: Kadi · voix: normal)
+Tantie Kadi… pour la plus belle femme de la soirée. {sourire} Celle qui me donne toujours les bons conseils.
+
+[BRUITAGE: cris de joie]
+[BRUITAGE: applaudissements]
+[BRUITAGE: sifflements]
+[RÉACTION MODIBO: rire]
+[RÉACTION SEYDOU: rire]
+[RÉACTION MOUSSA: rire]
+
+PLAN: 3 s · gros Kadi · {POSE: debout, le bouquet dans les mains, souriante}{grand_sourire}
+
+KADI (grand_sourire · regarde: Bakary · voix: lentement)
+Mon fils… ce soir, tu n'es ni fou, ni amoureux… {rire} tu es malin !
+
+PLAN: 2 s · gros Fatim · {triste}
+
+PENSÉE FATIM (triste · regarde: Bakary)
+Il ne voulait pas me gêner devant tout le monde… {sourire} c'est tout.
+
+PLAN: 2 s · gros Awa · {POSE: debout, bras croisés, regarde ailleurs}{froide}
+
+PENSÉE AWA (froide · regarde: loin)
+Il ne me l'a pas donné… Tant mieux. {mepris} Je m'en fiche.
+
+PENSÉE AWA (pensif · regarde: Bakary)
+Je m'en fiche… {pensif} vraiment ?
+
+DÉCOR: ATELIER · matin · ambiance: calme
+[TENUE AWA: normale]
+PLAN: large [Awa debout, Mimi debout]
+[BRUITAGE: notification]
+[BRUITAGE: notification]
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Awa Couture · Nouvelles commandes · 12 commandes : « Je veux la même tenue que la reine du mariage ! »]
+
+MIMI (grand_sourire · regarde: Awa · voix: crie)
+Tantie ! Douze commandes ! {grand_sourire} Tout le monde veut votre tenue du mariage !
+
+[BRUITAGE: notification]
+[ÉCRAN 4 s: Awa Couture · Commande · El Hadj Bourama : 3 tenues pour mes épouses]
+
+AWA (fiere · regarde: Mimi · voix: normal)
+Ha ! El Hadj… {fiere} il a vraiment salué ses femmes pour moi.
+
+[BRUITAGE: notification]
+[ÉCRAN 4 s: Awa Couture · Commande · Abdoul : 20 tenues de cérémonie pour le ministère]
+
+MIMI (choc · regarde: Awa · voix: crie)
+Vingt tenues pour le ministère ! {choc} Abdoul a commandé sur Sounsouni !
+
+AWA (fiere · regarde: caméra · voix: normal)
+Comme tout le monde. {sourire} Je le lui avais dit.
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc]
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 3 s: Sounsouni · Kiosque de Bakary · 8 commandes : « Le thé du mariage »]
+
+MODIBO (rire · regarde: Bakary · voix: normal)
+Bakarin ! {rire} Tout Bamako veut boire le thé de l'homme au bouquet !
+
+BAKARY (grand_sourire · regarde: Modibo · voix: normal)
+Alors on fait chauffer la théière, Van ! {grand_sourire} Sounsouni ne dort jamais !
+
+DÉCOR: ATELIER · matin · ambiance: calme
+PLAN: gros [Awa debout, téléphone]
+[BRUITAGE: notification]
+[MUSIQUE: suspense]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Awa Couture · Nouvelle commande · Fatim : Tenue de fiançailles · Note : « Pour le jour où Bakary me demandera ❤️ »]
+
+PLAN: 3 s · très gros Awa · {choc}
+[SILENCE 2 s]
+
+MIMI (surpris · regarde: Awa · voix: chuchote)
+Tantie… {surpris} vous acceptez ?
+
+PENSÉE AWA (inquiet · regarde: caméra)
+Accepter… ou refuser ?
+[BRUITAGE: battements de coeur]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, une belle soirée peut remplir tout un carnet de commandes. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
