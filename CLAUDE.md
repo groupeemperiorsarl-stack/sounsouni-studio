@@ -73,6 +73,11 @@
 - **Objets** (brochette, téléphone, larmes…) : jamais montrés si le script ne le demande pas. Objet écrit dans le PLAN (`[Karim, téléphone]`) : toujours montré.
 - **Postures** respectées (assis reste assis), décor cohérent dans une scène, décors sans figurants, bouches ouvertes sans que les yeux bougent.
 
+## Cycle « Appliquer » (24/10/2026, règle d'Issa)
+- Page : après « Appliquer » (relecture ou 💬 Discuter), l'aperçu se relance **tout seul** ; il refait la relecture et, s'il manque des images (`manques.json`), la fiche Gemini. Une note seule ne relance rien.
+- Chaque correction de plan est gardée avec sa **signature** (`sig` = dernière réplique + écart) ; `__main__.recaler` la remet sur le bon plan si le script a bougé.
+- Nouvel aperçu : `fichiers.sh` efface l'ancien `manques.json` et l'ancienne `relecture.json` (sinon fiches et relectures périmées).
+
 ## Où on en est (22/10/2026)
 - Ép. 18 « L'avis » corrigé et monté à la main par Claude (exception demandée par Issa) ; corrections transformées en règles : contours blancs (`render.sans_frange`), objet non demandé −16, pas de geste « gifle » sans demande (étiquette `gifle`), arrivées jamais montrées avant (`Stage.ici`), gros plan muet = émotion de la réplique suivante, émotion sans image → visage calme + `manques.json` (+ fiche Gemini), `bouche_fixe`, `bouche_perso`, RUE : `rangs_decor`, debout ≠ banc / course.
 - Relecteur automatique après chaque aperçu (`relecture.yml`, `.github/scripts/relecture.py`, `docs/RELECTEUR.md`) : histoire (Groq puis Gemini) + images (Gemini) → `relecture.json` + panneau « 🔎 Relecture » de la page (v22).

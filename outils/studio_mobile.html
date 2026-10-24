@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v40</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v41</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -246,7 +246,7 @@ async function fichiers(n,z){let ls;try{ls=(await api('/repos/'+R+'/contents/'+n
         const rel=v.querySelector('.rel');rel.onclick=async()=>{await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'relecture'})});rel.outerHTML='<p class="msg">✅ Relecture relancée (environ 3 minutes).</p>'};
         const ok=v.querySelector('.ok');if(ok)ok.onclick=async()=>{const res=v.querySelector('.res');res.innerHTML='<p class="msg">Application…</p>';
           try{const i=await api('/repos/'+R+'/issues/'+n),ch=[...v.querySelectorAll('[data-k]')].filter(x=>x.checked).map(x=>A[+x.dataset.k]);const fa=await appliquer(i,ch,res);
-            res.innerHTML='<p class="msg">'+(fa.some(x=>x.startsWith('❌'))?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(fa.join(' · '))+'. Relancez maintenant l\'aperçu (bouton 👁 Fabriquer l\'aperçu) : le relecteur repassera tout seul.</p>'}
+            res.innerHTML='<p class="msg">'+(fa.some(x=>x.startsWith('❌'))?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(fa.join(' · '))+'.</p><p class="msg">'+(fa.some(x=>/relancé/.test(x))?'⏳ L\'aperçu se refait tout seul avec ces corrections (environ 5 minutes). Ensuite, sans rien faire : nouvelle relecture, et s\'il manque des images, la fiche Gemini arrive ici.':'Rien n\'a changé : aucun aperçu relancé.')+'</p>';ok.remove();etatReel&&etatReel()}
           catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
       catch(e){v.innerHTML='<p class="msg">❌ Relecture illisible : '+esc(e.message)+'</p>'}
       return}
@@ -565,7 +565,8 @@ async function appliquer(i,acts,out){const n=i.number,fait=[];
   }catch(e){fait.push('❌ script : '+e.message)}
   try{
   const pl=acts.filter(a=>['plan','pose','acteur','duree'].includes(a.type));if(pl.length){const f='demandes/episode_'+n+'.choix.json';const ch=JSON.parse(await ghLire(f)||'{}');
-    for(const a of pl){const c=ch[String(a.plan)]=ch[String(a.plan)]||{};if(a.type==='plan')c.cadrage=a.cadrage;if(a.type==='pose')c.pose={who:a.qui.toUpperCase(),key:a.pose};if(a.type==='duree')c.duree=a.secondes;
+    let PR=[];try{PR=JSON.parse(await (await brut(n+'/plans_resume.json')).text())}catch(e){}   // signature du plan : la correction suit son plan si le script change
+    for(const a of pl){const c=ch[String(a.plan)]=ch[String(a.plan)]||{};const T=x=>String(x.texte||'').trim().split(/\s+/).join(' ').slice(0,60);let j=+a.plan;while(j>0&&PR[j]&&!T(PR[j]))j--;if(PR[j]&&PR[a.plan])c.sig=(PR[j].parle||'')+'|'+T(PR[j])+'#'+(a.plan-j);if(a.type==='plan')c.cadrage=a.cadrage;if(a.type==='pose')c.pose={who:a.qui.toUpperCase(),key:a.pose};if(a.type==='duree')c.duree=a.secondes;
       if(a.type==='acteur'){c.acteurs=c.acteurs||{};const q=c.acteurs[a.qui.toUpperCase()]=c.acteurs[a.qui.toUpperCase()]||{};for(const k of ['dx','dy','taille','retourner','cacher'])if(a[k]!=null)q[k]=a[k]}}
     await ghEcrire(f,u8b64(JSON.stringify(ch,null,1)),'Corrections de plans (demande #'+n+')');fait.push(pl.length+' correction(s) de plans')}
   }catch(e){fait.push('❌ plans : '+e.message)}
@@ -584,7 +585,11 @@ async function appliquer(i,acts,out){const n=i.number,fait=[];
     await api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:'essai code '+br})});fait.push('code mis sur une copie à part ('+br+'), essai lancé')}
   }catch(e){fait.push('❌ code : '+e.message)}
   try{
-  const rl=acts.filter(a=>a.type==='relancer'||a.type==='fiche');const dire=async t=>api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});
+  const dire=async t=>api('/repos/'+R+'/issues/'+n+'/comments',{method:'POST',body:JSON.stringify({body:t})});
+  let rl=acts.filter(a=>a.type==='relancer'||a.type==='fiche');const change=fait.some(x=>/script modifié|correction\(s\) de plans|prononciation|réglage/.test(x));
+  // règle d'Issa (24/10/2026) : après « Appliquer », l'aperçu se refait tout seul ; il refait ensuite la relecture et, s'il manque des images, la fiche Gemini
+  if(change&&!rl.some(a=>a.type==='relancer'))rl=[{type:'relancer',quoi:'apercu'}];
+  if(rl.some(a=>a.type==='relancer'&&a.quoi!=='video'))rl=rl.filter(a=>a.type!=='fiche');
   for(const a of rl){if(a.type==='fiche'){await dire('fiche');fait.push('fiche Gemini lancée');continue}
     await dire(a.quoi==='video'?'vidéo':a.quoi==='planches'?('planches'+(a.de&&a.a?' '+a.de+'-'+a.a:'')):'aperçu');fait.push(a.quoi+' relancé')}
   }catch(e){fait.push('❌ relance : '+e.message)}
@@ -615,7 +620,7 @@ function discuter(i,d,scr){const box=d.querySelector('.chat'),key='ss_chat_'+i.n
         '<div class="row"><button class="ok">✅ Appliquer</button><button class="sec non">✖ Rien</button></div><div class="res"></div>';
       acts.querySelector('.non').onclick=()=>acts.innerHTML='';
       acts.querySelector('.ok').onclick=async()=>{const ch=[...acts.querySelectorAll('[data-k]')].filter(x=>x.checked).map(x=>A[+x.dataset.k]);const res=acts.querySelector('.res');res.innerHTML='<p class="msg">Application…</p>';
-        try{const f=await appliquer(i,ch,res);const bad=f.some(x=>x.startsWith('❌'));res.innerHTML='<p class="msg">'+(bad?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(f.join(' · '))+'.'+(bad&&/403|404/.test(f.join(''))?' Vérifiez que votre jeton GitHub a « Contents : Read and write ».':'')+(ch.some(a=>a.type==='relancer')?' Le résultat arrivera ici.':' Pensez à relancer l\'aperçu pour voir le résultat.')+'</p>'}catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
+        try{const f=await appliquer(i,ch,res);const bad=f.some(x=>x.startsWith('❌'));res.innerHTML='<p class="msg">'+(bad?'⚠️ En partie seulement : ':'✅ Fait : ')+esc(f.join(' · '))+'.'+(bad&&/403|404/.test(f.join(''))?' Vérifiez que votre jeton GitHub a « Contents : Read and write ».':'')+(f.some(x=>/relancé/.test(x))?' L\'aperçu se refait tout seul (environ 5 minutes), puis relecture et fiche Gemini s\'il manque des images.':'')+'</p>'}catch(e){res.innerHTML='<p class="msg">❌ '+esc(e.message)+'</p>'}}}
     catch(e){prog('❌ '+e.message)}bt.disabled=false}}
 // ---------------- Renvoyer les images Gemini depuis le téléphone ----------------
 function retourGemini(i,d){const inp=d.querySelector('.g-f'),lst=d.querySelector('.g-l'),msg=d.querySelector('.g-m');let F=[];

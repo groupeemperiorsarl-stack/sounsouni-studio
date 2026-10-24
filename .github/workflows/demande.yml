@@ -16,7 +16,7 @@ jobs:
         if: steps.s.outputs.mode != 'rien'
         run: |
           git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
-          git add demandes && (git commit -m "Script de la demande #${{ github.event.issue.number }}" && git push || true)
+          git add demandes && { git commit -m "Script de la demande #${{ github.event.issue.number }}" && for k in 1 2 3 4 5; do git pull -q --rebase --autostash && git push -q && break; sleep $((RANDOM % 8 + 3)); done || true; }   # deux demandes en même temps : on réessaie (sinon le script n'arrive pas, ép. 22 le 24/10)
       - name: Lancer
         if: steps.s.outputs.mode != 'rien'
         env: { GH_TOKEN: "${{ github.token }}" }

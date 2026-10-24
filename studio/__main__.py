@@ -13,6 +13,26 @@ def versions(final, log):
         import publication
         for f in publication.fabriquer_versions(final): log(f'version de publication : {os.path.basename(f)}')
     except Exception as e: log(f'versions de publication impossibles : {e}')
+def sig(shots, i):
+    """Signature d'un plan : la dernière réplique dite jusqu'à lui (qui + début du texte) et l'écart en plans.
+    Une correction notée « plan 12 » retrouve ainsi son plan même si le script a changé avant lui (même calcul dans la page Studio mobile)."""
+    def t(s): return ' '.join(str(((s.get('line') or {}).get('text') if isinstance(s.get('line'), dict) else '') or s.get('text') or s.get('title') or '').split())[:60]
+    j = i
+    while j > 0 and not t(shots[j]): j -= 1
+    return f"{shots[j].get('who') or ''}|{t(shots[j])}#{i - j}"
+def recaler(choix, meta, ev, log):
+    """Corrections avec signature (page Studio mobile) : si les numéros de plans ont bougé (script modifié), chaque correction suit son plan."""
+    if not any(isinstance(c, dict) and c.get('sig') for c in choix.values()): return choix
+    import copy
+    shots, _ = director.build(meta, copy.deepcopy(ev), lambda m: None, choix={}); director.MANQUES.clear()
+    S = [sig(shots, j) for j in range(len(shots))]; neuf = {}
+    for k, c in choix.items():
+        g = c.get('sig') if isinstance(c, dict) else None
+        if not g or not str(k).isdigit() or (int(k) < len(S) and S[int(k)] == g): neuf.setdefault(k, c); continue
+        ou = [j for j, x in enumerate(S) if x == g]
+        if not ou: log(f'correction du plan {k} oubliée : ce plan n\'existe plus (script modifié)'); continue
+        j = min(ou, key=lambda j: abs(j - int(k))); neuf[str(j)] = {**neuf.get(str(j), {}), **c}; log(f'correction du plan {k} → plan {j} (script modifié)')
+    return neuf
 def resume(shots, out):
     """Liste minutée des plans (plans_resume.json), lue par l'assistant de secours : « à 1:20 » = quel plan, qui, quelle pose."""
     def _qui(s): return [{'qui': x['who'], 'pose': x.get('key'), 'x': round(x.get('x', 0) / 1080, 2), 'taille': round(x.get('h', 0) / 1920, 2), 'retourne': bool(x.get('flip'))} for x in s.get('actors', []) if x.get('who')]
@@ -68,6 +88,7 @@ def main():
     choix = json.load(open(cpath, encoding='utf-8')) if os.path.exists(cpath) else {}
     if choix: log(f'choix d\'Issa appliqués : {len(choix)} plan(s) ({os.path.basename(cpath)})')
     lines = voices.run(ev, director.CAT, work, log)
+    choix = recaler(choix, meta, ev, log)
     shots, tot = director.build(meta, ev, log, choix=choix, variantes=a.planches)
     if director.MANQUES:   # émotions sans image : visage calme à la place ; liste gardée pour le relecteur et la fiche Gemini
         json.dump(sorted(director.MANQUES), open(os.path.join(out, 'manques.json'), 'w'), ensure_ascii=False); log('images manquantes (visage calme à la place) : ' + ', '.join(f'{c} {e} ({p})' for c, e, p in sorted(director.MANQUES)))
