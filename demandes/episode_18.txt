@@ -1,0 +1,169 @@
+TITRE: Les Plans de Bakary – Épisode 22 : La vérité
+
+DÉCOR: CABINE · soir · ambiance: rue calme
+PLAN: deux [Fatim debout, Bakary debout]
+
+BAKARY (serieux · regarde: Fatim · voix: lentement)
+Fatim… je dois te dire la vérité.
+
+FATIM (sourire · regarde: Bakary · voix: normal)
+Tu vas me demander ? {tendre} Déjà ?
+
+BAKARY (triste · regarde: bas · voix: normal)
+Non, Fatim. {soupir} Je ne vais pas te demander. Ni demain, ni plus tard.
+[RÉACTION FATIM: triste]
+[MUSIQUE: triste]
+
+BAKARY (pardon · regarde: Fatim · voix: normal)
+Tu es gentille. Tu es la plus gentille du quartier. Mais mon cœur… il est déjà pris.
+
+FATIM (triste · regarde: Bakary · voix: en pleurant)
+Pris ? Par qui ?
+
+BAKARY (non · regarde: bas · voix: chuchote)
+Ça, je ne peux pas le dire. {secoue_tete} Pardon, Fatim.
+
+FATIM (triste · regarde: Bakary · voix: en pleurant)
+Alors pourquoi tu es venu au mariage avec moi ?
+
+BAKARY (pardon · regarde: Fatim · voix: normal)
+Parce que tu me l'as demandé… et je ne sais pas dire non. C'est mon défaut.
+
+PLAN: gros [Fatim debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Tenue de fiançailles · [Annuler la commande]]
+[BRUITAGE: clic]
+[ÉCRAN 3 s: Commande annulée ✔]
+
+FATIM (triste · regarde: bas · voix: chuchote)
+Va-t'en, Bakary. S'il te plaît.
+
+PLAN: 2 s · large [Bakary de dos, Fatim debout]
+[BRUITAGE: pas]
+[MUSIQUE: suspense]
+
+DÉCOR: ATELIER · soir · ambiance: grillons
+PLAN: large [Awa assis, Mimi assis]
+PLAN: 2 s · gros Awa · {coud}
+[BRUITAGE: notification]
+
+PLAN: gros [Awa assis, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 5 s: Awa Couture · Commande annulée par la cliente · Fatim · Tenue de fiançailles]
+
+AWA (surpris · regarde: téléphone · voix: normal)
+Annulée ?
+
+PENSÉE AWA (pensif · regarde: téléphone)
+Elle a annulé sa tenue de fiançailles… {sourire} Alors il ne lui a pas demandé.
+
+MIMI (sourire_malin · regarde: Awa · voix: normal)
+Tantie… {sourire_malin} vous souriez encore.
+
+AWA (froide · regarde: Mimi · voix: normal)
+Une cliente de moins. Pourquoi je sourirais ?
+[RÉACTION MIMI: rire_retenu]
+
+PENSÉE AWA (gene · regarde: bas)
+Arrête, Awa. Ce n'est pas ton affaire… {rougit} Mais alors pourquoi mon cœur danse ?
+
+DÉCOR: KIOSQUE · nuit · ambiance: grillons
+PLAN: large [Modibo sur le banc]
+[BRUITAGE: pas]
+
+PLAN: large [Modibo sur le banc, Bakary marche]
+
+PLAN: 2 s · gros Bakary · {triste}{s_affale}
+
+BAKARY (triste · regarde: Modibo · voix: lentement)
+C'est fait, Van. Je lui ai tout dit. {soupir} Elle a pleuré.
+
+MODIBO (sage · regarde: Bakary · voix: normal)
+Tu lui as dit la vérité, Bakarin. {sage} Ça fait mal ce soir… mais un jour, elle te dira merci.
+
+BAKARY (inquiet · regarde: Modibo · voix: normal)
+Et si elle me déteste maintenant ?
+
+MODIBO (sourire · regarde: Bakary · voix: normal)
+Fatim ne sait pas détester, Bakarin. {sourire} Elle sait vendre du crédit… et sourire.
+
+DÉCOR: CABINE · matin · ambiance: rue calme
+PLAN: large [Fatim debout]
+PLAN: 2 s · gros Fatim · {triste}
+[BRUITAGE: pas]
+
+PLAN: large [Fatim debout, Sali marche]
+
+SALI (sourire · regarde: Fatim · voix: normal)
+I ni sogoma, Fatim.
+
+FATIM (triste · regarde: Sali · voix: chuchote)
+I ni sogoma, Sali.
+
+PLAN: deux [Sali debout, Fatim debout]
+
+SALI (offre · regarde: Fatim · voix: normal)
+Tiens. Des beignets chauds. {serieux} Mimi m'a tout raconté.
+
+PLAN: objet beignets
+
+SALI (serieux · regarde: Fatim · voix: lentement)
+Un homme qui te dit la vérité en face, c'est rare. Garde ton cœur pour celui qui le mérite.
+
+FATIM (sourire · regarde: Sali · voix: normal)
+Tes beignets sont meilleurs que les hommes, Sali.
+[RÉACTION SALI: taquin]
+
+FATIM (pensif · regarde: Sali · voix: normal)
+Tu crois que j'ai été bête, Sali ?
+
+SALI (serieux · regarde: Fatim · voix: normal)
+Non. Tu as été sincère. {sourire} Ce n'est pas pareil.
+[BRUITAGE: pas]
+
+PLAN: large [Fatim debout, Sali debout, Diasabi court]
+
+DIASABI (salue · regarde: caméra · voix: normal)
+Aw ni tchié !
+
+DIASABI (grand_sourire · regarde: Fatim · voix: normal)
+Fatim ! Une carte de mille, s'il te plaît. {grand_sourire} Alors, les fiançailles, c'est pour quand ? À Bobo, on dit…
+[RÉACTION FATIM: triste]
+[RÉACTION SALI: serieux]
+[SILENCE 2 s: grillon]
+
+FATIM (triste · regarde: bas · voix: en pleurant)
+Il n'y a pas de fiançailles.
+
+SALI (serieux · regarde: Diasabi · voix: crie)
+Diasabi ! {pointe} Toi, tu viens avec moi. Tout de suite !
+
+DIASABI (gene · regarde: Sali · voix: normal)
+Mais… je voulais aider, moi !
+[BRUITAGE: pas]
+
+PLAN: large [Fatim debout]
+[MUSIQUE: suspense]
+
+PENSÉE FATIM (pensif · regarde: loin)
+Son cœur est déjà pris… Mais par qui ?
+
+PENSÉE FATIM (pensif · regarde: loin)
+Le haut-parleur… Elle qui ne voulait pas le surveiller… Le bouquet qu'elle a jeté… et qui est tombé chez lui…
+
+PENSÉE FATIM (moue · regarde: loin)
+Non… ce n'est pas possible…
+
+PLAN: 3 s · très gros Fatim · {pensif}
+
+FATIM (pensif · regarde: loin · voix: chuchote)
+Awa ?
+[BRUITAGE sur "Awa": tonnerre]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, une commande peut s'annuler en un clic. Un cœur, c'est plus compliqué. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
