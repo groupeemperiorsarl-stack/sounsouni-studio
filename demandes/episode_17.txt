@@ -39,7 +39,7 @@ PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
 
 PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Mimi debout]
 
-MIMI (sourire · regarde: caméra · voix: normal)
+MIMI (sourire · regarde: Bakary · voix: normal)
 Aw ni tchié !
 
 BAKARY (sourire · regarde: Mimi · voix: normal)
@@ -105,7 +105,7 @@ PLAN: large [Awa debout, Mimi assis]
 
 PLAN: large [Awa debout, Mimi assis, Fatim debout]
 
-FATIM (joie · regarde: caméra · voix: normal)
+FATIM (joie · regarde: Awa · voix: normal)
 Aw ni tchié !
 
 MIMI (timide · regarde: Fatim · voix: normal)
@@ -127,7 +127,7 @@ Dis-moi, toi qui es juste en face… tu crois qu'il m'aime, Bakary ?
 AWA (froide · regarde: bas · voix: normal)
 Moi, je couds des tenues. Pas des cœurs.
 
-PENSÉE AWA (colere · regarde: Fatim)
+PENSÉE AWA (triste · regarde: bas)
 Pourquoi ça me fait mal d'entendre son nom dans sa bouche ? Pourquoi ?
 
 FATIM (sourire · regarde: Awa · voix: normal)
@@ -139,13 +139,19 @@ Timide… oui.
 FATIM (joie · regarde: téléphone · voix: normal)
 Je paie tout de suite sur Sounsouni !
 [BRUITAGE: clic]
-[BRUITAGE: notification]
+
+FATIM (sourire · regarde: Awa · voix: normal)
+Voilà, c'est payé ! Merci Awa, à demain pour la suite !
+[BRUITAGE: talons]
 
 PLAN: gros [Awa debout, téléphone]
+[BRUITAGE: notification]
+
 PLAN: objet téléphone
 [ÉCRAN 4 s: Awa Couture · Paiement reçu ✔ · Fatim · Tenue de fiançailles]
 
-PLAN: 3 s · très gros Awa · {triste}
+PENSÉE AWA (triste · regarde: téléphone)
+Elle a payé… Je ne peux plus reculer.
 
 DÉCOR: KIOSQUE · après-midi · ambiance: rue calme
 PLAN: large [Bakary debout, Modibo sur le banc]
