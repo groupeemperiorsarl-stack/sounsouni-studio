@@ -163,7 +163,7 @@ MODIBO (sourire · regarde: Bakary · voix: normal)
 Va, Bakarin. {sage} Je garde le kiosque.
 [MUSIQUE: suspense]
 
-DÉCOR: CABINE · soir · ambiance: rue calme
+DÉCOR: KIOSQUE · soir · ambiance: rue calme
 PLAN: large [Fatim debout]
 [BRUITAGE: pas]
 
