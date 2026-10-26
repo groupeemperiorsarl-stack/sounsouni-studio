@@ -18,11 +18,13 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
 - 2026-10-22 · Claude · Réplique « Je… je… » prise pour une réplique inventée → mots trop courts → ne compter que les mots de 3 lettres et plus.
 - 2026-10-22 · Claude · Un personnage absent du décor qui parle → il est mis « au téléphone » (écran d'appel), jamais dans le décor.
+- 2026-10-26 · Gemini · Relecture anormalement longue (10-15 min) → Échec de validation JSON (Erreur 400) sur le modèle principal → Attendre le basculement automatique vers le modèle suivant sans interrompre.
 
 ## ia
 - 2026-10-22 · Claude · Gemini 503 / « surchargé » → les modèles gratuits changent souvent de nom → essayer la liste des modèles « flash » l'un après l'autre, et attendre 30 s entre deux tours.
 - 2026-10-22 · Claude · Modèle libre sur la machine : les fichiers tout prêts de llama.cpp ne sont plus publiés → le compiler depuis les sources ; réponse longue coupée par Node après 5 min → lire la réponse petit à petit (streaming).
 - 2026-10-23 · Gemini · Quota journalier Gemini épuisé → limite de l'offre gratuite → attendre le reset de 8h du matin (heure Bamako) ou changer de modèle.
+- 2026-10-26 · Gemini · L'outil `regarder` échoue sur un fichier technique → Indisponibilité temporaire ou JSON mal formé → Consulter le `journal` de la fabrication pour voir le texte brut produit par l'étape.
 
 ## images
 - 2026-10-22 · Claude · LivePortrait plante sans « onnx » → paquet manquant → ajouté à l'installation (studio/lp/install.sh).

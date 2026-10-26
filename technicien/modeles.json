@@ -50,5 +50,15 @@
    "fabrication": 1,
    "images": 1
   }
+ },
+ "Gemini gemini-3-flash-preview": {
+  "sessions": 1,
+  "reussies": 1,
+  "pouces_haut": 0,
+  "pouces_bas": 0,
+  "etapes": 4,
+  "themes": {
+   "relecture": 1
+  }
  }
 }
