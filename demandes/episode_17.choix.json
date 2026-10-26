@@ -1,0 +1,56 @@
+{
+ "9": {
+  "sig": "AWA|Quoi, Bakary ? Bakary, c'est le vendeur de thé d'en face. C'#0",
+  "pose": {
+   "who": "AWA",
+   "key": "awa_assis_froide"
+  }
+ },
+ "26": {
+  "sig": "MODIBO|Bakarin. Écoute-moi bien. Fatim est une fille bien. Si elle #0",
+  "pose": {
+   "who": "DIASABI",
+   "key": "dia_debout"
+  }
+ },
+ "35": {
+  "sig": "FATIM|Aw ni tchié !#0",
+  "pose": {
+   "who": "FATIM",
+   "key": "fat_salue"
+  }
+ },
+ "44": {
+  "sig": "AWA|Pourquoi ça me fait mal d'entendre son nom dans sa bouche ? #0",
+  "pose": {
+   "who": "AWA",
+   "key": "awa_bras_croises"
+  }
+ },
+ "49": {
+  "sig": "|Awa Couture · Paiement reçu ✔ · Fatim · Tenue de fiançailles#1",
+  "pose": {
+   "who": "AWA",
+   "key": "awa_inquiete"
+  }
+ },
+ "54": {
+  "sig": "MODIBO|Va, Bakarin. Je garde le kiosque.#2",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_marche"
+  },
+  "acteurs": {
+   "FATIM": {
+    "taille": 1.35
+   }
+  }
+ },
+ "57": {
+  "sig": "BAKARY|Fatim… moi aussi, je dois te dire quelque chose.#0",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_supplie"
+  }
+ }
+}
