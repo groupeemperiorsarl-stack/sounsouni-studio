@@ -1,4 +1,11 @@
 {
+ "6": {
+  "sig": "AWA|Awa Couture ne refuse jamais une cliente.#0",
+  "pose": {
+   "who": "AWA",
+   "key": "awa_assis_fier"
+  }
+ },
  "9": {
   "sig": "AWA|Quoi, Bakary ? Bakary, c'est le vendeur de thé d'en face. C'#0",
   "pose": {
@@ -44,6 +51,13 @@
    "FATIM": {
     "taille": 1.35
    }
+  }
+ },
+ "55": {
+  "sig": "MODIBO|Va, Bakarin. Je garde le kiosque.#2",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_marche"
   }
  },
  "57": {
