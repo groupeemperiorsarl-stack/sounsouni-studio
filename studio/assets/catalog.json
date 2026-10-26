@@ -7771,7 +7771,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mim_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_surpris": {
    "char": "DIASABI",
@@ -7789,7 +7790,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
