@@ -7737,6 +7737,59 @@
    "tenue": "tenue_simple_chic",
    "mouth_auto": true,
    "props_auto": {}
+  },
+  "obj_metre_ruban_couturiere": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "metre",
+    "ruban",
+    "couturiere"
+   ],
+   "mouth": false,
+   "size": [
+    2578,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "mim_sourire": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "sourire"
+   ],
+   "mouth": true,
+   "size": [
+    510,
+    1600
+   ],
+   "head_x": 0.375,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mim_debout",
+   "mouth_auto": true
+  },
+  "dia_surpris": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "surpris"
+   ],
+   "mouth": true,
+   "size": [
+    404,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
   }
  },
  "decors": {
