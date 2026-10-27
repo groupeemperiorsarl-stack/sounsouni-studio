@@ -140,7 +140,7 @@
  },
  "47": {
   "pose": {
-   "key": "fat_explique",
+   "key": "fat_triste",
    "who": "FATIM"
   },
   "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#2"
@@ -160,7 +160,7 @@
  },
  "50": {
   "pose": {
-   "key": "fat_explique",
+   "key": "fat_triste",
    "who": "FATIM"
   },
   "sig": "SALI|Diasabi ! Toi, tu viens avec moi. Tout de suite !#0"
