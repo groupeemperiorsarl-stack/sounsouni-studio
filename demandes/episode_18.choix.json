@@ -20,11 +20,32 @@
    "key": "bak_assis_triste"
   }
  },
+ "28": {
+  "sig": "MODIBO|Tu lui as dit la vérité, Bakarin. Ça fait mal ce soir… mais #0",
+  "pose": {
+   "who": "MODIBO",
+   "key": "mod_banc"
+  }
+ },
  "29": {
   "sig": "BAKARY|Et si elle me déteste maintenant ?#0",
   "pose": {
    "who": "BAKARY",
    "key": "bak_assis_triste"
+  }
+ },
+ "30": {
+  "sig": "MODIBO|Fatim ne sait pas détester, Bakarin. Elle sait vendre du cré#0",
+  "pose": {
+   "who": "MODIBO",
+   "key": "mod_banc"
+  }
+ },
+ "31": {
+  "sig": "MODIBO|Fatim ne sait pas détester, Bakarin. Elle sait vendre du cré#1",
+  "pose": {
+   "who": "FATIM",
+   "key": "fat_pensive"
   }
  },
  "34": {
@@ -35,21 +56,21 @@
   }
  },
  "36": {
-  "sig": "SALI|Tiens. Des beignets chauds. Mimi m'a tout raconté.#0",
+  "sig": "SALI|Tiens. Des beignets chauds. Mimi m'a dit pour la commande.#0",
   "pose": {
    "who": "SALI",
    "key": "sal_beignet"
   }
  },
  "38": {
-  "sig": "SALI|Un homme qui te dit la vérité en face, c'est rare. Garde ton#0",
+  "sig": "FATIM|Bakary est venu hier soir… Il m'a dit la vérité en face.#0",
   "pose": {
    "who": "SALI",
    "key": "sal_beignet"
   }
  },
  "40": {
-  "sig": "FATIM|Tes beignets sont meilleurs que les hommes, Sali.#1",
+  "sig": "FATIM|Tes beignets sont meilleurs que les hommes, Sali.#0",
   "pose": {
    "who": "SALI",
    "key": "sal_beignet"
@@ -63,7 +84,7 @@
   }
  },
  "42": {
-  "sig": "SALI|Non. Tu as été sincère. Ce n'est pas pareil.#0",
+  "sig": "FATIM|Tu crois que j'ai été bête, Sali ?#0",
   "pose": {
    "who": "SALI",
    "key": "sal_beignet"
@@ -95,6 +116,13 @@
   "pose": {
    "who": "SALI",
    "key": "sal_beignet"
+  }
+ },
+ "52": {
+  "sig": "DIASABI|Mais… je voulais aider, moi !#0",
+  "pose": {
+   "who": "DIASABI",
+   "key": "dia_gene"
   }
  }
 }
