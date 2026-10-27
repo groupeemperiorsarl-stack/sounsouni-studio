@@ -1,0 +1,100 @@
+{
+ "2": {
+  "sig": "BAKARY|Fatim… je dois te dire la vérité.#0",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_supplie"
+  }
+ },
+ "14": {
+  "sig": "FATIM|Va-t'en, Bakary. S'il te plaît.#1",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_v_tour_650014_06"
+  }
+ },
+ "27": {
+  "sig": "BAKARY|C'est fait, Van. Je lui ai tout dit. Elle a pleuré.#0",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_assis_triste"
+  }
+ },
+ "29": {
+  "sig": "BAKARY|Et si elle me déteste maintenant ?#0",
+  "pose": {
+   "who": "BAKARY",
+   "key": "bak_assis_triste"
+  }
+ },
+ "34": {
+  "sig": "SALI|I ni sogoma, Fatim.#0",
+  "pose": {
+   "who": "FATIM",
+   "key": "fat_pensive"
+  }
+ },
+ "36": {
+  "sig": "SALI|Tiens. Des beignets chauds. Mimi m'a tout raconté.#0",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "38": {
+  "sig": "SALI|Un homme qui te dit la vérité en face, c'est rare. Garde ton#0",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "40": {
+  "sig": "FATIM|Tes beignets sont meilleurs que les hommes, Sali.#1",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "41": {
+  "sig": "FATIM|Tu crois que j'ai été bête, Sali ?#0",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "42": {
+  "sig": "SALI|Non. Tu as été sincère. Ce n'est pas pareil.#0",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "47": {
+  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#2",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "48": {
+  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#3",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "50": {
+  "sig": "SALI|Diasabi ! Toi, tu viens avec moi. Tout de suite !#0",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ },
+ "51": {
+  "sig": "DIASABI|Mais… je voulais aider, moi !#0",
+  "pose": {
+   "who": "SALI",
+   "key": "sal_beignet"
+  }
+ }
+}
