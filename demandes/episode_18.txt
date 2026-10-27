@@ -103,9 +103,12 @@ I ni sogoma, Sali.
 PLAN: deux [Sali debout, Fatim debout]
 
 SALI (offre · regarde: Fatim · voix: normal)
-Tiens. Des beignets chauds. {serieux} Mimi m'a tout raconté.
+Tiens. Des beignets chauds. {serieux} Mimi m'a dit pour la commande.
 
 PLAN: objet beignets
+
+FATIM (triste · regarde: Sali · voix: chuchote)
+Bakary est venu hier soir… Il m'a dit la vérité en face.
 
 SALI (serieux · regarde: Fatim · voix: lentement)
 Un homme qui te dit la vérité en face, c'est rare. Garde ton cœur pour celui qui le mérite.
@@ -123,8 +126,8 @@ Non. Tu as été sincère. {sourire} Ce n'est pas pareil.
 
 PLAN: large [Fatim debout, Sali debout, Diasabi court]
 
-DIASABI (salue · regarde: caméra · voix: normal)
-Aw ni tchié !
+DIASABI (salue · regarde: Fatim · voix: normal)
+Aw ni tché !
 
 DIASABI (grand_sourire · regarde: Fatim · voix: normal)
 Fatim ! Une carte de mille, s'il te plaît. {grand_sourire} Alors, les fiançailles, c'est pour quand ? À Bobo, on dit…
