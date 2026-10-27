@@ -1,128 +1,206 @@
 {
- "2": {
-  "sig": "BAKARY|Fatim… je dois te dire la vérité.#0",
+ "13": {
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_supplie"
+   "key": "fat_explique",
+   "who": "FATIM"
   }
  },
  "14": {
-  "sig": "FATIM|Va-t'en, Bakary. S'il te plaît.#1",
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_v_tour_650014_06"
+   "key": "bak_v_tour_650014_06",
+   "who": "BAKARY"
+  },
+  "sig": "FATIM|Va-t'en, Bakary. S'il te plaît.#1"
+ },
+ "18": {
+  "pose": {
+   "key": "awa_v_action_659144_05",
+   "who": "AWA"
+  }
+ },
+ "2": {
+  "pose": {
+   "key": "bak_supplie",
+   "who": "BAKARY"
+  },
+  "sig": "BAKARY|Fatim… je dois te dire la vérité.#0"
+ },
+ "21": {
+  "pose": {
+   "key": "awa_tel",
+   "who": "AWA"
+  }
+ },
+ "23": {
+  "pose": {
+   "key": "awa_tel",
+   "who": "AWA"
+  }
+ },
+ "24": {
+  "pose": {
+   "key": "mod_banc",
+   "who": "MODIBO"
   }
  },
  "27": {
-  "sig": "BAKARY|C'est fait, Van. Je lui ai tout dit. Elle a pleuré.#0",
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_assis_triste"
-  }
+   "key": "bak_assis_triste",
+   "who": "BAKARY"
+  },
+  "sig": "BAKARY|C'est fait, Van. Je lui ai tout dit. Elle a pleuré.#0"
  },
  "28": {
-  "sig": "MODIBO|Tu lui as dit la vérité, Bakarin. Ça fait mal ce soir… mais #0",
   "pose": {
-   "who": "MODIBO",
-   "key": "mod_banc"
-  }
+   "key": "mod_banc",
+   "who": "MODIBO"
+  },
+  "sig": "MODIBO|Tu lui as dit la vérité, Bakarin. Ça fait mal ce soir… mais #0"
  },
  "29": {
-  "sig": "BAKARY|Et si elle me déteste maintenant ?#0",
   "pose": {
-   "who": "BAKARY",
-   "key": "bak_assis_triste"
-  }
+   "key": "bak_assis_triste",
+   "who": "BAKARY"
+  },
+  "sig": "BAKARY|Et si elle me déteste maintenant ?#0"
  },
  "30": {
-  "sig": "MODIBO|Fatim ne sait pas détester, Bakarin. Elle sait vendre du cré#0",
   "pose": {
-   "who": "MODIBO",
-   "key": "mod_banc"
-  }
+   "key": "mod_banc",
+   "who": "MODIBO"
+  },
+  "sig": "MODIBO|Fatim ne sait pas détester, Bakarin. Elle sait vendre du cré#0"
  },
  "31": {
-  "sig": "MODIBO|Fatim ne sait pas détester, Bakarin. Elle sait vendre du cré#1",
   "pose": {
-   "who": "FATIM",
-   "key": "fat_pensive"
+   "key": "fat_pensive",
+   "who": "FATIM"
+  },
+  "sig": "MODIBO|Fatim ne sait pas détester, Bakarin. Elle sait vendre du cré#1"
+ },
+ "32": {
+  "pose": {
+   "key": "fat_explique",
+   "who": "FATIM"
   }
  },
  "34": {
-  "sig": "SALI|I ni sogoma, Fatim.#0",
   "pose": {
-   "who": "FATIM",
-   "key": "fat_pensive"
+   "key": "fat_pensive",
+   "who": "FATIM"
+  },
+  "sig": "SALI|I ni sogoma, Fatim.#0"
+ },
+ "35": {
+  "pose": {
+   "key": "fat_explique",
+   "who": "FATIM"
   }
  },
  "36": {
-  "sig": "SALI|Tiens. Des beignets chauds. Mimi m'a dit pour la commande.#0",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
-  }
+   "key": "sal_beignet",
+   "who": "SALI"
+  },
+  "sig": "SALI|Tiens. Des beignets chauds. Mimi m'a dit pour la commande.#0"
  },
  "38": {
-  "sig": "FATIM|Bakary est venu hier soir… Il m'a dit la vérité en face.#0",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
-  }
+   "key": "sal_beignet",
+   "who": "SALI"
+  },
+  "sig": "FATIM|Bakary est venu hier soir… Il m'a dit la vérité en face.#0"
  },
  "40": {
-  "sig": "FATIM|Tes beignets sont meilleurs que les hommes, Sali.#0",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
-  }
+   "key": "sal_beignet",
+   "who": "SALI"
+  },
+  "sig": "FATIM|Tes beignets sont meilleurs que les hommes, Sali.#0"
  },
  "41": {
-  "sig": "FATIM|Tu crois que j'ai été bête, Sali ?#0",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
-  }
+   "key": "sal_beignet",
+   "who": "SALI"
+  },
+  "sig": "FATIM|Tu crois que j'ai été bête, Sali ?#0"
  },
  "42": {
-  "sig": "FATIM|Tu crois que j'ai été bête, Sali ?#0",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
+   "key": "sal_beignet",
+   "who": "SALI"
+  },
+  "sig": "FATIM|Tu crois que j'ai été bête, Sali ?#0"
+ },
+ "43": {
+  "pose": {
+   "key": "sal_tel",
+   "who": "SALI"
   }
  },
  "47": {
-  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#2",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
-  }
+   "key": "fat_explique",
+   "who": "FATIM"
+  },
+  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#2"
  },
  "48": {
-  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#3",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
+   "key": "sal_beignet",
+   "who": "SALI"
+  },
+  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#3"
+ },
+ "5": {
+  "pose": {
+   "key": "fat_explique",
+   "who": "FATIM"
   }
  },
  "50": {
-  "sig": "SALI|Diasabi ! Toi, tu viens avec moi. Tout de suite !#0",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
-  }
+   "key": "fat_explique",
+   "who": "FATIM"
+  },
+  "sig": "SALI|Diasabi ! Toi, tu viens avec moi. Tout de suite !#0"
  },
  "51": {
-  "sig": "DIASABI|Mais… je voulais aider, moi !#0",
   "pose": {
-   "who": "SALI",
-   "key": "sal_beignet"
-  }
+   "key": "sal_beignet",
+   "who": "SALI"
+  },
+  "sig": "DIASABI|Mais… je voulais aider, moi !#0"
  },
  "52": {
-  "sig": "DIASABI|Mais… je voulais aider, moi !#0",
   "pose": {
-   "who": "DIASABI",
-   "key": "dia_gene"
+   "key": "dia_gene",
+   "who": "DIASABI"
+  },
+  "sig": "DIASABI|Mais… je voulais aider, moi !#0"
+ },
+ "53": {
+  "pose": {
+   "key": "fat_explique",
+   "who": "FATIM"
+  }
+ },
+ "56": {
+  "pose": {
+   "key": "fat_pensive",
+   "who": "FATIM"
+  }
+ },
+ "7": {
+  "pose": {
+   "key": "fat_explique",
+   "who": "FATIM"
+  }
+ },
+ "9": {
+  "pose": {
+   "key": "fat_explique",
+   "who": "FATIM"
   }
  }
 }
