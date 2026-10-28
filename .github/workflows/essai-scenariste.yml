@@ -1,0 +1,21 @@
+name: Essai du scénariste
+run-name: "Essai du scénariste · ${{ inputs.idee }}"
+on:
+  workflow_dispatch:
+    inputs:
+      idee: { description: "Idée de l'épisode", required: true }
+      numero: { description: "Numéro de l'épisode", default: "suivant" }
+permissions: { contents: read }
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -q numpy pillow
+      - env: { GEMINI_API_KEY: "${{ secrets.GEMINI_API_KEY }}", IDEE: "${{ inputs.idee }}", NUM: "${{ inputs.numero }}" }
+        run: python .github/scripts/scenariste.py "$IDEE" "$NUM" && cat scenario.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: scenario, path: scenario.txt }
