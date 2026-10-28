@@ -24,7 +24,10 @@ def consignes(complet):
 def post(url, data, headers, timeout=600):
     q = urllib.request.Request(url, data=json.dumps(data).encode(), headers={'Content-Type': 'application/json', 'User-Agent': 'sounsouni-studio', **headers})
     for essai in range(3):   # 429 (trop de demandes) / 503 (surchargé) : on attend un peu et on réessaie
-        try: return json.loads(urllib.request.urlopen(q, timeout=timeout).read())
+        try:
+            raw = urllib.request.urlopen(q, timeout=timeout).read()
+            try: return json.loads(raw)
+            except Exception: raise RuntimeError('réponse illisible : ' + raw[:200].decode(errors='ignore'))
         except urllib.error.HTTPError as e:
             b = e.read().decode(errors='ignore')[:300]
             if e.code in (429, 500, 502, 503) and essai < 2 and not re.search(r'per day|daily|quota', b, re.I): print(url.split('/')[2], e.code, '→ nouvel essai dans 30 s'); time.sleep(30); continue
@@ -86,6 +89,8 @@ def ecrire(demande, log=print):
     for nom, f, complet in IA:   # chaque grande IA : d'abord toute la mémoire, puis (si elle refuse la taille) les 3 derniers épisodes en entier
         taches.append((nom, f, complet))
         if complet is True: taches.append((nom, f, 'moyen'))
+    seul = [x.strip().lower() for x in E.get('SEULEMENT', '').split(',') if x.strip()]
+    if seul: taches = [t for t in taches if t[0].lower() in seul]
     for nom, f, complet in taches:
         if complet == 'moyen' and essais and re.search(r'pas de clé|quota|per day|daily', essais[-1], re.I): continue
         try:

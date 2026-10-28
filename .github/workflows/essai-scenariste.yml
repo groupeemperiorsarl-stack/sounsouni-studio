@@ -5,6 +5,7 @@ on:
     inputs:
       idee: { description: "Idée de l'épisode", required: true }
       numero: { description: "Numéro de l'épisode", default: "suivant" }
+      seulement: { description: "Seulement ces IA (ex. GitHub Models,Mistral) ; vide = toutes", default: "" }
 permissions: { contents: read, models: read }
 jobs:
   essai:
@@ -25,6 +26,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           IDEE: ${{ inputs.idee }}
           NUM: ${{ inputs.numero }}
+          SEULEMENT: ${{ inputs.seulement }}
         run: python .github/scripts/scenariste.py "$IDEE" "$NUM"
       - uses: actions/upload-artifact@v4
         if: always()
