@@ -76,6 +76,7 @@
 ## Cycle « Appliquer » (24/10/2026, règle d'Issa)
 - Page : après « Appliquer » (relecture ou 💬 Discuter), l'aperçu se relance **tout seul** ; il refait la relecture et, s'il manque des images (`manques.json`), la fiche Gemini. Une note seule ne relance rien.
 - Chaque correction de plan est gardée avec sa **signature** (`sig` = dernière réplique + écart) ; `__main__.recaler` la remet sur le bon plan si le script a bougé.
+- Choix des planches (28/10) : gardés **par personnage** (`"poses": {"SALI": "sal_beignet"}`, lu par `director.poses_choisies`) avec la signature du plan (`planches.json` → `sigs`) ; le relecteur met aussi la signature dans ses actions. Avant, un choix sur Sali effaçait celui sur Fatim du même plan, et des signatures prises sur un aperçu plus récent envoyaient les choix sur le mauvais plan.
 - Nouvel aperçu : `fichiers.sh` efface l'ancien `manques.json` et l'ancienne `relecture.json` (sinon fiches et relectures périmées).
 
 ## Où on en est (22/10/2026)

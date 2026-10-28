@@ -50,7 +50,7 @@ def questions(shots, sel=None, sujets=('pose', 'cadrage'), deja=None):
         if not auto and i not in sel: continue
         if 'pose' in sujets:
             for a in principaux(s):
-                if auto and deja.get(str(i), {}).get('pose'): continue
+                if auto and a['who'] in director.poses_choisies(deja.get(str(i), {})): continue   # déjà choisi pour ce personnage
                 keys, gap = options_pose(a)
                 if len(keys) < 2 or (auto and gap > DOUTE): continue
                 q = qs.setdefault(('pose', a['who'], tuple(keys)), {'sujet': 'pose', 'who': a['who'], 'plans': [], 'gap': gap,
@@ -104,7 +104,7 @@ def make(shots, out, sel=None, sujets=('pose', 'cadrage'), deja=None, log=print,
     for q in qs:
         for o in q['options']:
             v = var[(q['n'], o['lettre'])]; imgs[(q['n'], o['lettre'])] = zoom(render.draw(v, render.moment(v, q['sujet'] == 'pose')).convert('RGB'), v, q, o)
-    json.dump({'script': script, 'questions': [{k: v for k, v in q.items() if k != 'gap'} for q in qs]}, open(os.path.join(d, 'planches.json'), 'w'), ensure_ascii=False, indent=1)
+    json.dump({'script': script, 'questions': [dict({k: v for k, v in q.items() if k != 'gap'}, sigs={str(p): director.sig(shots, p) for p in q['plans']}) for q in qs]}, open(os.path.join(d, 'planches.json'), 'w'), ensure_ascii=False, indent=1)
     tit = {q['n']: titre(q, shots) for q in qs}
     pngs = pages(qs, tit, imgs, d); page_html(qs, tit, imgs, os.path.join(d, 'planches.html'), os.path.splitext(os.path.basename(script))[0] or 'épisode')
     log(f'planches : {len(qs)} questions → planches/planches.html et {len(pngs)} image(s) planche_N.png')
@@ -188,7 +188,15 @@ def appliquer(reponse, planches_json, choix_path, log=print):
         q = qs.get(int(n)); l = l.upper()
         o = next((o for o in (q or {}).get('options', []) if o['lettre'] == l), None)
         if not o: log(f'choix : question {n} lettre {l} inconnue, ignorée'); continue
-        for p in q['plans']: choix.setdefault(str(p), {})[q['sujet']] = o['valeur']
+        for p in q['plans']:
+            c = choix.setdefault(str(p), {}); g = (q.get('sigs') or {}).get(str(p))
+            if c.get('sig') and g and c['sig'] != g: c.clear()   # ancien choix d'un autre plan (le script a bougé) : remplacé
+            if g: c['sig'] = g
+            v = o['valeur']
+            if q['sujet'] == 'pose' and isinstance(v, dict) and v.get('who'):   # une pose par personnage (sinon un choix sur Sali effaçait celui sur Fatim)
+                c.setdefault('poses', {})[v['who'].upper()] = v['key']
+                if (c.get('pose') or {}).get('who', '').upper() == v['who'].upper(): c.pop('pose')
+            else: c[q['sujet']] = v
         log(f"choix : question {n} → {l} ({o['texte']}) sur le{'s' if len(q['plans']) > 1 else ''} plan{'s' if len(q['plans']) > 1 else ''} {', '.join(map(str, q['plans']))}")
     json.dump(choix, open(choix_path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
     return choix

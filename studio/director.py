@@ -379,15 +379,30 @@ def apply_corrections(shots):
                 if c.get('dx'): a['x'] += float(c['dx']) * 1080
                 if c.get('dy'): a['by'] += float(c['dy']) * 1920
                 if 'retourner' in c: a['flip'] = bool(c['retourner']) != bool(a.get('flip'))
+def sig(shots, i):
+    """Signature d'un plan : la dernière réplique dite jusqu'à lui (qui + début du texte) et l'écart en plans.
+    Une correction notée « plan 12 » retrouve ainsi son plan même si le script a changé avant lui (même calcul dans la page et le relecteur)."""
+    def t(s): return ' '.join(str(((s.get('line') or {}).get('text') if isinstance(s.get('line'), dict) else '') or s.get('text') or s.get('title') or '').split())[:60]
+    j = i
+    while j > 0 and not t(shots[j]): j -= 1
+    return f"{shots[j].get('who') or ''}|{t(shots[j])}#{i - j}"
+def poses_choisies(ch):
+    """{"pose": {"who", "key"}} (ancien format) et {"poses": {"AWA": "awa_tel", …}} : une pose par personnage, jamais l'une qui efface l'autre."""
+    d = {}
+    if isinstance(ch.get('pose'), dict) and ch['pose'].get('who'): d[ch['pose']['who'].upper()] = ch['pose'].get('key')
+    d.update({k.upper(): v for k, v in (ch.get('poses') or {}).items()})
+    return d
 def apply_pose_choices(shots):
-    """Poses choisies par Issa sur les planches : {"12": {"pose": {"who": "BAKARY", "key": "bak_explique"}}}."""
+    """Poses choisies par Issa (planches, relecture, assistant) : {"12": {"poses": {"BAKARY": "bak_explique"}}}.
+    Aussi pour celui qu'on voit de l'épaule (champ / contre-champ) ; jamais sur une vue de dos, une silhouette ou une marche."""
     for idx, ch in CHOIX.items():
-        p = ch.get('pose')
-        if not p or not str(idx).isdigit() or int(idx) >= len(shots) or p.get('key') not in POSES: continue
-        for a in shots[int(idx)].get('actors', []):
-            if a['who'] == p['who'] and not (a.get('fg') or a.get('back') or a.get('silhouette') or a.get('walk')):
-                if meme_tenue(a, p['key']): set_pose(a, p['key'])   # un choix fait avant la tenue de fête n'enlève jamais cette tenue
-                break
+        if not str(idx).isdigit() or int(idx) >= len(shots): continue
+        for who, key in poses_choisies(ch).items():
+            if key not in POSES or POSES[key]['char'] != who: continue
+            for a in shots[int(idx)].get('actors', []):
+                if a['who'] == who and not (a.get('back') or a.get('silhouette') or a.get('walk')):
+                    if meme_tenue(a, key): set_pose(a, key)   # un choix fait avant la tenue de fête n'enlève jamais cette tenue
+                    break
 def build(meta, events, log=print, choix=None, variantes=False):
     """choix : décisions prises sur les planches (par numéro de plan) ; variantes : garder les autres cadrages possibles (pour les planches)."""
     global VARIANTES

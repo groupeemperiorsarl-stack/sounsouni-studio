@@ -7,6 +7,12 @@ from PIL import Image
 
 R = os.environ.get('GITHUB_REPOSITORY', 'groupeemperiorsarl-stack/sounsouni-studio'); N = os.environ.get('ISSUE', '')
 K = os.environ.get('GEMINI_API_KEY', '')
+def sig_plan(plans, i):
+    """Même signature que director.sig (dernière réplique jusqu'au plan + écart), calculée sur plans_resume.json."""
+    t = lambda x: ' '.join(str(x.get('texte') or '').split())[:60]
+    j = i
+    while j > 0 and not t(plans[j]): j -= 1
+    return f"{plans[j].get('parle') or ''}|{t(plans[j])}#{i - j}"
 def req(url, data=None, headers=None, raw=False, timeout=300):
     h = {'User-Agent': 'sounsouni-studio-relecteur/1.0', **(headers or {})}
     if data is not None and not isinstance(data, bytes): data = json.dumps(data).encode(); h.setdefault('Content-Type', 'application/json')
@@ -118,6 +124,7 @@ def main():
                 if not p or p['char'] != str(a.get('qui', '')).upper() or 'gifle' in p.get('tags', []): continue
             if a.get('type') in ('plan', 'pose', 'acteur', 'duree') and not (isinstance(a.get('plan'), int) and 0 <= a['plan'] < nplans): continue
             if a.get('type') == 'code': continue   # le relecteur ne touche pas au code
+            if a.get('type') in ('plan', 'pose', 'acteur', 'duree'): a['sig'] = sig_plan(plans, a['plan'])   # la correction suit son plan même si l'aperçu change ensuite
             ok.append(a)
         pb['actions'] = ok
     res['modele'] = m; res['date'] = time.strftime('%Y-%m-%d %H:%M')

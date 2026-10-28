@@ -13,25 +13,25 @@ def versions(final, log):
         import publication
         for f in publication.fabriquer_versions(final): log(f'version de publication : {os.path.basename(f)}')
     except Exception as e: log(f'versions de publication impossibles : {e}')
-def sig(shots, i):
-    """Signature d'un plan : la dernière réplique dite jusqu'à lui (qui + début du texte) et l'écart en plans.
-    Une correction notée « plan 12 » retrouve ainsi son plan même si le script a changé avant lui (même calcul dans la page Studio mobile)."""
-    def t(s): return ' '.join(str(((s.get('line') or {}).get('text') if isinstance(s.get('line'), dict) else '') or s.get('text') or s.get('title') or '').split())[:60]
-    j = i
-    while j > 0 and not t(shots[j]): j -= 1
-    return f"{shots[j].get('who') or ''}|{t(shots[j])}#{i - j}"
+def fusion(a, b):
+    """Deux corrections sur le même plan : les poses s'ajoutent personnage par personnage, les acteurs aussi ; le reste, la plus récente gagne."""
+    c = {**a, **b}; P = {**director.poses_choisies(a), **director.poses_choisies(b)}
+    c.pop('pose', None)
+    if P: c['poses'] = P
+    if a.get('acteurs') or b.get('acteurs'): c['acteurs'] = {**(a.get('acteurs') or {}), **(b.get('acteurs') or {})}
+    return c
 def recaler(choix, meta, ev, log):
-    """Corrections avec signature (page Studio mobile) : si les numéros de plans ont bougé (script modifié), chaque correction suit son plan."""
+    """Corrections avec signature : si les numéros de plans ont bougé (script modifié), chaque correction suit son plan."""
     if not any(isinstance(c, dict) and c.get('sig') for c in choix.values()): return choix
     import copy
     shots, _ = director.build(meta, copy.deepcopy(ev), lambda m: None, choix={}); director.MANQUES.clear()
-    S = [sig(shots, j) for j in range(len(shots))]; neuf = {}
-    for k, c in choix.items():
+    S = [director.sig(shots, j) for j in range(len(shots))]; neuf = {}
+    for k, c in sorted(choix.items(), key=lambda x: (bool(x[1].get('sig')) if isinstance(x[1], dict) else False, x[0])):   # d'abord les anciennes sans signature, les signées (plus sûres) passent par-dessus
         g = c.get('sig') if isinstance(c, dict) else None
-        if not g or not str(k).isdigit() or (int(k) < len(S) and S[int(k)] == g): neuf.setdefault(k, c); continue
+        if not g or not str(k).isdigit() or (int(k) < len(S) and S[int(k)] == g): neuf[k] = fusion(neuf[k], c) if k in neuf else c; continue
         ou = [j for j, x in enumerate(S) if x == g]
         if not ou: log(f'correction du plan {k} oubliée : ce plan n\'existe plus (script modifié)'); continue
-        j = min(ou, key=lambda j: abs(j - int(k))); neuf[str(j)] = {**neuf.get(str(j), {}), **c}; log(f'correction du plan {k} → plan {j} (script modifié)')
+        j = str(min(ou, key=lambda j: abs(j - int(k)))); neuf[j] = fusion(neuf[j], c) if j in neuf else c; log(f'correction du plan {k} → plan {j} (script modifié)')
     return neuf
 def resume(shots, out):
     """Liste minutée des plans (plans_resume.json), lue par l'assistant de secours : « à 1:20 » = quel plan, qui, quelle pose."""

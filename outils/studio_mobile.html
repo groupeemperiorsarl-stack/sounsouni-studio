@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v41</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v42</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -566,7 +566,8 @@ async function appliquer(i,acts,out){const n=i.number,fait=[];
   try{
   const pl=acts.filter(a=>['plan','pose','acteur','duree'].includes(a.type));if(pl.length){const f='demandes/episode_'+n+'.choix.json';const ch=JSON.parse(await ghLire(f)||'{}');
     let PR=[];try{PR=JSON.parse(await (await brut(n+'/plans_resume.json')).text())}catch(e){}   // signature du plan : la correction suit son plan si le script change
-    for(const a of pl){const c=ch[String(a.plan)]=ch[String(a.plan)]||{};const T=x=>String(x.texte||'').trim().split(/\s+/).join(' ').slice(0,60);let j=+a.plan;while(j>0&&PR[j]&&!T(PR[j]))j--;if(PR[j]&&PR[a.plan])c.sig=(PR[j].parle||'')+'|'+T(PR[j])+'#'+(a.plan-j);if(a.type==='plan')c.cadrage=a.cadrage;if(a.type==='pose')c.pose={who:a.qui.toUpperCase(),key:a.pose};if(a.type==='duree')c.duree=a.secondes;
+    for(const a of pl){const c=ch[String(a.plan)]=ch[String(a.plan)]||{};const T=x=>String(x.texte||'').trim().split(/\s+/).join(' ').slice(0,60);let j=+a.plan;while(j>0&&PR[j]&&!T(PR[j]))j--;const g=a.sig||(PR[j]&&PR[a.plan]?(PR[j].parle||'')+'|'+T(PR[j])+'#'+(a.plan-j):'');
+      if(g&&c.sig&&c.sig!==g)for(const k of Object.keys(c))delete c[k];if(g)c.sig=g;   // ancien choix d'un autre plan : remplacéif(a.type==='plan')c.cadrage=a.cadrage;if(a.type==='pose'){const w=a.qui.toUpperCase();c.poses=c.poses||{};c.poses[w]=a.pose;if(c.pose&&String(c.pose.who).toUpperCase()===w)delete c.pose}   // une pose par personnageif(a.type==='duree')c.duree=a.secondes;
       if(a.type==='acteur'){c.acteurs=c.acteurs||{};const q=c.acteurs[a.qui.toUpperCase()]=c.acteurs[a.qui.toUpperCase()]||{};for(const k of ['dx','dy','taille','retourner','cacher'])if(a[k]!=null)q[k]=a[k]}}
     await ghEcrire(f,u8b64(JSON.stringify(ch,null,1)),'Corrections de plans (demande #'+n+')');fait.push(pl.length+' correction(s) de plans')}
   }catch(e){fait.push('❌ plans : '+e.message)}

@@ -122,8 +122,7 @@
   "pose": {
    "key": "sal_beignet",
    "who": "SALI"
-  },
-  "sig": "FATIM|Tu crois que j'ai été bête, Sali ?#0"
+  }
  },
  "42": {
   "pose": {
@@ -142,15 +141,13 @@
   "pose": {
    "key": "fat_triste",
    "who": "FATIM"
-  },
-  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#2"
+  }
  },
  "48": {
   "pose": {
    "key": "sal_beignet",
    "who": "SALI"
-  },
-  "sig": "DIASABI|Fatim ! Une carte de mille, s'il te plaît. Alors, les fiança#3"
+  }
  },
  "5": {
   "pose": {
@@ -162,15 +159,13 @@
   "pose": {
    "key": "fat_triste",
    "who": "FATIM"
-  },
-  "sig": "SALI|Diasabi ! Toi, tu viens avec moi. Tout de suite !#0"
+  }
  },
  "51": {
   "pose": {
    "key": "sal_beignet",
    "who": "SALI"
-  },
-  "sig": "DIASABI|Mais… je voulais aider, moi !#0"
+  }
  },
  "52": {
   "pose": {
