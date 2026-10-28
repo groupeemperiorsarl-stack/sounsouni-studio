@@ -4,3 +4,4 @@ Kôrôbalé wou = Kôrôbaléou
 Kôrôbale wou = Kôrôbaléou
 sounsouni.pro = sounsouni point pro
 Android = Androïde
+sounsouni.pro = sounsouni point pro
