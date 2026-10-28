@@ -165,6 +165,11 @@ Tu oses me toucher ?! {gifle} Tiens ! Ça t'apprendra !
 ```
 Une gifle écrite seulement en phrase (« [Awa donne une gifle…] ») ne se voit pas.
 
+**Action à deux qu'on doit VOIR** (tape, gifle, accolade, bousculade…) : un plan avec les deux personnages et la description de l'action. L'application demande l'image des deux ensemble dans la fiche Gemini, puis la montre en gros plan :
+```
+PLAN: 3 s · gros [Awa debout, Bakary debout] · {POSE: Awa donne une énorme gifle à Bakary, sa main frappe sa joue, la joue de Bakary devient très rouge}{gifle}
+```
+
 > Gestes des bras et des mains (pointer du doigt, mains sur la tête, croiser les bras) :
 > ils demandent **une image de cette posture**. Les écrire ainsi : `{POSE: mains sur la tête}`.
 > L'application prépare elle-même la liste des images manquantes (fiche Gemini) d'après le script : pas besoin d'écrire la description des images ailleurs.

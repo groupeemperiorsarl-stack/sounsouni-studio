@@ -101,7 +101,7 @@ Mon cœur va sortir de ma poitrine… Trois fois, et c'est fini.
 BAKARY (determine · regarde: Awa · voix: chuchote)
 Tou… tou… tou…
 
-PLAN: 2 s · gros Awa · {choc}
+PLAN: 3 s · gros [Bakary debout, Awa debout] · {POSE: Bakary tape les fesses d'Awa avec sa main ouverte, Awa sursaute, les yeux écarquillés, la bouche grande ouverte}
 [BRUITAGE: pop]
 [SILENCE 1 s]
 
@@ -111,8 +111,12 @@ Il m'a tapé les fesses ?! {choc} DEVANT TOUT LE QUARTIER ?!
 [RÉACTION SALI sur "fesses": choc]
 
 AWA (furieux · regarde: Bakary · voix: crie)
-Tu oses me toucher ?! {gifle} Tiens ! Voilà ta réponse, vendeur de charbon !
-[RÉACTION SALI sur "réponse": rire]
+Tu oses me toucher ?! Tiens ! Voilà ta réponse, vendeur de charbon !
+
+PLAN: 3 s · gros [Awa debout, Bakary debout] · {POSE: Awa donne une énorme gifle à Bakary, sa main frappe la joue de Bakary, la tête de Bakary part sur le côté, sa joue devient très rouge}{gifle}
+
+PLAN: 2 s · gros Bakary · {choc}{rougit}
+[RÉACTION SALI: rire]
 [BRUITAGE: rires de foule]
 
 MOUSSA (choc · regarde: caméra · voix: crie)

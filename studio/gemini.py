@@ -120,10 +120,14 @@ def besoins(paths, log=print, tout=False, maxi=32):
                 verif(pa, add, ou)
             for c in s.get('cuts', []): verif({'char': c['who'], 'want': c['actions'] + c.get('props', []), 'frame': 'buste', 'posture': c.get('posture'), 'need_mouth': False}, add, ou)
     for c, e, post in sorted(getattr(director, 'MANQUES', ())):   # émotions sans aucune image (visage calme mis à la place) : toujours demandées
-        if e == 'personnage sans image' or not poses_de(c): continue   # nouveau personnage : demandé plus haut (« NOUVEAU PERSONNAGE »)
+        if e == 'personnage sans image' or e.startswith('scène à deux') or not poses_de(c): continue   # nouveau personnage : demandé plus haut (« NOUVEAU PERSONNAGE »)
         for mot in e.split('/')[:1]:
             add(('pose', c, 'assis' if post in ('assis', 'banc') else 'debout', CANON.get(mot, mot)), {'type': 'pose', 'perso': c, 'posture': 'assis' if post in ('assis', 'banc') else 'debout', 'emo': CANON.get(mot, mot), 'manque': True}, 'image manquante')
-    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 5}.get(x['type'], 4.6 if str(x.get('emo', '')).startswith('pose:') else 4.5 if x.get('tenue') and not x.get('emo') else 4 if x.get('tenue') or x.get('manque') else 0)   # d'abord les poses écrites et la pose de base de chaque tenue
+    for duo, tg in sorted(getattr(director, 'SCENES', ())):   # action à deux écrite dans un PLAN (tape, gifle, accolade…) : une image des deux ensemble
+        cs = duo.split('+')
+        if all(c in director.HEIGHT for c in cs) and not director.group_pick(cs, [tg]):
+            add(('scene', duo, tg), {'type': 'scene', 'perso': duo, 'persos': cs, 'emo': tg, 'texte': POSE_TXT.get(tg[5:], pose_texte(tg[5:]))}, 'scène à deux')
+    prio = lambda x: {'personnage': 6, 'decor': 5, 'objet': 5, 'scene': 5.5}.get(x['type'], 4.6 if str(x.get('emo', '')).startswith('pose:') else 4.5 if x.get('tenue') and not x.get('emo') else 4 if x.get('tenue') or x.get('manque') else 0)   # d'abord les poses écrites et la pose de base de chaque tenue
     out = sorted(b.values(), key=lambda x: (-prio(x), -len(x['ou'])))
     if not tout:   # le nécessaire : nouveautés (personnages, décors, tenues, objets, {POSE}), vues de dos, assis, émotions demandées au moins 2 fois
         out = [x for x in out if prio(x) or x['type'] != 'pose' or not x['emo'] or len(x['ou']) >= 2]
@@ -171,6 +175,12 @@ def demande(x):
     if x['type'] == 'objet':
         return ("Dessine cet objet dans exactement le même style dessin animé 3D que l'image jointe : " + x['texte'] +
                 ". L'objet seul, en entier, bien éclairé, sur un fond gris clair uni, sans personnage. Image verticale.")
+    if x['type'] == 'scene':
+        cs = x['persos']; jointes = ' ; '.join(f"image {i} = {ident(c)}" for i, c in enumerate(cs, 1))
+        return ("Images jointes, dans l'ordre : " + jointes + ". Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, "
+                "même style dessin animé 3D. Fais UNE seule image verticale où ces " + str(len(cs)) + " personnages sont ENSEMBLE, en train de faire cette action, bien visible et un peu exagérée comme dans un dessin animé : "
+                + x['texte'].rstrip('. ') + ". On voit les deux en entier de la tête aux pieds (ou au moins jusqu'aux genoux), de profil ou de trois-quarts, l'un face à l'autre, "
+                "les gestes et les visages bien lisibles. Fond gris clair uni, sans décor, sans texte, sans autre personnage.")
     if x['type'] == 'personnage':
         d = x['texte']; m = re.search(r'\((\d+)\s*images?\s*:\s*([^)]*)\)', d); vues = [v.strip() for v in re.split(r'\s*[·•;]\s*', m.group(2)) if v.strip()] if m else []
         d = re.sub(r'\s*\(\d+\s*images?\s*:[^)]*\)', '', d); d = re.sub(r'\s*(Postures|Émotions|Emotions)\s*:[^.]*\.', '', d).strip()
@@ -199,6 +209,7 @@ def ref_pour(x):
     if x['type'] == 'decor':
         d = sorted(f for f in os.listdir(f'{A}/decors') if f.endswith('.jpg')); return ('decor', 'KIOSQUE.jpg' if 'KIOSQUE.jpg' in d else d[0])
     if x['type'] == 'personnage': return ('pose', reference('BAKARY') if x['perso'] not in FEMMES else reference('AWA'))
+    if x['type'] == 'scene': return ('pose', reference(x['persos'][0]))
     if x['type'] == 'objet': return ('pose', next((k for k, p in director.POSES.items() if p['frame'] == 'objet'), reference('BAKARY')))
     if x.get('tenue'):   # une image déjà faite dans cette tenue sert de modèle (mêmes habits partout)
         k = next((k for k, p in poses_de(x['perso']).items() if p.get('tenue') == x['tenue']), None)
@@ -216,6 +227,7 @@ def titre(x):
     if x['type'] == 'decor': return f"Nouveau décor : {x['perso'].title()}"
     if x['type'] == 'personnage': return f"Nouveau personnage : {x['perso'].title()}"
     if x['type'] == 'objet': return f"Nouvel objet : {x['perso']}"
+    if x['type'] == 'scene': return 'Scène à deux : ' + ' + '.join(gfx.nom(c) for c in x['persos']) + ' — ' + x['texte'][:80]
     if str(x.get('emo', '')).startswith('pose:'): q = pose_phrase(x).replace(', bouche fermée', '').replace('debout, de trois-quarts, ', 'debout, ')   # pose écrite par le scénariste : son texte entier (sans la tenue)
     else: q = {'dos': 'vue de dos', 'assis': 'assis'}.get(x['posture'], 'debout') + (f", {desc(x['emo'], x['perso'] in FEMMES).split(',')[0]}" if x['emo'] else '')
     if x.get('tenue'): q += ' — ' + TENUES.get((x['perso'], x['tenue']), (x['tenue'].replace('_', ' '),))[0]
@@ -253,7 +265,7 @@ def groupes(items):
 def melanger(gs, par_n):
     """Plusieurs personnages sur une même image Gemini (une image jointe par personnage) : 4 poses par demande.
     Les demandes d'une nouvelle tenue restent seules (elles décrivent les habits)."""
-    seuls = [g for g in gs if g.get('suite_de') or any(par_n[n]['type'] in ('personnage', 'decor') for n in g['items']) or any(par_n[n].get('tenue') and not director.POSES.get(par_n[n].get('ref') or '', {}).get('tenue') for n in g['items'])]
+    seuls = [g for g in gs if g.get('suite_de') or any(par_n[n]['type'] in ('personnage', 'decor', 'scene') for n in g['items']) or any(par_n[n].get('tenue') and not director.POSES.get(par_n[n].get('ref') or '', {}).get('tenue') for n in g['items'])]
     bins = []
     for g in sorted([g for g in gs if g not in seuls], key=lambda g: -len(g['items'])):
         b = next((b for b in bins if sum(len(x['items']) for x in b) + len(g['items']) <= PAR_IMAGE), None)
@@ -292,6 +304,7 @@ def demande_melange(grp, items):
             f"{len(xs)} figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres "
             "(un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : " + liste + '.')
 def demande_groupe(grp, items):
+    if len(grp['items']) == 1 and items[grp['items'][0]]['type'] == 'scene': return demande(items[grp['items'][0]])
     if grp.get('refs'): return demande_melange(grp, items)
     xs = [items[n] for n in grp['items']]; x0 = xs[0]
     if len(xs) == 1 and x0['type'] != 'pose': return demande(x0)
@@ -326,10 +339,12 @@ def fiche(items, out, log=print):
     for x in items:
         kind, k = ref_pour(x); x['ref'] = k if kind == 'pose' else None
         f = image_ref(kind, k, out); x['fichier_ref'] = os.path.basename(f)
+        if x['type'] == 'scene': x['fichiers_ref'] = [os.path.basename(image_ref('pose', reference(c), out)) for c in x['persos']]
     par_n = {x['n']: x for x in items}; gs = melanger(groupes(items), par_n)
     d = os.path.join(out, 'a_joindre'); shutil.rmtree(d, ignore_errors=True); os.makedirs(d)
     for grp in gs:
         grp['demande'] = demande_groupe(grp, par_n); xs = [par_n[n] for n in grp['items']]; g = grp['g']
+        if len(xs) == 1 and xs[0]['type'] == 'scene': grp['refs'] = xs[0]['fichiers_ref']
         refs = grp.get('refs') or [grp['fichier_ref']]; noms = []
         if not grp.get('suite_de'):
             for i, rf in enumerate(refs, 1):
@@ -380,7 +395,7 @@ def importer(pairs, out, log=print):
         if not g: log(f'numéro {n} inconnu dans la fiche, ignoré'); continue
         try: src = Image.open(f); src.load()
         except Exception: log(f'⚠️ demande {n} : le fichier envoyé n\'est pas une image lisible ({os.path.basename(f)}), ignoré — renvoyez la vraie image Gemini'); continue
-        try: morceaux = decouper(src, len(g['items']))
+        try: morceaux = [src.convert('RGB')] if len(g['items']) == 1 and items[g['items'][0]]['type'] == 'scene' else decouper(src, len(g['items']))
         except ValueError as e:
             vu = int(str(e)); autres = [str(x['g']) for x in data['groupes'] if len(x['items']) == vu]
             log(f"⚠️ Image de la demande {n} pas rangée, car j'y vois {vu} personnage(s) ou objet(s), mais la demande {n} en attend {len(g['items'])} (" + ' · '.join(g.get('titres') or [])[:120] + ")."
@@ -404,6 +419,12 @@ def importer(pairs, out, log=print):
             im.save(f'{A}/poses/{k}.webp', quality=92)
             cat['poses'][k] = {'char': 'OBJET', 'frame': 'objet', 'posture': 'objet', 'tags': mots, 'mouth': False, 'size': list(im.size), 'props': [], 'genere': 'gemini'}
             faits.append(k); log(f'objet rangé : {k}'); continue
+        if x['type'] == 'scene':   # image des deux ensemble : rangée comme « image de groupe » (PLAN: gros [A, B] · {POSE: …})
+            slug = x['emo'][5:]; base = 'grp_' + '_'.join(slug.split('_')[:5]); k = base; i = 2
+            while k in cat['poses']: k = f'{base}{i}'; i += 1
+            im.save(f'{A}/poses/{k}.webp', quality=92)
+            cat['poses'][k] = {'char': x['perso'], 'frame': 'groupe', 'posture': 'debout', 'tags': [x['emo']] + slug.split('_'), 'mouth': False, 'size': list(im.size), 'head_x': 0.5, 'props': [], 'genere': 'gemini'}
+            faits.append(k); log(f'scène à deux rangée : {k} ({titre(x)})'); continue
         c = x['perso']; emo = x.get('emo', ''); slug = emo[5:] if emo.startswith('pose:') else emo
         pre = poses_ia.prefixe(c) if c in director.HEIGHT else c.lower()[:4]
         parts = [pre] + ([x['tenue']] if x.get('tenue') else []) + ([x['posture']] if x.get('posture', 'debout') != 'debout' else []) + ([slug] if slug else [])

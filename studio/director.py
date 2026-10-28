@@ -52,6 +52,7 @@ ENSEMBLE = {'verre': ('plateau', 'the'), 'the': ('plateau', 'verre'), 'telephone
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
 GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
 TENUE = {}   # tenue portée en ce moment par chaque personnage ([TENUE AWA: bazin doré]) ; vide = tenue de tous les jours
+SCENES = set()   # (« A+B », pose:…) : image à deux personnages écrite dans un PLAN mais absente → demandée dans la fiche Gemini (Issa, ép. 23 : la tape et la gifle doivent se voir)
 MANQUES = set()   # (personnage, émotion, posture) sans image : listé pour la fiche Gemini et le relecteur
 LASTPICK = {}   # dernier choix de pose : gardé sur l'acteur pour que les planches proposent les autres poses possibles
 def pick(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=True, extra_ok=(), must=(), side=False, calm=False):
@@ -453,10 +454,13 @@ def build(meta, events, log=print, choix=None, variantes=False):
                     if not (re.search(r't[ée]l[ée]phone|ecran|portable', norm(e.get('object', ''))) and nxt and nxt['type'] == 'screen'):
                         add({'kind': 'insert', 'dur': e.get('dur') or 2.4, 'object': e.get('object', ''), 'fx': fx})
                     plan = None
-                elif len(e['who']) > 1 and group_pick([w['who'] for w in e['who']], [x[1] for x in fx]):
-                    g = group_pick([w['who'] for w in e['who']], [x[1] for x in fx]); add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor('+'.join(w['who'] for w in e['who']), g)], 'fx': fx, 'mode': 'close'})
+                elif len(e['who']) > 1 and group_pick([w['who'] for w in e['who']], [x[1] for x in fx if x[1].startswith('pose:')] or [x[1] for x in fx]):
+                    g = group_pick([w['who'] for w in e['who']], [x[1] for x in fx if x[1].startswith('pose:')] or [x[1] for x in fx]); add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor('+'.join(w['who'] for w in e['who']), g)], 'fx': fx, 'mode': 'close',
+                        'sfx': [(0.25, sfx_file('gifle'))] if any(x[1] in ('gifle', 'claque') for x in fx) else []})
                     plan = {'kind': 'group', 'key': g, 'who': e['who']}; i += 1; continue
                 elif e['kind'] == 'large' or len(e['who']) > 1:
+                    for x in fx:   # action à plusieurs écrite dans le PLAN ({POSE: Bakary tape les fesses d'Awa}) sans image : demandée dans la fiche, plan large en attendant
+                        if x[1].startswith('pose:') and len(e['who']) > 1: SCENES.add(('+'.join(w['who'] for w in e['who']), x[1]))
                     add({'kind': 'wide', 'dur': e['dur'], 'actors': wide_layout(stage, [w['who'] for w in e['who']] or stage.ici(), moods), 'fx': fx}); plan = None
                 else:
                     c = e['who'][0]['who']; want = [x[1] for x in fx]

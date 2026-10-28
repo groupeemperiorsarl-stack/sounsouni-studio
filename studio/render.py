@@ -300,7 +300,7 @@ def draw(s, lt):
         if a.get('speaker') or len(acts) == 1: head = hh
         if not (a.get('silhouette') or a.get('back') or a.get('fg')): tetes.append(zone_tete(a2, hh))   # l'épaule de celui qui écoute (de dos) peut passer sous la bulle
     fx_draw(fr, s.get('fx', []) + [(t, g) for t, g in s.get('tagfx', [])], lt, head)
-    for t_, g_ in s.get('tagfx', []):
+    for t_, g_ in s.get('tagfx', []) + list(s.get('fx', [])):
         if g_ in ('gifle', 'claque', 'frappe') and t_ <= lt < t_ + 0.5: fr = gfx.shake(fr, lt, t_, 0.5, 30)   # l'image tremble fort sous la gifle
     if line and k == 'line': gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.1, line.get('thought'), tetes=tetes, duree=s['dur'] - lead)
     if s.get('card') and lt < 1.6: sticker(fr, s['card'].title(), 540, 420, lt, 0.2, 60, gfx.FONCE)
@@ -324,7 +324,7 @@ def render_segment(args):
         ff.stdin.write(fr.tobytes())
         if n % 300 == 299: pose_img.cache_clear(); decor.cache_clear()
     ff.stdin.close(); ff.wait(); return out
-RENDU_VERSION = 'bulles-sans-tete-1+gifle'   # à changer quand le dessin change (bulles, effets…) : les anciens morceaux de 12 s sont alors refaits
+RENDU_VERSION = 'bulles-sans-tete-1+gifle2'   # à changer quand le dessin change (bulles, effets…) : les anciens morceaux de 12 s sont alors refaits
 def seg_hash(shots, a, b):
     """Empreinte d'un morceau (a → b images) : les plans qui le touchent (+ taille des voix). Inchangée = morceau gardé."""
     import hashlib

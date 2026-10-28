@@ -90,6 +90,9 @@ def main():
     lines = voices.run(ev, director.CAT, work, log)
     choix = recaler(choix, meta, ev, log)
     shots, tot = director.build(meta, ev, log, choix=choix, variantes=a.planches)
+    if director.SCENES:   # actions à deux sans image (tape, gifle…) : la fiche Gemini les demandera (et l'aperçu la lance tout seul)
+        log('scènes à deux sans image (plan large en attendant) : ' + ', '.join(f'{d} {t[5:60]}' for d, t in sorted(director.SCENES)))
+        director.MANQUES.update((d, 'scène à deux : ' + t[5:], 'groupe') for d, t in director.SCENES)
     if director.MANQUES:   # émotions sans image : visage calme à la place ; liste gardée pour le relecteur et la fiche Gemini
         json.dump(sorted(director.MANQUES), open(os.path.join(out, 'manques.json'), 'w'), ensure_ascii=False); log('images manquantes (visage calme à la place) : ' + ', '.join(f'{c} {e} ({p})' for c, e, p in sorted(director.MANQUES)))
     json.dump(shots, open(os.path.join(work, 'plans.json'), 'w'), ensure_ascii=False, indent=0, default=str)
