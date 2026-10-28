@@ -2102,3 +2102,100 @@ VOIX_OFF (lentement)
 Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni point pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
 ```
+
+## Épisode 23 : Le coach de l’amour
+(source : demandes/episode_20.txt)
+```text
+TITRE: Les Plans de Bakary – Épisode 23 : Le coach de l’amour
+
+DÉCOR: KIOSQUE · midi · ambiance: marché, cris de vendeurs, klaxon lointain
+PLAN: large [Bakary debout, Diasabi au comptoir, Modibo assis, Sali derrière le comptoir, Moussa en arrière-plan]
+
+DIASABI (neutre · regarde: Bakary · voix: normal)
+{sourire_malin} Mon frère, il faut que tu saches une chose : Awa t’aime déjà, mais elle ne le voit pas. {penche_tete} J’ai un truc qui marche à tous les coups, même sur les plus rebelles.
+[RÉACTION MODIBO: rire_retenu]
+[RÉACTION SALI: sifflement]
+
+DIASABI (determine · regarde: Bakary · voix: normal)
+{grand_sourire} Écoute bien : tu prends ta main, tu dis « tou tou tou » en soufflant dedans, puis tu tapotes les fesses de la fille, comme Bobo le dit. J’ai testé sur des dizaines de filles du marché, même sur la vendeuse de tomates, et ça a toujours fonctionné.
+[RÉACTION BAKARY sur "tou tou tou": surprise, hausse les épaules]
+
+BAKARY (mefiant · regarde: Diasabi · voix: lentement)
+ Diasabi, mon frère, {secoue_tete} je ne crois pas à ces bêtises. {moue} J’ai déjà fait le tour du quartier, elle me regarde comme si j’étais un fantôme.
+[RÉACTION MODIBO: rire_retenu]
+
+DIASABI (serieux · regarde: Bakary · voix: normal)
+{sourire} {se_penche} Tu vas voir, mon ami. Si tu ne le fais pas, je te jure que tu regretteras de ne pas avoir essayé. {point_exclamation} Allez, prends ton téléphone, commande un thé à Sounsouni, ça te donnera le courage.
+PLAN: objet téléphone
+[ÉCRAN 3 s: Sounsouni – Commande thé à la menthe – bouton « Commander »]
+PENSÉE BAKARY (pensif · regarde: écran)
+{sourire} Hmm… {moue} Un thé, ça ne fait pas de mal…
+[RÉACTION BAKARY sur "thé": sourire timide]
+
+DÉCOR: RUE · après-midi · ambiance: motos, passants, musique lointaine
+PLAN: large [Bakary marchant, Diasabi à côté, Awa assise sur un banc, Mimi vend des beignets]
+
+DIASABI (neutre · regarde: Bakary · voix: normal)
+{sourire_malin} Ok, on y va. « tou tou tou » dans ta main, puis… tape doucement les fesses.
+BAKARY (neutre · regarde: Awa · voix: normal)
+ D’accord… « tou tou tou » …
+[PENCHANT: main de Bakary sur fesse d’Awa]
+
+AWA (furieux · regarde: Bakary · voix: crie)
+ {choc}{recule} Qu’est‑ce que c’est que ça ?! Tu oses me toucher comme ça ?!
+[RÉACTION TANTE KADI: cri "Ay!"]
+[RÉACTION MODIBO (hors champ): rire fort]
+[RÉACTION SALI: sifflement aigu]
+
+DIASABI (neutre · regarde: Bakary · voix: normal)
+{choc} Mais… mais… C’était… c’était le plan ?
+BAKARY (confus · regarde: Awa · voix: essoufflé)
+{panique} Je… je pensais que… {tremble} C’était censé marcher…
+[Awa donne une énorme gifle à Bakary, le visage rouge, la foule éclate de rire]
+
+[RÉACTION MIMI sur "gifle": rire_retenu]
+[RÉACTION MOUSE: "whoosh" de la gifle]
+[RÉACTION KARIM (hors champ): "c’est pas possible!"]
+
+DÉCOR: KIOSQUE · soir · ambiance: grillons, musique douce
+PLAN: large [Diasabi, Modibo, Bakary assis, Awa debout, Fatim arrive, Seydou en scooter]
+
+FATIM (tendre · regarde: Bakary · voix: au téléphone)
+Bakary, c’est Fatim. J’ai entendu parler d’une… petite mésaventure. {sourire} Tu vas bien ?
+[BRUITAGE: sonnerie de téléphone]
+PENSÉE FATIM (surpris · regarde: téléphone)
+Il faut que je l’aide, même si c’est… {rire} …pas mon problème habituel.
+[RÉACTION BAKARY sur "Fatim": honte, baisse la tête]
+
+SEYDOU (neutre · regarde: Bakary · voix: normal)
+{sourire} Bakary, mon gars, tu veux un nouveau thé ? J’ai dix% de réduction sur Sounsouni aujourd’hui, code « COUPDECOEUR ».
+[ÉCRAN 3 s: Sounsouni – Code promo COUPDECOEUR – 10%]
+PENSÉE SEYDOU (serieux · regarde: écran)
+Si je lui livre ce thé, il oubliera la gifle et reviendra plus fort.
+[RÉACTION MODIBO: rire]
+
+MODIBO (taquin · regarde: Bakary · voix: normal)
+{sourire} {rire} Tu vois, même le coach a besoin d’un bon thé pour se remettre debout.
+[RÉACTION DIASABI: rire_retenu]
+
+DIASABI (neutre · regarde: Bakary · voix: normal)
+ Bon… je… je retire ma méthode. {penche_tete} Peut‑être que l’amour n’a pas besoin de « tou tou tou ».
+[RÉACTION BAKARY: soupir de soulagement]
+
+DÉCOR: KIOSQUE · nuit · ambiance: grillons, lampe tamisée
+PLAN: deux [Awa, Bakary]
+
+AWA (neutre · regarde: Bakary · voix: normal)
+{sourire} Bakary, la prochaine fois, parle avec les mots, pas avec les mains.
+BAKARY (neutre · regarde: Awa · voix: normal)
+{grand_sourire} D’accord, Awa. Promis, plus jamais de « tou tou tou ».
+[RÉACTION TANTE KADI: applaudissements]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, chaque petit geste trouve son grand moment… même les plus improbables.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez‑vous sur le site sounsouni.point pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
+```
