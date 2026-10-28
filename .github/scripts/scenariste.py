@@ -1,32 +1,79 @@
-"""ESSAI DU SCÉNARISTE (même consignes que l'onglet ✍️ de la page Studio mobile) : une idée → script complet, puis vérifié par le lecteur du studio.
-GitHub : workflow « Essai du scénariste » (idée en entrée). Local : GEMINI_API_KEY=… python .github/scripts/scenariste.py "idée" [numéro]"""
-import os, sys, re, json, time, urllib.error
-sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, 'studio')
-import relecture as rl
-import script as sc
-
-def ecrire(demande):
-    lu = lambda f: open(f, encoding='utf-8').read()
-    sys_txt = lu('docs/SCENARISTE.md') + '\n\n## GUIDE DU SCÉNARISTE (format du studio)\n' + lu('docs/GUIDE_SCENARISTE.md') + "\n\n## L'HISTOIRE JUSQU'ICI ET LES IDÉES DE LA SAISON\n" + lu('docs/SAISON.md') + \
-              '\n\n## RÈGLES DE MISE AU FORMAT DU STUDIO\n' + lu('docs/ASSISTANT.md') + '\n\n## CE QUE LE RELECTEUR VÉRIFIE\n' + lu('docs/RELECTEUR.md') + "\n\n## CE QUE L'APPLICATION SAIT MONTRER\n" + lu('docs/CAPACITES.md') + \
-              '\n\n## CARNET DU STUDIO\n' + lu('technicien/carnet.md') + '\n\n## TOUS LES ÉPISODES DÉJÀ FAITS\n' + lu('docs/EPISODES.md')
-    for tour in range(6):
-        for m in rl.modeles():
-            try:
-                d = rl.req(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent', {'systemInstruction': {'parts': [{'text': sys_txt}]},
-                           'contents': [{'role': 'user', 'parts': [{'text': demande}]}], 'generationConfig': {'temperature': 0.9}}, headers={'x-goog-api-key': rl.K}, timeout=600)
-                t = ''.join(p.get('text', '') for p in d['candidates'][0]['content']['parts'])
-                t = re.sub(r'^```\w*\n?|\n?```\s*$', '', t.strip()).strip(); k = t.find('TITRE:')
-                if k >= 0: return m, t[k:]
-            except urllib.error.HTTPError as e: print(m, ':', e.code, e.read().decode()[:120])
-            except Exception as e: print(m, ':', str(e)[:160])
-        time.sleep(60)
-    raise RuntimeError('Gemini ne répond pas')
-
+"""SCÉNARISTE SUR GITHUB (mêmes consignes que l'onglet ✍️ de la page Studio mobile), avec TOUTES les IA gratuites du studio (clés dans les secrets GitHub).
+Ordre : Gemini, Mistral, NVIDIA, Zhipu, Cerebras, OpenRouter (mémoire complète : scripts entiers de tous les épisodes)
+        puis GitHub Models et Groq (trop petits pour tout lire : résumé de l'histoire seulement).
+GitHub : commentaire « scénario … » sur la demande « ✍️ Scénariste » (workflow scenariste.yml) → réponse en commentaire.
+Local / essai : python .github/scripts/scenariste.py "idée" [numéro]"""
+import os, sys, re, json, time, urllib.request, urllib.error
+sys.path.insert(0, 'studio')
+E = os.environ
+def lu(f): return open(f, encoding='utf-8').read() if os.path.exists(f) else ''
+def consignes(complet):
+    base = lu('docs/SCENARISTE.md') + '\n\n## GUIDE DU SCÉNARISTE (format du studio)\n' + lu('docs/GUIDE_SCENARISTE.md')
+    if not complet:   # petites IA : seulement l'histoire jusqu'ici (sans la liste des idées)
+        h = lu('docs/SAISON.md'); return base + "\n\n## L'HISTOIRE JUSQU'ICI\n" + h.split('## Idées')[0]
+    return (base + "\n\n## L'HISTOIRE JUSQU'ICI ET LES IDÉES DE LA SAISON\n" + lu('docs/SAISON.md') + "\n\n## RÈGLES DE MISE AU FORMAT DU STUDIO (à respecter dès l'écriture)\n" + lu('docs/ASSISTANT.md') +
+            '\n\n## CE QUE LE RELECTEUR VÉRIFIE (évite ces erreurs)\n' + lu('docs/RELECTEUR.md') + "\n\n## CE QUE L'APPLICATION SAIT MONTRER\n" + lu('docs/CAPACITES.md') +
+            '\n\n## CARNET DU STUDIO (leçons apprises)\n' + lu('technicien/carnet.md') + '\n\n## TOUS LES ÉPISODES DÉJÀ FAITS (scripts complets : même style, même structure, même longueur, suite logique)\n' + lu('docs/EPISODES.md'))
+def post(url, data, headers, timeout=600):
+    q = urllib.request.Request(url, data=json.dumps(data).encode(), headers={'Content-Type': 'application/json', 'User-Agent': 'sounsouni-studio', **headers})
+    return json.loads(urllib.request.urlopen(q, timeout=timeout).read())
+def gemini(sys_txt, user):
+    k = E.get('GEMINI_API_KEY')
+    if not k: raise RuntimeError('pas de clé')
+    for m in ('gemini-flash-latest', 'gemini-2.5-flash', 'gemini-2.0-flash'):
+        try:
+            d = post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent', {'systemInstruction': {'parts': [{'text': sys_txt}]},
+                     'contents': [{'role': 'user', 'parts': [{'text': user}]}], 'generationConfig': {'temperature': 0.9}}, {'x-goog-api-key': k})
+            t = ''.join(p.get('text', '') for p in d['candidates'][0]['content']['parts'])
+            if t: return t, 'Gemini ' + m
+        except urllib.error.HTTPError as e: print('Gemini', m, ':', e.code, e.read().decode()[:120])
+    raise RuntimeError('tous les modèles Gemini sont occupés')
+def compatible(url, cle, modele, extra=None):
+    def f(sys_txt, user):
+        k = E.get(cle)
+        if not k: raise RuntimeError('pas de clé')
+        d = post(url, {'model': modele, 'temperature': 0.9, 'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}], **(extra or {})}, {'Authorization': 'Bearer ' + k})
+        t = d['choices'][0]['message'].get('content') or ''
+        if not t: raise RuntimeError('réponse vide')
+        return t, modele
+    return f
+IA = [('Gemini', gemini, True),
+      ('Mistral', compatible('https://api.mistral.ai/v1/chat/completions', 'MISTRAL_API_KEY', 'mistral-medium-latest'), True),
+      ('NVIDIA', compatible('https://integrate.api.nvidia.com/v1/chat/completions', 'NVIDIA_API_KEY', 'deepseek-ai/deepseek-v3.1', {'max_tokens': 8000}), True),
+      ('Zhipu', compatible('https://api.z.ai/api/paas/v4/chat/completions', 'ZHIPU_API_KEY', 'glm-4.5-flash'), True),
+      ('Cerebras', compatible('https://api.cerebras.ai/v1/chat/completions', 'CEREBRAS_API_KEY', 'gpt-oss-120b', {'reasoning_effort': 'low'}), True),
+      ('OpenRouter', compatible('https://openrouter.ai/api/v1/chat/completions', 'OPENROUTER_API_KEY', 'openai/gpt-oss-120b:free'), True),
+      ('GitHub Models', compatible('https://models.github.ai/inference/chat/completions', 'GITHUB_MODELS_TOKEN', 'openai/gpt-4.1'), False),
+      ('Groq', compatible('https://api.groq.com/openai/v1/chat/completions', 'GROQ_API_KEY', 'openai/gpt-oss-120b', {'reasoning_effort': 'low'}), False)]
+def nettoyer(t):
+    t = re.sub(r'<think>.*?</think>', '', t or '', flags=re.S).strip(); t = re.sub(r'^```\w*\n?|\n?```\s*$', '', t).strip(); k = t.find('TITRE:')
+    return t[k:] if k >= 0 else ''
+def ecrire(demande, log=print):
+    essais = []
+    for nom, f, complet in IA:
+        try:
+            t, m = f(consignes(complet), demande); s = nettoyer(t)
+            if s and re.search(r'DÉCOR\s*:', s):
+                import script as sc; sc.parse(s)   # le script doit se lire
+                return s, f"{nom} ({m})" + ('' if complet else " — résumé de l'histoire seulement")
+            essais.append(f'{nom} : script pas au format')
+        except Exception as e: essais.append(f'{nom} : {str(e)[:90]}')
+        log(essais[-1])
+    raise RuntimeError(' · '.join(essais))
+def gh(path, data=None, method=None):
+    q = urllib.request.Request('https://api.github.com/repos/' + E['GITHUB_REPOSITORY'] + path, data=json.dumps(data).encode() if data else None, method=method or ('POST' if data else 'GET'),
+                               headers={'Authorization': 'Bearer ' + E['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json', 'User-Agent': 'sounsouni-studio'})
+    return json.loads(urllib.request.urlopen(q, timeout=60).read() or b'{}')
 if __name__ == '__main__':
-    idee, num = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else 'suivant')
-    m, t = ecrire(f"Écris l'épisode {num} complet à partir de cette idée d'Issa :\n{idee}")
-    open('scenario.txt', 'w', encoding='utf-8').write(t)
-    meta, ev = sc.parse(t); lignes = [e for e in ev if e.get('type') == 'line']
-    mots = sum(len(e.get('text', '').split()) for e in lignes)
-    print(f'écrit par {m} · {len(lignes)} répliques · {mots} mots · {sum(1 for e in ev if e.get("type") == "scene")} scènes')
+    if E.get('COMMENT_ID'):   # sur GitHub : la demande vient d'un commentaire « scénario … »
+        n = E['ISSUE']; c = gh(f"/issues/comments/{E['COMMENT_ID']}")['body']
+        demande = re.sub(r'\n+(-{3,}\s*\n+)?_Generated by[\s\S]*$', '', re.sub(r'^\s*sc[ée]nario\s*:?\s*', '', c, flags=re.I)).strip()
+        try:
+            s, qui = ecrire(demande)
+            gh(f'/issues/{n}/comments', {'body': f'📜 **Scénario écrit par {qui}** (réponse au message {E["COMMENT_ID"]})\n\n```text\n{s}\n```'})
+        except Exception as e:
+            gh(f'/issues/{n}/comments', {'body': f'❌ Le scénariste n\'a pas pu écrire (réponse au message {E["COMMENT_ID"]}) : toutes les IA sont occupées ou sans clé. {str(e)[:600]}'})
+    else:
+        idee, num = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else 'suivant')
+        s, qui = ecrire(f"Écris l'épisode {num} complet à partir de cette idée d'Issa :\n{idee}")
+        open('scenario.txt', 'w', encoding='utf-8').write(s); print('écrit par', qui); print(s)

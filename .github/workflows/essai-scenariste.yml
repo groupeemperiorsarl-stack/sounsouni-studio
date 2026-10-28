@@ -5,7 +5,7 @@ on:
     inputs:
       idee: { description: "Idée de l'épisode", required: true }
       numero: { description: "Numéro de l'épisode", default: "suivant" }
-permissions: { contents: read }
+permissions: { contents: read, models: read }
 jobs:
   essai:
     runs-on: ubuntu-latest
@@ -14,8 +14,18 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install -q numpy pillow
-      - env: { GEMINI_API_KEY: "${{ secrets.GEMINI_API_KEY }}", IDEE: "${{ inputs.idee }}", NUM: "${{ inputs.numero }}" }
-        run: python .github/scripts/scenariste.py "$IDEE" "$NUM" && cat scenario.txt
+      - env:
+          GITHUB_MODELS_TOKEN: ${{ github.token }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          IDEE: ${{ inputs.idee }}
+          NUM: ${{ inputs.numero }}
+        run: python .github/scripts/scenariste.py "$IDEE" "$NUM"
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: scenario, path: scenario.txt }
