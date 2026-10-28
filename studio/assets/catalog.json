@@ -7929,6 +7929,222 @@
    "depart": "awa_assis_froide",
    "mouth_auto": true,
    "props_auto": {}
+  },
+  "mou_choc": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc"
+   ],
+   "mouth": true,
+   "size": [
+    533,
+    1600
+   ],
+   "head_x": 0.512,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_rire",
+   "mouth_auto": true
+  },
+  "sal_dos2": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "dos",
+   "tags": [
+    "dos"
+   ],
+   "mouth": false,
+   "size": [
+    523,
+    1600
+   ],
+   "head_x": 0.485,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_beignet"
+  },
+  "awa_choc2": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc"
+   ],
+   "mouth": true,
+   "size": [
+    573,
+    1600
+   ],
+   "head_x": 0.476,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "mouth_auto": true
+  },
+  "sey_salue": {
+   "char": "SEYDOU",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "salue"
+   ],
+   "mouth": true,
+   "size": [
+    834,
+    1600
+   ],
+   "head_x": 0.656,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sey_debout_neutre",
+   "mouth_auto": true
+  },
+  "sal_choc": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "choc"
+   ],
+   "mouth": true,
+   "size": [
+    591,
+    1600
+   ],
+   "head_x": 0.475,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_beignet",
+   "mouth_auto": true
+  },
+  "sal_colere": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere"
+   ],
+   "mouth": true,
+   "size": [
+    523,
+    1600
+   ],
+   "head_x": 0.538,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_beignet",
+   "mouth_auto": true
+  },
+  "sal_rire": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "rire"
+   ],
+   "mouth": true,
+   "size": [
+    494,
+    1600
+   ],
+   "head_x": 0.531,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_beignet",
+   "mouth_auto": true
+  },
+  "sal_taquin": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "taquin"
+   ],
+   "mouth": true,
+   "size": [
+    495,
+    1600
+   ],
+   "head_x": 0.496,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_beignet",
+   "mouth_auto": true
+  },
+  "bak_colere": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere"
+   ],
+   "mouth": true,
+   "size": [
+    583,
+    1600
+   ],
+   "head_x": 0.499,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
+  },
+  "bak_colere2": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere"
+   ],
+   "mouth": true,
+   "size": [
+    585,
+    1600
+   ],
+   "head_x": 0.501,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
+  },
+  "dia_panique": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "panique"
+   ],
+   "mouth": true,
+   "size": [
+    398,
+    1600
+   ],
+   "head_x": 0.495,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
+  },
+  "mod_assis_mefiant": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "mefiant",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    1009,
+    1600
+   ],
+   "head_x": 0.546,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_rire",
+   "mouth_auto": true
   }
  },
  "decors": {
