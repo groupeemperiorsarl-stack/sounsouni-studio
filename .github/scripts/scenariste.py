@@ -16,33 +16,54 @@ def consignes(complet):
             '\n\n## CARNET DU STUDIO (leçons apprises)\n' + lu('technicien/carnet.md') + '\n\n## TOUS LES ÉPISODES DÉJÀ FAITS (scripts complets : même style, même structure, même longueur, suite logique)\n' + lu('docs/EPISODES.md'))
 def post(url, data, headers, timeout=600):
     q = urllib.request.Request(url, data=json.dumps(data).encode(), headers={'Content-Type': 'application/json', 'User-Agent': 'sounsouni-studio', **headers})
-    return json.loads(urllib.request.urlopen(q, timeout=timeout).read())
+    for essai in range(3):   # 429 (trop de demandes) / 503 (surchargé) : on attend un peu et on réessaie
+        try: return json.loads(urllib.request.urlopen(q, timeout=timeout).read())
+        except urllib.error.HTTPError as e:
+            b = e.read().decode(errors='ignore')[:300]
+            if e.code in (429, 500, 502, 503) and essai < 2 and not re.search(r'per day|daily|quota', b, re.I): print(url.split('/')[2], e.code, '→ nouvel essai dans 30 s'); time.sleep(30); continue
+            raise RuntimeError(f'{e.code} {b[:160]}')
+def modeles_gemini():
+    try:
+        q = urllib.request.Request('https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000', headers={'x-goog-api-key': E['GEMINI_API_KEY']})
+        v = [m['name'][7:] for m in json.loads(urllib.request.urlopen(q, timeout=30).read()).get('models', []) if 'generateContent' in m.get('supportedGenerationMethods', [])
+             and re.search(r'flash|pro', m['name']) and not re.search(r'lite|image|tts|live|audio|embed|exp|vision|thinking', m['name'])]
+        num = lambda m: (float((re.search(r'gemini-(\d+(?:\.\d+)?)', m) or [0, 0])[1]) + (0.5 if 'pro' in m else 0) - (0.01 if 'preview' in m else 0))
+        return sorted(v, key=num, reverse=True)[:6] or ['gemini-flash-latest']
+    except Exception as e: print('liste Gemini :', e); return ['gemini-flash-latest']
 def gemini(sys_txt, user):
-    k = E.get('GEMINI_API_KEY')
-    if not k: raise RuntimeError('pas de clé')
-    for m in ('gemini-flash-latest', 'gemini-2.5-flash', 'gemini-2.0-flash'):
+    if not E.get('GEMINI_API_KEY'): raise RuntimeError('pas de clé')
+    err = []
+    for m in modeles_gemini():
         try:
             d = post(f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent', {'systemInstruction': {'parts': [{'text': sys_txt}]},
-                     'contents': [{'role': 'user', 'parts': [{'text': user}]}], 'generationConfig': {'temperature': 0.9}}, {'x-goog-api-key': k})
+                     'contents': [{'role': 'user', 'parts': [{'text': user}]}], 'generationConfig': {'temperature': 0.9}}, {'x-goog-api-key': E['GEMINI_API_KEY']})
             t = ''.join(p.get('text', '') for p in d['candidates'][0]['content']['parts'])
-            if t: return t, 'Gemini ' + m
-        except urllib.error.HTTPError as e: print('Gemini', m, ':', e.code, e.read().decode()[:120])
-    raise RuntimeError('tous les modèles Gemini sont occupés')
+            if t: return t, m
+        except Exception as e: err.append(f'{m} {str(e)[:60]}'); print('Gemini', m, ':', str(e)[:120])
+    raise RuntimeError('tous les modèles Gemini sont occupés (' + ' ; '.join(err)[:200] + ')')
 def compatible(url, cle, modele, extra=None):
     def f(sys_txt, user):
         k = E.get(cle)
         if not k: raise RuntimeError('pas de clé')
-        d = post(url, {'model': modele, 'temperature': 0.9, 'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}], **(extra or {})}, {'Authorization': 'Bearer ' + k})
+        m = modele() if callable(modele) else modele
+        d = post(url, {'model': m, 'temperature': 0.9, 'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}], **(extra or {})}, {'Authorization': 'Bearer ' + k})
         t = d['choices'][0]['message'].get('content') or ''
         if not t: raise RuntimeError('réponse vide')
-        return t, modele
+        return t, m
     return f
+def openrouter_libre():   # le meilleur modèle gratuit du moment qui sait lire très long (la liste change souvent)
+    try:
+        L = json.loads(urllib.request.urlopen(urllib.request.Request('https://openrouter.ai/api/v1/models', headers={'User-Agent': 'sounsouni-studio'}), timeout=30).read())['data']
+        L = [x for x in L if x['id'].endswith(':free') and (x.get('context_length') or 0) >= 100000]
+        rang = lambda x: next((i for i, k in enumerate(('deepseek', 'qwen3', 'gpt-oss', 'llama-4', 'glm', 'kimi', 'mistral', 'gemma')) if k in x['id']), 99)
+        return sorted(L, key=rang)[0]['id']
+    except Exception as e: print('liste OpenRouter :', e); return 'openai/gpt-oss-120b:free'
 IA = [('Gemini', gemini, True),
       ('Mistral', compatible('https://api.mistral.ai/v1/chat/completions', 'MISTRAL_API_KEY', 'mistral-medium-latest'), True),
       ('NVIDIA', compatible('https://integrate.api.nvidia.com/v1/chat/completions', 'NVIDIA_API_KEY', 'deepseek-ai/deepseek-v3.1', {'max_tokens': 8000}), True),
       ('Zhipu', compatible('https://api.z.ai/api/paas/v4/chat/completions', 'ZHIPU_API_KEY', 'glm-4.5-flash'), True),
       ('Cerebras', compatible('https://api.cerebras.ai/v1/chat/completions', 'CEREBRAS_API_KEY', 'gpt-oss-120b', {'reasoning_effort': 'low'}), True),
-      ('OpenRouter', compatible('https://openrouter.ai/api/v1/chat/completions', 'OPENROUTER_API_KEY', 'openai/gpt-oss-120b:free'), True),
+      ('OpenRouter', compatible('https://openrouter.ai/api/v1/chat/completions', 'OPENROUTER_API_KEY', openrouter_libre), True),
       ('GitHub Models', compatible('https://models.github.ai/inference/chat/completions', 'GITHUB_MODELS_TOKEN', 'openai/gpt-4.1'), False),
       ('Groq', compatible('https://api.groq.com/openai/v1/chat/completions', 'GROQ_API_KEY', 'openai/gpt-oss-120b', {'reasoning_effort': 'low'}), False)]
 def nettoyer(t):
