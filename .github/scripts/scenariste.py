@@ -7,11 +7,18 @@ import os, sys, re, json, time, urllib.request, urllib.error
 sys.path.insert(0, 'studio')
 E = os.environ
 def lu(f): return open(f, encoding='utf-8').read() if os.path.exists(f) else ''
+def episodes_recents(n=3):   # mémoire moyenne : seulement les n derniers épisodes en entier
+    t = lu('docs/EPISODES.md'); parts = re.split(r'(?m)^(?=## Épisode )', t)
+    return parts[0] + ''.join(parts[-n:]) if len(parts) > n else t
 def consignes(complet):
+    """complet : True = tous les épisodes en entier · 'moyen' = les 3 derniers en entier (IA qui n'acceptent pas tout d'un coup) · False = résumé seulement."""
     base = lu('docs/SCENARISTE.md') + '\n\n## GUIDE DU SCÉNARISTE (format du studio)\n' + lu('docs/GUIDE_SCENARISTE.md')
     if not complet:   # petites IA : seulement l'histoire jusqu'ici (sans la liste des idées)
         h = lu('docs/SAISON.md'); return base + "\n\n## L'HISTOIRE JUSQU'ICI\n" + h.split('## Idées')[0]
-    return (base + "\n\n## L'HISTOIRE JUSQU'ICI ET LES IDÉES DE LA SAISON\n" + lu('docs/SAISON.md') + "\n\n## RÈGLES DE MISE AU FORMAT DU STUDIO (à respecter dès l'écriture)\n" + lu('docs/ASSISTANT.md') +
+    regles = "\n\n## RÈGLES DE MISE AU FORMAT DU STUDIO (à respecter dès l'écriture)\n" + lu('docs/ASSISTANT.md')
+    if complet == 'moyen':
+        return base + "\n\n## L'HISTOIRE JUSQU'ICI ET LES IDÉES DE LA SAISON\n" + lu('docs/SAISON.md') + regles + '\n\n## LES DERNIERS ÉPISODES (scripts complets : même style, même longueur, suite logique)\n' + episodes_recents()
+    return (base + "\n\n## L'HISTOIRE JUSQU'ICI ET LES IDÉES DE LA SAISON\n" + lu('docs/SAISON.md') + regles +
             '\n\n## CE QUE LE RELECTEUR VÉRIFIE (évite ces erreurs)\n' + lu('docs/RELECTEUR.md') + "\n\n## CE QUE L'APPLICATION SAIT MONTRER\n" + lu('docs/CAPACITES.md') +
             '\n\n## CARNET DU STUDIO (leçons apprises)\n' + lu('technicien/carnet.md') + '\n\n## TOUS LES ÉPISODES DÉJÀ FAITS (scripts complets : même style, même structure, même longueur, suite logique)\n' + lu('docs/EPISODES.md'))
 def post(url, data, headers, timeout=600):
@@ -75,7 +82,12 @@ def mots(s):
     return sum(len(e.get('text', '').split()) for e in sc.parse(s)[1] if e.get('type') == 'line')
 def ecrire(demande, log=print):
     essais = []
-    for nom, f, complet in IA:
+    taches = []
+    for nom, f, complet in IA:   # chaque grande IA : d'abord toute la mémoire, puis (si elle refuse la taille) les 3 derniers épisodes en entier
+        taches.append((nom, f, complet))
+        if complet is True: taches.append((nom, f, 'moyen'))
+    for nom, f, complet in taches:
+        if complet == 'moyen' and essais and re.search(r'pas de clé|quota|per day|daily', essais[-1], re.I): continue
         try:
             t, m = f(consignes(complet), demande); s = nettoyer(t)
             if s and re.search(r'DÉCOR\s*:', s):
@@ -88,7 +100,7 @@ def ecrire(demande, log=print):
                         s2 = nettoyer(t2)
                         if s2 and mots(s2) > n: sc.parse(s2); s = s2
                     except Exception as e: log(f'allongement raté : {e}')
-                return s, f"{nom} ({m})" + ('' if complet else " — résumé de l'histoire seulement")
+                return s, f"{nom} ({m})" + ('' if complet is True else ' — les 3 derniers épisodes en entier' if complet == 'moyen' else " — résumé de l'histoire seulement")
             essais.append(f'{nom} : script pas au format')
         except Exception as e: essais.append(f'{nom} : {str(e)[:90]}')
         log(essais[-1])
