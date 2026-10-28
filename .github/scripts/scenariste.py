@@ -51,30 +51,37 @@ def gemini(sys_txt, user):
             if t: return t, m
         except Exception as e: err.append(f'{m} {str(e)[:60]}'); print('Gemini', m, ':', str(e)[:120])
     raise RuntimeError('tous les modèles Gemini sont occupés (' + ' ; '.join(err)[:200] + ')')
-def compatible(url, cle, modele, extra=None):
+def compatible(url, cle, modele, extra=None, entetes=None):
     def f(sys_txt, user):
         k = E.get(cle)
         if not k: raise RuntimeError('pas de clé')
-        m = modele() if callable(modele) else modele
-        d = post(url, {'model': m, 'temperature': 0.9, 'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}], **(extra or {})}, {'Authorization': 'Bearer ' + k})
-        t = d['choices'][0]['message'].get('content') or ''
-        if not t: raise RuntimeError('réponse vide')
-        return t, m
+        L = modele() if callable(modele) else [modele]
+        err = []
+        for m in L:   # plusieurs modèles possibles (OpenRouter : les modèles gratuits du moment)
+            try:
+                d = post(url, {'model': m, 'temperature': 0.9, 'messages': [{'role': 'system', 'content': sys_txt}, {'role': 'user', 'content': user}], **(extra or {})}, {'Authorization': 'Bearer ' + k, **(entetes or {})})
+                t = d['choices'][0]['message'].get('content') or ''
+                if t: return t, m
+                err.append(m + ' : réponse vide')
+            except Exception as e: err.append(f'{m} : {str(e)[:80]}')
+        raise RuntimeError(' ; '.join(err))
     return f
-def openrouter_libre():   # le meilleur modèle gratuit du moment qui sait lire très long (la liste change souvent)
+def openrouter_libres():   # les meilleurs modèles gratuits du moment qui savent lire long (la liste change souvent)
     try:
         L = json.loads(urllib.request.urlopen(urllib.request.Request('https://openrouter.ai/api/v1/models', headers={'User-Agent': 'sounsouni-studio'}), timeout=30).read())['data']
-        L = [x for x in L if x['id'].endswith(':free') and (x.get('context_length') or 0) >= 100000]
-        rang = lambda x: next((i for i, k in enumerate(('deepseek', 'qwen3', 'gpt-oss', 'llama-4', 'glm', 'kimi', 'mistral', 'gemma')) if k in x['id']), 99)
-        return sorted(L, key=rang)[0]['id']
-    except Exception as e: print('liste OpenRouter :', e); return 'openai/gpt-oss-120b:free'
+        L = [x for x in L if x['id'].endswith(':free') and (x.get('context_length') or 0) >= 64000]
+        rang = lambda x: next((i for i, k in enumerate(('deepseek', 'qwen3', 'gpt-oss', 'kimi', 'glm', 'llama-4', 'mistral', 'gemma')) if k in x['id']), 99)
+        return [x['id'] for x in sorted(L, key=rang)[:5]] or ['openai/gpt-oss-120b:free']
+    except Exception as e: print('liste OpenRouter :', e); return ['openai/gpt-oss-120b:free']
+GH = {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28'}
+# complet : True = toute la mémoire · 'moyen' = 3 derniers épisodes (IA limitées en mots par minute) · False = résumé (petites IA)
 IA = [('Gemini', gemini, True),
-      ('Mistral', compatible('https://api.mistral.ai/v1/chat/completions', 'MISTRAL_API_KEY', 'mistral-medium-latest'), True),
       ('NVIDIA', compatible('https://integrate.api.nvidia.com/v1/chat/completions', 'NVIDIA_API_KEY', 'deepseek-ai/deepseek-v3.1', {'max_tokens': 8000}), True),
       ('Zhipu', compatible('https://api.z.ai/api/paas/v4/chat/completions', 'ZHIPU_API_KEY', 'glm-4.5-flash'), True),
-      ('Cerebras', compatible('https://api.cerebras.ai/v1/chat/completions', 'CEREBRAS_API_KEY', 'gpt-oss-120b', {'reasoning_effort': 'low'}), True),
-      ('OpenRouter', compatible('https://openrouter.ai/api/v1/chat/completions', 'OPENROUTER_API_KEY', openrouter_libre), True),
-      ('GitHub Models', compatible('https://models.github.ai/inference/chat/completions', 'GITHUB_MODELS_TOKEN', 'openai/gpt-4.1'), False),
+      ('OpenRouter', compatible('https://openrouter.ai/api/v1/chat/completions', 'OPENROUTER_API_KEY', openrouter_libres), True),
+      ('Mistral', compatible('https://api.mistral.ai/v1/chat/completions', 'MISTRAL_API_KEY', 'mistral-medium-latest'), 'moyen'),
+      ('Cerebras', compatible('https://api.cerebras.ai/v1/chat/completions', 'CEREBRAS_API_KEY', 'gpt-oss-120b', {'reasoning_effort': 'low'}), 'moyen'),
+      ('GitHub Models', compatible('https://models.github.ai/inference/chat/completions', 'GITHUB_MODELS_TOKEN', lambda: ['openai/gpt-4.1', 'deepseek/deepseek-v3-0324', 'openai/gpt-4.1-mini'], {'max_tokens': 4000}, GH), False),
       ('Groq', compatible('https://api.groq.com/openai/v1/chat/completions', 'GROQ_API_KEY', 'openai/gpt-oss-120b', {'reasoning_effort': 'low'}), False)]
 def nettoyer(t):
     t = re.sub(r'<think>.*?</think>', '', t or '', flags=re.S).strip(); t = re.sub(r'^```\w*\n?|\n?```\s*$', '', t).strip(); k = t.find('TITRE:')
@@ -89,10 +96,13 @@ def ecrire(demande, log=print):
     for nom, f, complet in IA:   # chaque grande IA : d'abord toute la mémoire, puis (si elle refuse la taille) les 3 derniers épisodes en entier
         taches.append((nom, f, complet))
         if complet is True: taches.append((nom, f, 'moyen'))
+        if complet == 'moyen': taches.append((nom, f, False))
     seul = [x.strip().lower() for x in E.get('SEULEMENT', '').split(',') if x.strip()]
     if seul: taches = [t for t in taches if t[0].lower() in seul]
     for nom, f, complet in taches:
-        if complet == 'moyen' and essais and re.search(r'pas de clé|quota|per day|daily', essais[-1], re.I): continue
+        if essais and essais[-1].startswith(nom + ' :'):
+            if re.search(r'pas de clé|quota|per day|daily', essais[-1], re.I): continue
+            if '429' in essais[-1]: time.sleep(60)   # limite par minute : on attend qu'elle se vide avant de redemander plus court
         try:
             t, m = f(consignes(complet), demande); s = nettoyer(t)
             if s and re.search(r'DÉCOR\s*:', s):
