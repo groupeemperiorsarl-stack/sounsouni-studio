@@ -7946,7 +7946,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_dos2": {
    "char": "SALI",
@@ -7963,7 +7964,8 @@
    "head_x": 0.485,
    "props": [],
    "genere": "gemini",
-   "depart": "sal_beignet"
+   "depart": "sal_beignet",
+   "props_auto": {}
   },
   "awa_choc2": {
    "char": "AWA",
@@ -7981,7 +7983,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sey_salue": {
    "char": "SEYDOU",
@@ -7999,7 +8002,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sey_debout_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_choc": {
    "char": "SALI",
@@ -8017,7 +8021,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sal_beignet",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_colere": {
    "char": "SALI",
@@ -8035,7 +8040,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sal_beignet",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_rire": {
    "char": "SALI",
@@ -8053,7 +8059,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sal_beignet",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_taquin": {
    "char": "SALI",
@@ -8071,7 +8078,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sal_beignet",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_colere": {
    "char": "BAKARY",
@@ -8089,7 +8097,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_colere2": {
    "char": "BAKARY",
@@ -8107,7 +8116,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_panique": {
    "char": "DIASABI",
@@ -8125,7 +8135,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_assis_mefiant": {
    "char": "MODIBO",
@@ -8144,7 +8155,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mod_assis_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
