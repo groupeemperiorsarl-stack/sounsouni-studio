@@ -15,7 +15,7 @@ Chaque idée : `- **N · Titre** (genre) — idée`. Genres : 😂 humour · �
 
 ## Idées d'épisodes (23 à 67)
 ### Partie 1 — Le secret de Bakary
-- **23 · Le coach** (😂) — Diasabi apprend enfin que Bakary aime Awa et devient son « coach en amour ». Son conseil de Bobo : « Tape-lui les fesses, ça marche à tous les coups ! ». Bakary finit par essayer… et on voit la réaction d'Awa, devant tout le quartier.
+- **23 · Le coach** (😂) — Diasabi apprend enfin que Bakary aime Awa et devient son « coach en amour ». Il a un truc de Bobo : une incantation à dire dans sa main (« tou tou tou »), puis taper les fesses de la fille, « ça marche à tous les coups ». Au début, Bakary ne l'écoute pas. Diasabi parle longtemps, très sérieux, jure qu'il l'a essayé sur beaucoup de filles et que ça a toujours marché. Petit à petit, Bakary commence à le croire. Il va voir Awa, souffle « tou tou tou » dans sa main, lui tape les fesses… et Awa lui donne une énorme gifle, devant tout le quartier. Réactions de tout le monde.
 - **24 · Le plan B de Diasabi** (😂) — Diasabi change de méthode : il fait livrer à Awa, par Seydou, un « cadeau de Bakary » commandé sur Sounsouni… un régime de bananes et un poulet vivant. Awa croit que Bakary se moque d'elle.
 - **25 · Fatim sait** (💔) — Fatim a deviné. Blessée mais digne, elle va voir Awa à l'atelier : « Si tu l'aimes, dis-le-lui. Sinon, laisse-le tranquille. » Awa nie, puis pleure seule après son départ.
 - **26 · Le Prince revient** (🌀) — Cheick revient de Paris avec un cadeau pour Awa : une machine à coudre dernier modèle, livrée devant tout le quartier. Bakary, de son kiosque, voit tout. Modibo : « Van, une théière contre une machine, c'est dur. »
