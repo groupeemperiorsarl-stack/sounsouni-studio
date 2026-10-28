@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v43</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v44</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -651,12 +651,14 @@ $('#s-liste').onchange=()=>{const x=SC_IDEES&&SC_IDEES[+$('#s-liste').value];if(
 function dicter(champ,msg){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){msg.innerHTML='<p class="msg">Dictée non disponible ici : utilisez le micro du clavier.</p>';return}
   const r=new SR();r.lang='fr-FR';r.interimResults=false;r.onresult=e=>{champ.value+=(champ.value?' ':'')+e.results[0][0].transcript;scGarder()};r.start()}
 $('#s-mic').onclick=()=>dicter($('#s-idee'),$('#s-prog'));$('#s-mic2').onclick=()=>dicter($('#s-corr'),$('#s-msg'));
-async function ecrireScenario(demande,prog){
-  const [c,g,h]=await Promise.all(['docs/SCENARISTE.md','docs/GUIDE_SCENARISTE.md','docs/SAISON.md'].map(f=>ghLire(f)));
+async function ecrireScenario(demande,prog){   // mémoire complète : tous les épisodes déjà faits (scripts entiers) + toutes les règles du studio
+  const F=['docs/SCENARISTE.md','docs/GUIDE_SCENARISTE.md','docs/SAISON.md','docs/EPISODES.md','docs/ASSISTANT.md','docs/RELECTEUR.md','docs/CAPACITES.md','technicien/carnet.md'];
+  prog('Le scénariste relit tous les épisodes déjà faits et les règles du studio…');const [c,g,h,e,a,r,cap,car]=await Promise.all(F.map(f=>ghLire(f).catch(()=>'')));
   if(!c||!g)throw new Error('consignes du scénariste introuvables dans le dépôt');
-  const sys=c+'\n\n## GUIDE DU SCÉNARISTE (format du studio)\n'+g+'\n\n## L\'HISTOIRE JUSQU\'ICI ET LES IDÉES DE LA SAISON\n'+(h||'');let t='',n='';
-  try{prog('Le scénariste (Gemini) écrit… environ 1 minute.');t=await gem(sys,[{text:demande}],prog,false);n='Gemini'}
-  catch(e){prog('Gemini indisponible ('+e.message+') : une autre IA écrit…');const r=await ia([{role:'system',content:sys},{role:'user',content:demande}],prog,{temp:0.8});t=r.t;n=r.n}
+  const base=c+'\n\n## GUIDE DU SCÉNARISTE (format du studio)\n'+g+'\n\n## L\'HISTOIRE JUSQU\'ICI ET LES IDÉES DE LA SAISON\n'+(h||'');
+  const tout=base+'\n\n## RÈGLES DE MISE AU FORMAT DU STUDIO (à respecter dès l\'écriture)\n'+(a||'')+'\n\n## CE QUE LE RELECTEUR VÉRIFIE (évite ces erreurs)\n'+(r||'')+'\n\n## CE QUE L\'APPLICATION SAIT MONTRER\n'+(cap||'')+'\n\n## CARNET DU STUDIO (leçons apprises sur les épisodes passés)\n'+(car||'')+'\n\n## TOUS LES ÉPISODES DÉJÀ FAITS (scripts complets : même style, même structure, même longueur, suite logique)\n'+(e||'');let t='',n='';
+  try{prog('Le scénariste (Gemini) écrit… environ 1 à 2 minutes.');t=await gem(tout,[{text:demande}],prog,false);n='Gemini (avec tous les épisodes passés)'}
+  catch(x){prog('Gemini indisponible ('+x.message+') : une autre IA écrit, avec le résumé des épisodes seulement…');const q=await ia([{role:'system',content:base}, {role:'user',content:demande}],prog,{temp:0.8});t=q.t;n=q.n+' (résumé des épisodes seulement)'}
   t=String(t||'').replace(/^```\w*\n?|\n?```\s*$/g,'').trim();const k=t.indexOf('TITRE:');if(k>0)t=t.slice(k);
   if(!/^TITRE:/.test(t)||!/DÉCOR\s*:/.test(t))throw new Error('le scénariste n\'a pas rendu un script au format (réessayez)');return {t,n}}
 function scMots(t){return t.split('\n').filter((l,i,L)=>i>0&&/^[A-ZÉÈ_ ]+\s*\(/.test(L[i-1].trim())).join(' ').split(/\s+/).filter(Boolean).length}

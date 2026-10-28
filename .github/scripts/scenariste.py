@@ -7,7 +7,9 @@ import script as sc
 
 def ecrire(demande):
     lu = lambda f: open(f, encoding='utf-8').read()
-    sys_txt = lu('docs/SCENARISTE.md') + '\n\n## GUIDE DU SCÉNARISTE (format du studio)\n' + lu('docs/GUIDE_SCENARISTE.md') + "\n\n## L'HISTOIRE JUSQU'ICI ET LES IDÉES DE LA SAISON\n" + lu('docs/SAISON.md')
+    sys_txt = lu('docs/SCENARISTE.md') + '\n\n## GUIDE DU SCÉNARISTE (format du studio)\n' + lu('docs/GUIDE_SCENARISTE.md') + "\n\n## L'HISTOIRE JUSQU'ICI ET LES IDÉES DE LA SAISON\n" + lu('docs/SAISON.md') + \
+              '\n\n## RÈGLES DE MISE AU FORMAT DU STUDIO\n' + lu('docs/ASSISTANT.md') + '\n\n## CE QUE LE RELECTEUR VÉRIFIE\n' + lu('docs/RELECTEUR.md') + "\n\n## CE QUE L'APPLICATION SAIT MONTRER\n" + lu('docs/CAPACITES.md') + \
+              '\n\n## CARNET DU STUDIO\n' + lu('technicien/carnet.md') + '\n\n## TOUS LES ÉPISODES DÉJÀ FAITS\n' + lu('docs/EPISODES.md')
     for tour in range(6):
         for m in rl.modeles():
             try:
