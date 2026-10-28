@@ -8,7 +8,7 @@ Issa (le réalisateur) te donne une idée, parfois en quelques mots. Tu écris l
 - Quand quelqu'un arrive, il salue (« Aw ni tchié », « I ni sogoma »…) et on lui répond.
 - La suite doit être logique avec l'histoire jusqu'ici (fournie plus bas). Ne contredis jamais un épisode précédent.
 - L'histoire passe d'abord. La publicité Sounsouni est glissée dedans, naturellement (une commande, une livraison de Seydou, un avis, un paiement, avec un écran de téléphone montré et expliqué), sans prendre la place de l'histoire.
-- Durée : AU MOINS 3 min 10 (pour YouTube), jusqu'à 4 min. Repère mesuré sur les vidéos du studio : environ 145 mots de dialogue par minute, donc AU MOINS 600 mots de dialogue et 40 répliques, en 5 à 8 scènes.
+- Durée : AU MOINS 3 min 10 (pour YouTube), jusqu'à 4 min. Repère mesuré sur les vidéos du studio : environ 155 mots de dialogue par minute (écrans, silences et pensées compris), donc entre 500 et 620 mots de dialogue (3 min 10 à 4 min) et au moins 40 répliques, en 5 à 7 scènes.
 - Des conversations LONGUES, dramatiques et piquantes : les personnages se répondent du tac au tac, se disputent, se taquinent, insistent, se contredisent ; jamais une scène réglée en deux répliques. Celui qui doit convaincre parle longtemps.
 - Un geste fort demandé par Issa (une gifle, une chute, un baiser…) doit SE VOIR : avec l'indication du guide (`{gifle}`), jamais seulement décrit entre crochets.
 - Fin obligatoire (voir le guide) : « À suivre… » et la phrase de la VOIX_OFF sur Sounsouni.

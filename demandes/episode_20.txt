@@ -1,92 +1,208 @@
-TITRE: Les Plans de Bakary – Épisode 23 : Le coach de l’amour
+TITRE: Les Plans de Bakary – Épisode 23 : Le coach de l'amour
 
-DÉCOR: KIOSQUE · midi · ambiance: marché, cris de vendeurs, klaxon lointain
-PLAN: large [Bakary debout, Diasabi au comptoir, Modibo assis, Sali derrière le comptoir, Moussa en arrière-plan]
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc]
+[BRUITAGE: the]
 
-DIASABI (neutre · regarde: Bakary · voix: normal)
-{sourire_malin} Mon frère, il faut que tu saches une chose : Awa t’aime déjà, mais elle ne le voit pas. {penche_tete} J’ai un truc qui marche à tous les coups, même sur les plus rebelles.
+BAKARY (triste · regarde: Modibo · voix: lentement)
+Van… {soupir} je n'arrête pas de penser à elle. Même mon thé a le goût de ses yeux.
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+[BRUITAGE: pas]
+
+DIASABI (salue · regarde: Bakary · voix: normal)
+Aw ni sogoma ! {grand_sourire} Les brochettes sont prêtes !
+
+BAKARY (gene · regarde: Diasabi · voix: normal)
+I ni sogoma, Diasabi.
+
+DIASABI (mefiant · regarde: Bakary · voix: normal)
+Tu regardes l'atelier d'en face depuis tout à l'heure… {choc} Attends… AWA ?! C'est Awa que tu aimes ?!
 [RÉACTION MODIBO: rire_retenu]
-[RÉACTION SALI: sifflement]
+[BRUITAGE sur "AWA": tonnerre]
 
-DIASABI (determine · regarde: Bakary · voix: normal)
-{grand_sourire} Écoute bien : tu prends ta main, tu dis « tou tou tou » en soufflant dedans, puis tu tapotes les fesses de la fille, comme Bobo le dit. J’ai testé sur des dizaines de filles du marché, même sur la vendeuse de tomates, et ça a toujours fonctionné.
-[RÉACTION BAKARY sur "tou tou tou": surprise, hausse les épaules]
+BAKARY (panique · regarde: Diasabi · voix: chuchote)
+Chut ! {sueur} Tout le quartier va l'entendre !
 
-BAKARY (mefiant · regarde: Diasabi · voix: lentement)
- Diasabi, mon frère, {secoue_tete} je ne crois pas à ces bêtises. {moue} J’ai déjà fait le tour du quartier, elle me regarde comme si j’étais un fantôme.
-[RÉACTION MODIBO: rire_retenu]
+DIASABI (fier · regarde: Bakary · voix: normal)
+Mon frère, c'est ton jour de chance. {bombe_torse} Tu as devant toi le plus grand coach de l'amour de Bobo.
+
+MODIBO (moqueur · regarde: Diasabi · voix: normal)
+Le plus grand coach… qui n'a pas de femme.
+
+DIASABI (serieux · regarde: Bakary · voix: lentement)
+J'ai une formule de mon grand-père. {se_penche} Tu souffles trois fois dans ta main : tou… tou… tou. Puis tu lui tapes les fesses. Et elle est à toi.
+[RÉACTION BAKARY sur "fesses": choc, recule]
+
+BAKARY (choc · regarde: Diasabi · voix: crie)
+Quoi ?! {recule} Tu es fou ! Awa va me tuer !
+
+BAKARY (colere · regarde: Diasabi · voix: normal)
+Non, Diasabi. Non, non et non. {secoue_tete} Je ne fais pas ça.
+
+DIASABI (serieux · regarde: Bakary · voix: lentement)
+Regarde-moi dans les yeux. {serieux} Aminata, à Bobo : tou tou tou… mariée trois mois après. Kadiatou, à Sikasso : tou tou tou… elle m'a suivi jusqu'à la gare.
+
+MODIBO (mefiant · regarde: Diasabi · voix: normal)
+Et pourquoi elles ne sont plus là, tes Aminata et tes Kadiatou ?
+
+DIASABI (fier · regarde: Modibo · voix: normal)
+Parce que ça marchait trop bien, Van ! Rokia, Mariam, Fanta… Trente ans de pratique. Jamais un échec !
+[RÉACTION MODIBO: leve_yeux_ciel]
 
 DIASABI (serieux · regarde: Bakary · voix: normal)
-{sourire} {se_penche} Tu vas voir, mon ami. Si tu ne le fais pas, je te jure que tu regretteras de ne pas avoir essayé. {point_exclamation} Allez, prends ton téléphone, commande un thé à Sounsouni, ça te donnera le courage.
-PLAN: objet téléphone
-[ÉCRAN 3 s: Sounsouni – Commande thé à la menthe – bouton « Commander »]
-PENSÉE BAKARY (pensif · regarde: écran)
-{sourire} Hmm… {moue} Un thé, ça ne fait pas de mal…
-[RÉACTION BAKARY sur "thé": sourire timide]
+Sur la tête de ma mère. Sur mon grill. {hoche_tete} Jamais une seule gifle.
 
-DÉCOR: RUE · après-midi · ambiance: motos, passants, musique lointaine
-PLAN: large [Bakary marchant, Diasabi à côté, Awa assise sur un banc, Mimi vend des beignets]
+PENSÉE BAKARY (pensif · regarde: loin)
+Il a l'air tellement sûr de lui… Et moi, avec mes belles paroles, je n'ai jamais rien réussi avec Awa.
 
-DIASABI (neutre · regarde: Bakary · voix: normal)
-{sourire_malin} Ok, on y va. « tou tou tou » dans ta main, puis… tape doucement les fesses.
-BAKARY (neutre · regarde: Awa · voix: normal)
- D’accord… « tou tou tou » …
-[PENCHANT: main de Bakary sur fesse d’Awa]
+MODIBO (serieux · regarde: Bakary · voix: normal)
+Bakarin, ne l'écoute pas. Les conseils de Diasabi font mal tout de suite.
+
+BAKARY (determine · regarde: Modibo · voix: normal)
+Van, j'ai tout essayé. Le thé, le bouquet, la vérité. {determine} La science de Bobo, c'est ma dernière chance.
+
+DIASABI (grand_sourire · regarde: Bakary · voix: crie)
+Voilà un homme ! Allez, souffle dans ta main ! Comme un lion !
+
+BAKARY (determine · regarde: Diasabi · voix: crie)
+TOU ! TOU ! TOU !
+[RÉACTION MODIBO: mains_tete]
+
+DÉCOR: RUE · après-midi · ambiance: circulation
+PLAN: large [Awa debout, Mimi debout, Sali debout, Moussa debout]
+
+MIMI (sourire · regarde: Awa · voix: normal)
+Tantie, on va chercher le tissu bleu au marché ?
+
+AWA (fiere · regarde: Mimi · voix: normal)
+Oui, Mimi. Et vite. {mepris} Je ne veux pas voir le vendeur de thé aujourd'hui.
+
+SALI (taquin · regarde: Awa · voix: normal)
+Tu dis ça tous les jours… mais tu passes toujours devant son kiosque.
+[RÉACTION MIMI: rire_retenu]
+
+MOUSSA (sourire · regarde: Awa · voix: normal)
+Souris, grande sœur ! Je filme le quartier pour mes abonnés.
+
+PLAN: large [Awa debout, Mimi debout, Sali debout, Moussa debout, Bakary marche, Diasabi debout]
+[BRUITAGE: pas]
+[MUSIQUE: suspense]
+
+BAKARY (gene · regarde: Awa · voix: normal)
+Aw ni wula… {gene} Awa… tu es belle aujourd'hui.
+
+AWA (mefiant · regarde: Bakary · voix: normal)
+I ni wula. {yeux_plisses} Pourquoi tu transpires comme ça ?
+
+PENSÉE BAKARY (peur · regarde: Awa)
+Mon cœur va sortir de ma poitrine… Trois fois, et c'est fini.
+
+BAKARY (determine · regarde: Awa · voix: chuchote)
+Tou… tou… tou…
+
+PLAN: 2 s · gros Awa · {choc}
+[BRUITAGE: pop]
+[SILENCE 1 s]
+
+AWA (choc · regarde: Bakary · voix: crie)
+Il m'a tapé les fesses ?! {choc} DEVANT TOUT LE QUARTIER ?!
+[RÉACTION MIMI sur "fesses": choc]
+[RÉACTION SALI sur "fesses": choc]
 
 AWA (furieux · regarde: Bakary · voix: crie)
- {choc}{recule} Qu’est‑ce que c’est que ça ?! Tu oses me toucher comme ça ?!
-[RÉACTION TANTE KADI: cri "Ay!"]
-[RÉACTION MODIBO (hors champ): rire fort]
-[RÉACTION SALI: sifflement aigu]
+Tu oses me toucher ?! {gifle} Tiens ! Voilà ta réponse, vendeur de charbon !
+[RÉACTION SALI sur "réponse": rire]
+[BRUITAGE: rires de foule]
 
-DIASABI (neutre · regarde: Bakary · voix: normal)
-{choc} Mais… mais… C’était… c’était le plan ?
-BAKARY (confus · regarde: Awa · voix: essoufflé)
-{panique} Je… je pensais que… {tremble} C’était censé marcher…
-[Awa donne une énorme gifle à Bakary, le visage rouge, la foule éclate de rire]
+MOUSSA (choc · regarde: caméra · voix: crie)
+Waouh ! En direct ! La plus grande gifle de Bamako !
+[BRUITAGE: sifflements]
 
-[RÉACTION MIMI sur "gifle": rire_retenu]
-[RÉACTION MOUSE: "whoosh" de la gifle]
-[RÉACTION KARIM (hors champ): "c’est pas possible!"]
+BAKARY (choc · regarde: Awa · voix: crie)
+Aïe ! {sueur} Pardon, Awa ! C'est la science de Bobo !
 
-DÉCOR: KIOSQUE · soir · ambiance: grillons, musique douce
-PLAN: large [Diasabi, Modibo, Bakary assis, Awa debout, Fatim arrive, Seydou en scooter]
+AWA (furieux · regarde: Diasabi · voix: crie)
+La science de Bobo ?! {pointe} DIASABI ! C'est toi, le professeur ?!
 
-FATIM (tendre · regarde: Bakary · voix: au téléphone)
-Bakary, c’est Fatim. J’ai entendu parler d’une… petite mésaventure. {sourire} Tu vas bien ?
-[BRUITAGE: sonnerie de téléphone]
-PENSÉE FATIM (surpris · regarde: téléphone)
-Il faut que je l’aide, même si c’est… {rire} …pas mon problème habituel.
-[RÉACTION BAKARY sur "Fatim": honte, baisse la tête]
+DIASABI (panique · regarde: Awa · voix: vite)
+Il a soufflé trop vite ! {sueur} Il fallait souffler quatre fois !
 
-SEYDOU (neutre · regarde: Bakary · voix: normal)
-{sourire} Bakary, mon gars, tu veux un nouveau thé ? J’ai dix% de réduction sur Sounsouni aujourd’hui, code « COUPDECOEUR ».
-[ÉCRAN 3 s: Sounsouni – Code promo COUPDECOEUR – 10%]
-PENSÉE SEYDOU (serieux · regarde: écran)
-Si je lui livre ce thé, il oubliera la gifle et reviendra plus fort.
+SALI (colere · regarde: Diasabi · voix: crie)
+Quatre fois ?! Viens ici, toi ! Je vais te souffler dessus avec ma marmite !
+
+DIASABI (peur · regarde: Sali · voix: crie)
+Au secours ! À Bobo, on dit : quand la marmite se fâche, le cuisinier court !
+[BRUITAGE: pas]
+[RÉACTION MOUSSA: rire]
+
+AWA (colere · regarde: Bakary · voix: normal)
+Bakary. La prochaine fois, parle avec ta bouche. Pas avec tes mains.
+
+DÉCOR: ATELIER · soir · ambiance: grillons
+PLAN: large [Awa assis, Mimi assis]
+[BRUITAGE: machine a coudre]
+
+MIMI (rire_retenu · regarde: Awa · voix: normal)
+Tantie… pardon, mais… tou, tou, tou…
+
+AWA (colere · regarde: Mimi · voix: normal)
+Mimi ! {pointe} Encore un « tou » et tu couds toute seule jusqu'à demain !
+
+PENSÉE AWA (pensif · regarde: bas)
+Il a osé… Mais il tremblait comme une feuille. Ce n'est pas lui, c'est ce Diasabi. {gene} Et moi, j'ai frappé de toutes mes forces.
+
+PLAN: gros [Awa assis, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Pommade apaisante · Livraison au kiosque de Bakary · Message : « Pour ta joue. La prochaine fois, parle. – A. »]
+[BRUITAGE: clic]
+
+PENSÉE AWA (sourire · regarde: téléphone)
+Une pommade pour sa joue, livrée par Seydou. Pas mon nom, juste une lettre.
+
+DÉCOR: KIOSQUE · nuit · ambiance: grillons
+PLAN: large [Bakary debout, Modibo sur le banc, Seydou debout]
+[BRUITAGE: moto]
+
+SEYDOU (salue · regarde: Bakary · voix: normal)
+I ni sogoma ! Livraison Sounsouni pour le kiosque de Bakary !
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Livraison reçue · Pommade apaisante · « Pour ta joue. La prochaine fois, parle. – A. »]
+
+PENSÉE BAKARY (emu · regarde: téléphone)
+« La prochaine fois, parle. » Signé… A. Comme Awa.
+
+BAKARY (emerveille · regarde: Modibo · voix: crie)
+Van ! Elle a écrit « la prochaine fois » ! {grand_sourire} Il y aura une prochaine fois !
+[BRUITAGE: scintillement]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Seydou debout, Diasabi debout]
+
+DIASABI (fier · regarde: Bakary · voix: crie)
+Tu vois ?! La science de Bobo marche à tous les coups !
+
+BAKARY (colere · regarde: Diasabi · voix: crie)
+Diasabi ! {pointe} La prochaine fois, c'est toi qui reçois la gifle !
+[RÉACTION SEYDOU: rire]
 [RÉACTION MODIBO: rire]
 
-MODIBO (taquin · regarde: Bakary · voix: normal)
-{sourire} {rire} Tu vois, même le coach a besoin d’un bon thé pour se remettre debout.
-[RÉACTION DIASABI: rire_retenu]
+DÉCOR: CABINE · nuit · ambiance: rue calme
+PLAN: large [Fatim debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 3 s: Vidéo de Moussa · « La plus grande gifle de Bamako » · mille partages]
 
-DIASABI (neutre · regarde: Bakary · voix: normal)
- Bon… je… je retire ma méthode. {penche_tete} Peut‑être que l’amour n’a pas besoin de « tou tou tou ».
-[RÉACTION BAKARY: soupir de soulagement]
+PENSÉE FATIM (triste · regarde: téléphone)
+Il a souffert pour elle devant tout le quartier… {soupir} Alors son cœur, c'est vraiment Awa.
 
-DÉCOR: KIOSQUE · nuit · ambiance: grillons, lampe tamisée
-PLAN: deux [Awa, Bakary]
-
-AWA (neutre · regarde: Bakary · voix: normal)
-{sourire} Bakary, la prochaine fois, parle avec les mots, pas avec les mains.
-BAKARY (neutre · regarde: Awa · voix: normal)
-{grand_sourire} D’accord, Awa. Promis, plus jamais de « tou tou tou ».
-[RÉACTION TANTE KADI: applaudissements]
+FATIM (pensif · regarde: loin · voix: chuchote)
+Awa… tu ne sais pas encore ce que tu as dans les mains.
+[MUSIQUE: suspense]
 
 FIN:
 [ÉCRAN: À suivre…]
 VOIX_OFF (chaleureuse)
-Sur Sounsouni, chaque petit geste trouve son grand moment… même les plus improbables.
+Sur Sounsouni, même un pardon peut se faire livrer. Disponible sur Android, et bientôt sur iPhone.
 VOIX_OFF (lentement)
-Pour télécharger l'application Sounsouni, rendez‑vous sur le site sounsouni.point pro.
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]

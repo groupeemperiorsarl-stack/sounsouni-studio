@@ -44,7 +44,7 @@
 - Idée (liste `docs/SAISON.md` : histoire jusqu'ici + idées 23 à 67, ou idée libre) → Gemini écrit l'épisode complet → corrections → « Envoyer » = mise au format (onglet 🤖) puis aperçu.
 - Consignes `docs/SCENARISTE.md` (l'animation d'abord, la pub Sounsouni glissée dedans ; suivre l'idée d'Issa). Mémoire : `docs/EPISODES.md` (scripts complets de tous les épisodes faits, refait par `.github/scripts/archive.py` à chaque script enregistré) + GUIDE, ASSISTANT, RELECTEUR, CAPACITES, carnet. Essai sur GitHub : workflow « Essai du scénariste ».
 - Si Gemini (clé de la page) est occupé : la page écrit « scénario … » sur la demande « ✍️ Scénariste » (n° 19) → `scenariste.yml` → `.github/scripts/scenariste.py` essaie Gemini, Mistral, NVIDIA, Zhipu, Cerebras, OpenRouter (mémoire complète), puis GitHub Models et Groq (résumé) → réponse en commentaire, lue par la page. Le 28/10 : NVIDIA et Zhipu sans secret GitHub.
-- Longueur (28/10) : au moins 600 mots de dialogue (3 min 10 pour YouTube, ≈ 145 mots/min mesuré) ; trop court → l'IA rallonge toute seule (page `scAllonger`, GitHub `MINI`). Correction qui ne change presque rien → refaite sur GitHub par une autre IA, nombre de lignes changées affiché.
+- Longueur (28/10) : 500 à 620 mots de dialogue (3 min 10 à 4 min ; mesuré : 340 mots = 2 min 20, 652 mots = 4 min 09) ; trop court → l'IA rallonge toute seule (page `scAllonger`, GitHub `MINI`). Correction qui ne change presque rien → refaite sur GitHub par une autre IA, nombre de lignes changées affiché.
 - Épisodes 1 à 13 : pas dans le dépôt.
 
 ## Oreille du studio (son) — 22/10/2026

@@ -671,7 +671,7 @@ async function scServeur(demande,prog){const n=await scIssue(),c=await api('/rep
     if(!r)continue;if(/^❌/.test(r.body))throw new Error(r.body.replace(/^❌\s*/,'').slice(0,400));
     const m=r.body.match(/```text\n([\s\S]*?)\n```/),q=(r.body.match(/Scénario écrit par (.+?) \(réponse/)||[,'GitHub'])[1];if(m)return{t:m[1],n:q}}
   throw new Error('pas de réponse après 12 minutes')}
-const SC_MINI=600;   // mots de dialogue au minimum : 3 min 10 pour YouTube (≈ 145 mots par minute, mesuré sur l'ép. 23)
+const SC_MINI=500;   // mots de dialogue au minimum : 3 min 10 pour YouTube (mesuré : 340 mots = 2 min 20, 652 mots = 4 min 09)
 async function scAllonger(r,prog){const n=scMots(r.t);if(n>=SC_MINI)return r;prog('Le scénario fait '+n+' mots de dialogue : trop court pour 3 min 10. Je demande de rallonger les conversations…');
   try{const r2=await ecrireScenario('Voici ton script ('+n+' mots de dialogue) :\n\n'+r.t+'\n\nALLONGE-LE : il faut AU MOINS '+SC_MINI+' mots de dialogue (3 min 10). Rallonge les conversations (plus de répliques qui se répondent, plus de drame et de piquant), sans rien enlever ni changer l\'histoire. Renvoie le script ENTIER.',prog);if(scMots(r2.t)>n)return{t:r2.t,n:r2.n+' · rallongé'}}catch(e){}return r}
 function scChange(a,b){const A=new Set(a.split('\n').map(x=>x.trim()).filter(Boolean));return b.split('\n').map(x=>x.trim()).filter(x=>x&&!A.has(x)).length}
@@ -679,7 +679,7 @@ function scMots(t){return t.split('\n').filter((l,i,L)=>i>0&&/^[A-ZÉÈ_ ]+\s*\(
 $('#s-go').onclick=async()=>{const idee=$('#s-idee').value.trim(),p=$('#s-prog'),prog=x=>p.innerHTML='<p class="msg">'+esc(x)+'</p>';if(!idee){prog('Écrivez d\'abord votre idée (ou choisissez-en une dans la liste).');return}
   if(SC.out&&!confirm('Remplacer le scénario déjà écrit ?'))return;const bt=$('#s-go');bt.disabled=true;
   try{const num=$('#s-num').value.trim();const r=await scAllonger(await ecrireScenario('Écris l\'épisode '+(num||'suivant')+' complet à partir de cette idée d\'Issa :\n'+idee,prog),prog);
-    $('#s-out').value=r.t;$('#s-res').hidden=false;$('#s-info').textContent='Écrit par '+r.n+' · environ '+scMots(r.t)+' mots de dialogue (3 à 4 min ≈ 450 à 550).';scGarder();p.innerHTML='';$('#s-res').scrollIntoView({behavior:'smooth'})}
+    $('#s-out').value=r.t;$('#s-res').hidden=false;$('#s-info').textContent='Écrit par '+r.n+' · environ '+scMots(r.t)+' mots de dialogue (3 min 10 à 4 min ≈ 500 à 620).';scGarder();p.innerHTML='';$('#s-res').scrollIntoView({behavior:'smooth'})}
   catch(e){prog('❌ '+e.message)}bt.disabled=false};
 $('#s-fix').onclick=async()=>{const c=$('#s-corr').value.trim(),m=$('#s-msg'),prog=x=>m.innerHTML='<p class="msg">'+esc(x)+'</p>';if(!c){prog('Écrivez d\'abord ce qu\'il faut changer.');return}
   const bt=$('#s-fix');bt.disabled=true;try{const avant=$('#s-out').value,dem='Voici le script actuel de l\'épisode :\n\n'+avant+'\n\nCorrections demandées par Issa (À APPLIQUER TOUTES, exactement) :\n'+c+'\n\nRenvoie le script ENTIER corrigé.';

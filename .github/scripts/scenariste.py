@@ -86,7 +86,7 @@ IA = [('Gemini', gemini, True),
 def nettoyer(t):
     t = re.sub(r'<think>.*?</think>', '', t or '', flags=re.S).strip(); t = re.sub(r'^```\w*\n?|\n?```\s*$', '', t).strip(); k = t.find('TITRE:')
     return t[k:] if k >= 0 else ''
-MINI = 600   # mots de dialogue au minimum (≈ 3 min 10 à 145 mots par minute, mesuré sur l'ép. 23)
+MINI = 500   # mots de dialogue au minimum (≈ 3 min 10 : mesuré, 340 mots = 2 min 20 et 652 mots = 4 min 09)
 def mots(s):
     import script as sc
     return sum(len(e.get('text', '').split()) for e in sc.parse(s)[1] if e.get('type') == 'line')
