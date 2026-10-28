@@ -43,6 +43,7 @@
 ## Scénariste (onglet ✍️ de la page, 28/10/2026)
 - Idée (liste `docs/SAISON.md` : histoire jusqu'ici + idées 23 à 67, ou idée libre) → Gemini écrit l'épisode complet → corrections → « Envoyer » = mise au format (onglet 🤖) puis aperçu.
 - Consignes `docs/SCENARISTE.md` (l'animation d'abord, la pub Sounsouni glissée dedans ; suivre l'idée d'Issa). Mémoire : `docs/EPISODES.md` (scripts complets de tous les épisodes faits, refait par `.github/scripts/archive.py` à chaque script enregistré) + GUIDE, ASSISTANT, RELECTEUR, CAPACITES, carnet. Essai sur GitHub : workflow « Essai du scénariste ».
+- Si Gemini (clé de la page) est occupé : la page écrit « scénario … » sur la demande « ✍️ Scénariste » (n° 19) → `scenariste.yml` → `.github/scripts/scenariste.py` essaie Gemini, Mistral, NVIDIA, Zhipu, Cerebras, OpenRouter (mémoire complète), puis GitHub Models et Groq (résumé) → réponse en commentaire, lue par la page. Le 28/10 : NVIDIA et Zhipu sans secret GitHub.
 - Épisodes 1 à 13 : pas dans le dépôt.
 
 ## Oreille du studio (son) — 22/10/2026
