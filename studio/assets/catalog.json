@@ -7809,7 +7809,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_moue": {
    "char": "BAKARY",
@@ -7827,7 +7828,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_assis2": {
    "char": "BAKARY",
@@ -7847,7 +7849,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_assis",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_choc": {
    "char": "FATIM",
@@ -7865,7 +7868,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_choc": {
    "char": "DIASABI",
@@ -7883,7 +7887,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_rire": {
    "char": "DIASABI",
@@ -7901,7 +7906,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_assis": {
    "char": "AWA",
@@ -7921,7 +7927,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_assis_froide",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
