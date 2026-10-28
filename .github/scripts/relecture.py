@@ -84,6 +84,17 @@ def groq(sys_txt, user):   # passe « histoire » (texte seul) : Groq d'abord ; 
             except Exception as e: print('Groq', modele, ':', str(e)[:120]); break
     raise RuntimeError('Groq saturé')
 import urllib.error
+def autres(sys_txt, user):
+    """Quand Groq et Gemini sont saturés : les autres IA gratuites du studio (les mêmes que le scénariste : Mistral, NVIDIA, Zhipu, Cerebras, OpenRouter, GitHub Models)."""
+    import scenariste as scn
+    err = []
+    for nom, f, _ in scn.IA:
+        if nom in ('Gemini', 'Groq'): continue
+        try:
+            t, m = f(sys_txt + "\n\nRéponds uniquement avec l'objet JSON demandé.", user); print('histoire relue par', nom, m)
+            return nom + ' ' + m.split('/')[-1], json.loads(t[t.find('{'):t.rfind('}') + 1])
+        except Exception as e: err.append(f'{nom} : {str(e)[:80]}'); print(err[-1])
+    raise RuntimeError(' · '.join(err))
 
 def main():
     scr, png, pr, mq, cpath = lire()
@@ -107,7 +118,9 @@ def main():
     except Exception as e:
         print('passe histoire par Gemini (' + str(e)[:80] + ')')
         try: mA, resA = gemini(A_sys + '\n\n## CONSIGNES DE L\'ASSISTANT\n' + lu('docs/ASSISTANT_ACTIONS.md'), [{'text': A_user + '\n\n## PLANS MINUTÉS\n' + '\n'.join(lignes)}])
-        except Exception as e2: mA, resA = '', {'resume': '', 'problemes': [], 'erreur': str(e2)}
+        except Exception as e2:
+            try: mA, resA = autres(A_sys + '\n\n## CONSIGNES DE L\'ASSISTANT\n' + lu('docs/ASSISTANT_ACTIONS.md'), A_user + '\n\n## PLANS MINUTÉS\n' + '\n'.join(lignes))
+            except Exception as e3: mA, resA = '', {'resume': '', 'problemes': [], 'erreur': str(e2) + ' / ' + str(e3)}
     parts = [{'text': ctx}] + [{'inline_data': {'mime_type': 'image/jpeg', 'data': b}} for b in bandes(png)]
     try: mB, resB = gemini(sys_txt + "\n\n## CETTE PASSE : SEULEMENT LA PARTIE B (LES IMAGES)\nL'histoire a déjà été relue. Regarde chaque vignette et les étiquettes des poses : décor, pieds au sol, personnes en trop, gestes, objets en trop, visage contraire à l'émotion, images manquantes. Corrections par actions de plan (pose, acteur, plan, fiche).", parts)
     except Exception as e: mB, resB = '', {'resume': 'Les images n\'ont pas pu être regardées (Gemini saturé) : relancez « relecture » plus tard.', 'problemes': []}

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       issue: { description: "Numéro de la demande", required: true }
-permissions: { contents: write, issues: write }
+permissions: { contents: write, issues: write, models: read }
 concurrency: { group: "relecture-${{ github.event.inputs.issue }}", cancel-in-progress: true }
 jobs:
   relire:
@@ -21,6 +21,12 @@ jobs:
           ISSUE: ${{ github.event.inputs.issue }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GITHUB_MODELS_TOKEN: ${{ github.token }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python .github/scripts/relecture.py
       - name: Prévenir si la relecture n'a pas pu se faire
         if: failure()

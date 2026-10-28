@@ -69,6 +69,10 @@ IA = [('Gemini', gemini, True),
 def nettoyer(t):
     t = re.sub(r'<think>.*?</think>', '', t or '', flags=re.S).strip(); t = re.sub(r'^```\w*\n?|\n?```\s*$', '', t).strip(); k = t.find('TITRE:')
     return t[k:] if k >= 0 else ''
+MINI = 600   # mots de dialogue au minimum (≈ 3 min 10 à 145 mots par minute, mesuré sur l'ép. 23)
+def mots(s):
+    import script as sc
+    return sum(len(e.get('text', '').split()) for e in sc.parse(s)[1] if e.get('type') == 'line')
 def ecrire(demande, log=print):
     essais = []
     for nom, f, complet in IA:
@@ -76,6 +80,14 @@ def ecrire(demande, log=print):
             t, m = f(consignes(complet), demande); s = nettoyer(t)
             if s and re.search(r'DÉCOR\s*:', s):
                 import script as sc; sc.parse(s)   # le script doit se lire
+                n = mots(s)
+                if n < MINI and 'ALLONGE' not in demande:   # trop court pour YouTube (3 min 10) : la même IA l'allonge tout de suite
+                    log(f'{nom} : {n} mots seulement, je demande de rallonger')
+                    try:
+                        t2, _ = f(consignes(complet), f"Voici ton script ({n} mots de dialogue) :\n\n{s}\n\nALLONGE-LE : il faut AU MOINS {MINI} mots de dialogue (3 min 10). Rallonge les conversations (plus de répliques qui se répondent, plus de drame et de piquant), sans rien enlever ni changer l'histoire. Renvoie le script ENTIER.")
+                        s2 = nettoyer(t2)
+                        if s2 and mots(s2) > n: sc.parse(s2); s = s2
+                    except Exception as e: log(f'allongement raté : {e}')
                 return s, f"{nom} ({m})" + ('' if complet else " — résumé de l'histoire seulement")
             essais.append(f'{nom} : script pas au format')
         except Exception as e: essais.append(f'{nom} : {str(e)[:90]}')

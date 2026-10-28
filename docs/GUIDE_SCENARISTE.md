@@ -158,6 +158,13 @@ Une émotion hors de ces listes est ramenée à la plus proche ; mieux vaut rest
 `{recule}` · `{avance}` · `{sursaut}` · `{hausse_epaules}` · `{soupir}` · `{tremble}` · `{bombe_torse}` ·
 `{se_penche}` (confidence) · `{s_affale}` (découragé) · `{sueur}` · `{rougit}`
 
+**Gifle** : `{gifle}` dans la réplique de celui qui frappe, juste avant le mot du coup, avec `regarde:` celui qui la reçoit. L'application fait tout : main levée, bruit de claque, éclair, « PAF ! », image qui tremble, puis la tête de celui qui la reçoit (choc, joue rouge). Exemple :
+```
+AWA (furieux · regarde: Bakary · voix: crie)
+Tu oses me toucher ?! {gifle} Tiens ! Ça t'apprendra !
+```
+Une gifle écrite seulement en phrase (« [Awa donne une gifle…] ») ne se voit pas.
+
 > Gestes des bras et des mains (pointer du doigt, mains sur la tête, croiser les bras) :
 > ils demandent **une image de cette posture**. Les écrire ainsi : `{POSE: mains sur la tête}`.
 > L'application prépare elle-même la liste des images manquantes (fiche Gemini) d'après le script : pas besoin d'écrire la description des images ailleurs.

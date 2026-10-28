@@ -27,12 +27,12 @@ SYN = {'grand_sourire': 'sourire content', 'sourire_malin': 'taquin sourire', 'r
        'emerveille': 'surpris amoureux', 'emerveillee': 'surpris amoureux', 'timide': 'gene timide', 'reveur': 'amoureux reveur', 'reveuse': 'amoureux reveur',
        'sert': 'verse the', 'contente': 'content', 'surprise': 'surpris', 'inquiete': 'inquiet', 'furieuse': 'furieux', 'amoureuse': 'amoureux'}
 BODY = {'recule', 'avance', 'sursaut', 'tremble', 'hoche_tete', 'secoue_tete', 'penche_tete', 'se_penche', 's_affale', 'bombe_torse', 'soupir', 'tourne_vers', 'detourne_regard', 'regarde_bas', 'leve_yeux_ciel', 'cligne', 'clin_oeil', 'ferme_yeux'}
-FX = {'coeurs', 'etoiles', 'eclair', 'fumee_tete', 'goutte', 'sueur', 'point_exclamation', 'point_interrogation', 'rougit', 'idee', 'ampoule'}
+FX = {'gifle', 'claque', 'coeurs', 'etoiles', 'eclair', 'fumee_tete', 'goutte', 'sueur', 'point_exclamation', 'point_interrogation', 'rougit', 'idee', 'ampoule'}
 SFX = {'sonnerie': 'call', 'telephone': 'call', 'bip': 'bip', 'clic': 'click', 'notification': 'ding', 'pieces': 'coin', 'porte': 'door', 'porte qui claque': 'door',
        'pas': 'steps', 'talons': 'heels', 'tonnerre': 'thunder', 'grillon': 'cricket', 'grillons': 'cricket', 'whoosh': 'whoosh', 'pop': 'pop', 'fracas': 'crack',
        'gresillement': 'sizzle', 'rires de foule': 'applause', 'applaudissements': 'applause', 'klaxon': 'klaxon', 'moto': 'motor', 'moteur': 'motor', 'vibreur': 'buzz',
        'vibration': 'buzz', 'canne': 'cane', 'machine a coudre': 'sew', 'ciseaux': 'snip', 'the': 'pourw', 'gorgee': 'sip', 'sifflotement': 'whistlew', 'sifflements': 'sifflets', 'sifflement': 'sifflets', 'sifflets': 'sifflets', 'cris de joie': 'applause', 'acclamations': 'applause',
-       'scintillement': 'sparkle', 'boum': 'boum', 'bong': 'bong', 'tic-tac': 'tick', 'tic tac': 'tick', 'coeur': 'heart', 'battements de coeur': 'heart', 'bam': 'door', 'cri-cri': 'cricket'}
+       'scintillement': 'sparkle', 'boum': 'boum', 'bong': 'bong', 'tic-tac': 'tick', 'tic tac': 'tick', 'coeur': 'heart', 'battements de coeur': 'heart', 'bam': 'door', 'cri-cri': 'cricket', 'gifle': 'clac', 'claque': 'clac', 'paf': 'clac'}
 def sfx_file(name):
     n = norm(name)
     if n in SFX: return SFX[n]
@@ -561,6 +561,16 @@ def build(meta, events, log=print, choix=None, variantes=False):
                             if k2 and k2 != k and (tagwords([tg]) & set(POSES[k2]['tags'])): sw.append((lead + tt, k2))
                     sh['switch'] = [] if sh.get('mode') == 'wide' else sw
             sh['tagfx'] = [(lead + tt, tg) for tt, tg in e.get('tag_times', []) if tg not in EMOS or tg in ('rire',)]
+            # {gifle} (demandé par Issa, ép. 23) : bruit de claque, main levée, image qui tremble, « PAF ! », et celui qui la reçoit réagit
+            for n_, (tt, tg) in enumerate(e.get('tag_times', [])):
+                if tg not in ('gifle', 'claque', 'frappe'): continue
+                sh.setdefault('sfx', []).append((lead + tt, sfx_file('gifle')))
+                k2 = pick(who, ['gifle', 'colere'] + stage.props.get(who, []), 'buste', post)
+                if k2 and k2 != k and sh.get('mode') != 'wide' and set(POSES[k2]['tags']) & {'gifle', 'frappe', 'colere'}: sh['switch'] = sorted(sh.get('switch', []) + [(lead + tt, k2)])
+                tgt = cible(e)
+                if tgt and tgt != who and tgt in stage.ici() and not any(r.get('who') == tgt for r in reacts):
+                    i_ = e['tags'][n_][0] if n_ < len(e.get('tags', [])) else 0; mots = e['text'].split()
+                    reacts.append({'type': 'reaction', 'who': tgt, 'word': mots[min(i_ + 1, len(mots) - 1)] if mots else '', 'actions': ['choc', 'sursaut'], 'apres': 0.55})   # on voit d'abord la main d'Awa, puis la tête de celui qui la reçoit
             # réactions et bruitages accrochés aux mots
             cut = []
             for r in reacts:
@@ -569,7 +579,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 else:
                     tw = word_time(e, r.get('word'))
                     if tw is not None and sh['kind'] == 'line' and r['who'] != who:
-                        cut.append({'t': lead + tw, 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], []), 'tenue': TENUE.get(r['who'], '')})
+                        cut.append({'t': lead + tw + r.get('apres', 0), 'who': r['who'], 'actions': r['actions'], 'look_dir': stage.side(r['who'], who), 'pan': stage.pan(r['who']), 'posture': stage.post(r['who']), 'props': stage.props.get(r['who'], []), 'tenue': TENUE.get(r['who'], '')})
                         cut[-1]['key'] = pick(r['who'], r['actions'] + stage.props.get(r['who'], []), 'buste', stage.post(r['who']), need_mouth=False)   # choisie ici (tenue du moment)
                         if laughs(r['actions']): sh.setdefault('sfx', []).append((lead + tw + 0.05, 'rire:' + r['who'] + ':petit', 0.5))   # on l'entend rire doucement (sous la voix)
                     elif r['who'] != who: sh.setdefault('after', []).append(r)

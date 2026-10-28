@@ -44,6 +44,7 @@
 - Idée (liste `docs/SAISON.md` : histoire jusqu'ici + idées 23 à 67, ou idée libre) → Gemini écrit l'épisode complet → corrections → « Envoyer » = mise au format (onglet 🤖) puis aperçu.
 - Consignes `docs/SCENARISTE.md` (l'animation d'abord, la pub Sounsouni glissée dedans ; suivre l'idée d'Issa). Mémoire : `docs/EPISODES.md` (scripts complets de tous les épisodes faits, refait par `.github/scripts/archive.py` à chaque script enregistré) + GUIDE, ASSISTANT, RELECTEUR, CAPACITES, carnet. Essai sur GitHub : workflow « Essai du scénariste ».
 - Si Gemini (clé de la page) est occupé : la page écrit « scénario … » sur la demande « ✍️ Scénariste » (n° 19) → `scenariste.yml` → `.github/scripts/scenariste.py` essaie Gemini, Mistral, NVIDIA, Zhipu, Cerebras, OpenRouter (mémoire complète), puis GitHub Models et Groq (résumé) → réponse en commentaire, lue par la page. Le 28/10 : NVIDIA et Zhipu sans secret GitHub.
+- Longueur (28/10) : au moins 600 mots de dialogue (3 min 10 pour YouTube, ≈ 145 mots/min mesuré) ; trop court → l'IA rallonge toute seule (page `scAllonger`, GitHub `MINI`). Correction qui ne change presque rien → refaite sur GitHub par une autre IA, nombre de lignes changées affiché.
 - Épisodes 1 à 13 : pas dans le dépôt.
 
 ## Oreille du studio (son) — 22/10/2026
@@ -78,6 +79,12 @@
 - **Tant que personne ne parle** : poses calmes de trois-quarts, sans geste (« pose D »). Les gestes viennent avec la parole.
 - **Objets** (brochette, téléphone, larmes…) : jamais montrés si le script ne le demande pas. Objet écrit dans le PLAN (`[Karim, téléphone]`) : toujours montré.
 - **Postures** respectées (assis reste assis), décor cohérent dans une scène, décors sans figurants, bouches ouvertes sans que les yeux bougent.
+
+## Bulles et gifle (28/10/2026, règles d'Issa)
+- **Une bulle ne cache jamais une tête** : `gfx.place_bulle` (en haut si possible, sinon au-dessus / sous les visages, sinon en bas) avec les visages de `render.zone_tete` (l'épaule de celui qui écoute ne compte pas) ; plus de 3 lignes → réplique montrée en morceaux (`gfx.morceaux`, temps au prorata). `render.RENDU_VERSION` : à changer quand le dessin change (sinon les anciens morceaux de 12 s sont repris).
+- **`{gifle}`** dans la réplique de celui qui frappe (+ `regarde:` celui qui la reçoit) : pose main levée, bruit `clac`, éclair, « PAF ! », image qui tremble, puis plan de celui qui la reçoit (choc, joue rouge) 0,55 s après. Documenté dans le guide et ASSISTANT.md.
+- Message d'aperçu : « Planches à valider » seulement s'il y a vraiment des planches (avant : `ls` vide sous nullglob = toujours vrai) ; sinon « vos choix sont appliqués ».
+- Relecteur : si Groq et Gemini sont saturés, les autres IA gratuites (mêmes que le scénariste) relisent l'histoire.
 
 ## Cycle « Appliquer » (24/10/2026, règle d'Issa)
 - Page : après « Appliquer » (relecture ou 💬 Discuter), l'aperçu se relance **tout seul** ; il refait la relecture et, s'il manque des images (`manques.json`), la fiche Gemini. Une note seule ne relance rien.

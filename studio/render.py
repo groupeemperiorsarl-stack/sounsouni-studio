@@ -143,6 +143,10 @@ def draw_actor(fr, a, lt, line=None, tags=(), speaking_t=None):
     if rot: im = im.rotate(rot, expand=True, resample=Image.BICUBIC, center=(im.width / 2, im.height))
     paste(fr, im, cx, by - im.height / 2, 1.0, 1.0, sh=not a.get('back'))
     return cx, by - h  # sommet de la tête
+def zone_tete(a, hh):
+    """Haut et bas du visage d'un acteur dessiné (hh = sommet de la tête rendu par draw_actor), pour que la bulle ne le cache pas."""
+    fr_ = POSES.get(a['key'].split('@')[0], {}).get('frame')
+    return (max(0, hh[1] - 20), hh[1] + a['h'] * {'pied': 0.24, 'buste': 0.45}.get(fr_, 0.3))
 def ombre(fr, cx, by, w):
     """Ombre douce et plate sous les pieds (largeur ≈ 70 % du personnage)."""
     ow, oh = int(w * 0.7), max(10, int(w * 0.09)); sh = Image.new('L', (ow + 40, oh + 40), 0)
@@ -165,6 +169,9 @@ def fx_draw(fr, fx, lt, head):
         elif tg in ('idee', 'ampoule'): gfx.bulb(fr, hx + 250, hy + 60, k)
         elif tg == 'rire' : sticker(fr, 'Ha ha ha !', hx + 180, hy + 80, k, 0, 70, (240, 150, 20))
         elif tg == 'clin_oeil': sticker(fr, ';)', hx + 240, hy + 120, k, 0, 80, (200, 40, 120))
+        elif tg in ('gifle', 'claque', 'frappe'):   # la gifle : éclair blanc + « PAF ! »
+            if k < 0.12: fr.paste(Image.new(fr.mode, fr.size, 'white'), (0, 0), Image.new('L', fr.size, int(200 * (1 - k / 0.12))))
+            sticker(fr, 'PAF !', 540, 1400, k, 0, 150, (200, 30, 30))
         elif tg.startswith('autocollant'):
             m = re.search(r'"([^"]+)"', tg); sticker(fr, m.group(1) if m else '!', 540, 1480, k, 0, 100, (150, 40, 40))
 def norm_txt(t):
@@ -251,11 +258,11 @@ def draw(s, lt):
         d.ellipse((bx - 190, by - 190, bx + 190, by + 190), fill=(255, 255, 255, 240), outline=(60, 60, 60, 255), width=5)
         m = Image.new('L', (330, 330), 0); ImageDraw.Draw(m).ellipse((0, 0, 329, 329), fill=255)
         fond = Image.new('RGBA', (330, 330), (235, 228, 215, 255)); fond.alpha_composite(tete); fond.putalpha(m); fr.alpha_composite(fond, (bx - 165, by - 165))
-        line = s['line']; gfx.subtitle(fr, s['who'], line['text'], lt - s.get('lead', 0) + 0.1, True)
+        line = s['line']; gfx.subtitle(fr, s['who'], line['text'], lt - s.get('lead', 0) + 0.1, True, duree=s['dur'] - s.get('lead', 0))
         return fr
     if k == 'phonecall':
         fr = background(s, lt, blur=8); paste(fr, gfx.phone_with(gfx.call_screen(gfx.nom(s['who']))), 540, 1100, 1.0, 1.1)
-        line = s['line']; gfx.subtitle(fr, s['who'], line['text'], lt - s['lead'] + 0.1); return fr
+        line = s['line']; gfx.subtitle(fr, s['who'], line['text'], lt - s['lead'] + 0.1, duree=s['dur'] - s['lead']); return fr
     # plans avec personnages
     acts = s.get('actors', []); line = s.get('line'); lead = s.get('lead', 0)
     st = lt - lead if line else None
@@ -269,8 +276,10 @@ def draw(s, lt):
                 from director import orient
                 fr = background(s, lt, blur=5, zoom=0.4, pan=c.get('pan', 0)); a = orient(close_actor(c['who'], kk, x=540 - 110 * c.get('look_dir', 0)), c.get('look_dir', 0)); head = draw_actor(fr, a, lt)
                 fx_draw(fr, [(c['t'] + 0.05, x) for x in c['actions']], lt, head)
-                if line: gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.3, line.get('thought'))
-                return gfx.shake(fr, lt, c['t'], 0.4, 10) if 'choc' in c['actions'] or 'sursaut' in c['actions'] else fr
+                G = [t_ for t_, g_ in s.get('tagfx', []) if g_ in ('gifle', 'claque', 'frappe') and t_ <= lt < t_ + 2.2]
+                if G: sticker(fr, 'PAF !', 540, 1400, lt - G[0], 0, 150, (200, 30, 30)); gfx.redface(fr, head[0], head[1] + 260, lt - c['t'])   # la gifle se voit encore sur celui qui la reçoit
+                if line: gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.3, line.get('thought'), tetes=[zone_tete(a, head)], duree=s['dur'] - lead)
+                return gfx.shake(fr, lt, c['t'], 0.4, 22 if G else 10) if 'choc' in c['actions'] or 'sursaut' in c['actions'] else fr
     # pieds visibles (personnages en pied) : le décor est cadré sur son sol libre, même pendant une réplique, pour que personne ne flotte
     debout = [a['by'] for a in acts if not (a.get('fg') or a.get('fgwide') or a.get('silhouette')) and POSES.get(a['key'].split('@')[0], {}).get('frame') == 'pied' and a['by'] < H + 40]
     fr, genoux = background_sol(s, lt, min(debout)) if debout else (None, False)
@@ -279,7 +288,7 @@ def draw(s, lt):
         if genoux: acts = [dict(a, by=a['by'] + int(0.2 * a['h'])) if not a.get('fg') else a for a in acts]   # sol trop étroit : cadré aux genoux, jamais de pieds en l'air
     elif mode in ('close', 'two') or (k == 'close' and len(acts) == 1): fr = background(s, lt, blur=5, zoom=0.4 + 0.03 * prog(lt, 0, d), pan=s.get('pan', 0))
     else: z, hy = DECOR_LARGE.get(decor_file(s['decor']), (0.1, 0.45)); fr = background(s, lt, zoom=z, haut=hy)
-    head = (540, 400)
+    head = (540, 400); tetes = []
     for a in acts:
         a2 = a
         if a.get('speaker') and s.get('switch'):
@@ -289,8 +298,11 @@ def draw(s, lt):
                     a2 = dict(a, key=k2, flip=False); a2.update({kk: vv for kk, vv in close_like(a, k2).items()}); a2 = orient(a2, a.get('look_dir', 0))
         hh = draw_actor(fr, a2, lt, line, s.get('tagfx', []), st)
         if a.get('speaker') or len(acts) == 1: head = hh
+        if not (a.get('silhouette') or a.get('back') or a.get('fg')): tetes.append(zone_tete(a2, hh))   # l'épaule de celui qui écoute (de dos) peut passer sous la bulle
     fx_draw(fr, s.get('fx', []) + [(t, g) for t, g in s.get('tagfx', [])], lt, head)
-    if line and k == 'line': gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.1, line.get('thought'))
+    for t_, g_ in s.get('tagfx', []):
+        if g_ in ('gifle', 'claque', 'frappe') and t_ <= lt < t_ + 0.5: fr = gfx.shake(fr, lt, t_, 0.5, 30)   # l'image tremble fort sous la gifle
+    if line and k == 'line': gfx.subtitle(fr, s['who'], line['text'], lt - lead + 0.1, line.get('thought'), tetes=tetes, duree=s['dur'] - lead)
     if s.get('card') and lt < 1.6: sticker(fr, s['card'].title(), 540, 420, lt, 0.2, 60, gfx.FONCE)
     return fr
 def close_like(a, k2):
@@ -312,12 +324,13 @@ def render_segment(args):
         ff.stdin.write(fr.tobytes())
         if n % 300 == 299: pose_img.cache_clear(); decor.cache_clear()
     ff.stdin.close(); ff.wait(); return out
+RENDU_VERSION = 'bulles-sans-tete-1+gifle'   # à changer quand le dessin change (bulles, effets…) : les anciens morceaux de 12 s sont alors refaits
 def seg_hash(shots, a, b):
     """Empreinte d'un morceau (a → b images) : les plans qui le touchent (+ taille des voix). Inchangée = morceau gardé."""
     import hashlib
     t0, t1 = a / FPS, b / FPS; part = [s for s in shots if s['t0'] < t1 and s['t0'] + s['dur'] > t0]
     wav = [os.path.getsize(s['line']['wav']) if s.get('line', {}).get('wav') and os.path.exists(s['line']['wav']) else 0 for s in part]
-    return hashlib.md5(json.dumps([part, wav, a, b], sort_keys=True, default=str).encode()).hexdigest()[:12]
+    return hashlib.md5(json.dumps([part, wav, a, b, RENDU_VERSION], sort_keys=True, default=str).encode()).hexdigest()[:12]
 def seg_ok(j):
     f = j[3] + '.ok'
     return os.path.exists(f) and open(f).read().strip() == j[4]

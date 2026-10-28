@@ -55,8 +55,42 @@ def bubble(who, text, thought=False):
     if n:
         tw = font(FB, 34).getlength(n) + 44; d.rounded_rectangle([90, 12, 90 + tw, 68], radius=28, fill=c); d.text((112, 40), n, font=font(FB, 34), fill='white', anchor='lm')
     return L
-def subtitle(fr, who, text, lt, thought=False, y=240):
-    k = eo(prog(lt, 0, 0.25)); b = bubble(who, text, thought)
+MAX_LIGNES = 3   # règle d'Issa (28/10/2026) : une bulle ne cache jamais une tête ; au-delà de 3 lignes, la réplique est montrée en morceaux
+def morceaux(text, maxl=MAX_LIGNES):
+    """Coupe une longue réplique en morceaux de 3 lignes au plus (aux fins de phrase, sinon aux virgules, sinon aux mots)."""
+    f = font(FB, 46)
+    if len(wrap(text, f, 860)) <= maxl: return [text]
+    import re as _re
+    bouts = [x for x in _re.split(r'(?<=[.!?…])\s+', text) if x]
+    if len(bouts) == 1: bouts = [x for x in _re.split(r'(?<=[,;:])\s+', text) if x]
+    out, cur = [], ''
+    for b in bouts:
+        t = (cur + ' ' + b).strip()
+        if cur and len(wrap(t, f, 860)) > maxl: out.append(cur); cur = b
+        else: cur = t
+    if cur: out.append(cur)
+    fin = []
+    for o in out:   # un morceau encore trop long (une seule phrase très longue) : coupé aux mots
+        L = wrap(o, f, 860)
+        fin += [' '.join(L[i:i + maxl]) for i in range(0, len(L), maxl)] if len(L) > maxl else [o]
+    return fin
+def place_bulle(h, tetes, haut=240, bas=1560):
+    """Hauteur de la bulle qui ne touche aucune tête : en haut si possible, sinon juste sous les visages, sinon en bas de l'image."""
+    zone = h + 70
+    def gene(y): return sum(max(0, min(y + zone, b) - max(y, t)) for t, b in tetes or [])
+    cands = [haut] + [int(t) - zone - 10 for t, b in tetes or [] if int(t) - zone - 10 >= 110] + sorted({int(b) + 30 for t, b in tetes or [] if int(b) + 30 + zone <= bas}) + [bas - zone]
+    return min(cands, key=lambda y: (gene(y), cands.index(y)))
+def subtitle(fr, who, text, lt, thought=False, y=240, tetes=None, duree=None):
+    """Bulle de la réplique. tetes = [(haut, bas)] des visages visibles : la bulle ne les cache jamais. duree = temps de la réplique (pour les morceaux)."""
+    M = morceaux(text); t0 = 0
+    if len(M) > 1:   # chaque morceau reste à l'écran le temps qu'on met à le dire (proportionnel au nombre de lettres)
+        D = max(duree or 0, 0.8 * len(M)); n = sum(len(m) for m in M); acc = 0
+        for i, m in enumerate(M):
+            d = D * len(m) / n
+            if lt < acc + d or i == len(M) - 1: text, t0 = m, acc; break
+            acc += d
+    k = eo(prog(lt - t0, 0, 0.25)); b = bubble(who, text, thought)
+    if tetes: y = place_bulle(b.height - 70, tetes, y)
     if k < 1: b = b.copy(); b.putalpha(b.getchannel('A').point(lambda p: int(p * k)))
     fr.paste(b, (0, int(y - 20 * (1 - k))), b)
 @lru_cache(128)

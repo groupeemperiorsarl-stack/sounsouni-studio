@@ -37,7 +37,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;700&display=swap">
 </head><body>
-<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v45</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
+<h1>Sounsouni Studio <small style="font-size:12px;opacity:.6">v46</small></h1><p class="muted" id="etat">Relié à GitHub : groupeemperiorsarl-stack/sounsouni-studio</p><p class="msg" id="enligne" hidden style="font-size:14px">📱 Cette page est ouverte depuis un fichier du téléphone : « Copier », « Partager » et « Télécharger » y marchent mal. Ouvrez plutôt la <a href="https://groupeemperiorsarl-stack.github.io/sounsouni-studio/">page en ligne</a> (toujours à jour, rien à installer). La première fois, remettez vos clés (onglet 🔑 Clé et 🤖 Assistant).</p><script>if(location.protocol!=='https:')document.getElementById('enligne').hidden=false</script>
 
 <section id="v-eps">
   <div class="row" style="margin:0 0 10px"><button id="maj" class="sec">↻ Actualiser</button><button id="minutes" class="sec">⏱ En cours</button></div>
@@ -335,7 +335,7 @@ $('#k-save').onclick=()=>{K.groq=$('#k-groq').value.trim();K.cer=$('#k-cer').val
 const sans=t=>String(t).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
 const EMO=new Set('neutre sourire grand_sourire sourire_malin rire rire_retenu colere furieux choc surpris peur panique triste gene mepris mefiant amoureux fier moue degout innocent confus timide determine emerveille reveur sage victoire froide taquin moqueur pensif inquiet serieux content tendre chaleureuse hesitante joie severe emu fiere'.split(' '));
 const SYN={surprise:'surpris',mefiante:'mefiant',essouffle:'inquiet',essoufflee:'inquiet',rire_doux:'rire_retenu',rigole:'rire',heureux:'content',heureuse:'content',contente:'content',inquiete:'inquiet',furieuse:'furieux',amoureuse:'amoureux',determinee:'determine',emerveillee:'emerveille',reveuse:'reveur',fache:'colere',fachee:'colere',enerve:'colere',enervee:'colere',etonne:'surpris',etonnee:'surpris',gene_:'gene',genee:'gene',honteux:'gene',honteuse:'gene',calme:'neutre',serieuse:'serieux',moqueuse:'moqueur',taquine:'taquin',pensive:'pensif',triste_:'triste',paniquee:'panique',panique_:'panique',choquee:'choc',choque:'choc'};
-const TAGS=new Set([...EMO,...'hoche_tete secoue_tete penche_tete detourne_regard leve_yeux_ciel regarde_bas clin_oeil ferme_yeux cligne recule avance sursaut soupir tremble bombe_torse se_penche s_affale sueur rougit coeurs etoiles eclair fumee_tete goutte point_exclamation point_interrogation idee ampoule non pointe mains_tete bras_ouverts salue explique coud sert'.split(' ')]);
+const TAGS=new Set([...EMO,...'gifle hoche_tete secoue_tete penche_tete detourne_regard leve_yeux_ciel regarde_bas clin_oeil ferme_yeux cligne recule avance sursaut soupir tremble bombe_torse se_penche s_affale sueur rougit coeurs etoiles eclair fumee_tete goutte point_exclamation point_interrogation idee ampoule non pointe mains_tete bras_ouverts salue explique coud sert'.split(' ')]);
 const PERSOS=['BAKARY','AWA','MODIBO','DIASABI','SALI','FATIM','MIMI','SEYDOU','KADI','MOUSSA','KARIM','VENDEUSE','VOIX_OFF'];
 const TETE=/^(PENSÉE\s+|PENSEE\s+)?([A-ZÀ-Ÿ_][A-ZÀ-Ÿ_ \-]*?)\s*\((.*)\)\s*$/;
 const ADV=/\b(tres|un peu|trop|super|vraiment|si|tout|assez|plutot|legerement|encore)\b/g;
@@ -671,15 +671,22 @@ async function scServeur(demande,prog){const n=await scIssue(),c=await api('/rep
     if(!r)continue;if(/^❌/.test(r.body))throw new Error(r.body.replace(/^❌\s*/,'').slice(0,400));
     const m=r.body.match(/```text\n([\s\S]*?)\n```/),q=(r.body.match(/Scénario écrit par (.+?) \(réponse/)||[,'GitHub'])[1];if(m)return{t:m[1],n:q}}
   throw new Error('pas de réponse après 12 minutes')}
+const SC_MINI=600;   // mots de dialogue au minimum : 3 min 10 pour YouTube (≈ 145 mots par minute, mesuré sur l'ép. 23)
+async function scAllonger(r,prog){const n=scMots(r.t);if(n>=SC_MINI)return r;prog('Le scénario fait '+n+' mots de dialogue : trop court pour 3 min 10. Je demande de rallonger les conversations…');
+  try{const r2=await ecrireScenario('Voici ton script ('+n+' mots de dialogue) :\n\n'+r.t+'\n\nALLONGE-LE : il faut AU MOINS '+SC_MINI+' mots de dialogue (3 min 10). Rallonge les conversations (plus de répliques qui se répondent, plus de drame et de piquant), sans rien enlever ni changer l\'histoire. Renvoie le script ENTIER.',prog);if(scMots(r2.t)>n)return{t:r2.t,n:r2.n+' · rallongé'}}catch(e){}return r}
+function scChange(a,b){const A=new Set(a.split('\n').map(x=>x.trim()).filter(Boolean));return b.split('\n').map(x=>x.trim()).filter(x=>x&&!A.has(x)).length}
 function scMots(t){return t.split('\n').filter((l,i,L)=>i>0&&/^[A-ZÉÈ_ ]+\s*\(/.test(L[i-1].trim())).join(' ').split(/\s+/).filter(Boolean).length}
 $('#s-go').onclick=async()=>{const idee=$('#s-idee').value.trim(),p=$('#s-prog'),prog=x=>p.innerHTML='<p class="msg">'+esc(x)+'</p>';if(!idee){prog('Écrivez d\'abord votre idée (ou choisissez-en une dans la liste).');return}
   if(SC.out&&!confirm('Remplacer le scénario déjà écrit ?'))return;const bt=$('#s-go');bt.disabled=true;
-  try{const num=$('#s-num').value.trim();const r=await ecrireScenario('Écris l\'épisode '+(num||'suivant')+' complet à partir de cette idée d\'Issa :\n'+idee,prog);
+  try{const num=$('#s-num').value.trim();const r=await scAllonger(await ecrireScenario('Écris l\'épisode '+(num||'suivant')+' complet à partir de cette idée d\'Issa :\n'+idee,prog),prog);
     $('#s-out').value=r.t;$('#s-res').hidden=false;$('#s-info').textContent='Écrit par '+r.n+' · environ '+scMots(r.t)+' mots de dialogue (3 à 4 min ≈ 450 à 550).';scGarder();p.innerHTML='';$('#s-res').scrollIntoView({behavior:'smooth'})}
   catch(e){prog('❌ '+e.message)}bt.disabled=false};
 $('#s-fix').onclick=async()=>{const c=$('#s-corr').value.trim(),m=$('#s-msg'),prog=x=>m.innerHTML='<p class="msg">'+esc(x)+'</p>';if(!c){prog('Écrivez d\'abord ce qu\'il faut changer.');return}
-  const bt=$('#s-fix');bt.disabled=true;try{const r=await ecrireScenario('Voici le script actuel de l\'épisode :\n\n'+$('#s-out').value+'\n\nCorrections demandées par Issa :\n'+c+'\n\nRenvoie le script ENTIER corrigé.',prog);
-    $('#s-out').value=r.t;$('#s-corr').value='';$('#s-info').textContent='Corrigé par '+r.n+' · environ '+scMots(r.t)+' mots de dialogue.';scGarder();prog('✅ Corrigé. Relisez, puis corrigez encore ou envoyez.')}
+  const bt=$('#s-fix');bt.disabled=true;try{const avant=$('#s-out').value,dem='Voici le script actuel de l\'épisode :\n\n'+avant+'\n\nCorrections demandées par Issa (À APPLIQUER TOUTES, exactement) :\n'+c+'\n\nRenvoie le script ENTIER corrigé.';
+    let r=await ecrireScenario(dem,prog),nb=scChange(avant,r.t);
+    if(nb<2){prog('⚠️ Cette IA n\'a presque rien changé : je redemande sur GitHub avec une autre IA…');try{const r2=await scServeur(dem+'\n\nATTENTION : la version précédente n\'a pas appliqué ces corrections. Applique-les vraiment.',prog);if(scChange(avant,r2.t)>nb){r=r2;nb=scChange(avant,r.t)}}catch(e){}}
+    r=await scAllonger(r,prog);$('#s-out').value=r.t;$('#s-info').textContent='Corrigé par '+r.n+' · environ '+scMots(r.t)+' mots de dialogue · '+scChange(avant,r.t)+' ligne(s) changée(s).';scGarder();
+    prog(nb<2?'⚠️ Les IA n\'ont presque rien changé. Écrivez la correction autrement (plus précise : quelle réplique, quoi mettre à la place), puis « Corriger ».':'✅ Corrigé ('+scChange(avant,r.t)+' lignes changées). Relisez, puis corrigez encore ou envoyez.')}
   catch(e){prog('❌ '+e.message)}bt.disabled=false};
 $('#s-ok').onclick=()=>{const t=$('#s-out').value.trim();if(!/^TITRE:/m.test(t)){$('#s-msg').innerHTML='<p class="msg">Le scénario doit commencer par « TITRE: ».</p>';return}
   if(!confirm('Envoyer ce scénario à l\'application ? Elle le met au format puis fabrique l\'aperçu.'))return;

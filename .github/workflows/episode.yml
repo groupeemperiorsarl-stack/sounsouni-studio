@@ -83,11 +83,13 @@ jobs:
             gh release create "$TAG" sortie/apercu_plans.png sortie/planches/* --prerelease --title "Aperçu des plans – demande $N" --notes "Aperçu des plans et planches à valider"
             D="https://github.com/${{ github.repository }}/releases/download/$TAG"
             MSG="✅ Aperçu des plans prêt :"$'\n'"![aperçu]($D/apercu_plans.png)"$'\n'"$D/apercu_plans.png"
-            if ls sortie/planches/planche_*.png >/dev/null 2>&1; then
+            PL=(sortie/planches/planche_*.png)   # (avec nullglob, « ls » sans fichier listait le dossier : le message disait « planches à valider » alors qu'il n'y en avait aucune)
+            if [ ${#PL[@]} -gt 0 ]; then
               MSG="$MSG"$'\n\n'"### 🖼️ Planches à valider"$'\n'"L'application hésite sur ces plans. Pour chaque question, choisissez une lettre."
               for f in sortie/planches/planche_*.png; do MSG="$MSG"$'\n'"![planche]($D/$(basename "$f"))"; done
               MSG="$MSG"$'\n\n'"Répondez en commentaire, par exemple **1B 3C** (une question sans réponse = on garde A). Page à cocher sur téléphone : $D/planches.html"
             fi
+            [ ${#PL[@]} -eq 0 ] && [ -n "${{ github.event.inputs.choix }}" ] && MSG="$MSG"$'\n\n'"✅ Vos choix (${{ github.event.inputs.choix }}) sont appliqués : l'application n'hésite plus sur aucun plan."
             MSG="$MSG"$'\n\n'"Si tout est bon, écrivez **vidéo** pour lancer la vidéo complète. Pour d'autres planches sur un passage précis : **planches 1:20-1:45**. Pour corriger le script : bouton ✏️ en haut, puis **aperçu**."
           else
             MSG="❌ L'aperçu n'a pas pu être fait. Fin du journal :"$'\n```\n'"$(tail -15 journal.txt)"$'\n```'
