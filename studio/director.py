@@ -268,7 +268,8 @@ def close_actor(char, key, x=540, tight=False, scale=1.0, flip=False):
     p = POSES[key]; fr = p['frame']
     if fr == 'pied': h = 3000 if tight else 2650; by = 330 + h
     elif fr == 'buste': h = 1950 if tight else 1700; by = 300 + h
-    elif fr == 'groupe': h = 2300; by = 380 + h
+    elif fr == 'groupe':   # image de plusieurs personnes : elle tient en entier dans la largeur (Issa, ép. 23 : la tête de Bakary était coupée pendant la gifle)
+        h = min(2300, int(1040 * p['size'][1] / p['size'][0])); by = max(1700, 380 + h) if h < 2300 else 380 + h
     else: h = 1500; by = 250 + h
     if scale != 1.0: h = int(h * scale); by = int(330 + h) if fr == 'pied' else int(250 + h)
     hx = p.get('head_x', 0.5); hx = 1 - hx if flip else hx
@@ -457,7 +458,8 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 elif len(e['who']) > 1 and group_pick([w['who'] for w in e['who']], [x[1] for x in fx if x[1].startswith('pose:')] or [x[1] for x in fx]):
                     g = group_pick([w['who'] for w in e['who']], [x[1] for x in fx if x[1].startswith('pose:')] or [x[1] for x in fx]); add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor('+'.join(w['who'] for w in e['who']), g)], 'fx': fx, 'mode': 'close',
                         'sfx': [(0.25, sfx_file('gifle'))] if any(x[1] in ('gifle', 'claque') for x in fx) else []})
-                    plan = {'kind': 'group', 'key': g, 'who': e['who']}; i += 1; continue
+                    plan = None if any(x[1].startswith('pose:') for x in fx) else {'kind': 'group', 'key': g, 'who': e['who']}   # une action à deux (tape, gifle) ne dure que son plan : les répliques suivantes ont leurs propres plans
+                    i += 1; continue
                 elif e['kind'] == 'large' or len(e['who']) > 1:
                     for x in fx:   # action à plusieurs écrite dans le PLAN ({POSE: Bakary tape les fesses d'Awa}) sans image : demandée dans la fiche, plan large en attendant
                         if x[1].startswith('pose:') and len(e['who']) > 1: SCENES.add(('+'.join(w['who'] for w in e['who']), x[1]))

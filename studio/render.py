@@ -324,7 +324,7 @@ def render_segment(args):
         ff.stdin.write(fr.tobytes())
         if n % 300 == 299: pose_img.cache_clear(); decor.cache_clear()
     ff.stdin.close(); ff.wait(); return out
-RENDU_VERSION = 'bulles-sans-tete-1+gifle2'   # à changer quand le dessin change (bulles, effets…) : les anciens morceaux de 12 s sont alors refaits
+RENDU_VERSION = 'bulles-sans-tete-1+gifle3'   # à changer quand le dessin change (bulles, effets…) : les anciens morceaux de 12 s sont alors refaits
 def seg_hash(shots, a, b):
     """Empreinte d'un morceau (a → b images) : les plans qui le touchent (+ taille des voix). Inchangée = morceau gardé."""
     import hashlib
