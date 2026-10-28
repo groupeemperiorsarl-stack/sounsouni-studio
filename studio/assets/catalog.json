@@ -8199,7 +8199,8 @@
    ],
    "head_x": 0.5,
    "props": [],
-   "genere": "gemini"
+   "genere": "gemini",
+   "props_auto": {}
   },
   "grp_bakary_tape_les_fesses_d": {
    "char": "BAKARY+AWA",
@@ -8234,7 +8235,8 @@
    ],
    "head_x": 0.5,
    "props": [],
-   "genere": "gemini"
+   "genere": "gemini",
+   "props_auto": {}
   }
  },
  "decors": {
