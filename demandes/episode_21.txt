@@ -106,6 +106,12 @@ Au secours ! {crie} Il saute sur ma dentelle ! Mimi, attrape cette bête !
 MIMI (rire · regarde: bas · voix: rit en parlant)
 {rire} Viens là, petit poulet !
 
+PLAN: 3 s · gros Mimi · {POSE: Mimi serre dans ses bras le gros poulet blanc qu'elle vient d'attraper, des plumes volent autour d'elle, toute fière}
+[BRUITAGE: whoosh]
+
+MIMI (fier · regarde: Awa · voix: crie)
+Je l'ai attrapé, Tantie ! {fier} Le poulet est à moi !
+
 AWA (furieux · regarde: loin · voix: crie)
 {fumee_tete} Bakary ! Il transforme mon atelier en poulailler ! Il va m'entendre !
 [BRUITAGE: porte qui claque]
@@ -128,7 +134,8 @@ PLAN: large [Sali debout, Moussa debout, Kadi sur le banc, Awa marche]
 [MUSIQUE: action]
 
 AWA (furieux · regarde: loin · voix: crie)
-Bakary ! Sors de ton kiosque tout de suite !
+Pardon, laissez-moi passer ! {pointe} J'ai un vendeur de thé à corriger !
+[RÉACTION MOUSSA: choc]
 
 DÉCOR: KIOSQUE · midi · ambiance: rue calme
 PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
@@ -141,6 +148,9 @@ Reste calme, Bakarin. {serieux} Dis la vérité immédiatement.
 
 PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Awa debout, Moussa debout, Sali debout]
 [BRUITAGE: talons]
+
+AWA (furieux · regarde: Bakary · voix: crie)
+Bakary ! Sors de derrière ton kiosque tout de suite !
 
 AWA (furieux · regarde: Bakary · voix: crie)
 Bakary ! {pointe} Tu te crois drôle ?! Tu m'envoies un poulet qui court sur mes pagnes et des bananes pour me nourrir ?!

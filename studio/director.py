@@ -197,6 +197,9 @@ def deux_rangees(acts, stage, speaker=None, partner=None):
     pair.sort(key=rang)   # le héros de la scène (premier nommé) à gauche
     od = REGLAGES.get('rangs_decor', {}).get(DECOR_ACTUEL[0], {})   # décor profond (RUE…) : la rangée de derrière plus loin et plus petite, sinon elle flotte
     D, R = {**RANGS['devant'], **od.get('devant', {})}, {**RANGS['derriere'], **od.get('derriere', {})}; out_front, out_back = [], []
+    sol = CAT.get('sol', {}).get(DECOR_ACTUEL[0], {})
+    if sol and (not sol.get('fiable') or sol.get('bas', 1) - sol.get('haut', 0) < 0.2) and not od.get('derriere'):   # sol étroit (KIOSQUE : comptoir, banc) : la rangée de derrière juste derrière celle de devant, jamais debout sur un mur (Issa, ép. 24)
+        R = dict(R, pieds=max(R['pieds'], D['pieds'] - 0.08))
     def poser(a, x, h, pieds):
         p = POSES[a['key']]; h = int(h * (0.86 if assis(a) else 1.0) * (1.0 if p['frame'] == 'pied' else 0.8))
         a['h'] = h; a['w'] = p['size'][0] * h / p['size'][1]; a['by'] = int(pieds * 1920)

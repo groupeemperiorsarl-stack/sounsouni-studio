@@ -8372,51 +8372,6 @@
    "props_auto": {
     "canne": 0.83
    }
-  },
-  "grp_un_gros_poulet_blanc_vole": {
-   "char": "AWA+MIMI",
-   "frame": "groupe",
-   "posture": "debout",
-   "tags": [
-    "pose:un_gros_poulet_blanc_vole_au_milieu_de_l_atelier_mimi_essaie_d_attraper_le_poulet_en_riant_awa_saute_sur_un_tabouret_en_relevant_son_pagne_furieuse",
-    "un",
-    "gros",
-    "poulet",
-    "blanc",
-    "vole",
-    "au",
-    "milieu",
-    "de",
-    "l",
-    "atelier",
-    "mimi",
-    "essaie",
-    "d",
-    "attraper",
-    "le",
-    "poulet",
-    "en",
-    "riant",
-    "awa",
-    "saute",
-    "sur",
-    "un",
-    "tabouret",
-    "en",
-    "relevant",
-    "son",
-    "pagne",
-    "furieuse"
-   ],
-   "mouth": false,
-   "size": [
-    368,
-    1600
-   ],
-   "head_x": 0.5,
-   "props": [],
-   "genere": "gemini",
-   "props_auto": {}
   }
  },
  "decors": {

@@ -108,13 +108,17 @@ def planche(tch, res, jr, out, log=print):
     planches.pages(qs, tit, imgs, d, prefixe='planche_poses_')
     planches.page_html(qs, tit, imgs, os.path.join(d, 'poses.html'), 'nouvelles poses', "Une question sans réponse = aucune de ces images n'est gardée.")
     log(f'planche : {len(qs)} question(s) → planches/poses.html'); return qs
-def detourer(im):
-    """Fond enlevé (rembg, modèle libre), on garde le personnage seul, recadré, hauteur 1600 comme les autres poses."""
+def detourer(im, tout=False):
+    """Fond enlevé (rembg, modèle libre), on garde le personnage seul, recadré, hauteur 1600 comme les autres poses.
+    tout=True (scène à plusieurs : personnages, poulet, tabouret…) : on garde tous les morceaux importants, pas seulement le plus grand (Issa, ép. 24)."""
     from rembg import remove, new_session
     from scipy import ndimage
     m = np.asarray(remove(im.convert('RGB'), session=new_session('isnet-general-use'), only_mask=True, post_process_mask=True))
     lab, n = ndimage.label(m > 60)
-    if n > 1:
+    if n > 1 and tout:
+        sz = ndimage.sum(np.ones_like(m), lab, range(1, n + 1)); garde = [i + 1 for i, v in enumerate(sz) if v > 0.01 * sz.max()]
+        m = np.where(ndimage.binary_dilation(np.isin(lab, garde), iterations=3), m, 0)
+    elif n > 1:
         sz = ndimage.sum(np.ones_like(m), lab, range(1, n + 1)); m = np.where(ndimage.binary_dilation(lab == np.argmax(sz) + 1, iterations=3), m, 0)
     o = im.convert('RGBA'); o.putalpha(Image.fromarray(m.astype(np.uint8))); o = o.crop(o.getbbox())
     import trous; o = trous.boucher(o)[0]   # vêtement clair pris pour du fond : rebouché

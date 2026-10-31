@@ -411,7 +411,7 @@ def importer(pairs, out, log=print):
                 import sol; cat.setdefault('sol', {})[x['perso']] = sol.mesurer(x['perso']); log(f"sol du décor : {cat['sol'][x['perso']]}")
             except Exception as e: log(f'sol du décor non mesuré ({e})')
             continue
-        im = poses_ia.detourer(im)
+        im = poses_ia.detourer(im, tout=x['type'] == 'scene')
         if x['type'] == 'objet':   # nouvel objet : gros plan « PLAN: objet … »
             mots = [w for w in re.sub(r'[^a-z0-9 ]', ' ', script.norm(x['perso'])).split() if len(w) > 2 and w not in ('les', 'des', 'une', 'pour', 'avec')]
             k = 'obj_' + '_'.join(mots[:3]); i = 2
