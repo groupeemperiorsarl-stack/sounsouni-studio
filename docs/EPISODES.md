@@ -2319,3 +2319,239 @@ VOIX_OFF (lentement)
 Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
 ```
+
+## Épisode 24 : Le plan B de Diasabi
+(source : demandes/episode_21.txt)
+```text
+TITRE: Les Plans de Bakary – Épisode 24 : Le plan B de Diasabi
+
+NOUVEL OBJET: régime de bananes — un gros régime de bananes plantains bien vertes et lourdes
+NOUVEL OBJET: cageot avec poulet vivant — cageot en bois ajouré d'où sort la tête d'un poulet blanc vigoureux
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc]
+[BRUITAGE: the]
+
+BAKARY (reveur · regarde: loin · voix: lentement)
+Van… {sourire} regarde ma joue. {tendre} La pommade d'Awa fait des miracles.
+
+MODIBO (taquin · regarde: Bakary · voix: normal)
+Bakarin… {sourire} elle t'a giflé devant tout le monde, et toi tu chantes ses louanges !
+
+BAKARY (amoureux · regarde: Modibo · voix: normal)
+Son mot disait : {coeurs} « La prochaine fois, parle. » Il y a un espoir, Van !
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+[BRUITAGE: pas]
+
+DIASABI (fier · regarde: Bakary · voix: crie)
+Aw ni sogoma ! {grand_sourire} Oublie les paroles ! Les mots ne remplissent pas le ventre !
+
+BAKARY (inquiet · regarde: Diasabi · voix: vite)
+Diasabi… {recule} pas de formule magique aujourd'hui, s'il te plaît.
+
+DIASABI (serieux · regarde: Bakary · voix: lentement)
+{se_penche} Hier, c'était trop brusque. Aujourd'hui, je passe au Plan B. La tradition de Bobo !
+
+MODIBO (mefiant · regarde: Diasabi · voix: normal)
+{sourcils_haut} Diasabi, chaque fois que tu dis « tradition », la police finit par arriver.
+
+DIASABI (fier · regarde: Modibo · voix: normal)
+{bombe_torse} À Bobo, pour conquérir une femme noble, on envoie des vivres ! Du lourd !
+
+BAKARY (inquiet · regarde: Diasabi · voix: normal)
+Qu'est-ce que tu as encore fait ?
+
+DIASABI (sourire_malin · regarde: téléphone · voix: normal)
+J'ai pris ton téléphone… {clin_oeil} et j'ai commandé sur Sounsouni Marché. Au nom du kiosque !
+
+BAKARY (panique · regarde: Diasabi · voix: crie)
+{choc}{sueur} Tu as commandé quoi avec mon compte ?!
+
+DIASABI (grand_sourire · regarde: Bakary · voix: normal)
+Le cadeau suprême ! Un gros régime de bananes… et un poulet vivant ! Seydou est déjà chez Awa !
+[RÉACTION BAKARY sur "poulet": choc, recule]
+[RÉACTION MODIBO sur "poulet": mains_tete]
+[BRUITAGE: tonnerre]
+
+BAKARY (panique · regarde: Diasabi · voix: crie)
+Un poulet vivant chez une couturière de luxe ?! {mains_tete} Diasabi, tu m'as tué !
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+PLAN: large [Awa assise, Mimi debout]
+[BRUITAGE: machine a coudre]
+
+AWA (pensif · regarde: bas · voix: normal)
+{soupir} Mimi… tu crois que j'ai tapé trop fort hier ?
+
+MIMI (sourire_malin · regarde: Awa · voix: normal)
+Tout le quartier a entendu le bruit, Tantie ! {rire_retenu} Mais la pommade va le soigner.
+
+AWA (froide · regarde: Mimi · voix: normal)
+{rougit} C'était juste par politesse. Rien d'autre.
+
+[BRUITAGE: moto]
+PLAN: large [Awa assise, Mimi debout, Seydou debout]
+
+SEYDOU (grand_sourire · regarde: Awa · voix: crie)
+Aw ni tchié la reine de la mode ! {grand_sourire} Livraison spéciale Sounsouni Marché !
+
+AWA (surpris · regarde: Seydou · voix: normal)
+{point_interrogation} Une livraison ? Je n'ai commandé aucun tissu.
+
+SEYDOU (sourire · regarde: Awa · voix: normal)
+C'est un cadeau ! {sourire} Commandé depuis le compte de Bakary.
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Livraison Cadeau · Destinataire : Awa Couture · 1 Régime de bananes + 1 Poulet vivant · Message : « Pour nourrir notre amour – Bakary »]
+
+PENSÉE AWA (surpris · regarde: téléphone)
+Des bananes et un poulet vivant… {colere} « Pour nourrir notre amour » ?!
+
+PLAN: large [Awa debout, Mimi debout, Seydou debout]
+PLAN: objet régime de bananes
+PLAN: objet cageot avec poulet vivant
+
+MIMI (emerveille · regarde: Seydou · voix: crie)
+{grand_sourire} Ooh ! Regardez le poulet, il est bien dodu !
+
+AWA (degout · regarde: Seydou · voix: crie)
+{furieux} Seydou ! Enlève cette volaille de mon atelier ! Il y a des bazins de valeur ici !
+
+SEYDOU (panique · regarde: Awa · voix: vite)
+{sueur} Attendez, madame Awa… {sursaut} Oh pardon, le cageot s'est ouvert !
+[BRUITAGE: fracas]
+[BRUITAGE: whoosh]
+
+PLAN: 3 s · gros [Awa debout, Mimi debout] · {POSE: un gros poulet blanc vole au milieu de l'atelier, Mimi essaie d'attraper le poulet en riant, Awa saute sur un tabouret en relevant son pagne, furieuse}
+
+AWA (panique · regarde: bas · voix: crie)
+Au secours ! {crie} Il saute sur ma dentelle ! Mimi, attrape cette bête !
+
+MIMI (rire · regarde: bas · voix: rit en parlant)
+{rire} Viens là, petit poulet !
+
+AWA (furieux · regarde: loin · voix: crie)
+{fumee_tete} Bakary ! Il transforme mon atelier en poulailler ! Il va m'entendre !
+[BRUITAGE: porte qui claque]
+[BRUITAGE: talons]
+
+DÉCOR: RUE · midi · ambiance: circulation
+PLAN: large [Sali debout, Moussa debout, Kadi sur le banc]
+
+MOUSSA (grand_sourire · regarde: Sali · voix: normal)
+Tantie Sali, regarde ! Grande sœur Awa sort en tornade de son atelier !
+
+SALI (taquin · regarde: Moussa · voix: normal)
+{rire} Quand Awa marche comme ça, c'est que Bakary a fait une grosse bêtise !
+
+KADI (sage · regarde: loin · voix: lentement)
+{sourire} Le piment et le miel… ces deux-là ne peuvent pas se quitter.
+
+PLAN: large [Sali debout, Moussa debout, Kadi sur le banc, Awa marche]
+[BRUITAGE: talons]
+[MUSIQUE: action]
+
+AWA (furieux · regarde: loin · voix: crie)
+Bakary ! Sors de ton kiosque tout de suite !
+
+DÉCOR: KIOSQUE · midi · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout]
+
+BAKARY (panique · regarde: loin · voix: chuchote)
+Van ! {sueur} Elle arrive ! Ses yeux lancent du feu !
+
+MODIBO (sage · regarde: Bakary · voix: normal)
+Reste calme, Bakarin. {serieux} Dis la vérité immédiatement.
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Awa debout, Moussa debout, Sali debout]
+[BRUITAGE: talons]
+
+AWA (furieux · regarde: Bakary · voix: crie)
+Bakary ! {pointe} Tu te crois drôle ?! Tu m'envoies un poulet qui court sur mes pagnes et des bananes pour me nourrir ?!
+
+BAKARY (panique · regarde: Awa · voix: vite)
+{pardon} Awa, pardonne-moi ! Écoute-moi, ce n'est pas moi !
+
+AWA (colere · regarde: Bakary · voix: crie)
+Pas toi ?! C'est venu de ton compte Sounsouni ! {mepris} « Pour nourrir notre amour » ! Quel amour ?!
+[RÉACTION SALI: rire]
+[RÉACTION MOUSSA: rire_retenu]
+[BRUITAGE: rires de foule]
+
+MOUSSA (grand_sourire · regarde: téléphone · voix: crie)
+Kôrôbalé wou ! {fier} Le feuilleton du quartier est trop doux !
+
+DIASABI (fier · regarde: Awa · voix: normal)
+{bombe_torse} Doucement ! À Bobo, offrir un poulet et des bananes, c'est la preuve d'un homme qui prend soin de son foyer !
+
+AWA (choc · regarde: Diasabi · voix: crie)
+{choc} Quoi ?! Encore toi, le géant de Bobo ?!
+
+PLAN: gros [Awa debout, Diasabi debout]
+
+AWA (furieux · regarde: Diasabi · voix: crie)
+C'est encore ta science de malheur ?! {pointe} Tu veux que je te tape toi aussi ?!
+
+DIASABI (confus · regarde: Awa · voix: vite)
+{recule}{sueur} Mais… c'était pour rattraper la gifle d'hier ! Une femme bien nourrie ne gifle plus !
+
+MODIBO (taquin · regarde: Diasabi · voix: normal)
+{rire} Diasabi, ta science va te faire chasser du quartier avant ce soir.
+
+BAKARY (determine · regarde: Awa · voix: lentement)
+Awa… regarde-moi. {avance} Jamais je ne te manquerais de respect. J'ai laissé mon téléphone pour aller chercher du charbon, et Diasabi a commandé en cachette.
+
+PLAN: 2 s · deux [Bakary debout, Awa debout]
+[MUSIQUE: romantique]
+
+BAKARY (tendre · regarde: Awa · voix: lentement)
+{soupir} Moi, je voulais juste faire ce que tu as dit hier. {sourire} Parler avec ma bouche.
+
+AWA (gene · regarde: bas · voix: chuchote)
+{rougit} Tu… tu parles trop, Bakary.
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi debout, Awa debout, Moussa debout, Sali debout, Seydou debout, Mimi debout]
+[BRUITAGE: pas]
+
+MIMI (grand_sourire · regarde: Awa · voix: normal)
+Tantie Awa ! {grand_sourire} Seydou et moi, on a attrapé le poulet ! Il est bien enfermé !
+
+SEYDOU (sourire · regarde: Bakary · voix: normal)
+{salue} Et Tantie Sali achète le régime de bananes pour faire des allocos !
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni Marché · Transaction terminée ✔ · Vente de bananes validée · Solde crédité]
+
+PENSÉE BAKARY (content · regarde: téléphone)
+Sali a racheté les bananes sur Sounsouni… {sourire} le poulet est attrapé, tout s'arrange !
+
+SALI (grand_sourire · regarde: Bakary · voix: normal)
+{grand_sourire} Voilà ! Les bananes vont frire dans mon huile chaude, tout le monde est content !
+
+AWA (mepris · regarde: Diasabi · voix: normal)
+Diasabi… {yeux_plisses} si tu t'approches encore de mon atelier, ton Plan C sera à l'hôpital. Compris ?
+
+DIASABI (peur · regarde: Awa · voix: chuchote)
+{sueur} Compris… Je reste devant mon grill.
+
+AWA (fiere · regarde: Bakary · voix: normal)
+Et toi, vendeur de thé… {sourire_malin} apprends à verrouiller ton téléphone.
+[BRUITAGE: talons]
+
+PLAN: 2 s · gros Bakary · {amoureux}{coeurs}
+
+PENSÉE BAKARY (amoureux · regarde: loin)
+Elle a souri… {coeurs} Même fâchée, elle a souri en partant !
+
+MODIBO (rire · regarde: Bakary · voix: normal)
+{rire} Bakarin, remercie Sounsouni ! Tu viens d'échapper à une deuxième gifle !
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, du poulet fermier aux plus belles tenues, vos commandes arrivent toujours à bon port… même au milieu des imprévus ! Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
+```
