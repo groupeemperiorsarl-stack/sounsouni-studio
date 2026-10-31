@@ -1,0 +1,279 @@
+{
+ "script": "demandes/episode_21.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    33
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_action_659144_01"
+     },
+     "texte": "serieux · bras_croises · ferme_yeux",
+     "lettre": "D"
+    }
+   ],
+   "n": 1,
+   "sigs": {
+    "33": "AWA|Au secours ! Il saute sur ma dentelle ! Mimi, attrape cette #0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "MIMI",
+   "plans": [
+    35,
+    36
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_sourire"
+     },
+     "texte": "sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_amoureux"
+     },
+     "texte": "amoureux",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_debout"
+     },
+     "texte": "inquiet · neutre · timide",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MIMI",
+      "key": "mim_inquiete"
+     },
+     "texte": "inquiet · essouffle · explique",
+     "lettre": "D"
+    }
+   ],
+   "n": 2,
+   "sigs": {
+    "35": "MIMI|Viens là, petit poulet !#1",
+    "36": "MIMI|Je l'ai attrapé, Tantie ! Le poulet est à moi !#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "MOUSSA",
+   "plans": [
+    39,
+    55
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_the"
+     },
+     "texte": "sourire · offre · verre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_sourire"
+     },
+     "texte": "sourire",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_content"
+     },
+     "texte": "content",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_fier"
+     },
+     "texte": "fier",
+     "lettre": "D"
+    }
+   ],
+   "n": 3,
+   "sigs": {
+    "39": "MOUSSA|Tantie Sali, regarde ! Grande sœur Awa sort en tornade de so#0",
+    "55": "MOUSSA|Kôrôbalé wou ! Le feuilleton du quartier est trop doux !#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    50
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 4,
+   "sigs": {
+    "50": "AWA|Bakary ! Tu te crois drôle ?! Tu m'envoies un poulet qui cou#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    52
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_mepris"
+     },
+     "texte": "mepris",
+     "lettre": "D"
+    }
+   ],
+   "n": 5,
+   "sigs": {
+    "52": "AWA|Pas toi ?! C'est venu de ton compte Sounsouni ! « Pour nourr#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "MODIBO",
+   "plans": [
+    60
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_rire"
+     },
+     "texte": "rire · moqueur · taquin (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_assis_rire"
+     },
+     "texte": "rire · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_assis_taquin"
+     },
+     "texte": "taquin · assis",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_doigt"
+     },
+     "texte": "taquin · idee · explique",
+     "lettre": "D"
+    }
+   ],
+   "n": 6,
+   "sigs": {
+    "60": "MODIBO|Diasabi, ta science va te faire chasser du quartier avant ce#0"
+   }
+  }
+ ]
+}

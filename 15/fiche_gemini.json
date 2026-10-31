@@ -1,0 +1,788 @@
+{
+ "items": [
+  {
+   "type": "personnage",
+   "perso": "EL_HADJ",
+   "texte": "El Hadj Bourama, riche commerçant d'or du Grand Marché, la cinquantaine, un peu de ventre, grand boubou en bazin blanc brodé d'or, bonnet assorti, chapelet à la main, grosse montre en or. Postures : debout, marche. Émotions : sourire, offre, gene. (3 images : marche · debout souriant main tendue · debout vexé)",
+   "ou": [
+    "episode_15"
+   ],
+   "n": 1,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "personnage",
+   "perso": "CHEICK",
+   "texte": "Cheick « le Diaspo », 35 ans, rentré de Paris, costume slim BORDEAUX, chemise noire ouverte, chaîne en or, lunettes de soleil posées sur la tête. Postures : debout, marche. Émotions : fier, offre, surpris. (3 images : marche · debout main tendue pour inviter à danser · debout surpris)",
+   "ou": [
+    "episode_15"
+   ],
+   "n": 2,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "personnage",
+   "perso": "ABDOUL",
+   "texte": "Abdoul « le Grand », 40 ans, costume trois pièces gris anthracite, cravate argent, badge officiel au cou, un téléphone dans chaque main. Postures : debout, marche. Émotions : sourire, gene. (3 images : marche en téléphonant · debout souriant · debout vexé)",
+   "ou": [
+    "episode_15"
+   ],
+   "n": 3,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "decor",
+   "perso": "VILLA_FETE",
+   "texte": "la cour de la villa décorée pour un dîner de mariage, la nuit : guirlandes lumineuses dorées, tables nappées blanc et or, piste de danse au centre, estrade des mariés au fond (les mariés restent hors champ), grosses voitures garées au portail.",
+   "ou": [
+    "episode_15"
+   ],
+   "n": 4,
+   "ref": null,
+   "fichier_ref": "ref_KIOSQUE.jpg"
+  },
+  {
+   "type": "objet",
+   "perso": "Land Cruiser blanc",
+   "texte": "Land Cruiser blanc",
+   "ou": [
+    "episode_15 plan 40"
+   ],
+   "n": 5,
+   "ref": "kar_voiture",
+   "fichier_ref": "ref_kar_voiture.jpg"
+  },
+  {
+   "type": "objet",
+   "perso": "Mercedes noire",
+   "texte": "Mercedes noire",
+   "ou": [
+    "episode_15 plan 46"
+   ],
+   "n": 6,
+   "ref": "kar_voiture",
+   "fichier_ref": "ref_kar_voiture.jpg"
+  },
+  {
+   "type": "objet",
+   "perso": "4x4 noir avec chauffeur",
+   "texte": "4x4 noir avec chauffeur",
+   "ou": [
+    "episode_15 plan 52"
+   ],
+   "n": 7,
+   "ref": "kar_voiture",
+   "fichier_ref": "ref_kar_voiture.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "pose:debout_attrape_le_bouquet_a_deux_mains",
+   "tenue": "bazin_de_soiree",
+   "ou": [
+    "episode_15 plan 86",
+    "episode_15 plan 87"
+   ],
+   "n": 8,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "pose:en_tenue_de_soiree_epoustouflante_marche_lentement",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 29"
+   ],
+   "n": 9,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "debout",
+   "emo": "pose:a_genoux",
+   "tenue": "boubou_amidonne",
+   "ou": [
+    "episode_15 plan 36"
+   ],
+   "n": 10,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "pose:en_tenue_de_soiree_debout_le_bouquet_dans_les_mains",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 81"
+   ],
+   "n": 11,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "pose:en_tenue_de_soiree_debout_jette_le_bouquet_par_dessus_son_epaule_sans_regarder",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 84"
+   ],
+   "n": 12,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 28",
+    "episode_15 plan 33",
+    "episode_15 plan 35",
+    "episode_15 plan 38",
+    "episode_15 plan 41",
+    "episode_15 plan 42",
+    "episode_15 plan 45",
+    "episode_15 plan 48",
+    "episode_15 plan 51",
+    "episode_15 plan 54",
+    "episode_15 plan 57",
+    "episode_15 plan 59",
+    "episode_15 plan 60",
+    "episode_15 plan 63",
+    "episode_15 plan 66",
+    "episode_15 plan 76",
+    "episode_15 plan 77",
+    "episode_15 plan 78",
+    "episode_15 plan 83",
+    "episode_15 plan 88",
+    "episode_15 plan 91"
+   ],
+   "n": 13,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "",
+   "tenue": "tenue_de_soiree_turquoise",
+   "ou": [
+    "episode_15 plan 23",
+    "episode_15 plan 24",
+    "episode_15 plan 28",
+    "episode_15 plan 32",
+    "episode_15 plan 41",
+    "episode_15 plan 43",
+    "episode_15 plan 44",
+    "episode_15 plan 47",
+    "episode_15 plan 49",
+    "episode_15 plan 50",
+    "episode_15 plan 53",
+    "episode_15 plan 55",
+    "episode_15 plan 56",
+    "episode_15 plan 70",
+    "episode_15 plan 71",
+    "episode_15 plan 75",
+    "episode_15 plan 82",
+    "episode_15 plan 88",
+    "episode_15 plan 89"
+   ],
+   "n": 14,
+   "ref": "fat_mains",
+   "fichier_ref": "ref_fat_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "debout",
+   "emo": "",
+   "tenue": "ensemble_chic",
+   "ou": [
+    "episode_15 plan 23",
+    "episode_15 plan 28",
+    "episode_15 plan 39",
+    "episode_15 plan 41",
+    "episode_15 plan 43",
+    "episode_15 plan 44",
+    "episode_15 plan 47",
+    "episode_15 plan 49",
+    "episode_15 plan 50",
+    "episode_15 plan 53",
+    "episode_15 plan 55",
+    "episode_15 plan 56",
+    "episode_15 plan 70",
+    "episode_15 plan 71",
+    "episode_15 plan 73",
+    "episode_15 plan 82",
+    "episode_15 plan 88",
+    "episode_15 plan 90"
+   ],
+   "n": 15,
+   "ref": "mod_joie",
+   "fichier_ref": "ref_mod_joie.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "",
+   "tenue": "bazin_de_soiree",
+   "ou": [
+    "episode_15 plan 23",
+    "episode_15 plan 28",
+    "episode_15 plan 30",
+    "episode_15 plan 41",
+    "episode_15 plan 43",
+    "episode_15 plan 44",
+    "episode_15 plan 47",
+    "episode_15 plan 49",
+    "episode_15 plan 50",
+    "episode_15 plan 53",
+    "episode_15 plan 55",
+    "episode_15 plan 56",
+    "episode_15 plan 70",
+    "episode_15 plan 71",
+    "episode_15 plan 72",
+    "episode_15 plan 82",
+    "episode_15 plan 88"
+   ],
+   "n": 16,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "SALI",
+   "posture": "debout",
+   "emo": "",
+   "tenue": "ensemble_de_fete",
+   "ou": [
+    "episode_15 plan 23",
+    "episode_15 plan 27",
+    "episode_15 plan 28",
+    "episode_15 plan 41",
+    "episode_15 plan 43",
+    "episode_15 plan 44",
+    "episode_15 plan 47",
+    "episode_15 plan 49",
+    "episode_15 plan 50",
+    "episode_15 plan 53",
+    "episode_15 plan 55",
+    "episode_15 plan 56",
+    "episode_15 plan 70",
+    "episode_15 plan 71",
+    "episode_15 plan 82",
+    "episode_15 plan 88"
+   ],
+   "n": 17,
+   "ref": "sal_beignet",
+   "fichier_ref": "ref_sal_beignet.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MOUSSA",
+   "posture": "debout",
+   "emo": "",
+   "tenue": "costume_moderne",
+   "ou": [
+    "episode_15 plan 25",
+    "episode_15 plan 28",
+    "episode_15 plan 34",
+    "episode_15 plan 42",
+    "episode_15 plan 48",
+    "episode_15 plan 54",
+    "episode_15 plan 59",
+    "episode_15 plan 60",
+    "episode_15 plan 65",
+    "episode_15 plan 67",
+    "episode_15 plan 79"
+   ],
+   "n": 18,
+   "ref": "mou_content",
+   "fichier_ref": "ref_mou_content.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "debout",
+   "emo": "",
+   "tenue": "boubou_amidonne",
+   "ou": [
+    "episode_15 plan 37",
+    "episode_15 plan 88",
+    "episode_15 plan 92"
+   ],
+   "n": 19,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "mepris",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 35",
+    "episode_15 plan 38",
+    "episode_15 plan 41",
+    "episode_15 plan 42",
+    "episode_15 plan 63",
+    "episode_15 plan 83",
+    "episode_15 plan 88"
+   ],
+   "n": 20,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MOUSSA",
+   "posture": "debout",
+   "emo": "grand_sourire",
+   "tenue": "costume_moderne",
+   "ou": [
+    "episode_15 plan 25",
+    "episode_15 plan 28",
+    "episode_15 plan 65",
+    "episode_15 plan 79"
+   ],
+   "n": 21,
+   "ref": "mou_content",
+   "fichier_ref": "ref_mou_content.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "moue",
+   "tenue": "tenue_de_soiree_turquoise",
+   "ou": [
+    "episode_15 plan 32",
+    "episode_15 plan 71",
+    "episode_15 plan 82",
+    "episode_15 plan 88"
+   ],
+   "n": 22,
+   "ref": "fat_mains",
+   "fichier_ref": "ref_fat_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "fier",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 33",
+    "episode_15 plan 57",
+    "episode_15 plan 59",
+    "episode_15 plan 60"
+   ],
+   "n": 23,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "moue",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 51",
+    "episode_15 plan 54",
+    "episode_15 plan 66"
+   ],
+   "n": 24,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "reveur",
+   "tenue": "bazin_de_soiree",
+   "ou": [
+    "episode_15 plan 72",
+    "episode_15 plan 82",
+    "episode_15 plan 88"
+   ],
+   "n": 25,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "debout",
+   "emo": "sage",
+   "tenue": "ensemble_chic",
+   "ou": [
+    "episode_15 plan 73",
+    "episode_15 plan 82",
+    "episode_15 plan 88"
+   ],
+   "n": 26,
+   "ref": "mod_joie",
+   "fichier_ref": "ref_mod_joie.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "froide",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 45",
+    "episode_15 plan 48"
+   ],
+   "n": 27,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "triste",
+   "tenue": "tenue_de_soiree_turquoise",
+   "ou": [
+    "episode_15 plan 75",
+    "episode_15 plan 89"
+   ],
+   "n": 28,
+   "ref": "fat_mains",
+   "fichier_ref": "ref_fat_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "mefiant",
+   "tenue": "tenue_de_soiree_epoustouflante",
+   "ou": [
+    "episode_15 plan 76",
+    "episode_15 plan 77"
+   ],
+   "n": 29,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "SALI",
+   "posture": "debout",
+   "emo": "taquin",
+   "tenue": "ensemble_de_fete",
+   "ou": [
+    "episode_15 plan 27"
+   ],
+   "n": 30,
+   "ref": "sal_beignet",
+   "fichier_ref": "ref_sal_beignet.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "emerveille",
+   "tenue": "bazin_de_soiree",
+   "ou": [
+    "episode_15 plan 30"
+   ],
+   "n": 31,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "debout",
+   "emo": "rire",
+   "tenue": "ensemble_chic",
+   "ou": [
+    "episode_15 plan 39"
+   ],
+   "n": 32,
+   "ref": "mod_joie",
+   "fichier_ref": "ref_mod_joie.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    5
+   ],
+   "fichier_ref": "ref_kar_voiture.jpg",
+   "refs": null,
+   "g": 1,
+   "demande": "Dessine cet objet dans exactement le même style dessin animé 3D que l'image jointe : Land Cruiser blanc. L'objet seul, en entier, bien éclairé, sur un fond gris clair uni, sans personnage. Image verticale.",
+   "joindre": [
+    "image_1.jpg"
+   ],
+   "titres": [
+    "Nouvel objet : Land Cruiser blanc"
+   ]
+  },
+  {
+   "items": [
+    6
+   ],
+   "fichier_ref": "ref_kar_voiture.jpg",
+   "refs": null,
+   "g": 2,
+   "demande": "Dessine cet objet dans exactement le même style dessin animé 3D que l'image jointe : Mercedes noire. L'objet seul, en entier, bien éclairé, sur un fond gris clair uni, sans personnage. Image verticale.",
+   "joindre": [
+    "image_2.jpg"
+   ],
+   "titres": [
+    "Nouvel objet : Mercedes noire"
+   ]
+  },
+  {
+   "items": [
+    7
+   ],
+   "fichier_ref": "ref_kar_voiture.jpg",
+   "refs": null,
+   "g": 3,
+   "demande": "Dessine cet objet dans exactement le même style dessin animé 3D que l'image jointe : 4x4 noir avec chauffeur. L'objet seul, en entier, bien éclairé, sur un fond gris clair uni, sans personnage. Image verticale.",
+   "joindre": [
+    "image_3.jpg"
+   ],
+   "titres": [
+    "Nouvel objet : 4x4 noir avec chauffeur"
+   ]
+  },
+  {
+   "g": 4,
+   "items": [
+    1
+   ],
+   "fichier_ref": "ref_bak_debout.jpg",
+   "demande": "Crée un nouveau personnage dans exactement le même style dessin animé 3D que le personnage de l'image jointe : El Hadj Bourama, riche commerçant d'or du Grand Marché, la cinquantaine, un peu de ventre, grand boubou en bazin blanc brodé d'or, bonnet assorti, chapelet à la main, grosse montre en or. Fais UNE seule image en format paysage qui montre ce même personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de face, bras le long du corps, bouche fermée, expression neutre ; 2) marche ; 3) debout souriant main tendue ; 4) debout vexé.",
+   "joindre": [
+    "image_4.jpg"
+   ],
+   "titres": [
+    "Nouveau personnage : El_Hadj"
+   ]
+  },
+  {
+   "g": 5,
+   "items": [
+    2
+   ],
+   "fichier_ref": "ref_bak_debout.jpg",
+   "demande": "Crée un nouveau personnage dans exactement le même style dessin animé 3D que le personnage de l'image jointe : Cheick « le Diaspo », 35 ans, rentré de Paris, costume slim BORDEAUX, chemise noire ouverte, chaîne en or, lunettes de soleil posées sur la tête. Fais UNE seule image en format paysage qui montre ce même personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de face, bras le long du corps, bouche fermée, expression neutre ; 2) marche ; 3) debout main tendue pour inviter à danser ; 4) debout surpris.",
+   "joindre": [
+    "image_5.jpg"
+   ],
+   "titres": [
+    "Nouveau personnage : Cheick"
+   ]
+  },
+  {
+   "g": 6,
+   "items": [
+    3
+   ],
+   "fichier_ref": "ref_bak_debout.jpg",
+   "demande": "Crée un nouveau personnage dans exactement le même style dessin animé 3D que le personnage de l'image jointe : Abdoul « le Grand », 40 ans, costume trois pièces gris anthracite, cravate argent, badge officiel au cou, un téléphone dans chaque main. Fais UNE seule image en format paysage qui montre ce même personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de face, bras le long du corps, bouche fermée, expression neutre ; 2) marche en téléphonant ; 3) debout souriant ; 4) debout vexé.",
+   "joindre": [
+    "image_6.jpg"
+   ],
+   "titres": [
+    "Nouveau personnage : Abdoul"
+   ]
+  },
+  {
+   "g": 7,
+   "items": [
+    4
+   ],
+   "fichier_ref": "ref_KIOSQUE.jpg",
+   "demande": "Crée un décor de dessin animé 3D, dans le même style que l'image jointe : la cour de la villa décorée pour un dîner de mariage, la nuit : guirlandes lumineuses dorées, tables nappées blanc et or, piste de danse au centre, estrade des mariés au fond (les mariés restent hors champ), grosses voitures garées au portail. Lieu malien réaliste et coloré, à Bamako, sans aucun personnage. Image verticale.",
+   "joindre": [
+    "image_7.jpg"
+   ],
+   "titres": [
+    "Nouveau décor : Villa_Fete"
+   ]
+  },
+  {
+   "g": 8,
+   "items": [
+    8,
+    16,
+    25,
+    31
+   ],
+   "fichier_ref": "ref_bak_debout.jpg",
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais habillé de : grand boubou trois pièces en bazin bleu nuit brodé d'argent, pantalon assorti, lunettes de soleil sur la tête, babouches bleu nuit. Fais UNE seule image en format paysage qui montre ce personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, attrape le bouquet à deux mains, bouche fermée ; 2) debout, de trois-quarts, calme, l'air neutre, bouche fermée ; 3) debout, de trois-quarts, rêveur, un petit sourire amoureux, bouche fermée ; 4) debout, de trois-quarts, émerveillé, les yeux brillants, bouche entrouverte, bouche fermée.",
+   "joindre": [
+    "image_8.jpg"
+   ],
+   "titres": [
+    "Bakary — debout, attrape le bouquet à deux mains — bazin de soirée",
+    "Bakary — debout — bazin de soirée",
+    "Bakary — debout, rêveur — bazin de soirée",
+    "Bakary — debout, émerveillé — bazin de soirée"
+   ]
+  },
+  {
+   "g": 9,
+   "items": [
+    9,
+    11,
+    12,
+    13
+   ],
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais habillée de : robe fourreau en bazin blanc cassé brodé d'or, coiffe assortie sculptée, parure dorée scintillante. Fais UNE seule image en format paysage qui montre ce personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) marche lentement, bouche fermée ; 2) debout, le bouquet dans les mains, bouche fermée ; 3) debout, jette le bouquet par-dessus son épaule sans regarder, bouche fermée ; 4) debout, de trois-quarts, calme, l'air neutre, bouche fermée.",
+   "joindre": [
+    "image_9.jpg"
+   ],
+   "titres": [
+    "Awa — marche lentement — tenue de soirée époustouflante",
+    "Awa — debout, le bouquet dans les mains — tenue de soirée époustouflante",
+    "Awa — debout, jette le bouquet par-dessus son épaule sans regarder — tenue de soirée époustouflante",
+    "Awa — debout — tenue de soirée époustouflante"
+   ]
+  },
+  {
+   "g": 10,
+   "items": [
+    20,
+    23,
+    24,
+    27
+   ],
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "suite_de": 9,
+   "demande": "Garde exactement le même personnage que sur l'image jointe, Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage qui montre ce personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de trois-quarts, méprisante, bouche fermée ; 2) debout, de trois-quarts, fière, le menton levé, bouche fermée ; 3) debout, de trois-quarts, qui fait la moue, bouche fermée ; 4) debout, de trois-quarts, froide et distante, bouche fermée.",
+   "joindre": [],
+   "titres": [
+    "Awa — debout, méprisante — tenue de soirée époustouflante",
+    "Awa — debout, fière — tenue de soirée époustouflante",
+    "Awa — debout, qui fait la moue — tenue de soirée époustouflante",
+    "Awa — debout, froide et distante — tenue de soirée époustouflante"
+   ]
+  },
+  {
+   "g": 11,
+   "items": [
+    29
+   ],
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "suite_de": 9,
+   "demande": "Garde exactement le même personnage que sur l'image jointe, Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Montre-la ainsi : debout, de trois-quarts, méfiante, les yeux plissés, bouche fermée. Corps entier de la tête aux pieds, sur un fond gris clair uni, sans aucun décor ni autre personnage. Image verticale.",
+   "joindre": [],
+   "titres": [
+    "Awa — debout, méfiante — tenue de soirée époustouflante"
+   ]
+  },
+  {
+   "g": 12,
+   "items": [
+    10,
+    19
+   ],
+   "fichier_ref": "ref_dia_neutre.jpg",
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais habillé de : grand boubou en bazin vert olive très amidonné un peu trop large, pantalon assorti, babouches neuves. Fais UNE seule image en format paysage qui montre ce personnage 2 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) à genoux, bouche fermée ; 2) debout, de trois-quarts, calme, l'air neutre, bouche fermée.",
+   "joindre": [
+    "image_12.jpg"
+   ],
+   "titres": [
+    "Diasabi — à genoux — boubou amidonné",
+    "Diasabi — debout — boubou amidonné"
+   ]
+  },
+  {
+   "g": 13,
+   "items": [
+    14,
+    22,
+    28
+   ],
+   "fichier_ref": "ref_fat_mains.jpg",
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais habillée de : robe élégante en bazin turquoise brillant et broderies or, grand foulard turquoise noué avec soin, bijoux dorés. Fais UNE seule image en format paysage qui montre ce personnage 3 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de trois-quarts, calme, l'air neutre, bouche fermée ; 2) debout, de trois-quarts, qui fait la moue, bouche fermée ; 3) debout, de trois-quarts, triste, le regard baissé, bouche fermée.",
+   "joindre": [
+    "image_13.jpg"
+   ],
+   "titres": [
+    "Fatim — debout — tenue de soirée turquoise",
+    "Fatim — debout, qui fait la moue — tenue de soirée turquoise",
+    "Fatim — debout, triste — tenue de soirée turquoise"
+   ]
+  },
+  {
+   "g": 14,
+   "items": [
+    15,
+    26,
+    32
+   ],
+   "fichier_ref": "ref_mod_joie.jpg",
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais habillé de : ensemble chemise et pantalon en bazin marron glacé brodé sobrement, bonnet assorti, chaussures en cuir cirées. Fais UNE seule image en format paysage qui montre ce personnage 3 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de trois-quarts, calme, l'air neutre, bouche fermée ; 2) debout, de trois-quarts, calme et sage, un léger sourire, bouche fermée ; 3) debout, de trois-quarts, qui éclate de rire, bouche fermée.",
+   "joindre": [
+    "image_14.jpg"
+   ],
+   "titres": [
+    "Modibo — debout — ensemble chic",
+    "Modibo — debout, calme et sage — ensemble chic",
+    "Modibo — debout, qui éclate de rire — ensemble chic"
+   ]
+  },
+  {
+   "g": 15,
+   "items": [
+    17,
+    30
+   ],
+   "fichier_ref": "ref_sal_beignet.jpg",
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais habillée de : robe de fête cintrée en pagne tissé bleu roi et or, foulard jaune brodé, sandales vernies et bijoux dorés. Elle ne tient rien dans les mains. Fais UNE seule image en format paysage qui montre ce personnage 2 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de trois-quarts, calme, l'air neutre, bouche fermée ; 2) debout, de trois-quarts, taquine, un sourire en coin, bouche fermée.",
+   "joindre": [
+    "image_15.jpg"
+   ],
+   "titres": [
+    "Sali — debout — ensemble de fête",
+    "Sali — debout, taquine — ensemble de fête"
+   ]
+  },
+  {
+   "g": 16,
+   "items": [
+    18,
+    21
+   ],
+   "fichier_ref": "ref_mou_content.jpg",
+   "demande": "Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, même corpulence, même style dessin animé 3D, mais habillé de : costume cintré en wax chic aux motifs géométriques bordeaux et noir, t-shirt noir propre, baskets blanches impeccables. Fais UNE seule image en format paysage qui montre ce personnage 2 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) debout, de trois-quarts, calme, l'air neutre, bouche fermée ; 2) debout, de trois-quarts, grand sourire, bouche fermée.",
+   "joindre": [
+    "image_16.jpg"
+   ],
+   "titres": [
+    "Moussa — debout — costume moderne",
+    "Moussa — debout, grand sourire — costume moderne"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,136 @@
+{
+ "resume": "Des incohérences de dialogue et un objet manquant : Awa parle d’une publication inexistante, Bakary ne salue pas Aminata à son arrivée, et les beignets ne sont jamais visibles. Il manque les images d'Aminata qui n'apparaît pas au plan 5, et Bakary fait des gestes ou rit aux éclats sur plusieurs plans où il devrait rester calme.",
+ "problemes": [
+  {
+   "plan": 4,
+   "moment": "2:10",
+   "gravite": "fort",
+   "quoi": "La réplique d'Awa fait référence à une publication qui n’a jamais été introduite.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "AWA (mepris · regarde: Mimi · voix: normal)\n{sourire_malin} Laisse‑le. Au moins, elle, elle ne publie pas d'avis par erreur.",
+     "nouveau": "AWA (mepris · regarde: Mimi · voix: normal)\n{sourire_malin} Laisse‑le. Au moins, elle ne vend pas de beignets froids.",
+     "pourquoi": "Le texte doit rester cohérent avec l’histoire ; aucune publication n’est mentionnée auparavant."
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "moment": "0:45",
+   "gravite": "moyen",
+   "quoi": "Bakary ne salue pas Aminata lorsqu’elle apparaît.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "BAKARY (surpris · regarde: Modibo · voix: normal)\n{surpris} Van ? Tu rougis ?",
+     "nouveau": "BAKARY (content · regarde: Aminata · voix: normal)\n{sourire} Bonjour Aminata !\nBAKARY (surpris · regarde: Modibo · voix: normal)\n{surpris} Van ? Tu rougis ?",
+     "pourquoi": "Selon la règle de politesse, un personnage qui arrive doit d’abord saluer tout le monde."
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "moment": "0:30",
+   "gravite": "moyen",
+   "quoi": "Les beignets ne sont jamais montrés alors qu’ils sont essentiels à la scène.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "PLAN: large [Bakary debout, Modibo sur le banc, Aminata debout]",
+     "nouveau": "PLAN: large [Bakary debout, Modibo sur le banc, Aminata debout, bassine de beignets]",
+     "pourquoi": "L’objet « bassine de beignets » doit être visible quand Aminata parle de ses beignets."
+    }
+   ]
+  },
+  {
+   "plan": 5,
+   "moment": "0:12",
+   "gravite": "fort",
+   "quoi": "Aminata parle mais elle n'apparaît pas dans l'image car le studio n'a pas encore créé d'image pour elle.",
+   "actions": [
+    {
+     "type": "fiche",
+     "pourquoi": "Générer les images pour le nouveau personnage Aminata et l'émotion amoureux de Modibo sur le banc."
+    }
+   ]
+  },
+  {
+   "plan": 1,
+   "moment": "0:02",
+   "gravite": "moyen",
+   "quoi": "Bakary tend la main dès le premier plan muet avant même de commencer à parler.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 1,
+     "qui": "BAKARY",
+     "pose": "bak_debout",
+     "pourquoi": "Garder une posture calme sans geste tant que la parole n'a pas commencé."
+    }
+   ]
+  },
+  {
+   "plan": 4,
+   "moment": "0:10",
+   "gravite": "moyen",
+   "quoi": "Bakary garde la main tendue pendant le bruitage de pas sans raison.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 4,
+     "qui": "BAKARY",
+     "pose": "bak_debout",
+     "pourquoi": "Rester debout calmement en attendant que la personne arrive."
+    }
+   ]
+  },
+  {
+   "plan": 6,
+   "moment": "0:15",
+   "gravite": "moyen",
+   "quoi": "Bakary rit aux éclats en arrière-plan pendant que Modibo est perdu dans ses pensées amoureuses.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 6,
+     "qui": "BAKARY",
+     "pose": "bak_debout",
+     "pourquoi": "Bakary doit être calme et attentif pendant la pensée de Modibo."
+    }
+   ]
+  },
+  {
+   "plan": 5,
+   "moment": "0:12",
+   "gravite": "moyen",
+   "quoi": "Bakary a la main tendue pendant qu'Aminata arrive et salue.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 5,
+     "qui": "BAKARY",
+     "pose": "bak_debout",
+     "pourquoi": "Bakary écoute la vendeuse arriver sans faire de geste inutile."
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "moment": "0:04",
+   "gravite": "petit",
+   "quoi": "Bakary rit la tête en arrière au lieu de simplement sourire pour dire que la journée sera belle.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 2,
+     "qui": "BAKARY",
+     "pose": "bak_explique",
+     "pourquoi": "La pose d'explication avec sourire convient mieux au texte que le grand éclat de rire."
+    }
+   ]
+  }
+ ],
+ "modele": "Groq gpt-oss-120b + gemini-3.8-flash",
+ "date": "2026-10-23 08:56"
+}

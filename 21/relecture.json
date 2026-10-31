@@ -1,0 +1,175 @@
+{
+ "resume": "L'épisode est très drôle et bien construit. J'ai fusionné deux répliques d'Awa pour plus de punch et ajouté une salutation pour Mimi au kiosque. L'épisode est très drôle, mais Mimi n'a pas le poulet dans les bras aux plans 35 et 36, et Awa a les yeux fermés dans plusieurs plans larges.",
+ "problemes": [
+  {
+   "plan": 66,
+   "moment": "3:48",
+   "gravite": "moyen",
+   "quoi": "Mimi arrive au kiosque et s'adresse à Awa sans saluer le groupe.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "MIMI (grand_sourire · regarde: Awa · voix: normal)\nTantie Awa ! {grand_sourire} Seydou et moi, on a attrapé le poulet ! Il est bien enfermé !",
+     "nouveau": "MIMI (grand_sourire · regarde: Awa · voix: normal)\nI ni tché ! Tantie Awa ! {grand_sourire} Seydou et moi, on a attrapé le poulet ! Il est bien enfermé !",
+     "pourquoi": "Respecter les règles de politesse de Bamako lors d'une arrivée dans un groupe."
+    },
+    {
+     "type": "note",
+     "theme": "mise-en-scene",
+     "texte": "Arrivée dans un groupe → manque de salutation → ajouter 'I ni tché' ou 'Aw ni sogoma'.",
+     "pourquoi": "C'est une règle de base de la politesse à Bamako, même en cas de précipitation."
+    }
+   ]
+  },
+  {
+   "plan": 49,
+   "moment": "2:43",
+   "gravite": "moyen",
+   "quoi": "Awa répète son interpellation dans deux répliques successives.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "AWA (furieux · regarde: Bakary · voix: crie)\nBakary ! Sors de derrière ton kiosque tout de suite !\n\nAWA (furieux · regarde: Bakary · voix: crie)\nBakary ! {pointe} Tu te crois drôle ?! Tu m'envoies un poulet qui court sur mes pagnes et des bananes pour me nourrir ?!",
+     "nouveau": "AWA (furieux · regarde: Bakary · voix: crie)\nBakary ! Sors de derrière ton kiosque tout de suite ! {pointe} Tu te crois drôle ?! Tu m'envoies un poulet qui court sur mes pagnes et des bananes pour me nourrir ?!",
+     "pourquoi": "Fusionner les deux répliques pour rendre l'entrée d'Awa plus dynamique et éviter la répétition."
+    }
+   ]
+  },
+  {
+   "plan": null,
+   "moment": null,
+   "gravite": "petit",
+   "quoi": "Prononciation de certains mots et de l'adresse web.",
+   "actions": [
+    {
+     "type": "lexique",
+     "ecrit": "sounsouni.pro",
+     "prononce": "sounsouni point pro",
+     "pourquoi": "Pour que l'adresse du site soit claire pour les auditeurs."
+    },
+    {
+     "type": "lexique",
+     "ecrit": "Kôrôbalé wou",
+     "prononce": "Kôrôbaléou",
+     "pourquoi": "Pour que l'exclamation de Moussa soit fluide."
+    },
+    {
+     "type": "lexique",
+     "ecrit": "Aw ni tchié",
+     "prononce": "Aw ni tché",
+     "pourquoi": "Pour que la voix respecte la prononciation correcte de la salutation."
+    }
+   ]
+  },
+  {
+   "plan": 35,
+   "moment": "1:59",
+   "gravite": "fort",
+   "quoi": "Mimi doit tenir le poulet blanc dans ses bras comme dit le script, mais elle a les mains vides.",
+   "actions": [
+    {
+     "type": "fiche",
+     "pourquoi": "Il faut créer l'image de Mimi tenant un gros poulet blanc pour les plans 35 et 36."
+    }
+   ]
+  },
+  {
+   "plan": 36,
+   "moment": "2:02",
+   "gravite": "fort",
+   "quoi": "Mimi n'a toujours pas le poulet dans les bras alors qu'elle dit l'avoir attrapé.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 36,
+     "qui": "MIMI",
+     "pose": "mim_debout",
+     "pourquoi": "En attendant l'image avec le poulet, on garde une pose neutre.",
+     "sig": "MIMI|Je l'ai attrapé, Tantie ! Le poulet est à moi !#0"
+    }
+   ]
+  },
+  {
+   "plan": 26,
+   "moment": "1:31",
+   "gravite": "moyen",
+   "quoi": "Awa a les yeux fermés dans l'atelier, elle a l'air de dormir au lieu d'être sérieuse.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 26,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "La pose aux yeux fermés est à éviter pour Awa quand elle est sérieuse (consigne du carnet).",
+     "sig": "AWA|Des bananes et un poulet vivant… « Pour nourrir notre amour #1"
+    }
+   ]
+  },
+  {
+   "plan": 48,
+   "moment": "2:41",
+   "gravite": "moyen",
+   "quoi": "Awa arrive au kiosque avec les yeux fermés.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 48,
+     "qui": "AWA",
+     "pose": "awa_debout",
+     "pourquoi": "Elle doit paraître fâchée et déterminée en arrivant, pas avoir les yeux clos.",
+     "sig": "MODIBO|Reste calme, Bakarin. Dis la vérité immédiatement.#1"
+    }
+   ]
+  },
+  {
+   "plan": 62,
+   "moment": "3:36",
+   "gravite": "moyen",
+   "quoi": "Awa a les yeux fermés pendant que Bakary lui parle.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 62,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Elle doit écouter Bakary avec attention, pas fermer les yeux.",
+     "sig": "BAKARY|Awa… regarde-moi. Jamais je ne te manquerais de respect. J'a#1"
+    }
+   ]
+  },
+  {
+   "plan": 65,
+   "moment": "3:45",
+   "gravite": "moyen",
+   "quoi": "Awa a encore les yeux fermés dans le plan de groupe final.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 65,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Pour rester cohérent avec son attitude sérieuse dans cette scène.",
+     "sig": "AWA|Tu… tu parles trop, Bakary.#1"
+    }
+   ]
+  },
+  {
+   "plan": 61,
+   "moment": "3:29",
+   "gravite": "petit",
+   "quoi": "Bakary sourit trop alors qu'il essaie d'être sérieux et de s'expliquer.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 61,
+     "qui": "BAKARY",
+     "pose": "bak_debout",
+     "pourquoi": "La pose neutre/sérieuse correspond mieux au ton de son explication.",
+     "sig": "BAKARY|Awa… regarde-moi. Jamais je ne te manquerais de respect. J'a#0"
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3-flash-preview",
+ "date": "2026-10-31 13:56"
+}

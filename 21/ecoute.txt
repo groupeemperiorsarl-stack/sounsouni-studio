@@ -1,0 +1,54 @@
+ALERTES :
+- le son touche presque le maximum (crête -0.8 dBTP) : risque de grésillement après envoi sur TikTok/Facebook
+
+SON DE LA VIDÉO (4:59) : -12.2 LUFS (cible -14), crête -0.8 dBTP, écart de volume 3.7 LU.
+
+PAR SCÈNE (début-fin · décor · ambiance : volume, brillance, aigus « presence » 4-6 kHz par rapport aux autres scènes)
+- 0:00-1:00 · KIOSQUE · rue calme : -12.2 LUFS, brillance 1158 Hz, aigus -20.9 dB (-2 dB)
+- 1:00-2:15 · ATELIER · rue calme : -11.9 LUFS, brillance 1382 Hz, aigus -19.3 dB (-0 dB)
+- 2:15-2:39 · RUE · circulation : -12.9 LUFS, brillance 1526 Hz, aigus -18.8 dB (+0 dB)
+- 2:39-4:59 · KIOSQUE · rue calme : -12.3 LUFS, brillance 1409 Hz, aigus -18.5 dB (+1 dB)
+
+CE QUE L'OREILLE ENTEND (earshot timeline ; les étiquettes de sons sont des indices, les temps et niveaux sont des mesures)
+son.wav: 0:00.00-4:59.68 (299.7 s). Loudness -12.2 LUFS integrated, true peak -0.8 dBTP, LRA 3.7 LU; loudest 2:56.50-2:59.50 (-8.2 LUFS short-term). True peak -0.8 dBTP is above -1 dBTP (risk of overs after encoding). Beat grid: ~112 BPM (weak pulse, clarity 0.19, 556 beats). 8 section(s): 0:00.00-0:41.26 trap beat?, marimba | also: speech synthesizer (AST) | voice: voice-over narration; 0:41.26-1:17.54 inspirational corporate background music?, vocal chop | also: speech synthesizer (AST) | voice: voice-over narration; 1:17.54-2:08.99 inspirational corporate background music?, marimba; 2:08.99-2:42.20 funk music?, vocal chop; 2:42.20-2:59.64 trap beat?, music box; 2:59.64-3:34.44 inspirational corporate background music?, vocal chop. 2175 events (7.3/s); 20 tagged (13 ui, 3 note, 2 voice, 1 whoosh, 1 key; tags are hints). Strongest accents over a running bed: 1:35.90 +35 dB (chat message pop), 2:57.34 +33 dB (chat message pop), 2:58.56 +31 dB.
+
+SECTIONS
+  0:00.00-0:41.26  trap beat?, marimba | also: speech synthesizer (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.80, speech 0.79]
+  0:41.26-1:17.54  inspirational corporate background music?, vocal chop | also: speech synthesizer (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.66, speech 0.67]
+  1:17.54-2:08.99  inspirational corporate background music?, marimba  -12 LUFS
+  2:08.99-2:42.20  funk music?, vocal chop  -12 LUFS
+  2:42.20-2:59.64  trap beat?, music box  -12 LUFS
+  2:59.64-3:34.44  inspirational corporate background music?, vocal chop  -12 LUFS
+  3:34.44-4:23.27  funk music?, vocal chop | also: speech synthesizer (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.70, speech 0.70]
+  4:23.27-4:59.68  inspirational corporate background music?, marimba  -13 LUFS
+
+TRANSCRIPT   time  kind   what (CLAP tag / runner-up)                     peak  over bed  length  centroid  | sync
+== 0:00.00-0:41.26  trap beat?, marimba | also: speech synthesizer (AST) | voice: voice-over narration  (+273 untagged onsets, 6.6/s)
+ 0:08.72  UI     chat message pop / glockenspiel note             -6.8 dBFS   silent   110 ms   327 Hz
+ 0:10.34  UI     chat message pop / glockenspiel note             -4.2 dBFS   silent    50 ms  3.8 kHz
+ 0:12.44  UI     chat message pop / bubble pop                    -3.3 dBFS   silent   180 ms   882 Hz
+ 0:15.31  NOTE   glockenspiel note / chat message pop             -2.8 dBFS   silent    70 ms   425 Hz
+ 0:21.13  WHOOSH whip pan whoosh transition / chat message pop    -1.4 dBFS   silent    50 ms   438 Hz
+ 0:27.59  UI     chat message pop / glockenspiel note             -1.5 dBFS   silent    90 ms   572 Hz
+ 0:39.35  UI     chat message pop / whip pan whoosh transition    -5.6 dBFS   silent    90 ms   286 Hz
+== 0:41.26-1:17.54  inspirational corporate background music?, vocal chop | also: speech synthesizer (AST) | voice: voice-over narration  (+258 untagged onsets, 7.1/s)
+ 1:11.95  UI     chat message pop / wooden block hit              -9.8 dBFS   silent    90 ms  5.6 kHz
+== 1:17.54-2:08.99  inspirational corporate background music?, marimba  (+353 untagged onsets, 6.9/s)
+ 1:35.90  UI     chat message pop / glockenspiel note             -1.5 dBFS +34.6 dB   140 ms   240 Hz  | strong accent (summary)
+ 1:54.12  UI     chat message pop / spoken word                   -5.7 dBFS   silent   250 ms   706 Hz
+== 2:08.99-2:42.20  funk music?, vocal chop  (+237 untagged onsets, 7.1/s)
+ 2:09.27  NOTE   glockenspiel note / notification ding            -1.5 dBFS   silent   220 ms  1.7 kHz
+ 2:28.30  NOTE   glockenspiel note / breath                       -6.0 dBFS   silent   150 ms   874 Hz
+== 2:42.20-2:59.64  trap beat?, music box  (+130 untagged onsets, 7.5/s)
+ 2:57.34  UI     chat message pop / bubble pop                    -1.5 dBFS +33.4 dB   260 ms   306 Hz  | strong accent (summary)
+ 2:58.56  -      full swell                                       -1.5 dBFS +30.6 dB   410 ms   224 Hz  | strong accent (summary)
+== 2:59.64-3:34.44  inspirational corporate background music?, vocal chop  (+266 untagged onsets, 7.6/s)
+ 3:22.79  VOICE  short vocal sound / chat message pop             -1.3 dBFS +29.8 dB   738 ms   290 Hz
+== 3:34.44-4:23.27  funk music?, vocal chop | also: speech synthesizer (AST) | voice: voice-over narration  (+372 untagged onsets, 7.6/s)
+ 3:35.29  UI     chat message pop / glockenspiel note             -1.4 dBFS   silent   200 ms   998 Hz
+ 4:01.19  VOICE  speech (AST 0.87) / notification ding            -2.0 dBFS   silent    60 ms  3.8 kHz  [AST Speech 0.87]
+ 4:23.16  KEY    spacebar press / bubble pop                      -8.3 dBFS   silent    40 ms  3.8 kHz
+== 4:23.27-4:59.68  inspirational corporate background music?, marimba  (+265 untagged onsets, 7.3/s)
+ 4:36.38  UI     chat message pop / wooden block hit              -6.1 dBFS   silent   230 ms  3.1 kHz
+ 4:49.59  UI     chat message pop / wooden block hit              -5.2 dBFS   silent    30 ms  6.0 kHz
+ 4:52.91  UI     chat message pop / breath                        -1.4 dBFS   silent    60 ms  5.2 kHz

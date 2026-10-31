@@ -1,0 +1,1801 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 23 : Le coach de l'amour",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": true
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 3.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van… je n'arrête pas de penser à elle. Même mon thé a le goût de ses yeux.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@---",
+"x": 0.18,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.68,
+"taille": 0.36,
+"retourne": true
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:08.1",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 0.76,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:10.5",
+"duree": 3.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Aw ni sogoma ! Les brochettes sont prêtes !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@--+",
+"x": 0.18,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.68,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 0.76,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:13.9",
+"duree": 2.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "I ni sogoma, Diasabi.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_joue",
+"x": 0.4,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:16.0",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Tu regardes l'atelier d'en face depuis tout à l'heure… Attends… AWA ?! C'est Awa que tu aimes ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_choc",
+"x": 0.63,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:21.0",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire@--0",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:22.4",
+"duree": 2.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Chut ! Tout le quartier va l'entendre !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:25.1",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Mon frère, c'est ton jour de chance. Tu as devant toi le plus grand coach de l'amour de Bobo.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_main_coeur",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:30.2",
+"duree": 2.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Le plus grand coach… qui n'a pas de femme.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_rire",
+"x": 0.2,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:32.9",
+"duree": 6.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "J'ai une formule de mon grand-père. Tu souffles trois fois dans ta main : tou… tou… tou. Puis tu lui tapes les fesses. Et elle est à toi.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_debout",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "0:39.8",
+"duree": 3.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Quoi ?! Tu es fou ! Awa va me tuer !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.35,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "0:43.0",
+"duree": 3.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Non, Diasabi. Non, non et non. Je ne fais pas ça.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_colere",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:46.4",
+"duree": 8.5,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Regarde-moi dans les yeux. Aminata, à Bobo : tou tou tou… mariée trois mois après. Kadiatou, à Sikasso : tou tou tou… elle m'a suivi jusqu'à la gare.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_debout",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 15,
+"debut": "0:54.9",
+"duree": 2.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Et pourquoi elles ne sont plus là, tes Aminata et tes Kadiatou ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_mefiant",
+"x": 0.27,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "0:57.0",
+"duree": 6.5,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Parce que ça marchait trop bien, Van ! Rokia, Mariam, Fanta… Trente ans de pratique. Jamais un échec !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_main_coeur",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 17,
+"debut": "1:03.5",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_mefiant@--0",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 18,
+"debut": "1:04.9",
+"duree": 4.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Sur la tête de ma mère. Sur mon grill. Jamais une seule gifle.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_debout",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "1:09.6",
+"duree": 5.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Il a l'air tellement sûr de lui… Et moi, avec mes belles paroles, je n'ai jamais rien réussi avec Awa.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_pensif@--0",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "1:15.4",
+"duree": 4.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Bakarin, ne l'écoute pas. Les conseils de Diasabi font mal tout de suite.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:19.5",
+"duree": 8.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van, j'ai tout essayé. Le thé, le bouquet, la vérité. La science de Bobo, c'est ma dernière chance.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:28.1",
+"duree": 4.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Voilà un homme ! Allez, souffle dans ta main ! Comme un lion !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:32.2",
+"duree": 2.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "TOU ! TOU ! TOU !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 24,
+"debut": "1:34.3",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_mefiant@++0",
+"x": 0.53,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:35.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire@--0",
+"x": 0.1,
+"taille": 0.34,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@--0",
+"x": 0.5,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.25,
+"taille": 0.53,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.73,
+"taille": 0.48,
+"retourne": true
+}
+]
+},
+{
+"plan": 26,
+"debut": "1:38.1",
+"duree": 2.8,
+"type": "line",
+"decor": "RUE",
+"parle": "MIMI",
+"texte": "Tantie, on va chercher le tissu bleu au marché ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire@--0",
+"x": 0.1,
+"taille": 0.34,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@--0",
+"x": 0.5,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.25,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire@++0",
+"x": 0.73,
+"taille": 0.48,
+"retourne": false
+}
+]
+},
+{
+"plan": 27,
+"debut": "1:41.0",
+"duree": 4.4,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Oui, Mimi. Et vite. Je ne veux pas voir le vendeur de thé aujourd'hui.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 28,
+"debut": "1:45.4",
+"duree": 4.5,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Tu dis ça tous les jours… mais tu passes toujours devant son kiosque.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_taquin",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 29,
+"debut": "1:49.8",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire@--0",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 30,
+"debut": "1:51.2",
+"duree": 4.0,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Souris, grande sœur ! Je filme le quartier pour mes abonnés.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire",
+"x": 0.62,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 31,
+"debut": "1:55.2",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.08,
+"taille": 0.28,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire@++0",
+"x": 0.23,
+"taille": 0.25,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_taquin@++0",
+"x": 0.4,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.57,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--+",
+"x": 0.83,
+"taille": 0.3,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 0.76,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "1:57.6",
+"duree": 1.6,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Aw ni wula… Awa… tu es belle aujourd'hui.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.07,
+"taille": 0.26,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire@--0",
+"x": 0.21,
+"taille": 0.24,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_taquin@--0",
+"x": 0.37,
+"taille": 0.26,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@--0",
+"x": 0.52,
+"taille": 0.25,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@--0",
+"x": 0.71,
+"taille": 0.28,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_salue@--0",
+"x": 0.91,
+"taille": 0.32,
+"retourne": true
+}
+]
+},
+{
+"plan": 33,
+"debut": "1:59.2",
+"duree": 3.9,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "I ni wula. Pourquoi tu transpires comme ça ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises@--0",
+"x": 0.57,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 34,
+"debut": "2:03.1",
+"duree": 3.7,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Mon cœur va sortir de ma poitrine… Trois fois, et c'est fini.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique@++0",
+"x": 0.61,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "2:06.8",
+"duree": 1.9,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Tou… tou… tou…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 36,
+"debut": "2:08.7",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": "close",
+"acteurs": [
+{
+"qui": "BAKARY+AWA",
+"pose": "grp_bakary_tape_les_fesses_d",
+"x": 0.5,
+"taille": 0.85,
+"retourne": false
+}
+]
+},
+{
+"plan": 37,
+"debut": "2:11.7",
+"duree": 1.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY+AWA",
+"pose": "grp_bakary_tape_les_fesses_d",
+"x": 0.5,
+"taille": 0.85,
+"retourne": false
+}
+]
+},
+{
+"plan": 38,
+"debut": "2:12.7",
+"duree": 5.5,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Il m'a tapé les fesses ?! DEVANT TOUT LE QUARTIER ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_choc2",
+"x": 0.36,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "2:18.2",
+"duree": 4.8,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Tu oses me toucher ?! Tiens ! Voilà ta réponse, vendeur de charbon !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "2:23.0",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": "close",
+"acteurs": [
+{
+"qui": "AWA+BAKARY",
+"pose": "grp_awa_donne_une_enorme_gifle",
+"x": 0.5,
+"taille": 0.74,
+"retourne": false
+}
+]
+},
+{
+"plan": 41,
+"debut": "2:26.0",
+"duree": 2.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.51,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "2:28.0",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire",
+"x": 0.48,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "2:29.4",
+"duree": 3.6,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Waouh ! En direct ! La plus grande gifle de Bamako !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 44,
+"debut": "2:33.0",
+"duree": 2.7,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Aïe ! Pardon, Awa ! C'est la science de Bobo !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.65,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 45,
+"debut": "2:35.7",
+"duree": 4.7,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "La science de Bobo ?! DIASABI ! C'est toi, le professeur ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "2:40.4",
+"duree": 3.2,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "Il a soufflé trop vite ! Il fallait souffler quatre fois !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_panique",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 47,
+"debut": "2:43.6",
+"duree": 5.3,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Quatre fois ?! Viens ici, toi ! Je vais te souffler dessus avec ma marmite !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_colere",
+"x": 0.31,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "2:48.9",
+"duree": 5.1,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "Au secours ! À Bobo, on dit : quand la marmite se fâche, le cuisinier court !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_panique",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 49,
+"debut": "2:54.0",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_rire@--0",
+"x": 0.4,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 50,
+"debut": "2:55.4",
+"duree": 4.6,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Bakary. La prochaine fois, parle avec ta bouche. Pas avec tes mains.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 51,
+"debut": "3:00.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.23,
+"taille": 0.4,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_machine@++0",
+"x": 0.72,
+"taille": 0.36,
+"retourne": false
+}
+]
+},
+{
+"plan": 52,
+"debut": "3:02.4",
+"duree": 3.8,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Tantie… pardon, mais… tou, tou, tou…",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.23,
+"taille": 0.4,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire_auto@++0",
+"x": 0.72,
+"taille": 0.36,
+"retourne": false
+}
+]
+},
+{
+"plan": 53,
+"debut": "3:06.2",
+"duree": 4.0,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Mimi ! Encore un « tou » et tu couds toute seule jusqu'à demain !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 54,
+"debut": "3:10.3",
+"duree": 6.3,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Il a osé… Mais il tremblait comme une feuille. Ce n'est pas lui, c'est ce Diasabi. Et moi, j'ai frappé de toutes mes forces.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise",
+"x": 0.28,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 55,
+"debut": "3:16.5",
+"duree": 4.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Sounsouni · Pommade apaisante · Livraison au kiosque de Bakary · Message : « Pour ta joue. La prochaine fois, parle. – A. »",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 56,
+"debut": "3:20.5",
+"duree": 7.4,
+"type": "pensee_ecran",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Une pommade pour sa joue, livrée par Seydou. Pas mon nom, juste une lettre.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 57,
+"debut": "3:27.9",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.2,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.58,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre@++0",
+"x": 0.88,
+"taille": 0.34,
+"retourne": false
+}
+]
+},
+{
+"plan": 58,
+"debut": "3:30.3",
+"duree": 4.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "SEYDOU",
+"texte": "I ni sogoma ! Livraison Sounsouni pour le kiosque de Bakary !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_pointe@--0",
+"x": 0.17,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.51,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_salue@++0",
+"x": 0.83,
+"taille": 0.34,
+"retourne": false
+}
+]
+},
+{
+"plan": 59,
+"debut": "3:34.6",
+"duree": 4.0,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Sounsouni · Livraison reçue · Pommade apaisante · « Pour ta joue. La prochaine fois, parle. – A. »",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 60,
+"debut": "3:38.6",
+"duree": 4.6,
+"type": "pensee_ecran",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "« La prochaine fois, parle. » Signé… A. Comme Awa.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 61,
+"debut": "3:43.3",
+"duree": 3.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van ! Elle a écrit « la prochaine fois » ! Il y aura une prochaine fois !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_explique",
+"x": 0.26,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 62,
+"debut": "3:46.5",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_salue@---",
+"x": 0.19,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--+",
+"x": 0.27,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++0",
+"x": 0.73,
+"taille": 0.64,
+"retourne": false
+}
+]
+},
+{
+"plan": 63,
+"debut": "3:48.9",
+"duree": 3.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Tu vois ?! La science de Bobo marche à tous les coups !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_salue@--0",
+"x": 0.19,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_emerveille@--+",
+"x": 0.25,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_main_coeur@++0",
+"x": 0.73,
+"taille": 0.64,
+"retourne": false
+}
+]
+},
+{
+"plan": 64,
+"debut": "3:52.3",
+"duree": 2.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Diasabi ! La prochaine fois, c'est toi qui reçois la gifle !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_colere",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 65,
+"debut": "3:55.2",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_rire@++0",
+"x": 0.55,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 66,
+"debut": "3:56.6",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire@++0",
+"x": 0.52,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 67,
+"debut": "3:58.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.5,
+"taille": 0.68,
+"retourne": false
+}
+]
+},
+{
+"plan": 68,
+"debut": "4:00.4",
+"duree": 3.0,
+"type": "screen",
+"decor": "CABINE",
+"parle": null,
+"texte": "Vidéo de Moussa · « La plus grande gifle de Bamako » · mille partages",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 69,
+"debut": "4:03.4",
+"duree": 4.9,
+"type": "pensee_ecran",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Il a souffert pour elle devant tout le quartier… Alors son cœur, c'est vraiment Awa.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 70,
+"debut": "4:08.3",
+"duree": 2.1,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Awa… tu ne sais pas encore ce que tu as dans les mains.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 71,
+"debut": "4:10.3",
+"duree": 2.6,
+"type": "screen",
+"decor": "CABINE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 72,
+"debut": "4:12.9",
+"duree": 6.5,
+"type": "endline",
+"decor": "CABINE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, même un pardon peut se faire livrer. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 73,
+"debut": "4:19.4",
+"duree": 4.4,
+"type": "endline",
+"decor": "CABINE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 74,
+"debut": "4:23.9",
+"duree": 3.0,
+"type": "endcard",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

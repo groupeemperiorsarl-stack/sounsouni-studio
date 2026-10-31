@@ -1,0 +1,90 @@
+{
+ "script": "demandes/episode_18.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "SALI",
+   "plans": [
+    41
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_tel"
+     },
+     "texte": "telephone · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_beignet"
+     },
+     "texte": "offre · sourire · beignets",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_hanches"
+     },
+     "texte": "neutre · fiere · taquin",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_robe_de_soiree_taquin"
+     },
+     "texte": "taquin",
+     "lettre": "D"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    47,
+    50
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_pensive"
+     },
+     "texte": "pensif · triste · moue (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_triste"
+     },
+     "texte": "triste",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "D"
+    }
+   ],
+   "n": 2
+  }
+ ]
+}

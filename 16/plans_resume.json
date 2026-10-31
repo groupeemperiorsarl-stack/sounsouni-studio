@@ -1,0 +1,1278 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 20 : Le bouquet",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "KADI",
+"pose": "kadi_rire",
+"x": 0.63,
+"taille": 0.28,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.39,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_chemise_repassee",
+"x": 0.15,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_en_tenue_de_soiree_epoustouflante_marche_lentement@---",
+"x": 0.21,
+"taille": 0.45,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_chemise_chic@++-",
+"x": 0.3,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_robe_de_soiree@++0",
+"x": 0.5,
+"taille": 0.43,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_polo_chic@++-",
+"x": 0.89,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains@+++",
+"x": 0.25,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_en_tenue_de_soiree_turquoise_debout@--+",
+"x": 0.73,
+"taille": 0.51,
+"retourne": false
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 3.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:07.4",
+"duree": 2.6,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "SEYDOU",
+"texte": "Waouh ! Bakary a le bouquet !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.0,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:10.0",
+"duree": 2.5,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "MODIBO",
+"texte": "Ooooh ! Bakarin, c'est ton année !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_chemise_chic_rire",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.0,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:12.5",
+"duree": 3.0,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "FATIM",
+"texte": "Le bouquet est chez mon cavalier ! Chez mon cavalier !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_sourire",
+"x": 0.69,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.0,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:15.5",
+"duree": 7.1,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "AWA",
+"texte": "Je l'ai jeté… et il est tombé chez lui. Bravo, Awa.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_moue@++0",
+"x": 0.45,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:22.6",
+"duree": 5.6,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "MOUSSA",
+"texte": "Écoutez tous ! Chez nous, celui qui attrape le bouquet doit l'offrir à la femme de son choix ! Devant tout le monde !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_polo_chic_grand_sourire@++0",
+"x": 0.62,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:28.3",
+"duree": 1.8,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "MOUSSA",
+"texte": "Kôrô… je te donne ta chance.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_polo_chic_taquin@++0",
+"x": 0.59,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:30.1",
+"duree": 3.4,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "SEYDOU",
+"texte": "Offre ! Offre ! Offre !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.0,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:33.4",
+"duree": 2.1,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "DIASABI",
+"texte": "Offre ! Offre !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_chemise_repassee_grand_sourire",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.0,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:35.6",
+"duree": 3.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "0:38.6",
+"duree": 2.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "0:40.6",
+"duree": 2.4,
+"type": "wide",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains@--0",
+"x": 0.16,
+"taille": 0.5,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_sourire@++0",
+"x": 0.46,
+"taille": 0.45,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_moue@++0",
+"x": 0.79,
+"taille": 0.48,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:43.0",
+"duree": 2.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_sourire",
+"x": 0.53,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 15,
+"debut": "0:45.0",
+"duree": 2.6,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "FATIM",
+"texte": "C'est pour moi, n'est-ce pas ? Donne, donne !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_sourire",
+"x": 0.69,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.0,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "0:47.6",
+"duree": 2.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_debout_bras_croises_regarde_ailleurs",
+"x": 0.42,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 17,
+"debut": "0:49.6",
+"duree": 5.1,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "BAKARY",
+"texte": "Si je le donne à Fatim… je mens. Si je le donne à Awa… elle va me tuer devant tout le monde.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains@--0",
+"x": 0.4,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 18,
+"debut": "0:54.7",
+"duree": 2.7,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "BAKARY",
+"texte": "Réfléchis, Bakary… réfléchis !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_pensif",
+"x": 0.47,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "0:57.4",
+"duree": 2.4,
+"type": "wide",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_moue@---",
+"x": 0.15,
+"taille": 0.45,
+"retourne": false
+},
+{
+"qui": "KADI",
+"pose": "kadi_rire@---",
+"x": 0.5,
+"taille": 0.41,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains@+++",
+"x": 0.25,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_sourire@+++",
+"x": 0.73,
+"taille": 0.51,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "0:59.8",
+"duree": 3.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains",
+"x": 0.58,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:02.8",
+"duree": 4.6,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "BAKARY",
+"texte": "Tantie Kadi… pour la plus belle femme de la soirée. Celle qui me donne toujours les bons conseils.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_a_genoux_tendant_le_bouquet_a_deux_mains",
+"x": 0.42,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "KADI",
+"pose": "kadi_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:07.4",
+"duree": 1.4,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_chemise_chic_rire@++0",
+"x": 0.31,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:08.8",
+"duree": 1.4,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre@++0",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 24,
+"debut": "1:10.2",
+"duree": 1.4,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_polo_chic_rire@++0",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:11.6",
+"duree": 3.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "KADI",
+"pose": "kadi_debout_le_bouquet_dans_les_mains_souriante",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 26,
+"debut": "1:14.6",
+"duree": 5.8,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "KADI",
+"texte": "Mon fils… ce soir, tu n'es ni fou, ni amoureux… tu es malin !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KADI",
+"pose": "kadi_debout_le_bouquet_dans_les_mains_souriante",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_tenue_simple_chic_debout_attrape_le_bouquet_a_deux_mains",
+"x": 0.0,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 27,
+"debut": "1:20.3",
+"duree": 2.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_triste",
+"x": 0.47,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 28,
+"debut": "1:22.3",
+"duree": 3.1,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "FATIM",
+"texte": "Il ne voulait pas me gêner devant tout le monde… c'est tout.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_tenue_de_soiree_triste@++0",
+"x": 0.57,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 29,
+"debut": "1:25.5",
+"duree": 2.0,
+"type": "close",
+"decor": "VILLA_FETE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_debout_bras_croises_regarde_ailleurs",
+"x": 0.42,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 30,
+"debut": "1:27.5",
+"duree": 3.9,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "AWA",
+"texte": "Il ne me l'a pas donné… Tant mieux. Je m'en fiche.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_mepris@++0",
+"x": 0.45,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 31,
+"debut": "1:31.3",
+"duree": 2.9,
+"type": "line",
+"decor": "VILLA_FETE",
+"parle": "AWA",
+"texte": "Je m'en fiche… vraiment ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tenue_de_soiree_pensif@++0",
+"x": 0.48,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "1:34.2",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises@--0",
+"x": 0.23,
+"taille": 0.65,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.76,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 33,
+"debut": "1:36.6",
+"duree": 4.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Awa Couture · Nouvelles commandes · 12 commandes : « Je veux la même tenue que la reine du mariage ! »",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 34,
+"debut": "1:40.6",
+"duree": 3.2,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Tantie ! Douze commandes ! Tout le monde veut votre tenue du mariage !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_choc",
+"x": 0.75,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "1:43.9",
+"duree": 4.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Awa Couture · Commande · El Hadj Bourama : 3 tenues pour mes épouses",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 36,
+"debut": "1:47.9",
+"duree": 4.3,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Ha ! El Hadj… il a vraiment salué ses femmes pour moi.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 37,
+"debut": "1:52.1",
+"duree": 4.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Awa Couture · Commande · Abdoul : 20 tenues de cérémonie pour le ministère",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 38,
+"debut": "1:56.1",
+"duree": 3.8,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Vingt tenues pour le ministère ! Abdoul a commandé sur Sounsouni !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_choc",
+"x": 0.75,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "1:60.0",
+"duree": 2.7,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Comme tout le monde. Je le lui avais dit.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "2:02.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": true
+}
+]
+},
+{
+"plan": 41,
+"debut": "2:05.1",
+"duree": 3.0,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Sounsouni · Kiosque de Bakary · 8 commandes : « Le thé du mariage »",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 42,
+"debut": "2:08.1",
+"duree": 3.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Bakarin ! Tout Bamako veut boire le thé de l'homme au bouquet !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire",
+"x": 0.58,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "2:11.9",
+"duree": 3.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Alors on fait chauffer la théière, Van ! Sounsouni ne dort jamais !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_explique",
+"x": 0.26,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 44,
+"debut": "2:15.7",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 45,
+"debut": "2:18.7",
+"duree": 2.2,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.5,
+"taille": 0.68,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "2:20.9",
+"duree": 3.3,
+"type": "line",
+"decor": "RUE",
+"parle": "FATIM",
+"texte": "Bakary n'arrive pas à se décider… Alors je vais l'aider un peu.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 47,
+"debut": "2:24.2",
+"duree": 5.1,
+"type": "line",
+"decor": "RUE",
+"parle": "FATIM",
+"texte": "Ma tenue de fiançailles chez Awa Couture… Quand il le saura, il sera bien obligé de réagir !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.53,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "2:29.3",
+"duree": 3.0,
+"type": "screen",
+"decor": "RUE",
+"parle": null,
+"texte": "Sounsouni · Awa Couture · Commander : Tenue de fiançailles · Envoyé ✓",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 49,
+"debut": "2:32.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tel@--0",
+"x": 0.21,
+"taille": 0.65,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.74,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 50,
+"debut": "2:34.7",
+"duree": 5.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Awa Couture · Nouvelle commande · Fatim : Tenue de fiançailles · Note : « Pour le jour où Bakary me demandera ❤️ »",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 51,
+"debut": "2:39.7",
+"duree": 3.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tel",
+"x": 0.49,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 52,
+"debut": "2:42.7",
+"duree": 2.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_07",
+"x": 0.51,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 53,
+"debut": "2:44.7",
+"duree": 3.4,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Une tenue de fiançailles… pour quand Bakary va la demander ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tel",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 54,
+"debut": "2:48.1",
+"duree": 2.1,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Tantie… vous acceptez ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_choc",
+"x": 0.75,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 55,
+"debut": "2:50.1",
+"duree": 2.2,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Accepter… ou refuser ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_choc@--0",
+"x": 0.41,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 56,
+"debut": "2:52.4",
+"duree": 2.6,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 57,
+"debut": "2:55.0",
+"duree": 7.1,
+"type": "endline",
+"decor": "ATELIER",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, une belle soirée peut remplir tout un carnet de commandes. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 58,
+"debut": "3:02.0",
+"duree": 4.8,
+"type": "endline",
+"decor": "ATELIER",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 59,
+"debut": "3:06.8",
+"duree": 3.0,
+"type": "endcard",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

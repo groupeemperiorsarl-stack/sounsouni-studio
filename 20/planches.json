@@ -1,0 +1,563 @@
+{
+ "script": "demandes/episode_20.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    5
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_joue"
+     },
+     "texte": "choc · gene · surpris (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_supplie"
+     },
+     "texte": "gene · supplie · pardon",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_mains_bouche"
+     },
+     "texte": "peur · gene · timide",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_mains_levees"
+     },
+     "texte": "surpris · choc · recule",
+     "lettre": "D"
+    }
+   ],
+   "n": 1,
+   "sigs": {
+    "5": "BAKARY|I ni sogoma, Diasabi.#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    9,
+    16
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_main_coeur"
+     },
+     "texte": "fier · sincere · amoureux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_doigt"
+     },
+     "texte": "explique · proverbe · taquin",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_debout"
+     },
+     "texte": "neutre",
+     "lettre": "D"
+    }
+   ],
+   "n": 2,
+   "sigs": {
+    "9": "DIASABI|Mon frère, c'est ton jour de chance. Tu as devant toi le plu#0",
+    "16": "DIASABI|Parce que ça marchait trop bien, Van ! Rokia, Mariam, Fanta…#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    11,
+    14,
+    18
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_debout"
+     },
+     "texte": "neutre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_neutre"
+     },
+     "texte": "neutre · ecoute",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_salue"
+     },
+     "texte": "salue · chuchote · neutre",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 3,
+   "sigs": {
+    "11": "DIASABI|J'ai une formule de mon grand-père. Tu souffles trois fois d#0",
+    "14": "DIASABI|Regarde-moi dans les yeux. Aminata, à Bobo : tou tou tou… ma#0",
+    "18": "DIASABI|Sur la tête de ma mère. Sur mon grill. Jamais une seule gifl#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    12,
+    41,
+    44
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_mains_levees"
+     },
+     "texte": "surpris · choc · recule (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_joue"
+     },
+     "texte": "choc · gene · surpris",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_panique"
+     },
+     "texte": "panique · peur · choc",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_debout"
+     },
+     "texte": "neutre · serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 4,
+   "sigs": {
+    "12": "BAKARY|Quoi ?! Tu es fou ! Awa va me tuer !#0",
+    "41": "AWA|Tu oses me toucher ?! Tiens ! Voilà ta réponse, vendeur de c#2",
+    "44": "BAKARY|Aïe ! Pardon, Awa ! C'est la science de Bobo !#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    13,
+    64
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_colere"
+     },
+     "texte": "colere (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_colere2"
+     },
+     "texte": "colere",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_mains_levees"
+     },
+     "texte": "surpris · choc · recule",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_joue"
+     },
+     "texte": "choc · gene · surpris",
+     "lettre": "D"
+    }
+   ],
+   "n": 5,
+   "sigs": {
+    "13": "BAKARY|Non, Diasabi. Non, non et non. Je ne fais pas ça.#0",
+    "64": "BAKARY|Diasabi ! La prochaine fois, c'est toi qui reçois la gifle !#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "MODIBO",
+   "plans": [
+    17,
+    24
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_assis_mefiant"
+     },
+     "texte": "mefiant · assis (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc"
+     },
+     "texte": "neutre · ecoute · boit",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_banc2"
+     },
+     "texte": "neutre · ecoute · verre",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MODIBO",
+      "key": "mod_doigt"
+     },
+     "texte": "taquin · idee · explique",
+     "lettre": "D"
+    }
+   ],
+   "n": 6,
+   "sigs": {
+    "17": "DIASABI|Parce que ça marchait trop bien, Van ! Rokia, Mariam, Fanta…#1",
+    "24": "BAKARY|TOU ! TOU ! TOU !#1"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    33
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_mepris"
+     },
+     "texte": "mepris",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_mefiant"
+     },
+     "texte": "mefiant",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe",
+     "lettre": "D"
+    }
+   ],
+   "n": 7,
+   "sigs": {
+    "33": "AWA|I ni wula. Pourquoi tu transpires comme ça ?#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    39,
+    45,
+    50
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 8,
+   "sigs": {
+    "39": "AWA|Tu oses me toucher ?! Tiens ! Voilà ta réponse, vendeur de c#0",
+    "45": "AWA|La science de Bobo ?! DIASABI ! C'est toi, le professeur ?!#0",
+    "50": "AWA|Bakary. La prochaine fois, parle avec ta bouche. Pas avec te#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    54
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assise_chaise"
+     },
+     "texte": "coud · travaille (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pensive"
+     },
+     "texte": "pensif · moue · reveur",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_determine"
+     },
+     "texte": "determine · assis",
+     "lettre": "D"
+    }
+   ],
+   "n": 9,
+   "sigs": {
+    "54": "AWA|Il a osé… Mais il tremblait comme une feuille. Ce n'est pas #0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    61
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_explique"
+     },
+     "texte": "explique · propose · sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_rire"
+     },
+     "texte": "rire · content",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_emerveille"
+     },
+     "texte": "emerveille",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_v_tour_650014_01"
+     },
+     "texte": "grand_sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 10,
+   "sigs": {
+    "61": "BAKARY|Van ! Elle a écrit « la prochaine fois » ! Il y aura une pro#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    63
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_main_coeur"
+     },
+     "texte": "fier · sincere · amoureux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_doigt"
+     },
+     "texte": "explique · proverbe · taquin",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_salue"
+     },
+     "texte": "salue · chuchote · neutre",
+     "lettre": "D"
+    }
+   ],
+   "n": 11,
+   "sigs": {
+    "63": "DIASABI|Tu vois ?! La science de Bobo marche à tous les coups !#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    67
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_mains"
+     },
+     "texte": "neutre · sourire · tendre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_pensive"
+     },
+     "texte": "pensif · triste · moue",
+     "lettre": "D"
+    }
+   ],
+   "n": 12,
+   "sigs": {
+    "67": "BAKARY|Diasabi ! La prochaine fois, c'est toi qui reçois la gifle !#3"
+   }
+  }
+ ]
+}

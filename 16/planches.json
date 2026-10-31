@@ -1,0 +1,47 @@
+{
+ "script": "demandes/episode_16.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    45
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_mains"
+     },
+     "texte": "neutre · sourire · tendre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_pensive"
+     },
+     "texte": "pensif · triste · moue",
+     "lettre": "D"
+    }
+   ],
+   "n": 1
+  }
+ ]
+}

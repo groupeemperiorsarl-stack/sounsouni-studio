@@ -1,0 +1,173 @@
+{
+ "resume": "L'histoire de cet épisode est parfaitement fluide et bien construite. Les salutations, les pensées, le rythme des révélations et la continuité des scènes sont impeccables. Fatim sourit trop souvent dans les moments tristes et Sali utilise un téléphone qui n'est pas dans le script. Quelques poses de marche et de course manquent aussi.",
+ "problemes": [
+  {
+   "plan": 5,
+   "moment": "0:13",
+   "gravite": "moyen",
+   "quoi": "Fatim sourit alors qu'elle est triste.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 5,
+     "qui": "FATIM",
+     "pose": "fat_triste",
+     "pourquoi": "Le script indique qu'elle est triste après la réponse de Bakary."
+    },
+    {
+     "type": "pose",
+     "plan": 7,
+     "qui": "FATIM",
+     "pose": "fat_triste",
+     "pourquoi": "Elle est en train de pleurer selon le script."
+    },
+    {
+     "type": "pose",
+     "plan": 9,
+     "qui": "FATIM",
+     "pose": "fat_triste",
+     "pourquoi": "Elle est toujours en pleurs."
+    },
+    {
+     "type": "pose",
+     "plan": 13,
+     "qui": "FATIM",
+     "pose": "fat_triste",
+     "pourquoi": "Elle demande à Bakary de partir en chuchotant, elle est triste."
+    }
+   ]
+  },
+  {
+   "plan": 38,
+   "moment": "1:49",
+   "gravite": "moyen",
+   "quoi": "Sali a un téléphone à la main alors qu'elle apporte des beignets.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 38,
+     "qui": "SALI",
+     "pose": "sal_hanches",
+     "pourquoi": "Elle doit porter ses beignets, pas un téléphone."
+    },
+    {
+     "type": "pose",
+     "plan": 39,
+     "qui": "SALI",
+     "pose": "sal_hanches",
+     "pourquoi": "Sali est sérieuse et tient ses beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 40,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Elle offre des beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 41,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Pas de téléphone dans cette scène."
+    },
+    {
+     "type": "pose",
+     "plan": 42,
+     "qui": "SALI",
+     "pose": "sal_hanches",
+     "pourquoi": "Elle écoute Fatim avec ses beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 48,
+     "qui": "SALI",
+     "pose": "sal_beignet",
+     "pourquoi": "Retour aux beignets."
+    },
+    {
+     "type": "pose",
+     "plan": 51,
+     "qui": "SALI",
+     "pose": "sal_hanches",
+     "pourquoi": "Elle gronde Diasabi en tenant ses beignets."
+    }
+   ]
+  },
+  {
+   "plan": 25,
+   "moment": "1:12",
+   "gravite": "petit",
+   "quoi": "Bakary et Sali ne marchent pas comme prévu.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 25,
+     "qui": "BAKARY",
+     "pose": "bak_marche",
+     "pourquoi": "Le script dit qu'il arrive en marchant."
+    },
+    {
+     "type": "pose",
+     "plan": 33,
+     "qui": "SALI",
+     "pose": "sal_marche",
+     "pourquoi": "Sali arrive avec ses beignets."
+    }
+   ]
+  },
+  {
+   "plan": 26,
+   "moment": "1:14",
+   "gravite": "moyen",
+   "quoi": "Bakary ne s'assoit pas au kiosque.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 26,
+     "qui": "BAKARY",
+     "pose": "bak_assis_triste",
+     "pourquoi": "Le script dit qu'il s'affale, il doit être assis."
+    }
+   ]
+  },
+  {
+   "plan": 44,
+   "moment": "2:09",
+   "gravite": "petit",
+   "quoi": "Diasabi ne court pas et Fatim sourit trop tôt.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 44,
+     "qui": "DIASABI",
+     "pose": "dia_court",
+     "pourquoi": "Diasabi arrive en courant."
+    },
+    {
+     "type": "pose",
+     "plan": 32,
+     "qui": "FATIM",
+     "pose": "fat_triste",
+     "pourquoi": "Elle est triste le matin après la rupture."
+    },
+    {
+     "type": "pose",
+     "plan": 35,
+     "qui": "FATIM",
+     "pose": "fat_triste",
+     "pourquoi": "Elle répond tristement à Sali."
+    },
+    {
+     "type": "pose",
+     "plan": 53,
+     "qui": "FATIM",
+     "pose": "fat_pensive",
+     "pourquoi": "Elle commence sa réflexion interne."
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.5-flash + gemini-3-flash-preview",
+ "date": "2026-10-27 11:41"
+}

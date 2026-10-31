@@ -1,0 +1,147 @@
+{
+ "resume": "L'ensemble visuel est très propre et les personnages sont bien posés au sol. Quelques expressions et gestes ne correspondent pas à la situation (Diasabi en larmes au lieu d'être perplexe, Awa fâchée au lieu d'être triste, Bakary qui pointe Mimi ou reste en panique trop longtemps).",
+ "problemes": [
+  {
+   "plan": 29,
+   "moment": "1:31",
+   "gravite": "moyen",
+   "quoi": "Diasabi a le visage effondré et la bouche ouverte comme s'il pleurait, alors qu'il est simplement confus et curieux.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 29,
+     "qui": "DIASABI",
+     "pose": "dia_gene",
+     "pourquoi": "Diasabi s'interroge avec confusion sans être désespéré."
+    },
+    {
+     "type": "pose",
+     "plan": 30,
+     "qui": "DIASABI",
+     "pose": "dia_gene",
+     "pourquoi": "Diasabi reste perplexe pendant le silence."
+    }
+   ]
+  },
+  {
+   "plan": 44,
+   "moment": "2:07",
+   "gravite": "moyen",
+   "quoi": "Awa a un regard sévère et fâché pendant sa pensée intérieure qui est pourtant triste et troublée.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 44,
+     "qui": "AWA",
+     "pose": "awa_pensive",
+     "pourquoi": "Awa est pensive et blessée intérieurement, elle ne doit pas avoir un regard de colère."
+    }
+   ]
+  },
+  {
+   "plan": 13,
+   "moment": "0:37",
+   "gravite": "moyen",
+   "quoi": "Bakary pointe Mimi du doigt alors que celle-ci vient simplement saluer.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 13,
+     "qui": "BAKARY",
+     "pose": "bak_debout",
+     "pourquoi": "Bakary accueille Mimi poliment sans geste accusateur."
+    }
+   ]
+  },
+  {
+   "plan": 26,
+   "moment": "1:14",
+   "gravite": "moyen",
+   "quoi": "Bakary garde les mains sur la tête en panique pendant toute la tirade calme et sérieuse de Modibo.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 26,
+     "qui": "BAKARY",
+     "pose": "bak_debout",
+     "pourquoi": "Bakary écoute sérieusement les conseils de Modibo."
+    }
+   ]
+  },
+  {
+   "plan": 33,
+   "moment": "1:40",
+   "gravite": "moyen",
+   "quoi": "Awa a les yeux fermés dans son atelier avant l'arrivée de Fatim.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 33,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Awa attend debout les yeux ouverts."
+    },
+    {
+     "type": "pose",
+     "plan": 34,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Awa garde les yeux ouverts quand Fatim franchit la porte."
+    }
+   ]
+  },
+  {
+   "plan": 55,
+   "moment": "2:41",
+   "gravite": "moyen",
+   "quoi": "Bakary a la main tendue de manière figée au lieu d'avancer vers Fatim.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 55,
+     "qui": "BAKARY",
+     "pose": "bak_marche",
+     "pourquoi": "Bakary s'approche en marchant comme demandé dans le script."
+    }
+   ]
+  },
+  {
+   "plan": 47,
+   "moment": "2:18",
+   "gravite": "petit",
+   "quoi": "Fatim fait des gestes de la main levée pour saluer au mauvais moment.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 47,
+     "qui": "FATIM",
+     "pose": "fat_explique",
+     "pourquoi": "Fatim annonce qu'elle paie sans lever la main pour dire au revoir."
+    },
+    {
+     "type": "pose",
+     "plan": 48,
+     "qui": "FATIM",
+     "pose": "fat_salue",
+     "pourquoi": "Fatim dit au revoir et remercie en partant."
+    },
+    {
+     "type": "pose",
+     "plan": 57,
+     "qui": "FATIM",
+     "pose": "fat_mains",
+     "pourquoi": "Fatim sourit avec tendresse en parlant à Bakary."
+    },
+    {
+     "type": "pose",
+     "plan": 61,
+     "qui": "FATIM",
+     "pose": "fat_mains",
+     "pourquoi": "Fatim montre sa joie calmement après avoir montré son écran."
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.7-flash",
+ "date": "2026-10-26 11:18"
+}
