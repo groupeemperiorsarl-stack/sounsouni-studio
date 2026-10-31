@@ -1,22 +1,124 @@
 {
+ "10": {
+  "poses": {
+   "DIASABI": "dia_doigt"
+  },
+  "sig": "DIASABI|À Bobo, pour conquérir une femme noble, on envoie des vivres#0"
+ },
+ "12": {
+  "poses": {
+   "DIASABI": "dia_sourire_auto"
+  },
+  "sig": "DIASABI|J'ai pris ton téléphone… et j'ai commandé sur Sounsouni Marc#0"
+ },
+ "17": {
+  "poses": {
+   "AWA": "awa_assis_fier"
+  },
+  "sig": "AWA|Mimi… tu crois que j'ai tapé trop fort hier ?#0"
+ },
+ "19": {
+  "poses": {
+   "AWA": "awa_assis_froide"
+  },
+  "sig": "AWA|C'était juste par politesse. Rien d'autre.#0"
+ },
+ "2": {
+  "poses": {
+   "BAKARY": "bak_amoureux"
+  },
+  "sig": "BAKARY|Van… regarde ma joue. La pommade d'Awa fait des miracles.#0"
+ },
+ "22": {
+  "poses": {
+   "AWA": "awa_assis_surpris"
+  },
+  "sig": "AWA|Une livraison ? Je n'ai commandé aucun tissu.#0"
+ },
  "26": {
   "sig": "AWA|Des bananes et un poulet vivant… « Pour nourrir notre amour #1"
+ },
+ "29": {
+  "poses": {
+   "MIMI": "mim_sourire"
+  },
+  "sig": "MIMI|Ooh ! Regardez le poulet, il est bien dodu !#0"
+ },
+ "30": {
+  "poses": {
+   "AWA": "awa_pointe"
+  },
+  "sig": "AWA|Seydou ! Enlève cette volaille de mon atelier ! Il y a des b#0"
+ },
+ "34": {
+  "poses": {
+   "MIMI": "mim_sourire"
+  },
+  "sig": "MIMI|Viens là, petit poulet !#0"
+ },
+ "35": {
+  "poses": {
+   "AWA": "awa_pointe"
+  },
+  "sig": "AWA|Bakary ! Il transforme mon atelier en poulailler ! Il va m'e#0"
+ },
+ "38": {
+  "poses": {
+   "SALI": "sal_rire"
+  },
+  "sig": "SALI|Quand Awa marche comme ça, c'est que Bakary a fait une gross#0"
  },
  "45": {
   "sig": "MODIBO|Reste calme, Bakarin. Dis la vérité immédiatement.#1"
  },
+ "52": {
+  "poses": {
+   "DIASABI": "dia_doigt"
+  },
+  "sig": "DIASABI|Doucement ! À Bobo, offrir un poulet et des bananes, c'est l#0"
+ },
+ "54": {
+  "poses": {
+   "AWA": "awa_pointe"
+  },
+  "sig": "AWA|C'est encore ta science de malheur ?! Tu veux que je te tape#0"
+ },
  "58": {
   "sig": "BAKARY|Awa… regarde-moi. Jamais je ne te manquerais de respect. J'a#1"
  },
+ "59": {
+  "poses": {
+   "BAKARY": "bak_v_tour_650014_02"
+  },
+  "sig": "BAKARY|Moi, je voulais juste faire ce que tu as dit hier. Parler av#0"
+ },
  "61": {
-  "sig": "AWA|Tu… tu parles trop, Bakary.#1",
   "acteurs": {
-   "SEYDOU": {
-    "dx": 0.1
-   },
    "MIMI": {
     "dx": 0.1
+   },
+   "SEYDOU": {
+    "dx": 0.1
    }
-  }
+  },
+  "sig": "AWA|Tu… tu parles trop, Bakary.#1"
+ },
+ "66": {
+  "poses": {
+   "SALI": "sal_rire"
+  },
+  "sig": "SALI|Voilà ! Les bananes vont frire dans mon huile chaude, tout l#0"
+ },
+ "67": {
+  "poses": {
+   "AWA": "awa_pointe"
+  },
+  "sig": "AWA|Diasabi… si tu t'approches encore de mon atelier, ton Plan C#0"
+ },
+ "8": {
+  "poses": {
+   "DIASABI": "dia_neutre"
+  },
+  "sig": "DIASABI|Hier, c'était trop brusque. Aujourd'hui, je passe au Plan B.#0"
  }
 }
