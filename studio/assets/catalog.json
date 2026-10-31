@@ -8287,7 +8287,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mim_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sey_panique": {
    "char": "SEYDOU",
@@ -8305,7 +8306,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sey_debout_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_assis_taquin": {
    "char": "MODIBO",
@@ -8324,7 +8326,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mod_assis_mefiant",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_amoureux": {
    "char": "BAKARY",
@@ -8342,7 +8345,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "kadi_assis_sage": {
    "char": "KADI",
@@ -8350,7 +8354,8 @@
    "posture": "assis",
    "tags": [
     "sage",
-    "assis"
+    "assis",
+    "canne"
    ],
    "mouth": true,
    "size": [
@@ -8358,10 +8363,15 @@
     1600
    ],
    "head_x": 0.706,
-   "props": [],
+   "props": [
+    "canne"
+   ],
    "genere": "gemini",
    "depart": "kadi_banc",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {
+    "canne": 0.83
+   }
   },
   "grp_un_gros_poulet_blanc_vole": {
    "char": "AWA+MIMI",
@@ -8405,7 +8415,8 @@
    ],
    "head_x": 0.5,
    "props": [],
-   "genere": "gemini"
+   "genere": "gemini",
+   "props_auto": {}
   }
  },
  "decors": {
