@@ -12,6 +12,7 @@ Chaque idée : `- **N · Titre** (genre) — idée`. Genres : 😂 humour · �
 - 20 · Le bouquet : Bakary donne le bouquet à Tantie Kadi. Les commandes pleuvent. Fatim commande une tenue de fiançailles chez Awa « pour le jour où Bakary la demandera ».
 - 21 · Accepter ou refuser : Awa accepte la commande malgré son cœur. Mimi l'annonce au kiosque ; Bakary panique. Modibo : « La vérité fait mal une fois, le mensonge tous les jours. »
 - 22 · La vérité : Bakary dit à Fatim que son cœur est pris. Fatim annule. Awa sourit sans savoir pourquoi. Fatim devine : « Awa ? »
+- 23 · Le coach de l'amour : Diasabi apprend que Bakary aime Awa et lui donne sa « science de Bobo » (souffler « tou tou tou » dans sa main puis taper les fesses). Bakary le fait ; Awa lui donne une énorme gifle devant tout le quartier, filmée en direct par Moussa. Le soir, Awa lui fait livrer en secret une pommade : « Pour ta joue. La prochaine fois, parle. – A. » Bakary est fou de joie. Fatim voit la vidéo et comprend que son cœur, c'est Awa.
 
 ## Idées d'épisodes (23 à 67)
 ### Partie 1 — Le secret de Bakary
