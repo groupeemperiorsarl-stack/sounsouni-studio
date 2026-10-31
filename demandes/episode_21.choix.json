@@ -1,0 +1,22 @@
+{
+ "26": {
+  "sig": "AWA|Des bananes et un poulet vivant… « Pour nourrir notre amour #1"
+ },
+ "45": {
+  "sig": "MODIBO|Reste calme, Bakarin. Dis la vérité immédiatement.#1"
+ },
+ "58": {
+  "sig": "BAKARY|Awa… regarde-moi. Jamais je ne te manquerais de respect. J'a#1"
+ },
+ "61": {
+  "sig": "AWA|Tu… tu parles trop, Bakary.#1",
+  "acteurs": {
+   "SEYDOU": {
+    "dx": 0.1
+   },
+   "MIMI": {
+    "dx": 0.1
+   }
+  }
+ }
+}
