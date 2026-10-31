@@ -40,6 +40,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-27 · Assistant · Détails d'un tête-à-tête connus par un tiers → Mimi n'a vu qu'un écran → faire expliquer la scène par le personnage concerné.
 - 2026-10-28 · Assistant · Personnage présent physiquement → voix normale → pas de téléphone.
 - 2026-10-28 · Assistant · Réaction d'un personnage → présence obligatoire dans le décor.
+- 2026-10-31 · Assistant · Awa sérieuse ou fâchée → éviter awa_v_action_659144_01 (yeux fermés) → préférer awa_bras_croises ou awa_debout.
 
 ## son
 - 2026-10-22 · Claude · Cri des grillons / cigales trop fort et stressant (épisode 18, scène de nuit d'Awa) → l'ancien son cricket.wav ressemblait à une alarme (earshot : « error buzz ») et restait à 10 dB seulement sous les voix → grillons fabriqués en code (studio/ambiances.py) et ambiance toujours 24 dB sous les voix (réglage ambiance_sous_voix) ; l'oreille (ecoute.txt) signale une scène aux aigus perçants.
