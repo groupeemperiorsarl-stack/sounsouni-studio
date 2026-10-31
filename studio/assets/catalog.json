@@ -8415,7 +8415,8 @@
    ],
    "head_x": 0.5,
    "props": [],
-   "genere": "gemini"
+   "genere": "gemini",
+   "props_auto": {}
   }
  },
  "decors": {
