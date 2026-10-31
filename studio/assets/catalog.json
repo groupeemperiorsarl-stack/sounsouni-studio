@@ -8237,6 +8237,175 @@
    "props": [],
    "genere": "gemini",
    "props_auto": {}
+  },
+  "obj_regime_bananes": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "regime",
+    "bananes"
+   ],
+   "mouth": false,
+   "size": [
+    990,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "obj_cageot_poulet_vivant": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "cageot",
+    "poulet",
+    "vivant"
+   ],
+   "mouth": false,
+   "size": [
+    1712,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "mim_amoureux": {
+   "char": "MIMI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "amoureux"
+   ],
+   "mouth": true,
+   "size": [
+    496,
+    1600
+   ],
+   "head_x": 0.375,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mim_debout",
+   "mouth_auto": true
+  },
+  "sey_panique": {
+   "char": "SEYDOU",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "panique"
+   ],
+   "mouth": true,
+   "size": [
+    616,
+    1600
+   ],
+   "head_x": 0.501,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sey_debout_neutre",
+   "mouth_auto": true
+  },
+  "mod_assis_taquin": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "taquin",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    997,
+    1600
+   ],
+   "head_x": 0.543,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_mefiant",
+   "mouth_auto": true
+  },
+  "bak_amoureux": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "amoureux"
+   ],
+   "mouth": true,
+   "size": [
+    588,
+    1600
+   ],
+   "head_x": 0.507,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
+  },
+  "kadi_assis_sage": {
+   "char": "KADI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "sage",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    1197,
+    1600
+   ],
+   "head_x": 0.706,
+   "props": [],
+   "genere": "gemini",
+   "depart": "kadi_banc",
+   "mouth_auto": true
+  },
+  "grp_un_gros_poulet_blanc_vole": {
+   "char": "AWA+MIMI",
+   "frame": "groupe",
+   "posture": "debout",
+   "tags": [
+    "pose:un_gros_poulet_blanc_vole_au_milieu_de_l_atelier_mimi_essaie_d_attraper_le_poulet_en_riant_awa_saute_sur_un_tabouret_en_relevant_son_pagne_furieuse",
+    "un",
+    "gros",
+    "poulet",
+    "blanc",
+    "vole",
+    "au",
+    "milieu",
+    "de",
+    "l",
+    "atelier",
+    "mimi",
+    "essaie",
+    "d",
+    "attraper",
+    "le",
+    "poulet",
+    "en",
+    "riant",
+    "awa",
+    "saute",
+    "sur",
+    "un",
+    "tabouret",
+    "en",
+    "relevant",
+    "son",
+    "pagne",
+    "furieuse"
+   ],
+   "mouth": false,
+   "size": [
+    368,
+    1600
+   ],
+   "head_x": 0.5,
+   "props": [],
+   "genere": "gemini"
   }
  },
  "decors": {
