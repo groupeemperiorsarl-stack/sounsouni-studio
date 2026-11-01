@@ -2745,9 +2745,7 @@ PLAN: 3 s · très gros Awa · {mefiant}
 PENSÉE AWA (determine · regarde: loin)
  Et Bakary… {soupir} il croit vraiment que tout le quartier tourne autour de lui ? {bombe_torse} On verra bien qui s'en va et qui reste.
 
-DÉCOR: RUE · midi · ambiance: circulation
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill]
-
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
 PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill, Fatim marche]
 [BRUITAGE: talons]
 
