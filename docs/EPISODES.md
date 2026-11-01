@@ -2612,8 +2612,10 @@ DIASABI (fier · regarde: Bakary · voix: normal)
 BAKARY (inquiet · regarde: loin · voix: vite)
 Attendez… Regardez là-bas.
 
-PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill, Fatim marche]
+PLAN: 3 s · large [Bakary debout, Modibo sur le banc, Diasabi au grill, Fatim debout] · {SCÈNE: au kiosque, Bakary debout, Modibo assis sur le banc et Diasabi à son grill regardent, inquiets, Fatim qui passe au loin dans la rue, droite et sérieuse, sans regarder le kiosque}
 [BRUITAGE: talons]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill]
 
 MODIBO (serieux · regarde: Fatim · voix: normal)
 C'est Fatim. Elle a fermé sa cabine de crédit en plein matin.
@@ -2646,6 +2648,13 @@ Merci Seydou. {hoche_tete} C'est validé sur l'application. Tu es toujours rapid
 SEYDOU (fier · regarde: Awa · voix: normal)
 {grand_sourire} Avec Sounsouni, pas de retard ! Bonne journée à l'atelier !
 [BRUITAGE: moto]
+
+PLAN: 3 s · large [Awa assise, Mimi debout, Fatim debout] · {SCÈNE: dans l'atelier, Awa assise à sa machine à coudre et Mimi debout regardent par la porte ouverte Fatim qui arrive au loin dans la rue, l'air sérieux et décidé}
+[BRUITAGE: talons]
+[MUSIQUE: suspense]
+
+PENSÉE AWA (mefiant · regarde: loin)
+Fatim… Elle vient ici. Et elle n'a pas l'air de venir pour un pagne. Mimi ne doit pas entendre ça.
 
 PLAN: large [Awa assise, Mimi debout]
 
