@@ -52,6 +52,7 @@ ENSEMBLE = {'verre': ('plateau', 'the'), 'the': ('plateau', 'verre'), 'telephone
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
 GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
 TENUE = {}   # tenue portée en ce moment par chaque personnage ([TENUE AWA: bazin doré]) ; vide = tenue de tous les jours
+SCENES_DECOR = set()   # (scène, décor, « A+B+C ») : plan complet dans le décor écrit avec {SCÈNE: …} (ex. ils voient Fatim passer au loin) mais sans image → fiche Gemini (Issa, 01/11/2026)
 SCENES = set()   # (« A+B », pose:…) : image à deux personnages écrite dans un PLAN mais absente → demandée dans la fiche Gemini (Issa, ép. 23 : la tape et la gifle doivent se voir)
 MANQUES = set()   # (personnage, émotion, posture) sans image : listé pour la fiche Gemini et le relecteur
 LASTPICK = {}   # dernier choix de pose : gardé sur l'acteur pour que les planches proposent les autres poses possibles
@@ -452,7 +453,13 @@ def build(meta, events, log=print, choix=None, variantes=False):
             if e.get('dur') or e['kind'] in ('objet', 'ecran'):
                 from script import pose_id
                 fx = [(0.1, re.sub(r'[{}]', '', x)) for x in re.findall(r'\{[^}]+\}', ' '.join(e.get('extra', [])))]
-                fx = [(a, pose_id(b.split(':', 1)[1]) if b.upper().startswith('POSE:') else b) for a, b in fx]
+                fx = [(a, pose_id(b.split(':', 1)[1]) if b.upper().startswith('POSE:') else ('scene:' + pose_id(b.split(':', 1)[1])[5:]) if norm(b).startswith('scene:') else b) for a, b in fx]
+                sc = next((x[1][6:] for x in fx if x[1].startswith('scene:')), None)
+                if sc and e['kind'] not in ('objet', 'ecran'):   # plan complet dans le décor (on voit quelqu'un arriver au loin…) : l'image entière faite par Gemini
+                    if sc in CAT.get('scenes', {}):
+                        add({'kind': 'scene', 'dur': e['dur'], 'scene': sc, 'fx': [x for x in fx if not x[1].startswith('scene:')]}); plan = None; i += 1; continue
+                    SCENES_DECOR.add((sc, scene['decor'], '+'.join(w['who'] for w in e['who'])))
+                    fx = [x for x in fx if not x[1].startswith('scene:')]
                 if e['kind'] in ('objet', 'ecran'):
                     nxt = next((x for x in events[i + 1:] if x['type'] not in ('sfx', 'music')), None)
                     if not (re.search(r't[ée]l[ée]phone|ecran|portable', norm(e.get('object', ''))) and nxt and nxt['type'] == 'screen'):

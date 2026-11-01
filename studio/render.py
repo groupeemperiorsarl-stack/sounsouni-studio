@@ -229,6 +229,11 @@ def draw(s, lt):
         fr = gfx.tint(background(s, lt, blur=10), 'nuit'); f = gfx.font(gfx.FB, 120)
         for i, l in enumerate(gfx.wrap(txt, f, 950)): ImageDraw.Draw(fr).text((540, 920 + i * 140), l, font=f, fill='white', anchor='mm')
         return fr
+    if k == 'scene':   # plan complet dans le décor (image Gemini entière) : léger zoom lent, comme une caméra qui s'approche
+        im = Image.open(f'{A}/scenes/{s["scene"]}.jpg').convert('RGB'); z = 1 + 0.06 * prog(lt, 0, max(0.1, s['dur']))
+        sc_ = max(W / im.width, H / im.height) * z; im = im.resize((int(im.width * sc_) + 1, int(im.height * sc_) + 1), Image.BILINEAR)
+        fr = im.crop(((im.width - W) // 2, (im.height - H) // 2, (im.width - W) // 2 + W, (im.height - H) // 2 + H)).convert('RGBA')
+        fx_draw(fr, s.get('fx', []), lt, (540, 600)); return fr
     if k == 'insert':
         fr = background(s, lt, blur=4, zoom=0.1); obj = gfx.norm if False else s.get('object', '').lower()
         cands = [(sum(w in obj for w in p['tags']), key) for key, p in POSES.items() if p['frame'] == 'objet']   # l'objet dont le plus de mots correspondent
@@ -324,7 +329,7 @@ def render_segment(args):
         ff.stdin.write(fr.tobytes())
         if n % 300 == 299: pose_img.cache_clear(); decor.cache_clear()
     ff.stdin.close(); ff.wait(); return out
-RENDU_VERSION = 'bulles-sans-tete-1+gifle3'   # à changer quand le dessin change (bulles, effets…) : les anciens morceaux de 12 s sont alors refaits
+RENDU_VERSION = 'bulles-sans-tete-1+gifle3+scenes'   # à changer quand le dessin change (bulles, effets…) : les anciens morceaux de 12 s sont alors refaits
 def seg_hash(shots, a, b):
     """Empreinte d'un morceau (a → b images) : les plans qui le touchent (+ taille des voix). Inchangée = morceau gardé."""
     import hashlib

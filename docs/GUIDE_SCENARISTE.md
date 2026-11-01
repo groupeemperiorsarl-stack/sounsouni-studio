@@ -165,6 +165,11 @@ Tu oses me toucher ?! {gifle} Tiens ! Ça t'apprendra !
 ```
 Une gifle écrite seulement en phrase (« [Awa donne une gifle…] ») ne se voit pas.
 
+**Plan complet dans le décor** (ils voient quelqu'un arriver ou passer au loin, toute une scène vue d'un coup) : un plan avec `{SCÈNE: …}` qui décrit ce qu'on voit. L'application demande l'image entière à Gemini (le décor + les personnages, chacun à sa place, ceux qui sont loin plus petits), puis la montre avec un léger zoom :
+```
+PLAN: 3 s · large [Awa assise, Mimi debout, Fatim debout] · {SCÈNE: dans l'atelier, Awa et Mimi regardent par la porte ouverte Fatim qui arrive au loin dans la rue}
+```
+
 **Action à deux qu'on doit VOIR** (tape, gifle, accolade, bousculade…) : un plan avec les deux personnages et la description de l'action. L'application demande l'image des deux ensemble dans la fiche Gemini, puis la montre en gros plan :
 ```
 PLAN: 3 s · gros [Awa debout, Bakary debout] · {POSE: Awa donne une énorme gifle à Bakary, sa main frappe sa joue, la joue de Bakary devient très rouge}{gifle}

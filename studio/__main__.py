@@ -90,6 +90,9 @@ def main():
     lines = voices.run(ev, director.CAT, work, log)
     choix = recaler(choix, meta, ev, log)
     shots, tot = director.build(meta, ev, log, choix=choix, variantes=a.planches)
+    if director.SCENES_DECOR:   # plans complets dans le décor sans image : la fiche Gemini les demandera
+        log('plans dans le décor sans image (plan large en attendant) : ' + ', '.join(f'{d} {t[:60]}' for t, d, c in sorted(director.SCENES_DECOR)))
+        director.MANQUES.update((c, 'scène dans le décor : ' + t, 'decor') for t, d, c in director.SCENES_DECOR)
     if director.SCENES:   # actions à deux sans image (tape, gifle…) : la fiche Gemini les demandera (et l'aperçu la lance tout seul)
         log('scènes à deux sans image (plan large en attendant) : ' + ', '.join(f'{d} {t[5:60]}' for d, t in sorted(director.SCENES)))
         director.MANQUES.update((d, 'scène à deux : ' + t[5:], 'groupe') for d, t in director.SCENES)
