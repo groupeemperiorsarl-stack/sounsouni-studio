@@ -8435,7 +8435,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_assis",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_assis_serieux": {
    "char": "AWA",
@@ -8454,7 +8455,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_assis",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_inquiet": {
    "char": "SALI",
@@ -8472,7 +8474,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sal_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_assis_sage": {
    "char": "MODIBO",
@@ -8491,7 +8494,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mod_assis_mefiant",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_determine": {
    "char": "FATIM",
@@ -8509,7 +8513,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_determine2": {
    "char": "FATIM",
@@ -8527,7 +8532,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "fat_serieux": {
    "char": "FATIM",
@@ -8545,7 +8551,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "fat_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_pensif": {
    "char": "DIASABI",
@@ -8563,7 +8570,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
