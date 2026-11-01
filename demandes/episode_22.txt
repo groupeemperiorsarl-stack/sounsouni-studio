@@ -1,0 +1,213 @@
+TITRE: Les Plans de Bakary – Épisode 25 : Fatim sait
+
+DÉCOR: CABINE · matin · ambiance: rue calme
+PLAN: large [Fatim debout, Sali debout]
+
+FATIM (serieux · regarde: Sali · voix: normal)
+Sali… {soupir} je n'ai pas fermé l'œil de la nuit.
+
+SALI (inquiet · regarde: Fatim · voix: normal)
+À cause de Bakary ? {penche_tete} Tu penses encore à cette histoire de commande annulée ?
+
+FATIM (serieux · regarde: loin · voix: lentement)
+Ce n'est plus la commande, Sali. {detourne_regard} La vidéo de Moussa avec la gifle… la façon dont Bakary tremblait devant elle… et cette pommade livrée en cachette. {triste} Tout est clair dans ma tête.
+
+SALI (sage · regarde: Fatim · voix: normal)
+Fatim, ma fille… {hoche_tete} quand les yeux refusent de voir, le cœur souffre deux fois.
+
+FATIM (determine · regarde: Sali · voix: normal)
+{bombe_torse} Mon cœur a compris. Bakary m'a dit la vérité en face, avec respect. Maintenant, c'est à moi de régler ça comme une femme debout.
+
+SALI (surpris · regarde: Fatim · voix: normal)
+ Tu vas faire quoi ? Tu vas retourner voir Bakary ?
+
+FATIM (determine · regarde: loin · voix: normal)
+Non. {secoue_tete} Bakary a déjà parlé. Je vais voir la reine de l'atelier en face.
+[BRUITAGE: talons]
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill]
+[BRUITAGE: the]
+
+BAKARY (pensif · regarde: loin · voix: normal)
+{soupir} Van… depuis hier, l'air du quartier est bizarre.
+
+MODIBO (sage · regarde: Bakary · voix: normal)
+{sourire} C'est l'air d'un homme qui a échappé aux bananes de Diasabi, Bakarin. Remercie le ciel.
+
+DIASABI (fier · regarde: Bakary · voix: normal)
+{bombe_torse} Mes bananes étaient d'une qualité royale ! À Bobo, on dit : celui qui donne la nourriture sème la paix !
+
+BAKARY (inquiet · regarde: loin · voix: vite)
+Attendez… Regardez là-bas.
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill, Fatim marche]
+[BRUITAGE: talons]
+
+MODIBO (serieux · regarde: Fatim · voix: normal)
+C'est Fatim. Elle a fermé sa cabine de crédit en plein matin.
+
+BAKARY (inquiet · regarde: Modibo · voix: chuchote)
+{sueur} Elle traverse la rue… Elle ne regarde même pas vers le kiosque. Elle va droit chez Awa !
+
+DIASABI (panique · regarde: Bakary · voix: crie)
+{choc} Oh oh ! À Bobo, quand deux lionnes marchent l'une vers l'autre… il faut monter sur un arbre !
+
+MODIBO (serieux · regarde: Bakary · voix: lentement)
+Reste ici, Bakarin. {secoue_tete} Ce n'est plus ton terrain. Les femmes règlent les comptes entre elles.
+
+DÉCOR: ATELIER · matin · ambiance: rue calme
+PLAN: large [Awa assise, Mimi debout, Seydou debout]
+[BRUITAGE: moto]
+
+SEYDOU (grand_sourire · regarde: Awa · voix: normal)
+Aw ni sogoma, Tantie Awa ! Livraison Sounsouni pour l'atelier ! Vos dix bobines de fil doré et les fermetures éclair.
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Livraison confirmée ✔ · Mercerie Centrale · 10 bobines de fil doré · 15 000 FCFA]
+
+PENSÉE AWA (content · regarde: téléphone)
+Mes fournitures de couture livrées à l'heure… {sourire} parfait. Les dix bobines sont bien là.
+
+AWA (sourire · regarde: Seydou · voix: normal)
+Merci Seydou. {hoche_tete} C'est validé sur l'application. Tu es toujours rapide.
+
+SEYDOU (fier · regarde: Awa · voix: normal)
+{grand_sourire} Avec Sounsouni, pas de retard ! Bonne journée à l'atelier !
+[BRUITAGE: moto]
+
+PLAN: large [Awa assise, Mimi debout]
+
+AWA (serieux · regarde: Mimi · voix: normal)
+Mimi. {pointe} Prends le pagne bleu de Tantie Kadi et apporte-le lui tout de suite pour l'essayage de l'ourlet.
+
+MIMI (inquiet · regarde: Awa · voix: normal)
+{penche_tete} Maintenant, Tantie ? Mais vous aviez dit cet après-midi…
+
+AWA (serieux · regarde: Mimi · voix: normal)
+J'ai dit maintenant. {determine} Vas-y sans traîner.
+
+MIMI (neutre · regarde: Awa · voix: normal)
+D'accord, Tantie Awa. J'y vais !
+[BRUITAGE: pas]
+
+PLAN: large [Awa assise, Fatim marche]
+[BRUITAGE: talons]
+[MUSIQUE: suspense]
+
+FATIM (serieux · regarde: Awa · voix: normal)
+{salue} I ni sogoma, Awa.
+
+AWA (surpris · regarde: Fatim · voix: normal)
+{sursaut} Fatim ? {froide} I ni sogoma. Tu viens pour ta tenue de fiançailles ? Tu l'as pourtant annulée hier soir sur l'application.
+
+FATIM (neutre · regarde: Awa · voix: lentement)
+{avance} Non. Je ne viens pas pour la robe. Je viens pour ce qui ne s'annule pas d'un clic.
+
+PLAN: deux [Awa assise, Fatim debout]
+
+AWA (mefiant · regarde: Fatim · voix: normal)
+ Si tu as un problème avec ton crédit de téléphone, c'est dans ta cabine que ça se règle. Pas ici.
+
+FATIM (serieux · regarde: Awa · voix: lentement)
+ Regarde-moi dans les yeux, Awa. Arrête de faire semblant. Bakary est venu me voir hier soir. {triste} Il m'a dit en face que son cœur était déjà pris.
+
+AWA (choc · regarde: Fatim · voix: chuchote)
+{detourne_regard} Et alors ? {mepris} Qu'est-ce que ça a à voir avec moi ? Bakary fait sa vie, je fais la mienne.
+
+FATIM (determine · regarde: Awa · voix: normal)
+Ne me prends pas pour une sotte. {avance} Le bouquet au dîner de mariage, que tu as jeté droit sur lui. La gifle de l'autre jour où tu tremblais autant que lui. Et la pommade livrée avec un mot… {triste} Tu crois que le quartier est aveugle ?
+
+AWA (colere · regarde: Fatim · voix: crie)
+{furieux} Fatim, mesure tes paroles ! Tu es dans mon atelier ! Bakary n'est qu'un simple vendeur de thé d'en face ! Un charbonnier ! Moi, Awa, je n'ai jamais rien demandé à ce garçon !
+
+FATIM (neutre · regarde: Awa · voix: lentement)
+{secoue_tete} Un simple vendeur de thé ? Alors pourquoi tu le regardes à travers tes rideaux chaque fois qu'une cliente lui parle ? {triste} Pourquoi tu as refusé ses gâteaux pour ensuite lui envoyer une pommade pour sa joue ?
+
+AWA (gene · regarde: bas · voix: vite)
+{rougit}{panique} C'était… c'était par politesse ! Pour ne rien lui devoir ! Je te dis qu'il n'y a rien entre lui et moi ! Rien du tout !
+
+FATIM (triste · regarde: Awa · voix: lentement)
+{soupir} Tu as beaucoup de fierté, Awa. Trop de fierté. Bakary est un homme bon. Il est maladroit, il est naïf avec les idées de Diasabi, mais son cœur est pur comme de l'eau de source. {triste} Et cet homme-là, il ne voit que toi.
+
+PLAN: 2 s · très gros Fatim · {triste}
+
+FATIM (serieux · regarde: Awa · voix: lentement)
+Moi, j'étais prête à l'aimer de toutes mes forces. J'étais prête à lui donner un foyer doux. Mais sa porte est fermée, parce que tu es assise sur le pas de sa porte.
+
+AWA (froide · regarde: Fatim · voix: chuchote)
+{tremble} Je ne retiens personne. Il est libre.
+
+FATIM (determine · regarde: Awa · voix: normal)
+Alors écoute-moi bien, couturière. {pointe} Si tu l'aimes, dis-le-lui. Ouvre ta bouche, avale ton orgueil et dis-le-lui !
+
+AWA (choc · regarde: Fatim · voix: lentement)
+{choc} Quoi… ?
+
+FATIM (serieux · regarde: Awa · voix: lentement)
+{determine} Et si tu ne l'aimes pas… si tu as trop honte d'un vendeur de thé pour ton grand bazin doré… alors laisse-le tranquille. Arrête de le tourmenter. Ne joue plus avec son cœur. Un homme comme Bakary ne mérite pas de souffrir pour un fantôme.
+[SILENCE 3 s: battements de coeur]
+
+PLAN: gros [Awa debout, Fatim debout]
+
+FATIM (neutre · regarde: Awa · voix: normal)
+{soupir} J'ai fini. Je retourne à ma cabine.
+[BRUITAGE: talons]
+
+DÉCOR: ATELIER · matin · ambiance: calme
+PLAN: large [Awa debout]
+[BRUITAGE: porte qui claque]
+[MUSIQUE: suspense]
+
+PLAN: 3 s · gros Awa · {colere}
+
+PENSÉE AWA (colere · regarde: loin)
+Venir me faire la morale dans mon propre atelier ! {fumee_tete} Pour qui elle se prend, cette Fatim ?!
+
+PLAN: gros [Awa assise]
+
+PENSÉE AWA (pensif · regarde: bas)
+« Avale ton orgueil… » {moue} Mon orgueil ?! Je suis Awa Couture ! Je n'ai de comptes à rendre à personne !
+
+PLAN: 3 s · très gros Awa · {mefiant}
+
+PENSÉE AWA (determine · regarde: loin)
+ Et Bakary… {soupir} il croit vraiment que tout le quartier tourne autour de lui ? {bombe_torse} On verra bien qui s'en va et qui reste.
+
+DÉCOR: RUE · midi · ambiance: circulation
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill, Fatim marche]
+[BRUITAGE: talons]
+
+BAKARY (inquiet · regarde: Fatim · voix: chuchote)
+Fatim… {timide} ça va ?
+
+PLAN: 2 s · gros Fatim · {serieux}{digne}
+
+FATIM (serieux · regarde: loin · voix: lentement)
+{sourire} Ça va, Bakary. La vie continue.
+[BRUITAGE: talons]
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill]
+
+BAKARY (triste · regarde: Modibo · voix: normal)
+{soupir} Van… elle avait le visage d'une reine qui a perdu une bataille mais qui garde sa couronne.
+
+MODIBO (sage · regarde: Bakary · voix: lentement)
+{hoche_tete} C'est exactement ça, Bakarin. Une femme digne qui s'en va fait plus de bruit que le tonnerre. Respecte son silence.
+
+DIASABI (pensif · regarde: Modibo · voix: normal)
+ Et maintenant… qu'est-ce qui va se passer à l'atelier ?
+
+BAKARY (inquiet · regarde: loin · voix: chuchote)
+{inquiet} Je ne sais pas, Diasabi. Mais j'ai l'impression que plus rien ne sera comme avant.
+[MUSIQUE: suspense]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, les livraisons se font sans détour, et la vérité finit toujours par se faire entendre. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
