@@ -2,32 +2,125 @@
  "1": {
   "sig": "|Les Plans de Bakary – Épisode 25 : Fatim sait#1"
  },
- "2": {
-  "sig": "FATIM|Sali… je n'ai pas fermé l'œil de la nuit.#0"
+ "12": {
+  "poses": {
+   "DIASABI": "dia_main_coeur"
+  },
+  "sig": "DIASABI|Mes bananes étaient d'une qualité royale ! À Bobo, on dit : #0"
  },
  "15": {
   "sig": "MODIBO|C'est Fatim. Elle a fermé sa cabine de crédit en plein matin#0"
  },
+ "16": {
+  "poses": {
+   "MODIBO": "mod_banc"
+  },
+  "sig": "MODIBO|C'est Fatim. Elle a fermé sa cabine de crédit en plein matin#0"
+ },
+ "18": {
+  "poses": {
+   "DIASABI": "dia_choc"
+  },
+  "sig": "DIASABI|Oh oh ! À Bobo, quand deux lionnes marchent l'une vers l'aut#0"
+ },
+ "2": {
+  "poses": {
+   "FATIM": "fat_serieux"
+  },
+  "sig": "FATIM|Sali… je n'ai pas fermé l'œil de la nuit.#0"
+ },
  "28": {
   "sig": "AWA|J'ai dit maintenant. Vas-y sans traîner.#0"
  },
+ "29": {
+  "poses": {
+   "AWA": "awa_assis_serieux"
+  },
+  "sig": "AWA|Mimi. Prends le pagne bleu de Tantie Kadi et apporte-le lui #0"
+ },
  "30": {
-  "sig": "MIMI|D'accord, Tantie Awa. J'y vais !#1"
+  "poses": {
+   "MIMI": "mim_debout"
+  },
+  "sig": "MIMI|Maintenant, Tantie ? Mais vous aviez dit cet après-midi…#0"
  },
  "33": {
   "sig": "FATIM|Non. Je ne viens pas pour la robe. Je viens pour ce qui ne s#0"
  },
+ "34": {
+  "poses": {
+   "FATIM": "fat_serieux"
+  },
+  "sig": "FATIM|I ni sogoma, Awa.#0"
+ },
+ "35": {
+  "poses": {
+   "AWA": "awa_assis_froide"
+  },
+  "sig": "AWA|Fatim ? I ni sogoma. Tu viens pour ta tenue de fiançailles ?#0"
+ },
+ "38": {
+  "poses": {
+   "FATIM": "fat_triste"
+  },
+  "sig": "FATIM|Regarde-moi dans les yeux, Awa. Arrête de faire semblant. Ba#0"
+ },
+ "4": {
+  "poses": {
+   "FATIM": "fat_triste"
+  },
+  "sig": "FATIM|Ce n'est plus la commande, Sali. La vidéo de Moussa avec la #0"
+ },
+ "40": {
+  "poses": {
+   "FATIM": "fat_triste"
+  },
+  "sig": "FATIM|Ne me prends pas pour une sotte. Le bouquet au dîner de mari#0"
+ },
+ "42": {
+  "poses": {
+   "FATIM": "fat_pensive"
+  },
+  "sig": "FATIM|Un simple vendeur de thé ? Alors pourquoi tu le regardes à t#0"
+ },
  "43": {
   "sig": "FATIM|Moi, j'étais prête à l'aimer de toutes mes forces. J'étais p#0"
  },
+ "44": {
+  "poses": {
+   "FATIM": "fat_pensive"
+  },
+  "sig": "FATIM|Tu as beaucoup de fierté, Awa. Trop de fierté. Bakary est un#0"
+ },
  "45": {
-  "sig": "FATIM|Alors écoute-moi bien, couturière. Si tu l'aimes, dis-le-lui#0"
+  "poses": {
+   "FATIM": "fat_pensive"
+  },
+  "sig": "FATIM|Tu as beaucoup de fierté, Awa. Trop de fierté. Bakary est un#1"
+ },
+ "46": {
+  "poses": {
+   "FATIM": "fat_serieux"
+  },
+  "sig": "FATIM|Moi, j'étais prête à l'aimer de toutes mes forces. J'étais p#0"
  },
  "47": {
   "sig": "FATIM|Et si tu ne l'aimes pas… si tu as trop honte d'un vendeur de#0"
  },
+ "48": {
+  "poses": {
+   "FATIM": "fat_serieux"
+  },
+  "sig": "FATIM|Alors écoute-moi bien, couturière. Si tu l'aimes, dis-le-lui#0"
+ },
  "49": {
   "sig": "FATIM|J'ai fini. Je retourne à ma cabine.#0"
+ },
+ "5": {
+  "poses": {
+   "SALI": "sal_inquiet"
+  },
+  "sig": "SALI|Fatim, ma fille… quand les yeux refusent de voir, le cœur so#0"
  },
  "50": {
   "sig": "FATIM|J'ai fini. Je retourne à ma cabine.#1"
@@ -38,7 +131,25 @@
  "59": {
   "sig": "BAKARY|Fatim… ça va ?#1"
  },
+ "6": {
+  "poses": {
+   "FATIM": "fat_serieux"
+  },
+  "sig": "FATIM|Mon cœur a compris. Bakary m'a dit la vérité en face, avec r#0"
+ },
  "60": {
   "sig": "FATIM|Ça va, Bakary. La vie continue.#0"
+ },
+ "61": {
+  "poses": {
+   "FATIM": "fat_serieux"
+  },
+  "sig": "BAKARY|Fatim… ça va ?#1"
+ },
+ "8": {
+  "poses": {
+   "FATIM": "fat_serieux"
+  },
+  "sig": "FATIM|Non. Bakary a déjà parlé. Je vais voir la reine de l'atelier#0"
  }
 }
