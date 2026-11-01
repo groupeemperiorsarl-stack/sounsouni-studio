@@ -8417,6 +8417,153 @@
    "props": [],
    "genere": "gemini",
    "props_auto": {}
+  },
+  "awa_assis_mefiant": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "mefiant",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    719,
+    1600
+   ],
+   "head_x": 0.547,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis",
+   "mouth_auto": true
+  },
+  "awa_assis_serieux": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "serieux",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    717,
+    1600
+   ],
+   "head_x": 0.547,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_assis",
+   "mouth_auto": true
+  },
+  "sal_inquiet": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "inquiet"
+   ],
+   "mouth": true,
+   "size": [
+    491,
+    1600
+   ],
+   "head_x": 0.535,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_rire",
+   "mouth_auto": true
+  },
+  "mod_assis_sage": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "sage",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    974,
+    1600
+   ],
+   "head_x": 0.539,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_mefiant",
+   "mouth_auto": true
+  },
+  "fat_determine": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "determine"
+   ],
+   "mouth": true,
+   "size": [
+    568,
+    1600
+   ],
+   "head_x": 0.442,
+   "props": [],
+   "genere": "gemini",
+   "depart": "fat_mains",
+   "mouth_auto": true
+  },
+  "fat_determine2": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "determine"
+   ],
+   "mouth": true,
+   "size": [
+    568,
+    1600
+   ],
+   "head_x": 0.439,
+   "props": [],
+   "genere": "gemini",
+   "depart": "fat_mains",
+   "mouth_auto": true
+  },
+  "fat_serieux": {
+   "char": "FATIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "serieux"
+   ],
+   "mouth": true,
+   "size": [
+    568,
+    1600
+   ],
+   "head_x": 0.439,
+   "props": [],
+   "genere": "gemini",
+   "depart": "fat_mains",
+   "mouth_auto": true
+  },
+  "dia_pensif": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "pensif"
+   ],
+   "mouth": true,
+   "size": [
+    424,
+    1600
+   ],
+   "head_x": 0.461,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
   }
  },
  "decors": {
@@ -8530,6 +8677,37 @@
    "haut": 0.448,
    "bas": 0.604,
    "fiable": true
+  }
+ },
+ "scenes": {
+  "dans_l_atelier_awa_assise_a_sa_machine_a_coudre_et_mimi_debout_regardent_par_la_porte_ouverte_fatim_qui_arrive_au_loin_dans_la_rue_l_air_serieux_et_decide": {
+   "decor": "ATELIER",
+   "persos": [
+    "AWA",
+    "MIMI",
+    "FATIM"
+   ],
+   "texte": "dans l'atelier, Awa assise à sa machine à coudre et Mimi debout regardent par la porte ouverte Fatim qui arrive au loin dans la rue, l'air sérieux et décidé",
+   "size": [
+    1080,
+    1935
+   ],
+   "genere": "gemini"
+  },
+  "au_kiosque_bakary_debout_modibo_assis_sur_le_banc_et_diasabi_a_son_grill_regardent_inquiets_fatim_qui_passe_au_loin_dans_la_rue_droite_et_serieuse_sans_regarder_le_kiosque": {
+   "decor": "KIOSQUE",
+   "persos": [
+    "BAKARY",
+    "MODIBO",
+    "DIASABI",
+    "FATIM"
+   ],
+   "texte": "au kiosque, Bakary debout, Modibo assis sur le banc et Diasabi à son grill regardent, inquiets, Fatim qui passe au loin dans la rue, droite et sérieuse, sans regarder le kiosque",
+   "size": [
+    1080,
+    1935
+   ],
+   "genere": "gemini"
   }
  }
 }
