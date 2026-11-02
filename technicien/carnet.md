@@ -25,6 +25,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Claude · Modèle libre sur la machine : les fichiers tout prêts de llama.cpp ne sont plus publiés → le compiler depuis les sources ; réponse longue coupée par Node après 5 min → lire la réponse petit à petit (streaming).
 - 2026-10-23 · Gemini · Quota journalier Gemini épuisé → limite de l'offre gratuite → attendre le reset de 8h du matin (heure Bamako) ou changer de modèle.
 - 2026-10-26 · Gemini · L'outil `regarder` échoue sur un fichier technique → Indisponibilité temporaire ou JSON mal formé → Consulter le `journal` de la fabrication pour voir le texte brut produit par l'étape.
+- 2026-11-02 · Gemini · Numéro d'épisode introuvable dans `demandes` → l'outil ne liste que les tickets récents ou actifs → utiliser `chercher` dans `docs/SAISON.md` pour retrouver le synopsis prévu.
 
 ## images
 - 2026-10-22 · Claude · LivePortrait plante sans « onnx » → paquet manquant → ajouté à l'installation (studio/lp/install.sh).
