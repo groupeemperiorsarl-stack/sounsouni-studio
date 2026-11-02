@@ -8620,8 +8620,13 @@
     1600
    ],
    "head_x": 0.5,
-   "props": [],
-   "genere": "gemini"
+   "props": [
+    "louche"
+   ],
+   "genere": "gemini",
+   "props_auto": {
+    "louche": 0.5
+   }
   },
   "dia_assis_diasabi_assis_devant_une_grande_assiette_fumante_une_grosse_cuillere_a_la_main_les_yeux_grands_ouverts_de_gourmandise_pret_a_devorer": {
    "char": "DIASABI",
@@ -8651,7 +8656,8 @@
     "pret",
     "a",
     "devorer",
-    "assis"
+    "assis",
+    "louche"
    ],
    "mouth": true,
    "size": [
@@ -8659,10 +8665,15 @@
     1600
    ],
    "head_x": 0.497,
-   "props": [],
+   "props": [
+    "louche"
+   ],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {
+    "louche": 0.75
+   }
   },
   "dia_assis_choc": {
    "char": "DIASABI",
@@ -8681,7 +8692,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_assis": {
    "char": "DIASABI",
@@ -8701,7 +8713,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_assis_emerveille": {
    "char": "DIASABI",
@@ -8720,7 +8733,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_content": {
    "char": "SALI",
@@ -8738,7 +8752,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sal_inquiet",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "sal_grand_sourire": {
    "char": "SALI",
@@ -8756,7 +8771,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "sal_inquiet",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "obj_plat_vide": {
    "char": "OBJET",
@@ -8791,7 +8807,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mod_assis_sage",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
