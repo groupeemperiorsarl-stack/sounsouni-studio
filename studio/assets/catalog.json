@@ -8572,6 +8572,226 @@
    "depart": "dia_neutre",
    "mouth_auto": true,
    "props_auto": {}
+  },
+  "grp_awa_et_bakary_cuisinent_cote": {
+   "char": "AWA+BAKARY",
+   "frame": "groupe",
+   "posture": "debout",
+   "tags": [
+    "pose:awa_et_bakary_cuisinent_cote_a_cote_devant_la_marmite_bakary_verse_delicatement_une_louche_d_infusion_dans_la_sauce_pendant_qu_awa_melange_energiquement_avec_une_spatule_en_bois_leurs_visages_tres_proches",
+    "awa",
+    "et",
+    "bakary",
+    "cuisinent",
+    "cote",
+    "a",
+    "cote",
+    "devant",
+    "la",
+    "marmite",
+    "bakary",
+    "verse",
+    "delicatement",
+    "une",
+    "louche",
+    "d",
+    "infusion",
+    "dans",
+    "la",
+    "sauce",
+    "pendant",
+    "qu",
+    "awa",
+    "melange",
+    "energiquement",
+    "avec",
+    "une",
+    "spatule",
+    "en",
+    "bois",
+    "leurs",
+    "visages",
+    "tres",
+    "proches"
+   ],
+   "mouth": false,
+   "size": [
+    1088,
+    1600
+   ],
+   "head_x": 0.5,
+   "props": [],
+   "genere": "gemini"
+  },
+  "dia_assis_diasabi_assis_devant_une_grande_assiette_fumante_une_grosse_cuillere_a_la_main_les_yeux_grands_ouverts_de_gourmandise_pret_a_devorer": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "pose:diasabi_assis_devant_une_grande_assiette_fumante_une_grosse_cuillere_a_la_main_les_yeux_grands_ouverts_de_gourmandise_pret_a_devorer",
+    "diasabi",
+    "assis",
+    "devant",
+    "une",
+    "grande",
+    "assiette",
+    "fumante",
+    "une",
+    "grosse",
+    "cuillere",
+    "a",
+    "la",
+    "main",
+    "les",
+    "yeux",
+    "grands",
+    "ouverts",
+    "de",
+    "gourmandise",
+    "pret",
+    "a",
+    "devorer",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    985,
+    1600
+   ],
+   "head_x": 0.497,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
+  },
+  "dia_assis_choc": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "choc",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    692,
+    1600
+   ],
+   "head_x": 0.433,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
+  },
+  "dia_assis": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "neutre",
+    "ecoute",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    689,
+    1600
+   ],
+   "head_x": 0.427,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
+  },
+  "dia_assis_emerveille": {
+   "char": "DIASABI",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "emerveille",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    666,
+    1600
+   ],
+   "head_x": 0.403,
+   "props": [],
+   "genere": "gemini",
+   "depart": "dia_neutre",
+   "mouth_auto": true
+  },
+  "sal_content": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "content"
+   ],
+   "mouth": true,
+   "size": [
+    487,
+    1600
+   ],
+   "head_x": 0.532,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_inquiet",
+   "mouth_auto": true
+  },
+  "sal_grand_sourire": {
+   "char": "SALI",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "grand_sourire"
+   ],
+   "mouth": true,
+   "size": [
+    487,
+    1600
+   ],
+   "head_x": 0.532,
+   "props": [],
+   "genere": "gemini",
+   "depart": "sal_inquiet",
+   "mouth_auto": true
+  },
+  "obj_plat_vide": {
+   "char": "OBJET",
+   "frame": "objet",
+   "posture": "objet",
+   "tags": [
+    "plat",
+    "vide"
+   ],
+   "mouth": false,
+   "size": [
+    1554,
+    1600
+   ],
+   "props": [],
+   "genere": "gemini"
+  },
+  "mod_assis_taquin2": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "taquin",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    953,
+    1600
+   ],
+   "head_x": 0.527,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_sage",
+   "mouth_auto": true
   }
  },
  "decors": {
@@ -8711,6 +8931,21 @@
     "FATIM"
    ],
    "texte": "au kiosque, Bakary debout, Modibo assis sur le banc et Diasabi à son grill regardent, inquiets, Fatim qui passe au loin dans la rue, droite et sérieuse, sans regarder le kiosque",
+   "size": [
+    1080,
+    1935
+   ],
+   "genere": "gemini"
+  },
+  "dans_la_rue_sali_et_la_bande_autour_de_la_table_du_tirage_au_sort_regardent_awa_qui_arrive_au_loin_avec_mimi_l_air_curieux": {
+   "decor": "RUE",
+   "persos": [
+    "SALI",
+    "BAKARY",
+    "MODIBO",
+    "DIASABI"
+   ],
+   "texte": "dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arrive au loin avec Mimi, l'air curieux",
    "size": [
     1080,
     1935
