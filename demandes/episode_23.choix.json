@@ -29,6 +29,9 @@
  "46": {
   "sig": "SALI|Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équip#0"
  },
+ "47": {
+  "sig": "SALI|Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équip#1"
+ },
  "51": {
   "sig": "DIASABI|MAMA MIA ! Ce n'est pas un plat, c'est une déclaration d'amo#1"
  },
@@ -37,5 +40,8 @@
  },
  "63": {
   "sig": "SALI|DIASABI ! Tu as mangé tout le plat des gagnants avant même q#0"
+ },
+ "65": {
+  "sig": "BAKARY|Merci, Awa. On forme une bonne équipe, finalement.#0"
  }
 }
