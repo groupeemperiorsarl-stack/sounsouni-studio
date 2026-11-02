@@ -2835,7 +2835,7 @@ Toi, Diasabi ! Parce que tu as toujours faim et que si tu cuisiniais, tu empoiso
 DIASABI (fier · regarde: Sali · voix: crie)
 {bombe_torse} Juge Diasabi ! Le roi du goût ! À Bobo, on dit : l'estomac du juge n'a pas de favori, il n'a que de la place !
 
-PLAN: 3 s · large [Sali debout, Bakary debout, Modibo sur le banc, Diasabi debout, Moussa debout, Awa marche] · {SCÈNE: dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arrive au loin avec Mimi, l'air curieux}
+PLAN: 3 s · large [Sali debout, Bakary debout, Modibo sur le banc, Diasabi debout, Moussa debout, Awa marche, Mimi debout] · {SCÈNE: dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arrive au loin avec Mimi, l'air curieux}
 [BRUITAGE: talons]
 
 AWA (mefiant · regarde: Sali · voix: normal)
@@ -2872,7 +2872,7 @@ BAKARY (panique · regarde: Modibo · voix: chuchote)
 {sueur} Van… aide-moi… je vais me faire découper comme un oignon…
 
 DÉCOR: MARCHÉ · midi · ambiance: marché
-PLAN: large [Awa debout, Bakary debout, Seydou debout]
+PLAN: large [Awa debout, Bakary debout]
 
 AWA (determine · regarde: téléphone · voix: normal)
 Il nous faut les meilleurs ingrédients du marché. Et pas question de perdre du temps à chercher boutique par boutique.
@@ -2882,7 +2882,7 @@ PLAN: objet téléphone
 [ÉCRAN 5 s: Sounsouni Marché · Commande Équipe Awa & Bakary · Poisson capitaines frais, épices royales, menthe douce · 7 500 FCFA · [Commander]]
 
 PENSÉE AWA (determine · regarde: téléphone)
-Sur Sounsouni Marché, la commande est passée… {sourire} Le poisson le plus frais du marché arrive tout de suite chez nous !
+Sur Sounsouni Marché, la commande est passée… {sourire} Le poisson le plus frais du marché arrive tout de suite ici !
 
 BAKARY (sourire · regarde: Awa · voix: normal)
 {idee} Awa… si on ajoutait une touche de mes épices de thé infusées dans la sauce arachide fumée ?
@@ -2958,12 +2958,12 @@ PENSÉE BAKARY (emerveille · regarde: téléphone)
 Deux cent quarante-cinq votes sur Sounsouni ! {grand_sourire} On a gagné le concours !
 
 BAKARY (emerveille · regarde: Awa · voix: crie)
-Awa ! On a gagné ! Deux cent quatorze personnes ont voté pour nous !
+Awa ! On a gagné ! Deux cent quarante-cinq personnes ont voté pour nous !
 
 AWA (fiere · regarde: Bakary · voix: normal)
 {grand_sourire} Évidemment qu'on a gagné ! Avec mes talents de cuisinière et ton petit thé, personne ne pouvait nous battre !
 
-MOUSSA (surpris · regarde: assiette · voix: au téléphone)
+MOUSSA (surpris · regarde: assiette · voix: crie)
 {choc} Hé ! Mais où est passé le plat ?!
 
 PLAN: objet plat vide
@@ -2975,7 +2975,7 @@ DIASABI (innocent · regarde: Sali · voix: normal)
 [RÉACTION MODIBO: rire]
 
 SALI (furieux · regarde: Diasabi · voix: crie)
-{fumee_tete} DIASABI ! Tu as mangé tout le plat des gagnants avant même que les autres juges ne goûtent une seule bouchée ?!
+{fumee_tete} DIASABI ! Tu as mangé tout le plat des gagnants avant même qu'on puisse goûter une seule bouchée ?!
 
 DIASABI (peur · regarde: Sali · voix: crie)
 {sueur} À Bobo, on dit : un bon juge ne laisse jamais de preuves !
