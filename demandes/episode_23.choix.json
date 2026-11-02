@@ -1,9 +1,48 @@
 {
- "5": {
-  "sig": "MOUSSA|Tantie Sali ! Qu'est-ce qui se passe ? Tu donnes des beignet#0"
+ "11": {
+  "poses": {
+   "DIASABI": "dia_sourire_auto"
+  },
+  "sig": "DIASABI|Et qui est le grand juge impartial qui va tout goûter ?!#0"
  },
  "12": {
   "sig": "SALI|Toi, Diasabi ! Parce que tu as toujours faim et que si tu cu#0"
+ },
+ "15": {
+  "poses": {
+   "DIASABI": "dia_doigt"
+  },
+  "sig": "DIASABI|Juge Diasabi ! Le roi du goût ! À Bobo, on dit : l'estomac d#0"
+ },
+ "18": {
+  "poses": {
+   "MIMI": "mim_sourire"
+  },
+  "sig": "MIMI|Tantie, c'est le grand concours de cuisine sur Sounsouni !#0"
+ },
+ "19": {
+  "poses": {
+   "SALI": "sal_content"
+  },
+  "sig": "SALI|Parfait ! Awa et Mimi sont là. Procedons au tirage au sort p#0"
+ },
+ "2": {
+  "poses": {
+   "SALI": "sal_grand_sourire"
+  },
+  "sig": "SALI|Écoutez tous ! Grande nouvelle pour tout le quartier !#0"
+ },
+ "21": {
+  "poses": {
+   "BAKARY": "bak_mains_levees"
+  },
+  "sig": "BAKARY|Moi ? Mais je ne sais faire que le thé et les brochettes !#0"
+ },
+ "22": {
+  "poses": {
+   "SALI": "sal_grand_sourire"
+  },
+  "sig": "SALI|Et sa coéquipière sera… Awa !#0"
  },
  "27": {
   "sig": "BAKARY|Van… aide-moi… je vais me faire découper comme un oignon…#1"
@@ -11,10 +50,28 @@
  "28": {
   "sig": "AWA|Il nous faut les meilleurs ingrédients du marché. Et pas que#0"
  },
+ "3": {
+  "poses": {
+   "BAKARY": "bak_mains_levees"
+  },
+  "sig": "SALI|Écoutez tous ! Grande nouvelle pour tout le quartier !#1"
+ },
+ "31": {
+  "poses": {
+   "BAKARY": "bak_v_tour_650014_02"
+  },
+  "sig": "BAKARY|Awa… si on ajoutait une touche de mes épices de thé infusées#0"
+ },
  "32": {
+  "poses": {
+   "AWA": "awa_tel2"
+  },
   "sig": "AWA|Du thé dans la sauce ?! Tu es devenu fou ou c'est encore une#0"
  },
  "34": {
+  "poses": {
+   "AWA": "awa_tel2"
+  },
   "sig": "AWA|Hmm… du gingembre et de la menthe… Bon ! Mais si le plat est#0"
  },
  "35": {
@@ -23,17 +80,53 @@
  "38": {
   "sig": "AWA|Merci Seydou ! En cuisine !#1"
  },
+ "42": {
+  "poses": {
+   "BAKARY": "bak_v_tour_650014_02"
+  },
+  "sig": "BAKARY|Regarde la couleur, Awa… Elle devient dorée, exactement comm#0"
+ },
+ "44": {
+  "poses": {
+   "DIASABI": "dia_salue"
+  },
+  "sig": "DIASABI|Ooooh ! L'odeur traverse mon nez jusqu'à mes pieds ! À Bobo,#0"
+ },
  "45": {
   "sig": "DIASABI|Ooooh ! L'odeur traverse mon nez jusqu'à mes pieds ! À Bobo,#1"
  },
  "46": {
+  "poses": {
+   "SALI": "sal_grand_sourire"
+  },
   "sig": "SALI|Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équip#0"
  },
  "47": {
   "sig": "SALI|Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équip#1"
  },
+ "5": {
+  "sig": "MOUSSA|Tantie Sali ! Qu'est-ce qui se passe ? Tu donnes des beignet#0"
+ },
  "51": {
   "sig": "DIASABI|MAMA MIA ! Ce n'est pas un plat, c'est une déclaration d'amo#1"
+ },
+ "55": {
+  "poses": {
+   "BAKARY": "bak_explique"
+  },
+  "sig": "BAKARY|Awa ! On a gagné ! Deux cent quarante-cinq personnes ont vot#0"
+ },
+ "6": {
+  "poses": {
+   "SALI": "sal_taquin"
+  },
+  "sig": "SALI|Gratuits ? Tu me connais mal, Moussa ! Aujourd'hui, je lance#0"
+ },
+ "60": {
+  "poses": {
+   "DIASABI": "dia_sourire_auto"
+  },
+  "sig": "DIASABI|Ben… j'ai goûté ! Une cuillère pour vérifier le sel, une cui#0"
  },
  "61": {
   "sig": "DIASABI|Ben… j'ai goûté ! Une cuillère pour vérifier le sel, une cui#1"
@@ -43,5 +136,11 @@
  },
  "65": {
   "sig": "BAKARY|Merci, Awa. On forme une bonne équipe, finalement.#0"
+ },
+ "8": {
+  "poses": {
+   "SALI": "sal_content"
+  },
+  "sig": "SALI|Les équipes seront tirées au sort par deux ! Et les votes se#0"
  }
 }
