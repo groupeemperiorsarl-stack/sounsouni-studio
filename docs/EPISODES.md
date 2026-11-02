@@ -2790,3 +2790,213 @@ VOIX_OFF (lentement)
 Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
 ```
+
+## Épisode 29 : Le défi de la cuisine
+(source : demandes/episode_23.txt)
+```text
+TITRE: Les Plans de Bakary – Épisode 29 : Le défi de la cuisine
+
+DÉCOR: RUE · matin · ambiance: rue calme
+PLAN: large [Sali debout, Bakary debout, Modibo sur le banc, Diasabi debout, Moussa debout]
+[BRUITAGE: coq]
+
+SALI (grand_sourire · regarde: caméra · voix: crie)
+{bombe_torse} Écoutez tous ! Grande nouvelle pour tout le quartier !
+[RÉACTION BAKARY: surpris]
+[RÉACTION DIASABI: content]
+
+MOUSSA (sourire · regarde: Sali · voix: normal)
+Tantie Sali ! {grand_sourire} Qu'est-ce qui se passe ? Tu donnes des beignets gratuits ?
+
+SALI (moqueur · regarde: Moussa · voix: normal)
+Gratuits ? {sourire_malin} Tu me connais mal, Moussa ! Aujourd'hui, je lance le grand concours du meilleur plat du quartier !
+
+MODIBO (taquin · regarde: Sali · voix: normal)
+Un concours de cuisine ? {sourire} Et qui sont les cuisiniers ?
+
+SALI (fiere · regarde: Modibo · voix: normal)
+Les équipes seront tirées au sort par deux ! Et les votes se feront en direct sur l'application Sounsouni !
+
+PLAN: gros [Sali debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Grand Concours de Cuisine · Votes en direct · Équipe 1 vs Équipe 2 · [Participer]]
+
+PENSÉE SALI (content · regarde: téléphone)
+Le concours est lancé sur Sounsouni… {grand_sourire} Tout le quartier va pouvoir voter pour son plat préféré en un seul clic !
+
+DIASABI (joie · regarde: Sali · voix: crie)
+{bras_ouverts} Et qui est le grand juge impartial qui va tout goûter ?!
+
+SALI (taquin · regarde: Diasabi · voix: normal)
+Toi, Diasabi ! Parce que tu as toujours faim et que si tu cuisiniais, tu empoisonnerais tout le monde avec tes recettes de Bobo !
+[RÉACTION MODIBO: rire]
+[RÉACTION MOUSSA: rire_retenu]
+
+DIASABI (fier · regarde: Sali · voix: crie)
+{bombe_torse} Juge Diasabi ! Le roi du goût ! À Bobo, on dit : l'estomac du juge n'a pas de favori, il n'a que de la place !
+
+PLAN: 3 s · large [Sali debout, Bakary debout, Modibo sur le banc, Diasabi debout, Moussa debout, Awa marche] · {SCÈNE: dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arrive au loin avec Mimi, l'air curieux}
+[BRUITAGE: talons]
+
+AWA (mefiant · regarde: Sali · voix: normal)
+I ni sogoma. Qu'est-ce que vous fabriquez encore comme attroupement ici ?
+
+MIMI (content · regarde: Awa · voix: chuchote)
+Tantie, c'est le grand concours de cuisine sur Sounsouni !
+
+SALI (sourire · regarde: Awa · voix: normal)
+Parfait ! Awa et Mimi sont là. Procedons au tirage au sort pour la deuxième équipe !
+
+SALI (sourire_malin · regarde: panier · voix: normal)
+Premier nom pour l'Équipe B… {sourire_malin} Bakary !
+
+BAKARY (surpris · regarde: Sali · voix: normal)
+Moi ? Mais je ne sais faire que le thé et les brochettes !
+
+SALI (grand_sourire · regarde: panier · voix: crie)
+Et sa coéquipière sera… {grand_sourire} Awa !
+[RÉACTION BAKARY sur "Awa": choc, sursaut]
+[RÉACTION AWA sur "Awa": choc]
+[BRUITAGE sur "Awa": tonnerre]
+
+AWA (furieux · regarde: Sali · voix: crie)
+{fumee_tete} QUOI ?! Moi, cuisiner avec le vendeur de thé ?! Refaites le tirage tout de suite !
+
+MODIBO (taquin · regarde: Awa · voix: normal)
+{sourire_malin} Le sort a parlé, Awa. À moins que la grande couturière ait peur de perdre en cuisine ?
+
+AWA (colere · regarde: Modibo · voix: crie)
+{bombe_torse} Peur ?! Moi, avoir peur ?! Bakary, suis-moi ! On va gagner ce concours et fermer la bouche de ton ami !
+
+BAKARY (panique · regarde: Modibo · voix: chuchote)
+{sueur} Van… aide-moi… je vais me faire découper comme un oignon…
+
+DÉCOR: MARCHÉ · midi · ambiance: marché
+PLAN: large [Awa debout, Bakary debout, Seydou debout]
+
+AWA (determine · regarde: téléphone · voix: normal)
+Il nous faut les meilleurs ingrédients du marché. Et pas question de perdre du temps à chercher boutique par boutique.
+
+PLAN: gros [Awa debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni Marché · Commande Équipe Awa & Bakary · Poisson capitaines frais, épices royales, menthe douce · 7 500 FCFA · [Commander]]
+
+PENSÉE AWA (determine · regarde: téléphone)
+Sur Sounsouni Marché, la commande est passée… {sourire} Le poisson le plus frais du marché arrive tout de suite chez nous !
+
+BAKARY (sourire · regarde: Awa · voix: normal)
+{idee} Awa… si on ajoutait une touche de mes épices de thé infusées dans la sauce arachide fumée ?
+
+AWA (mefiant · regarde: Bakary · voix: normal)
+Du thé dans la sauce ?! {degout} Tu es devenu fou ou c'est encore une idée de Diasabi ?
+
+BAKARY (determine · regarde: Awa · voix: lentement)
+{avance} Fais-moi confiance, Awa. Juste une fois. Le gingembre et la menthe relevée vont donner un parfum unique au poisson.
+
+AWA (pensif · regarde: Bakary · voix: chuchote)
+{moue} Hmm… du gingembre et de la menthe… {rougit} Bon ! Mais si le plat est gâté, tu quittes Bamako !
+
+[BRUITAGE: moto]
+PLAN: large [Awa debout, Bakary debout, Seydou debout]
+
+SEYDOU (grand_sourire · regarde: Awa · voix: crie)
+Livraison express Sounsouni pour l'équipe des champions ! {grand_sourire} Vos ingrédients frais sont là !
+
+AWA (sourire · regarde: Seydou · voix: normal)
+Merci Seydou ! En cuisine !
+
+DÉCOR: KIOSQUE · midi · ambiance: rue calme
+PLAN: large [Awa debout, Bakary debout, Diasabi debout, Modibo sur le banc, Moussa debout]
+[BRUITAGE: grésillement]
+[MUSIQUE: drôle]
+
+MOUSSA (grand_sourire · regarde: téléphone · voix: crie)
+En direct sur Sounsouni ! {fier} L'Équipe Awa-Bakary prépare le « Tô Royal au poisson fumé et à l'infusion d'épices » !
+
+PLAN: 3 s · gros [Awa debout, Bakary debout] · {POSE: Awa et Bakary cuisinent côte à côte devant la marmite, Bakary verse délicatement une louche d'infusion dans la sauce pendant qu'Awa mélange énergiquement avec une spatule en bois, leurs visages très proches}
+
+AWA (serieux · regarde: Bakary · voix: normal)
+Doucement avec ton infusion ! N'en mets pas trop !
+
+BAKARY (tendre · regarde: Awa · voix: chuchote)
+{sourire} Regarde la couleur, Awa… Elle devient dorée, exactement comme ton bazin de l'autre jour.
+
+AWA (gene · regarde: bas · voix: chuchote)
+{rougit} Tais-toi et remue la sauce… Ne laisse pas brûler le fond.
+
+DIASABI (serieux · regarde: marmite · voix: crie)
+{sueur} Ooooh ! L'odeur traverse mon nez jusqu'à mes pieds ! À Bobo, quand une odeur fait trembler les genoux, c'est que le plat est béni !
+
+DÉCOR: RUE · après-midi · ambiance: rue calme
+PLAN: large [Diasabi assis, Sali debout, Bakary debout, Awa debout, Modibo sur le banc, Moussa debout, Fatim debout, Kadi sur le banc]
+[MUSIQUE: suspense]
+
+SALI (grand_sourire · regarde: caméra · voix: crie)
+{bombe_torse} Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équipe Awa et Bakary !
+
+PLAN: 3 s · gros Diasabi · {POSE: Diasabi assis devant une grande assiette fumante, une grosse cuillère à la main, les yeux grands ouverts de gourmandise, prêt à dévorer}
+
+DIASABI (emerveille · regarde: plat · voix: chuchote)
+{etoiles} Regardez-moi cette sauce dorée…
+
+[BRUITAGE: miam]
+PLAN: 3 s · très gros Diasabi · {emerveille}{ grand_sourire}
+
+DIASABI (choc · regarde: caméra · voix: crie)
+{choc}{etoiles} MAMA MIA ! Ce n'est pas un plat, c'est une déclaration d'amour ! Le piment d'Awa et la douceur du thé de Bakary !
+
+PLAN: large [Diasabi assis, Sali debout, Bakary debout, Awa debout, Modibo sur le banc, Fatim debout]
+
+FATIM (sourire · regarde: Bakary · voix: normal)
+{sourire} Ils ont cuisiné avec leur cœur… Ça se voit et ça se sent.
+
+PLAN: gros [Sali debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Résultats Concours Cuisine · Équipe Awa & Bakary : 245 votes (GAGNANTS !) · Équipe Modibo & Mimi : 112 votes · [Féliciter]]
+
+PENSÉE BAKARY (emerveille · regarde: téléphone)
+Deux cent quarante-cinq votes sur Sounsouni ! {grand_sourire} On a gagné le concours !
+
+BAKARY (emerveille · regarde: Awa · voix: crie)
+Awa ! On a gagné ! Deux cent quatorze personnes ont voté pour nous !
+
+AWA (fiere · regarde: Bakary · voix: normal)
+{grand_sourire} Évidemment qu'on a gagné ! Avec mes talents de cuisinière et ton petit thé, personne ne pouvait nous battre !
+
+MOUSSA (surpris · regarde: assiette · voix: au téléphone)
+{choc} Hé ! Mais où est passé le plat ?!
+
+PLAN: objet plat vide
+[SILENCE 2 s: grillon]
+
+DIASABI (innocent · regarde: Sali · voix: normal)
+{sourire} Ben… j'ai goûté ! Une cuillère pour vérifier le sel, une cuillère pour le piment, et hop… le plat a disparu !
+[RÉACTION SALI: colere]
+[RÉACTION MODIBO: rire]
+
+SALI (furieux · regarde: Diasabi · voix: crie)
+{fumee_tete} DIASABI ! Tu as mangé tout le plat des gagnants avant même que les autres juges ne goûtent une seule bouchée ?!
+
+DIASABI (peur · regarde: Sali · voix: crie)
+{sueur} À Bobo, on dit : un bon juge ne laisse jamais de preuves !
+[BRUITAGE: pas]
+
+PLAN: deux [Bakary debout, Awa debout]
+[MUSIQUE: romantique]
+
+BAKARY (neutre · regarde: Awa · voix: chuchote)
+Merci, Awa. {sourire} On forme une bonne équipe, finalement.
+
+AWA (gene · regarde: bas · voix: chuchote)
+{rougit} Ne t'habitue pas, vendeur de thé. C'était juste pour le concours… {sourire_malin} Mais ta sauce n'était pas trop mauvaise.
+
+PLAN: 3 s · très gros Bakary · {amoureux}{coeurs}
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, organisez vos événements, faites voter le quartier et commandez vos produits en toute simplicité. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
+```
