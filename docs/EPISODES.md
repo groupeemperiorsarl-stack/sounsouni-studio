@@ -3086,7 +3086,7 @@ PENSÉE AWA (confus · regarde: Bakary)
 PLAN: deux [Bakary debout, Awa debout]
 
 BAKARY (neutre · regarde: Awa · voix: lentement)
-Je l'ai acheté parce que tu es la plus grande couturière du quartier, et tu mérites de ce qu'il y me de plus beau. {soupir} Awa, je sais qu'on se dispute tout le temps. Je sais que tu me trouves casse-pieds…
+Je l'ai acheté parce que tu es la plus grande couturière du quartier, et tu mérites ce qu'il y a de plus beau. {soupir} Awa, je sais qu'on se dispute tout le temps. Je sais que tu me trouves casse-pieds…
 
 AWA (froide · regarde: Bakary · voix: normal)
 {bombe_torse} Casse-pieds ? Tu es une catastrophe nationale, Bakary ! Tu transformes chaque journée en pagaille !
@@ -3127,7 +3127,7 @@ Je ne bouge pas, Awa ! {colere} Maigre Énergie du Mali ! Pourquoi il faut toujo
 [BRUITAGE: pas]
 [BRUITAGE: essoufflé]
 
-MOUSSA (panique · regarde: Bakary · voix: au téléphone)
+MOUSSA (panique · regarde: Bakary · voix: crie)
  Kôrô ! Kôrô Bakary ! Où vous êtes ?! C'est la panique au bout de la rue !
 
 PLAN: large [Bakary debout, Awa debout, Moussa court]
