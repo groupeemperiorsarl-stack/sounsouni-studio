@@ -1,9 +1,69 @@
 {
+ "10": {
+  "poses": {
+   "DIASABI": "dia_sourire_auto"
+  },
+  "sig": "DIASABI|Et si elle crie… n'oublie pas le tou tou tou !#0"
+ },
+ "11": {
+  "poses": {
+   "BAKARY": "bak_v_action_642164_06"
+  },
+  "sig": "DIASABI|Et si elle crie… n'oublie pas le tou tou tou !#1"
+ },
  "13": {
   "sig": "DIASABI|Et si elle crie… n'oublie pas le tou tou tou !#3"
  },
+ "14": {
+  "poses": {
+   "AWA": "awa_bras_croises"
+  },
+  "sig": "DIASABI|Et si elle crie… n'oublie pas le tou tou tou !#4"
+ },
  "16": {
   "sig": "AWA|C'est bizarre. La rue est calme, et le vendeur de thé ne fai#1"
+ },
+ "19": {
+  "poses": {
+   "BAKARY": "bak_debout"
+  },
+  "sig": "BAKARY|Non, Awa. Pas d'animal, pas de farce. Je suis juste venu t'a#0"
+ },
+ "22": {
+  "poses": {
+   "AWA": "awa_pointe"
+  },
+  "sig": "AWA|Pour moi ? Bakary, si c'est encore un piège de ton ami Diasa#0"
+ },
+ "23": {
+  "poses": {
+   "BAKARY": "bak_v_tour_650014_02"
+  },
+  "sig": "BAKARY|Ouvre la boîte, Awa. S'il te plaît.#0"
+ },
+ "25": {
+  "poses": {
+   "AWA": "awa_mefiant"
+  },
+  "sig": "AWA|Un foulard en soie… ? Bakary, d'où vient ce tissu ? C'est de#0"
+ },
+ "29": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|C'est possible. Mais depuis que tu es installée en face de m#0"
+ },
+ "32": {
+  "poses": {
+   "AWA": "awa_bras_croises"
+  },
+  "sig": "AWA|Mais tu ES le voisin qui vend du thé ! Qu'est-ce que tu raco#0"
+ },
+ "34": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|Ce n'est pas une comédie, Awa. C'est ce que je ressens au fo#0"
  },
  "35": {
   "sig": "BAKARY|Ce n'est pas une comédie, Awa. C'est ce que je ressens au fo#1"
@@ -14,13 +74,40 @@
  "37": {
   "sig": "AWA|Ah ! La coupure de courant ! Bakary, garde tes distances ! N#0"
  },
+ "38": {
+  "poses": {
+   "BAKARY": "bak_mains_levees"
+  },
+  "sig": "BAKARY|Je ne bouge pas, Awa ! Maigre Énergie du Mali ! Pourquoi il #0"
+ },
+ "4": {
+  "poses": {
+   "DIASABI": "dia_sourire_auto"
+  },
+  "sig": "DIASABI|Oublie la lune ! Un homme de Bobo ne parle pas à la lune, il#0"
+ },
  "40": {
   "sig": "MOUSSA|Kôrô ! Kôrô Bakary ! Où vous êtes ?! C'est la panique au bou#1"
  },
  "43": {
   "sig": "MOUSSA|Kôrôbalé wou ! La voiture est là ! Au coin de la rue, cachée#1"
  },
+ "45": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|Reste derrière moi, Awa. Moussa, cours chercher Modibo et Di#0"
+ },
  "47": {
+  "poses": {
+   "BAKARY": "bak_mains_levees"
+  },
   "sig": "BAKARY|Qui est assis dans cette voiture ? Pourquoi ils viennent nou#0"
+ },
+ "48": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|Qui est assis dans cette voiture ? Pourquoi ils viennent nou#1"
  }
 }
