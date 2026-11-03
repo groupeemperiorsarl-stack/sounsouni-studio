@@ -8826,7 +8826,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_panique2": {
    "char": "MOUSSA",
@@ -8844,7 +8845,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_moue": {
    "char": "AWA",
@@ -8862,7 +8864,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_panique": {
    "char": "AWA",
@@ -8880,7 +8883,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_determine": {
    "char": "BAKARY",
@@ -8898,7 +8902,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_debout",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
