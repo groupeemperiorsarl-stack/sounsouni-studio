@@ -1,0 +1,159 @@
+TITRE: Les Plans de Bakary – Épisode 30 : Presque
+
+DÉCOR: KIOSQUE · soir · ambiance: grillons
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill]
+[BRUITAGE: the]
+
+BAKARY (inquiet · regarde: Modibo · voix: normal)
+{sueur} Van, je ne peux plus attendre. Chaque fois que je ferme les yeux, je vois son visage. Chaque fois que j'ouvre la bouche, c'est son nom qui veut sortir.
+
+MODIBO (sage · regarde: Bakary · voix: lentement)
+Alors n'attends plus, Bakarin. {sourire} La lune est belle ce soir. C'est le moment de vider ton sac et de lui parler.
+
+DIASABI (fier · regarde: Bakary · voix: crie)
+{bombe_torse} Oublie la lune ! Un homme de Bobo ne parle pas à la lune, il parle à la femme ! Bakary, si tu ne lui dis pas ce soir, je vais lui envoyer un deuxième poulet !
+
+BAKARY (panique · regarde: Diasabi · voix: crie)
+{non} Non ! Pas de poulet ! Pas de bananes ! {determine} Cette fois, je fais les choses proprement et avec élégance.
+
+PLAN: gros [Bakary debout, téléphone]
+[BRUITAGE: clic]
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Showroom · Foulard en soie « Nuit d'Afrique » · 12 500 FCFA · [Acheter]]
+
+PENSÉE BAKARY (determine · regarde: téléphone)
+Un foulard en soie sur Sounsouni… {sourire} C'est raffiné, c'est noble, c'est tout ce qu'une grande couturière comme elle mérite. Je vais le lui offrir sous le lampadaire.
+
+BAKARY (determine · regarde: Modibo · voix: normal)
+C'est commandé. Douze mille cinq cents francs sur l'application. Seydou me le livre dans deux minutes. {soupir} Souhaitez-moi bonne chance, les gars.
+
+MODIBO (sourire · regarde: Bakary · voix: normal)
+Bonne chance, mon frère. {hoche_tete} Sois juste sincère et sois toi-même.
+
+DIASABI (sourire_malin · regarde: Bakary · voix: normal)
+Et si elle crie… {clin_oeil} n'oublie pas le tou tou tou !
+[RÉACTION BAKARY: colere]
+[RÉACTION MODIBO: rire_retenu]
+
+DÉCOR: RUE · nuit · ambiance: grillons
+PLAN: large [Awa debout]
+[BRUITAGE: talons]
+
+PLAN: 3 s · gros Awa · {mefiant}
+
+PENSÉE AWA (mefiant · regarde: loin)
+{moue} C'est bizarre. La rue est calme, et le vendeur de thé ne fait aucun bruit depuis une heure. {penche_tete} Qu'est-ce qu'il fabrique encore avec son complice de Bobo ? Le silence de Bakary n'annonce jamais rien de bon.
+
+PLAN: large [Awa debout, Bakary marche]
+[BRUITAGE: pas]
+
+BAKARY (gene · regarde: Awa · voix: normal)
+{salue} I ni wula, Awa.
+
+AWA (froide · regarde: Bakary · voix: normal)
+{sursaut} Bakary ? Pourquoi tu marches doucement comme ça ? Qu'est-ce que tu veux encore ? Tu as encore un animal à faire courir dans mon atelier ?
+
+BAKARY (determine · regarde: Awa · voix: normal)
+{avance} Non, Awa. Pas d'animal, pas de farce. {sourire} Je suis juste venu t'apporter quelque chose.
+
+PLAN: objet cadeau
+[BRUITAGE: whoosh]
+
+BAKARY (neutre · regarde: Awa · voix: normal)
+Tiens. C'est pour toi. Je l'ai commandé sur Sounsouni exprès pour toi.
+
+AWA (surpris · regarde: Bakary · voix: normal)
+{surpris} Pour moi ? {moue} Bakary, si c'est encore un piège de ton ami Diasabi, je te jure que tu vas le regretter tout de suite.
+
+BAKARY (sourire · regarde: Awa · voix: chuchote)
+Ouvre la boîte, Awa. S'il te plaît.
+
+PLAN: 3 s · gros Awa · {choc}
+
+AWA (choc · regarde: cadeau · voix: lentement)
+{choc} Un foulard en soie… ? {mefiant} Bakary, d'où vient ce tissu ? C'est de la vraie soie de qualité ! Qu'est-ce que ça veut dire ?
+
+PENSÉE AWA (confus · regarde: Bakary)
+{penche_tete} Pourquoi il m'offre un cadeau aussi cher ? Qu'est-ce qui lui prend ? Il croit qu'un tissu en soie va me faire oublier le poulet d'hier ? Il a un comportement vraiment étrange ce soir.
+
+PLAN: deux [Bakary debout, Awa debout]
+
+BAKARY (neutre · regarde: Awa · voix: lentement)
+Je l'ai acheté parce que tu es la plus grande couturière du quartier, et tu mérites de ce qu'il y me de plus beau. {soupir} Awa, je sais qu'on se dispute tout le temps. Je sais que tu me trouves casse-pieds…
+
+AWA (froide · regarde: Bakary · voix: normal)
+{bombe_torse} Casse-pieds ? Tu es une catastrophe nationale, Bakary ! Tu transformes chaque journée en pagaille !
+
+BAKARY (determine · regarde: Awa · voix: lentement)
+{avance} C'est possible. Mais depuis que tu es installée en face de moi, mon monde a complètement changé. Je ne vois plus ma vie de la même manière.
+
+PLAN: gros [Bakary debout, Awa debout] · {POSE: Bakary tente de poser doucement sa main sur celle d'Awa, mais Awa retire brusquement sa main en faisant un grand pas en arrière, le visage figé par la stupéfaction et l'incompréhension}
+
+AWA (choc · regarde: Bakary · voix: crie)
+{recule} Hé ! Qu'est-ce qui te prend ?! {colere} Ne me touche pas ! Bakary, est-ce que tu as de la fièvre ? Tu es devenu fou ?
+
+BAKARY (gene · regarde: Awa · voix: chuchote)
+{sueur} Non, Awa… je n'ai pas de fièvre. Je veux juste que tu m'écoutes sans crier. Je ne veux plus être seulement le voisin qui te vend du thé.
+
+AWA (confus · regarde: Bakary · voix: normal)
+{penche_tete} Mais tu ES le voisin qui vend du thé ! {moue} Qu'est-ce que tu racontes depuis tout à l'heure ? Tu parles bizarrement, comme les comédiens dans les séries télévisées de l'après-midi ! Est-ce que tu as bu de la pommade au lieu de la mettre sur ta joue ?
+
+PENSÉE AWA (confus · regarde: Bakary)
+ Il a vraiment perdu la tête. Il me regarde avec des yeux écarquillés comme s'il voyait un fantôme. Qu'est-ce qu'il cherche à faire ?
+
+BAKARY (amoureux · regarde: Awa · voix: lentement)
+Ce n'est pas une comédie, Awa. C'est ce que je ressens au fond de moi. {determine} Awa, je… je t'…
+
+[BRUITAGE: grésillement]
+[BRUITAGE: tonnerre]
+[MUSIQUE: suspense]
+
+DÉCOR: RUE · nuit · ambiance: circulation
+PLAN: 3 s · large [Bakary debout, Awa debout] · {SCÈNE: le lampadaire au-dessus d'eux grésille fort puis s'éteint brusquement, plongeant toute la rue dans une obscurité totale, on ne voit plus que leurs silhouettes sombrement éclairées par la lune}
+
+AWA (panique · regarde: bas · voix: crie)
+{panique} Ah ! La coupure de courant ! Bakary, garde tes distances ! Ne t'approche pas d'un centimètre dans le noir !
+
+BAKARY (inquiet · regarde: bas · voix: crie)
+Je ne bouge pas, Awa ! {colere} Maigre Énergie du Mali ! Pourquoi il faut toujours que le courant coupe au moment le plus important ?!
+
+[BRUITAGE: pas]
+[BRUITAGE: essoufflé]
+
+MOUSSA (panique · regarde: Bakary · voix: au téléphone)
+ Kôrô ! Kôrô Bakary ! Où vous êtes ?! C'est la panique au bout de la rue !
+
+PLAN: large [Bakary debout, Awa debout, Moussa court]
+
+BAKARY (surpris · regarde: Moussa · voix: crie)
+Moussa ? Qu'est-ce qu'il y a ? Pourquoi tu cours comme si un lion te poursuivait ?
+
+MOUSSA (panique · regarde: Bakary · voix: vite)
+{sueur} Kôrôbalé wou ! La voiture est là ! {pointe} Au coin de la rue, cachée sous les grands manguiers, sans aucune lumière d'allumée ! La voiture noire est revenue !
+
+PLAN: 3 s · large [Bakary debout, Awa debout, Moussa debout] · {SCÈNE: au loin dans la rue sombre, on distingue la forme menaçante d'une grande voiture noire garée sous les arbres, les vitres complètement teintées et le moteur qui tourne sans bruit}
+[BRUITAGE: moteur]
+
+AWA (peur · regarde: loin · voix: chuchote)
+{tremble} La voiture noire… {choc} Bakary, qu'est-ce qu'ils fabriquent ? Qu'est-ce qu'ils nous veulent ?
+
+BAKARY (determine · regarde: loin · voix: normal)
+{avance} Reste derrière moi, Awa. Moussa, cours chercher Modibo et Diasabi ! Dis-leur de venir tout de suite avec les torches et les bâtons !
+
+PLAN: objet voiture
+[BRUITAGE: grésillement]
+[MUSIQUE: suspense]
+
+PENSÉE BAKARY (inquiet · regarde: voiture)
+Qui est assis dans cette voiture ? {colere} Pourquoi ils viennent nous espionner en pleine nuit ? Si c'est encore un coup de Karim, cette fois-ci ça ne va pas se passer comme ça !
+
+PLAN: 3 s · très gros Bakary · {determine}
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, la sécurité de vos commandes est assurée en un clic, même quand l'obscurité s'installe sur le quartier. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
