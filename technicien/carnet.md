@@ -13,6 +13,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Gemini · Aperçu bloqué par JSONDecodeError → une virgule en trop dans le fichier .choix.json de l'épisode → enlever la virgule dans le JSON.
 - 2026-10-23 · Gemini · Étape voix qui plante avec ModuleNotFoundError cv2 → un outil image importé en haut d'un fichier commun → importer cv2 et render uniquement au besoin dans les fonctions de rendu (déjà intégré par Claude).
 - 2026-10-23 · Gemini · L'aperçu réussit mais la vidéo échoue → l'étape voix n'est pas testée lors de la génération d'aperçu → vérifier les imports dans le moteur audio indépendamment du succès des images.
+- 2026-11-03 · Cerebras · symptôme → modification de code échoue parce que la chaîne « ancien » ne correspond pas exactement au fichier → cause → utilisation d'un texte de recherche inexact, incluant ou excluant des espaces ou des guillemets → remède → lire le fichier avec l'outil « lire » et copier‑coller la ligne exacte avant de lancer « essayer_code ».
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
@@ -49,3 +50,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Claude · Cri des grillons / cigales trop fort et stressant (épisode 18, scène de nuit d'Awa) → l'ancien son cricket.wav ressemblait à une alarme (earshot : « error buzz ») et restait à 10 dB seulement sous les voix → grillons fabriqués en code (studio/ambiances.py) et ambiance toujours 24 dB sous les voix (réglage ambiance_sous_voix) ; l'oreille (ecoute.txt) signale une scène aux aigus perçants.
 
 ## pour-claude
+- 2026-11-03 · Cerebras · symptôme → la modification fonctionnelle reste en branche séparée sans être appliquée → cause → omission de l'étape de fusion après un test réussi → remède → toujours proposer ou exécuter « fusionner » immédiatement après un essai réussi pour finaliser le correctif.
+
+## voix
+- 2026-11-03 · Cerebras · symptôme → échec de l'étape voix à cause d'un chemin TTS_PY inexistant → cause → variable STUDIO_TTS_PY pointe vers un répertoire qui n'existe pas sur le runner → remède → définir TTS_PY à « python » ou fournir un fallback valide dans studio/voices.py.
