@@ -8809,6 +8809,96 @@
    "depart": "mod_assis_sage",
    "mouth_auto": true,
    "props_auto": {}
+  },
+  "mou_panique": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "panique"
+   ],
+   "mouth": true,
+   "size": [
+    693,
+    1600
+   ],
+   "head_x": 0.392,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_rire",
+   "mouth_auto": true
+  },
+  "mou_panique2": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "panique"
+   ],
+   "mouth": true,
+   "size": [
+    610,
+    1600
+   ],
+   "head_x": 0.443,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_rire",
+   "mouth_auto": true
+  },
+  "awa_moue": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "moue"
+   ],
+   "mouth": true,
+   "size": [
+    473,
+    1600
+   ],
+   "head_x": 0.447,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "mouth_auto": true
+  },
+  "awa_panique": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "panique"
+   ],
+   "mouth": true,
+   "size": [
+    549,
+    1600
+   ],
+   "head_x": 0.379,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "mouth_auto": true
+  },
+  "bak_determine": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "determine"
+   ],
+   "mouth": true,
+   "size": [
+    565,
+    1600
+   ],
+   "head_x": 0.495,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
   }
  },
  "decors": {
@@ -8963,6 +9053,33 @@
     "DIASABI"
    ],
    "texte": "dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arrive au loin avec Mimi, l'air curieux",
+   "size": [
+    1080,
+    1935
+   ],
+   "genere": "gemini"
+  },
+  "au_loin_dans_la_rue_sombre_on_distingue_la_forme_menacante_d_une_grande_voiture_noire_garee_sous_les_arbres_les_vitres_completement_teintees_et_le_moteur_qui_tourne_sans_bruit": {
+   "decor": "RUE",
+   "persos": [
+    "BAKARY",
+    "AWA",
+    "MOUSSA"
+   ],
+   "texte": "au loin dans la rue sombre, on distingue la forme menaçante d'une grande voiture noire garée sous les arbres, les vitres complètement teintées et le moteur qui tourne sans bruit",
+   "size": [
+    1080,
+    1935
+   ],
+   "genere": "gemini"
+  },
+  "le_lampadaire_au_dessus_d_eux_gresille_fort_puis_s_eteint_brusquement_plongeant_toute_la_rue_dans_une_obscurite_totale_on_ne_voit_plus_que_leurs_silhouettes_sombrement_eclairees_par_la_lune": {
+   "decor": "RUE",
+   "persos": [
+    "BAKARY",
+    "AWA"
+   ],
+   "texte": "le lampadaire au-dessus d'eux grésille fort puis s'éteint brusquement, plongeant toute la rue dans une obscurité totale, on ne voit plus que leurs silhouettes sombrement éclairées par la lune",
    "size": [
     1080,
     1935
