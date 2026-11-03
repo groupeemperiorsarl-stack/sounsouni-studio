@@ -62,5 +62,13 @@
   "themes": {
    "relecture": 2
   }
+ },
+ "Groq gpt-oss-120b": {
+  "sessions": 1,
+  "reussies": 1,
+  "pouces_haut": 0,
+  "pouces_bas": 0,
+  "etapes": 11,
+  "themes": {}
  }
 }
