@@ -20,6 +20,12 @@
   },
   "sig": "DIASABI|Et si elle crie… n'oublie pas le tou tou tou !#4"
  },
+ "15": {
+  "poses": {
+   "AWA": "awa_moue"
+  },
+  "sig": "AWA|C'est bizarre. La rue est calme, et le vendeur de thé ne fai#0"
+ },
  "16": {
   "sig": "AWA|C'est bizarre. La rue est calme, et le vendeur de thé ne fai#1"
  },
@@ -53,6 +59,18 @@
   },
   "sig": "BAKARY|C'est possible. Mais depuis que tu es installée en face de m#0"
  },
+ "30": {
+  "poses": {
+   "AWA": "awa_choc2"
+  },
+  "sig": "AWA|Hé ! Qu'est-ce qui te prend ?! Ne me touche pas ! Bakary, es#0"
+ },
+ "31": {
+  "poses": {
+   "BAKARY": "bak_mains_levees"
+  },
+  "sig": "BAKARY|Non, Awa… je n'ai pas de fièvre. Je veux juste que tu m'écou#0"
+ },
  "32": {
   "poses": {
    "AWA": "awa_bras_croises"
@@ -80,6 +98,12 @@
   },
   "sig": "BAKARY|Je ne bouge pas, Awa ! Maigre Énergie du Mali ! Pourquoi il #0"
  },
+ "39": {
+  "poses": {
+   "MOUSSA": "mou_panique2"
+  },
+  "sig": "MOUSSA|Kôrô ! Kôrô Bakary ! Où vous êtes ?! C'est la panique au bou#0"
+ },
  "4": {
   "poses": {
    "DIASABI": "dia_sourire_auto"
@@ -89,8 +113,26 @@
  "40": {
   "sig": "MOUSSA|Kôrô ! Kôrô Bakary ! Où vous êtes ?! C'est la panique au bou#1"
  },
+ "41": {
+  "poses": {
+   "BAKARY": "bak_panique"
+  },
+  "sig": "BAKARY|Moussa ? Qu'est-ce qu'il y a ? Pourquoi tu cours comme si un#0"
+ },
+ "42": {
+  "poses": {
+   "MOUSSA": "mou_panique2"
+  },
+  "sig": "MOUSSA|Kôrôbalé wou ! La voiture est là ! Au coin de la rue, cachée#0"
+ },
  "43": {
   "sig": "MOUSSA|Kôrôbalé wou ! La voiture est là ! Au coin de la rue, cachée#1"
+ },
+ "44": {
+  "poses": {
+   "AWA": "awa_debout"
+  },
+  "sig": "AWA|La voiture noire… Bakary, qu'est-ce qu'ils fabriquent ? Qu'e#0"
  },
  "45": {
   "poses": {
@@ -109,5 +151,11 @@
    "BAKARY": "bak_determine"
   },
   "sig": "BAKARY|Qui est assis dans cette voiture ? Pourquoi ils viennent nou#1"
+ },
+ "8": {
+  "poses": {
+   "BAKARY": "bak_tel_montre"
+  },
+  "sig": "BAKARY|C'est commandé. Douze mille cinq cents francs sur l'applicat#0"
  }
 }
