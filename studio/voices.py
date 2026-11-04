@@ -3,7 +3,7 @@ nettoyage des fins ratées, accélération légère, effets (téléphone, pensé
 import os, json, hashlib, subprocess, difflib, re, unicodedata
 import numpy as np, soundfile as sf
 A = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
-TTS_PY = os.environ.get('STUDIO_TTS_PY', '/home/claude/tts/venv/bin/python')
+TTS_PY = os.environ.get('STUDIO_TTS_PY', 'python')
 WORKER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tts_worker.py')
 SR = 24000; TEMPO = 1.1
 
