@@ -15,6 +15,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-23 · Gemini · L'aperçu réussit mais la vidéo échoue → l'étape voix n'est pas testée lors de la génération d'aperçu → vérifier les imports dans le moteur audio indépendamment du succès des images.
 - 2026-11-03 · Cerebras · symptôme → modification de code échoue parce que la chaîne « ancien » ne correspond pas exactement au fichier → cause → utilisation d'un texte de recherche inexact, incluant ou excluant des espaces ou des guillemets → remède → lire le fichier avec l'outil « lire » et copier‑coller la ligne exacte avant de lancer « essayer_code ».
 - 2026-11-04 · Cerebras · symptôme → la fabrication s'arrête en attente d'un outil externe indisponible → cause → dépendance à un serveur ou à un binaire absent sur le runner → remède → inclure les dépendances critiques (ex. ffmpeg) dans le dépôt ou fournir un script d'installation rapide
+- 2026-11-04 · Gemini · symptôme → l'outil lancer refuse de démarrer une vidéo → cause → protection de sécurité interdisant le lancement automatique de tâches lourdes → remède → utiliser l'outil proposer avec action='video' pour solliciter l'accord explicite de l'utilisateur.
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).

@@ -54,13 +54,14 @@
   }
  },
  "Gemini gemini-3-flash-preview": {
-  "sessions": 2,
-  "reussies": 2,
+  "sessions": 3,
+  "reussies": 3,
   "pouces_haut": 0,
   "pouces_bas": 0,
-  "etapes": 9,
+  "etapes": 16,
   "themes": {
-   "relecture": 2
+   "relecture": 2,
+   "voix": 1
   }
  },
  "Groq gpt-oss-120b": {
