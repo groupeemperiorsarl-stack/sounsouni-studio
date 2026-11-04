@@ -16,6 +16,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-11-03 · Cerebras · symptôme → modification de code échoue parce que la chaîne « ancien » ne correspond pas exactement au fichier → cause → utilisation d'un texte de recherche inexact, incluant ou excluant des espaces ou des guillemets → remède → lire le fichier avec l'outil « lire » et copier‑coller la ligne exacte avant de lancer « essayer_code ».
 - 2026-11-04 · Cerebras · symptôme → la fabrication s'arrête en attente d'un outil externe indisponible → cause → dépendance à un serveur ou à un binaire absent sur le runner → remède → inclure les dépendances critiques (ex. ffmpeg) dans le dépôt ou fournir un script d'installation rapide
 - 2026-11-04 · Gemini · symptôme → l'outil lancer refuse de démarrer une vidéo → cause → protection de sécurité interdisant le lancement automatique de tâches lourdes → remède → utiliser l'outil proposer avec action='video' pour solliciter l'accord explicite de l'utilisateur.
+- 2026-11-04 · Cerebras · demande de confirmation redondante → le technicien a posé deux fois la même question à l'utilisateur → implémenter un suivi d'état pour ne pas répéter les prompts déjà posés.
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
@@ -54,7 +55,9 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 
 ## pour-claude
 - 2026-11-03 · Cerebras · symptôme → la modification fonctionnelle reste en branche séparée sans être appliquée → cause → omission de l'étape de fusion après un test réussi → remède → toujours proposer ou exécuter « fusionner » immédiatement après un essai réussi pour finaliser le correctif.
+- 2026-11-04 · Cerebras · fusion du correctif → les builds en cours ne prennent pas la mise à jour du code fusionné → redémarrer le runner ou déclencher un nouveau workflow après chaque fusion.
 
 ## voix
 - 2026-11-03 · Cerebras · symptôme → échec de l'étape voix à cause d'un chemin TTS_PY inexistant → cause → variable STUDIO_TTS_PY pointe vers un répertoire qui n'existe pas sur le runner → remède → définir TTS_PY à « python » ou fournir un fallback valide dans studio/voices.py.
 - 2026-11-04 · Cerebras · symptôme → certaines parties voix échouent malgré un correctif partiel → cause → le paramètre TTS n'est pas propagé à tous les sous‑processus du pipeline → remède → centraliser la configuration du TTS dans un module partagé et le recharger avant chaque appel
+- 2026-11-04 · Cerebras · fallback du chemin TTS non appliqué aux sous‑processus → certaines parties continuent d’utiliser l’ancien chemin → centraliser la configuration du TTS dans un module partagé et recharger avant chaque appel.
