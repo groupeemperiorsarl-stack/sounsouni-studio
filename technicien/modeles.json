@@ -72,13 +72,13 @@
   "themes": {}
  },
  "Cerebras gpt-oss-120b": {
-  "sessions": 1,
+  "sessions": 2,
   "reussies": 0,
   "pouces_haut": 0,
   "pouces_bas": 0,
-  "etapes": 12,
+  "etapes": 19,
   "themes": {
-   "voix": 1
+   "voix": 2
   }
  }
 }

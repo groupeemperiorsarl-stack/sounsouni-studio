@@ -14,6 +14,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-23 · Gemini · Étape voix qui plante avec ModuleNotFoundError cv2 → un outil image importé en haut d'un fichier commun → importer cv2 et render uniquement au besoin dans les fonctions de rendu (déjà intégré par Claude).
 - 2026-10-23 · Gemini · L'aperçu réussit mais la vidéo échoue → l'étape voix n'est pas testée lors de la génération d'aperçu → vérifier les imports dans le moteur audio indépendamment du succès des images.
 - 2026-11-03 · Cerebras · symptôme → modification de code échoue parce que la chaîne « ancien » ne correspond pas exactement au fichier → cause → utilisation d'un texte de recherche inexact, incluant ou excluant des espaces ou des guillemets → remède → lire le fichier avec l'outil « lire » et copier‑coller la ligne exacte avant de lancer « essayer_code ».
+- 2026-11-04 · Cerebras · symptôme → la fabrication s'arrête en attente d'un outil externe indisponible → cause → dépendance à un serveur ou à un binaire absent sur le runner → remède → inclure les dépendances critiques (ex. ffmpeg) dans le dépôt ou fournir un script d'installation rapide
 
 ## format
 - 2026-10-22 · Claude · Groq répond 429 « try again in Xs » → limite par minute → attendre le temps demandé ; « per day » → passer à l'IA suivante (Cerebras, OpenRouter, Gemini, puis modèle libre sur la machine).
@@ -27,6 +28,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-23 · Gemini · Quota journalier Gemini épuisé → limite de l'offre gratuite → attendre le reset de 8h du matin (heure Bamako) ou changer de modèle.
 - 2026-10-26 · Gemini · L'outil `regarder` échoue sur un fichier technique → Indisponibilité temporaire ou JSON mal formé → Consulter le `journal` de la fabrication pour voir le texte brut produit par l'étape.
 - 2026-11-02 · Gemini · Numéro d'épisode introuvable dans `demandes` → l'outil ne liste que les tickets récents ou actifs → utiliser `chercher` dans `docs/SAISON.md` pour retrouver le synopsis prévu.
+- 2026-11-04 · Cerebras · symptôme → l'outil « proposer » reste bloqué en attente de confirmation de fusion → cause → aucune automatisation du flux de validation après un test réussi → remède → automatiser la proposition et la fusion dès que le test indique succès complet
 
 ## images
 - 2026-10-22 · Claude · LivePortrait plante sans « onnx » → paquet manquant → ajouté à l'installation (studio/lp/install.sh).
@@ -54,3 +56,4 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 
 ## voix
 - 2026-11-03 · Cerebras · symptôme → échec de l'étape voix à cause d'un chemin TTS_PY inexistant → cause → variable STUDIO_TTS_PY pointe vers un répertoire qui n'existe pas sur le runner → remède → définir TTS_PY à « python » ou fournir un fallback valide dans studio/voices.py.
+- 2026-11-04 · Cerebras · symptôme → certaines parties voix échouent malgré un correctif partiel → cause → le paramètre TTS n'est pas propagé à tous les sous‑processus du pipeline → remède → centraliser la configuration du TTS dans un module partagé et le recharger avant chaque appel
