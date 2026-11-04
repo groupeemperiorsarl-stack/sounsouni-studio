@@ -65,11 +65,11 @@
   }
  },
  "Groq gpt-oss-120b": {
-  "sessions": 4,
-  "reussies": 4,
+  "sessions": 5,
+  "reussies": 5,
   "pouces_haut": 0,
   "pouces_bas": 0,
-  "etapes": 25,
+  "etapes": 26,
   "themes": {}
  },
  "Cerebras gpt-oss-120b": {
