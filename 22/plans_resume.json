@@ -1,0 +1,1753 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "CABINE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 25 : Fatim sait",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "CABINE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_explique@--0",
+"x": 0.3,
+"taille": 0.62,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire@++0",
+"x": 0.8,
+"taille": 0.63,
+"retourne": false
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 2.8,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Sali… je n'ai pas fermé l'œil de la nuit.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_serieux@--0",
+"x": 0.24,
+"taille": 0.62,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire@++0",
+"x": 0.76,
+"taille": 0.63,
+"retourne": false
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:07.2",
+"duree": 4.6,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "À cause de Bakary ? Tu penses encore à cette histoire de commande annulée ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_inquiet",
+"x": 0.63,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:11.8",
+"duree": 8.5,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Ce n'est plus la commande, Sali. La vidéo de Moussa avec la gifle… la façon dont Bakary tremblait devant elle… et cette pommade livrée en cachette. Tout est clair dans ma tête.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_triste",
+"x": 0.42,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": 1.07,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:20.3",
+"duree": 5.2,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "Fatim, ma fille… quand les yeux refusent de voir, le cœur souffre deux fois.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_inquiet",
+"x": 0.63,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:25.5",
+"duree": 6.1,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Mon cœur a compris. Bakary m'a dit la vérité en face, avec respect. Maintenant, c'est à moi de régler ça comme une femme debout.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_serieux",
+"x": 0.4,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": 1.07,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:31.6",
+"duree": 4.1,
+"type": "line",
+"decor": "CABINE",
+"parle": "SALI",
+"texte": "Tu vas faire quoi ? Tu vas retourner voir Bakary ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_choc",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": -0.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:35.7",
+"duree": 3.9,
+"type": "line",
+"decor": "CABINE",
+"parle": "FATIM",
+"texte": "Non. Bakary a déjà parlé. Je vais voir la reine de l'atelier en face.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_serieux",
+"x": 0.4,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": 1.07,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:39.6",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.2,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.61,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++-",
+"x": 0.91,
+"taille": 0.4,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:42.0",
+"duree": 3.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van… depuis hier, l'air du quartier est bizarre.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_pensif@---",
+"x": 0.12,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.5,
+"taille": 0.28,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_gene@--0",
+"x": 0.88,
+"taille": 0.41,
+"retourne": true
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:45.0",
+"duree": 4.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "C'est l'air d'un homme qui a échappé aux bananes de Diasabi, Bakarin. Remercie le ciel.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "0:49.3",
+"duree": 4.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Mes bananes étaient d'une qualité royale ! À Bobo, on dit : celui qui donne la nourriture sème la paix !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_main_coeur",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "0:54.1",
+"duree": 2.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Attendez… Regardez là-bas.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:56.4",
+"duree": 3.0,
+"type": "scene",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 15,
+"debut": "0:59.4",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.2,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.61,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++-",
+"x": 0.91,
+"taille": 0.4,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "1:01.8",
+"duree": 2.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "C'est Fatim. Elle a fermé sa cabine de crédit en plein matin.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@---",
+"x": 0.14,
+"taille": 0.37,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.55,
+"taille": 0.29,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_main_coeur@++-",
+"x": 0.91,
+"taille": 0.42,
+"retourne": false
+}
+]
+},
+{
+"plan": 17,
+"debut": "1:04.6",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Elle traverse la rue… Elle ne regarde même pas vers le kiosque. Elle va droit chez Awa !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 18,
+"debut": "1:09.6",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Oh oh ! À Bobo, quand deux lionnes marchent l'une vers l'autre… il faut monter sur un arbre !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_choc",
+"x": 0.63,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "1:14.6",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Reste ici, Bakarin. Ce n'est plus ton terrain. Les femmes règlent les comptes entre elles.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "1:19.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.2,
+"taille": 0.36,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.54,
+"taille": 0.41,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre@++0",
+"x": 0.84,
+"taille": 0.47,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:22.1",
+"duree": 4.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "SEYDOU",
+"texte": "Aw ni sogoma, Tantie Awa ! Livraison Sounsouni pour l'atelier ! Vos dix bobines de fil doré et les fermetures éclair.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@+++",
+"x": 0.2,
+"taille": 0.36,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.54,
+"taille": 0.41,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre@++0",
+"x": 0.84,
+"taille": 0.47,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:26.9",
+"duree": 4.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Sounsouni · Livraison confirmée ✔ · Mercerie Centrale · 10 bobines de fil doré · 15 000 FCFA",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 23,
+"debut": "1:30.9",
+"duree": 8.9,
+"type": "pensee_ecran",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Mes fournitures de couture livrées à l'heure… parfait. Les dix bobines sont bien là.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 24,
+"debut": "1:39.9",
+"duree": 4.4,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Merci Seydou. C'est validé sur l'application. Tu es toujours rapide.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:44.3",
+"duree": 4.0,
+"type": "line",
+"decor": "ATELIER",
+"parle": "SEYDOU",
+"texte": "Avec Sounsouni, pas de retard ! Bonne journée à l'atelier !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 26,
+"debut": "1:48.3",
+"duree": 3.0,
+"type": "scene",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 27,
+"debut": "1:51.3",
+"duree": 10.1,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Fatim… Elle vient ici. Et elle n'a pas l'air de venir pour un pagne. Mimi ne doit pas entendre ça.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_mefiant@--+",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 28,
+"debut": "2:01.4",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.3,
+"taille": 0.52,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.8,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 29,
+"debut": "2:03.8",
+"duree": 5.0,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Mimi. Prends le pagne bleu de Tantie Kadi et apporte-le lui tout de suite pour l'essayage de l'ourlet.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_serieux@--0",
+"x": 0.26,
+"taille": 0.52,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.78,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 30,
+"debut": "2:08.7",
+"duree": 3.3,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Maintenant, Tantie ? Mais vous aviez dit cet après-midi…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_debout",
+"x": 0.57,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 31,
+"debut": "2:12.1",
+"duree": 3.7,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "J'ai dit maintenant. Vas-y sans traîner.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "2:15.8",
+"duree": 1.1,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "D'accord, Tantie Awa. J'y vais !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_debout",
+"x": 0.57,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 33,
+"debut": "2:16.9",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.19,
+"taille": 0.65,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_explique@--0",
+"x": 0.7,
+"taille": 0.62,
+"retourne": true
+}
+]
+},
+{
+"plan": 34,
+"debut": "2:19.3",
+"duree": 1.3,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "I ni sogoma, Awa.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis@--+",
+"x": 0.26,
+"taille": 0.52,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_serieux@++-",
+"x": 0.77,
+"taille": 0.62,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "2:20.6",
+"duree": 8.3,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Fatim ? I ni sogoma. Tu viens pour ta tenue de fiançailles ? Tu l'as pourtant annulée hier soir sur l'application.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_froide@--+",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 36,
+"debut": "2:28.9",
+"duree": 4.2,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Non. Je ne viens pas pour la robe. Je viens pour ce qui ne s'annule pas d'un clic.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.69,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 37,
+"debut": "2:33.2",
+"duree": 5.4,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Si tu as un problème avec ton crédit de téléphone, c'est dans ta cabine que ça se règle. Pas ici.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_mefiant",
+"x": 0.29,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": 1.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 38,
+"debut": "2:38.6",
+"duree": 6.8,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Regarde-moi dans les yeux, Awa. Arrête de faire semblant. Bakary est venu me voir hier soir. Il m'a dit en face que son cœur était déjà pris.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_triste",
+"x": 0.73,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "2:45.3",
+"duree": 6.1,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Et alors ? Qu'est-ce que ça a à voir avec moi ? Bakary fait sa vie, je fais la mienne.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_machine_panique",
+"x": 0.16,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": 1.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "2:51.4",
+"duree": 8.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Ne me prends pas pour une sotte. Le bouquet au dîner de mariage, que tu as jeté droit sur lui. La gifle de l'autre jour où tu tremblais autant que lui. Et la pommade livrée avec un mot… Tu crois que le quartier est aveugle ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_triste",
+"x": 0.73,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 41,
+"debut": "3:00.4",
+"duree": 8.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Fatim, mesure tes paroles ! Tu es dans mon atelier ! Bakary n'est qu'un simple vendeur de thé d'en face ! Un charbonnier ! Moi, Awa, je n'ai jamais rien demandé à ce garçon !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": 1.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "3:09.0",
+"duree": 8.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Un simple vendeur de thé ? Alors pourquoi tu le regardes à travers tes rideaux chaque fois qu'une cliente lui parle ? Pourquoi tu as refusé ses gâteaux pour ensuite lui envoyer une pommade pour sa joue ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.66,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "3:17.9",
+"duree": 6.8,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "C'était… c'était par politesse ! Pour ne rien lui devoir ! Je te dis qu'il n'y a rien entre lui et moi ! Rien du tout !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_machine_panique",
+"x": 0.16,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": 1.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 44,
+"debut": "3:24.7",
+"duree": 9.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Tu as beaucoup de fierté, Awa. Trop de fierté. Bakary est un homme bon. Il est maladroit, il est naïf avec les idées de Diasabi, mais son cœur est pur comme de l'eau de source. Et cet homme-là, il ne voit que toi.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.66,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 45,
+"debut": "3:34.3",
+"duree": 2.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_pensive",
+"x": 0.5,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "3:36.3",
+"duree": 7.5,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Moi, j'étais prête à l'aimer de toutes mes forces. J'étais prête à lui donner un foyer doux. Mais sa porte est fermée, parce que tu es assise sur le pas de sa porte.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_serieux",
+"x": 0.71,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 47,
+"debut": "3:43.8",
+"duree": 3.3,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Je ne retiens personne. Il est libre.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": 1.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "3:47.1",
+"duree": 6.5,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Alors écoute-moi bien, couturière. Si tu l'aimes, dis-le-lui. Ouvre ta bouche, avale ton orgueil et dis-le-lui !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_serieux",
+"x": 0.71,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 49,
+"debut": "3:53.5",
+"duree": 1.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Quoi… ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_machine_panique",
+"x": 0.16,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_dos",
+"x": 1.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 50,
+"debut": "3:55.2",
+"duree": 10.5,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "Et si tu ne l'aimes pas… si tu as trop honte d'un vendeur de thé pour ton grand bazin doré… alors laisse-le tranquille. Arrête de le tourmenter. Ne joue plus avec son cœur. Un homme comme Bakary ne mérite pas de souffrir pour un fantôme.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.69,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 51,
+"debut": "4:05.7",
+"duree": 3.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains@++-",
+"x": 0.69,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 52,
+"debut": "4:08.7",
+"duree": 2.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "FATIM",
+"texte": "J'ai fini. Je retourne à ma cabine.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.69,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 53,
+"debut": "4:11.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01",
+"x": 0.5,
+"taille": 0.72,
+"retourne": false
+}
+]
+},
+{
+"plan": 54,
+"debut": "4:13.7",
+"duree": 3.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_debout",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 55,
+"debut": "4:16.7",
+"duree": 4.8,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Venir me faire la morale dans mon propre atelier ! Pour qui elle se prend, cette Fatim ?!",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.43,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 56,
+"debut": "4:21.5",
+"duree": 4.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "« Avale ton orgueil… » Mon orgueil ?! Je suis Awa Couture ! Je n'ai de comptes à rendre à personne !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pensive",
+"x": 0.62,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 57,
+"debut": "4:26.5",
+"duree": 3.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_mefiant",
+"x": 0.44,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 58,
+"debut": "4:29.5",
+"duree": 6.7,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Et Bakary… il croit vraiment que tout le quartier tourne autour de lui ? On verra bien qui s'en va et qui reste.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_determine",
+"x": 0.44,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 59,
+"debut": "4:36.2",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_explique@--+",
+"x": 0.44,
+"taille": 0.37,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@---",
+"x": 0.5,
+"taille": 0.46,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.27,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++-",
+"x": 0.83,
+"taille": 0.64,
+"retourne": false
+}
+]
+},
+{
+"plan": 60,
+"debut": "4:38.6",
+"duree": 1.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Fatim… ça va ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_salue@--+",
+"x": 0.44,
+"taille": 0.37,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.46,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@---",
+"x": 0.17,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_gene@---",
+"x": 0.83,
+"taille": 0.64,
+"retourne": true
+}
+]
+},
+{
+"plan": 61,
+"debut": "4:39.9",
+"duree": 2.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_serieux",
+"x": 0.55,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 62,
+"debut": "4:41.9",
+"duree": 2.5,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "FATIM",
+"texte": "Ça va, Bakary. La vie continue.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.69,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 63,
+"debut": "4:44.4",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.2,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.61,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++-",
+"x": 0.91,
+"taille": 0.4,
+"retourne": false
+}
+]
+},
+{
+"plan": 64,
+"debut": "4:46.8",
+"duree": 4.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van… elle avait le visage d'une reine qui a perdu une bataille mais qui garde sa couronne.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@---",
+"x": 0.13,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.52,
+"taille": 0.27,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_gene@--0",
+"x": 0.89,
+"taille": 0.4,
+"retourne": true
+}
+]
+},
+{
+"plan": 65,
+"debut": "4:51.0",
+"duree": 6.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "C'est exactement ça, Bakarin. Une femme digne qui s'en va fait plus de bruit que le tonnerre. Respecte son silence.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 66,
+"debut": "4:57.0",
+"duree": 2.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Et maintenant… qu'est-ce qui va se passer à l'atelier ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_pensif",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 67,
+"debut": "4:59.9",
+"duree": 4.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Je ne sais pas, Diasabi. Mais j'ai l'impression que plus rien ne sera comme avant.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 68,
+"debut": "5:04.7",
+"duree": 2.6,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 69,
+"debut": "5:07.3",
+"duree": 8.4,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, les livraisons se font sans détour, et la vérité finit toujours par se faire entendre. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 70,
+"debut": "5:15.8",
+"duree": 4.7,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 71,
+"debut": "5:20.5",
+"duree": 3.0,
+"type": "endcard",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

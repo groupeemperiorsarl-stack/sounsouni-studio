@@ -1,0 +1,101 @@
+{
+ "resume": "L'histoire est très drôle et bien rythmée. Deux incohérences de mise en scène textuelle sont à corriger : Seydou qui dit « I ni sogoma » en pleine nuit, et Diasabi qui réapparaît au kiosque sans entrer en marchant après avoir fui. L'aperçu est globalement bon, mais la gifle et le geste de Bakary manquent d'images sur mesure, et quelques poses de personnages sont à ajuster pour la continuité.",
+ "problemes": [
+  {
+   "plan": 58,
+   "moment": "3:20",
+   "gravite": "fort",
+   "quoi": "Seydou dit « I ni sogoma » (bonjour le matin) alors que la scène se déroule la nuit.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "SEYDOU (salue · regarde: Bakary · voix: normal)\nI ni sogoma ! Livraison Sounsouni pour le kiosque de Bakary !",
+     "nouveau": "SEYDOU (salue · regarde: Bakary · voix: normal)\nAw ni su ! Livraison Sounsouni pour le kiosque de Bakary !",
+     "pourquoi": "Le décor est la nuit : Seydou doit saluer le groupe avec « Aw ni su » (bonsoir) et non « I ni sogoma » (bonjour le matin)."
+    },
+    {
+     "type": "note",
+     "theme": "format",
+     "texte": "salutation bambara selon l'heure → confusion jour/nuit (sogoma la nuit) → toujours accorder la formule au décor (sogoma = matin, tile = jour, wula = fin d'après-midi, su = nuit).",
+     "pourquoi": "Garantir la cohérence entre le moment du décor et la salutation en bambara."
+    }
+   ]
+  },
+  {
+   "plan": 62,
+   "moment": "3:35",
+   "gravite": "moyen",
+   "quoi": "Diasabi apparaît brusquement déjà debout au kiosque sans bruit de pas, alors qu'il s'était enfui poursuivi par Sali.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "PLAN: large [Bakary debout, Modibo sur le banc, Seydou debout, Diasabi debout]\n\nDIASABI (fier · regarde: Bakary · voix: crie)\nTu vois ?! La science de Bobo marche à tous les coups !",
+     "nouveau": "PLAN: large [Bakary debout, Modibo sur le banc, Seydou debout, Diasabi marche]\n[BRUITAGE: pas]\n\nDIASABI (fier · regarde: Bakary · voix: crie)\nTu vois ?! La science de Bobo marche à tous les coups !",
+     "pourquoi": "Faire entrer Diasabi en marchant avec des bruits de pas pour marquer son retour au kiosque après sa fuite."
+    }
+   ]
+  },
+  {
+   "plan": 36,
+   "moment": "2:09",
+   "gravite": "fort",
+   "quoi": "Les images clés de la scène d'action (Bakary qui tape les fesses et Awa qui donne la gifle) sont absentes des poses disponibles.",
+   "actions": [
+    {
+     "type": "fiche",
+     "pourquoi": "Générer les images sur mesure pour l'action du tape-fesses et de la gifle géante."
+    }
+   ]
+  },
+  {
+   "plan": 5,
+   "moment": "0:14",
+   "gravite": "moyen",
+   "quoi": "Bakary se tient déjà la joue (pose de gifle reçue) dès le matin au kiosque.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 5,
+     "qui": "BAKARY",
+     "pose": "bak_supplie",
+     "pourquoi": "Bakary est juste gêné et ne doit pas se tenir la joue avant la gifle.",
+     "sig": "BAKARY|I ni sogoma, Diasabi.#0"
+    }
+   ]
+  },
+  {
+   "plan": 53,
+   "moment": "2:59",
+   "gravite": "moyen",
+   "quoi": "Awa se retrouve debout d'un coup dans l'atelier puis se rassied au plan suivant.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 53,
+     "qui": "AWA",
+     "pose": "awa_assise_chaise",
+     "pourquoi": "Awa doit rester assise à sa table de couture pendant toute la scène.",
+     "sig": "AWA|Mimi ! Encore un « tou » et tu couds toute seule jusqu'à dem#0"
+    }
+   ]
+  },
+  {
+   "plan": 35,
+   "moment": "2:07",
+   "gravite": "petit",
+   "quoi": "Bakary reste en pose neutre au lieu de porter ses mains vers la bouche pour souffler.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 35,
+     "qui": "BAKARY",
+     "pose": "bak_mains_bouche",
+     "pourquoi": "Mettre les mains près de la bouche pour illustrer le souffle 'tou tou tou'.",
+     "sig": "BAKARY|Tou… tou… tou…#0"
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.7-flash + gemini-3.6-flash",
+ "date": "2026-10-28 20:00"
+}

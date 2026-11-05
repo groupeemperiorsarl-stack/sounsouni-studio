@@ -1,0 +1,84 @@
+{
+ "items": [
+  {
+   "type": "scene",
+   "perso": "AWA+BAKARY",
+   "persos": [
+    "AWA",
+    "BAKARY"
+   ],
+   "emo": "pose:awa_donne_une_enorme_gifle_a_bakary_sa_main_frappe_la_joue_de_bakary_la_tete_de_bakary_part_sur_le_cote_sa_joue_devient_tres_rouge",
+   "texte": "Awa donne une énorme gifle à Bakary, sa main frappe la joue de Bakary, la tête de Bakary part sur le côté, sa joue devient très rouge",
+   "ou": [
+    "scène à deux"
+   ],
+   "n": 1,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "fichiers_ref": [
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_bak_debout.jpg"
+   ]
+  },
+  {
+   "type": "scene",
+   "perso": "BAKARY+AWA",
+   "persos": [
+    "BAKARY",
+    "AWA"
+   ],
+   "emo": "pose:bakary_tape_les_fesses_d_awa_avec_sa_main_ouverte_awa_sursaute_les_yeux_ecarquilles_la_bouche_grande_ouverte",
+   "texte": "Bakary tape les fesses d'Awa avec sa main ouverte, Awa sursaute, les yeux écarquillés, la bouche grande ouverte",
+   "ou": [
+    "scène à deux"
+   ],
+   "n": 2,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg",
+   "fichiers_ref": [
+    "ref_bak_debout.jpg",
+    "ref_awa_v_action_659144_01.jpg"
+   ]
+  }
+ ],
+ "groupes": [
+  {
+   "g": 1,
+   "items": [
+    1
+   ],
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image verticale où ces 2 personnages sont ENSEMBLE, en train de faire cette action, bien visible et un peu exagérée comme dans un dessin animé : Awa donne une énorme gifle à Bakary, sa main frappe la joue de Bakary, la tête de Bakary part sur le côté, sa joue devient très rouge. On voit les deux en entier de la tête aux pieds (ou au moins jusqu'aux genoux), de profil ou de trois-quarts, l'un face à l'autre, les gestes et les visages bien lisibles. Fond gris clair uni, sans décor, sans texte, sans autre personnage.",
+   "refs": [
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_bak_debout.jpg"
+   ],
+   "joindre": [
+    "image_1_1.jpg",
+    "image_1_2.jpg"
+   ],
+   "titres": [
+    "Scène à deux : Awa + Bakary — Awa donne une énorme gifle à Bakary, sa main frappe la joue de Bakary, la tête d"
+   ]
+  },
+  {
+   "g": 2,
+   "items": [
+    2
+   ],
+   "fichier_ref": "ref_bak_debout.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) ; image 2 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image verticale où ces 2 personnages sont ENSEMBLE, en train de faire cette action, bien visible et un peu exagérée comme dans un dessin animé : Bakary tape les fesses d'Awa avec sa main ouverte, Awa sursaute, les yeux écarquillés, la bouche grande ouverte. On voit les deux en entier de la tête aux pieds (ou au moins jusqu'aux genoux), de profil ou de trois-quarts, l'un face à l'autre, les gestes et les visages bien lisibles. Fond gris clair uni, sans décor, sans texte, sans autre personnage.",
+   "refs": [
+    "ref_bak_debout.jpg",
+    "ref_awa_v_action_659144_01.jpg"
+   ],
+   "joindre": [
+    "image_2_1.jpg",
+    "image_2_2.jpg"
+   ],
+   "titres": [
+    "Scène à deux : Bakary + Awa — Bakary tape les fesses d'Awa avec sa main ouverte, Awa sursaute, les yeux écarqu"
+   ]
+  }
+ ]
+}
