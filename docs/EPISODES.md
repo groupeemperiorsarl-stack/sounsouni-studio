@@ -3164,3 +3164,153 @@ VOIX_OFF (lentement)
 Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
 ```
+
+## Épisode 31 : Qui est dans la voiture ?
+(source : demandes/episode_26.txt)
+```text
+TITRE: Les Plans de Bakary – Épisode 31 : Qui est dans la voiture ?
+
+DÉCOR: RUE · nuit · ambiance: grillons
+PLAN: large [Bakary debout, Awa debout, Moussa debout]
+[MUSIQUE: suspense]
+[BRUITAGE: moteur]
+
+BAKARY (determine · regarde: loin · voix: normal)
+{bombe_torse} Awa, reste derrière moi. Moussa, ne t'approche pas trop. Cette voiture ne présage rien de bon.
+
+AWA (peur · regarde: loin · voix: chuchote)
+{tremble} Bakary… regarde les vitres. On ne voit absolument rien. C'est comme si un monstre nous observait dans le noir.
+
+MOUSSA (panique · regarde: Bakary · voix: vite)
+{sueur} Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !
+
+PLAN: 3 s · large [Bakary debout, Awa debout, Moussa debout, Modibo court, Diasabi court]
+[BRUITAGE: pas]
+
+MODIBO (serieux · regarde: Bakary · voix: normal)
+Bakarin ! On a entendu Moussa crier. Qu'est-ce qui se passe ?
+
+DIASABI (fier · regarde: loin · voix: crie)
+{bras_ouverts} Où est l'ennemi ?! À Bobo, on dit : celui qui se cache dans l'ombre finit par avoir peur de sa propre lumière !
+
+BAKARY (determine · regarde: Modibo · voix: vite)
+La voiture noire, Van ! Elle était là, juste sous les manguiers. Elle vient de démarrer sans allumer ses phares !
+
+MODIBO (determine · regarde: Moussa · voix: normal)
+Moussa, ta moto est garée où ? {determine} On ne peut pas les laisser filer cette fois-ci. On doit savoir qui nous espionne.
+
+MOUSSA (fier · regarde: Modibo · voix: normal)
+{grand_sourire} Juste là, Kôrô Modibo ! Le plein est fait, elle est prête à bondir !
+
+PLAN: deux [Bakary debout, Modibo debout]
+
+BAKARY (inquiet · regarde: Modibo · voix: chuchote)
+Fais attention, Van. On ne sait pas à qui on a affaire.
+
+MODIBO (sourire · regarde: Bakary · voix: normal)
+Ne t'en fais pas, Bakarin. {hoche_tete} On va rester à distance. Moussa, en selle !
+
+PLAN: large [Modibo debout, Moussa debout]
+[BRUITAGE: moto]
+
+DÉCOR: RUE · nuit · ambiance: circulation
+PLAN: large [Modibo assis, Moussa assis]
+[MUSIQUE: action]
+
+MOUSSA (fier · regarde: loin · voix: crie)
+Je les vois, Kôrô ! Ils ont tourné vers le grand goudron !
+
+MODIBO (serieux · regarde: loin · voix: normal)
+{se_penche} Éteins tes phares aussi, Moussa. Utilise la lumière de la lune. Il ne faut pas qu'ils sachent qu'on est derrière eux.
+
+MOUSSA (inquiet · regarde: Modibo · voix: normal)
+{sueur} Kôrô… ils roulent vite ! On dirait qu'ils connaissent bien ces ruelles.
+
+MODIBO (serieux · regarde: loin · voix: lentement)
+Continue, Moussa. {mefiant} Ils se dirigent vers le quartier des affaires. Pourquoi une voiture fantôme irait là-bas à cette heure-ci ?
+
+DÉCOR: BUREAU · nuit · ambiance: rue calme
+PLAN: large [Modibo debout, Moussa debout]
+[BRUITAGE: moto]
+
+PLAN: 3 s · large [Modibo debout, Moussa debout] · {SCÈNE: Modibo et Moussa sont cachés derrière un grand mur, ils observent la voiture noire qui s'arrête devant un immeuble moderne et luxueux avec des vitres teintées}
+
+MOUSSA (choc · regarde: loin · voix: chuchote)
+{choc} Regarde, Kôrô ! Ils s'arrêtent devant l'immeuble de la holding !
+
+MODIBO (serieux · regarde: loin · voix: lentement)
+ Chut… regarde qui descend.
+
+PLAN: 3 s · large [Karim debout] · {SCÈNE: la portière de la voiture noire s'ouvre, Karim en descend, il ajuste sa veste de costume et regarde autour de lui d'un air suspect avant d'entrer dans l'immeuble}
+
+MOUSSA (surpris · regarde: Modibo · voix: chuchote)
+{surpris} Karim ?! C'était lui dans la voiture ? Mais pourquoi il se cache comme un voleur ?
+
+MODIBO (sage · regarde: loin · voix: lentement)
+Un homme qui a des intentions honnêtes n'éteint pas ses phares, Moussa. {serieux} Il prépare quelque chose de gros contre le kiosque.
+
+[BRUITAGE: notification]
+PLAN: gros [Modibo debout, téléphone]
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Livraison en cours ✔ · Destinataire : Bureau Karim · Livreur : Seydou]
+
+PENSÉE MODIBO (surpris · regarde: téléphone)
+Une livraison Sounsouni pour le bureau de Karim à cette heure-ci ? {idee} C'est notre chance de confirmer qu'il est bien là-haut.
+
+MODIBO (sourire_malin · regarde: Moussa · voix: normal)
+Regarde, Moussa. Seydou arrive avec une commande.
+
+PLAN: large [Modibo debout, Moussa debout, Seydou debout]
+[BRUITAGE: moto]
+
+SEYDOU (surpris · regarde: Modibo · voix: chuchote)
+{sursaut} Modibo ? Moussa ? Qu'est-ce que vous faites ici à minuit ?
+
+MODIBO (serieux · regarde: Seydou · voix: chuchote)
+Seydou, c'est pour qui cette livraison ?
+
+SEYDOU (sourire · regarde: Modibo · voix: chuchote)
+C'est Monsieur Karim. {sourire} Une commande de café noir et de sandwichs. Il dit qu'il a une longue nuit de travail.
+
+PLAN: objet téléphone
+[ÉCRAN 4 s: Sounsouni · Commande livrée ✔ · Bureau Karim · 4 500 FCFA]
+
+PENSÉE SEYDOU (content · regarde: téléphone)
+Paiement reçu sur Sounsouni. {grand_sourire} Monsieur Karim paie toujours rubis sur l'ongle, même la nuit !
+
+MODIBO (serieux · regarde: Seydou · voix: normal)
+Merci, Seydou. {serieux} Moussa, on en a assez vu. On rentre. Bakary et Awa doivent savoir que le loup est dans la bergerie.
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Awa debout, Modibo sur le banc, Diasabi debout]
+[BRUITAGE: coq]
+
+BAKARY (inquiet · regarde: Modibo · voix: normal)
+Alors ? {sueur} Qui était dans cette voiture ?
+
+MODIBO (serieux · regarde: Bakary · voix: lentement)
+C'était Karim, Bakarin. {serieux} On l'a suivi jusqu'à son bureau. Il travaille la nuit sur des plans qu'il ne veut pas nous montrer.
+
+AWA (furieux · regarde: loin · voix: crie)
+{furieux} Ce Karim ! Il ne lâche jamais l'affaire ! Il veut mon atelier et ton kiosque à tout prix !
+
+DIASABI (colere · regarde: Bakary · voix: crie)
+{bombe_torse} À Bobo, on dit : quand le serpent montre sa tête, il faut préparer le bâton ! Bakary, on ne va pas se laisser faire !
+
+BAKARY (determine · regarde: Awa · voix: normal)
+{determine} Il a l'argent et les voitures noires, mais nous, on a le quartier. {sourire} Et on a Sounsouni pour rester unis.
+
+AWA (serieux · regarde: Bakary · voix: normal)
+{hoche_tete} Pour une fois, je suis d'accord avec toi, vendeur de thé. On va lui montrer que ce quartier n'est pas à vendre.
+
+PLAN: 3 s · très gros Bakary · {determine}
+[MUSIQUE: suspense]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, suivez vos livraisons en temps réel et gardez un œil sur vos affaires, de jour comme de nuit. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
+```
