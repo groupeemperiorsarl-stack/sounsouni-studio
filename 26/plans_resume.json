@@ -1,0 +1,1152 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "RUE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 31 : Qui est dans la voiture ?",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.25,
+"taille": 0.43,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.62,
+"taille": 0.41,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.87,
+"taille": 0.39,
+"retourne": false
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 5.1,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Awa, reste derrière moi. Moussa, ne t'approche pas trop. Cette voiture ne présage rien de bon.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_determine@--0",
+"x": 0.2,
+"taille": 0.55,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.53,
+"taille": 0.53,
+"retourne": true
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.83,
+"taille": 0.5,
+"retourne": false
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:09.5",
+"duree": 6.0,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Bakary… regarde les vitres. On ne voit absolument rien. C'est comme si un monstre nous observait dans le noir.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_panique",
+"x": 0.76,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:15.5",
+"duree": 3.2,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_panique",
+"x": 0.77,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:18.7",
+"duree": 3.0,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.1,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_panique@--+",
+"x": 0.5,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_court@--+",
+"x": 0.71,
+"taille": 0.36,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.27,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_court@---",
+"x": 0.61,
+"taille": 0.64,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:21.7",
+"duree": 3.7,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Bakarin ! On a entendu Moussa crier. Qu'est-ce qui se passe ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:25.4",
+"duree": 6.5,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "Où est l'ennemi ?! À Bobo, on dit : celui qui se cache dans l'ombre finit par avoir peur de sa propre lumière !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_court",
+"x": 1.1,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:31.9",
+"duree": 6.0,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "La voiture noire, Van ! Elle était là, juste sous les manguiers. Elle vient de démarrer sans allumer ses phares !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_determine",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:37.9",
+"duree": 6.8,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Moussa, ta moto est garée où ? On ne peut pas les laisser filer cette fois-ci. On doit savoir qui nous espionne.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_court",
+"x": 0.71,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:44.7",
+"duree": 4.3,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Juste là, Kôrô Modibo ! Le plein est fait, elle est prête à bondir !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_the",
+"x": 0.47,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:49.0",
+"duree": 4.0,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Fais attention, Van. On ne sait pas à qui on a affaire.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "0:53.0",
+"duree": 4.3,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Ne t'en fais pas, Bakarin. On va rester à distance. Moussa, en selle !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "0:57.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt@--+",
+"x": 0.32,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_repare@++-",
+"x": 0.74,
+"taille": 0.36,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:59.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@--0",
+"x": 0.17,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_joie@++0",
+"x": 0.67,
+"taille": 0.57,
+"retourne": false
+}
+]
+},
+{
+"plan": 15,
+"debut": "1:02.1",
+"duree": 3.7,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Je les vois, Kôrô ! Ils ont tourné vers le grand goudron !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_fier@--0",
+"x": 0.17,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_joie@++0",
+"x": 0.67,
+"taille": 0.58,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "1:05.8",
+"duree": 6.5,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Éteins tes phares aussi, Moussa. Utilise la lumière de la lune. Il ne faut pas qu'ils sachent qu'on est derrière eux.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_serieux",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 17,
+"debut": "1:12.4",
+"duree": 3.7,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Kôrô… ils roulent vite ! On dirait qu'ils connaissent bien ces ruelles.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 18,
+"debut": "1:16.1",
+"duree": 6.5,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Continue, Moussa. Ils se dirigent vers le quartier des affaires. Pourquoi une voiture fantôme irait là-bas à cette heure-ci ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_mefiant",
+"x": 0.59,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "1:22.6",
+"duree": 3.0,
+"type": "scene",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 20,
+"debut": "1:25.6",
+"duree": 2.2,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_joie@--0",
+"x": 0.33,
+"taille": 0.57,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.82,
+"taille": 0.53,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:27.8",
+"duree": 3.2,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Regarde, Kôrô ! Ils s'arrêtent devant l'immeuble de la holding !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc",
+"x": 0.49,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:31.0",
+"duree": 1.8,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Chut… regarde qui descend.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.25,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:32.8",
+"duree": 3.0,
+"type": "scene",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 24,
+"debut": "1:35.8",
+"duree": 4.6,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Karim ?! C'était lui dans la voiture ? Mais pourquoi il se cache comme un voleur ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:40.3",
+"duree": 6.5,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Un homme qui a des intentions honnêtes n'éteint pas ses phares, Moussa. Il prépare quelque chose de gros contre le kiosque.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.25,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 26,
+"debut": "1:46.9",
+"duree": 4.7,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Regarde, Moussa. C'est la moto de Seydou devant l'immeuble. Il vient de faire une livraison.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.4,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 27,
+"debut": "1:51.5",
+"duree": 2.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 28,
+"debut": "1:53.5",
+"duree": 4.0,
+"type": "screen",
+"decor": "RUE",
+"parle": null,
+"texte": "Sounsouni · Commande livrée ✔ · Bureau Karim · 4 500 FCFA",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 29,
+"debut": "1:57.5",
+"duree": 4.6,
+"type": "pensee_ecran",
+"decor": "RUE",
+"parle": "SEYDOU",
+"texte": "Paiement reçu sur Sounsouni. Monsieur Karim paie toujours rubis sur l'ongle, même la nuit !",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 30,
+"debut": "2:02.1",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.35,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_choc@+++",
+"x": 0.85,
+"taille": 0.45,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 0.76,
+"taille": 0.77,
+"retourne": false
+}
+]
+},
+{
+"plan": 31,
+"debut": "2:04.5",
+"duree": 3.5,
+"type": "line",
+"decor": "RUE",
+"parle": "SEYDOU",
+"texte": "Modibo ? Moussa ? Qu'est-ce que vous faites ici à minuit ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_joie@--0",
+"x": 0.33,
+"taille": 0.57,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_choc@+++",
+"x": 0.83,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 0.76,
+"taille": 0.77,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "2:08.0",
+"duree": 2.3,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Seydou, c'était bien Karim là-haut ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.25,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 33,
+"debut": "2:10.3",
+"duree": 7.4,
+"type": "line",
+"decor": "RUE",
+"parle": "SEYDOU",
+"texte": "Oui, Monsieur Karim en personne. Une commande de café noir et de sandwichs sur Sounsouni. Il dit qu'il a une longue nuit de travail.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 34,
+"debut": "2:17.7",
+"duree": 6.8,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Merci, Seydou. Moussa, on en a assez vu. On rentre. Bakary et Awa doivent savoir que le loup est dans la bergerie.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.25,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "2:24.5",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@--0",
+"x": 0.1,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.89,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.27,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.73,
+"taille": 0.53,
+"retourne": false
+}
+]
+},
+{
+"plan": 36,
+"debut": "2:26.9",
+"duree": 2.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Alors ? Qui était dans cette voiture ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.1,
+"taille": 0.45,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_salue@--0",
+"x": 0.5,
+"taille": 0.53,
+"retourne": true
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.89,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@--0",
+"x": 0.25,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.65,
+"taille": 0.47,
+"retourne": true
+}
+]
+},
+{
+"plan": 37,
+"debut": "2:29.2",
+"duree": 6.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "C'était Karim, Bakarin. On l'a suivi jusqu'à son bureau. Il travaille la nuit sur des plans qu'il ne veut pas nous montrer.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 38,
+"debut": "2:36.0",
+"duree": 5.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Ce Karim ! Il ne lâche jamais l'affaire ! Il veut mon atelier et ton kiosque à tout prix !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "2:41.4",
+"duree": 7.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "À Bobo, on dit : quand le serpent montre sa tête, il faut préparer le bâton ! Bakary, on ne va pas se laisser faire !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_colere",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "2:48.5",
+"duree": 6.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Il a l'argent et les voitures noires, mais nous, on a le quartier. Et on a Sounsouni pour rester unis.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_v_tour_650014_02",
+"x": 0.34,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 41,
+"debut": "2:54.8",
+"duree": 6.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Pour une fois, je suis d'accord avec toi, vendeur de thé. On va lui montrer que ce quartier n'est pas à vendre.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "3:01.6",
+"duree": 3.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_determine",
+"x": 0.5,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "3:04.6",
+"duree": 2.6,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 44,
+"debut": "3:07.2",
+"duree": 8.2,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, suivez vos livraisons en temps réel et gardez un œil sur vos affaires, de jour comme de nuit. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 45,
+"debut": "3:15.4",
+"duree": 3.6,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 46,
+"debut": "3:18.9",
+"duree": 3.0,
+"type": "endcard",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

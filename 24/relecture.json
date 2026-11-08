@@ -1,0 +1,77 @@
+{
+ "resume": "L’épisode a une bonne base, mais il faut corriger avant l’aperçu plusieurs petits problèmes d’écriture : une réplique coupée, une salutation fausse et des dialogues qui ne se suivent pas bien. Les images n'ont pas pu être regardées (Gemini saturé) : relancez « relecture » plus tard.",
+ "problemes": [
+  {
+   "plan": 34,
+   "moment": "3:13.8",
+   "gravite": "fort",
+   "quoi": "La réplique de Bakary s’arrête en plein milieu : Awa, je… je t’…",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "Awa, je… je t'…",
+     "nouveau": "Awa, je… je t'écoute.",
+     "pourquoi": "La réplique est incomplète et coupe le moment fort."
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "moment": "0:04.4",
+   "gravite": "moyen",
+   "quoi": "Bakary parle de la lune, mais Modibo et Diasabi réagissent comme s’il s’adressait à une femme, ce qui n’est pas clair.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "Van, je ne peux plus attendre. Chaque fois que je ferme les yeux, je vois son visage. Chaque fois que j'ouvre la bouche, c'est son nom qui veut sortir.",
+     "nouveau": "Van, je ne peux plus attendre. Chaque fois que je ferme les yeux, je vois le visage de la femme. Chaque fois que j'ouvre la bouche, c'est son nom qui veut sortir.",
+     "pourquoi": "Le spectateur ne comprend pas de qui Bakary parle."
+    }
+   ]
+  },
+  {
+   "plan": 17,
+   "moment": "1:22.9",
+   "gravite": "moyen",
+   "quoi": "La salutation donnée par Bakary n’est pas correcte : I ni wula, Awa.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "I ni wula, Awa.",
+     "nouveau": "I ni tché, Awa.",
+     "pourquoi": "La salutation n’est pas celle du vocabulaire de la série."
+    }
+   ]
+  },
+  {
+   "plan": 39,
+   "moment": "3:37.2",
+   "gravite": "moyen",
+   "quoi": "Moussa arrive et parle déjà à Bakary sans saluer tout le monde.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "Kôrô ! Kôrô Bakary ! Où vous êtes ?!",
+     "nouveau": "Kôrô ! Kôrô Bakary ! I ni tché, tout le monde ! Où vous êtes ?!",
+     "pourquoi": "Quand quelqu’un arrive, il doit saluer tout le monde avant de parler à une personne."
+    }
+   ]
+  },
+  {
+   "plan": 8,
+   "moment": "0:47.5",
+   "gravite": "petit",
+   "quoi": "La phrase Souhaitez-moi bonne chance, les gars est incorrecte.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "Souhaitez-moi bonne chance, les gars.",
+     "nouveau": "Souhaitez bonne chance, les gars.",
+     "pourquoi": "La formulation est grammaticalement incorrecte."
+    }
+   ]
+  }
+ ],
+ "modele": "OpenRouter flint-v1.0:free",
+ "date": "2026-11-04 17:29"
+}

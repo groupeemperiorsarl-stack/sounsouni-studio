@@ -1,0 +1,126 @@
+{
+ "items": [
+  {
+   "type": "objet",
+   "perso": "régime de bananes",
+   "texte": "régime de bananes — un gros régime de bananes plantains bien vertes et lourdes",
+   "ou": [
+    "episode_21 plan 27"
+   ],
+   "n": 1,
+   "ref": "kar_voiture",
+   "fichier_ref": "ref_kar_voiture.jpg"
+  },
+  {
+   "type": "objet",
+   "perso": "cageot avec poulet vivant",
+   "texte": "cageot avec poulet vivant — cageot en bois ajouré d'où sort la tête d'un poulet blanc vigoureux",
+   "ou": [
+    "episode_21 plan 28"
+   ],
+   "n": 2,
+   "ref": "kar_voiture",
+   "fichier_ref": "ref_kar_voiture.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MIMI",
+   "posture": "debout",
+   "emo": "pose:mimi_serre_dans_ses_bras_le_gros_poulet_blanc_qu_elle_vient_d_attraper_des_plumes_volent_autour_d_elle_toute_fiere",
+   "tenue": "",
+   "ou": [
+    "episode_21 plan 35"
+   ],
+   "n": 3,
+   "ref": "mim_debout",
+   "fichier_ref": "ref_mim_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MIMI",
+   "posture": "debout",
+   "emo": "fier",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 4,
+   "ref": "mim_debout",
+   "fichier_ref": "ref_mim_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "assis",
+   "emo": "taquin",
+   "tenue": "",
+   "ou": [
+    "episode_21 plan 3",
+    "episode_21 plan 60"
+   ],
+   "n": 5,
+   "ref": "mod_assis_mefiant",
+   "fichier_ref": "ref_mod_assis_mefiant.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "KADI",
+   "posture": "assis",
+   "emo": "sage",
+   "tenue": "",
+   "ou": [
+    "episode_21 plan 41",
+    "episode_21 plan 43"
+   ],
+   "n": 6,
+   "ref": "kadi_banc",
+   "fichier_ref": "ref_kadi_banc.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    3,
+    4,
+    1,
+    2
+   ],
+   "fichier_ref": "ref_mim_debout.jpg",
+   "refs": [
+    "ref_mim_debout.jpg"
+   ],
+   "g": 1,
+   "demande": "Images jointes, dans l'ordre : image 1 = Mimi (jeune apprentie couturière mince, tresses en queue de cheval avec un élastique jaune, robe en pagne jaune-kaki à petits motifs ronds, mètre ruban jaune autour du cou, sandales dorées). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Mimi (image 1), debout, de trois-quarts, Mimi serre dans ses bras le gros poulet blanc qu'elle vient d'attraper, des plumes volent autour d'elle, toute fière, bouche fermée ; 2) Mimi (image 1), debout, de trois-quarts, fière, le menton levé, bouche fermée, les mains vides ; 3) régime de bananes — un gros régime de bananes plantains bien vertes et lourdes, l'objet seul, posé, dessiné en grand ; 4) cageot avec poulet vivant — cageot en bois ajouré d'où sort la tête d'un poulet blanc vigoureux, l'objet seul, posé, dessiné en grand.",
+   "joindre": [
+    "image_1.jpg"
+   ],
+   "titres": [
+    "Mimi — debout, Mimi serre dans ses bras le gros poulet blanc qu'elle vient d'attraper, des plumes volent autour d'elle, toute fière",
+    "Mimi — debout, fière",
+    "Nouvel objet : régime de bananes",
+    "Nouvel objet : cageot avec poulet vivant"
+   ]
+  },
+  {
+   "items": [
+    5,
+    6
+   ],
+   "fichier_ref": "ref_mod_assis_mefiant.jpg",
+   "refs": [
+    "ref_mod_assis_mefiant.jpg",
+    "ref_kadi_banc.jpg"
+   ],
+   "g": 2,
+   "demande": "Images jointes, dans l'ordre : image 1 = Modibo (jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir) ; image 2 = Tantie Kadi (femme âgée, lunettes, foulard bordeaux sur la tête, grand boubou bordeaux brodé d'or, canne en bois). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 2 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Modibo (image 1), assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, taquin, un sourire en coin, les mains vides ; 2) Tantie Kadi (image 2), assise sur un petit banc en bois, de trois-quarts, mains sur les genoux, calme et sage, un léger sourire, les mains vides.",
+   "joindre": [
+    "image_2_1.jpg",
+    "image_2_2.jpg"
+   ],
+   "titres": [
+    "Modibo — assis, taquin",
+    "Tantie Kadi — assis, calme et sage"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+ALERTES :
+- le son touche presque le maximum (crête -0.9 dBTP) : risque de grésillement après envoi sur TikTok/Facebook
+
+SON DE LA VIDÉO (4:36) : -12.1 LUFS (cible -14), crête -0.9 dBTP, écart de volume 4.2 LU.
+
+PAR SCÈNE (début-fin · décor · ambiance : volume, brillance, aigus « presence » 4-6 kHz par rapport aux autres scènes)
+- 0:00-1:01 · KIOSQUE · grillons : -12.3 LUFS, brillance 1350 Hz, aigus -19.1 dB (-1 dB)
+- 1:01-4:36 · RUE · grillons : -12.1 LUFS, brillance 1448 Hz, aigus -17.1 dB (+1 dB)
+
+CE QUE L'OREILLE ENTEND (earshot timeline ; les étiquettes de sons sont des indices, les temps et niveaux sont des mesures)
+son.wav: 0:00.00-4:36.64 (276.6 s). Loudness -12.1 LUFS integrated, true peak -0.9 dBTP, LRA 4.2 LU; loudest 3:19.00-3:22.00 (-8.7 LUFS short-term). True peak -0.9 dBTP is above -1 dBTP (risk of overs after encoding). Quiet tail 0.3 s (drop). Beat grid: ~112 BPM (weak pulse, clarity 0.19, 517 beats). 6 section(s): 0:00.00-0:50.97 glitch hop music?, glockenspiel | also: single-lens reflex camera, ringtone (AST) | voice: voice-over narration; 0:50.97-1:07.51 glitch hop music, vocal chop; 1:07.51-1:59.34 inspirational corporate background music?, music box | voice: voice-over narration; 1:59.34-3:12.38 inspirational corporate background music?, vocal chop; 3:12.38-3:49.70 inspirational corporate background music?, marimba; 3:49.70-4:36.64 inspirational corporate background music?, marimba | voice: voice-over narration. 1941 events (7.0/s); 20 tagged (13 ui, 4 note, 2 voice, 1 foley; tags are hints). Strongest accents over a running bed: 0:07.59 +35 dB (chat message pop), 2:15.91 +33 dB (chat message pop), 1:15.96 +32 dB (glockenspiel note).
+
+SECTIONS
+  0:00.00-0:50.97  glitch hop music?, glockenspiel | also: single-lens reflex camera, ringtone (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.71, speech 0.80]
+  0:50.97-1:07.51  glitch hop music, vocal chop  -13 LUFS
+  1:07.51-1:59.34  inspirational corporate background music?, music box | voice: voice-over narration  -12 LUFS  [AST music 0.77, speech 0.76]
+  1:59.34-3:12.38  inspirational corporate background music?, vocal chop  -11 LUFS
+  3:12.38-3:49.70  inspirational corporate background music?, marimba  -13 LUFS
+  3:49.70-4:36.64  inspirational corporate background music?, marimba | voice: voice-over narration  -13 LUFS  [AST music 0.77, speech 0.71]
+
+TRANSCRIPT   time  kind   what (CLAP tag / runner-up)                     peak  over bed  length  centroid  | sync
+== 0:00.00-0:50.97  glitch hop music?, glockenspiel | also: single-lens reflex camera, ringtone (AST) | voice: voice-over narration  (+345 untagged onsets, 6.8/s)
+ 0:07.59  UI     chat message pop / spoken word                   -2.7 dBFS +35.1 dB    90 ms  1.2 kHz  | strong accent (summary)
+ 0:29.15  UI     chat message pop / spoken word                   -1.4 dBFS +28.3 dB   290 ms  1.5 kHz
+== 0:50.97-1:07.51  glitch hop music, vocal chop  (+113 untagged onsets, 6.8/s)
+== 1:07.51-1:59.34  inspirational corporate background music?, music box | voice: voice-over narration  (+365 untagged onsets, 7.0/s)
+ 1:15.31  NOTE   glockenspiel note / breath                       -6.1 dBFS   silent  1000 ms  3.2 kHz
+ 1:15.96  NOTE   glockenspiel note / breath                       -4.4 dBFS +31.8 dB   300 ms  4.8 kHz  | strong accent (summary)
+ 1:16.83  FOLEY  bubble pop / breath                              -1.5 dBFS +31.2 dB   280 ms  7.4 kHz
+ 1:36.94  VOICE  breath / punchy impact hit                       -2.8 dBFS   silent   270 ms  7.1 kHz
+ 1:49.85  UI     chat message pop / glockenspiel note             -2.6 dBFS   silent    80 ms  2.9 kHz
+== 1:59.34-3:12.38  inspirational corporate background music?, vocal chop  (+526 untagged onsets, 7.2/s)
+ 2:14.85  UI     notification ding / bubble pop                  -10.2 dBFS   silent    30 ms  2.9 kHz
+ 2:15.91  UI     chat message pop / glockenspiel note             -1.5 dBFS +32.8 dB    60 ms   366 Hz  | strong accent (summary)
+ 2:17.88  UI     chat message pop / breath                        -1.6 dBFS   silent   120 ms   249 Hz
+ 2:21.11  VOICE  breath / chat message pop                        -3.9 dBFS   silent   100 ms  7.7 kHz
+ 2:42.80  UI     notification ding / glockenspiel note            -1.5 dBFS +29.2 dB   100 ms   710 Hz
+ 2:59.32  UI     notification ding / glockenspiel note            -1.5 dBFS   silent   200 ms   252 Hz
+ 3:11.84  NOTE   glockenspiel note / breath                       -1.9 dBFS   silent   430 ms  4.2 kHz
+== 3:12.38-3:49.70  inspirational corporate background music?, marimba  (+257 untagged onsets, 6.9/s)
+ 3:18.83  UI     notification ding / punchy impact hit            -1.5 dBFS +27.1 dB   510 ms   391 Hz
+ 3:41.38  UI     chat message pop / wooden block hit              -1.6 dBFS   silent    60 ms  1.1 kHz
+ 3:44.16  UI     chat message pop / glockenspiel note             -3.5 dBFS +29.9 dB    60 ms   648 Hz
+== 3:49.70-4:36.64  inspirational corporate background music?, marimba | voice: voice-over narration  (+315 untagged onsets, 6.7/s)
+ 3:50.03  UI     chat message pop / glockenspiel note             -1.5 dBFS   silent  1000 ms   349 Hz
+ 4:04.76  NOTE   glockenspiel note / notification ding            -1.8 dBFS   silent  1000 ms  2.8 kHz  [AST Spray 0.12]
+ 4:31.36  UI     chat message pop / spoken word                   -1.5 dBFS +19.2 dB   659 ms   804 Hz
+ 4:36.30  GAP    drop 0.34 s (-33 LUFS) = tail

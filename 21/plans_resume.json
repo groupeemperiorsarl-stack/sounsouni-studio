@@ -1,0 +1,2125 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 24 : Le plan B de Diasabi",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": true
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 3.5,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van… regarde ma joue. La pommade d'Awa fait des miracles.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_amoureux@---",
+"x": 0.15,
+"taille": 0.5,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.65,
+"taille": 0.39,
+"retourne": true
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:07.9",
+"duree": 3.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Bakarin… elle t'a giflé devant tout le monde, et toi tu chantes ses louanges !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:11.5",
+"duree": 5.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Son mot disait : « La prochaine fois, parle. » Il y a un espoir, Van !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_amoureux",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:16.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.23,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.72,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 0.76,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:19.1",
+"duree": 4.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Aw ni sogoma ! Oublie les paroles ! Les mots ne remplissent pas le ventre !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_amoureux@--+",
+"x": 0.22,
+"taille": 0.62,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_assis_taquin@--+",
+"x": 0.71,
+"taille": 0.48,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 0.76,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:24.0",
+"duree": 2.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Diasabi… pas de formule magique aujourd'hui, s'il te plaît.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:26.9",
+"duree": 5.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Hier, c'était trop brusque. Aujourd'hui, je passe au Plan B. La tradition de Bobo !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_neutre",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:32.2",
+"duree": 3.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Diasabi, chaque fois que tu dis « tradition », la police finit par arriver.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_mefiant",
+"x": 0.27,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:35.9",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "À Bobo, pour conquérir une femme noble, on envoie des vivres ! Du lourd !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_doigt",
+"x": 0.71,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:40.9",
+"duree": 1.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Qu'est-ce que tu as encore fait ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "0:42.8",
+"duree": 4.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "J'ai pris ton téléphone… et j'ai commandé sur Sounsouni Marché. Au nom du kiosque !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "0:47.7",
+"duree": 2.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Tu as commandé quoi avec mon compte ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:50.3",
+"duree": 6.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Le cadeau suprême ! Un gros régime de bananes… et un poulet vivant ! Seydou est déjà chez Awa !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 15,
+"debut": "0:56.3",
+"duree": 4.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Un poulet vivant chez une couturière de luxe ?! Diasabi, tu m'as tué !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "1:00.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.3,
+"taille": 0.52,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.8,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 17,
+"debut": "1:03.1",
+"duree": 2.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Mimi… tu crois que j'ai tapé trop fort hier ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_fier@--0",
+"x": 0.3,
+"taille": 0.52,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_debout@--0",
+"x": 0.8,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 18,
+"debut": "1:05.7",
+"duree": 4.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Tout le quartier a entendu le bruit, Tantie ! Mais la pommade va le soigner.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire",
+"x": 0.75,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "1:10.7",
+"duree": 3.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "C'était juste par politesse. Rien d'autre.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_froide",
+"x": 0.29,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "1:14.6",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assise_chaise@++0",
+"x": 0.3,
+"taille": 0.52,
+"retourne": true
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire@++0",
+"x": 0.8,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 0.76,
+"taille": 0.77,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:17.0",
+"duree": 4.8,
+"type": "line",
+"decor": "ATELIER",
+"parle": "SEYDOU",
+"texte": "Aw ni tchié la reine de la mode ! Livraison spéciale Sounsouni Marché !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_froide@--0",
+"x": 0.26,
+"taille": 0.52,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire@++0",
+"x": 0.78,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 0.76,
+"taille": 0.77,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:21.8",
+"duree": 3.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Une livraison ? Je n'ai commandé aucun tissu.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_assis_surpris",
+"x": 0.29,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:25.4",
+"duree": 3.2,
+"type": "line",
+"decor": "ATELIER",
+"parle": "SEYDOU",
+"texte": "C'est un cadeau ! Commandé depuis le compte de Bakary.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 24,
+"debut": "1:28.6",
+"duree": 4.0,
+"type": "screen",
+"decor": "ATELIER",
+"parle": null,
+"texte": "Sounsouni · Livraison Cadeau · Destinataire : Awa Couture · 1 Régime de bananes + 1 Poulet vivant · Message : « Pour nourrir notre amour – Bakary »",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 25,
+"debut": "1:32.6",
+"duree": 4.5,
+"type": "pensee_ecran",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Des bananes et un poulet vivant… « Pour nourrir notre amour » ?!",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 26,
+"debut": "1:37.1",
+"duree": 2.4,
+"type": "wide",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.24,
+"taille": 0.65,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire@--0",
+"x": 0.76,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 0.76,
+"taille": 0.77,
+"retourne": false
+}
+]
+},
+{
+"plan": 27,
+"debut": "1:39.5",
+"duree": 2.4,
+"type": "insert",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 28,
+"debut": "1:41.9",
+"duree": 2.4,
+"type": "insert",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 29,
+"debut": "1:44.3",
+"duree": 2.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Ooh ! Regardez le poulet, il est bien dodu !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire",
+"x": 0.44,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 30,
+"debut": "1:46.8",
+"duree": 3.7,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Seydou ! Enlève cette volaille de mon atelier ! Il y a des bazins de valeur ici !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 31,
+"debut": "1:50.6",
+"duree": 4.3,
+"type": "line",
+"decor": "ATELIER",
+"parle": "SEYDOU",
+"texte": "Attendez, madame Awa… Oh pardon, le cageot s'est ouvert !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_panique",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "1:54.8",
+"duree": 3.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": "close",
+"acteurs": [
+{
+"qui": "AWA+MIMI",
+"pose": "grp_un_gros_poulet_blanc_vole",
+"x": 0.5,
+"taille": 0.72,
+"retourne": false
+}
+]
+},
+{
+"plan": 33,
+"debut": "1:57.8",
+"duree": 4.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Au secours ! Il saute sur ma dentelle ! Mimi, attrape cette bête !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 34,
+"debut": "2:02.8",
+"duree": 3.2,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Viens là, petit poulet !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire",
+"x": 0.75,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "2:05.9",
+"duree": 3.0,
+"type": "close",
+"decor": "ATELIER",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 36,
+"debut": "2:08.9",
+"duree": 2.9,
+"type": "line",
+"decor": "ATELIER",
+"parle": "MIMI",
+"texte": "Je l'ai attrapé, Tantie ! Le poulet est à moi !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire",
+"x": 0.75,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 37,
+"debut": "2:11.9",
+"duree": 3.6,
+"type": "line",
+"decor": "ATELIER",
+"parle": "AWA",
+"texte": "Bakary ! Il transforme mon atelier en poulailler ! Il va m'entendre !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.28,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_dos",
+"x": 0.96,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 38,
+"debut": "2:15.4",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire@--0",
+"x": 0.12,
+"taille": 0.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.36,
+"taille": 0.38,
+"retourne": false
+},
+{
+"qui": "KADI",
+"pose": "kadi_banc_the@--+",
+"x": 0.75,
+"taille": 0.29,
+"retourne": true
+}
+]
+},
+{
+"plan": 39,
+"debut": "2:17.8",
+"duree": 4.4,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Tantie Sali, regarde ! Grande sœur Awa sort en tornade de son atelier !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire@--0",
+"x": 0.11,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_the@++0",
+"x": 0.37,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "KADI",
+"pose": "kadi_banc_the@--+",
+"x": 0.76,
+"taille": 0.27,
+"retourne": true
+}
+]
+},
+{
+"plan": 40,
+"debut": "2:22.2",
+"duree": 6.0,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Quand Awa marche comme ça, c'est que Bakary a fait une grosse bêtise !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 41,
+"debut": "2:28.2",
+"duree": 3.4,
+"type": "line",
+"decor": "RUE",
+"parle": "KADI",
+"texte": "Le piment et le miel… ces deux-là ne peuvent pas se quitter.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KADI",
+"pose": "kadi_banc_the",
+"x": 0.44,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "2:31.6",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_taquin@--0",
+"x": 0.09,
+"taille": 0.29,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_the@++0",
+"x": 0.31,
+"taille": 0.29,
+"retourne": false
+},
+{
+"qui": "KADI",
+"pose": "kadi_banc@+++",
+"x": 0.62,
+"taille": 0.23,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_pas1",
+"x": 0.91,
+"taille": 0.3,
+"retourne": true
+}
+]
+},
+{
+"plan": 43,
+"debut": "2:34.0",
+"duree": 3.9,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Pardon, laissez-moi passer ! J'ai un vendeur de thé à corriger !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_taquin@--0",
+"x": 0.1,
+"taille": 0.34,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_the@--0",
+"x": 0.5,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "KADI",
+"pose": "kadi_banc_the@--+",
+"x": 0.3,
+"taille": 0.43,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_debout@++0",
+"x": 0.73,
+"taille": 0.53,
+"retourne": false
+}
+]
+},
+{
+"plan": 44,
+"debut": "2:37.9",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc@--0",
+"x": 0.39,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 45,
+"debut": "2:39.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.2,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.61,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++-",
+"x": 0.91,
+"taille": 0.4,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "2:41.7",
+"duree": 3.5,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van ! Elle arrive ! Ses yeux lancent du feu !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique@---",
+"x": 0.16,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.55,
+"taille": 0.27,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_salue@--0",
+"x": 0.89,
+"taille": 0.4,
+"retourne": true
+}
+]
+},
+{
+"plan": 47,
+"debut": "2:45.2",
+"duree": 4.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Reste calme, Bakarin. Dis la vérité immédiatement.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "2:49.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@--0",
+"x": 0.1,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.3,
+"taille": 0.45,
+"retourne": true
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.89,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.27,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire@--0",
+"x": 0.73,
+"taille": 0.52,
+"retourne": false
+}
+]
+},
+{
+"plan": 49,
+"debut": "2:51.7",
+"duree": 3.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Bakary ! Sors de derrière ton kiosque tout de suite !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_salue@---",
+"x": 0.12,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@--0",
+"x": 0.3,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire@++0",
+"x": 0.9,
+"taille": 0.43,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_panique@--0",
+"x": 0.25,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_debout@--0",
+"x": 0.73,
+"taille": 0.53,
+"retourne": false
+}
+]
+},
+{
+"plan": 50,
+"debut": "2:55.5",
+"duree": 4.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Bakary ! Tu te crois drôle ?! Tu m'envoies un poulet qui court sur mes pagnes et des bananes pour me nourrir ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.59,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 51,
+"debut": "3:00.1",
+"duree": 3.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Awa, pardonne-moi ! Écoute-moi, ce n'est pas moi !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 52,
+"debut": "3:03.7",
+"duree": 5.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Pas toi ?! C'est venu de ton compte Sounsouni ! « Pour nourrir notre amour » ! Quel amour ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.59,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 53,
+"debut": "3:09.3",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire@++0",
+"x": 0.58,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 54,
+"debut": "3:10.7",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_rire@++0",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 55,
+"debut": "3:12.1",
+"duree": 2.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MOUSSA",
+"texte": "Kôrôbalé wou ! Le feuilleton du quartier est trop doux !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_the",
+"x": 0.79,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 56,
+"debut": "3:14.8",
+"duree": 6.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Doucement ! À Bobo, offrir un poulet et des bananes, c'est la preuve d'un homme qui prend soin de son foyer !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_doigt",
+"x": 0.4,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 57,
+"debut": "3:20.9",
+"duree": 3.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Quoi ?! Encore toi, le géant de Bobo ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_choc2",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 58,
+"debut": "3:24.1",
+"duree": 5.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "C'est encore ta science de malheur ?! Tu veux que je te tape toi aussi ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.59,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 59,
+"debut": "3:29.2",
+"duree": 4.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Mais… c'était pour rattraper la gifle d'hier ! Une femme bien nourrie ne gifle plus !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_visage_triste",
+"x": 0.36,
+"taille": 0.78,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 60,
+"debut": "3:34.0",
+"duree": 4.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Diasabi, ta science va te faire chasser du quartier avant ce soir.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_rire",
+"x": 0.2,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 61,
+"debut": "3:38.0",
+"duree": 6.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Awa… regarde-moi. Jamais je ne te manquerais de respect. J'ai laissé mon téléphone pour aller chercher du charbon, et Diasabi a commandé en cachette.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 62,
+"debut": "3:44.8",
+"duree": 2.0,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.35,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.84,
+"taille": 0.56,
+"retourne": true
+}
+]
+},
+{
+"plan": 63,
+"debut": "3:46.8",
+"duree": 4.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Moi, je voulais juste faire ce que tu as dit hier. Parler avec ma bouche.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_v_tour_650014_02",
+"x": 0.34,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 64,
+"debut": "3:51.7",
+"duree": 2.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Tu… tu parles trop, Bakary.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_doigt_bouche",
+"x": 0.68,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 65,
+"debut": "3:54.4",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire",
+"x": 0.49,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.25,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_gene@--0",
+"x": 0.12,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.3,
+"taille": 0.45,
+"retourne": true
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_the@--0",
+"x": 0.5,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire@++0",
+"x": 0.9,
+"taille": 0.43,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_v_tour_650014_02@++0",
+"x": 0.25,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.65,
+"taille": 0.47,
+"retourne": true
+}
+]
+},
+{
+"plan": 66,
+"debut": "3:56.8",
+"duree": 2.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MIMI",
+"texte": "Tantie Awa ! Seydou et moi, on a attrapé le poulet ! Il est bien enfermé !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.39,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire",
+"x": 0.15,
+"taille": 0.29,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_assis_taquin@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_v_tour_650014_02@++-",
+"x": 0.13,
+"taille": 0.47,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_gene@---",
+"x": 0.3,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_the@++0",
+"x": 0.85,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_doigt_bouche@--0",
+"x": 0.25,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MIMI",
+"pose": "mim_sourire@--0",
+"x": 0.73,
+"taille": 0.48,
+"retourne": false
+}
+]
+},
+{
+"plan": 67,
+"debut": "3:59.7",
+"duree": 4.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "SEYDOU",
+"texte": "Et Tantie Sali achète le régime de bananes pour faire des allocos !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SEYDOU",
+"pose": "sey_debout_neutre",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 68,
+"debut": "4:03.8",
+"duree": 4.0,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Sounsouni Marché · Transaction terminée ✔ · Vente de bananes validée · Solde crédité",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 69,
+"debut": "4:07.8",
+"duree": 4.8,
+"type": "pensee_ecran",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Sali a racheté les bananes sur Sounsouni… le poulet est attrapé, tout s'arrange !",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 70,
+"debut": "4:12.7",
+"duree": 6.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "SALI",
+"texte": "Voilà ! Les bananes vont frire dans mon huile chaude, tout le monde est content !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_rire",
+"x": 0.63,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 71,
+"debut": "4:18.6",
+"duree": 4.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Diasabi… si tu t'approches encore de mon atelier, ton Plan C sera à l'hôpital. Compris ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.59,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 72,
+"debut": "4:23.5",
+"duree": 2.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Compris… Je reste devant mon grill.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 73,
+"debut": "4:26.3",
+"duree": 3.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Et toi, vendeur de thé… apprends à verrouiller ton téléphone.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 74,
+"debut": "4:30.0",
+"duree": 2.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_amoureux",
+"x": 0.49,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 75,
+"debut": "4:32.0",
+"duree": 3.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Elle a souri… Même fâchée, elle a souri en partant !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_amoureux@--0",
+"x": 0.39,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 76,
+"debut": "4:35.6",
+"duree": 4.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Bakarin, remercie Sounsouni ! Tu viens d'échapper à une deuxième gifle !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire",
+"x": 0.58,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 77,
+"debut": "4:40.3",
+"duree": 2.6,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 78,
+"debut": "4:42.9",
+"duree": 9.3,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, du poulet fermier aux plus belles tenues, vos commandes arrivent toujours à bon port… même au milieu des imprévus ! Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 79,
+"debut": "4:52.3",
+"duree": 4.5,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 80,
+"debut": "4:56.8",
+"duree": 3.0,
+"type": "endcard",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

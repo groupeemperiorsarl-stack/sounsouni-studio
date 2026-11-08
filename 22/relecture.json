@@ -1,0 +1,221 @@
+{
+ "resume": "L'histoire est très forte et poignante sans contradiction narrative majeure. J'ai corrigé quelques regards mal ciblés (Modibo qui regarde Fatim alors qu'elle n'est pas dans le plan, Fatim qui regarde au loin en parlant à son interlocuteur) et la posture d'Awa qui se levait trop tôt à l'atelier. L'épisode est visuellement bien cadré, mais plusieurs personnages affichent des sourires inadaptés lors de scènes graves (Sali qui rit de la tristesse de Fatim, Fatim qui sourit pendant son ultimatum à Awa, Modibo tout souriant au kiosque). Deux plans utilisent aussi une pose d'Awa avec les yeux fermés déconseillée dans le carnet.",
+ "problemes": [
+  {
+   "plan": 16,
+   "moment": "1:05",
+   "gravite": "moyen",
+   "quoi": "Modibo a l'indication de regarder Fatim, mais Fatim n'est pas présente dans ce plan.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "MODIBO (serieux · regarde: Fatim · voix: normal)\nC'est Fatim. Elle a fermé sa cabine de crédit en plein matin.",
+     "nouveau": "MODIBO (serieux · regarde: Bakary · voix: normal)\nC'est Fatim. Elle a fermé sa cabine de crédit en plein matin.",
+     "pourquoi": "Modibo parle à Bakary et Fatim n'est pas dans le champ de ce plan."
+    },
+    {
+     "type": "note",
+     "theme": "mise-en-scene",
+     "texte": "Personnage observant quelqu'un hors champ → regard vers une cible absente → toujours mettre 'regarde: interlocuteur' ou 'regarde: loin'.",
+     "pourquoi": "Éviter les cibles de regard introuvables dans le plan."
+    }
+   ]
+  },
+  {
+   "plan": 52,
+   "moment": "4:22",
+   "gravite": "moyen",
+   "quoi": "Awa est assise à sa machine pendant toute la scène et se retrouve soudainement debout dans un plan gros à deux personnages.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "PLAN: gros [Awa debout, Fatim debout]\n\nFATIM (neutre · regarde: Awa · voix: normal)\n{soupir} J'ai fini. Je retourne à ma cabine.",
+     "nouveau": "PLAN: deux [Awa assise, Fatim debout]\n\nFATIM (neutre · regarde: Awa · voix: normal)\n{soupir} J'ai fini. Je retourne à ma cabine.",
+     "pourquoi": "Awa reste assise à sa machine jusqu'au départ de Fatim, puis se lève seule une fois la porte fermée."
+    }
+   ]
+  },
+  {
+   "plan": 62,
+   "moment": "4:56",
+   "gravite": "moyen",
+   "quoi": "Fatim répond directement à Bakary en lui disant son prénom mais regarde au loin au lieu de le regarder.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "FATIM (serieux · regarde: loin · voix: lentement)\n{sourire} Ça va, Bakary. La vie continue.",
+     "nouveau": "FATIM (serieux · regarde: Bakary · voix: lentement)\n{sourire} Ça va, Bakary. La vie continue.",
+     "pourquoi": "Fatim s'adresse à Bakary en contre-champ et doit le regarder dans les yeux."
+    }
+   ]
+  },
+  {
+   "plan": 8,
+   "moment": "0:37",
+   "gravite": "petit",
+   "quoi": "Fatim répond à la question de Sali en regardant au loin au lieu de regarder Sali.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "FATIM (determine · regarde: loin · voix: normal)\nNon. {secoue_tete} Bakary a déjà parlé. Je vais voir la reine de l'atelier en face.",
+     "nouveau": "FATIM (determine · regarde: Sali · voix: normal)\nNon. {secoue_tete} Bakary a déjà parlé. Je vais voir la reine de l'atelier en face.",
+     "pourquoi": "Fatim annonce sa décision à Sali en face à face par-dessus son épaule."
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "moment": "0:04",
+   "gravite": "fort",
+   "quoi": "Sali rit alors que Fatim lui confie qu'elle n'a pas fermé l'œil de la nuit à cause de sa peine de cœur.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 1,
+     "qui": "SALI",
+     "pose": "sal_inquiet",
+     "pourquoi": "Sali doit paraître à l'écoute et inquiète pour son amie dès l'ouverture.",
+     "sig": "|Les Plans de Bakary – Épisode 25 : Fatim sait#1"
+    },
+    {
+     "type": "pose",
+     "plan": 2,
+     "qui": "SALI",
+     "pose": "sal_inquiet",
+     "pourquoi": "Sali ne doit pas rire face au désarroi de Fatim.",
+     "sig": "FATIM|Sali… je n'ai pas fermé l'œil de la nuit.#0"
+    }
+   ]
+  },
+  {
+   "plan": 36,
+   "moment": "2:23",
+   "gravite": "moyen",
+   "quoi": "Fatim sourit tendrement face à Awa alors qu'elle vient régler ses comptes sans détour.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 36,
+     "qui": "FATIM",
+     "pose": "fat_serieux",
+     "pourquoi": "Fatim doit garder un visage sérieux et digne face à Awa.",
+     "sig": "FATIM|Non. Je ne viens pas pour la robe. Je viens pour ce qui ne s#0"
+    }
+   ]
+  },
+  {
+   "plan": 50,
+   "moment": "4:05",
+   "gravite": "moyen",
+   "quoi": "Fatim garde une pose souriante pendant son avertissement ferme à Awa et lors du silence qui suit.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 50,
+     "qui": "FATIM",
+     "pose": "fat_determine",
+     "pourquoi": "Fatim pose un ultimatum clair à Awa, son visage doit être déterminé.",
+     "sig": "FATIM|Et si tu ne l'aimes pas… si tu as trop honte d'un vendeur de#0"
+    },
+    {
+     "type": "pose",
+     "plan": 51,
+     "qui": "FATIM",
+     "pose": "fat_serieux",
+     "pourquoi": "Pendant le silence pesant, Fatim doit rester digne et grave.",
+     "sig": "FATIM|Et si tu ne l'aimes pas… si tu as trop honte d'un vendeur de#1"
+    },
+    {
+     "type": "pose",
+     "plan": 52,
+     "qui": "FATIM",
+     "pose": "fat_serieux",
+     "pourquoi": "Fatim conclut avec dignité avant de tourner les talons.",
+     "sig": "FATIM|J'ai fini. Je retourne à ma cabine.#0"
+    }
+   ]
+  },
+  {
+   "plan": 33,
+   "moment": "2:13",
+   "gravite": "moyen",
+   "quoi": "Awa apparaît debout avec les yeux fermés dans un plan où elle devrait être assise.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 33,
+     "qui": "AWA",
+     "pose": "awa_assis_serieux",
+     "pourquoi": "Respecter la règle du carnet évitant cette pose fermée et garder Awa assise à sa machine.",
+     "sig": "MIMI|D'accord, Tantie Awa. J'y vais !#1"
+    }
+   ]
+  },
+  {
+   "plan": 53,
+   "moment": "4:25",
+   "gravite": "moyen",
+   "quoi": "Awa a les yeux fermés sur le plan large juste après le départ de Fatim.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 53,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Remplacer la pose aux yeux fermés par une pose de défi bras croisés conforme au carnet.",
+     "sig": "FATIM|J'ai fini. Je retourne à ma cabine.#1"
+    }
+   ]
+  },
+  {
+   "plan": 31,
+   "moment": "2:08",
+   "gravite": "moyen",
+   "quoi": "Awa sourit alors qu'elle s'impatiente et ordonne fermement à Mimi de partir.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 31,
+     "qui": "AWA",
+     "pose": "awa_assis_serieux",
+     "pourquoi": "Awa doit rester sérieuse et assise quand elle renvoie son apprentie.",
+     "sig": "AWA|J'ai dit maintenant. Vas-y sans traîner.#0"
+    }
+   ]
+  },
+  {
+   "plan": 19,
+   "moment": "1:19",
+   "gravite": "petit",
+   "quoi": "Modibo sourit largement debout alors qu'il dit sérieusement à Bakary de ne pas se mêler des affaires des femmes.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 19,
+     "qui": "MODIBO",
+     "pose": "mod_assis_sage",
+     "pourquoi": "Garder Modibo assis sur son banc avec une posture sage et posée.",
+     "sig": "MODIBO|Reste ici, Bakarin. Ce n'est plus ton terrain. Les femmes rè#0"
+    }
+   ]
+  },
+  {
+   "plan": 65,
+   "moment": "5:06",
+   "gravite": "petit",
+   "quoi": "Modibo a un grand sourire hilare en prononçant une parole sage et solennelle sur Fatim.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 65,
+     "qui": "MODIBO",
+     "pose": "mod_assis_sage",
+     "pourquoi": "Donner à Modibo un air sage et assis en harmonie avec sa réplique.",
+     "sig": "MODIBO|C'est exactement ça, Bakarin. Une femme digne qui s'en va fa#0"
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.8-flash",
+ "date": "2026-11-01 13:38"
+}

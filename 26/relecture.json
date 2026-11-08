@@ -1,0 +1,181 @@
+{
+ "resume": "L'histoire est très prenante et bien rythmée. Il y a seulement une incohérence de timing avec Karim qui vient d'arriver au pied de l'immeuble alors que Seydou dit l'avoir déjà livré là-haut. J'ai relu les images de l'aperçu. Quelques poses ne conviennent pas (Awa aux yeux fermés, objets indésirables comme le verre de thé ou la machine à coudre, et Modibo qui fête pendant une filature).",
+ "problemes": [
+  {
+   "plan": 32,
+   "moment": "2:08",
+   "gravite": "fort",
+   "quoi": "Karim vient tout juste de sortir de voiture : Seydou ne peut pas l'avoir déjà livré à l'étage dans son bureau en cinq secondes.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "MODIBO (serieux · regarde: Seydou · voix: chuchote)\nSeydou, c'était bien Karim là-haut ?\n\nSEYDOU (sourire · regarde: Modibo · voix: chuchote)\nOui, Monsieur Karim en personne. {sourire} Une commande de café noir et de sandwichs sur Sounsouni. Il dit qu'il a une longue nuit de travail.",
+     "nouveau": "MODIBO (serieux · regarde: Seydou · voix: chuchote)\nSeydou, c'était bien Karim qui vient d'entrer ?\n\nSEYDOU (sourire · regarde: Modibo · voix: chuchote)\nOui, Monsieur Karim en personne. {sourire} Il a récupéré sa commande à l'entrée : café noir et sandwichs sur Sounsouni. Il dit qu'il a une longue nuit de travail.",
+     "pourquoi": "Karim vient d'arriver en voiture, Seydou lui a donc remis sa commande à l'entrée du bâtiment."
+    },
+    {
+     "type": "note",
+     "theme": "mise-en-scene",
+     "texte": "Filature terminée devant un immeuble → le suspect vient d'entrer → le livreur doit lui avoir remis sa commande à l'entrée et non à l'étage.",
+     "pourquoi": "Garder la logique de temps réel quand un personnage suivi arrive sur les lieux."
+    }
+   ]
+  },
+  {
+   "plan": 22,
+   "moment": "1:31",
+   "gravite": "petit",
+   "quoi": "Il y a une espace inutile au tout début de la réplique de Modibo.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "MODIBO (serieux · regarde: loin · voix: lentement)\n Chut… regarde qui descend.",
+     "nouveau": "MODIBO (serieux · regarde: loin · voix: lentement)\nChut… regarde qui descend.",
+     "pourquoi": "Supprimer l'espace en trop avant le mot Chut."
+    }
+   ]
+  },
+  {
+   "plan": 1,
+   "moment": "0:02",
+   "gravite": "moyen",
+   "quoi": "Awa a les yeux fermés sur la pose awa_v_action_659144_01, ce qui est interdit par le carnet lorsqu'elle est sérieuse.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 1,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Remplacer la pose aux yeux fermés par une posture sérieuse les yeux ouverts.",
+     "sig": "|Les Plans de Bakary – Épisode 31 : Qui est dans la voiture ?#1"
+    },
+    {
+     "type": "pose",
+     "plan": 5,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Éviter les yeux fermés dans le groupe.",
+     "sig": "MOUSSA|Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !#1"
+    },
+    {
+     "type": "pose",
+     "plan": 35,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Éviter les yeux fermés au kiosque.",
+     "sig": "MODIBO|Merci, Seydou. Moussa, on en a assez vu. On rentre. Bakary e#1"
+    }
+   ]
+  },
+  {
+   "plan": 13,
+   "moment": "0:57",
+   "gravite": "moyen",
+   "quoi": "Moussa apparaît assis devant une machine à coudre au milieu de la rue.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 13,
+     "qui": "MOUSSA",
+     "pose": "mou_fier",
+     "pourquoi": "Remettre Moussa debout sans accessoire de couture.",
+     "sig": "MODIBO|Ne t'en fais pas, Bakarin. On va rester à distance. Moussa, #1"
+    }
+   ]
+  },
+  {
+   "plan": 10,
+   "moment": "0:44",
+   "gravite": "moyen",
+   "quoi": "Moussa tient un verre de thé alors qu'il parle de sa moto prêtée.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 10,
+     "qui": "MOUSSA",
+     "pose": "mou_fier",
+     "pourquoi": "Enlever le verre de thé non demandé par le script.",
+     "sig": "MOUSSA|Juste là, Kôrô Modibo ! Le plein est fait, elle est prête à #0"
+    }
+   ]
+  },
+  {
+   "plan": 14,
+   "moment": "0:59",
+   "gravite": "moyen",
+   "quoi": "Modibo lève les bras au ciel en signe de grande joie pendant une filature nocturne discrète.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 14,
+     "qui": "MODIBO",
+     "pose": "mod_doigt",
+     "pourquoi": "Remplacer la pose de victoire par une attitude plus sobre.",
+     "sig": "MODIBO|Ne t'en fais pas, Bakarin. On va rester à distance. Moussa, #2"
+    },
+    {
+     "type": "pose",
+     "plan": 15,
+     "qui": "MODIBO",
+     "pose": "mod_doigt",
+     "pourquoi": "Garder une pose calme pendant la poursuite.",
+     "sig": "MOUSSA|Je les vois, Kôrô ! Ils ont tourné vers le grand goudron !#0"
+    },
+    {
+     "type": "pose",
+     "plan": 20,
+     "qui": "MODIBO",
+     "pose": "mod_doigt",
+     "pourquoi": "Éviter les bras levés pendant l'observation.",
+     "sig": "MODIBO|Continue, Moussa. Ils se dirigent vers le quartier des affai#2"
+    }
+   ]
+  },
+  {
+   "plan": 11,
+   "moment": "0:49",
+   "gravite": "petit",
+   "quoi": "Bakary utilise une pose de supplication (mains jointes) alors qu'il est simplement inquiet.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 11,
+     "qui": "BAKARY",
+     "pose": "bak_pensif",
+     "pourquoi": "Adapter la pose à l'inquiétude sans faire de gestes de prière.",
+     "sig": "BAKARY|Fais attention, Van. On ne sait pas à qui on a affaire.#0"
+    }
+   ]
+  },
+  {
+   "plan": 36,
+   "moment": "2:26",
+   "gravite": "petit",
+   "quoi": "Bakary supplie Modibo en lui demandant qui était dans la voiture.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 36,
+     "qui": "BAKARY",
+     "pose": "bak_determine",
+     "pourquoi": "Mettre une pose déterminée et curieuse au lieu d'une supplication.",
+     "sig": "BAKARY|Alors ? Qui était dans cette voiture ?#0"
+    }
+   ]
+  },
+  {
+   "plan": 31,
+   "moment": "2:04",
+   "gravite": "petit",
+   "quoi": "L'émotion de surprise de Seydou n'a pas d'image dédiée.",
+   "actions": [
+    {
+     "type": "fiche",
+     "pourquoi": "Demander à Gemini l'image de Seydou surpris debout."
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.8-flash + gemini-3.6-flash",
+ "date": "2026-11-08 19:42"
+}

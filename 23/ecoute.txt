@@ -1,0 +1,56 @@
+ALERTES : aucune (rien d'anormal entendu).
+
+SON DE LA VIDÉO (4:54) : -12.3 LUFS (cible -14), crête -1.1 dBTP, écart de volume 4.3 LU.
+
+PAR SCÈNE (début-fin · décor · ambiance : volume, brillance, aigus « presence » 4-6 kHz par rapport aux autres scènes)
+- 0:00-1:48 · RUE · rue calme : -11.9 LUFS, brillance 1268 Hz, aigus -20.2 dB (-2 dB)
+- 1:48-2:38 · MARCHE · marche : -11.8 LUFS, brillance 1535 Hz, aigus -17.6 dB (+1 dB)
+- 2:38-3:08 · KIOSQUE · rue calme : -12.8 LUFS, brillance 1334 Hz, aigus -15.1 dB (+3 dB)
+- 3:08-4:54 · RUE · rue calme : -12.9 LUFS, brillance 1283 Hz, aigus -19.5 dB (-1 dB)
+
+CE QUE L'OREILLE ENTEND (earshot timeline ; les étiquettes de sons sont des indices, les temps et niveaux sont des mesures)
+son.wav: 0:00.00-4:54.43 (294.4 s). Loudness -12.3 LUFS integrated, true peak -1.1 dBTP, LRA 4.3 LU; loudest 1:42.00-1:45.00 (-8.0 LUFS short-term). Beat grid: ~112 BPM (weak pulse, clarity 0.21, 546 beats). 9 section(s): 0:00.00-0:43.00 trap beat?, marimba | also: speech synthesizer (AST) | voice: voice-over narration; 0:43.00-0:51.30 inspirational corporate background music?, marimba; 0:51.30-1:09.60 inspirational corporate background music, vocal chop; 1:09.60-1:33.75 inspirational corporate background music?, music box; 1:33.75-2:40.85 inspirational corporate background music, vocal chop | voice: voice-over narration; 2:40.85-3:03.70 inspirational corporate background music?, marimba. 2092 events (7.1/s); 20 tagged (16 ui, 2 voice, 2 foley; tags are hints). Strongest accents over a running bed: 2:56.29 +34 dB (chat message pop), 4:14.64 +29 dB, 2:37.66 +28 dB.
+
+SECTIONS
+  0:00.00-0:43.00  trap beat?, marimba | also: speech synthesizer (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.66, speech 0.74]
+  0:43.00-0:51.30  inspirational corporate background music?, marimba  -12 LUFS
+  0:51.30-1:09.60  inspirational corporate background music, vocal chop  -12 LUFS
+  1:09.60-1:33.75  inspirational corporate background music?, music box  -12 LUFS
+  1:33.75-2:40.85  inspirational corporate background music, vocal chop | voice: voice-over narration  -12 LUFS  [AST music 0.52, speech 0.75]
+  2:40.85-3:03.70  inspirational corporate background music?, marimba  -12 LUFS
+  3:03.70-3:34.05  cheerful ukulele music?, marimba  -13 LUFS
+  3:34.05-4:20.95  inspirational corporate background music?, vocal chop | also: single-lens reflex camera, ringtone, music for children (AST) | voice: voice-over narration  -12 LUFS  [AST music 0.78, speech 0.83]
+  4:20.95-4:54.43  inspirational corporate background music?, marimba  -13 LUFS
+
+TRANSCRIPT   time  kind   what (CLAP tag / runner-up)                     peak  over bed  length  centroid  | sync
+== 0:00.00-0:43.00  trap beat?, marimba | also: speech synthesizer (AST) | voice: voice-over narration  (+292 untagged onsets, 6.8/s)
+ 0:17.50  UI     chat message pop / wooden block hit              -1.5 dBFS +24.7 dB    70 ms   259 Hz
+== 0:43.00-0:51.30  inspirational corporate background music?, marimba  (+63 untagged onsets, 7.6/s)
+ 0:44.94  UI     notification ding / bubble pop                   -7.8 dBFS   silent    90 ms  7.3 kHz
+ 0:46.61  UI     chat message pop / glockenspiel note             -3.3 dBFS   silent    90 ms  6.0 kHz
+== 0:51.30-1:09.60  inspirational corporate background music, vocal chop  (+130 untagged onsets, 7.1/s)
+ 0:54.81  VOICE  short vocal sound / notification ding           -11.2 dBFS   silent    50 ms  4.9 kHz
+== 1:09.60-1:33.75  inspirational corporate background music?, music box  (+170 untagged onsets, 7.0/s)
+ 1:16.34  UI     chat message pop / glockenspiel note             -4.7 dBFS   silent    50 ms   293 Hz
+ 1:26.50  FOLEY  bubble pop / chat message pop                   -15.7 dBFS   silent    50 ms  1.4 kHz
+== 1:33.75-2:40.85  inspirational corporate background music, vocal chop | voice: voice-over narration  (+464 untagged onsets, 6.9/s)
+ 1:35.66  UI     chat message pop / plucked string note           -1.5 dBFS   silent    70 ms   835 Hz
+ 1:36.79  UI     chat message pop / spoken word                   -1.5 dBFS   silent   200 ms   569 Hz
+ 2:05.00  UI     chat message pop / spoken word                   -2.9 dBFS   silent    70 ms  4.8 kHz
+ 2:05.87  UI     chat message pop / glockenspiel note             -1.6 dBFS   silent    90 ms  3.0 kHz
+ 2:15.58  UI     chat message pop / whip pan whoosh transition    -2.6 dBFS   silent    70 ms  6.1 kHz
+ 2:37.66  -      full swell                                       -1.8 dBFS +28.3 dB   140 ms   187 Hz  | strong accent (summary)
+== 2:40.85-3:03.70  inspirational corporate background music?, marimba  (+157 untagged onsets, 6.9/s)
+ 2:41.95  VOICE  breath / glockenspiel note                       -2.0 dBFS   silent   380 ms  5.4 kHz  [AST Speech 0.62]
+ 2:56.29  UI     chat message pop / spoken word                   -2.5 dBFS +33.9 dB    60 ms   252 Hz  | strong accent (summary)
+ 2:57.21  UI     chat message pop / spoken word                   -1.5 dBFS   silent    80 ms  7.1 kHz
+== 3:03.70-3:34.05  cheerful ukulele music?, marimba  (+216 untagged onsets, 7.1/s)
+ 3:04.60  FOLEY  wooden block hit / glockenspiel note             -1.4 dBFS   silent   160 ms  6.5 kHz
+ 3:07.06  UI     chat message pop / spoken word                  -12.9 dBFS   silent    50 ms  3.1 kHz
+== 3:34.05-4:20.95  inspirational corporate background music?, vocal chop | also: single-lens reflex camera, ringtone, music for children (AST) | voice: voice-over narration  (+344 untagged onsets, 7.3/s)
+ 3:46.31  UI     chat message pop / spoken word                   -8.4 dBFS   silent    60 ms   266 Hz
+ 4:14.64  -      full swell                                       -1.5 dBFS +29.2 dB   260 ms   347 Hz  | strong accent (summary)
+ 4:15.38  UI     chat message pop / bubble pop                    -6.6 dBFS   silent    50 ms  1.8 kHz
+== 4:20.95-4:54.43  inspirational corporate background music?, marimba  (+234 untagged onsets, 7.0/s)
+ 4:45.39  UI     chat message pop / spoken word                   -7.1 dBFS   silent    90 ms   266 Hz
+ 4:49.95  UI     chat message pop / glockenspiel note            -12.0 dBFS   silent    90 ms  8.1 kHz

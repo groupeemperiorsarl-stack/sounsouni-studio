@@ -1,0 +1,13 @@
+{
+ "date": "2026-11-08 17:43",
+ "avis": "Écoute on ne voit pas les personnages comme moussa et modibo qui suivent karim sur la moto alors qu'elle doivent être sur la moto",
+ "reponse": "J'ai bien compris ton retour, Issa. Le script indiquait simplement que Modibo et Moussa étaient « assis », donc l'application n'a pas compris qu'ils étaient sur la moto pour suivre la voiture de Karim. J'ai corrigé la scène de la poursuite pour préciser qu'ils sont tous les deux sur la moto.",
+ "modele": "gemini-3.6-flash",
+ "modifications": [
+  {
+   "pourquoi": "Indiquer explicitement que Moussa et Modibo sont sur la moto pendant la poursuite.",
+   "nouveau": "PLAN: large [Moussa sur moto, Modibo sur moto]"
+  }
+ ],
+ "restes": []
+}

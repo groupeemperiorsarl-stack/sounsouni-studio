@@ -1,0 +1,95 @@
+{
+ "script": "demandes/episode_26.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "MOUSSA",
+   "plans": [
+    17
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_choc"
+     },
+     "texte": "choc (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_panique"
+     },
+     "texte": "panique",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_panique2"
+     },
+     "texte": "panique",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_sourire"
+     },
+     "texte": "sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 1,
+   "sigs": {
+    "17": "MOUSSA|Kôrô… ils roulent vite ! On dirait qu'ils connaissent bien c#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "SEYDOU",
+   "plans": [
+    27
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_debout_neutre"
+     },
+     "texte": "neutre · sourire · ecoute (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_rire"
+     },
+     "texte": "rire",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_salue"
+     },
+     "texte": "salue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_panique"
+     },
+     "texte": "panique",
+     "lettre": "D"
+    }
+   ],
+   "n": 2,
+   "sigs": {
+    "27": "MODIBO|Regarde, Moussa. C'est la moto de Seydou devant l'immeuble. #1"
+   }
+  }
+ ]
+}
