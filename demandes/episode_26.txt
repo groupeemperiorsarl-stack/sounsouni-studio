@@ -53,16 +53,14 @@ Je les vois, Kôrô ! Ils ont tourné vers le grand goudron !
 MODIBO (serieux · regarde: loin · voix: normal)
 {se_penche} Éteins tes phares aussi, Moussa. Utilise la lumière de la lune. Il ne faut pas qu'ils sachent qu'on est derrière eux.
 
-MOUSSA (inquiet · regarde: Modibo · voix: normal)
+MOUSSA (inquiet · regarde: loin · voix: normal)
 {sueur} Kôrô… ils roulent vite ! On dirait qu'ils connaissent bien ces ruelles.
 
 MODIBO (serieux · regarde: loin · voix: lentement)
 Continue, Moussa. {mefiant} Ils se dirigent vers le quartier des affaires. Pourquoi une voiture fantôme irait là-bas à cette heure-ci ?
 
 DÉCOR: RUE · nuit · ambiance: rue calme
-PLAN: large [Modibo debout, Moussa debout]
 [BRUITAGE: moto]
-
 PLAN: 3 s · large [Modibo debout, Moussa debout] · {SCÈNE: Modibo et Moussa sont cachés derrière un grand mur, ils observent la voiture noire qui s'arrête devant un immeuble moderne et luxueux avec des vitres teintées}
 
 MOUSSA (choc · regarde: loin · voix: chuchote)
@@ -79,13 +77,10 @@ MOUSSA (surpris · regarde: Modibo · voix: chuchote)
 MODIBO (sage · regarde: loin · voix: lentement)
 Un homme qui a des intentions honnêtes n'éteint pas ses phares, Moussa. {serieux} Il prépare quelque chose de gros contre le kiosque.
 
-PLAN: large [Modibo debout, Moussa debout]
-[BRUITAGE: moto]
-
 MODIBO (serieux · regarde: loin · voix: chuchote)
 Regarde, Moussa. C'est la moto de Seydou devant l'immeuble. Il vient de faire une livraison.
 
-PLAN: gros [Seydou debout, téléphone]
+PLAN: 2 s · gros [Seydou debout, téléphone]
 PLAN: objet téléphone
 [ÉCRAN 4 s: Sounsouni · Commande livrée ✔ · Bureau Karim · 4 500 FCFA]
 
@@ -107,7 +102,7 @@ MODIBO (serieux · regarde: Seydou · voix: normal)
 Merci, Seydou. {serieux} Moussa, on en a assez vu. On rentre. Bakary et Awa doivent savoir que le loup est dans la bergerie.
 
 DÉCOR: KIOSQUE · matin · ambiance: rue calme
-PLAN: large [Bakary debout, Awa debout, Modibo sur le banc, Diasabi debout]
+PLAN: large [Bakary debout, Awa debout, Modibo sur le banc, Diasabi debout, Moussa debout]
 [BRUITAGE: coq]
 
 BAKARY (inquiet · regarde: Modibo · voix: normal)
