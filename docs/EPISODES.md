@@ -3214,7 +3214,7 @@ PLAN: large [Modibo debout, Moussa debout]
 [BRUITAGE: moto]
 
 DÉCOR: RUE · nuit · ambiance: circulation
-PLAN: large [Modibo assis, Moussa assis]
+PLAN: large [Moussa sur moto, Modibo sur moto]
 [MUSIQUE: action]
 
 MOUSSA (fier · regarde: loin · voix: crie)
