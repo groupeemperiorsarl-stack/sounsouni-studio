@@ -8922,7 +8922,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_assis": {
    "char": "MOUSSA",
@@ -8942,7 +8943,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "dia_colere": {
    "char": "DIASABI",
@@ -8960,7 +8962,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "dia_neutre",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_assis_serieux": {
    "char": "MODIBO",
@@ -8979,7 +8982,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mod_assis_sage",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
