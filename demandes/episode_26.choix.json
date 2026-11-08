@@ -3,10 +3,37 @@
   "sig": "|Les Plans de Bakary – Épisode 31 : Qui est dans la voiture ?#1"
  },
  "10": {
+  "poses": {
+   "MOUSSA": "mou_the"
+  },
   "sig": "MOUSSA|Juste là, Kôrô Modibo ! Le plein est fait, elle est prête à #0"
  },
  "13": {
   "sig": "MODIBO|Ne t'en fais pas, Bakarin. On va rester à distance. Moussa, #1"
+ },
+ "15": {
+  "poses": {
+   "MOUSSA": "mou_fier"
+  },
+  "sig": "MOUSSA|Je les vois, Kôrô ! Ils ont tourné vers le grand goudron !#0"
+ },
+ "16": {
+  "poses": {
+   "MODIBO": "mod_assis_serieux"
+  },
+  "sig": "MODIBO|Éteins tes phares aussi, Moussa. Utilise la lumière de la lu#0"
+ },
+ "18": {
+  "poses": {
+   "MODIBO": "mod_assis_mefiant"
+  },
+  "sig": "MODIBO|Continue, Moussa. Ils se dirigent vers le quartier des affai#0"
+ },
+ "2": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|Awa, reste derrière moi. Moussa, ne t'approche pas trop. Cet#0"
  },
  "28": {
   "sig": "MODIBO|Regarde, Moussa. Seydou arrive avec une commande.#0"
@@ -17,7 +44,46 @@
  "37": {
   "sig": "BAKARY|Alors ? Qui était dans cette voiture ?#0"
  },
+ "38": {
+  "poses": {
+   "AWA": "awa_bras_croises"
+  },
+  "sig": "AWA|Ce Karim ! Il ne lâche jamais l'affaire ! Il veut mon atelie#0"
+ },
+ "4": {
+  "poses": {
+   "MOUSSA": "mou_panique"
+  },
+  "sig": "MOUSSA|Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !#0"
+ },
  "40": {
-  "sig": "DIASABI|À Bobo, on dit : quand le serpent montre sa tête, il faut pr#0"
+  "poses": {
+   "BAKARY": "bak_v_tour_650014_02"
+  },
+  "sig": "BAKARY|Il a l'argent et les voitures noires, mais nous, on a le qua#0"
+ },
+ "42": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "AWA|Pour une fois, je suis d'accord avec toi, vendeur de thé. On#1"
+ },
+ "7": {
+  "poses": {
+   "DIASABI": "dia_court"
+  },
+  "sig": "DIASABI|Où est l'ennemi ?! À Bobo, on dit : celui qui se cache dans #0"
+ },
+ "8": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|La voiture noire, Van ! Elle était là, juste sous les mangui#0"
+ },
+ "9": {
+  "poses": {
+   "MODIBO": "mod_court"
+  },
+  "sig": "MODIBO|Moussa, ta moto est garée où ? On ne peut pas les laisser fi#0"
  }
 }
