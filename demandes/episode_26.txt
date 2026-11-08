@@ -59,7 +59,7 @@ MOUSSA (inquiet · regarde: Modibo · voix: normal)
 MODIBO (serieux · regarde: loin · voix: lentement)
 Continue, Moussa. {mefiant} Ils se dirigent vers le quartier des affaires. Pourquoi une voiture fantôme irait là-bas à cette heure-ci ?
 
-DÉCOR: BUREAU · nuit · ambiance: rue calme
+DÉCOR: RUE · nuit · ambiance: rue calme
 PLAN: large [Modibo debout, Moussa debout]
 [BRUITAGE: moto]
 
@@ -79,34 +79,29 @@ MOUSSA (surpris · regarde: Modibo · voix: chuchote)
 MODIBO (sage · regarde: loin · voix: lentement)
 Un homme qui a des intentions honnêtes n'éteint pas ses phares, Moussa. {serieux} Il prépare quelque chose de gros contre le kiosque.
 
-[BRUITAGE: notification]
-PLAN: gros [Modibo debout, téléphone]
-PLAN: objet téléphone
-[ÉCRAN 4 s: Sounsouni · Livraison en cours ✔ · Destinataire : Bureau Karim · Livreur : Seydou]
-
-PENSÉE MODIBO (surpris · regarde: téléphone)
-Une livraison Sounsouni pour le bureau de Karim à cette heure-ci ? {idee} C'est notre chance de confirmer qu'il est bien là-haut.
-
-MODIBO (sourire_malin · regarde: Moussa · voix: normal)
-Regarde, Moussa. Seydou arrive avec une commande.
-
-PLAN: large [Modibo debout, Moussa debout, Seydou debout]
+PLAN: large [Modibo debout, Moussa debout]
 [BRUITAGE: moto]
 
-SEYDOU (surpris · regarde: Modibo · voix: chuchote)
-{sursaut} Modibo ? Moussa ? Qu'est-ce que vous faites ici à minuit ?
+MODIBO (serieux · regarde: loin · voix: chuchote)
+Regarde, Moussa. C'est la moto de Seydou devant l'immeuble. Il vient de faire une livraison.
 
-MODIBO (serieux · regarde: Seydou · voix: chuchote)
-Seydou, c'est pour qui cette livraison ?
-
-SEYDOU (sourire · regarde: Modibo · voix: chuchote)
-C'est Monsieur Karim. {sourire} Une commande de café noir et de sandwichs. Il dit qu'il a une longue nuit de travail.
-
+PLAN: gros [Seydou debout, téléphone]
 PLAN: objet téléphone
 [ÉCRAN 4 s: Sounsouni · Commande livrée ✔ · Bureau Karim · 4 500 FCFA]
 
 PENSÉE SEYDOU (content · regarde: téléphone)
 Paiement reçu sur Sounsouni. {grand_sourire} Monsieur Karim paie toujours rubis sur l'ongle, même la nuit !
+
+PLAN: large [Modibo debout, Moussa debout, Seydou debout]
+
+SEYDOU (surpris · regarde: Modibo · voix: chuchote)
+{sursaut} Modibo ? Moussa ? Qu'est-ce que vous faites ici à minuit ?
+
+MODIBO (serieux · regarde: Seydou · voix: chuchote)
+Seydou, c'était bien Karim là-haut ?
+
+SEYDOU (sourire · regarde: Modibo · voix: chuchote)
+Oui, Monsieur Karim en personne. {sourire} Une commande de café noir et de sandwichs sur Sounsouni. Il dit qu'il a une longue nuit de travail.
 
 MODIBO (serieux · regarde: Seydou · voix: normal)
 Merci, Seydou. {serieux} Moussa, on en a assez vu. On rentre. Bakary et Awa doivent savoir que le loup est dans la bergerie.
