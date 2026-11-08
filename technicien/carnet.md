@@ -23,6 +23,7 @@ Lu par toutes les IA du studio (technicien, assistant de discussion, mise au for
 - 2026-10-22 · Claude · Réplique « Je… je… » prise pour une réplique inventée → mots trop courts → ne compter que les mots de 3 lettres et plus.
 - 2026-10-22 · Claude · Un personnage absent du décor qui parle → il est mis « au téléphone » (écran d'appel), jamais dans le décor.
 - 2026-10-26 · Gemini · Relecture anormalement longue (10-15 min) → Échec de validation JSON (Erreur 400) sur le modèle principal → Attendre le basculement automatique vers le modèle suivant sans interrompre.
+- 2026-11-08 · Assistant · Plan sans dialogue invisible → absence de durée dans le script → toujours écrire une durée explicite (ex: PLAN: 2 s · ...) pour les plans muets.
 
 ## ia
 - 2026-10-22 · Claude · Gemini 503 / « surchargé » → les modèles gratuits changent souvent de nom → essayer la liste des modèles « flash » l'un après l'autre, et attendre 30 s entre deux tours.
