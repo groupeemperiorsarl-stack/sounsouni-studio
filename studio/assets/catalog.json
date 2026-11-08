@@ -8984,6 +8984,24 @@
    "depart": "mod_assis_sage",
    "mouth_auto": true,
    "props_auto": {}
+  },
+  "bak_determine2": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "determine"
+   ],
+   "mouth": true,
+   "size": [
+    965,
+    1600
+   ],
+   "head_x": 0.537,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_debout",
+   "mouth_auto": true
   }
  },
  "decors": {
