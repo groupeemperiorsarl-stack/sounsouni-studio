@@ -2,6 +2,39 @@
  "1": {
   "sig": "|Les Plans de Bakary – Épisode 31 : Qui est dans la voiture ?#1"
  },
+ "2": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|Awa, reste derrière moi. Moussa, ne t'approche pas trop. Cet#0"
+ },
+ "4": {
+  "poses": {
+   "MOUSSA": "mou_panique"
+  },
+  "sig": "MOUSSA|Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !#0"
+ },
+ "5": {
+  "sig": "MOUSSA|Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !#1"
+ },
+ "7": {
+  "poses": {
+   "DIASABI": "dia_court"
+  },
+  "sig": "DIASABI|Où est l'ennemi ?! À Bobo, on dit : celui qui se cache dans #0"
+ },
+ "8": {
+  "poses": {
+   "BAKARY": "bak_determine"
+  },
+  "sig": "BAKARY|La voiture noire, Van ! Elle était là, juste sous les mangui#0"
+ },
+ "9": {
+  "poses": {
+   "MODIBO": "mod_court"
+  },
+  "sig": "MODIBO|Moussa, ta moto est garée où ? On ne peut pas les laisser fi#0"
+ },
  "10": {
   "poses": {
    "MOUSSA": "mou_the"
@@ -10,6 +43,9 @@
  },
  "13": {
   "sig": "MODIBO|Ne t'en fais pas, Bakarin. On va rester à distance. Moussa, #1"
+ },
+ "14": {
+  "sig": "MODIBO|Ne t'en fais pas, Bakarin. On va rester à distance. Moussa, #2"
  },
  "15": {
   "poses": {
@@ -29,17 +65,23 @@
   },
   "sig": "MODIBO|Continue, Moussa. Ils se dirigent vers le quartier des affai#0"
  },
- "2": {
-  "poses": {
-   "BAKARY": "bak_determine"
-  },
-  "sig": "BAKARY|Awa, reste derrière moi. Moussa, ne t'approche pas trop. Cet#0"
+ "19": {
+  "sig": "MODIBO|Continue, Moussa. Ils se dirigent vers le quartier des affai#1"
+ },
+ "27": {
+  "sig": "MODIBO|Regarde, Moussa. C'est la moto de Seydou devant l'immeuble. #0"
  },
  "28": {
   "sig": "MODIBO|Regarde, Moussa. Seydou arrive avec une commande.#0"
  },
  "30": {
+  "sig": "SEYDOU|Paiement reçu sur Sounsouni. Monsieur Karim paie toujours ru#1"
+ },
+ "31": {
   "sig": "SEYDOU|Modibo ? Moussa ? Qu'est-ce que vous faites ici à minuit ?#0"
+ },
+ "35": {
+  "sig": "MODIBO|Merci, Seydou. Moussa, on en a assez vu. On rentre. Bakary e#1"
  },
  "37": {
   "sig": "BAKARY|Alors ? Qui était dans cette voiture ?#0"
@@ -49,12 +91,6 @@
    "AWA": "awa_bras_croises"
   },
   "sig": "AWA|Ce Karim ! Il ne lâche jamais l'affaire ! Il veut mon atelie#0"
- },
- "4": {
-  "poses": {
-   "MOUSSA": "mou_panique"
-  },
-  "sig": "MOUSSA|Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !#0"
  },
  "40": {
   "poses": {
@@ -67,23 +103,5 @@
    "BAKARY": "bak_determine"
   },
   "sig": "AWA|Pour une fois, je suis d'accord avec toi, vendeur de thé. On#1"
- },
- "7": {
-  "poses": {
-   "DIASABI": "dia_court"
-  },
-  "sig": "DIASABI|Où est l'ennemi ?! À Bobo, on dit : celui qui se cache dans #0"
- },
- "8": {
-  "poses": {
-   "BAKARY": "bak_determine"
-  },
-  "sig": "BAKARY|La voiture noire, Van ! Elle était là, juste sous les mangui#0"
- },
- "9": {
-  "poses": {
-   "MODIBO": "mod_court"
-  },
-  "sig": "MODIBO|Moussa, ta moto est garée où ? On ne peut pas les laisser fi#0"
  }
 }
