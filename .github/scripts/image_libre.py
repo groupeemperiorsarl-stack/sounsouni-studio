@@ -27,7 +27,8 @@ def consigne(x):
         return (f"Use the place shown on the left as the setting and put these exact cartoon characters in it: {noms}. Scene: {x['texte']}. "
                 "Keep every face, hairstyle, clothes and the 3D animated movie style exactly the same. Vertical image, characters at the right size for their distance, feet on the ground, no text.")
     return (f"Make these exact cartoon characters do this action together: {x['texte']}. Characters, from left to right: {noms}. "
-            "Keep every face, hairstyle, clothes and the 3D animated movie style exactly the same. Full bodies visible, side or three-quarter view, plain light grey background, no text, nobody else.")
+            "They share the SAME single object (only ONE motorcycle, ONE table, etc. — never one each); the first character named in the action is the one who does it (for example the driver sits in front, the other sits behind as passenger). "
+            "Keep every face, hairstyle, clothes and the 3D animated movie style exactly the same. Full bodies visible, side view, plain light grey studio background (even if the scene is at night), no text, nobody else.")
 def faire(x, sortie):
     from gradio_client import Client, handle_file
     planche(x).save('/tmp/entree.png')
