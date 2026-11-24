@@ -276,7 +276,7 @@ def close_actor(char, key, x=540, tight=False, scale=1.0, flip=False):
     if fr == 'pied': h = 3000 if tight else 2650; by = 330 + h
     elif fr == 'buste': h = 1950 if tight else 1700; by = 300 + h
     elif fr == 'groupe':   # image de plusieurs personnes : elle tient en entier dans la largeur (Issa, ép. 23 : la tête de Bakary était coupée pendant la gifle)
-        h = min(2300, int(1040 * p['size'][1] / p['size'][0])); by = max(1700, 380 + h) if h < 2300 else 380 + h
+        h = min(2300, int(1040 * p['size'][1] / p['size'][0])); by = 1880 if h < 1500 else 380 + h   # une image large (moto, deux personnes) est posée en bas, jamais en l'air au milieu de la rue (ép. 31)
     else: h = 1500; by = 250 + h
     if scale != 1.0: h = int(h * scale); by = int(330 + h) if fr == 'pied' else int(250 + h)
     hx = p.get('head_x', 0.5); hx = 1 - hx if flip else hx
