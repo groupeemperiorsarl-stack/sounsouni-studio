@@ -18,6 +18,9 @@ jobs:
       - run: git fetch -q origin fichiers
       - name: Fabriquer les images
         run: python .github/scripts/image_libre.py "${{ github.event.inputs.groupes }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: essais, path: /tmp/essais, if-no-files-found: ignore, retention-days: 7}
       - name: Ranger (comme les images Gemini)
         run: |
           F=$(cat faits.txt); RT=$(cat rates.txt 2>/dev/null)

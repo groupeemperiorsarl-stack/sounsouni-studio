@@ -33,7 +33,8 @@ def consigne(x):
             "Keep every face, hairstyle, clothes and the 3D animated movie style exactly the same. Full bodies visible, side view, plain light grey studio background (even if the scene is at night), no text, nobody else.")
 VERIF = """Tu es le contrôleur des images du studio (dessin animé 3D « Les Plans de Bakary »). On te montre : 1) les personnages de référence côte à côte, 2) une image fabriquée.
 Vérifie que l'image fabriquée montre EXACTEMENT l'action demandée, sans défaut grossier : chaque objet une seule fois (par exemple UNE seule moto pour deux personnes, jamais deux motos collées),
-la bonne personne fait la bonne chose (qui conduit, qui est derrière, qui gifle…), les personnages reconnaissables (visage, coiffure, habits), corps entiers, pas de membre en trop, pas de personnage en plus, pas de texte.
+la bonne personne fait la bonne chose (qui conduit, qui est derrière, qui gifle…), les personnages reconnaissables (visage, coiffure, habits), corps entiers, pas de membre en trop, pas de personnage en plus, pas de texte, personne ne flotte en l'air.
+NE COMPTE PAS comme défaut (l'image sera détourée et posée dans le décor de l'épisode par l'application) : le fond, l'heure (jour / nuit), la lumière, un phare allumé ou éteint, l'expression exacte du visage, la posture un peu différente (penché ou pas), les petits détails de la moto ou des habits.
 Réponds uniquement en JSON : {"ok": true ou false, "probleme": "une phrase en français simple si ok est false"}"""
 def verifier(x, chemin):
     """Règle d'Issa (24/11/2026) : l'application regarde chaque image elle-même avant de la ranger (deux motos collées étaient passées)."""
@@ -68,6 +69,7 @@ def faire(x, sortie):
             print('  essai', essai + 1, ':', str(e)[:200]); echecs.append(str(e)[:80])
             if 'ZeroGPU' in str(e) or 'quota' in str(e).lower(): return False, 'quota gratuit du modèle épuisé'
             time.sleep(15); continue
+        os.makedirs('/tmp/essais', exist_ok=True); Image.open(sortie).save(f"/tmp/essais/{os.path.basename(sortie)[:-4]}_essai{essai + 1}.jpg")   # gardés pour qu'on les regarde
         ok, pb = verifier(x, sortie); print('  essai', essai + 1, ': contrôle', ok, pb)
         if ok: return True, ''
         if ok is None: return False, pb
