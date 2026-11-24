@@ -45,7 +45,10 @@ def verifier(x, chemin):
     except Exception as e: print('  vérification impossible :', str(e)[:120]); return None, 'vérification impossible (Gemini indisponible)'
 def kontext(image, consigne_, graine, sortie):
     from gradio_client import Client, handle_file
-    r = Client('black-forest-labs/FLUX.1-Kontext-Dev', hf_token=os.environ.get('HF_TOKEN') or None).predict(input_image=handle_file(image), prompt=consigne_, seed=graine,
+    tk = os.environ.get('HF_TOKEN') or None
+    try: cl = Client('black-forest-labs/FLUX.1-Kontext-Dev', token=tk)      # gradio_client récent
+    except TypeError: cl = Client('black-forest-labs/FLUX.1-Kontext-Dev', hf_token=tk)
+    r = cl.predict(input_image=handle_file(image), prompt=consigne_, seed=graine,
                                                                      randomize_seed=False, guidance_scale=2.5, steps=28, api_name='/infer')
     p = r[0] if isinstance(r[0], str) else r[0]['path']; Image.open(p).convert('RGB').save(sortie, quality=94)
 def faire(x, sortie):
