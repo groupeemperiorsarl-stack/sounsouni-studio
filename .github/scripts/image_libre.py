@@ -7,7 +7,9 @@ import os, sys, json, subprocess, time, shutil
 sys.path.insert(0, 'studio'); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image
 N = os.environ['N']; A = 'studio/assets'
-fiche = json.loads(subprocess.check_output(['git', 'show', f'origin/fichiers:{N}/fiche_gemini.json']))
+# fiche refaite ici à partir du script actuel (celle de la page peut être d'avant : images déjà rangées puis retirées…)
+subprocess.run(f'STUDIO_FAUSSES_VOIX=1 python -m studio.gemini demandes/episode_{N}.txt -o /tmp/fiche_libre', shell=True, check=True)
+fiche = json.load(open('/tmp/fiche_libre/fiche_gemini.json'))
 items = {x['n']: x for x in fiche['items']}
 voulu = [int(g) for g in (sys.argv[1] if len(sys.argv) > 1 else '').replace(' ', '').split(',') if g]
 import gemini
