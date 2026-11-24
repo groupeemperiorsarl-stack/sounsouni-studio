@@ -6,7 +6,7 @@ on:
       issue: { description: "Numéro de la demande", required: true }
       groupes: { description: "Numéros des demandes de la fiche (ex. 3,4) ; vide = toutes les scènes à deux et plans dans le décor", default: "" }
 permissions: { contents: write, issues: write, actions: write }
-env: { GH_TOKEN: "${{ github.token }}", N: "${{ github.event.inputs.issue }}" }
+env: { GH_TOKEN: "${{ github.token }}", N: "${{ github.event.inputs.issue }}", HF_TOKEN: "${{ secrets.HF_TOKEN }}" }   # jeton Hugging Face gratuit (plus d'images par jour) : secret HF_TOKEN
 jobs:
   images:
     runs-on: ubuntu-latest

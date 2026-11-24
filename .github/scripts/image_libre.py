@@ -34,7 +34,7 @@ def faire(x, sortie):
     planche(x).save('/tmp/entree.png')
     for essai in range(3):
         try:
-            r = Client('black-forest-labs/FLUX.1-Kontext-Dev').predict(input_image=handle_file('/tmp/entree.png'), prompt=consigne(x), seed=7 + essai, randomize_seed=False,
+            r = Client('black-forest-labs/FLUX.1-Kontext-Dev', hf_token=os.environ.get('HF_TOKEN') or None).predict(input_image=handle_file('/tmp/entree.png'), prompt=consigne(x), seed=7 + essai, randomize_seed=False,
                                                                      guidance_scale=2.5, steps=28, api_name='/infer')
             p = r[0] if isinstance(r[0], str) else r[0]['path']; Image.open(p).convert('RGB').save(sortie, quality=94); return True
         except Exception as e: print('  essai', essai + 1, ':', str(e)[:200]); time.sleep(20)
