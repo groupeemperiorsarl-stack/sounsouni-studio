@@ -55,6 +55,9 @@
 ## Personnages : autres noms
 - « Van » = Modibo (Bakary l'appelle ainsi) ; « Bakarin » = Bakary. Alias dans `script.CHAR_ALIASES`.
 
+## Panne des voix (08/11 → 24/11/2026)
+- Toutes les vidéos s'arrêtaient à l'étape « voix » : outils gardés en cache (`/home/runner/tts`) faits avec un ancien Python ; GitHub a mis Python à jour (3.11.18), le lien `tts/bin/python` était cassé et `python -m venv` échouait dessus. Corrigé : version exacte de Python dans la clé du cache (`outils-v2-…-py<version>`) et `rm -rf /home/runner/tts` avant de refaire les outils.
+
 ## Fichiers clés
 - **Attention** : les machines « voix » n'installent que numpy, pillow, soundfile, librosa. Tout autre outil (cv2, torch…) s'importe **dans la fonction** qui s'en sert, jamais en haut de `render.py` / `director.py` / `audio.py` (sinon toutes les vidéos s'arrêtent à l'étape des voix — arrivé le 23/10/2026).
 - `studio/script.py` lecture du script · `voices.py` voix + vérification Whisper + fins de phrase jamais coupées + rires + `lexique.txt` (prononciations « écrit = prononcé », ex. « Kôrôbalé wou = Kôrôbaléou ») et « plus » négatif sans S.
