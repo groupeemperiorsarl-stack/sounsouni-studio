@@ -61,7 +61,7 @@ def split_tags(text):
 def parse_plan(s):
     s = s.strip(); p = {'type': 'plan', 'raw': s, 'kind': 'gros', 'who': [], 'dur': None, 'extra': []}
     m = re.match(r'^(\d+(?:[.,]\d+)?)\s*s\s*·\s*(.*)$', s)
-    if m: p['dur'] = float(m.group(1).replace(',', '.')); s = m.group(2)
+    if m: p['dur'] = float(m.group(1).replace(',', '.')); p['duree_ecrite'] = True; s = m.group(2)
     parts = [x.strip() for x in s.split('·')]
     head = parts[0]; p['extra'] = parts[1:]
     m = re.match(r'^(très gros|tres gros|gros|large|deux|objet|écran|ecran)\s*(.*)$', head, re.I)

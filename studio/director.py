@@ -49,6 +49,7 @@ NEG = {'triste', 'pleure', 'peur', 'inquiet', 'panique', 'colere', 'furieux', 'd
 OBJ = {'telephone', 'bouquet', 'brochettes', 'brochette', 'boite', 'cartes', 'carte', 'plateau', 'billet', 'parapluie', 'grill', 'hoverboard', 'robe', 'canne', 'voiture', 'mange', 'verse', 'the', 'verre',
        'bouteilles', 'livre', 'porte', 'gateau', 'rouleau', 'panier', 'beignets', 'louche', 'larmes', 'sale', 'nuit'}
 ENSEMBLE = {'verre': ('plateau', 'the'), 'the': ('plateau', 'verre'), 'telephone': ('cartes',)}   # objets qui vont ensemble
+COUTURE = {'AWA', 'MIMI'}
 LIGHT = {'verre', 'the', 'porte', 'machine', 'grill', 'nuit'}   # éléments de décor ou de posture : petite pénalité seulement
 GESTE = {'pointe', 'mains_tete', 'mains_levees', 'bras_leves', 'supplie', 'non', 'panique', 'bondit', 'doigt', 'salue', 'montre'}
 TENUE = {}   # tenue portée en ce moment par chaque personnage ([TENUE AWA: bazin doré]) ; vide = tenue de tous les jours
@@ -89,7 +90,9 @@ def rank(char, want=(), frame=None, posture=None, need_mouth=True, avoid_cycle=T
         elif p['posture'] in ('dos', 'tombe', 'court', 'marche') and p['posture'] not in w and not (tags & w & {'tombe', 'glisse', 'court', 'dos', 'marche'}): s -= 5
         props = set(p.get('props', [])) | (tags & OBJ)
         unasked = props - w - set(extra_ok) - set(must) - {y for x in must for y in ENSEMBLE.get(x, ())}   # le plateau qui porte le verre demandé n'est pas « en trop »
-        s -= 16 * len(unasked - LIGHT) + 1.5 * len(unasked & LIGHT)   # un objet (brochette, téléphone, rouleau…) ou des larmes jamais montrés sans raison : plus fort qu'une émotion bien trouvée (Issa, ép. 18 : Seydou et son rouleau)
+        leger = LIGHT - ({'machine'} if p['char'] not in COUTURE else set())   # la machine à coudre n'est « du décor » que pour les couturières (Issa, ép. 31 : Moussa avec la machine à coudre en pleine rue)
+        unasked |= (tags & {'machine'}) - w - set(extra_ok) - set(must)
+        s -= 16 * len(unasked - leger) + 1.5 * len(unasked & leger)   # un objet (brochette, téléphone, rouleau…) ou des larmes jamais montrés sans raison : plus fort qu'une émotion bien trouvée (Issa, ép. 18 : Seydou et son rouleau)
         s += 14 * len(set(must) & (tags | props))   # validé par Issa : un objet écrit dans le PLAN est toujours montré
         if side and face_dir(k) != 0: s += 2.5
         if calm and side and face_dir(k) != 0 and not ((tags & (GESTE | POS | NEG | {'gene', 'rire', 'surpris', 'fatigue', 'sale'})) - w): s += 5   # validé par Issa (pose D) : de trois-quarts, même dessin que la suite de la scène
@@ -450,6 +453,12 @@ def build(meta, events, log=print, choix=None, variantes=False):
             for w in e['who']:
                 if w['who'] in stage.arrivals and w['who'] not in stage.seq: stage.seq.append(w['who'])
             if e['who']: present = [w['who'] for w in e['who']]
+            pz = re.findall(r'\{\s*POSE\s*:\s*([^}]+)\}', ' '.join(e.get('extra', [])), re.I)
+            if not e.get('dur') and len(e['who']) > 1 and pz:   # action à plusieurs qui dure toute la conversation (à moto, à table…) : l'image des deux reste pour chaque réplique
+                from script import pose_id
+                tg = pose_id(pz[0]); g = group_pick([w['who'] for w in e['who']], [tg])
+                if g: plan = {'kind': 'group', 'key': g, 'who': e['who']}
+                else: SCENES.add(('+'.join(w['who'] for w in e['who']), tg))
             if e.get('dur') or e['kind'] in ('objet', 'ecran'):
                 from script import pose_id
                 fx = [(0.1, re.sub(r'[{}]', '', x)) for x in re.findall(r'\{[^}]+\}', ' '.join(e.get('extra', [])))]
@@ -468,7 +477,7 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 elif len(e['who']) > 1 and group_pick([w['who'] for w in e['who']], [x[1] for x in fx if x[1].startswith('pose:')] or [x[1] for x in fx]):
                     g = group_pick([w['who'] for w in e['who']], [x[1] for x in fx if x[1].startswith('pose:')] or [x[1] for x in fx]); add({'kind': 'close', 'dur': e['dur'], 'actors': [close_actor('+'.join(w['who'] for w in e['who']), g)], 'fx': fx, 'mode': 'close',
                         'sfx': [(0.25, sfx_file('gifle'))] if any(x[1] in ('gifle', 'claque') for x in fx) else []})
-                    plan = None if any(x[1].startswith('pose:') for x in fx) else {'kind': 'group', 'key': g, 'who': e['who']}   # une action à deux (tape, gifle) ne dure que son plan : les répliques suivantes ont leurs propres plans
+                    plan = None if any(x[1].startswith('pose:') for x in fx) and e.get('duree_ecrite') else {'kind': 'group', 'key': g, 'who': e['who']}   # sans durée écrite (« PLAN: gros [Moussa, Modibo] · {POSE: à moto} »), l'image reste pour les répliques qui suivent (ép. 31 : la poursuite à moto)   # une action à deux (tape, gifle) ne dure que son plan : les répliques suivantes ont leurs propres plans
                     i += 1; continue
                 elif e['kind'] == 'large' or len(e['who']) > 1:
                     for x in fx:   # action à plusieurs écrite dans le PLAN ({POSE: Bakary tape les fesses d'Awa}) sans image : demandée dans la fiche, plan large en attendant
