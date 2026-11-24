@@ -3210,11 +3210,11 @@ Fais attention, Van. On ne sait pas à qui on a affaire.
 MODIBO (sourire · regarde: Bakary · voix: normal)
 Ne t'en fais pas, Bakarin. {hoche_tete} On va rester à distance. Moussa, en selle !
 
-PLAN: large [Modibo debout, Moussa debout]
+PLAN: 3 s · gros [Moussa debout, Modibo debout] · {POSE: Moussa enfourche sa moto et la démarre, Modibo monte derrière lui sur la même moto}
 [BRUITAGE: moto]
 
 DÉCOR: RUE · nuit · ambiance: circulation
-PLAN: large [Moussa sur moto, Modibo sur moto]
+PLAN: gros [Moussa debout, Modibo debout] · {POSE: Moussa conduit sa moto la nuit, Modibo assis derrière lui sur la même moto, tous les deux penchés en avant, concentrés, les phares éteints}
 [MUSIQUE: action]
 
 MOUSSA (fier · regarde: loin · voix: crie)
