@@ -32,7 +32,9 @@ jobs:
         if: github.event.inputs.mode == 'importer'
         run: |
           set -o pipefail; mkdir -p sortie_gemini
-          gh api -H "Accept: application/vnd.github.raw" "repos/${{ github.repository }}/contents/$N/fiche_gemini.json?ref=fichiers" > sortie_gemini/fiche_gemini.json
+          gh api -H "Accept: application/vnd.github.raw" "repos/${{ github.repository }}/contents/$N/fiche_gemini.json?ref=fichiers" > sortie_gemini/fiche_gemini.json || true
+          # fiche vide ou absente (images retirées puis refaites, images du modèle libre…) : refaite à partir du script actuel
+          python -c "import json,sys; sys.exit(0 if json.load(open('sortie_gemini/fiche_gemini.json')).get('groupes') else 1)" 2>/dev/null || STUDIO_FAUSSES_VOIX=1 python -m studio.gemini demandes/episode_$N.txt -o sortie_gemini
           P=""; for x in $ARG; do P="$P ${x%%=*}=demandes/gemini/$N/${x#*=}"; done
           python -m studio.gemini -o sortie_gemini --importer "$P" 2>&1 | tee journal.txt
           K=$(grep -oE "(rangée|objet rangé|décor rangé) : [A-Za-z0-9_]+" journal.txt | awk '{print $NF}' | paste -sd, -)
