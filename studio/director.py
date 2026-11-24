@@ -500,7 +500,10 @@ def build(meta, events, log=print, choix=None, variantes=False):
         elif t == 'line':
             if e['who'] in stage.arrivals and e['who'] not in stage.seq: stage.seq.append(e['who'])   # il parle : il est arrivé
             if first_in_scene and not ending:
-                add({'kind': 'wide', 'dur': 2.2, 'actors': wide_layout(stage, stage.ici(), moods), 'establish': True, 'card': scene['decor']}); first_in_scene = False
+                if plan and plan.get('kind') == 'group':   # la scène s'ouvre sur une action à deux qui dure (à moto) : le plan d'ouverture la montre, jamais les deux debout sans la moto (ép. 31)
+                    add({'kind': 'close', 'dur': 2.2, 'actors': [close_actor('+'.join(w['who'] for w in plan['who']), plan['key'])], 'mode': 'close', 'establish': True, 'card': scene['decor']})
+                else: add({'kind': 'wide', 'dur': 2.2, 'actors': wide_layout(stage, stage.ici(), moods), 'establish': True, 'card': scene['decor']})
+                first_in_scene = False
             who = e['who']; reacts = []
             j = i + 1
             while j < len(events) and events[j]['type'] in ('reaction', 'sfx'):
@@ -534,7 +537,8 @@ def build(meta, events, log=print, choix=None, variantes=False):
                 mode = plan['kind'] if plan else 'gros'
                 if mode == 'group' and who not in [w['who'] for w in plan['who']]: plan = None; mode = 'gros'
                 if mode == 'group':
-                    a = close_actor('+'.join(w['who'] for w in plan['who']), plan['key']); a['h'] = int(a['h'] * 1.15); a['by'] = 330 + a['h']
+                    a = close_actor('+'.join(w['who'] for w in plan['who']), plan['key'])
+                    if a['h'] >= 1500: a['h'] = int(a['h'] * 1.15); a['by'] = 330 + a['h']   # image haute : un peu plus grande ; image large (moto) : telle quelle, posée en bas, jamais en l'air (ép. 31)
                     sh['actors'] = [a]; sh['mode'] = 'close'; sh['group'] = True
                 elif mode == 'large':
                     acts = wide_layout(stage, [w['who'] for w in plan['who']] or stage.ici(), moods, speaker=who, partner=cible(e, last_speaker))
