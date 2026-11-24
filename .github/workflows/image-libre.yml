@@ -1,0 +1,27 @@
+name: Images sans Gemini (modèle libre FLUX Kontext)
+run-name: "Demande ${{ inputs.issue }} · images libres ${{ inputs.groupes }}"
+on:
+  workflow_dispatch:
+    inputs:
+      issue: { description: "Numéro de la demande", required: true }
+      groupes: { description: "Numéros des demandes de la fiche (ex. 3,4) ; vide = toutes les scènes à deux et plans dans le décor", default: "" }
+permissions: { contents: write, issues: write, actions: write }
+env: { GH_TOKEN: "${{ github.token }}", N: "${{ github.event.inputs.issue }}" }
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -q numpy pillow soundfile librosa scipy gradio_client
+      - run: git fetch -q origin fichiers
+      - name: Fabriquer les images
+        run: python .github/scripts/image_libre.py "${{ github.event.inputs.groupes }}"
+      - name: Ranger (comme les images Gemini)
+        run: |
+          F=$(cat faits.txt); [ -z "$F" ] && { gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="⚠️ Le modèle libre n'a pas pu faire les images (quota gratuit épuisé ?). Réessayez plus tard ou utilisez Gemini." > /dev/null; exit 0; }
+          git config user.name "sounsouni-studio"; git config user.email "studio@sounsouni.pro"
+          git add demandes/gemini/$N && git commit -qm "Images faites par le modèle libre (demande #$N)" && for k in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done
+          gh workflow run import.yml -f issue=$N -f mode=importer -f arg="$F"
+          gh api "repos/${{ github.repository }}/issues/$N/comments" -f body="🎨 Images faites sans Gemini par le modèle libre ($F) : rangement en cours. Si une image est ratée : « annuler import » comme d'habitude." > /dev/null
