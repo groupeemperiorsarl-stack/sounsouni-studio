@@ -188,7 +188,7 @@ def demande(x):
         cs = x['persos']; jointes = ' ; '.join(f"image {i} = {ident(c)}" for i, c in enumerate(cs, 1))
         return ("Images jointes, dans l'ordre : " + jointes + ". Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, "
                 "même style dessin animé 3D. Fais UNE seule image verticale où ces " + str(len(cs)) + " personnages sont ENSEMBLE, en train de faire cette action, bien visible et un peu exagérée comme dans un dessin animé : "
-                + x['texte'].rstrip('. ') + ". On voit les deux en entier de la tête aux pieds (ou au moins jusqu'aux genoux), de profil ou de trois-quarts, l'un face à l'autre, "
+                + x['texte'].rstrip('. ') + ". On voit les deux en entier de la tête aux pieds (ou au moins jusqu'aux genoux), de profil ou de trois-quarts, placés comme l'action le demande (chaque objet une seule fois : par exemple UNE seule moto pour les deux), les pieds sur le sol, "
                 "les gestes et les visages bien lisibles. Fond gris clair uni, sans décor, sans texte, sans autre personnage.")
     if x['type'] == 'personnage':
         d = x['texte']; m = re.search(r'\((\d+)\s*images?\s*:\s*([^)]*)\)', d); vues = [v.strip() for v in re.split(r'\s*[·•;]\s*', m.group(2)) if v.strip()] if m else []
