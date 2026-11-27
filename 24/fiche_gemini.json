@@ -1,0 +1,205 @@
+{
+ "items": [
+  {
+   "type": "scene_decor",
+   "perso": "au_loin_dans_la_rue_sombre_on_distingue_la_forme_menacante_d_une_grande_voiture_noire_garee_sous_les_arbres_les_vitres_completement_teintees_et_le_moteur_qui_tourne_sans_bruit",
+   "decor": "RUE",
+   "persos": [
+    "BAKARY",
+    "AWA",
+    "MOUSSA"
+   ],
+   "texte": "au loin dans la rue sombre, on distingue la forme menaçante d'une grande voiture noire garée sous les arbres, les vitres complètement teintées et le moteur qui tourne sans bruit",
+   "ou": [
+    "plan dans le décor"
+   ],
+   "n": 1,
+   "ref": null,
+   "fichier_ref": "ref_RUE.jpg",
+   "fichiers_ref": [
+    "ref_RUE.jpg",
+    "ref_bak_debout.jpg",
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_mou_rire.jpg"
+   ]
+  },
+  {
+   "type": "scene_decor",
+   "perso": "le_lampadaire_au_dessus_d_eux_gresille_fort_puis_s_eteint_brusquement_plongeant_toute_la_rue_dans_une_obscurite_totale_on_ne_voit_plus_que_leurs_silhouettes_sombrement_eclairees_par_la_lune",
+   "decor": "RUE",
+   "persos": [
+    "BAKARY",
+    "AWA"
+   ],
+   "texte": "le lampadaire au-dessus d'eux grésille fort puis s'éteint brusquement, plongeant toute la rue dans une obscurité totale, on ne voit plus que leurs silhouettes sombrement éclairées par la lune",
+   "ou": [
+    "plan dans le décor"
+   ],
+   "n": 2,
+   "ref": null,
+   "fichier_ref": "ref_RUE.jpg",
+   "fichiers_ref": [
+    "ref_RUE.jpg",
+    "ref_bak_debout.jpg",
+    "ref_awa_v_action_659144_01.jpg"
+   ]
+  },
+  {
+   "type": "pose",
+   "perso": "MOUSSA",
+   "posture": "debout",
+   "emo": "panique",
+   "manque": true,
+   "ou": [
+    "image manquante",
+    "image manquante"
+   ],
+   "n": 3,
+   "ref": "mou_rire",
+   "fichier_ref": "ref_mou_rire.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MOUSSA",
+   "posture": "debout",
+   "emo": "panique",
+   "tenue": "",
+   "ou": [
+    "episode_24 plan 39",
+    "episode_24 plan 41",
+    "episode_24 plan 42"
+   ],
+   "n": 4,
+   "ref": "mou_rire",
+   "fichier_ref": "ref_mou_rire.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "debout",
+   "emo": "determine",
+   "tenue": "",
+   "ou": [
+    "episode_24 plan 5",
+    "episode_24 plan 8"
+   ],
+   "n": 5,
+   "ref": "bak_debout",
+   "fichier_ref": "ref_bak_debout.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "moue",
+   "tenue": "",
+   "ou": [
+    "episode_24 plan 15",
+    "episode_24 plan 22"
+   ],
+   "n": 6,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "debout",
+   "emo": "panique",
+   "tenue": "",
+   "ou": [
+    "episode_24 plan 37",
+    "episode_24 plan 41"
+   ],
+   "n": 7,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    3,
+    4,
+    6,
+    7
+   ],
+   "fichier_ref": "ref_mou_rire.jpg",
+   "refs": [
+    "ref_mou_rire.jpg",
+    "ref_awa_v_action_659144_01.jpg"
+   ],
+   "g": 1,
+   "demande": "Images jointes, dans l'ordre : image 1 = Moussa (jeune homme mince, petites dreadlocks courtes, t-shirt blanc ample, casque audio noir autour du cou, jean bleu clair, baskets blanches ; debout sur le sol, sans hoverboard) ; image 2 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Moussa (image 1), debout, de trois-quarts, paniqué, bouche fermée, les mains vides ; 2) Moussa (image 1), debout, de trois-quarts, paniqué, bouche fermée, les mains vides ; 3) Awa (image 2), debout, de trois-quarts, qui fait la moue, bouche fermée, les mains vides ; 4) Awa (image 2), debout, de trois-quarts, paniquée, bouche fermée, les mains vides.",
+   "joindre": [
+    "image_1_1.jpg",
+    "image_1_2.jpg"
+   ],
+   "titres": [
+    "Moussa — debout, paniqué",
+    "Moussa — debout, paniqué",
+    "Awa — debout, qui fait la moue",
+    "Awa — debout, paniquée"
+   ]
+  },
+  {
+   "items": [
+    5
+   ],
+   "fichier_ref": "ref_bak_debout.jpg",
+   "refs": null,
+   "g": 2,
+   "demande": "Garde exactement le même personnage que sur l'image jointe, Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Montre-le ainsi : debout, de trois-quarts, déterminé, le regard droit, bouche fermée. Corps entier de la tête aux pieds, sur un fond gris clair uni, sans aucun décor ni autre personnage. Image verticale.",
+   "joindre": [
+    "image_2.jpg"
+   ],
+   "titres": [
+    "Bakary — debout, déterminé"
+   ]
+  },
+  {
+   "g": 3,
+   "items": [
+    1
+   ],
+   "fichier_ref": "ref_RUE.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = le décor (le lieu) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) ; image 3 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) ; image 4 = Moussa (jeune homme mince, petites dreadlocks courtes, t-shirt blanc ample, casque audio noir autour du cou, jean bleu clair, baskets blanches ; debout sur le sol, sans hoverboard). Fais UNE seule image verticale (format 9:16, plein cadre) dans exactement le même lieu que l'image 1 et le même style dessin animé 3D, avec ces personnages dedans, chacun exactement comme sur son image (même visage, même coiffure, mêmes vêtements, mêmes couleurs). La scène : au loin dans la rue sombre, on distingue la forme menaçante d'une grande voiture noire garée sous les arbres, les vitres complètement teintées et le moteur qui tourne sans bruit. Chaque personnage à la bonne taille selon sa distance (celui qui est loin est petit, au fond), les pieds bien posés sur le sol, les regards et les gestes bien lisibles. Aucun autre personnage, aucun texte.",
+   "refs": [
+    "ref_RUE.jpg",
+    "ref_bak_debout.jpg",
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_mou_rire.jpg"
+   ],
+   "joindre": [
+    "image_3_1.jpg",
+    "image_3_2.jpg",
+    "image_3_3.jpg",
+    "image_3_4.jpg"
+   ],
+   "titres": [
+    "Plan dans le décor (Rue) : au loin dans la rue sombre, on distingue la forme menaçante d'une grande voiture noire gar"
+   ]
+  },
+  {
+   "g": 4,
+   "items": [
+    2
+   ],
+   "fichier_ref": "ref_RUE.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = le décor (le lieu) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) ; image 3 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts). Fais UNE seule image verticale (format 9:16, plein cadre) dans exactement le même lieu que l'image 1 et le même style dessin animé 3D, avec ces personnages dedans, chacun exactement comme sur son image (même visage, même coiffure, mêmes vêtements, mêmes couleurs). La scène : le lampadaire au-dessus d'eux grésille fort puis s'éteint brusquement, plongeant toute la rue dans une obscurité totale, on ne voit plus que leurs silhouettes sombrement éclairées par la lune. Chaque personnage à la bonne taille selon sa distance (celui qui est loin est petit, au fond), les pieds bien posés sur le sol, les regards et les gestes bien lisibles. Aucun autre personnage, aucun texte.",
+   "refs": [
+    "ref_RUE.jpg",
+    "ref_bak_debout.jpg",
+    "ref_awa_v_action_659144_01.jpg"
+   ],
+   "joindre": [
+    "image_4_1.jpg",
+    "image_4_2.jpg",
+    "image_4_3.jpg"
+   ],
+   "titres": [
+    "Plan dans le décor (Rue) : le lampadaire au-dessus d'eux grésille fort puis s'éteint brusquement, plongeant toute la "
+   ]
+  }
+ ]
+}

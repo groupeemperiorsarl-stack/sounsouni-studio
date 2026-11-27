@@ -1,0 +1,412 @@
+{
+ "script": "demandes/episode_22.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    10
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_pensif"
+     },
+     "texte": "pensif (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_pointe"
+     },
+     "texte": "pointe · montre",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_main_tendue"
+     },
+     "texte": "explique · propose · offre",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_supplie"
+     },
+     "texte": "gene · supplie · pardon",
+     "lettre": "D"
+    }
+   ],
+   "n": 1,
+   "sigs": {
+    "10": "BAKARY|Van… depuis hier, l'air du quartier est bizarre.#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    24
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assise_chaise"
+     },
+     "texte": "coud · travaille",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_determine"
+     },
+     "texte": "determine · assis",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_fier"
+     },
+     "texte": "fier · assis",
+     "lettre": "D"
+    }
+   ],
+   "n": 2,
+   "sigs": {
+    "24": "AWA|Merci Seydou. C'est validé sur l'application. Tu es toujours#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    31
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_determine"
+     },
+     "texte": "determine · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_fier"
+     },
+     "texte": "fier · assis",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis"
+     },
+     "texte": "neutre · ecoute · assis",
+     "lettre": "D"
+    }
+   ],
+   "n": 3,
+   "sigs": {
+    "31": "AWA|J'ai dit maintenant. Vas-y sans traîner.#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    41
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assise_chaise"
+     },
+     "texte": "coud · travaille",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_determine"
+     },
+     "texte": "determine · assis",
+     "lettre": "D"
+    }
+   ],
+   "n": 4,
+   "sigs": {
+    "41": "AWA|Fatim, mesure tes paroles ! Tu es dans mon atelier ! Bakary #0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    47
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_froide"
+     },
+     "texte": "froide · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "D"
+    }
+   ],
+   "n": 5,
+   "sigs": {
+    "47": "AWA|Je ne retiens personne. Il est libre.#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    50,
+    51
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_mains"
+     },
+     "texte": "neutre · sourire · tendre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_determine"
+     },
+     "texte": "determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_determine2"
+     },
+     "texte": "determine",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_serieux"
+     },
+     "texte": "serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 6,
+   "sigs": {
+    "50": "FATIM|Et si tu ne l'aimes pas… si tu as trop honte d'un vendeur de#0",
+    "51": "FATIM|Et si tu ne l'aimes pas… si tu as trop honte d'un vendeur de#1"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    54
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_action_659144_01"
+     },
+     "texte": "serieux · bras_croises · ferme_yeux",
+     "lettre": "D"
+    }
+   ],
+   "n": 7,
+   "sigs": {
+    "54": "FATIM|J'ai fini. Je retourne à ma cabine.#2"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    55
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 8,
+   "sigs": {
+    "55": "AWA|Venir me faire la morale dans mon propre atelier ! Pour qui #0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    58
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_determine"
+     },
+     "texte": "determine · assis (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_fier"
+     },
+     "texte": "fier · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_assis_serieux"
+     },
+     "texte": "serieux · assis",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 9,
+   "sigs": {
+    "58": "AWA|Et Bakary… il croit vraiment que tout le quartier tourne aut#0"
+   }
+  }
+ ]
+}

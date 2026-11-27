@@ -1,0 +1,54 @@
+{
+ "items": [
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "assis",
+   "emo": "serieux",
+   "tenue": "",
+   "ou": [
+    "episode_27 plan 3",
+    "episode_27 plan 28"
+   ],
+   "n": 1,
+   "ref": "mod_assis_serieux2",
+   "fichier_ref": "ref_mod_assis_serieux2.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "BAKARY",
+   "posture": "assis",
+   "emo": "",
+   "tenue": "",
+   "ou": [
+    "episode_27 plan 46"
+   ],
+   "n": 2,
+   "ref": "bak_assis3",
+   "fichier_ref": "ref_bak_assis3.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    1,
+    2
+   ],
+   "fichier_ref": "ref_mod_assis_serieux2.jpg",
+   "refs": [
+    "ref_mod_assis_serieux2.jpg",
+    "ref_bak_assis3.jpg"
+   ],
+   "g": 1,
+   "demande": "Images jointes, dans l'ordre : image 1 = Modibo (jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 2 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Modibo (image 1), assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, sérieux, les mains vides ; 2) Bakary (image 2), assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, bouche fermée, les mains vides. TRÈS IMPORTANT, les visages : ne dessine pas un nouveau personnage qui ressemble, recopie exactement CELUI de l'image jointe, comme une photo du même acteur : même forme de visage, même nez, mêmes yeux, même bouche, mêmes sourcils, même couleur de peau, même âge, même corpulence, même barbe ou barbiche (ni plus ni moins), même coiffure ; mêmes vêtements avec exactement les mêmes motifs et les mêmes couleurs de tissu. Seule l'expression du visage et la posture changent. Rendu : lumière douce et égale venant de face, sans ombre forte, sans contre-jour ni lumière colorée (l'image sera posée dans plusieurs décors) ; peau, yeux et tissus (bazin, pagne, broderies) bien détaillés, couleurs vives et naturelles, même finition que l'image jointe. À éviter absolument : doigts en trop ou en moins, mains fondues ou tordues, visage déformé, yeux qui louchent, bras ou jambes en trop, personnage coupé, texte, lettres, logo, filigrane.",
+   "joindre": [
+    "image_1_1.jpg",
+    "image_1_2.jpg"
+   ],
+   "titres": [
+    "Modibo — assis, sérieux",
+    "Bakary — assis"
+   ]
+  }
+ ]
+}

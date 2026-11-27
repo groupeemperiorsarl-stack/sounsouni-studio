@@ -1,0 +1,213 @@
+{
+ "resume": "L'histoire est vivante et drôle, mais il y a une incohérence de décor (ils vont au marché pour s'y faire livrer des produits du marché), un tirage au sort incomplet et Mimi absente de la finale de son propre concours. Plusieurs personnages tiennent des objets non demandés (Sali et Awa avec un téléphone en pleine discussion, Moussa avec un verre de thé). La pose spéciale de Diasabi avec son assiette n'a pas été activée au plan 47.",
+ "problemes": [
+  {
+   "plan": 27,
+   "moment": "1:42",
+   "gravite": "fort",
+   "quoi": "Awa et Bakary vont au marché pour commander sur Sounsouni une livraison d'ingrédients du marché livrés au marché.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "DÉCOR: MARCHÉ · midi · ambiance: marché\nPLAN: large [Awa debout, Bakary debout]\n\nAWA (determine · regarde: téléphone · voix: normal)\nIl nous faut les meilleurs ingrédients du marché. Et pas question de perdre du temps à chercher boutique par boutique.\n\nPLAN: gros [Awa debout, téléphone]\nPLAN: objet téléphone\n[ÉCRAN 5 s: Sounsouni Marché · Commande Équipe Awa & Bakary · Poisson capitaines frais, épices royales, menthe douce · 7 500 FCFA · [Commander]]\n\nPENSÉE AWA (determine · regarde: téléphone)\nSur Sounsouni Marché, la commande est passée… {sourire} Le poisson le plus frais du marché arrive tout de suite ici !",
+     "nouveau": "DÉCOR: KIOSQUE · midi · ambiance: rue calme\nPLAN: large [Awa debout, Bakary debout]\n\nAWA (determine · regarde: téléphone · voix: normal)\nIl nous faut les meilleurs ingrédients du marché. Pas question de perdre du temps à courir là-bas boutique par boutique !\n\nPLAN: gros [Awa debout, téléphone]\nPLAN: objet téléphone\n[ÉCRAN 5 s: Sounsouni Marché · Commande Équipe Awa & Bakary · Poisson capitaines frais, épices royales, menthe douce · 7 500 FCFA · [Commander]]\n\nPENSÉE AWA (determine · regarde: téléphone)\nSur Sounsouni Marché, la commande est passée… {sourire} Le poisson le plus frais du marché arrive directement au kiosque !",
+     "pourquoi": "Commander sur l'application depuis le kiosque évite d'aller au marché pour s'y faire livrer par moto."
+    },
+    {
+     "type": "note",
+     "theme": "mise-en-scene",
+     "texte": "Livraison sur Sounsouni → le personnage commande depuis son lieu de travail ou sa maison → ne jamais le placer sur le lieu de vente (marché, boutique) pour commander en livraison.",
+     "pourquoi": "Évite l'absurdité de se faire livrer au marché des produits achetés au marché."
+    }
+   ]
+  },
+  {
+   "plan": 19,
+   "moment": "1:09",
+   "gravite": "moyen",
+   "quoi": "Sali tire au sort la deuxième équipe sans avoir annoncé la première, qui apparaît pourtant sur l'écran final (Modibo et Mimi).",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "SALI (sourire · regarde: Awa · voix: normal)\nParfait ! Awa et Mimi sont là. Procedons au tirage au sort pour la deuxième équipe !",
+     "nouveau": "SALI (sourire · regarde: Awa · voix: normal)\nParfait ! Awa et Mimi sont là. Modibo sera avec Mimi pour l'Équipe A ! Et maintenant, tirage au sort pour l'Équipe B !",
+     "pourquoi": "On comprend ainsi la composition de l'Équipe A qui concourt contre Bakary et Awa."
+    }
+   ]
+  },
+  {
+   "plan": 45,
+   "moment": "3:01",
+   "gravite": "moyen",
+   "quoi": "Mimi, concurrente de l'Équipe A, n'est pas présente pour la finale, et Moussa disparaît du plan large alors qu'il parle juste après.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "DÉCOR: RUE · après-midi · ambiance: rue calme\nPLAN: large [Diasabi assis, Sali debout, Bakary debout, Awa debout, Modibo sur le banc, Moussa debout, Fatim debout, Kadi sur le banc]\n[MUSIQUE: suspense]\n\nSALI (grand_sourire · regarde: caméra · voix: crie)\n{bombe_torse} Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équipe Awa et Bakary !\n\nPLAN: 3 s · gros Diasabi · {POSE: Diasabi assis devant une grande assiette fumante, une grosse cuillère à la main, les yeux grands ouverts de gourmandise, prêt à dévorer}\n\nDIASABI (emerveille · regarde: plat · voix: chuchote)\n{etoiles} Regardez-moi cette sauce dorée…\n\n[BRUITAGE: miam]\nPLAN: 3 s · très gros Diasabi · {emerveille}{ grand_sourire}\n\nDIASABI (choc · regarde: caméra · voix: crie)\n{choc}{etoiles} MAMA MIA ! Ce n'est pas un plat, c'est une déclaration d'amour ! Le piment d'Awa et la douceur du thé de Bakary !\n\nPLAN: large [Diasabi assis, Sali debout, Bakary debout, Awa debout, Modibo sur le banc, Fatim debout]",
+     "nouveau": "DÉCOR: RUE · après-midi · ambiance: rue calme\nPLAN: large [Diasabi assis, Sali debout, Bakary debout, Awa debout, Modibo sur le banc, Moussa debout, Mimi debout, Fatim debout, Kadi sur le banc]\n[MUSIQUE: suspense]\n\nSALI (grand_sourire · regarde: caméra · voix: crie)\n{bombe_torse} Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équipe Awa et Bakary !\n\nPLAN: 3 s · gros Diasabi · {POSE: Diasabi assis devant une grande assiette fumante, une grosse cuillère à la main, les yeux grands ouverts de gourmandise, prêt à dévorer}\n\nDIASABI (emerveille · regarde: plat · voix: chuchote)\n{etoiles} Regardez-moi cette sauce dorée…\n\n[BRUITAGE: miam]\nPLAN: 3 s · très gros Diasabi · {emerveille}{ grand_sourire}\n\nDIASABI (choc · regarde: caméra · voix: crie)\n{choc}{etoiles} MAMA MIA ! Ce n'est pas un plat, c'est une déclaration d'amour ! Le piment d'Awa et la douceur du thé de Bakary !\n\nPLAN: large [Diasabi assis, Sali debout, Bakary debout, Awa debout, Modibo sur le banc, Moussa debout, Mimi debout, Fatim debout]",
+     "pourquoi": "Mimi doit être présente pour les résultats de son équipe et Moussa doit rester visible dans le groupe."
+    }
+   ]
+  },
+  {
+   "plan": 65,
+   "moment": "4:14",
+   "gravite": "petit",
+   "quoi": "Bakary a l'émotion « neutre » alors qu'il remercie Awa avec tendresse sous une musique romantique.",
+   "actions": [
+    {
+     "type": "script",
+     "ancien": "PLAN: deux [Bakary debout, Awa debout]\n[MUSIQUE: romantique]\n\nBAKARY (neutre · regarde: Awa · voix: chuchote)\nMerci, Awa. {sourire} On forme une bonne équipe, finalement.",
+     "nouveau": "PLAN: deux [Bakary debout, Awa debout]\n[MUSIQUE: romantique]\n\nBAKARY (tendre · regarde: Awa · voix: chuchote)\nMerci, Awa. {sourire} On forme une bonne équipe, finalement.",
+     "pourquoi": "L'émotion tendre correspond à la musique romantique et au moment de complicité avec Awa."
+    }
+   ]
+  },
+  {
+   "plan": 47,
+   "moment": "3:08",
+   "gravite": "fort",
+   "quoi": "Diasabi n'a pas son assiette fumante ni sa cuillère alors que la pose dédiée existe dans le studio.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 47,
+     "qui": "DIASABI",
+     "pose": "dia_assis_diasabi_assis_devant_une_grande_assiette_fumante_une_grosse_cuillere_a_la_main_les_yeux_grands_ouverts_de_gourmandise_pret_a_devorer",
+     "pourquoi": "Activer la pose avec l'assiette et la cuillère demandée par le script.",
+     "sig": "SALI|Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équip#1"
+    }
+   ]
+  },
+  {
+   "plan": 63,
+   "moment": "4:05",
+   "gravite": "moyen",
+   "quoi": "Sali tient un téléphone à la main alors qu'elle crie de colère contre Diasabi.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 63,
+     "qui": "SALI",
+     "pose": "sal_colere",
+     "pourquoi": "Enlever le téléphone et afficher la colère de Sali.",
+     "sig": "SALI|DIASABI ! Tu as mangé tout le plat des gagnants avant même q#0"
+    }
+   ]
+  },
+  {
+   "plan": 61,
+   "moment": "4:02",
+   "gravite": "moyen",
+   "quoi": "Sali a un téléphone à la main au lieu d'une réaction fâchée en voyant le plat vide.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 61,
+     "qui": "SALI",
+     "pose": "sal_colere",
+     "pourquoi": "Remplacer le téléphone par une pose de colère sans objet.",
+     "sig": "DIASABI|Ben… j'ai goûté ! Une cuillère pour vérifier le sel, une cui#1"
+    }
+   ]
+  },
+  {
+   "plan": 12,
+   "moment": "0:42",
+   "gravite": "moyen",
+   "quoi": "Sali tient un téléphone alors qu'elle taquine Diasabi de vive voix.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 12,
+     "qui": "SALI",
+     "pose": "sal_taquin",
+     "pourquoi": "Retirer le téléphone inutile et garder l'attitude taquine.",
+     "sig": "SALI|Toi, Diasabi ! Parce que tu as toujours faim et que si tu cu#0"
+    }
+   ]
+  },
+  {
+   "plan": 32,
+   "moment": "2:07",
+   "gravite": "moyen",
+   "quoi": "Awa tient encore son téléphone alors qu'elle exprime son dégoût en face de Bakary.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 32,
+     "qui": "AWA",
+     "pose": "awa_degout",
+     "pourquoi": "Mettre l'attitude de dégoût sans garder le téléphone en main.",
+     "sig": "AWA|Du thé dans la sauce ?! Tu es devenu fou ou c'est encore une#0"
+    }
+   ]
+  },
+  {
+   "plan": 34,
+   "moment": "2:18",
+   "gravite": "moyen",
+   "quoi": "Awa garde son téléphone en main pendant qu'elle hésite et parle à Bakary.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 34,
+     "qui": "AWA",
+     "pose": "awa_pensive",
+     "pourquoi": "Mettre une pose pensive sans téléphone.",
+     "sig": "AWA|Hmm… du gingembre et de la menthe… Bon ! Mais si le plat est#0"
+    }
+   ]
+  },
+  {
+   "plan": 5,
+   "moment": "0:10",
+   "gravite": "petit",
+   "quoi": "Moussa tient un verre de thé en main alors qu'il pose une simple question à Sali.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 5,
+     "qui": "MOUSSA",
+     "pose": "mou_sourire",
+     "pourquoi": "Enlever le verre de thé non mentionné.",
+     "sig": "MOUSSA|Tantie Sali ! Qu'est-ce qui se passe ? Tu donnes des beignet#0"
+    }
+   ]
+  },
+  {
+   "plan": 39,
+   "moment": "2:34",
+   "gravite": "petit",
+   "quoi": "Moussa a un verre de thé à la main pendant qu'il annonce le direct.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 39,
+     "qui": "MOUSSA",
+     "pose": "mou_fier",
+     "pourquoi": "Donner à Moussa une pose fière sans verre de thé.",
+     "sig": "MOUSSA|En direct sur Sounsouni ! L'Équipe Awa-Bakary prépare le « T#0"
+    }
+   ]
+  },
+  {
+   "plan": 28,
+   "moment": "1:44",
+   "gravite": "petit",
+   "quoi": "Awa a les yeux fermés dans le plan large au marché.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 28,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Éviter la pose aux yeux fermés conformément au carnet.",
+     "sig": "AWA|Il nous faut les meilleurs ingrédients du marché. Et pas que#0"
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.8-flash + gemini-3.7-flash",
+ "date": "2026-11-02 17:16"
+}

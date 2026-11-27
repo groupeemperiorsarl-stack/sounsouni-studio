@@ -1,0 +1,251 @@
+{
+ "items": [
+  {
+   "type": "scene_decor",
+   "perso": "dans_la_rue_sali_et_la_bande_autour_de_la_table_du_tirage_au_sort_regardent_awa_qui_arrive_au_loin_avec_mimi_l_air_curieux",
+   "decor": "RUE",
+   "persos": [
+    "SALI",
+    "BAKARY",
+    "MODIBO",
+    "DIASABI"
+   ],
+   "texte": "dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arrive au loin avec Mimi, l'air curieux",
+   "ou": [
+    "plan dans le décor"
+   ],
+   "n": 1,
+   "ref": null,
+   "fichier_ref": "ref_RUE.jpg",
+   "fichiers_ref": [
+    "ref_RUE.jpg",
+    "ref_sal_inquiet.jpg",
+    "ref_bak_debout.jpg",
+    "ref_mod_joie.jpg",
+    "ref_dia_neutre.jpg"
+   ]
+  },
+  {
+   "type": "scene",
+   "perso": "AWA+BAKARY",
+   "persos": [
+    "AWA",
+    "BAKARY"
+   ],
+   "emo": "pose:awa_et_bakary_cuisinent_cote_a_cote_devant_la_marmite_bakary_verse_delicatement_une_louche_d_infusion_dans_la_sauce_pendant_qu_awa_melange_energiquement_avec_une_spatule_en_bois_leurs_visages_tres_proches",
+   "texte": "Awa et Bakary cuisinent côte à côte devant la marmite, Bakary verse délicatement une louche d'infusion dans la sauce pendant qu'Awa mélange énergiquement avec une spatule en bois, leurs visages très proches",
+   "ou": [
+    "scène à deux"
+   ],
+   "n": 2,
+   "ref": "awa_v_action_659144_01",
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "fichiers_ref": [
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_bak_debout.jpg"
+   ]
+  },
+  {
+   "type": "objet",
+   "perso": "plat vide",
+   "texte": "plat vide",
+   "ou": [
+    "episode_23 plan 58"
+   ],
+   "n": 3,
+   "ref": "kar_voiture",
+   "fichier_ref": "ref_kar_voiture.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "assis",
+   "emo": "pose:diasabi_assis_devant_une_grande_assiette_fumante_une_grosse_cuillere_a_la_main_les_yeux_grands_ouverts_de_gourmandise_pret_a_devorer",
+   "tenue": "",
+   "ou": [
+    "episode_23 plan 47"
+   ],
+   "n": 4,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "SALI",
+   "posture": "debout",
+   "emo": "content",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 5,
+   "ref": "sal_inquiet",
+   "fichier_ref": "ref_sal_inquiet.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "SALI",
+   "posture": "debout",
+   "emo": "grand_sourire",
+   "tenue": "",
+   "ou": [
+    "episode_23 plan 2",
+    "episode_23 plan 22",
+    "episode_23 plan 46",
+    "episode_23 plan 52"
+   ],
+   "n": 6,
+   "ref": "sal_inquiet",
+   "fichier_ref": "ref_sal_inquiet.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "assis",
+   "emo": "choc",
+   "tenue": "",
+   "ou": [
+    "episode_23 plan 50",
+    "episode_23 plan 51",
+    "episode_23 plan 52"
+   ],
+   "n": 7,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "assis",
+   "emo": "taquin",
+   "tenue": "",
+   "ou": [
+    "episode_23 plan 7",
+    "episode_23 plan 24"
+   ],
+   "n": 8,
+   "ref": "mod_assis_sage",
+   "fichier_ref": "ref_mod_assis_sage.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "assis",
+   "emo": "",
+   "tenue": "",
+   "ou": [
+    "episode_23 plan 45",
+    "episode_23 plan 46"
+   ],
+   "n": 9,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "assis",
+   "emo": "emerveille",
+   "tenue": "",
+   "ou": [
+    "episode_23 plan 48",
+    "episode_23 plan 49"
+   ],
+   "n": 10,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    4,
+    7,
+    9,
+    10
+   ],
+   "fichier_ref": "ref_dia_neutre.jpg",
+   "refs": null,
+   "g": 1,
+   "demande": "Garde exactement le même personnage que sur l'image jointe, Diasabi (homme très grand et très mince, long cou, cheveux très courts, grosses lèvres, chemise à carreaux verts aux manches retroussées, pantalon gris retroussé aux chevilles, sandales) : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage qui montre ce personnage 4 fois, côte à côte sur une seule rangée, chacun en corps entier de la tête aux pieds, tous à la même taille, bien séparés les uns des autres (un espace vide entre eux), sur un fond gris clair uni, sans décor ni autre personnage, sans texte ni numéro. De gauche à droite : 1) Diasabi assis devant une grande assiette fumante, une grosse cuillère à la main, les yeux grands ouverts de gourmandise, prêt à dévorer, bouche fermée ; 2) assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, choqué, la bouche ouverte ; 3) assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, bouche fermée ; 4) assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, émerveillé, les yeux brillants, bouche entrouverte.",
+   "joindre": [
+    "image_1.jpg"
+   ],
+   "titres": [
+    "Diasabi — Diasabi assis devant une grande assiette fumante, une grosse cuillère à la main, les yeux grands ouverts de gourmandise, prêt à dévorer",
+    "Diasabi — assis, choqué",
+    "Diasabi — assis",
+    "Diasabi — assis, émerveillé"
+   ]
+  },
+  {
+   "items": [
+    5,
+    6,
+    3,
+    8
+   ],
+   "fichier_ref": "ref_sal_inquiet.jpg",
+   "refs": [
+    "ref_sal_inquiet.jpg",
+    "ref_mod_assis_sage.jpg"
+   ],
+   "g": 2,
+   "demande": "Images jointes, dans l'ordre : image 1 = Sali (jeune femme, foulard jaune noué sur la tête, robe en pagne bleu à motifs orange et bordure dorée, sandales) ; image 2 = Modibo (jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Sali (image 1), debout, de trois-quarts, contente, bouche fermée, les mains vides ; 2) Sali (image 1), debout, de trois-quarts, grand sourire, bouche fermée, les mains vides ; 3) plat vide, l'objet seul, posé, dessiné en grand ; 4) Modibo (image 2), assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, taquin, un sourire en coin, les mains vides.",
+   "joindre": [
+    "image_2_1.jpg",
+    "image_2_2.jpg"
+   ],
+   "titres": [
+    "Sali — debout, contente",
+    "Sali — debout, grand sourire",
+    "Nouvel objet : plat vide",
+    "Modibo — assis, taquin"
+   ]
+  },
+  {
+   "g": 3,
+   "items": [
+    1
+   ],
+   "fichier_ref": "ref_RUE.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = le décor (le lieu) ; image 2 = Sali (jeune femme, foulard jaune noué sur la tête, robe en pagne bleu à motifs orange et bordure dorée, sandales) ; image 3 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) ; image 4 = Modibo (jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir) ; image 5 = Diasabi (homme très grand et très mince, long cou, cheveux très courts, grosses lèvres, chemise à carreaux verts aux manches retroussées, pantalon gris retroussé aux chevilles, sandales). Fais UNE seule image verticale (format 9:16, plein cadre) dans exactement le même lieu que l'image 1 et le même style dessin animé 3D, avec ces personnages dedans, chacun exactement comme sur son image (même visage, même coiffure, mêmes vêtements, mêmes couleurs). La scène : dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arrive au loin avec Mimi, l'air curieux. Chaque personnage à la bonne taille selon sa distance (celui qui est loin est petit, au fond), les pieds bien posés sur le sol, les regards et les gestes bien lisibles. Aucun autre personnage, aucun texte.",
+   "refs": [
+    "ref_RUE.jpg",
+    "ref_sal_inquiet.jpg",
+    "ref_bak_debout.jpg",
+    "ref_mod_joie.jpg",
+    "ref_dia_neutre.jpg"
+   ],
+   "joindre": [
+    "image_3_1.jpg",
+    "image_3_2.jpg",
+    "image_3_3.jpg",
+    "image_3_4.jpg",
+    "image_3_5.jpg"
+   ],
+   "titres": [
+    "Plan dans le décor (Rue) : dans la rue, Sali et la bande autour de la table du tirage au sort regardent Awa qui arriv"
+   ]
+  },
+  {
+   "g": 4,
+   "items": [
+    2
+   ],
+   "fichier_ref": "ref_awa_v_action_659144_01.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image verticale où ces 2 personnages sont ENSEMBLE, en train de faire cette action, bien visible et un peu exagérée comme dans un dessin animé : Awa et Bakary cuisinent côte à côte devant la marmite, Bakary verse délicatement une louche d'infusion dans la sauce pendant qu'Awa mélange énergiquement avec une spatule en bois, leurs visages très proches. On voit les deux en entier de la tête aux pieds (ou au moins jusqu'aux genoux), de profil ou de trois-quarts, l'un face à l'autre, les gestes et les visages bien lisibles. Fond gris clair uni, sans décor, sans texte, sans autre personnage.",
+   "refs": [
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_bak_debout.jpg"
+   ],
+   "joindre": [
+    "image_4_1.jpg",
+    "image_4_2.jpg"
+   ],
+   "titres": [
+    "Scène à deux : Awa + Bakary — Awa et Bakary cuisinent côte à côte devant la marmite, Bakary verse délicatement"
+   ]
+  }
+ ]
+}

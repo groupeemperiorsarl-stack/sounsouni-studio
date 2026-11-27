@@ -1,0 +1,414 @@
+{
+ "script": "demandes/episode_23.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "MOUSSA",
+   "plans": [
+    5,
+    39
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_the"
+     },
+     "texte": "sourire · offre · verre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_sourire"
+     },
+     "texte": "sourire",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_content"
+     },
+     "texte": "content",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "MOUSSA",
+      "key": "mou_fier"
+     },
+     "texte": "fier",
+     "lettre": "D"
+    }
+   ],
+   "n": 1,
+   "sigs": {
+    "5": "MOUSSA|Tantie Sali ! Qu'est-ce qui se passe ? Tu donnes des beignet#0",
+    "39": "MOUSSA|En direct sur Sounsouni ! L'Équipe Awa-Bakary prépare le « T#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    17
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_mefiant"
+     },
+     "texte": "mefiant",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire",
+     "lettre": "D"
+    }
+   ],
+   "n": 2,
+   "sigs": {
+    "17": "AWA|I ni sogoma. Qu'est-ce que vous fabriquez encore comme attro#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    23,
+    25
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_pointe"
+     },
+     "texte": "colere · crie · pointe (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_debout"
+     },
+     "texte": "colere · furieux · determine",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_bras_croises"
+     },
+     "texte": "mefiant · froide · serieux",
+     "lettre": "D"
+    }
+   ],
+   "n": 3,
+   "sigs": {
+    "23": "AWA|QUOI ?! Moi, cuisiner avec le vendeur de thé ?! Refaites le #0",
+    "25": "AWA|Peur ?! Moi, avoir peur ?! Bakary, suis-moi ! On va gagner c#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    37
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_01"
+     },
+     "texte": "sourire · bras_croises · trois_quarts",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_02"
+     },
+     "texte": "sourire · bras_croises · trois_quarts",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_03"
+     },
+     "texte": "sourire · bras_croises · trois_quarts",
+     "lettre": "D"
+    }
+   ],
+   "n": 4,
+   "sigs": {
+    "37": "AWA|Merci Seydou ! En cuisine !#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "FATIM",
+   "plans": [
+    52
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_mains"
+     },
+     "texte": "neutre · sourire · tendre (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_explique"
+     },
+     "texte": "explique · propose",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_moue"
+     },
+     "texte": "moue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "FATIM",
+      "key": "fat_determine"
+     },
+     "texte": "determine",
+     "lettre": "D"
+    }
+   ],
+   "n": 5,
+   "sigs": {
+    "52": "FATIM|Ils ont cuisiné avec leur cœur… Ça se voit et ça se sent.#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "SALI",
+   "plans": [
+    61
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_tel"
+     },
+     "texte": "telephone · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_colere"
+     },
+     "texte": "colere",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_choc"
+     },
+     "texte": "choc",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "SALI",
+      "key": "sal_inquiet"
+     },
+     "texte": "inquiet",
+     "lettre": "D"
+    }
+   ],
+   "n": 6,
+   "sigs": {
+    "61": "DIASABI|Ben… j'ai goûté ! Une cuillère pour vérifier le sel, une cui#1"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "DIASABI",
+   "plans": [
+    64
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_panique"
+     },
+     "texte": "panique (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_assis_choc"
+     },
+     "texte": "choc · assis",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_assis"
+     },
+     "texte": "neutre · ecoute · assis",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "DIASABI",
+      "key": "dia_assis_emerveille"
+     },
+     "texte": "emerveille · assis",
+     "lettre": "D"
+    }
+   ],
+   "n": 7,
+   "sigs": {
+    "64": "DIASABI|À Bobo, on dit : un bon juge ne laisse jamais de preuves !#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "BAKARY",
+   "plans": [
+    65
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_debout"
+     },
+     "texte": "neutre · serieux (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_explique"
+     },
+     "texte": "explique · propose · sourire",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_v_tour_650014_02"
+     },
+     "texte": "sourire · trois_quarts",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "BAKARY",
+      "key": "bak_v_tour_650014_03"
+     },
+     "texte": "sourire · profil",
+     "lettre": "D"
+    }
+   ],
+   "n": 8,
+   "sigs": {
+    "65": "BAKARY|Merci, Awa. On forme une bonne équipe, finalement.#0"
+   }
+  },
+  {
+   "sujet": "pose",
+   "who": "AWA",
+   "plans": [
+    66
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_sourire_auto"
+     },
+     "texte": "sourire · content · grand_sourire (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_doigt_bouche"
+     },
+     "texte": "gene · surpris",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_01"
+     },
+     "texte": "sourire · bras_croises · trois_quarts",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "AWA",
+      "key": "awa_v_tour_702324_02"
+     },
+     "texte": "sourire · bras_croises · trois_quarts",
+     "lettre": "D"
+    }
+   ],
+   "n": 9,
+   "sigs": {
+    "66": "AWA|Ne t'habitue pas, vendeur de thé. C'était juste pour le conc#0"
+   }
+  }
+ ]
+}

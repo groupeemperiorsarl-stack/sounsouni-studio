@@ -1,0 +1,1323 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 32 : L'offre de Karim",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_debout@--0",
+"x": 0.1,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@--0",
+"x": 0.5,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.27,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.65,
+"taille": 0.47,
+"retourne": true
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 7.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van… je n'ai pas pu dormir de la nuit. Savoir que c'était Karim dans cette voiture noire garée sous les manguiers… ça me glace le sang.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_gene@--0",
+"x": 0.12,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.5,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@--0",
+"x": 0.25,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.65,
+"taille": 0.47,
+"retourne": true
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:11.8",
+"duree": 6.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Un homme riche qui éteint ses phares pour observer un simple kiosque à thé… ce n'est pas par politesse, Bakarin. Il prépare un mauvais coup.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:18.5",
+"duree": 7.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MOUSSA",
+"texte": "Kôrôbalé wou ! Si Karim revient poser ses pieds ici, ma clé de douze est prête ! On ne le laissera pas toucher à ton kiosque !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_colere",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:25.5",
+"duree": 5.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Et mes brochettes sont prêtes aussi ! À Bobo, on dit : celui qui cherche la bagarre près du grill finit toujours brûlé !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_debout",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:31.3",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire@--0",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:32.7",
+"duree": 2.4,
+"type": "insert",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 8,
+"debut": "0:35.1",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++0",
+"x": 0.32,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_colere@--+",
+"x": 0.68,
+"taille": 0.37,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.46,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.27,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "KARIM",
+"pose": "kar_moqueur@++-",
+"x": 0.83,
+"taille": 0.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:37.5",
+"duree": 3.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Aw ni sogoma, la jeunesse ! Quelle belle matinée pour les affaires !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_main_coeur@--0",
+"x": 0.32,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_colere@--+",
+"x": 0.68,
+"taille": 0.37,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.46,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@--0",
+"x": 0.17,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "KARIM",
+"pose": "kar_sourire@++-",
+"x": 0.83,
+"taille": 0.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:41.4",
+"duree": 3.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "I ni sogoma, Karim. Qu'est-ce qui t'amène si tôt ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mefiant@--0",
+"x": 0.4,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:45.2",
+"duree": 4.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Karim. Tu as retrouvé le chemin du quartier sans éteindre tes phares cette fois ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_mefiant@--+",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "0:49.5",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_mains@++0",
+"x": 0.62,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "0:50.9",
+"duree": 4.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Oh, le sage du banc a beaucoup d'imagination ! Mais je ne suis pas venu pour parler de mes promenades nocturnes.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_sourire",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:55.9",
+"duree": 5.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Bakary. Je suis venu te faire l'offre de ta vie. L'offre qui va transformer le petit vendeur de thé en homme riche.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_fier",
+"x": 0.74,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 15,
+"debut": "1:01.7",
+"duree": 4.1,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Quelle offre ? Je ne vends ni mes théières ni mon charbon.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mefiant@--0",
+"x": 0.4,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "1:05.8",
+"duree": 4.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Pas tes théières, Bakary. Ton emplacement ! Je rachète ton kiosque et tout le terrain autour.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_sourire",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 17,
+"debut": "1:10.2",
+"duree": 7.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Je vais raser ces petites baraques et construire un grand centre commercial moderne de trois étages. Et pour ton kiosque… je te donne cinquante millions de francs CFA. Cash.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_mains",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 18,
+"debut": "1:17.3",
+"duree": 2.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.51,
+"taille": 1.02,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "1:19.3",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc",
+"x": 0.49,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "1:20.7",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_choc",
+"x": 0.47,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:22.1",
+"duree": 2.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_choc",
+"x": 0.47,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:24.1",
+"duree": 5.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Cinquante millions ?! À Bobo, avec cinquante millions, tu achètes toute la ville et dix mille moutons !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_choc@--0",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:29.5",
+"duree": 3.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MOUSSA",
+"texte": "Kôrô… cinquante millions de francs ?! C'est une montagne d'argent !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 24,
+"debut": "1:32.9",
+"duree": 5.5,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Et pour que tout soit officiel et transparent, la proposition de rachat est déjà enregistrée sur l'application Sounsouni.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_fier",
+"x": 0.74,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:38.4",
+"duree": 5.0,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Sounsouni · Offre de rachat de fonds de commerce · Acheteur : Karim Holding · Montant : 50 000 000 FCFA · [Accepter l'offre] [Refuser l'offre]",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 26,
+"debut": "1:43.4",
+"duree": 17.4,
+"type": "pensee_ecran",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Cinquante millions de francs sur Sounsouni… Avec cet argent, je peux acheter une vraie maison pour ma mère, payer toutes mes dettes, et ne plus jamais avoir peur du lendemain. Mais ce kiosque… c'est toute ma vie. C'est ici que j'ai tous mes amis, que je prépare mon thé… et c'est ici qu'Awa me regarde chaque jour.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 27,
+"debut": "2:00.8",
+"duree": 5.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Garde ton argent, Karim. Ce kiosque n'est pas à vendre. Bakary a bâti sa vie ici sueur après sueur.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt@--+",
+"x": 0.3,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 28,
+"debut": "2:06.6",
+"duree": 4.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Laisse parler le principal intéressé, Modibo. Bakary n'a pas dit non. Regarde ses yeux !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_moqueur",
+"x": 0.7,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 29,
+"debut": "2:11.3",
+"duree": 6.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Je… c'est une somme énorme, Van. Je n'ai jamais vu autant d'argent de toute ma vie.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tel_montre@--0",
+"x": 0.41,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 30,
+"debut": "2:17.9",
+"duree": 3.0,
+"type": "scene",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 31,
+"debut": "2:20.9",
+"duree": 4.9,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Qu'est-ce qui se passe encore ici ?! Karim, qu'est-ce que tu viens fabriquer devant le kiosque à cette heure-ci ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "KARIM",
+"pose": "kar_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "2:25.9",
+"duree": 7.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Ah, la belle couturière ! Je propose simplement à ton voisin de devenir millionnaire. Je rachète le kiosque pour tout raser et construire un centre commercial.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_sourire@--0",
+"x": 0.42,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 33,
+"debut": "2:33.5",
+"duree": 6.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Raser le kiosque ?! Raser le cœur du quartier ?! Tu es devenu complètement fou ! Tu crois que ton argent peut tout acheter ici ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.59,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "KARIM",
+"pose": "kar_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 34,
+"debut": "2:39.9",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Tout a un prix, Awa. Même les souvenirs. Et ton cher vendeur de thé hésite déjà à signer.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_fier@--0",
+"x": 0.48,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "2:44.9",
+"duree": 2.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Quoi… ? Bakary… tu hésites ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 36,
+"debut": "2:47.7",
+"duree": 3.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Awa… c'est cinquante millions de francs. Tu te rends compte ? C'est l'avenir…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_joue",
+"x": 0.4,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 37,
+"debut": "2:51.1",
+"duree": 4.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "L'avenir ? Vendre ton lieu de travail à l'homme qui nous harcèle depuis des mois, c'est ça ton avenir ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 38,
+"debut": "2:55.8",
+"duree": 6.4,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Moi qui croyais que ce kiosque comptait pour toi… Je vois que ton cœur s'achète avec des billets de banque.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_triste",
+"x": 0.68,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "3:02.2",
+"duree": 5.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Awa, ce n'est pas ça ! Ce n'est pas pour les billets ! Mais la pauvreté pèse lourd, Awa !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "3:07.5",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "KADI",
+"pose": "kadi_rire",
+"x": 0.15,
+"taille": 0.28,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@--0",
+"x": 0.1,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_panique@++0",
+"x": 0.3,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "KARIM",
+"pose": "kar_fier@---",
+"x": 0.5,
+"taille": 0.47,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.9,
+"taille": 0.45,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.27,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.65,
+"taille": 0.47,
+"retourne": true
+}
+]
+},
+{
+"plan": 41,
+"debut": "3:09.9",
+"duree": 12.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KADI",
+"texte": "Aw ni sogoma, mes enfants. Écoute-moi bien, mon fils Bakary : l'or et l'argent peuvent remplir une poche, mais ils n'ont jamais pu remplir un cœur vide. Si tu vends ce kiosque, tu auras des millions, oui… mais où vas-tu t'asseoir demain matin pour regarder le soleil se lever avec tes amis ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_triste",
+"x": 0.15,
+"taille": 0.3,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_choc@---",
+"x": 0.11,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_panique@--0",
+"x": 0.3,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "KARIM",
+"pose": "kar_fier@++0",
+"x": 0.85,
+"taille": 0.47,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@---",
+"x": 0.25,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "KADI",
+"pose": "kadi_grand_sourire@--0",
+"x": 0.73,
+"taille": 0.49,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "3:22.1",
+"duree": 5.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Assez de discours sentimentaux ! Bakary, la proposition reste ouverte sur Sounsouni jusqu'à ce soir dix-huit heures.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_moqueur",
+"x": 0.7,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "3:27.9",
+"duree": 7.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "KARIM",
+"texte": "Un seul clic sur « Accepter », et l'argent est sur ton compte. Si tu refuses, je trouverai un autre moyen de récupérer ce terrain. Penses-y bien.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "KARIM",
+"pose": "kar_fier",
+"x": 0.74,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 44,
+"debut": "3:35.1",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_debout@--0",
+"x": 0.1,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.5,
+"taille": 0.45,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.27,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.65,
+"taille": 0.47,
+"retourne": true
+}
+]
+},
+{
+"plan": 45,
+"debut": "3:37.5",
+"duree": 5.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Tu as jusqu'à dix-huit heures, Bakary. Fais ton choix entre tes millions et nous.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_gene@---",
+"x": 0.12,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_assis@--0",
+"x": 0.25,
+"taille": 0.48,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_mepris@++0",
+"x": 0.73,
+"taille": 0.53,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "3:42.5",
+"duree": 2.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.67,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 47,
+"debut": "3:44.5",
+"duree": 3.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Bakarin… la décision t'appartient. Mais n'oublie pas qui tu es.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "3:48.1",
+"duree": 5.0,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Sounsouni · Offre de Karim Holding : 50 000 000 FCFA · Temps restant : 00:15:30 · [Accepter l'offre] [Refuser l'offre]",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 49,
+"debut": "3:53.1",
+"duree": 5.2,
+"type": "pensee_ecran",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Il ne reste que quinze minutes… Mon doigt est juste au-dessus du bouton. Que dois-je faire ?",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 50,
+"debut": "3:58.3",
+"duree": 3.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique",
+"x": 0.51,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 51,
+"debut": "4:01.3",
+"duree": 2.6,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 52,
+"debut": "4:03.9",
+"duree": 8.0,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, les décisions importantes se prennent en un clic, mais le cœur d'un quartier n'a pas de prix. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 53,
+"debut": "4:11.9",
+"duree": 5.0,
+"type": "endline",
+"decor": "KIOSQUE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 54,
+"debut": "4:16.9",
+"duree": 3.0,
+"type": "endcard",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

@@ -1,0 +1,50 @@
+{
+ "script": "demandes/episode_26.txt",
+ "questions": [
+  {
+   "sujet": "pose",
+   "who": "SEYDOU",
+   "plans": [
+    27
+   ],
+   "options": [
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_debout_neutre"
+     },
+     "texte": "neutre · sourire · ecoute (actuelle)",
+     "lettre": "A"
+    },
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_rire"
+     },
+     "texte": "rire",
+     "lettre": "B"
+    },
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_salue"
+     },
+     "texte": "salue",
+     "lettre": "C"
+    },
+    {
+     "valeur": {
+      "who": "SEYDOU",
+      "key": "sey_panique"
+     },
+     "texte": "panique",
+     "lettre": "D"
+    }
+   ],
+   "n": 1,
+   "sigs": {
+    "27": "MODIBO|Regarde, Moussa. C'est la moto de Seydou devant l'immeuble. #1"
+   }
+  }
+ ]
+}

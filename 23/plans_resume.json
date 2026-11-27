@@ -1,0 +1,1812 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "RUE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 29 : Le défi de la cuisine",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.5,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@--0",
+"x": 0.1,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@+++",
+"x": 0.9,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire@++0",
+"x": 0.25,
+"taille": 0.52,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.73,
+"taille": 0.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 3.5,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Écoutez tous ! Grande nouvelle pour tout le quartier !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.31,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_salue@--0",
+"x": 0.1,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.9,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_grand_sourire@++0",
+"x": 0.25,
+"taille": 0.52,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_pointe@--0",
+"x": 0.73,
+"taille": 0.56,
+"retourne": true
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:07.9",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees@--0",
+"x": 0.6,
+"taille": 0.89,
+"retourne": true
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:09.3",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto@++0",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:10.7",
+"duree": 2.8,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Tantie Sali ! Qu'est-ce qui se passe ? Tu donnes des beignets gratuits ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_the",
+"x": 0.79,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:13.5",
+"duree": 5.3,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Gratuits ? Tu me connais mal, Moussa ! Aujourd'hui, je lance le grand concours du meilleur plat du quartier !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_taquin",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 7,
+"debut": "0:18.8",
+"duree": 2.9,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Un concours de cuisine ? Et qui sont les cuisiniers ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 8,
+"debut": "0:21.8",
+"duree": 6.7,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Les équipes seront tirées au sort par deux ! Et les votes se feront en direct sur l'application Sounsouni !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_content",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:28.5",
+"duree": 4.0,
+"type": "screen",
+"decor": "RUE",
+"parle": null,
+"texte": "Sounsouni · Grand Concours de Cuisine · Votes en direct · Équipe 1 vs Équipe 2 · [Participer]",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 10,
+"debut": "0:32.5",
+"duree": 6.9,
+"type": "pensee_ecran",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Le concours est lancé sur Sounsouni… Tout le quartier va pouvoir voter pour son plat préféré en un seul clic !",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 11,
+"debut": "0:39.4",
+"duree": 3.2,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "Et qui est le grand juge impartial qui va tout goûter ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "0:42.6",
+"duree": 8.6,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Toi, Diasabi ! Parce que tu as toujours faim et que si tu cuisiniais, tu empoisonnerais tout le monde avec tes recettes de Bobo !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.24,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "0:51.2",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire@++0",
+"x": 0.52,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "0:52.6",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_rire@++0",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 15,
+"debut": "0:54.0",
+"duree": 6.9,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "Juge Diasabi ! Le roi du goût ! À Bobo, on dit : l'estomac du juge n'a pas de favori, il n'a que de la place !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_doigt",
+"x": 0.71,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "1:00.9",
+"duree": 3.0,
+"type": "scene",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 17,
+"debut": "1:03.9",
+"duree": 2.7,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "I ni sogoma. Qu'est-ce que vous fabriquez encore comme attroupement ici ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 18,
+"debut": "1:06.6",
+"duree": 2.5,
+"type": "line",
+"decor": "RUE",
+"parle": "MIMI",
+"texte": "Tantie, c'est le grand concours de cuisine sur Sounsouni !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MIMI",
+"pose": "mim_sourire@++0",
+"x": 0.7,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "1:09.1",
+"duree": 6.9,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Parfait ! Awa et Mimi sont là. Procedons au tirage au sort pour la deuxième équipe !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_content@--0",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "1:16.0",
+"duree": 2.7,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Premier nom pour l'Équipe B… Bakary !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_taquin",
+"x": 0.5,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 21,
+"debut": "1:18.8",
+"duree": 3.3,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Moi ? Mais je ne sais faire que le thé et les brochettes !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.65,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:22.0",
+"duree": 3.3,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Et sa coéquipière sera… Awa !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_grand_sourire",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:25.3",
+"duree": 8.1,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "QUOI ?! Moi, cuisiner avec le vendeur de thé ?! Refaites le tirage tout de suite !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.59,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": -0.04,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 24,
+"debut": "1:33.4",
+"duree": 5.2,
+"type": "line",
+"decor": "RUE",
+"parle": "MODIBO",
+"texte": "Le sort a parlé, Awa. À moins que la grande couturière ait peur de perdre en cuisine ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt@--+",
+"x": 0.3,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:38.6",
+"duree": 6.9,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Peur ?! Moi, avoir peur ?! Bakary, suis-moi ! On va gagner ce concours et fermer la bouche de ton ami !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe",
+"x": 0.59,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 26,
+"debut": "1:45.4",
+"duree": 3.3,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Van… aide-moi… je vais me faire découper comme un oignon…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 27,
+"debut": "1:48.8",
+"duree": 2.4,
+"type": "wide",
+"decor": "MARCHE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.16,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.65,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 28,
+"debut": "1:51.2",
+"duree": 5.5,
+"type": "line",
+"decor": "MARCHE",
+"parle": "AWA",
+"texte": "Il nous faut les meilleurs ingrédients du marché. Et pas question de perdre du temps à chercher boutique par boutique.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.17,
+"taille": 0.62,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_pointe@--0",
+"x": 0.67,
+"taille": 0.66,
+"retourne": true
+}
+]
+},
+{
+"plan": 29,
+"debut": "1:56.6",
+"duree": 5.0,
+"type": "screen",
+"decor": "MARCHE",
+"parle": null,
+"texte": "Sounsouni Marché · Commande Équipe Awa & Bakary · Poisson capitaines frais, épices royales, menthe douce · 7 500 FCFA · [Commander]",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 30,
+"debut": "2:01.6",
+"duree": 5.8,
+"type": "pensee_ecran",
+"decor": "MARCHE",
+"parle": "AWA",
+"texte": "Sur Sounsouni Marché, la commande est passée… Le poisson le plus frais du marché arrive tout de suite ici !",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 31,
+"debut": "2:07.4",
+"duree": 4.8,
+"type": "line",
+"decor": "MARCHE",
+"parle": "BAKARY",
+"texte": "Awa… si on ajoutait une touche de mes épices de thé infusées dans la sauce arachide fumée ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_v_tour_650014_02",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "2:12.2",
+"duree": 5.1,
+"type": "line",
+"decor": "MARCHE",
+"parle": "AWA",
+"texte": "Du thé dans la sauce ?! Tu es devenu fou ou c'est encore une idée de Diasabi ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tel2",
+"x": 0.46,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 33,
+"debut": "2:17.3",
+"duree": 5.8,
+"type": "line",
+"decor": "MARCHE",
+"parle": "BAKARY",
+"texte": "Fais-moi confiance, Awa. Juste une fois. Le gingembre et la menthe relevée vont donner un parfum unique au poisson.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 34,
+"debut": "2:23.2",
+"duree": 4.4,
+"type": "line",
+"decor": "MARCHE",
+"parle": "AWA",
+"texte": "Hmm… du gingembre et de la menthe… Bon ! Mais si le plat est gâté, tu quittes Bamako !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_tel2",
+"x": 0.46,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "2:27.6",
+"duree": 2.4,
+"type": "wide",
+"decor": "MARCHE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.16,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.65,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 0.76,
+"taille": 0.77,
+"retourne": false
+}
+]
+},
+{
+"plan": 36,
+"debut": "2:30.0",
+"duree": 5.9,
+"type": "line",
+"decor": "MARCHE",
+"parle": "SEYDOU",
+"texte": "Livraison express Sounsouni pour l'équipe des champions ! Vos ingrédients frais sont là !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.21,
+"taille": 0.65,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_debout@---",
+"x": 0.72,
+"taille": 0.69,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 0.76,
+"taille": 0.77,
+"retourne": false
+}
+]
+},
+{
+"plan": 37,
+"debut": "2:35.8",
+"duree": 2.5,
+"type": "line",
+"decor": "MARCHE",
+"parle": "AWA",
+"texte": "Merci Seydou ! En cuisine !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "SEYDOU",
+"pose": "sey_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 38,
+"debut": "2:38.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@---",
+"x": 0.1,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.89,
+"taille": 0.42,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--+",
+"x": 0.25,
+"taille": 0.53,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.73,
+"taille": 0.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "2:40.7",
+"duree": 6.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MOUSSA",
+"texte": "En direct sur Sounsouni ! L'Équipe Awa-Bakary prépare le « Tô Royal au poisson fumé et à l'infusion d'épices » !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.39,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_pointe@--0",
+"x": 0.19,
+"taille": 0.47,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_salue@---",
+"x": 0.88,
+"taille": 0.53,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.25,
+"taille": 0.53,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_the@--+",
+"x": 0.73,
+"taille": 0.51,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "2:47.4",
+"duree": 3.0,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": "close",
+"acteurs": [
+{
+"qui": "AWA+BAKARY",
+"pose": "grp_awa_et_bakary_cuisinent_cote",
+"x": 0.5,
+"taille": 0.8,
+"retourne": false
+}
+]
+},
+{
+"plan": 41,
+"debut": "2:50.4",
+"duree": 3.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Doucement avec ton infusion ! N'en mets pas trop !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "2:53.7",
+"duree": 5.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Regarde la couleur, Awa… Elle devient dorée, exactement comme ton bazin de l'autre jour.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_v_tour_650014_02",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "2:59.4",
+"duree": 4.0,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "AWA",
+"texte": "Tais-toi et remue la sauce… Ne laisse pas brûler le fond.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_doigt_bouche",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 44,
+"debut": "3:03.3",
+"duree": 5.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Ooooh ! L'odeur traverse mon nez jusqu'à mes pieds ! À Bobo, quand une odeur fait trembler les genoux, c'est que le plat est béni !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_salue",
+"x": 0.57,
+"taille": 1.38,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 45,
+"debut": "3:08.9",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "KADI",
+"pose": "kadi_banc_the",
+"x": 0.39,
+"taille": 0.28,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.15,
+"taille": 0.28,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.31,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.17,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.3,
+"taille": 0.35,
+"retourne": true
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.9,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_assis@--0",
+"x": 0.25,
+"taille": 0.55,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_rire@--0",
+"x": 0.73,
+"taille": 0.52,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "3:11.3",
+"duree": 5.9,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "Le moment est venu ! Juge Diasabi, goûtez le plat de l'Équipe Awa et Bakary !",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "KADI",
+"pose": "kadi_banc_the",
+"x": 0.39,
+"taille": 0.28,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_mains",
+"x": 0.15,
+"taille": 0.28,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.31,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_pointe@--0",
+"x": 0.15,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.3,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_sourire@++0",
+"x": 0.9,
+"taille": 0.33,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_assis@--0",
+"x": 0.25,
+"taille": 0.55,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_grand_sourire@--0",
+"x": 0.73,
+"taille": 0.52,
+"retourne": false
+}
+]
+},
+{
+"plan": 47,
+"debut": "3:17.2",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_assis_emerveille",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "3:20.2",
+"duree": 2.5,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "Regardez-moi cette sauce dorée…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_assis_emerveille",
+"x": 0.44,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": 1.07,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 49,
+"debut": "3:22.8",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_assis_emerveille",
+"x": 0.61,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 50,
+"debut": "3:25.8",
+"duree": 5.5,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "MAMA MIA ! Ce n'est pas un plat, c'est une déclaration d'amour ! Le piment d'Awa et la douceur du thé de Bakary !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_assis_choc",
+"x": 0.57,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 51,
+"debut": "3:31.3",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.5,
+"taille": 0.31,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.17,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.3,
+"taille": 0.35,
+"retourne": true
+},
+{
+"qui": "FATIM",
+"pose": "fat_explique@--0",
+"x": 0.87,
+"taille": 0.33,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_assis_choc@--0",
+"x": 0.25,
+"taille": 0.55,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_content@--0",
+"x": 0.73,
+"taille": 0.52,
+"retourne": false
+}
+]
+},
+{
+"plan": 52,
+"debut": "3:33.7",
+"duree": 3.4,
+"type": "line",
+"decor": "RUE",
+"parle": "FATIM",
+"texte": "Ils ont cuisiné avec leur cœur… Ça se voit et ça se sent.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_assis_choc@--0",
+"x": 0.5,
+"taille": 0.36,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_content@--0",
+"x": 0.1,
+"taille": 0.34,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_pensive@--0",
+"x": 0.3,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--0",
+"x": 0.77,
+"taille": 0.31,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_pointe@--0",
+"x": 0.25,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "FATIM",
+"pose": "fat_mains@--0",
+"x": 0.73,
+"taille": 0.51,
+"retourne": false
+}
+]
+},
+{
+"plan": 53,
+"debut": "3:37.1",
+"duree": 5.0,
+"type": "screen",
+"decor": "RUE",
+"parle": null,
+"texte": "Sounsouni · Résultats Concours Cuisine · Équipe Awa & Bakary : 245 votes (GAGNANTS !) · Équipe Modibo & Mimi : 112 votes · [Féliciter]",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 54,
+"debut": "3:42.1",
+"duree": 3.6,
+"type": "pensee_ecran",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Deux cent quarante-cinq votes sur Sounsouni ! On a gagné le concours !",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 55,
+"debut": "3:45.6",
+"duree": 3.5,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Awa ! On a gagné ! Deux cent quarante-cinq personnes ont voté pour nous !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_explique",
+"x": 0.26,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 56,
+"debut": "3:49.2",
+"duree": 6.4,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Évidemment qu'on a gagné ! Avec mes talents de cuisinière et ton petit thé, personne ne pouvait nous battre !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 57,
+"debut": "3:55.5",
+"duree": 2.4,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Hé ! Mais où est passé le plat ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 58,
+"debut": "3:57.9",
+"duree": 2.4,
+"type": "insert",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 59,
+"debut": "4:00.3",
+"duree": 2.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_choc@++-",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 60,
+"debut": "4:02.3",
+"duree": 6.9,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "Ben… j'ai goûté ! Une cuillère pour vérifier le sel, une cuillère pour le piment, et hop… le plat a disparu !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": 1.07,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 61,
+"debut": "4:09.2",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel@++0",
+"x": 0.5,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 62,
+"debut": "4:10.6",
+"duree": 1.4,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire@++0",
+"x": 0.52,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 63,
+"debut": "4:12.0",
+"duree": 5.3,
+"type": "line",
+"decor": "RUE",
+"parle": "SALI",
+"texte": "DIASABI ! Tu as mangé tout le plat des gagnants avant même qu'on puisse goûter une seule bouchée ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "SALI",
+"pose": "sal_tel",
+"x": 0.55,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": -0.05,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 64,
+"debut": "4:17.3",
+"duree": 4.0,
+"type": "line",
+"decor": "RUE",
+"parle": "DIASABI",
+"texte": "À Bobo, on dit : un bon juge ne laisse jamais de preuves !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "SALI",
+"pose": "sal_dos2",
+"x": 1.07,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 65,
+"debut": "4:21.3",
+"duree": 3.9,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Merci, Awa. On forme une bonne équipe, finalement.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.33,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 66,
+"debut": "4:25.2",
+"duree": 7.3,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Ne t'habitue pas, vendeur de thé. C'était juste pour le concours… Mais ta sauce n'était pas trop mauvaise.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_sourire_auto",
+"x": 0.48,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 67,
+"debut": "4:32.6",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_amoureux",
+"x": 0.49,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 68,
+"debut": "4:35.6",
+"duree": 2.6,
+"type": "screen",
+"decor": "RUE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 69,
+"debut": "4:38.2",
+"duree": 8.8,
+"type": "endline",
+"decor": "RUE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, organisez vos événements, faites voter le quartier et commandez vos produits en toute simplicité. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 70,
+"debut": "4:46.9",
+"duree": 4.5,
+"type": "endline",
+"decor": "RUE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 71,
+"debut": "4:51.5",
+"duree": 3.0,
+"type": "endcard",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]

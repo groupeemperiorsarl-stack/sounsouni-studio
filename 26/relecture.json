@@ -1,0 +1,187 @@
+{
+ "resume": "L'histoire de l'épisode 31 est parfaitement fluide et cohérente. Les enchaînements, les dialogues, les présences et les émotions collent très bien à l'intrigue. Plusieurs incohérences visuelles à corriger : Modibo se retrouve assis sur le banc du kiosque en pleine nuit devant la holding, Moussa tient un verre de thé en pourchassant la voiture, et Modibo lève les bras de joie pendant la filature.",
+ "problemes": [
+  {
+   "plan": 30,
+   "moment": "2:02",
+   "gravite": "fort",
+   "quoi": "Modibo est assis sur le banc du kiosque avec un verre de thé en pleine nuit en pleine rue devant l'immeuble.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 30,
+     "qui": "MODIBO",
+     "pose": "mod_doigt",
+     "pourquoi": "Modibo doit rester debout en pleine nuit dans la rue d'affaires.",
+     "sig": "SEYDOU|Paiement reçu sur Sounsouni. Monsieur Karim paie toujours ru#1"
+    }
+   ]
+  },
+  {
+   "plan": 10,
+   "moment": "0:44",
+   "gravite": "fort",
+   "quoi": "Moussa tient un verre de thé à la main dans la rue alors qu'il annonce que sa moto est prête.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 10,
+     "qui": "MOUSSA",
+     "pose": "mou_fier",
+     "pourquoi": "Enlever le verre de thé hors contexte.",
+     "sig": "MOUSSA|Juste là, Kôrô Modibo ! Le plein est fait, elle est prête à #0"
+    }
+   ]
+  },
+  {
+   "plan": 20,
+   "moment": "1:26",
+   "gravite": "moyen",
+   "quoi": "Modibo lève les bras en victoire et Moussa sourit alors qu'ils espionnent discrètement la voiture.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 20,
+     "qui": "MODIBO",
+     "pose": "mod_doigt",
+     "pourquoi": "Garder une attitude discrète pendant la surveillance.",
+     "sig": "MODIBO|Continue, Moussa. Ils se dirigent vers le quartier des affai#2"
+    },
+    {
+     "type": "pose",
+     "plan": 20,
+     "qui": "MOUSSA",
+     "pose": "mou_choc",
+     "pourquoi": "Moussa surveille une voiture suspecte, il ne doit pas sourire.",
+     "sig": "MODIBO|Continue, Moussa. Ils se dirigent vers le quartier des affai#2"
+    }
+   ]
+  },
+  {
+   "plan": 31,
+   "moment": "2:04",
+   "gravite": "moyen",
+   "quoi": "Modibo lève les bras de joie quand Seydou le surprend à minuit.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 31,
+     "qui": "MODIBO",
+     "pose": "mod_doigt",
+     "pourquoi": "Modibo doit avoir une posture calme et sérieuse face à Seydou.",
+     "sig": "SEYDOU|Modibo ? Moussa ? Qu'est-ce que vous faites ici à minuit ?#0"
+    }
+   ]
+  },
+  {
+   "plan": 36,
+   "moment": "2:27",
+   "gravite": "moyen",
+   "quoi": "Bakary joint les mains en posture de supplication pour demander qui était dans la voiture.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 36,
+     "qui": "BAKARY",
+     "pose": "bak_determine",
+     "pourquoi": "Bakary est inquiet et déterminé, pas en train de supplier.",
+     "sig": "BAKARY|Alors ? Qui était dans cette voiture ?#0"
+    }
+   ]
+  },
+  {
+   "plan": 1,
+   "moment": "0:02",
+   "gravite": "petit",
+   "quoi": "Awa a les yeux fermés sur le plan d'ensemble.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 1,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Éviter la pose aux yeux fermés conformément au carnet du studio.",
+     "sig": "|Les Plans de Bakary – Épisode 31 : Qui est dans la voiture ?#1"
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "moment": "0:04",
+   "gravite": "petit",
+   "quoi": "Moussa sourit alors qu'une voiture menaçante rôde dans le noir.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 2,
+     "qui": "MOUSSA",
+     "pose": "mou_panique",
+     "pourquoi": "Moussa doit être inquiet face au danger de la voiture.",
+     "sig": "BAKARY|Awa, reste derrière moi. Moussa, ne t'approche pas trop. Cet#0"
+    }
+   ]
+  },
+  {
+   "plan": 5,
+   "moment": "0:18",
+   "gravite": "petit",
+   "quoi": "Awa a les yeux fermés sur le plan large.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 5,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Remplacer la pose aux yeux fermés par une pose attentive.",
+     "sig": "MOUSSA|Kôrôbalé wou ! Elle commence à reculer ! Elle s'en va !#1"
+    }
+   ]
+  },
+  {
+   "plan": 9,
+   "moment": "0:37",
+   "gravite": "petit",
+   "quoi": "Modibo garde une pose de course figée pendant sa réplique.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 9,
+     "qui": "MODIBO",
+     "pose": "mod_doigt",
+     "pourquoi": "Prendre une pose de discussion normale pour parler à Moussa.",
+     "sig": "MODIBO|Moussa, ta moto est garée où ? On ne peut pas les laisser fi#0"
+    }
+   ]
+  },
+  {
+   "plan": 35,
+   "moment": "2:24",
+   "gravite": "petit",
+   "quoi": "Awa a les yeux fermés sur le plan large au kiosque.",
+   "actions": [
+    {
+     "type": "pose",
+     "plan": 35,
+     "qui": "AWA",
+     "pose": "awa_bras_croises",
+     "pourquoi": "Remplacer la pose aux yeux fermés par une pose bras croisés.",
+     "sig": "MODIBO|Merci, Seydou. Moussa, on en a assez vu. On rentre. Bakary e#1"
+    }
+   ]
+  },
+  {
+   "plan": 31,
+   "moment": "2:04",
+   "gravite": "petit",
+   "quoi": "Seydou manque d'une image pour exprimer la surprise debout lorsqu'il croise Modibo et Moussa.",
+   "actions": [
+    {
+     "type": "fiche",
+     "pourquoi": "Créer la pose de Seydou debout surpris pour le dialogue de nuit."
+    }
+   ]
+  }
+ ],
+ "modele": "gemini-3.8-flash",
+ "date": "2026-11-24 23:01"
+}

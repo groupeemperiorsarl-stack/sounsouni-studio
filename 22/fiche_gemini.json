@@ -1,0 +1,268 @@
+{
+ "items": [
+  {
+   "type": "scene_decor",
+   "perso": "au_kiosque_bakary_debout_modibo_assis_sur_le_banc_et_diasabi_a_son_grill_regardent_inquiets_fatim_qui_passe_au_loin_dans_la_rue_droite_et_serieuse_sans_regarder_le_kiosque",
+   "decor": "KIOSQUE",
+   "persos": [
+    "BAKARY",
+    "MODIBO",
+    "DIASABI",
+    "FATIM"
+   ],
+   "texte": "au kiosque, Bakary debout, Modibo assis sur le banc et Diasabi à son grill regardent, inquiets, Fatim qui passe au loin dans la rue, droite et sérieuse, sans regarder le kiosque",
+   "ou": [
+    "plan dans le décor"
+   ],
+   "n": 1,
+   "ref": null,
+   "fichier_ref": "ref_KIOSQUE.jpg",
+   "fichiers_ref": [
+    "ref_KIOSQUE.jpg",
+    "ref_bak_debout.jpg",
+    "ref_mod_joie.jpg",
+    "ref_dia_neutre.jpg",
+    "ref_fat_mains.jpg"
+   ]
+  },
+  {
+   "type": "scene_decor",
+   "perso": "dans_l_atelier_awa_assise_a_sa_machine_a_coudre_et_mimi_debout_regardent_par_la_porte_ouverte_fatim_qui_arrive_au_loin_dans_la_rue_l_air_serieux_et_decide",
+   "decor": "ATELIER",
+   "persos": [
+    "AWA",
+    "MIMI",
+    "FATIM"
+   ],
+   "texte": "dans l'atelier, Awa assise à sa machine à coudre et Mimi debout regardent par la porte ouverte Fatim qui arrive au loin dans la rue, l'air sérieux et décidé",
+   "ou": [
+    "plan dans le décor"
+   ],
+   "n": 2,
+   "ref": null,
+   "fichier_ref": "ref_ATELIER.jpg",
+   "fichiers_ref": [
+    "ref_ATELIER.jpg",
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_mim_debout.jpg",
+    "ref_fat_mains.jpg"
+   ]
+  },
+  {
+   "type": "pose",
+   "perso": "DIASABI",
+   "posture": "debout",
+   "emo": "pensif",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 3,
+   "ref": "dia_neutre",
+   "fichier_ref": "ref_dia_neutre.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "determine",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 4,
+   "ref": "fat_mains",
+   "fichier_ref": "ref_fat_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "SALI",
+   "posture": "debout",
+   "emo": "inquiet",
+   "manque": true,
+   "ou": [
+    "image manquante"
+   ],
+   "n": 5,
+   "ref": "sal_rire",
+   "fichier_ref": "ref_sal_rire.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "determine",
+   "tenue": "",
+   "ou": [
+    "episode_22 plan 6",
+    "episode_22 plan 8",
+    "episode_22 plan 40",
+    "episode_22 plan 48",
+    "episode_22 plan 50",
+    "episode_22 plan 51"
+   ],
+   "n": 6,
+   "ref": "fat_mains",
+   "fichier_ref": "ref_fat_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "assis",
+   "emo": "mefiant",
+   "tenue": "",
+   "ou": [
+    "episode_22 plan 27",
+    "episode_22 plan 37",
+    "episode_22 plan 57"
+   ],
+   "n": 7,
+   "ref": "awa_assis",
+   "fichier_ref": "ref_awa_assis.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "FATIM",
+   "posture": "debout",
+   "emo": "serieux",
+   "tenue": "",
+   "ou": [
+    "episode_22 plan 4",
+    "episode_22 plan 38"
+   ],
+   "n": 8,
+   "ref": "fat_mains",
+   "fichier_ref": "ref_fat_mains.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "MODIBO",
+   "posture": "assis",
+   "emo": "sage",
+   "tenue": "",
+   "ou": [
+    "episode_22 plan 11",
+    "episode_22 plan 65"
+   ],
+   "n": 9,
+   "ref": "mod_assis_mefiant",
+   "fichier_ref": "ref_mod_assis_mefiant.jpg"
+  },
+  {
+   "type": "pose",
+   "perso": "AWA",
+   "posture": "assis",
+   "emo": "serieux",
+   "tenue": "",
+   "ou": [
+    "episode_22 plan 31",
+    "episode_22 plan 33"
+   ],
+   "n": 10,
+   "ref": "awa_assis",
+   "fichier_ref": "ref_awa_assis.jpg"
+  }
+ ],
+ "groupes": [
+  {
+   "items": [
+    4,
+    6,
+    8,
+    3
+   ],
+   "fichier_ref": "ref_fat_mains.jpg",
+   "refs": [
+    "ref_fat_mains.jpg",
+    "ref_dia_neutre.jpg"
+   ],
+   "g": 1,
+   "demande": "Images jointes, dans l'ordre : image 1 = Fatim (jeune femme, grand foulard rose fuchsia noué sur la tête, longues tresses, robe en pagne rose et blanc à motifs, bracelets de perles, boucles d'oreilles dorées, sandales) ; image 2 = Diasabi (homme très grand et très mince, long cou, cheveux très courts, grosses lèvres, chemise à carreaux verts aux manches retroussées, pantalon gris retroussé aux chevilles, sandales). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Fatim (image 1), debout, de trois-quarts, déterminée, le regard droit, bouche fermée, les mains vides ; 2) Fatim (image 1), debout, de trois-quarts, déterminée, le regard droit, bouche fermée, les mains vides ; 3) Fatim (image 1), debout, de trois-quarts, sérieuse, bouche fermée, les mains vides ; 4) Diasabi (image 2), debout, de trois-quarts, pensif, la main au menton, bouche fermée, les mains vides.",
+   "joindre": [
+    "image_1_1.jpg",
+    "image_1_2.jpg"
+   ],
+   "titres": [
+    "Fatim — debout, déterminée",
+    "Fatim — debout, déterminée",
+    "Fatim — debout, sérieuse",
+    "Diasabi — debout, pensif"
+   ]
+  },
+  {
+   "items": [
+    7,
+    10,
+    5,
+    9
+   ],
+   "fichier_ref": "ref_awa_assis.jpg",
+   "refs": [
+    "ref_awa_assis.jpg",
+    "ref_sal_rire.jpg",
+    "ref_mod_assis_mefiant.jpg"
+   ],
+   "g": 2,
+   "demande": "Images jointes, dans l'ordre : image 1 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) ; image 2 = Sali (jeune femme, foulard jaune noué sur la tête, robe en pagne bleu à motifs orange et bordure dorée, sandales) ; image 3 = Modibo (jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir). Garde exactement chaque personnage comme sur son image : même visage, même coiffure, mêmes vêtements, mêmes couleurs, même style dessin animé 3D. Fais UNE seule image en format paysage avec 4 figures côte à côte sur une seule rangée, chacune en entier de la tête aux pieds, bien séparées les unes des autres (un espace vide entre elles), sur un fond gris clair uni, sans décor, sans texte ni numéro. De gauche à droite : 1) Awa (image 1), assise sur un petit banc en bois, de trois-quarts, mains sur les genoux, méfiante, les yeux plissés, les mains vides ; 2) Awa (image 1), assise sur un petit banc en bois, de trois-quarts, mains sur les genoux, sérieuse, les mains vides ; 3) Sali (image 2), debout, de trois-quarts, inquiète, bouche fermée, les mains vides ; 4) Modibo (image 3), assis sur un petit banc en bois, de trois-quarts, mains sur les genoux, calme et sage, un léger sourire, les mains vides.",
+   "joindre": [
+    "image_2_1.jpg",
+    "image_2_2.jpg",
+    "image_2_3.jpg"
+   ],
+   "titres": [
+    "Awa — assis, méfiante",
+    "Awa — assis, sérieuse",
+    "Sali — debout, inquiète",
+    "Modibo — assis, calme et sage"
+   ]
+  },
+  {
+   "g": 3,
+   "items": [
+    1
+   ],
+   "fichier_ref": "ref_KIOSQUE.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = le décor (le lieu) ; image 2 = Bakary (jeune homme mince, grand boubou en bazin bleu roi avec broderie dorée et beige sur la poitrine, pantalon bleu assorti, lunettes de soleil bleues posées sur la tête, petite barbiche, montre noire, sandales marron) ; image 3 = Modibo (jeune homme costaud, chemise ouverte en pagne orange et marron sur un débardeur blanc, jean bleu, casquette rouge portée à l'envers, baskets orange et blanc, montre en cuir) ; image 4 = Diasabi (homme très grand et très mince, long cou, cheveux très courts, grosses lèvres, chemise à carreaux verts aux manches retroussées, pantalon gris retroussé aux chevilles, sandales) ; image 5 = Fatim (jeune femme, grand foulard rose fuchsia noué sur la tête, longues tresses, robe en pagne rose et blanc à motifs, bracelets de perles, boucles d'oreilles dorées, sandales). Fais UNE seule image verticale (format 9:16, plein cadre) dans exactement le même lieu que l'image 1 et le même style dessin animé 3D, avec ces personnages dedans, chacun exactement comme sur son image (même visage, même coiffure, mêmes vêtements, mêmes couleurs). La scène : au kiosque, Bakary debout, Modibo assis sur le banc et Diasabi à son grill regardent, inquiets, Fatim qui passe au loin dans la rue, droite et sérieuse, sans regarder le kiosque. Chaque personnage à la bonne taille selon sa distance (celui qui est loin est petit, au fond), les pieds bien posés sur le sol, les regards et les gestes bien lisibles. Aucun autre personnage, aucun texte.",
+   "refs": [
+    "ref_KIOSQUE.jpg",
+    "ref_bak_debout.jpg",
+    "ref_mod_joie.jpg",
+    "ref_dia_neutre.jpg",
+    "ref_fat_mains.jpg"
+   ],
+   "joindre": [
+    "image_3_1.jpg",
+    "image_3_2.jpg",
+    "image_3_3.jpg",
+    "image_3_4.jpg",
+    "image_3_5.jpg"
+   ],
+   "titres": [
+    "Plan dans le décor (Kiosque) : au kiosque, Bakary debout, Modibo assis sur le banc et Diasabi à son grill regardent, inqu"
+   ]
+  },
+  {
+   "g": 4,
+   "items": [
+    2
+   ],
+   "fichier_ref": "ref_ATELIER.jpg",
+   "demande": "Images jointes, dans l'ordre : image 1 = le décor (le lieu) ; image 2 = Awa (jeune femme élégante, tresses relevées en chignon avec perles dorées, robe moulante en pagne vert, orange et jaune à grands motifs, créoles dorées, bracelets dorés, escarpins verts) ; image 3 = Mimi (jeune apprentie couturière mince, tresses en queue de cheval avec un élastique jaune, robe en pagne jaune-kaki à petits motifs ronds, mètre ruban jaune autour du cou, sandales dorées) ; image 4 = Fatim (jeune femme, grand foulard rose fuchsia noué sur la tête, longues tresses, robe en pagne rose et blanc à motifs, bracelets de perles, boucles d'oreilles dorées, sandales). Fais UNE seule image verticale (format 9:16, plein cadre) dans exactement le même lieu que l'image 1 et le même style dessin animé 3D, avec ces personnages dedans, chacun exactement comme sur son image (même visage, même coiffure, mêmes vêtements, mêmes couleurs). La scène : dans l'atelier, Awa assise à sa machine à coudre et Mimi debout regardent par la porte ouverte Fatim qui arrive au loin dans la rue, l'air sérieux et décidé. Chaque personnage à la bonne taille selon sa distance (celui qui est loin est petit, au fond), les pieds bien posés sur le sol, les regards et les gestes bien lisibles. Aucun autre personnage, aucun texte.",
+   "refs": [
+    "ref_ATELIER.jpg",
+    "ref_awa_v_action_659144_01.jpg",
+    "ref_mim_debout.jpg",
+    "ref_fat_mains.jpg"
+   ],
+   "joindre": [
+    "image_4_1.jpg",
+    "image_4_2.jpg",
+    "image_4_3.jpg",
+    "image_4_4.jpg"
+   ],
+   "titres": [
+    "Plan dans le décor (Atelier) : dans l'atelier, Awa assise à sa machine à coudre et Mimi debout regardent par la porte ouv"
+   ]
+  }
+ ]
+}

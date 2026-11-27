@@ -1,0 +1,1145 @@
+[
+{
+"plan": 0,
+"debut": "0:00.0",
+"duree": 2.0,
+"type": "title",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Les Plans de Bakary – Épisode 30 : Presque",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 1,
+"debut": "0:02.0",
+"duree": 2.4,
+"type": "wide",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.2,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.61,
+"taille": 0.27,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_debout@++-",
+"x": 0.91,
+"taille": 0.4,
+"retourne": false
+}
+]
+},
+{
+"plan": 2,
+"debut": "0:04.4",
+"duree": 7.8,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Van, je ne peux plus attendre. Chaque fois que je ferme les yeux, je vois son visage. Chaque fois que j'ouvre la bouche, c'est son nom qui veut sortir.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@---",
+"x": 0.13,
+"taille": 0.35,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_banc@--+",
+"x": 0.52,
+"taille": 0.27,
+"retourne": true
+},
+{
+"qui": "DIASABI",
+"pose": "dia_gene@--0",
+"x": 0.89,
+"taille": 0.4,
+"retourne": true
+}
+]
+},
+{
+"plan": 3,
+"debut": "0:12.2",
+"duree": 5.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Alors n'attends plus, Bakarin. La lune est belle ce soir. C'est le moment de vider ton sac et de lui parler.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 4,
+"debut": "0:17.8",
+"duree": 7.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Oublie la lune ! Un homme de Bobo ne parle pas à la lune, il parle à la femme ! Bakary, si tu ne lui dis pas ce soir, je vais lui envoyer un deuxième poulet !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 5,
+"debut": "0:25.5",
+"duree": 5.6,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Non ! Pas de poulet ! Pas de bananes ! Cette fois, je fais les choses proprement et avec élégance.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "DIASABI",
+"pose": "dia_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 6,
+"debut": "0:31.2",
+"duree": 4.0,
+"type": "screen",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "Sounsouni · Showroom · Foulard en soie « Nuit d'Afrique » · 12 500 FCFA · [Acheter]",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 7,
+"debut": "0:35.2",
+"duree": 9.6,
+"type": "pensee_ecran",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "Un foulard en soie sur Sounsouni… C'est raffiné, c'est noble, c'est tout ce qu'une grande couturière comme elle mérite. Je vais le lui offrir sous le lampadaire.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 8,
+"debut": "0:44.7",
+"duree": 6.7,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "BAKARY",
+"texte": "C'est commandé. Douze mille cinq cents francs sur l'application. Seydou me le livre dans deux minutes. Souhaitez-moi bonne chance, les gars.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_tel_montre",
+"x": 0.36,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MODIBO",
+"pose": "mod_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 9,
+"debut": "0:51.5",
+"duree": 4.3,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "MODIBO",
+"texte": "Bonne chance, mon frère. Sois juste sincère et sois toi-même.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_doigt",
+"x": 0.56,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 10,
+"debut": "0:55.8",
+"duree": 3.2,
+"type": "line",
+"decor": "KIOSQUE",
+"parle": "DIASABI",
+"texte": "Et si elle crie… n'oublie pas le tou tou tou !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "DIASABI",
+"pose": "dia_sourire_auto",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 11,
+"debut": "0:59.0",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_v_action_642164_06@--0",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 12,
+"debut": "1:00.4",
+"duree": 1.4,
+"type": "close",
+"decor": "KIOSQUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "MODIBO",
+"pose": "mod_assis_rire@--0",
+"x": 0.32,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 13,
+"debut": "1:01.8",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01",
+"x": 0.5,
+"taille": 0.72,
+"retourne": false
+}
+]
+},
+{
+"plan": 14,
+"debut": "1:04.2",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.67,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 15,
+"debut": "1:07.2",
+"duree": 15.4,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "C'est bizarre. La rue est calme, et le vendeur de thé ne fait aucun bruit depuis une heure. Qu'est-ce qu'il fabrique encore avec son complice de Bobo ? Le silence de Bakary n'annonce jamais rien de bon.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_moue",
+"x": 0.54,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 16,
+"debut": "1:22.6",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.16,
+"taille": 0.56,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.65,
+"taille": 0.59,
+"retourne": true
+}
+]
+},
+{
+"plan": 17,
+"debut": "1:25.0",
+"duree": 2.2,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "I ni wula, Awa.",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_mefiant@--0",
+"x": 0.19,
+"taille": 0.65,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_supplie@--0",
+"x": 0.7,
+"taille": 0.69,
+"retourne": true
+}
+]
+},
+{
+"plan": 18,
+"debut": "1:27.2",
+"duree": 6.9,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Bakary ? Pourquoi tu marches doucement comme ça ? Qu'est-ce que tu veux encore ? Tu as encore un animal à faire courir dans mon atelier ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises@--0",
+"x": 0.57,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 19,
+"debut": "1:34.1",
+"duree": 4.8,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Non, Awa. Pas d'animal, pas de farce. Je suis juste venu t'apporter quelque chose.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 20,
+"debut": "1:38.9",
+"duree": 2.4,
+"type": "insert",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 21,
+"debut": "1:41.3",
+"duree": 4.1,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Tiens. C'est pour toi. Je l'ai commandé sur Sounsouni exprès pour toi.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 22,
+"debut": "1:45.3",
+"duree": 7.6,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Pour moi ? Bakary, si c'est encore un piège de ton ami Diasabi, je te jure que tu vas le regretter tout de suite.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_pointe@--0",
+"x": 0.33,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 23,
+"debut": "1:53.0",
+"duree": 2.9,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Ouvre la boîte, Awa. S'il te plaît.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_v_tour_650014_02",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 24,
+"debut": "1:55.9",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_choc2",
+"x": 0.52,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 25,
+"debut": "1:58.9",
+"duree": 6.0,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Un foulard en soie… ? Bakary, d'où vient ce tissu ? C'est de la vraie soie de qualité ! Qu'est-ce que ça veut dire ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_mefiant@--0",
+"x": 0.36,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 26,
+"debut": "2:04.9",
+"duree": 9.2,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Pourquoi il m'offre un cadeau aussi cher ? Qu'est-ce qui lui prend ? Il croit qu'un tissu en soie va me faire oublier le poulet d'hier ? Il a un comportement vraiment étrange ce soir.",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_doigt_bouche@--0",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 27,
+"debut": "2:14.1",
+"duree": 9.8,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Je l'ai acheté parce que tu es la plus grande couturière du quartier, et tu mérites ce qu'il y a de plus beau. Awa, je sais qu'on se dispute tout le temps. Je sais que tu me trouves casse-pieds…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_debout",
+"x": 0.65,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 28,
+"debut": "2:23.9",
+"duree": 5.6,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Casse-pieds ? Tu es une catastrophe nationale, Bakary ! Tu transformes chaque journée en pagaille !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 29,
+"debut": "2:29.5",
+"duree": 6.6,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "C'est possible. Mais depuis que tu es installée en face de moi, mon monde a complètement changé. Je ne vois plus ma vie de la même manière.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_determine",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 30,
+"debut": "2:36.1",
+"duree": 5.8,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Hé ! Qu'est-ce qui te prend ?! Ne me touche pas ! Bakary, est-ce que tu as de la fièvre ? Tu es devenu fou ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_choc2",
+"x": 0.36,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 31,
+"debut": "2:41.9",
+"duree": 6.7,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Non, Awa… je n'ai pas de fièvre. Je veux juste que tu m'écoutes sans crier. Je ne veux plus être seulement le voisin qui te vend du thé.",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.65,
+"taille": 0.89,
+"retourne": true
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 32,
+"debut": "2:48.6",
+"duree": 10.1,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Mais tu ES le voisin qui vend du thé ! Qu'est-ce que tu racontes depuis tout à l'heure ? Tu parles bizarrement, comme les comédiens dans les séries télévisées de l'après-midi ! Est-ce que tu as bu de la pommade au lieu de la mettre sur ta joue ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_bras_croises",
+"x": 0.52,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 1.27,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 33,
+"debut": "2:58.7",
+"duree": 7.2,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Il a vraiment perdu la tête. Il me regarde avec des yeux écarquillés comme s'il voyait un fantôme. Qu'est-ce qu'il cherche à faire ?",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_doigt_bouche@--0",
+"x": 0.37,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 34,
+"debut": "3:05.9",
+"duree": 5.2,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Ce n'est pas une comédie, Awa. C'est ce que je ressens au fond de moi. Awa, je… je t'…",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_determine",
+"x": 0.66,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 0.01,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 35,
+"debut": "3:11.1",
+"duree": 3.0,
+"type": "scene",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 36,
+"debut": "3:14.1",
+"duree": 2.2,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@--0",
+"x": 0.35,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.84,
+"taille": 0.56,
+"retourne": true
+}
+]
+},
+{
+"plan": 37,
+"debut": "3:16.3",
+"duree": 6.4,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "Ah ! La coupure de courant ! Bakary, garde tes distances ! Ne t'approche pas d'un centimètre dans le noir !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_panique",
+"x": 0.6,
+"taille": 1.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 38,
+"debut": "3:22.6",
+"duree": 6.8,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Je ne bouge pas, Awa ! Maigre Énergie du Mali ! Pourquoi il faut toujours que le courant coupe au moment le plus important ?!",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.35,
+"taille": 0.89,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 39,
+"debut": "3:29.5",
+"duree": 3.2,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Kôrô ! Kôrô Bakary ! Où vous êtes ?! C'est la panique au bout de la rue !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_panique2",
+"x": 0.71,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 40,
+"debut": "3:32.7",
+"duree": 2.4,
+"type": "wide",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_main_tendue@---",
+"x": 0.35,
+"taille": 0.59,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_v_action_659144_01@--0",
+"x": 0.84,
+"taille": 0.56,
+"retourne": true
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": 0.76,
+"taille": 0.7,
+"retourne": false
+}
+]
+},
+{
+"plan": 41,
+"debut": "3:35.1",
+"duree": 4.1,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Moussa ? Qu'est-ce qu'il y a ? Pourquoi tu cours comme si un lion te poursuivait ?",
+"cadrage": "wide",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_panique@--0",
+"x": 0.2,
+"taille": 0.43,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_panique@++0",
+"x": 0.54,
+"taille": 0.4,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_panique@++0",
+"x": 0.84,
+"taille": 0.38,
+"retourne": false
+}
+]
+},
+{
+"plan": 42,
+"debut": "3:39.2",
+"duree": 7.3,
+"type": "line",
+"decor": "RUE",
+"parle": "MOUSSA",
+"texte": "Kôrôbalé wou ! La voiture est là ! Au coin de la rue, cachée sous les grands manguiers, sans aucune lumière d'allumée ! La voiture noire est revenue !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "MOUSSA",
+"pose": "mou_panique2",
+"x": 0.71,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "BAKARY",
+"pose": "bak_dos",
+"x": 0.16,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 43,
+"debut": "3:46.6",
+"duree": 3.0,
+"type": "scene",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 44,
+"debut": "3:49.6",
+"duree": 4.4,
+"type": "line",
+"decor": "RUE",
+"parle": "AWA",
+"texte": "La voiture noire… Bakary, qu'est-ce qu'ils fabriquent ? Qu'est-ce qu'ils nous veulent ?",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "AWA",
+"pose": "awa_debout",
+"x": 0.34,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "MOUSSA",
+"pose": "mou_dos",
+"x": 1.06,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 45,
+"debut": "3:53.9",
+"duree": 8.0,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Reste derrière moi, Awa. Moussa, cours chercher Modibo et Diasabi ! Dis-leur de venir tout de suite avec les torches et les bâtons !",
+"cadrage": "epaule",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_determine",
+"x": 0.35,
+"taille": 1.38,
+"retourne": false
+},
+{
+"qui": "AWA",
+"pose": "awa_dos",
+"x": 1.12,
+"taille": 1.93,
+"retourne": false
+}
+]
+},
+{
+"plan": 46,
+"debut": "4:01.9",
+"duree": 2.4,
+"type": "insert",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 47,
+"debut": "4:04.3",
+"duree": 9.3,
+"type": "line",
+"decor": "RUE",
+"parle": "BAKARY",
+"texte": "Qui est assis dans cette voiture ? Pourquoi ils viennent nous espionner en pleine nuit ? Si c'est encore un coup de Karim, cette fois-ci ça ne va pas se passer comme ça !",
+"cadrage": "seul",
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_mains_levees",
+"x": 0.51,
+"taille": 0.89,
+"retourne": false
+}
+]
+},
+{
+"plan": 48,
+"debut": "4:13.6",
+"duree": 3.0,
+"type": "close",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": [
+{
+"qui": "BAKARY",
+"pose": "bak_determine",
+"x": 0.5,
+"taille": 1.56,
+"retourne": false
+}
+]
+},
+{
+"plan": 49,
+"debut": "4:16.6",
+"duree": 2.6,
+"type": "screen",
+"decor": "RUE",
+"parle": null,
+"texte": "À suivre…",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 50,
+"debut": "4:19.2",
+"duree": 9.6,
+"type": "endline",
+"decor": "RUE",
+"parle": "VOIX_OFF",
+"texte": "Sur Sounsouni, la sécurité de vos commandes est assurée en un clic, même quand l'obscurité s'installe sur le quartier. Disponible sur Android, et bientôt sur iPhone.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 51,
+"debut": "4:28.8",
+"duree": 4.9,
+"type": "endline",
+"decor": "RUE",
+"parle": "VOIX_OFF",
+"texte": "Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.",
+"cadrage": null,
+"acteurs": []
+},
+{
+"plan": 52,
+"debut": "4:33.7",
+"duree": 3.0,
+"type": "endcard",
+"decor": "RUE",
+"parle": null,
+"texte": "",
+"cadrage": null,
+"acteurs": []
+}
+]
