@@ -9093,7 +9093,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "kar_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "kar_fier": {
    "char": "KARIM",
@@ -9111,7 +9112,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "kar_mains",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mou_colere": {
    "char": "MOUSSA",
@@ -9129,7 +9131,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mou_rire",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "awa_triste": {
    "char": "AWA",
@@ -9147,7 +9150,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "awa_v_action_659144_01",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "mod_assis_serieux2": {
    "char": "MODIBO",
@@ -9166,7 +9170,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "mod_assis_serieux",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   },
   "bak_assis3": {
    "char": "BAKARY",
@@ -9186,7 +9191,8 @@
    "props": [],
    "genere": "gemini",
    "depart": "bak_assis2",
-   "mouth_auto": true
+   "mouth_auto": true,
+   "props_auto": {}
   }
  },
  "decors": {
