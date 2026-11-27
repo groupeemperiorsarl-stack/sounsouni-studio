@@ -41,6 +41,12 @@ RENDU = ("Rendu : lumière douce et égale venant de face, sans ombre forte, san
 EVITER = ("À éviter absolument : doigts en trop ou en moins, mains fondues ou tordues, visage déformé, yeux qui louchent, bras ou jambes en trop, "
           "personnage coupé, texte, lettres, logo, filigrane.")
 EVITER_DECOR = "À éviter absolument : texte, lettres, logo, filigrane, objets tordus ou fondus, personnage."
+def choisir_persos(cs, texte, n=4):
+    """Plan dans le décor : 4 personnages au plus ; d'abord ceux que la scène nomme (« Awa et Tantie Kadi arrivent… »), jamais oubliés (ép. 32)."""
+    tous = [c for c in cs.split('+') if c in director.HEIGHT]; t = texte.lower()
+    nommes = [c for c in tous if re.search(r'\b' + c.lower().replace('_', ' ') + r'\b', t)]
+    return (nommes + [c for c in tous if c not in nommes])[:n]
+
 def finir(texte, xs):
     """Ajoute le verrou de style et la liste « à éviter » à une demande (une seule fois)."""
     if 'À éviter absolument' in texte: return texte
@@ -109,7 +115,9 @@ def besoins(paths, log=print, tout=False, maxi=32):
     """Ce qu'il faut générer pour ces scripts, le plus demandé d'abord."""
     b = {}; ep = lambda p: os.path.splitext(os.path.basename(p))[0]
     def add(key, item, ou):
+        if item.get('type') == 'pose': key = ('pose', item['perso'], item.get('posture') or '', item.get('emo') or '')   # même personnage, même posture, même émotion = une seule image (ép. 32 : Moussa en colère demandé deux fois)
         x = b.setdefault(key, dict(item, ou=[])); x['ou'].append(ou)
+        if item.get('manque'): x['manque'] = True
     for p in paths:
         meta, shots = analyse(p, log)
         for nc in meta['new_chars']:
@@ -139,7 +147,7 @@ def besoins(paths, log=print, tout=False, maxi=32):
             add(('pose', c, 'assis' if post in ('assis', 'banc') else 'debout', CANON.get(mot, mot)), {'type': 'pose', 'perso': c, 'posture': 'assis' if post in ('assis', 'banc') else 'debout', 'emo': CANON.get(mot, mot), 'manque': True}, 'image manquante')
     for sc, dec, cs in sorted(getattr(director, 'SCENES_DECOR', ())):   # plan complet dans le décor (ils voient quelqu'un arriver au loin…)
         if sc not in director.CAT.get('scenes', {}):
-            add(('scene_decor', sc), {'type': 'scene_decor', 'perso': sc, 'decor': dec, 'persos': [c for c in cs.split('+') if c in director.HEIGHT][:4], 'texte': SCENE_TXT.get(sc, sc.replace('_', ' '))}, 'plan dans le décor')
+            add(('scene_decor', sc), {'type': 'scene_decor', 'perso': sc, 'decor': dec, 'persos': choisir_persos(cs, SCENE_TXT.get(sc, sc.replace('_', ' '))), 'texte': SCENE_TXT.get(sc, sc.replace('_', ' '))}, 'plan dans le décor')
     for duo, tg in sorted(getattr(director, 'SCENES', ())):   # action à deux écrite dans un PLAN (tape, gifle, accolade…) : une image des deux ensemble
         cs = duo.split('+')
         if all(c in director.HEIGHT for c in cs) and not director.group_pick(cs, [tg]):
@@ -257,7 +265,7 @@ def titre(x):
     if x.get('tenue'): q += ' — ' + TENUES.get((x['perso'], x['tenue']), (x['tenue'].replace('_', ' '),))[0]
     return f"{gfx.nom(x['perso'])} — {q}"
 
-PAR_IMAGE = 4   # Gemini fait jusqu'à 4 personnages par image (au-delà la qualité baisse)
+PAR_IMAGE = 3   # 3 images par demande (Issa, 27/11/2026 : plus rapide pour lui, et meilleure qualité)
 def pose_phrase(x):
     """La pose demandée, en quelques mots (pour la liste « 1) … 2) … » d'une image groupée)."""
     f = x['perso'] in FEMMES
