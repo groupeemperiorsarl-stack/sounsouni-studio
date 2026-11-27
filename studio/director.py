@@ -19,7 +19,7 @@ EMOS = {'neutre', 'sourire', 'grand_sourire', 'sourire_malin', 'rire', 'rire_ret
         'moqueur', 'froide', 'hesitante', 'chaleureuse', 'joie', 'content', 'severe', 'emu', 'confus', 'determine', 'fiere', 'sage', 'victoire',
         'emerveille', 'timide', 'reveur'}
 SYN = {'grand_sourire': 'sourire content', 'sourire_malin': 'taquin sourire', 'rire_retenu': 'rire', 'furieux': 'colere furieux', 'yeux_plisses': 'mefiant mepris',
-       'peur': 'peur panique', 'panique': 'panique peur', 'surpris': 'surpris choc', 'froide': 'mepris colere froide', 'moqueur': 'moqueur taquin rire',
+       'peur': 'peur panique', 'panique': 'panique peur', 'surpris': 'surpris choc', 'froide': 'mepris colere froide mefiant', 'moqueur': 'moqueur taquin rire',
        'hesitante': 'pensif moue', 'innocent': 'sourire', 'emu': 'emu amoureux', 'tendre': 'tendre sourire', 'inquiet': 'inquiet triste', 'pleure': 'pleure triste larmes', 'triste': 'triste',
        'chaleureuse': 'sourire', 'severe': 'severe colere', 'serieux': 'serieux neutre', 'joie': 'joie content rire',
        # mots utilisés par le scénariste, ramenés aux émotions connues
