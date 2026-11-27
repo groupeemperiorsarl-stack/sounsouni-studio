@@ -1,4 +1,10 @@
 {
+ "5": {
+  "poses": {
+   "DIASABI": "dia_debout"
+  },
+  "sig": "DIASABI|Et mes brochettes sont prêtes aussi ! À Bobo, on dit : celui#0"
+ },
  "18": {
   "poses": {
    "BAKARY": "bak_mains_levees"
@@ -41,6 +47,9 @@
   },
   "sig": "AWA|Raser le kiosque ?! Raser le cœur du quartier ?! Tu es deven#0"
  },
+ "42": {
+  "sig": "KADI|Aw ni sogoma, mes enfants. Écoute-moi bien, mon fils Bakary.#1"
+ },
  "43": {
   "poses": {
    "KADI": "kadi_dos"
@@ -53,6 +62,9 @@
   },
   "sig": "KARIM|Assez de discours sentimentaux ! Bakary, la proposition rest#0"
  },
+ "46": {
+  "sig": "KARIM|Un seul clic sur « Accepter », et l'argent est sur ton compt#1"
+ },
  "47": {
   "poses": {
    "AWA": "awa_mepris"
@@ -64,11 +76,5 @@
    "AWA": "awa_bras_croises"
   },
   "sig": "AWA|Tu as jusqu'à dix-huit heures, Bakary. Fais ton choix entre #1"
- },
- "5": {
-  "poses": {
-   "DIASABI": "dia_debout"
-  },
-  "sig": "DIASABI|Et mes brochettes sont prêtes aussi ! À Bobo, on dit : celui#0"
  }
 }
