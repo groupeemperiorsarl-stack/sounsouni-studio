@@ -1,0 +1,74 @@
+{
+ "18": {
+  "poses": {
+   "BAKARY": "bak_mains_levees"
+  },
+  "sig": "KARIM|Je vais raser ces petites baraques et construire un grand ce#1"
+ },
+ "23": {
+  "poses": {
+   "MOUSSA": "mou_choc"
+  },
+  "sig": "MOUSSA|Kôrô… cinquante millions de francs ?! C'est une montagne d'a#0"
+ },
+ "24": {
+  "poses": {
+   "KARIM": "kar_fier"
+  },
+  "sig": "KARIM|Et pour que tout soit officiel et transparent, la propositio#0"
+ },
+ "27": {
+  "poses": {
+   "BAKARY": "bak_tel_montre"
+  },
+  "sig": "BAKARY|Mais ce kiosque… c'est toute ma vie. C'est ici que j'ai tous#0"
+ },
+ "30": {
+  "poses": {
+   "BAKARY": "bak_tel_montre"
+  },
+  "sig": "BAKARY|Je… c'est une somme énorme, Van. Je n'ai jamais vu autant d'#0"
+ },
+ "32": {
+  "poses": {
+   "AWA": "awa_bras_croises"
+  },
+  "sig": "AWA|Qu'est-ce qui se passe encore ici ?! Karim, qu'est-ce que tu#0"
+ },
+ "34": {
+  "poses": {
+   "AWA": "awa_pointe"
+  },
+  "sig": "AWA|Raser le kiosque ?! Raser le cœur du quartier ?! Tu es deven#0"
+ },
+ "43": {
+  "poses": {
+   "KADI": "kadi_dos"
+  },
+  "sig": "KADI|L'or et l'argent peuvent remplir une poche, mais ils n'ont j#0"
+ },
+ "44": {
+  "poses": {
+   "KARIM": "kar_moqueur"
+  },
+  "sig": "KARIM|Assez de discours sentimentaux ! Bakary, la proposition rest#0"
+ },
+ "47": {
+  "poses": {
+   "AWA": "awa_mepris"
+  },
+  "sig": "AWA|Tu as jusqu'à dix-huit heures, Bakary. Fais ton choix entre #0"
+ },
+ "48": {
+  "poses": {
+   "AWA": "awa_bras_croises"
+  },
+  "sig": "AWA|Tu as jusqu'à dix-huit heures, Bakary. Fais ton choix entre #1"
+ },
+ "5": {
+  "poses": {
+   "DIASABI": "dia_debout"
+  },
+  "sig": "DIASABI|Et mes brochettes sont prêtes aussi ! À Bobo, on dit : celui#0"
+ }
+}
