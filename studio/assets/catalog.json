@@ -9076,6 +9076,117 @@
    "props": [],
    "genere": "gemini",
    "props_auto": {}
+  },
+  "kar_moqueur": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "moqueur"
+   ],
+   "mouth": true,
+   "size": [
+    537,
+    1600
+   ],
+   "head_x": 0.452,
+   "props": [],
+   "genere": "gemini",
+   "depart": "kar_mains",
+   "mouth_auto": true
+  },
+  "kar_fier": {
+   "char": "KARIM",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "fier"
+   ],
+   "mouth": true,
+   "size": [
+    642,
+    1600
+   ],
+   "head_x": 0.416,
+   "props": [],
+   "genere": "gemini",
+   "depart": "kar_mains",
+   "mouth_auto": true
+  },
+  "mou_colere": {
+   "char": "MOUSSA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "colere"
+   ],
+   "mouth": true,
+   "size": [
+    545,
+    1600
+   ],
+   "head_x": 0.566,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mou_rire",
+   "mouth_auto": true
+  },
+  "awa_triste": {
+   "char": "AWA",
+   "frame": "pied",
+   "posture": "debout",
+   "tags": [
+    "triste"
+   ],
+   "mouth": true,
+   "size": [
+    499,
+    1600
+   ],
+   "head_x": 0.465,
+   "props": [],
+   "genere": "gemini",
+   "depart": "awa_v_action_659144_01",
+   "mouth_auto": true
+  },
+  "mod_assis_serieux2": {
+   "char": "MODIBO",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "serieux",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    951,
+    1600
+   ],
+   "head_x": 0.539,
+   "props": [],
+   "genere": "gemini",
+   "depart": "mod_assis_serieux",
+   "mouth_auto": true
+  },
+  "bak_assis3": {
+   "char": "BAKARY",
+   "frame": "pied",
+   "posture": "assis",
+   "tags": [
+    "neutre",
+    "ecoute",
+    "assis"
+   ],
+   "mouth": true,
+   "size": [
+    789,
+    1600
+   ],
+   "head_x": 0.586,
+   "props": [],
+   "genere": "gemini",
+   "depart": "bak_assis2",
+   "mouth_auto": true
   }
  },
  "decors": {
@@ -9282,6 +9393,21 @@
     "MOUSSA"
    ],
    "texte": "Modibo et Moussa sont cachés derrière un grand mur, ils observent la voiture noire qui s'arrête devant un immeuble moderne et luxueux avec des vitres teintées",
+   "size": [
+    1080,
+    1935
+   ],
+   "genere": "gemini"
+  },
+  "awa_et_tantie_kadi_arrivent_ensemble_par_la_ruelle_awa_a_le_visage_ferme_et_furieux_apres_avoir_entendu_les_eclats_de_voix": {
+   "decor": "KIOSQUE",
+   "persos": [
+    "AWA",
+    "KADI",
+    "BAKARY",
+    "MODIBO"
+   ],
+   "texte": "Awa et Tantie Kadi arrivent ensemble par la ruelle, Awa a le visage fermé et furieux après avoir entendu les éclats de voix",
    "size": [
     1080,
     1935
