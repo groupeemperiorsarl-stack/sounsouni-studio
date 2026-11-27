@@ -23,7 +23,7 @@ def planche(x):
     W = sum(i.width for i in ims) + 40 * (len(ims) + 1); bg = Image.new('RGB', (max(W, 1024), 1024), (226, 226, 226)); x0 = 40
     for im in ims: bg.paste(im, (x0, 1024 - im.height - 40), im); x0 += im.width + 40
     return bg
-EVITER = " Avoid: extra or missing fingers, melted or twisted hands, deformed faces, crossed eyes, extra limbs, cut-off bodies, text, letters, logos, watermarks."
+EVITER = " Copy each face exactly from its reference (same face shape, nose, eyes, mouth, skin tone, age, beard or goatee, hair, same fabric patterns): the same actor, not a look-alike; only the expression and pose change. Avoid: extra or missing fingers, melted or twisted hands, deformed faces, crossed eyes, extra limbs, cut-off bodies, text, letters, logos, watermarks."
 def consigne(x): return _consigne(x) + EVITER   # liste « à éviter » (27/11/2026, comme la fiche Gemini)
 def _consigne(x):
     noms = ', '.join(f"{gemini.gfx.nom(c)} ({gemini.IDENTITE.get(c, '')[:90]})" for c in x['persos'])

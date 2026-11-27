@@ -40,6 +40,9 @@ RENDU = ("Rendu : lumière douce et égale venant de face, sans ombre forte, san
          "peau, yeux et tissus (bazin, pagne, broderies) bien détaillés, couleurs vives et naturelles, même finition que l'image jointe.")
 EVITER = ("À éviter absolument : doigts en trop ou en moins, mains fondues ou tordues, visage déformé, yeux qui louchent, bras ou jambes en trop, "
           "personnage coupé, texte, lettres, logo, filigrane.")
+VISAGES = ("TRÈS IMPORTANT, les visages : ne dessine pas un nouveau personnage qui ressemble, recopie exactement CELUI de l'image jointe, comme une photo du même acteur : "
+           "même forme de visage, même nez, mêmes yeux, même bouche, mêmes sourcils, même couleur de peau, même âge, même corpulence, même barbe ou barbiche (ni plus ni moins), "
+           "même coiffure ; mêmes vêtements avec exactement les mêmes motifs et les mêmes couleurs de tissu. Seule l'expression du visage et la posture changent.")
 EVITER_DECOR = "À éviter absolument : texte, lettres, logo, filigrane, objets tordus ou fondus, personnage."
 def choisir_persos(cs, texte, n=4):
     """Plan dans le décor : 4 personnages au plus ; d'abord ceux que la scène nomme (« Awa et Tantie Kadi arrivent… »), jamais oubliés (ép. 32)."""
@@ -52,8 +55,8 @@ def finir(texte, xs):
     if 'À éviter absolument' in texte: return texte
     ty = {x['type'] for x in xs}
     if ty <= {'decor'}: return texte + ' ' + EVITER_DECOR
-    if 'scene_decor' in ty: return texte + ' ' + EVITER   # la lumière vient du décor joint
-    return texte + ' ' + RENDU + ' ' + EVITER
+    if 'scene_decor' in ty: return texte + ' ' + VISAGES + ' ' + EVITER   # la lumière vient du décor joint
+    return texte + ' ' + VISAGES + ' ' + RENDU + ' ' + EVITER   # Issa, 27/11 : les visages changeaient (Bakary sans barbiche, autre visage)
 
 CANON = {'fiere': 'fier', 'determinee': 'determine', 'emerveillee': 'emerveille', 'reveuse': 'reveur', 'contente': 'content', 'surprise': 'surpris',
          'inquiete': 'inquiet', 'furieuse': 'furieux', 'amoureuse': 'amoureux'}   # féminin → même pose
