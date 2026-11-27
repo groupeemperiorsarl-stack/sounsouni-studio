@@ -3304,3 +3304,176 @@ VOIX_OFF (lentement)
 Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
 [ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
 ```
+
+## Épisode 32 : L'offre de Karim
+(source : demandes/episode_27.txt)
+```text
+TITRE: Les Plans de Bakary – Épisode 32 : L'offre de Karim
+
+DÉCOR: KIOSQUE · matin · ambiance: rue calme
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill, Moussa debout]
+[BRUITAGE: coq]
+[BRUITAGE: the]
+
+BAKARY (inquiet · regarde: Modibo · voix: normal)
+ Van… je n'ai pas pu dormir de la nuit. Savoir que c'était Karim dans cette voiture noire garée sous les manguiers… ça me glace le sang.
+
+MODIBO (serieux · regarde: Bakary · voix: lentement)
+{hoche_tete} Un homme riche qui éteint ses phares pour observer un simple kiosque à thé… ce n'est pas par politesse, Bakarin. Il prépare un mauvais coup.
+
+MOUSSA (colere · regarde: Bakary · voix: normal)
+{bombe_torse} Kôrôbalé wou ! Si Karim revient poser ses pieds ici, ma clé de douze est prête ! On ne le laissera pas toucher à ton kiosque !
+
+DIASABI (fier · regarde: Moussa · voix: normal)
+{bras_ouverts} Et mes brochettes sont prêtes aussi ! À Bobo, on dit : celui qui cherche la bagarre près du grill finit toujours brûlé !
+[RÉACTION MODIBO: rire_retenu]
+
+[BRUITAGE: moteur]
+[BRUITAGE: klaxon]
+PLAN: objet voiture de Karim
+
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill, Moussa debout, Karim marche]
+[BRUITAGE: pas]
+
+KARIM (grand_sourire · regarde: Bakary · voix: normal)
+{bombe_torse} Aw ni sogoma, la jeunesse ! Quelle belle matinée pour les affaires !
+
+BAKARY (mefiant · regarde: Karim · voix: normal)
+I ni sogoma, Karim. Qu'est-ce qui t'amène si tôt ?
+
+MODIBO (froide · regarde: Karim · voix: normal)
+{yeux_plisses} Karim. Tu as retrouvé le chemin du quartier sans éteindre tes phares cette fois ?
+[RÉACTION KARIM: surpris]
+
+KARIM (sourire · regarde: Modibo · voix: normal)
+{sourire} Oh, le sage du banc a beaucoup d'imagination ! Mais je ne suis pas venu pour parler de mes promenades nocturnes.
+
+KARIM (fier · regarde: Bakary · voix: lentement)
+ Bakary. Je suis venu te faire l'offre de ta vie. L'offre qui va transformer le petit vendeur de thé en homme riche.
+
+BAKARY (mefiant · regarde: Karim · voix: normal)
+ Quelle offre ? Je ne vends ni mes théières ni mon charbon.
+
+KARIM (grand_sourire · regarde: Bakary · voix: normal)
+{grand_sourire} Pas tes théières, Bakary. Ton emplacement ! Je rachète ton kiosque et tout le terrain autour.
+
+KARIM (explique · regarde: Bakary · voix: normal)
+Je vais raser ces petites baraques et construire un grand centre commercial moderne de trois étages. Et pour ton kiosque… je te donne cinquante millions de francs CFA. Cash.
+
+PLAN: 2 s · très gros Bakary · {choc}
+[BRUITAGE sur "cinquante millions": tonnerre]
+[RÉACTION MOUSSA: choc]
+[RÉACTION DIASABI: choc]
+[SILENCE 2 s: grillon]
+
+DIASABI (choc · regarde: Karim · voix: crie)
+{choc} Cinquante millions ?! {sueur} À Bobo, avec cinquante millions, tu achètes toute la ville et dix mille moutons !
+
+MOUSSA (panique · regarde: Bakary · voix: vite)
+ Kôrô… cinquante millions de francs ?! C'est une montagne d'argent !
+
+KARIM (fier · regarde: téléphone · voix: normal)
+{sourire} Et pour que tout soit officiel et transparent, la proposition de rachat est déjà enregistrée sur l'application Sounsouni.
+
+PLAN: gros [Bakary debout, téléphone]
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Offre de rachat de fonds de commerce · Acheteur : Karim Holding · Montant : 50 000 000 FCFA · [Accepter l'offre] [Refuser l'offre]]
+
+PENSÉE BAKARY (choc · regarde: téléphone)
+Cinquante millions de francs sur Sounsouni… {sueur} Avec cet argent, je peux acheter une vraie maison pour ma mère, payer toutes mes dettes, et ne plus jamais avoir peur du lendemain.
+
+PENSÉE BAKARY (triste · regarde: kiosque)
+Mais ce kiosque… {soupir} c'est toute ma vie. C'est ici que j'ai tous mes amis, que je prépare mon thé… et c'est ici qu'Awa me regarde chaque jour.
+
+MODIBO (serieux · regarde: Karim · voix: lentement)
+{avance} Garde ton argent, Karim. Ce kiosque n'est pas à vendre. Bakary a bâti sa vie ici sueur après sueur.
+
+KARIM (moqueur · regarde: Modibo · voix: normal)
+{moqueur} Laisse parler le principal intéressé, Modibo. Bakary n'a pas dit non. Regarde ses yeux !
+
+BAKARY (gene · regarde: bas · voix: chuchote)
+{sueur} Je… c'est une somme énorme, Van. Je n'ai jamais vu autant d'argent de toute ma vie.
+
+[BRUITAGE: talons]
+PLAN: 3 s · large [Bakary debout, Modibo sur le banc, Diasabi au grill, Moussa debout, Karim debout, Awa marche, Kadi marche] · {SCÈNE: Awa et Tantie Kadi arrivent ensemble par la ruelle, Awa a le visage fermé et furieux après avoir entendu les éclats de voix}
+
+AWA (furieux · regarde: Karim · voix: crie)
+{fumee_tete} Qu'est-ce qui se passe encore ici ?! Karim, qu'est-ce que tu viens fabriquer devant le kiosque à cette heure-ci ?!
+
+KARIM (grand_sourire · regarde: Awa · voix: normal)
+{sourire} Ah, la belle couturière ! Je propose simplement à ton voisin de devenir millionnaire. Je rachète le kiosque pour tout raser et construire un centre commercial.
+
+AWA (choc · regarde: Karim · voix: crie)
+{choc} Raser le kiosque ?! Raser le cœur du quartier ?! {furieux} Tu es devenu complètement fou ! Tu crois que ton argent peut tout acheter ici ?!
+
+KARIM (fier · regarde: Awa · voix: normal)
+{bombe_torse} Tout a un prix, Awa. Même les souvenirs. Et ton cher vendeur de thé hésite déjà à signer.
+
+AWA (surpris · regarde: Bakary · voix: lentement)
+{surpris} Quoi… ? {froide} Bakary… tu hésites ?!
+
+PLAN: deux [Bakary debout, Awa debout]
+
+BAKARY (gene · regarde: Awa · voix: chuchote)
+{rougit}{sueur} Awa… c'est cinquante millions de francs. Tu te rends compte ? C'est l'avenir…
+
+AWA (froide · regarde: Bakary · voix: lentement)
+{yeux_plisses} L'avenir ? Vendre ton lieu de travail à l'homme qui nous harcèle depuis des mois, c'est ça ton avenir ?
+
+AWA (triste · regarde: Bakary · voix: chuchote)
+{soupir} Moi qui croyais que ce kiosque comptait pour toi… Je vois que ton cœur s'achète avec des billets de banque.
+
+BAKARY (triste · regarde: Awa · voix: vite)
+{pardon} Awa, ce n'est pas ça ! Ce n'est pas pour les billets ! Mais la pauvreté pèse lourd, Awa !
+
+KADI (sage · regarde: Bakary · voix: lentement)
+{avance} Aw ni sogoma, mes enfants. Écoute-moi bien, mon fils Bakary.
+
+PLAN: large [Bakary debout, Awa debout, Kadi debout, Modibo sur le banc, Karim debout]
+
+KADI (sage · regarde: Bakary · voix: lentement)
+ L'or et l'argent peuvent remplir une poche, mais ils n'ont jamais pu remplir un cœur vide. Si tu vends ce kiosque, tu auras des millions, oui… mais où vas-tu t'asseoir demain matin pour regarder le soleil se lever avec tes amis ?
+
+KARIM (serieux · regarde: Bakary · voix: normal)
+{sourcils_haut} Assez de discours sentimentaux ! Bakary, la proposition reste ouverte sur Sounsouni jusqu'à ce soir dix-huit heures.
+
+KARIM (fier · regarde: Bakary · voix: normal)
+Un seul clic sur « Accepter », et l'argent est sur ton compte. Si tu refuses, je trouverai un autre moyen de récupérer ce terrain. Penses-y bien.
+[BRUITAGE: porte qui claque]
+[BRUITAGE: moteur]
+
+DÉCOR: KIOSQUE · après-midi · ambiance: rue calme
+PLAN: large [Bakary assis, Modibo sur le banc, Diasabi au grill, Awa debout]
+[MUSIQUE: triste]
+
+AWA (froide · regarde: Bakary · voix: normal)
+{bombe_torse} Tu as jusqu'à dix-huit heures, Bakary. Fais ton choix entre tes millions et nous.
+[BRUITAGE: talons]
+
+PLAN: 3 s · gros Awa · {detourne_regard}
+
+MODIBO (sage · regarde: Bakary · voix: chuchote)
+ Bakarin… la décision t'appartient. Mais n'oublie pas qui tu es.
+
+PLAN: gros [Bakary assis, téléphone]
+[BRUITAGE: notification]
+
+PLAN: objet téléphone
+[ÉCRAN 5 s: Sounsouni · Offre de Karim Holding : 50 000 000 FCFA · Temps restant : 00:15:30 · [Accepter l'offre] [Refuser l'offre]]
+
+PENSÉE BAKARY (inquiet · regarde: téléphone)
+{sueur} Il ne reste que quinze minutes… Mon doigt est juste au-dessus du bouton. Que dois-je faire ?
+
+PLAN: 3 s · très gros Bakary · {panique}{sueur}
+[MUSIQUE: suspense]
+
+FIN:
+[ÉCRAN: À suivre…]
+VOIX_OFF (chaleureuse)
+Sur Sounsouni, les décisions importantes se prennent en un clic, mais le cœur d'un quartier n'a pas de prix. Disponible sur Android, et bientôt sur iPhone.
+VOIX_OFF (lentement)
+Pour télécharger l'application Sounsouni, rendez-vous sur le site sounsouni.pro.
+[ÉCRAN FIN: logo · sounsouni.pro · Android · iPhone bientôt]
+```
