@@ -72,10 +72,7 @@ PLAN: objet téléphone
 [ÉCRAN 5 s: Sounsouni · Offre de rachat de fonds de commerce · Acheteur : Karim Holding · Montant : 50 000 000 FCFA · [Accepter l'offre] [Refuser l'offre]]
 
 PENSÉE BAKARY (choc · regarde: téléphone)
-Cinquante millions de francs sur Sounsouni… {sueur} Avec cet argent, je peux acheter une vraie maison pour ma mère, payer toutes mes dettes, et ne plus jamais avoir peur du lendemain.
-
-PENSÉE BAKARY (triste · regarde: kiosque)
-Mais ce kiosque… {soupir} c'est toute ma vie. C'est ici que j'ai tous mes amis, que je prépare mon thé… et c'est ici qu'Awa me regarde chaque jour.
+Cinquante millions de francs sur Sounsouni… {sueur} Avec cet argent, je peux acheter une vraie maison pour ma mère, payer toutes mes dettes, et ne plus jamais avoir peur du lendemain. Mais ce kiosque… {soupir} c'est toute ma vie. C'est ici que j'ai tous mes amis, que je prépare mon thé… et c'est ici qu'Awa me regarde chaque jour.
 
 MODIBO (serieux · regarde: Karim · voix: lentement)
 {avance} Garde ton argent, Karim. Ce kiosque n'est pas à vendre. Bakary a bâti sa vie ici sueur après sueur.
@@ -118,13 +115,10 @@ AWA (triste · regarde: Bakary · voix: chuchote)
 BAKARY (triste · regarde: Awa · voix: vite)
 {pardon} Awa, ce n'est pas ça ! Ce n'est pas pour les billets ! Mais la pauvreté pèse lourd, Awa !
 
-KADI (sage · regarde: Bakary · voix: lentement)
-{avance} Aw ni sogoma, mes enfants. Écoute-moi bien, mon fils Bakary.
-
-PLAN: large [Bakary debout, Awa debout, Kadi debout, Modibo sur le banc, Karim debout]
+PLAN: large [Bakary debout, Modibo sur le banc, Diasabi au grill, Moussa debout, Karim debout, Awa debout, Kadi debout]
 
 KADI (sage · regarde: Bakary · voix: lentement)
- L'or et l'argent peuvent remplir une poche, mais ils n'ont jamais pu remplir un cœur vide. Si tu vends ce kiosque, tu auras des millions, oui… mais où vas-tu t'asseoir demain matin pour regarder le soleil se lever avec tes amis ?
+{avance} Aw ni sogoma, mes enfants. Écoute-moi bien, mon fils Bakary : l'or et l'argent peuvent remplir une poche, mais ils n'ont jamais pu remplir un cœur vide. Si tu vends ce kiosque, tu auras des millions, oui… mais où vas-tu t'asseoir demain matin pour regarder le soleil se lever avec tes amis ?
 
 KARIM (serieux · regarde: Bakary · voix: normal)
 {sourcils_haut} Assez de discours sentimentaux ! Bakary, la proposition reste ouverte sur Sounsouni jusqu'à ce soir dix-huit heures.
@@ -140,9 +134,9 @@ PLAN: large [Bakary assis, Modibo sur le banc, Diasabi au grill, Awa debout]
 
 AWA (froide · regarde: Bakary · voix: normal)
 {bombe_torse} Tu as jusqu'à dix-huit heures, Bakary. Fais ton choix entre tes millions et nous.
-[BRUITAGE: talons]
 
-PLAN: 3 s · gros Awa · {detourne_regard}
+PLAN: 2 s · gros Awa · {detourne_regard}
+[BRUITAGE: talons]
 
 MODIBO (sage · regarde: Bakary · voix: chuchote)
  Bakarin… la décision t'appartient. Mais n'oublie pas qui tu es.
