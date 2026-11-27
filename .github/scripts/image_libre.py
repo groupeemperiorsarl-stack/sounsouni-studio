@@ -13,19 +13,31 @@ fiche = json.load(open('/tmp/fiche_libre/fiche_gemini.json'))
 items = {x['n']: x for x in fiche['items']}
 voulu = [int(g) for g in (sys.argv[1] if len(sys.argv) > 1 else '').replace(' ', '').split(',') if g]
 import gemini
+EMO_EN = {'colere': 'angry, frowning, jaw clenched', 'froide': 'cold and hostile, narrowed eyes', 'mepris': 'contemptuous', 'triste': 'sad, eyes looking down',
+          'serieux': 'serious', 'moqueur': 'mocking half smile', 'fier': 'proud, chest out', 'peur': 'scared', 'choc': 'shocked, mouth open', 'content': 'happy smile',
+          'inquiet': 'worried', 'surpris': 'surprised', 'gene': 'embarrassed', 'pensif': 'thoughtful', 'rire': 'laughing'}
+def en_pose(x):
+    """Une pose (visage / posture manquants) devient une petite action d'un seul personnage, faite à partir de son image de référence."""
+    if x['type'] != 'pose': return x
+    emo = (x.get('emo') or '').split('/')[0]; assis = x.get('posture') == 'assis'
+    t = ('sitting on the same small wooden bench, hands on knees, ' if assis else 'standing, three-quarter view, arms relaxed, ') + 'facial expression: ' + EMO_EN.get(emo, emo or 'calm') + ', mouth closed, empty hands'
+    return dict(x, persos=[x['perso']], texte=t, ref_pose=x.get('ref'))
 def planche(x):
     """Les personnages de la scène côte à côte sur fond gris (et le décor à gauche pour un plan dans le décor)."""
     ims = []
     if x['type'] == 'scene_decor':
         d = Image.open(f"{A}/decors/{x['decor']}.jpg").convert('RGB'); d.thumbnail((700, 1000)); ims.append(d.convert('RGBA'))
     for c in x['persos']:
-        im = Image.open(f"{A}/poses/{gemini.reference(c)}.webp").convert('RGBA'); ims.append(im.resize((int(im.width * 900 / im.height), 900)))
+        im = Image.open(f"{A}/poses/{x.get('ref_pose') or gemini.reference(c)}.webp").convert('RGBA'); ims.append(im.resize((int(im.width * 900 / im.height), 900)))
     W = sum(i.width for i in ims) + 40 * (len(ims) + 1); bg = Image.new('RGB', (max(W, 1024), 1024), (226, 226, 226)); x0 = 40
     for im in ims: bg.paste(im, (x0, 1024 - im.height - 40), im); x0 += im.width + 40
     return bg
 EVITER = " Copy each face exactly from its reference (same face shape, nose, eyes, mouth, skin tone, age, beard or goatee, hair, same fabric patterns): the same actor, not a look-alike; only the expression and pose change. Avoid: extra or missing fingers, melted or twisted hands, deformed faces, crossed eyes, extra limbs, cut-off bodies, text, letters, logos, watermarks."
 def consigne(x): return _consigne(x) + EVITER   # liste « à éviter » (27/11/2026, comme la fiche Gemini)
 def _consigne(x):
+    if x['type'] == 'pose':
+        return (f"Same exact cartoon character as in the image (same actor, same face, beard, hair, clothes with the same fabric patterns, same 3D animated movie style). "
+                f"Change only this: {x['texte']}. Full body from head to feet, plain light grey background, no text.")
     noms = ', '.join(f"{gemini.gfx.nom(c)} ({gemini.IDENTITE.get(c, '')[:90]})" for c in x['persos'])
     if x['type'] == 'scene_decor':
         return (f"Use the place shown on the left as the setting and put these exact cartoon characters in it: {noms}. Scene: {x['texte']}. "
@@ -80,9 +92,20 @@ def faire(x, sortie):
 os.makedirs(f'demandes/gemini/{N}', exist_ok=True); faits, rates = [], []
 for g in fiche['groupes']:
     xs = [items[n] for n in g['items']]
-    if (voulu and g['g'] not in voulu) or (not voulu and not (len(xs) == 1 and xs[0]['type'] in ('scene', 'scene_decor'))): continue
+    poses = all(x['type'] == 'pose' for x in xs)
+    if (voulu and g['g'] not in voulu) or (not voulu and not poses and not (len(xs) == 1 and xs[0]['type'] in ('scene', 'scene_decor'))): continue   # Issa, 27/11 : « débrouille-toi » → les visages manquants aussi
     f = f"{g['g']}_libre.jpg"; print('image', g['g'], ':', g.get('titres'))
-    ok, pb = faire(xs[0], f'demandes/gemini/{N}/{f}')
+    if poses:   # chaque pose faite et vérifiée seule, puis mises côte à côte (le rangement découpe comme une image Gemini)
+        ims, ok, pb = [], True, ''
+        for k, x in enumerate(xs):
+            o, pb = faire(en_pose(x), f'/tmp/pose_{k}.jpg')
+            if not o: ok = False; break
+            im = Image.open(f'/tmp/pose_{k}.jpg').convert('RGB'); ims.append(im.resize((int(im.width * 1000 / im.height), 1000)))
+        if ok:
+            W = sum(i.width for i in ims) + 120 * (len(ims) + 1); c = Image.new('RGB', (W, 1000), ims[0].getpixel((5, 5))); x0 = 120
+            for im in ims: c.paste(im, (x0, 0)); x0 += im.width + 120
+            c.save(f'demandes/gemini/{N}/{f}', quality=94)
+    else: ok, pb = faire(xs[0], f'demandes/gemini/{N}/{f}')
     if ok: faits.append(f"{g['g']}={f}")
     else:
         rates.append(f"demande {g['g']} : {pb}")
