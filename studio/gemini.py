@@ -35,6 +35,19 @@ DESC = {
 STYLE = ("Garde exactement le même personnage que sur l'image jointe : même visage, même coiffure, mêmes vêtements, mêmes couleurs, "
          "même style dessin animé 3D. ")
 FOND = "Corps entier de la tête aux pieds, sur un fond gris clair uni, sans aucun décor ni autre personnage. Image verticale."
+# Verrou de style + liste « à éviter » (27/11/2026, idée reprise d'une méthode de pubs animées, validée par Issa) : ajoutés à la fin de chaque demande de la fiche.
+RENDU = ("Rendu : lumière douce et égale venant de face, sans ombre forte, sans contre-jour ni lumière colorée (l'image sera posée dans plusieurs décors) ; "
+         "peau, yeux et tissus (bazin, pagne, broderies) bien détaillés, couleurs vives et naturelles, même finition que l'image jointe.")
+EVITER = ("À éviter absolument : doigts en trop ou en moins, mains fondues ou tordues, visage déformé, yeux qui louchent, bras ou jambes en trop, "
+          "personnage coupé, texte, lettres, logo, filigrane.")
+EVITER_DECOR = "À éviter absolument : texte, lettres, logo, filigrane, objets tordus ou fondus, personnage."
+def finir(texte, xs):
+    """Ajoute le verrou de style et la liste « à éviter » à une demande (une seule fois)."""
+    if 'À éviter absolument' in texte: return texte
+    ty = {x['type'] for x in xs}
+    if ty <= {'decor'}: return texte + ' ' + EVITER_DECOR
+    if 'scene_decor' in ty: return texte + ' ' + EVITER   # la lumière vient du décor joint
+    return texte + ' ' + RENDU + ' ' + EVITER
 
 CANON = {'fiere': 'fier', 'determinee': 'determine', 'emerveillee': 'emerveille', 'reveuse': 'reveur', 'contente': 'content', 'surprise': 'surpris',
          'inquiete': 'inquiet', 'furieuse': 'furieux', 'amoureuse': 'amoureux'}   # féminin → même pose
@@ -355,7 +368,7 @@ def fiche(items, out, log=print):
     par_n = {x['n']: x for x in items}; gs = melanger(groupes(items), par_n)
     d = os.path.join(out, 'a_joindre'); shutil.rmtree(d, ignore_errors=True); os.makedirs(d)
     for grp in gs:
-        grp['demande'] = demande_groupe(grp, par_n); xs = [par_n[n] for n in grp['items']]; g = grp['g']
+        xs = [par_n[n] for n in grp['items']]; grp['demande'] = finir(demande_groupe(grp, par_n), xs); g = grp['g']
         if len(xs) == 1 and xs[0]['type'] in ('scene', 'scene_decor'): grp['refs'] = xs[0]['fichiers_ref']
         refs = grp.get('refs') or [grp['fichier_ref']]; noms = []
         if not grp.get('suite_de'):

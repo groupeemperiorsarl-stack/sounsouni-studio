@@ -23,7 +23,9 @@ def planche(x):
     W = sum(i.width for i in ims) + 40 * (len(ims) + 1); bg = Image.new('RGB', (max(W, 1024), 1024), (226, 226, 226)); x0 = 40
     for im in ims: bg.paste(im, (x0, 1024 - im.height - 40), im); x0 += im.width + 40
     return bg
-def consigne(x):
+EVITER = " Avoid: extra or missing fingers, melted or twisted hands, deformed faces, crossed eyes, extra limbs, cut-off bodies, text, letters, logos, watermarks."
+def consigne(x): return _consigne(x) + EVITER   # liste « à éviter » (27/11/2026, comme la fiche Gemini)
+def _consigne(x):
     noms = ', '.join(f"{gemini.gfx.nom(c)} ({gemini.IDENTITE.get(c, '')[:90]})" for c in x['persos'])
     if x['type'] == 'scene_decor':
         return (f"Use the place shown on the left as the setting and put these exact cartoon characters in it: {noms}. Scene: {x['texte']}. "
@@ -61,10 +63,10 @@ def faire(x, sortie):
             if essai < 2 or len(x['persos']) < 2: kontext('/tmp/entree.png', consigne(x), 7 + essai, sortie)
             else:   # en deux temps
                 y = dict(x, persos=x['persos'][:1]); planche(y).save('/tmp/un.png')
-                kontext('/tmp/un.png', f"Make this exact cartoon character do this: {x['texte']}. The other people of the action are not there yet: leave free space for them. Keep face, hair, clothes and 3D style exactly. Full body, side view, plain light grey background.", 11 + essai, '/tmp/etape1.jpg')
+                kontext('/tmp/un.png', f"Make this exact cartoon character do this: {x['texte']}. The other people of the action are not there yet: leave free space for them. Keep face, hair, clothes and 3D style exactly. Full body, side view, plain light grey background." + EVITER, 11 + essai, '/tmp/etape1.jpg')
                 a = Image.open('/tmp/etape1.jpg').convert('RGB'); o = planche(dict(x, persos=x['persos'][1:], type='scene')); a.thumbnail((1024, 1024))
                 c = Image.new('RGB', (a.width + o.width, 1024), (226, 226, 226)); c.paste(a, (0, 1024 - a.height)); c.paste(o, (a.width, 0)); c.save('/tmp/deux.png')
-                kontext('/tmp/deux.png', f"The character(s) on the right join the scene on the left, so that the final picture shows: {x['texte']}. Use the SAME objects as on the left (never add a second one). Keep every face, hair, clothes and 3D style exactly. One single scene, full bodies, side view, plain light grey background, no text.", 21 + essai, sortie)
+                kontext('/tmp/deux.png', f"The character(s) on the right join the scene on the left, so that the final picture shows: {x['texte']}. Use the SAME objects as on the left (never add a second one). Keep every face, hair, clothes and 3D style exactly. One single scene, full bodies, side view, plain light grey background, no text." + EVITER, 21 + essai, sortie)
         except Exception as e:
             print('  essai', essai + 1, ':', str(e)[:200]); echecs.append(str(e)[:80])
             if 'ZeroGPU' in str(e) or 'quota' in str(e).lower(): return False, 'quota gratuit du modèle épuisé'
