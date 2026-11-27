@@ -163,8 +163,14 @@ def app_screen(lines, title='Sounsouni'):
     for l in lines:
         l = l.strip()
         if not l: continue
-        if l.startswith('[') and l.endswith(']'):
-            d.rounded_rectangle([70, y, 530, y + 90], radius=45, fill=FONCE); d.text((300, y + 45), l.strip('[]'), font=font(FB, 38), fill=(255, 255, 255), anchor='mm'); y += 120; continue
+        if l.startswith('[') and l.endswith(']'):   # un ou plusieurs boutons : « [Accepter] [Refuser] » = deux boutons l'un sous l'autre, jamais un texte coupé (ép. 32)
+            for k, bt in enumerate(re.findall(r'\[([^\]]+)\]', l) or [l.strip('[]')]):
+                fz = 38
+                while fz > 22 and font(FB, fz).getlength(bt) > 420: fz -= 2
+                if k == 0: d.rounded_rectangle([70, y, 530, y + 90], radius=45, fill=FONCE); col = (255, 255, 255)
+                else: d.rounded_rectangle([70, y, 530, y + 90], radius=45, outline=FONCE, width=5); col = FONCE
+                d.text((300, y + 45), bt, font=font(FB, fz), fill=col, anchor='mm'); y += 110
+            y += 10; continue
         good = '✔' in l; bad = '✖' in l; star = '★' in l
         l2 = l.replace('✔', '').replace('✖', '').strip()
         if star:
